@@ -1,0 +1,31 @@
+{
+  "name": "guwmi",
+  "version": "1.0.0",
+  "description": "Component library for React apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rudodd/guwmi.git"
+  },
+  "keywords": [
+    "component",
+    "library",
+    "UI",
+    "React"
+  ],
+  "author": "Rustin Dodd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rudodd/guwmi/issues"
+  },
+  "homepage": "https://github.com/rudodd/guwmi#readme",
+  "dependencies": {
+    "react": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.2"
+  }
+}
