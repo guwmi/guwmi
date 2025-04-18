@@ -2,7 +2,7 @@
 import React, { PropsWithChildren, useMemo } from 'react';
 
 // import styles
-// import * as styles from './styles.scss';
+import * as styles from './styles.module.scss';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -12,7 +12,7 @@ interface ComponentProps extends PropsWithChildren {
 export default function Button(props: ComponentProps) {
 
   const { children, size = 'md' } = props;
-  const classes = useMemo(() => `guwmi-btn ${size}`, []);
+  const classes = useMemo(() => `${styles.guwmiBtn} ${size}`, []);
 
   return (
     <button className={classes}>{children}</button>
