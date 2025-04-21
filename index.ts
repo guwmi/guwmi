@@ -1,8 +1,8 @@
 // import library styles sheet
-import './styles/dist/index.css';
+import './src/styles/dist/index.css';
 
 // import button components
-import Button from './components/Button';
+import Button from './src/components/Button';
 
 // export all components
 export {
