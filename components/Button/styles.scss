@@ -2,9 +2,130 @@
  * Styles for the Button component ******************************************************************
  **/
 
+// import color variables
 @use '../../styles/variables/colors.scss' as colors;
+
+// component styles
 .guwmi-btn {
+  display: inline-flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
   border: 0;
   cursor: pointer;
-  background: colors.$red;
+  font-size: 1rem;
+  border: solid 2px rgba(0,0,0,0);
+
+  // sizes
+  &.sm {
+    padding: 0.25rem 0.67rem;
+    font-size: 0.9rem;
+  }
+
+  &.md {
+    padding: 0.5rem 1.25rem;
+  }
+
+  &.lg {
+    padding: 0.65rem 2rem;
+    font-size: 1.1rem;
+    border-width: 3px;
+  }
+
+  // colors
+  &.primary {
+    background: colors.$primary;
+    border-color: colors.$primary;
+    color: colors.$white;
+
+    &.outline,
+    &.ghost {
+      color: colors.$primary;
+    }
+  }
+
+  &.primary-light {
+    background: colors.$primary-light;
+    border-color: colors.$primary-light;
+    color: colors.$white;
+
+    &.outline,
+    &.ghost {
+      color: colors.$primary-light;
+    }
+  }
+
+  &.secondary {
+    background: colors.$secondary;
+    border-color: colors.$secondary;
+    color: colors.$white;
+
+    &.outline,
+    &.ghost {
+      color: colors.$secondary;
+    }
+  }
+
+  &.secondary-light {
+    background: colors.$secondary-light;
+    border-color: colors.$secondary-light;
+    color: colors.$white;
+
+    &.outline,
+    &.ghost {
+      color: colors.$secondary-light;
+    }
+  }
+
+  &.black {
+    background: colors.$black;
+    border-color: colors.$black;
+    color: colors.$white;
+
+    &.outline,
+    &.ghost {
+      color: colors.$black;
+    }
+  }
+
+  &.white {
+    background: colors.$white;
+    border-color: colors.$white;
+    color: colors.$black;
+
+    &.outline,
+    &.ghost {
+      color: colors.$white;
+    }
+  }
+
+  &.gray {
+    background: colors.$gray-40;
+    border-color: colors.$gray-40;
+    color: colors.$black;
+
+    &.outline,
+    &.ghost {
+      color: colors.$gray-50;
+    }
+  }
+
+  // kinds
+  &.outline {
+    background: none;
+  }
+
+  &.ghost {
+    background: none;
+    border-color: rgba(0,0,0,0);
+  }
+
+  // styles
+  &.round {
+    border-radius: 8px;
+  }
+
+  &.pill {
+    border-radius: 50px;
+  }
 }

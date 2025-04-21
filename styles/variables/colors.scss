@@ -2,6 +2,13 @@
  * Color variables for for use in the library *******************************************************
  **/
 
+ html {
+  --guwmi-primary: #064789;
+  --guwmi-primary-light: #427aa1;
+  --guwmi-secondary: #679436;
+  --guwmi-secondary-light: #a5be00;
+}
+
 $white: #fff;
 $gray-10: #f4f4f4;
 $gray-20: #e0e0e0;
@@ -14,4 +21,7 @@ $gray-80: #393939;
 $gray-90: #262626;
 $gray-100: #161616;
 $black: #000;
-$red: rgb(164, 16, 16);
+$primary: var(--guwmi-primary);
+$primary-light: var(--guwmi-primary-light);
+$secondary: var(--guwmi-secondary);
+$secondary-light: var(--guwmi-secondary-light);
