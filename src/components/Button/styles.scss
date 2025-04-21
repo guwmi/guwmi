@@ -15,6 +15,7 @@
   cursor: pointer;
   font-size: 1rem;
   border: solid 2px rgba(0,0,0,0);
+  transition: ease all 0.33333s;
 
   // sizes
   &.sm {
@@ -38,6 +39,20 @@
     border-color: colors.$primary;
     color: colors.$white;
 
+    &:hover {
+
+      &.fill {
+        background: colors.$primary-light;
+        border-color: colors.$primary-light;
+      }
+
+      &.outline {
+        background: colors.$primary;
+        border-color: colors.$primary;
+        color: colors.$white;
+      }
+    }
+
     &.outline,
     &.ghost {
       color: colors.$primary;
@@ -48,6 +63,20 @@
     background: colors.$primary-light;
     border-color: colors.$primary-light;
     color: colors.$white;
+
+    &:hover {
+
+      &.fill {
+        background: colors.$primary;
+        border-color: colors.$primary;
+      }
+
+      &.outline {
+        background: colors.$primary-light;
+        border-color: colors.$primary-light;
+        color: colors.$white;
+      }
+    }
 
     &.outline,
     &.ghost {
@@ -60,6 +89,20 @@
     border-color: colors.$secondary;
     color: colors.$white;
 
+    &:hover {
+
+      &.fill {
+        background: colors.$secondary-light;
+        border-color: colors.$secondary-light;
+      }
+
+      &.outline {
+        background: colors.$secondary;
+        border-color: colors.$secondary;
+        color: colors.$white;
+      }
+    }
+
     &.outline,
     &.ghost {
       color: colors.$secondary;
@@ -70,6 +113,20 @@
     background: colors.$secondary-light;
     border-color: colors.$secondary-light;
     color: colors.$white;
+
+    &:hover {
+
+      &.fill {
+        background: colors.$secondary;
+        border-color: colors.$secondary;
+      }
+
+      &.outline {
+        background: colors.$secondary-light;
+        border-color: colors.$secondary-light;
+        color: colors.$white;
+      }
+    }
 
     &.outline,
     &.ghost {
@@ -82,6 +139,20 @@
     border-color: colors.$black;
     color: colors.$white;
 
+    &:hover {
+
+      &.fill {
+        background: colors.$gray-70;
+        border-color: colors.$gray-70;
+      }
+
+      &.outline {
+        background: colors.$black;
+        border-color: colors.$black;
+        color: colors.$white;
+      }
+    }
+
     &.outline,
     &.ghost {
       color: colors.$black;
@@ -93,6 +164,20 @@
     border-color: colors.$white;
     color: colors.$black;
 
+    &:hover {
+
+      &.fill {
+        background: colors.$gray-10;
+        border-color: colors.$gray-10;
+      }
+
+      &.outline {
+        background: colors.$white;
+        border-color: colors.$white;
+        color: colors.$black;
+      }
+    }
+
     &.outline,
     &.ghost {
       color: colors.$white;
@@ -103,6 +188,20 @@
     background: colors.$gray-40;
     border-color: colors.$gray-40;
     color: colors.$black;
+
+    &:hover {
+
+      &.fill {
+        background: colors.$gray-60;
+        border-color: colors.$gray-60;
+      }
+
+      &.outline {
+        background: colors.$gray-40;
+        border-color: colors.$gray-40;
+        color: colors.$black;
+      }
+    }
 
     &.outline,
     &.ghost {
