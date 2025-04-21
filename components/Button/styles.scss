@@ -2,10 +2,9 @@
  * Styles for the Button component ******************************************************************
  **/
 
-/* @import '/styles/colors.css'; */
-/* @import '/styles/colors.css'; */
-.guwmiBtn {
+@use '../../styles/variables/colors.scss' as colors;
+.guwmi-btn {
   border: 0;
   cursor: pointer;
-  background: red;
+  background: colors.$red;
 }
