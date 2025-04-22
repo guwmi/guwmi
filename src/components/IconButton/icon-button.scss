@@ -1,0 +1,26 @@
+/**
+ * Styles for the Icon Button component ******************************************************************
+ **/
+
+// component styles extends button styles '../Button/styles.scss'
+.guwmi-btn.icon {
+
+  // sizes
+  &.sm {
+    padding: 0.25rem;
+    font-size: 0.9rem;
+  }
+
+  &.md {
+    padding: 0.5rem;
+  }
+
+  &.lg {
+    padding: 0.65rem;
+    font-size: 1.1rem;
+  }
+
+  &.circle {
+    border-radius: 50%;
+  }
+}

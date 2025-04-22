@@ -1,0 +1,19 @@
+/**
+ * Styles for the Icon Button component ******************************************************************
+ **/
+.guwmi-btn.icon.sm {
+  padding: 0.25rem;
+  font-size: 0.9rem;
+}
+.guwmi-btn.icon.md {
+  padding: 0.5rem;
+}
+.guwmi-btn.icon.lg {
+  padding: 0.65rem;
+  font-size: 1.1rem;
+}
+.guwmi-btn.icon.circle {
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=icon-button.css.map */

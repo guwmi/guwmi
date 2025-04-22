@@ -2,7 +2,8 @@
  * Index file for pulling all component files together **********************************************
  **/
 
-@use '../components/Button/styles.scss';
+@use '../components/Button/button.scss';
+@use '../components/IconButton/icon-button.scss';
 
 html,
 body {

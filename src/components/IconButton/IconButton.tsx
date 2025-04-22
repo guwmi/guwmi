@@ -6,12 +6,17 @@ interface ComponentProps extends PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
   color?: 'primary' | 'secondary' | 'black' | 'white' | 'gray';
   kind?: 'fill' | 'outline' | 'ghost';
-  theme?: 'square' | 'round' | 'pill';
+  theme?: 'square' | 'round' | 'circle';
   className?: string;
   onClick: (React.MouseEventHandler<HTMLButtonElement> | undefined);
 }
 
-export default function Button(props: ComponentProps) {
+/**
+ * Icon Button Component ********************************************************************************
+ * @param ComponentProps
+ */
+
+export default function IconButton(props: ComponentProps) {
 
   const {
     children,
@@ -22,7 +27,7 @@ export default function Button(props: ComponentProps) {
     className,
     onClick
   } = props;
-  const classes = useMemo(() => `guwmi-btn ${size} ${color} ${kind} ${theme}${className ? className : ''}`, []);
+  const classes = useMemo(() => `guwmi-btn icon ${size} ${color} ${kind} ${theme}${className ? ' ' + className : ''}`, []);
 
   return (
     <button className={classes} onClick={onClick}>{children}</button>
