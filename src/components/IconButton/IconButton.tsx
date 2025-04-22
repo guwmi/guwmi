@@ -8,7 +8,7 @@ interface ComponentProps extends PropsWithChildren {
   kind?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'circle';
   className?: string;
-  onClick: (React.MouseEventHandler<HTMLButtonElement> | undefined);
+  onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
 }
 
 /**
