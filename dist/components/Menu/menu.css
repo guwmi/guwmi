@@ -1,0 +1,85 @@
+/**
+ * Styles for the Menu and child components ********************************************************
+ **/
+/**
+ * Color variables for for use in the library *******************************************************
+ **/
+:root {
+  --guwmi-primary: #1f487e;
+  --guwmi-primary-light: #376996;
+  --guwmi-secondary: #573d7f;
+  --guwmi-secondary-light: #7151a9;
+}
+
+.guwmi-menu-container {
+  position: relative;
+}
+.guwmi-menu-container.top-right .guwmi-menu-dropdown {
+  top: -0.25rem;
+  right: 0;
+  transform: translateY(-100%);
+}
+.guwmi-menu-container.top-left .guwmi-menu-dropdown {
+  top: -0.25rem;
+  left: 0;
+  transform: translateY(-100%);
+}
+.guwmi-menu-container.top-center .guwmi-menu-dropdown {
+  top: -0.25rem;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+.guwmi-menu-container.bottom-right .guwmi-menu-dropdown {
+  bottom: -0.25rem;
+  right: 0;
+  transform: translateY(100%);
+}
+.guwmi-menu-container.bottom-left .guwmi-menu-dropdown {
+  bottom: -0.25rem;
+  left: 0;
+  transform: translateY(100%);
+}
+.guwmi-menu-container.bottom-center .guwmi-menu-dropdown {
+  bottom: -0.25rem;
+  left: 50%;
+  transform: translate(-50%, 100%);
+}
+.guwmi-menu-container .guwmi-menu-dropdown {
+  position: absolute;
+  background: #f4f4f4;
+  border: solid 1px #e0e0e0;
+  padding: 0.25rem;
+  border-radius: 4px;
+  opacity: 0;
+  transition: ease-in all 0.1s;
+}
+.guwmi-menu-container .guwmi-menu-dropdown.open {
+  opacity: 1;
+}
+.guwmi-menu-container .guwmi-menu-dropdown > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item {
+  margin: 0;
+  padding: 0;
+}
+.guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item .guwmi-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: ease all 0.4s;
+}
+.guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item .guwmi-menu-btn:hover {
+  background: #e0e0e0;
+}
+
+/*# sourceMappingURL=menu.css.map */

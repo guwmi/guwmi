@@ -1,5 +1,5 @@
 // import library functionality
-import React, { useContext, PropsWithChildren, JSXElementConstructor } from 'react'
+import React, { useContext, PropsWithChildren } from 'react'
 
 // import context
 import MenuContext from './MenuContext';
