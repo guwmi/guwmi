@@ -9,6 +9,7 @@ interface ComponentProps extends PropsWithChildren {
   theme?: 'square' | 'round' | 'circle';
   className?: string;
   onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
+  ariaLabel: string;
 }
 
 /**
@@ -25,11 +26,18 @@ export default function IconButton(props: ComponentProps) {
     kind = 'fill',
     theme = 'round',
     className,
-    onClick
+    onClick,
+    ariaLabel
   } = props;
   const classes = useMemo(() => `guwmi-btn icon ${size} ${color} ${kind} ${theme}${className ? ' ' + className : ''}`, []);
 
   return (
-    <button className={classes} onClick={onClick}>{children}</button>
+    <button 
+      className={classes} 
+      onClick={onClick} 
+      aria-label={ariaLabel}
+    >
+      {children}
+    </button>
   )
 }
