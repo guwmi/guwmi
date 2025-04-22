@@ -30,7 +30,6 @@
   &.lg {
     padding: 0.65rem 2rem;
     font-size: 1.1rem;
-    border-width: 3px;
   }
 
   // colors
@@ -59,31 +58,6 @@
     }
   }
 
-  &.primary-light {
-    background: colors.$primary-light;
-    border-color: colors.$primary-light;
-    color: colors.$white;
-
-    &:hover {
-
-      &.fill {
-        background: colors.$primary;
-        border-color: colors.$primary;
-      }
-
-      &.outline {
-        background: colors.$primary-light;
-        border-color: colors.$primary-light;
-        color: colors.$white;
-      }
-    }
-
-    &.outline,
-    &.ghost {
-      color: colors.$primary-light;
-    }
-  }
-
   &.secondary {
     background: colors.$secondary;
     border-color: colors.$secondary;
@@ -106,31 +80,6 @@
     &.outline,
     &.ghost {
       color: colors.$secondary;
-    }
-  }
-
-  &.secondary-light {
-    background: colors.$secondary-light;
-    border-color: colors.$secondary-light;
-    color: colors.$white;
-
-    &:hover {
-
-      &.fill {
-        background: colors.$secondary;
-        border-color: colors.$secondary;
-      }
-
-      &.outline {
-        background: colors.$secondary-light;
-        border-color: colors.$secondary-light;
-        color: colors.$white;
-      }
-    }
-
-    &.outline,
-    &.ghost {
-      color: colors.$secondary-light;
     }
   }
 
@@ -221,7 +170,7 @@
 
   // styles
   &.round {
-    border-radius: 8px;
+    border-radius: 5px;
   }
 
   &.pill {

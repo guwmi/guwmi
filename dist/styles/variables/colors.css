@@ -1,11 +1,11 @@
 /**
  * Color variables for for use in the library *******************************************************
  **/
-html {
-  --guwmi-primary: #064789;
-  --guwmi-primary-light: #427aa1;
-  --guwmi-secondary: #679436;
-  --guwmi-secondary-light: #a5be00;
+:root {
+  --guwmi-primary: #1f487e;
+  --guwmi-primary-light: #376996;
+  --guwmi-secondary: #573d7f;
+  --guwmi-secondary-light: #7151a9;
 }
 
 /*# sourceMappingURL=colors.css.map */

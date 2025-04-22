@@ -4,10 +4,11 @@ import React, { PropsWithChildren, useMemo } from 'react';
 // component type
 interface ComponentProps extends PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'primary-light' | 'secondary' | 'secondary-light' | 'black' | 'white' | 'gray';
+  color?: 'primary' | 'secondary' | 'black' | 'white' | 'gray';
   kind?: 'fill' | 'outline' | 'ghost';
-  style?: 'square' | 'round' | 'pill';
+  theme?: 'square' | 'round' | 'pill';
   className?: string;
+  onClick: (React.MouseEventHandler<HTMLButtonElement> | undefined);
 }
 
 export default function Button(props: ComponentProps) {
@@ -17,12 +18,13 @@ export default function Button(props: ComponentProps) {
     size = 'md',
     color = 'primary',
     kind = 'fill',
-    style = 'round',
-    className
+    theme = 'round',
+    className,
+    onClick
   } = props;
-  const classes = useMemo(() => `guwmi-btn ${size} ${color} ${kind} ${style}${className ? className : ''}`, []);
+  const classes = useMemo(() => `guwmi-btn ${size} ${color} ${kind} ${theme}${className ? className : ''}`, []);
 
   return (
-    <button className={classes}>{children}</button>
+    <button className={classes} onClick={onClick}>{children}</button>
   )
 }

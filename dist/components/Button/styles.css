@@ -4,11 +4,11 @@
 /**
  * Color variables for for use in the library *******************************************************
  **/
-html {
-  --guwmi-primary: #064789;
-  --guwmi-primary-light: #427aa1;
-  --guwmi-secondary: #679436;
-  --guwmi-secondary-light: #a5be00;
+:root {
+  --guwmi-primary: #1f487e;
+  --guwmi-primary-light: #376996;
+  --guwmi-secondary: #573d7f;
+  --guwmi-secondary-light: #7151a9;
 }
 
 .guwmi-btn {
@@ -32,7 +32,6 @@ html {
 .guwmi-btn.lg {
   padding: 0.65rem 2rem;
   font-size: 1.1rem;
-  border-width: 3px;
 }
 .guwmi-btn.primary {
   background: var(--guwmi-primary);
@@ -51,23 +50,6 @@ html {
 .guwmi-btn.primary.outline, .guwmi-btn.primary.ghost {
   color: var(--guwmi-primary);
 }
-.guwmi-btn.primary-light {
-  background: var(--guwmi-primary-light);
-  border-color: var(--guwmi-primary-light);
-  color: #fff;
-}
-.guwmi-btn.primary-light:hover.fill {
-  background: var(--guwmi-primary);
-  border-color: var(--guwmi-primary);
-}
-.guwmi-btn.primary-light:hover.outline {
-  background: var(--guwmi-primary-light);
-  border-color: var(--guwmi-primary-light);
-  color: #fff;
-}
-.guwmi-btn.primary-light.outline, .guwmi-btn.primary-light.ghost {
-  color: var(--guwmi-primary-light);
-}
 .guwmi-btn.secondary {
   background: var(--guwmi-secondary);
   border-color: var(--guwmi-secondary);
@@ -84,23 +66,6 @@ html {
 }
 .guwmi-btn.secondary.outline, .guwmi-btn.secondary.ghost {
   color: var(--guwmi-secondary);
-}
-.guwmi-btn.secondary-light {
-  background: var(--guwmi-secondary-light);
-  border-color: var(--guwmi-secondary-light);
-  color: #fff;
-}
-.guwmi-btn.secondary-light:hover.fill {
-  background: var(--guwmi-secondary);
-  border-color: var(--guwmi-secondary);
-}
-.guwmi-btn.secondary-light:hover.outline {
-  background: var(--guwmi-secondary-light);
-  border-color: var(--guwmi-secondary-light);
-  color: #fff;
-}
-.guwmi-btn.secondary-light.outline, .guwmi-btn.secondary-light.ghost {
-  color: var(--guwmi-secondary-light);
 }
 .guwmi-btn.black {
   background: #000;
@@ -161,7 +126,7 @@ html {
   border-color: rgba(0, 0, 0, 0);
 }
 .guwmi-btn.round {
-  border-radius: 8px;
+  border-radius: 5px;
 }
 .guwmi-btn.pill {
   border-radius: 50px;
