@@ -1,9 +1,5 @@
 // import library functionality
-import React, {
-  useState,
-  useMemo,
-  PropsWithChildren,
-} from 'react';
+import React, { useState, useMemo,  PropsWithChildren } from 'react';
 
 // import context
 import MenuContext from './MenuContext';
@@ -15,9 +11,19 @@ interface ComponentProps extends PropsWithChildren {
   ariaLabel: string;
 }
 
+/**
+ * Menu component **********************************************************************************
+ * @param ComponenProps
+ */
+
 export default function Menu(props: ComponentProps) {
 
-  const { children, position = 'bottom-right', width, ariaLabel } = props;
+  const {
+    children,
+    position = 'bottom-right',
+    width,
+    ariaLabel
+  } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const classes = useMemo(() => `guwmi-menu-container ${position}`, []);
 

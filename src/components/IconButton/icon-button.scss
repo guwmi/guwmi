@@ -2,7 +2,7 @@
  * Styles for the Icon Button component ******************************************************************
  **/
 
-// component styles extends button styles '../Button/styles.scss'
+// component styles extends button styles '../Button/button.scss'
 .guwmi-btn.icon {
 
   // sizes
@@ -20,6 +20,7 @@
     font-size: 1.1rem;
   }
 
+  // themes
   &.circle {
     border-radius: 50%;
   }

@@ -1,24 +1,29 @@
 // import library functionality
-import React, { useContext, PropsWithChildren } from 'react'
+import React, { useMemo, useContext, PropsWithChildren } from 'react';
 
 // import context
 import MenuContext from './MenuContext';
 
-// child prop type
+// children type
 interface ChildType {
   onClick: () => void;
 }
+
+/**
+ * Menu Trigger component ************************************************************************
+ * @param children - ReacElements provided as props
+ */
 
 export default function MenuTrigger(props: PropsWithChildren) {
 
   const { children } = props;
   const { isOpen, setIsOpen } = useContext(MenuContext);
-  const childrenWithClick = React.Children.map(children, (child) => {
+  const childrenWithClick = useMemo(() => React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       return React.cloneElement(child as React.ReactElement<ChildType>, { onClick: () => setIsOpen(!isOpen) });
     }
     return child;
-  });
+  }), [children, isOpen]);
 
   return (
     <div className="guwmi-menu-trigger">

@@ -2,12 +2,15 @@
  * Index file for pulling all component files together **********************************************
  **/
 
+// import component stylesheets
 @use '../components/Button/button.scss';
 @use '../components/IconButton/icon-button.scss';
 @use '../components/Menu/menu.scss';
 
+// import typeface
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+// global styles
 html,
 body {
   margin: 0;

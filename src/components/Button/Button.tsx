@@ -30,6 +30,8 @@ export default function Button(props: ComponentProps) {
   const classes = useMemo(() => `guwmi-btn ${size} ${color} ${kind} ${theme}${className ? ' ' + className : ''}`, []);
 
   return (
-    <button className={classes} onClick={onClick}>{children}</button>
+    <button className={classes} onClick={onClick}>
+      {children}
+    </button>
   )
 }

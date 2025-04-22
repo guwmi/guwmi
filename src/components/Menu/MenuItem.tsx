@@ -7,6 +7,11 @@ interface ComponentProps extends PropsWithChildren {
   href?: string;
 }
 
+/**
+ * Menu Item component *****************************************************************************
+ * @param ComponentProps
+ */
+
 export default function MenuItem(props: ComponentProps) {
 
   const { children, onClick, href } = props;
@@ -15,9 +20,13 @@ export default function MenuItem(props: ComponentProps) {
   return (
     <li className={classes}>
       {href ? (
-        <a className="guwmi-menu-btn" href={href}>{children}</a>
+        <a className="guwmi-menu-btn" href={href}>
+          {children}
+        </a>
       ) : (
-        <button className="guwmi-menu-btn" onClick={onClick}>{children}</button>
+        <button className="guwmi-menu-btn" onClick={onClick}>
+          {children}
+        </button>
       )}
     </li>
   )

@@ -6,10 +6,15 @@ import React, {
   useRef,
   useState,
   PropsWithChildren
-} from 'react'
+} from 'react';
 
 // import context
 import MenuContext from './MenuContext';
+
+/**
+ * Menu Dropdown component ************************************************************************
+ * @param children - ReactElements provided as props
+ */
 
 export default function MenuDropdown(props: PropsWithChildren) {
 
@@ -20,14 +25,8 @@ export default function MenuDropdown(props: PropsWithChildren) {
   const dropDownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    dropDownRef.current?.addEventListener('transitioncancel', () => {
-      console.log('menu gone')
-      setIsAnimating(false);
-    });
-    dropDownRef.current?.addEventListener('transitionend', () => {
-      console.log('menu gone')
-      setIsAnimating(false);
-    });
+    dropDownRef.current?.addEventListener('transitioncancel', () => setIsAnimating(false));
+    dropDownRef.current?.addEventListener('transitionend', () => setIsAnimating(false));
   }, [dropDownRef.current]);
 
   useEffect(() => {
