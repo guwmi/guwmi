@@ -20,18 +20,32 @@ export default function Table(props: ComponentProps) {
   return (
     <div className={classes}>
       <table cellPadding={0} cellSpacing={0}>
-        <thead>
-          <tr>
-            {headers.map((header, i) => (
-              <th key={`table-${id}-header-${i}`}>{header.title}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
-          ))}
-        </tbody>
+        {headers.length > 0 ? (
+          <>
+            <thead>
+              <tr>
+                {headers.map((header, i) => (
+                  <th key={`table-${id}-header-${i}`}>{header.title}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.length > 0 ? rows.map((row) => (
+                <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
+              )) : (
+                <tr>
+                  <td colSpan={headers.length}>There is no data to display in the table</td>
+                </tr>
+              )}
+            </tbody>
+          </>
+        ) : (
+          <tbody>
+            <tr>
+              <td>No column headers provided for the table</td>
+            </tr>
+          </tbody>
+        )}
       </table>
     </div>
   )
