@@ -11,6 +11,12 @@ import MenuDropdown from './src/components/Menu/MenuDropdown';
 import MenuItem from './src/components/Menu/MenuItem';
 import MenuTrigger from './src/components/Menu/MenuTrigger';
 
+// import tabs components
+import TabsContainer from './src/components/Tabs/TabsContainer';
+import Tabs from './src/components/Tabs/Tabs';
+import Tab from './src/components/Tabs/Tab';
+import TabPanel from './src/components/Tabs/TabPanel';
+
 // export all components
 export {
   Button,
@@ -18,5 +24,9 @@ export {
   Menu,
   MenuDropdown,
   MenuItem,
-  MenuTrigger
+  MenuTrigger,
+  TabsContainer,
+  Tabs,
+  Tab,
+  TabPanel
 };
