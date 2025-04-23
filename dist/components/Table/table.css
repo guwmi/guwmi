@@ -24,6 +24,10 @@
 .guwmi-table-container.condensed td {
   padding: 0.5rem;
 }
+.guwmi-table-container .guwmi-table-search {
+  margin: 1rem 0 0.5rem;
+  width: 100%;
+}
 .guwmi-table-container table {
   width: 100%;
 }

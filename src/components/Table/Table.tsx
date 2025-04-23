@@ -3,22 +3,29 @@ import React, { useId, useMemo } from 'react';
 
 // import components
 import TableRow from './TableRow';
+import SearchInput from '../Inputs/Search/SearchInput';
 
 // component type
 interface ComponentProps {
   headers: { title: string, key: string }[];
   rows: { id: number | string, [key: string]: any }[];
   isCondensed?: boolean;
+  isSearchable?: boolean;
 }
 
 export default function Table(props: ComponentProps) {
 
-  const { headers, rows, isCondensed } = props;
+  const { headers, rows, isCondensed, isSearchable } = props;
   const id = useId();
   const classes = useMemo(() => `guwmi-table-container${isCondensed ? ' condensed' : ''}`, [])
 
   return (
     <div className={classes}>
+      {(headers.length > 0 && isSearchable) &&
+        <div className="guwmi-table-search">
+          <SearchInput />
+        </div>
+      }
       <table cellPadding={0} cellSpacing={0}>
         {headers.length > 0 ? (
           <>

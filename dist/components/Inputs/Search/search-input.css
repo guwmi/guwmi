@@ -1,0 +1,35 @@
+/**
+ * Styles for the search input component ************************************************************
+ **/
+/**
+ * Color variables for for use in the library *******************************************************
+ **/
+:root {
+  --guwmi-primary: #1f487e;
+  --guwmi-primary-light: #376996;
+  --guwmi-secondary: #573d7f;
+  --guwmi-secondary-light: #7151a9;
+}
+
+.guwmi-search-input {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.guwmi-search-input span {
+  position: absolute;
+  left: 0.5rem;
+  top: calc(50% + 0.1rem);
+  transform: translateY(-50%);
+  color: #a8a8a8;
+}
+.guwmi-search-input input {
+  flex-grow: 1;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  border: solid 1px #e0e0e0;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+/*# sourceMappingURL=search-input.css.map */

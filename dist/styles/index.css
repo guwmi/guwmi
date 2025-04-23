@@ -287,6 +287,10 @@
 .guwmi-table-container.condensed td {
   padding: 0.5rem;
 }
+.guwmi-table-container .guwmi-table-search {
+  margin: 1rem 0 0.5rem;
+  width: 100%;
+}
 .guwmi-table-container table {
   width: 100%;
 }
@@ -305,6 +309,30 @@
 }
 .guwmi-table-container table tbody tr:last-of-type td {
   border: 0;
+}
+
+/**
+ * Styles for the search input component ************************************************************
+ **/
+.guwmi-search-input {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.guwmi-search-input span {
+  position: absolute;
+  left: 0.5rem;
+  top: calc(50% + 0.1rem);
+  transform: translateY(-50%);
+  color: #a8a8a8;
+}
+.guwmi-search-input input {
+  flex-grow: 1;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  border: solid 1px #e0e0e0;
+  border-radius: 3px;
+  font-size: 0.9rem;
 }
 
 html,
