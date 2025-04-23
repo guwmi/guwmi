@@ -1,0 +1,54 @@
+/**
+ * Style for the table component ********************************************************************
+ **/
+
+//  import colors
+@use '../../styles/variables/colors.scss' as colors;
+
+.guwmi-table-container {
+  background: colors.$gray-10;
+  padding: 0.25rem 1rem;
+  border-radius: 4px;
+  border: solid 1px colors.$gray-20;
+
+  &.condensed {
+    padding: 0.25rem 0.5rem;
+
+    th,
+    td {
+      padding: 0.5rem;
+    }
+  }
+
+  table {
+    width: 100%;
+
+    th,
+    td {
+      text-align: left;
+      padding: 1rem;
+      margin: 0;
+      border: 0;
+      border-bottom: solid 1px colors.$gray-20;
+      font-size: 0.9rem;
+    }
+
+    thead {
+
+      th {
+        border-color: colors.$gray-50;
+        font-size: 1rem;
+      }
+    }
+
+    tbody {
+
+      tr:last-of-type {
+
+        td {
+          border: 0;
+        }
+      }
+    }
+  }
+}

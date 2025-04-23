@@ -271,6 +271,42 @@
   padding: 1rem;
 }
 
+/**
+ * Style for the table component ********************************************************************
+ **/
+.guwmi-table-container {
+  background: #f4f4f4;
+  padding: 0.25rem 1rem;
+  border-radius: 4px;
+  border: solid 1px #e0e0e0;
+}
+.guwmi-table-container.condensed {
+  padding: 0.25rem 0.5rem;
+}
+.guwmi-table-container.condensed th,
+.guwmi-table-container.condensed td {
+  padding: 0.5rem;
+}
+.guwmi-table-container table {
+  width: 100%;
+}
+.guwmi-table-container table th,
+.guwmi-table-container table td {
+  text-align: left;
+  padding: 1rem;
+  margin: 0;
+  border: 0;
+  border-bottom: solid 1px #e0e0e0;
+  font-size: 0.9rem;
+}
+.guwmi-table-container table thead th {
+  border-color: #8d8d8d;
+  font-size: 1rem;
+}
+.guwmi-table-container table tbody tr:last-of-type td {
+  border: 0;
+}
+
 html,
 body {
   font-size: 16px;

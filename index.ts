@@ -18,6 +18,9 @@ import Tab from './src/components/Tabs/Tab';
 import TabPanels from './src/components/Tabs/TabPanels';
 import TabPanel from './src/components/Tabs/TabPanel';
 
+// import table components
+import Table from './src/components/Table/Table';
+
 // export all components
 export {
   Button,
@@ -30,5 +33,6 @@ export {
   Tabs,
   Tab,
   TabPanels,
-  TabPanel
+  TabPanel,
+  Table
 };
