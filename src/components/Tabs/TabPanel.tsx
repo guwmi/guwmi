@@ -12,15 +12,17 @@ interface ComponentProps extends PropsWithChildren {
 export default function TabPanel(props: ComponentProps) {
 
   const { children, index } = props;
-  const { selectedTab } = useContext(TabsContext);
+  const { id, selectedTab } = useContext(TabsContext);
 
   return (
-    <>
-      {selectedTab === index &&
-        <div className="guwmi-tab-panel">
-          {children}
-        </div>
-      }
-    </>
+    <section
+      className="guwmi-tab-panel"
+      role="tabpanel"
+      hidden={selectedTab !== index}
+      aria-labelledby={`tabs-${id}-tab-${index}`}
+      id={`tabs-${id}-tabpanel-${index}`}
+    >
+      {children}
+    </section>
   )
 }

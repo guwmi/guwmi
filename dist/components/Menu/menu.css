@@ -52,6 +52,7 @@
   border-radius: 4px;
   opacity: 0;
   transition: ease-in all 0.1s;
+  z-index: 99999;
 }
 .guwmi-menu-container .guwmi-menu-dropdown.open {
   opacity: 1;

@@ -30,18 +30,17 @@
     .guwmi-tab {
       position: relative;
       z-index: +1;
-
-      .guwmi-tab-trigger {
-        background: none;
-        border: 0;
-        font-size: 1rem;
-        padding: 0.5rem 0.75rem;
-        cursor: pointer;
-      }
+      background: none;
+      border: 0;
+      font-size: 1rem;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
     }
   }
 
-  .guwmi-tab-panel {
-
+  .guwmi-tab-panels {
+    border: solid 1px colors.$gray-20;
+    border-radius: 3px;
+    padding: 1rem;
   }
 }

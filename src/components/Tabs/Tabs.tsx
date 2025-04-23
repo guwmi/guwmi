@@ -46,14 +46,10 @@ export default function Tabs(props: PropsWithChildren) {
     }
   }, [activeTab.current])
 
-  useEffect(() => {
-    console.log(slider.current.offsetWidth);
-  }, [slider.current])
-
   return (
-    <div className="guwmi-tabs" ref={tabsContainer}>
+    <nav className="guwmi-tabs" role="tablist" ref={tabsContainer}>
       <span className="guwmi-tabs-slider" ref={slider}></span>
       {childrenWithIndex}
-    </div>
+    </nav>
   )
 }

@@ -54,6 +54,7 @@
     border-radius: 4px;
     opacity: 0;
     transition: ease-in all 0.1s;
+    z-index: 99999;
 
     &.open {
       opacity: 1;

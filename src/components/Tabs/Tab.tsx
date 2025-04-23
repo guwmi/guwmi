@@ -12,13 +12,17 @@ interface ComponentProps extends PropsWithChildren {
 export default function Tab(props: ComponentProps) {
 
   const { children, index } = props;
-  const { selectedTab, setSelectedTab } = useContext(TabsContext);
+  const { id, selectedTab, setSelectedTab } = useContext(TabsContext);
 
   return (
-    <div className={`guwmi-tab${selectedTab === index ? ' active' : ''}`}>
-      <button className="guwmi-tab-trigger" onClick={() => setSelectedTab(index)}>
+      <button
+        className={`guwmi-tab${selectedTab === index ? ' active' : ''}`}
+        onClick={() => setSelectedTab(index)}
+        id={`tabs-${id}-tab-${index}`}
+        aria-selected={selectedTab === index}
+        aria-controls={`tabs-${id}-tabpanel-${index}`}
+      >
         {children}
       </button>
-    </div>
   )
 }
