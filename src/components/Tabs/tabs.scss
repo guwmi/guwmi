@@ -2,15 +2,46 @@
  * Styles for the Tabs component and children *******************************************************
  **/
 
+// import colors
+@use '../../styles/variables/colors.scss' as colors;
+
 .guwmi-tabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   .guwmi-tabs {
+    position: relative;
+    display: flex;
+    gap: 0.25rem;
+    background: colors.$gray-10;
+    border: solid 1px colors.$gray-20;
+    border-radius: 3px;
+    padding: 0.25rem;
+
+    .guwmi-tabs-slider {
+      position: absolute;
+      height: calc(100% - 0.5rem);
+      background: colors.$gray-20;
+      border-radius: 3px;
+      transition: ease all 0.4s;
+    }
 
     .guwmi-tab {
+      position: relative;
+      z-index: +1;
 
       .guwmi-tab-trigger {
-        
+        background: none;
+        border: 0;
+        font-size: 1rem;
+        padding: 0.5rem 0.75rem;
+        cursor: pointer;
       }
     }
+  }
+
+  .guwmi-tab-panel {
+
   }
 }

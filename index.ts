@@ -15,6 +15,7 @@ import MenuTrigger from './src/components/Menu/MenuTrigger';
 import TabsContainer from './src/components/Tabs/TabsContainer';
 import Tabs from './src/components/Tabs/Tabs';
 import Tab from './src/components/Tabs/Tab';
+import TabPanels from './src/components/Tabs/TabPanels';
 import TabPanel from './src/components/Tabs/TabPanel';
 
 // export all components
@@ -28,5 +29,6 @@ export {
   TabsContainer,
   Tabs,
   Tab,
+  TabPanels,
   TabPanel
 };

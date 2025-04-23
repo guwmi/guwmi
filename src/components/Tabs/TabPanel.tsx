@@ -1,16 +1,26 @@
 // import library functionality
-import React, { PropsWithChildren } from 'react';
+import React, { useContext, PropsWithChildren } from 'react';
 
+// import context
+import TabsContext from './TabsContext';
 
+// component type
+interface ComponentProps extends PropsWithChildren {
+  index?: number;
+}
 
+export default function TabPanel(props: ComponentProps) {
 
-export default function TabPanel(props: PropsWithChildren) {
-
-  const { children } = props;
+  const { children, index } = props;
+  const { selectedTab } = useContext(TabsContext);
 
   return (
-    <div className="guwmi-tabl-panel">
-      {children}
-    </div>
+    <>
+      {selectedTab === index &&
+        <div className="guwmi-tab-panel">
+          {children}
+        </div>
+      }
+    </>
   )
 }

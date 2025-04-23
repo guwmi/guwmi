@@ -234,10 +234,40 @@
 /**
  * Styles for the Tabs component and children *******************************************************
  **/
+.guwmi-tabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.guwmi-tabs-container .guwmi-tabs {
+  position: relative;
+  display: flex;
+  gap: 0.25rem;
+  background: #f4f4f4;
+  border: solid 1px #e0e0e0;
+  border-radius: 3px;
+  padding: 0.25rem;
+}
+.guwmi-tabs-container .guwmi-tabs .guwmi-tabs-slider {
+  position: absolute;
+  height: calc(100% - 0.5rem);
+  background: #e0e0e0;
+  border-radius: 3px;
+  transition: ease all 0.4s;
+}
+.guwmi-tabs-container .guwmi-tabs .guwmi-tab {
+  position: relative;
+  z-index: 1;
+}
+.guwmi-tabs-container .guwmi-tabs .guwmi-tab .guwmi-tab-trigger {
+  background: none;
+  border: 0;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
 html,
 body {
-  margin: 0;
-  padding: 0;
   font-size: 16px;
 }
 html *,

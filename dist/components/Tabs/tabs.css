@@ -1,5 +1,47 @@
 /**
  * Styles for the Tabs component and children *******************************************************
  **/
+/**
+ * Color variables for for use in the library *******************************************************
+ **/
+:root {
+  --guwmi-primary: #1f487e;
+  --guwmi-primary-light: #376996;
+  --guwmi-secondary: #573d7f;
+  --guwmi-secondary-light: #7151a9;
+}
+
+.guwmi-tabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.guwmi-tabs-container .guwmi-tabs {
+  position: relative;
+  display: flex;
+  gap: 0.25rem;
+  background: #f4f4f4;
+  border: solid 1px #e0e0e0;
+  border-radius: 3px;
+  padding: 0.25rem;
+}
+.guwmi-tabs-container .guwmi-tabs .guwmi-tabs-slider {
+  position: absolute;
+  height: calc(100% - 0.5rem);
+  background: #e0e0e0;
+  border-radius: 3px;
+  transition: ease all 0.4s;
+}
+.guwmi-tabs-container .guwmi-tabs .guwmi-tab {
+  position: relative;
+  z-index: 1;
+}
+.guwmi-tabs-container .guwmi-tabs .guwmi-tab .guwmi-tab-trigger {
+  background: none;
+  border: 0;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=tabs.css.map */
