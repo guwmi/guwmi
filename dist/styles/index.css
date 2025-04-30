@@ -2,7 +2,7 @@
  * Index file for pulling all component files together **********************************************
  **/
 /**
- * Styles for the Button component ******************************************************************
+ * Styles for the Accordion component and children **************************************************
  **/
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 /**
@@ -15,6 +15,47 @@
   --guwmi-secondary-light: #7151a9;
 }
 
+.guwmi-accordion-container {
+  border: solid 1px #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.guwmi-accordion-container .guwmi-accordion-item {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.guwmi-accordion-container .guwmi-accordion-item:nth-of-type(1) > button {
+  border-top: 0;
+}
+.guwmi-accordion-container .guwmi-accordion-item > button {
+  display: flex;
+  align-items: center;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 1rem;
+  background: #f4f4f4;
+  border-top: solid 1px #e0e0e0;
+}
+.guwmi-accordion-container .guwmi-accordion-item > button.active svg {
+  transform: rotate(90deg);
+}
+.guwmi-accordion-container .guwmi-accordion-item > button svg {
+  margin-left: auto;
+  transition: ease all 0.15s;
+}
+.guwmi-accordion-container .guwmi-accordion-item > section {
+  transition: linear all 0.33333s;
+}
+.guwmi-accordion-container .guwmi-accordion-item > section .guwmi-accordion-panel-content {
+  padding: 1rem;
+}
+
+/**
+ * Styles for the Button component ******************************************************************
+ **/
 .guwmi-btn {
   display: inline-flex;
   gap: 1rem;

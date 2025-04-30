@@ -18,11 +18,17 @@ import Tab from './src/components/Tabs/Tab';
 import TabPanels from './src/components/Tabs/TabPanels';
 import TabPanel from './src/components/Tabs/TabPanel';
 
-// import table components
+// import table component
 import Table from './src/components/Table/Table';
+
+// import accordion components
+import Accordion from './src/components/Accordion/Accordion';
+import AccordionItem from './src/components/Accordion/AccrodionItem';
 
 // export all components
 export {
+  Accordion,
+  AccordionItem,
   Button,
   IconButton,
   Menu,

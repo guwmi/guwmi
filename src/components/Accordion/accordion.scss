@@ -1,0 +1,57 @@
+/**
+ * Styles for the Accordion component and children **************************************************
+ **/
+
+// import colors
+@use '../../styles/variables/colors.scss' as colors;
+
+.guwmi-accordion-container {
+  border: solid 1px colors.$gray-20;
+  border-radius: 3px;
+  overflow: hidden;
+  
+  .guwmi-accordion-item {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    &:nth-of-type(1) {
+
+      > button {
+        border-top: 0;
+      }
+    }
+
+    > button {
+      display: flex;
+      align-items: center;
+      border: 0;
+      border-radius: 0;
+      cursor: pointer;
+      padding: 1rem;
+      font-size: 1rem;
+      background: colors.$gray-10;
+      border-top: solid 1px colors.$gray-20;
+
+      &.active {
+
+        svg {
+          transform: rotate(90deg);
+        }
+      }
+
+      svg {
+        margin-left: auto;
+        transition: ease all 0.15s;
+      }
+    }
+
+    > section {
+      transition: linear all 0.33333s;
+
+      .guwmi-accordion-panel-content {
+        padding: 1rem;
+      }
+    }
+  }
+}
