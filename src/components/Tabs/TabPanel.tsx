@@ -16,7 +16,7 @@ export default function TabPanel(props: ComponentProps) {
 
   return (
     <section
-      className="guwmi-tab-panel"
+      className={`guwmi-tab-panel${selectedTab === index ? ' active' : ''}`}
       role="tabpanel"
       hidden={selectedTab !== index}
       aria-labelledby={`tabs-${id}-tab-${index}`}

@@ -41,6 +41,11 @@
   .guwmi-tab-panels {
     border: solid 1px colors.$gray-20;
     border-radius: 3px;
-    padding: 1rem;
+    overflow: hidden;
+    transition: ease all 0.4s;
+
+    .guwmi-tab-panel {
+      padding: 1rem;
+    }
   }
 }

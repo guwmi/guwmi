@@ -309,6 +309,10 @@
 .guwmi-tabs-container .guwmi-tab-panels {
   border: solid 1px #e0e0e0;
   border-radius: 3px;
+  overflow: hidden;
+  transition: ease all 0.4s;
+}
+.guwmi-tabs-container .guwmi-tab-panels .guwmi-tab-panel {
   padding: 1rem;
 }
 
