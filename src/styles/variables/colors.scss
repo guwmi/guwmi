@@ -4,6 +4,7 @@
 
 :root {
   --text: #161616;
+  --text-contrast: white;
   --app-bg: white;
   --primary-bg: #f4f4f4;
   --secondary-bg: #e0e0e0;
@@ -30,13 +31,14 @@
 
   :root {
     --text: #f4f4f4;
+    --text-contrast: #161616;
     --app-bg: #262626;
     --primary-bg: #393939;
     --secondary-bg: #525252;
     --tertiary-bg: #6f6f6f;
-    --primary: #1f487e;
-    --primary-alt: #376996;
-    --secondary: #573d7f;
-    --secondary-alt: #7151a9;
+    --primary: #1e88e5;
+    --primary-alt: #1565c0;
+    --secondary: #9d4edd;
+    --secondary-alt: #7b2cbf;
   }
 }
