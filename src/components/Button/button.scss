@@ -34,127 +34,52 @@
 
   // colors
   &.primary {
-    background: colors.$primary;
-    border-color: colors.$primary;
-    color: colors.$white;
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
 
     &:hover {
 
       &.fill {
-        background: colors.$primary-light;
-        border-color: colors.$primary-light;
+        background: var(--primary-alt);
+        border-color: var(--primary-alt);
       }
 
       &.outline {
-        background: colors.$primary;
-        border-color: colors.$primary;
-        color: colors.$white;
+        background: var(--primary);
+        border-color: var(--primary);
+        color: var(--white);
       }
     }
 
     &.outline,
     &.ghost {
-      color: colors.$primary;
+      color: var(--primary);
     }
   }
 
   &.secondary {
-    background: colors.$secondary;
-    border-color: colors.$secondary;
-    color: colors.$white;
+    background: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--white);
 
     &:hover {
 
       &.fill {
-        background: colors.$secondary-light;
-        border-color: colors.$secondary-light;
+        background: var(--secondary-alt);
+        border-color: var(--secondary-alt);
       }
 
       &.outline {
-        background: colors.$secondary;
-        border-color: colors.$secondary;
-        color: colors.$white;
+        background: var(--secondary);
+        border-color: var(--secondary);
+        color: var(--white);
       }
     }
 
     &.outline,
     &.ghost {
-      color: colors.$secondary;
-    }
-  }
-
-  &.black {
-    background: colors.$black;
-    border-color: colors.$black;
-    color: colors.$white;
-
-    &:hover {
-
-      &.fill {
-        background: colors.$gray-70;
-        border-color: colors.$gray-70;
-      }
-
-      &.outline {
-        background: colors.$black;
-        border-color: colors.$black;
-        color: colors.$white;
-      }
-    }
-
-    &.outline,
-    &.ghost {
-      color: colors.$black;
-    }
-  }
-
-  &.white {
-    background: colors.$white;
-    border-color: colors.$white;
-    color: colors.$black;
-
-    &:hover {
-
-      &.fill {
-        background: colors.$gray-10;
-        border-color: colors.$gray-10;
-      }
-
-      &.outline {
-        background: colors.$white;
-        border-color: colors.$white;
-        color: colors.$black;
-      }
-    }
-
-    &.outline,
-    &.ghost {
-      color: colors.$white;
-    }
-  }
-
-  &.gray {
-    background: colors.$gray-40;
-    border-color: colors.$gray-40;
-    color: colors.$black;
-
-    &:hover {
-
-      &.fill {
-        background: colors.$gray-60;
-        border-color: colors.$gray-60;
-      }
-
-      &.outline {
-        background: colors.$gray-40;
-        border-color: colors.$gray-40;
-        color: colors.$black;
-      }
-    }
-
-    &.outline,
-    &.ghost {
-      color: colors.$gray-50;
+      color: var(--secondary);
     }
   }
 

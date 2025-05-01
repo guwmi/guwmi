@@ -48,8 +48,8 @@
   // dropdown and menu item styles
   .guwmi-menu-dropdown {
     position: absolute;
-    background: colors.$gray-10;
-    border: solid 1px colors.$gray-20;
+    background: var(--primary-bg);
+    border: solid 1px var(--secondary-bg);
     padding: 0.25rem;
     border-radius: 4px;
     opacity: 0;
@@ -86,7 +86,7 @@
           transition: ease all 0.4s;
 
           &:hover {
-            background: colors.$gray-20;
+            background: var(--secondary-bg);
           }
         }
       }

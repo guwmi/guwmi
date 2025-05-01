@@ -14,15 +14,15 @@
     position: relative;
     display: flex;
     gap: 0.25rem;
-    background: colors.$gray-10;
-    border: solid 1px colors.$gray-20;
+    background: var(--primary-bg);
+    border: solid 1px var(--secondary-bg);
     border-radius: 3px;
     padding: 0.25rem;
 
     .guwmi-tabs-slider {
       position: absolute;
       height: calc(100% - 0.5rem);
-      background: colors.$gray-20;
+      background: var(--secondary-bg);
       border-radius: 3px;
       transition: ease all 0.4s;
     }
@@ -39,7 +39,7 @@
   }
 
   .guwmi-tab-panels {
-    border: solid 1px colors.$gray-20;
+    border: solid 1px var(--secondary-bg);
     border-radius: 3px;
     overflow: hidden;
     transition: ease all 0.4s;

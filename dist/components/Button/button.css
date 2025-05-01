@@ -5,12 +5,30 @@
  * Color variables for for use in the library *******************************************************
  **/
 :root {
-  --guwmi-primary: #1f487e;
-  --guwmi-primary-light: #376996;
-  --guwmi-secondary: #573d7f;
-  --guwmi-secondary-light: #7151a9;
+  --text: #161616;
+  --app-bg: white;
+  --primary-bg: #f4f4f4;
+  --secondary-bg: #e0e0e0;
+  --tertiary-bg: #a8a8a8;
+  --primary: #1f487e;
+  --primary-alt: #376996;
+  --secondary: #573d7f;
+  --secondary-alt: #7151a9;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f4f4f4;
+    --app-bg: #262626;
+    --primary-bg: #393939;
+    --secondary-bg: #525252;
+    --tertiary-bg: #6f6f6f;
+    --primary: #1f487e;
+    --primary-alt: #376996;
+    --secondary: #573d7f;
+    --secondary-alt: #7151a9;
+  }
+}
 .guwmi-btn {
   display: inline-flex;
   gap: 1rem;
@@ -34,89 +52,38 @@
   font-size: 1.1rem;
 }
 .guwmi-btn.primary {
-  background: var(--guwmi-primary);
-  border-color: var(--guwmi-primary);
-  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
 }
 .guwmi-btn.primary:hover.fill {
-  background: var(--guwmi-primary-light);
-  border-color: var(--guwmi-primary-light);
+  background: var(--primary-alt);
+  border-color: var(--primary-alt);
 }
 .guwmi-btn.primary:hover.outline {
-  background: var(--guwmi-primary);
-  border-color: var(--guwmi-primary);
-  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
 }
 .guwmi-btn.primary.outline, .guwmi-btn.primary.ghost {
-  color: var(--guwmi-primary);
+  color: var(--primary);
 }
 .guwmi-btn.secondary {
-  background: var(--guwmi-secondary);
-  border-color: var(--guwmi-secondary);
-  color: #fff;
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--white);
 }
 .guwmi-btn.secondary:hover.fill {
-  background: var(--guwmi-secondary-light);
-  border-color: var(--guwmi-secondary-light);
+  background: var(--secondary-alt);
+  border-color: var(--secondary-alt);
 }
 .guwmi-btn.secondary:hover.outline {
-  background: var(--guwmi-secondary);
-  border-color: var(--guwmi-secondary);
-  color: #fff;
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--white);
 }
 .guwmi-btn.secondary.outline, .guwmi-btn.secondary.ghost {
-  color: var(--guwmi-secondary);
-}
-.guwmi-btn.black {
-  background: #000;
-  border-color: #000;
-  color: #fff;
-}
-.guwmi-btn.black:hover.fill {
-  background: #525252;
-  border-color: #525252;
-}
-.guwmi-btn.black:hover.outline {
-  background: #000;
-  border-color: #000;
-  color: #fff;
-}
-.guwmi-btn.black.outline, .guwmi-btn.black.ghost {
-  color: #000;
-}
-.guwmi-btn.white {
-  background: #fff;
-  border-color: #fff;
-  color: #000;
-}
-.guwmi-btn.white:hover.fill {
-  background: #f4f4f4;
-  border-color: #f4f4f4;
-}
-.guwmi-btn.white:hover.outline {
-  background: #fff;
-  border-color: #fff;
-  color: #000;
-}
-.guwmi-btn.white.outline, .guwmi-btn.white.ghost {
-  color: #fff;
-}
-.guwmi-btn.gray {
-  background: #a8a8a8;
-  border-color: #a8a8a8;
-  color: #000;
-}
-.guwmi-btn.gray:hover.fill {
-  background: #6f6f6f;
-  border-color: #6f6f6f;
-}
-.guwmi-btn.gray:hover.outline {
-  background: #a8a8a8;
-  border-color: #a8a8a8;
-  color: #000;
-}
-.guwmi-btn.gray.outline, .guwmi-btn.gray.ghost {
-  color: #8d8d8d;
+  color: var(--secondary);
 }
 .guwmi-btn.outline {
   background: none;

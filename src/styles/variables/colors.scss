@@ -3,25 +3,40 @@
  **/
 
 :root {
-  --guwmi-primary: #1f487e;
-  --guwmi-primary-light: #376996;
-  --guwmi-secondary: #573d7f;
-  --guwmi-secondary-light: #7151a9;
+  --text: #161616;
+  --app-bg: white;
+  --primary-bg: #f4f4f4;
+  --secondary-bg: #e0e0e0;
+  --tertiary-bg: #a8a8a8;
+  --primary: #1f487e;
+  --primary-alt: #376996;
+  --secondary: #573d7f;
+  --secondary-alt: #7151a9;
+  // --white: #fff;
+  // --gray-10: #f4f4f4;
+  // --gray-20: #e0e0e0;
+  // --gray-30: #c6c6c6;
+  // --gray-40: #a8a8a8;
+  // --gray-50: #8d8d8d;
+  // --gray-60: #6f6f6f;
+  // --gray-70: #525252;
+  // --gray-80: #393939;
+  // --gray-90: #262626;
+  // --gray-100: #161616;
+  // --black: #000;
 }
 
-$white: #fff;
-$gray-10: #f4f4f4;
-$gray-20: #e0e0e0;
-$gray-30: #c6c6c6;
-$gray-40: #a8a8a8;
-$gray-50: #8d8d8d;
-$gray-60: #6f6f6f;
-$gray-70: #525252;
-$gray-80: #393939;
-$gray-90: #262626;
-$gray-100: #161616;
-$black: #000;
-$primary: var(--guwmi-primary);
-$primary-light: var(--guwmi-primary-light);
-$secondary: var(--guwmi-secondary);
-$secondary-light: var(--guwmi-secondary-light);
+@media (prefers-color-scheme: dark) {
+
+  :root {
+    --text: #f4f4f4;
+    --app-bg: #262626;
+    --primary-bg: #393939;
+    --secondary-bg: #525252;
+    --tertiary-bg: #6f6f6f;
+    --primary: #1f487e;
+    --primary-alt: #376996;
+    --secondary: #573d7f;
+    --secondary-alt: #7151a9;
+  }
+}
