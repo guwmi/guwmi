@@ -1,5 +1,12 @@
 // import library funtionality
-import React, { useCallback, useContext, useRef, useState, useEffect, PropsWithChildren } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useRef,
+  useState,
+  useEffect,
+  PropsWithChildren
+} from 'react';
 
 // import components
 import { IconChevronRight } from '@tabler/icons-react';
