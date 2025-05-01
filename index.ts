@@ -25,11 +25,19 @@ import Table from './src/components/Table/Table';
 import Accordion from './src/components/Accordion/Accordion';
 import AccordionItem from './src/components/Accordion/AccrodionItem';
 
+// import cards components
+import Cards from './src/components/Cards/Cards';
+import Card from './src/components/Cards/Card';
+import CardSection from './src/components/Cards/CardSection';
+
 // export all components
 export {
   Accordion,
   AccordionItem,
   Button,
+  Cards,
+  Card,
+  CardSection,
   IconButton,
   Menu,
   MenuDropdown,

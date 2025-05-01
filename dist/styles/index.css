@@ -178,6 +178,40 @@
 }
 
 /**
+ * Style for the Cards and child components *********************************************************
+ **/
+.guwmi-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.guwmi-card-grid > * {
+  background: #f4f4f4;
+  border: solid 1px #e0e0e0;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+.guwmi-card-grid > *:last-of-type {
+  margin-right: auto;
+}
+.guwmi-card-grid.two > * {
+  flex-basis: calc(50% - 0.5rem);
+}
+.guwmi-card-grid.three > * {
+  flex-basis: calc(33.33333% - 0.66666rem);
+}
+.guwmi-card-grid.four > * {
+  flex-basis: calc(25% - 0.75rem);
+}
+.guwmi-card-grid.five > * {
+  flex-basis: calc(20% - 0.8rem);
+}
+.guwmi-card-grid.six > * {
+  flex-basis: calc(15% - 0.85rem);
+}
+
+/**
  * Styles for the Icon Button component ******************************************************************
  **/
 .guwmi-btn.icon.sm {
