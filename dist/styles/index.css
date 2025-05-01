@@ -15,10 +15,12 @@
   --primary-bg: #f4f4f4;
   --secondary-bg: #e0e0e0;
   --tertiary-bg: #a8a8a8;
-  --primary: #1f487e;
-  --primary-alt: #376996;
-  --secondary: #573d7f;
-  --secondary-alt: #7151a9;
+  --primary: #1565c0;
+  --primary-alt: #1e88e5;
+  --secondary: #7b2cbf;
+  --secondary-alt: #9d4edd;
+  --white: #fff;
+  --black: #000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,6 +88,7 @@
   font-size: 1rem;
   border: solid 2px rgba(0, 0, 0, 0);
   transition: ease all 0.33333s;
+  color: var(--white);
 }
 .guwmi-btn.sm {
   padding: 0.25rem 0.67rem;
