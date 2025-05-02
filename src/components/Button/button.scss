@@ -33,7 +33,7 @@
     font-size: 1.1rem;
   }
 
-  // colors
+  // color
   &.primary {
     background: var(--primary);
     border-color: var(--primary);
@@ -82,6 +82,33 @@
     &.outline,
     &.ghost {
       color: var(--secondary);
+    }
+  }
+  
+  &.danger {
+    background: var(--alert-red);
+    border-color: var(--alert-red);
+
+    &:hover {
+
+      &.fill {
+        background: var(--alert-red-alt);
+        border-color: var(--alert-red-alt);
+      }
+
+      &.outline {
+        background: var(--alert-red);
+        border-color: var(--alert-red);
+        color: white;
+      }
+    }
+
+    &.outline {
+      color: var(--alert-red);
+    }
+
+    &.ghost {
+      color: var(--alert-red);
     }
   }
 

@@ -4,7 +4,7 @@ import React, { PropsWithChildren, useMemo } from 'react';
 // component type
 interface ComponentProps extends PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'secondary' | 'black' | 'white' | 'gray';
+  color?: 'primary' | 'secondary' | 'danger';
   kind?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'pill';
   className?: string;
