@@ -13,7 +13,9 @@
   background: var(--high-contrast-bg);
   color: var(--text-contrast);
   padding: 0.75rem;
+  border: 0;
   border-left: solid 6px;
+  width: auto;
 
   &.error {
     border-color: var(--alert-red);

@@ -1,8 +1,13 @@
 // import library functionality
 import React, { useMemo, useState } from 'react';
 
-// import component
-import { IconX, IconAlertCircle, IconAlertTriangle, IconCheck } from '@tabler/icons-react';
+// import components
+import {
+  IconX,
+  IconAlertCircle,
+  IconAlertTriangle,
+  IconCheck
+} from '@tabler/icons-react';
 
 // component type
 interface ComponentProps {
@@ -20,7 +25,7 @@ export default function Notification(props: ComponentProps) {
 
   return (
     isVisible ? (
-      <div className={classes}>
+      <dialog className={classes}>
         {kind === 'error' ? (
           <IconAlertCircle size={20} stroke={3} />
         ) : kind === 'warning' ? (
@@ -30,8 +35,14 @@ export default function Notification(props: ComponentProps) {
         )}
         <h2>{titleText}</h2>
         <p>{content}</p>
-        <button onClick={() => setIsVisible(false)} aria-label="Close notification"><IconX size={18} /></button>
-      </div>
+        <button
+          onClick={() => setIsVisible(false)}
+          aria-label="Close notification"
+          tabIndex={0}
+        >
+          <IconX size={18} />
+        </button>
+      </dialog>
     ) : null 
   )
 }
