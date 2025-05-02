@@ -15,6 +15,7 @@
   --primary-bg: #f4f4f4;
   --secondary-bg: #e0e0e0;
   --tertiary-bg: #a8a8a8;
+  --high-contrast-bg: #393939;
   --primary: #1565c0;
   --primary-alt: #1876c8;
   --secondary: #8434ca;
@@ -35,6 +36,7 @@
     --app-bg: #262626;
     --primary-bg: #393939;
     --secondary-bg: #525252;
+    --high-contrast-bg: #f4f4f4;
     --tertiary-bg: #6f6f6f;
     --primary: #1876c8;
     --primary-alt: #1565c0;
@@ -467,6 +469,13 @@
 .guwmi-search-input input::placeholder {
   color: var(--text);
   opacity: 1;
+}
+
+/**
+ * Styles for the Notification component ***********************************************************
+ **/
+.guwmi-notification {
+  background: var(--high-contrast-bg);
 }
 
 html,

@@ -30,6 +30,9 @@ import Cards from './src/components/Cards/Cards';
 import Card from './src/components/Cards/Card';
 import CardSection from './src/components/Cards/CardSection';
 
+// import notification component
+import Notification from './src/components/Notification/Notification';
+
 // export all components
 export {
   Accordion,
@@ -43,6 +46,7 @@ export {
   MenuDropdown,
   MenuItem,
   MenuTrigger,
+  Notification,
   TabsContainer,
   Tabs,
   Tab,

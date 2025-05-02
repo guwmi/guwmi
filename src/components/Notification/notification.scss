@@ -1,0 +1,10 @@
+/**
+ * Styles for the Notification component ***********************************************************
+ **/
+
+ // import colors
+@use '../../styles/variables/colors.scss';
+
+.guwmi-notification {
+  background: var(--high-contrast-bg);
+}

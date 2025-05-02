@@ -1,4 +1,7 @@
 /**
+ * Styles for the Notification component ***********************************************************
+ **/
+/**
  * Color variables for for use in the library *******************************************************
  **/
 :root {
@@ -37,5 +40,8 @@
     --secondary-alt: #8434ca;
   }
 }
+.guwmi-notification {
+  background: var(--high-contrast-bg);
+}
 
-/*# sourceMappingURL=colors.css.map */
+/*# sourceMappingURL=notification.css.map */
