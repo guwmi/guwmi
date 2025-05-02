@@ -8,6 +8,9 @@ import React, {
   PropsWithChildren
 } from 'react';
 
+// import custom functionality
+import useWindowWidth from '../../hooks/useWidth';
+
 // import components
 import { IconChevronRight } from '@tabler/icons-react';
 
@@ -24,6 +27,7 @@ export default function AccordionItem(props: ComponentProps) {
 
   const { children, title, id } = props;
   const { openAccordions, setOpenAccordions } = useContext(AccordionContext);
+  const windowWidth = useWindowWidth();
   const panelRef = useRef(null);
   const contentRef = useRef(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -59,7 +63,7 @@ export default function AccordionItem(props: ComponentProps) {
     } else {
       panelRef.current.style.height = `0px`;
     }
-  }, [contentRef.current, isOpen])
+  }, [contentRef.current, isOpen, windowWidth])
 
   return (
     <div className="guwmi-accordion-item">

@@ -1,5 +1,5 @@
 // import library functionality
-import React from 'react';
+import React, { useId } from 'react';
 
 // import components
 import { IconSearch } from '@tabler/icons-react';
@@ -12,14 +12,13 @@ interface ComponentProps {
 export default function SearchInput(props: ComponentProps) {
 
   const { placeholder } = props;
+  const id = useId();
 
   return (
     <div className="guwmi-search-input">
       <span><IconSearch size={18} /></span>
-      <input
-        type="search"
-        placeholder={placeholder ? placeholder : 'Search...'}
-      />
+      <label htmlFor={id}>Do you like cheese?</label>
+      <input id={id} type="search" placeholder={placeholder ? placeholder : 'Search...'} />
     </div>
   )
 }

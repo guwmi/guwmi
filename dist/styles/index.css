@@ -482,7 +482,7 @@
   background: var(--high-contrast-bg);
   color: var(--text-contrast);
   padding: 0.75rem;
-  border-left: solid 8px;
+  border-left: solid 6px;
 }
 .guwmi-notification.error {
   border-color: var(--alert-red);

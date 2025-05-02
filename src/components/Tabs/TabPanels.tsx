@@ -7,6 +7,9 @@ import React, {
   PropsWithChildren
 } from 'react';
 
+// import custom functionality
+import useWindowWidth from '../../hooks/useWidth';
+
 // import context
 import TabsContext from './TabsContext';
 
@@ -19,6 +22,7 @@ export default function TabPanels(props: PropsWithChildren) {
 
   const { children } = props;
   const { selectedTab } = useContext(TabsContext);
+  const windowWidth = useWindowWidth();
   const panels = useRef(null);
 
   const childrenWithIndex = useMemo(() => {
@@ -34,7 +38,7 @@ export default function TabPanels(props: PropsWithChildren) {
     const active = panels.current.querySelector('.active');
     const height = active.offsetHeight;
     panels.current.style.height = `${height}px`
-  }, [selectedTab])
+  }, [selectedTab, windowWidth])
 
   return (
     <div className="guwmi-tab-panels" ref={panels}>
