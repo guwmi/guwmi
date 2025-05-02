@@ -1,8 +1,6 @@
 // import library functionality
 import React, { useMemo, PropsWithChildren } from 'react';
 
-
-
 // component type
 interface ComponentProps extends PropsWithChildren {
   columns?: 2 | 3 | 4 | 5 | 6;

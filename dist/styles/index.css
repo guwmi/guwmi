@@ -226,6 +226,39 @@
 .guwmi-card-grid.six > * {
   flex-basis: calc(15% - 0.85rem);
 }
+.guwmi-card-grid .guwmi-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.guwmi-card-grid .guwmi-card .guwmi-card-image {
+  width: 100%;
+  object-fit: cover;
+}
+.guwmi-card-grid .guwmi-card .guwmi-card-section {
+  padding: 1rem;
+  border-top: solid 1px var(--secondary-bg);
+}
+.guwmi-card-grid .guwmi-card .guwmi-card-section:first-of-type {
+  border-top: 0;
+}
+.guwmi-card-grid .guwmi-card .guwmi-card-section.guwmi-card-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.guwmi-card-grid .guwmi-card .guwmi-card-section.guwmi-card-title h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 500;
+}
+.guwmi-card-grid .guwmi-card .guwmi-card-section.guwmi-card-title h3 {
+  font-size: 0.85rem;
+  margin: 0;
+  font-weight: 400;
+  opacity: 0.65;
+  letter-spacing: unset;
+}
 
 /**
  * Styles for the Icon Button component ******************************************************************
@@ -449,6 +482,14 @@ body * {
 html button,
 body button {
   color: var(--text);
+}
+html h1,
+html h2,
+html h3,
+body h1,
+body h2,
+body h3 {
+  letter-spacing: 0.05em;
 }
 html p,
 body p {
