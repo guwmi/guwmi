@@ -3,7 +3,7 @@
  **/
 
 // import colors
-@use '../../styles/variables/colors.scss' as colors;
+@use '../../styles/variables/colors.scss' ;
 
 .guwmi-accordion-container {
   border: solid 1px var(--secondary-bg);

@@ -41,7 +41,50 @@
   }
 }
 .guwmi-notification {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   background: var(--high-contrast-bg);
+  color: var(--text-contrast);
+  padding: 0.75rem;
+  border-left: solid 8px;
+}
+.guwmi-notification.error {
+  border-color: var(--alert-red);
+}
+.guwmi-notification.error > svg {
+  stroke: var(--alert-red);
+}
+.guwmi-notification.warning {
+  border-color: var(--alert-orange);
+}
+.guwmi-notification.warning > svg {
+  stroke: var(--alert-orange);
+}
+.guwmi-notification.success {
+  border-color: var(--alert-green);
+}
+.guwmi-notification.success > svg {
+  stroke: var(--alert-green);
+}
+.guwmi-notification > button {
+  position: absolute;
+  right: 0.5rem;
+  background: 0;
+  border: 0;
+  color: var(--text-contrast);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.guwmi-notification > svg {
+  margin-right: 0.5rem;
+}
+.guwmi-notification h2,
+.guwmi-notification p {
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 /*# sourceMappingURL=notification.css.map */

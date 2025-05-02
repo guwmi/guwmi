@@ -6,5 +6,57 @@
 @use '../../styles/variables/colors.scss';
 
 .guwmi-notification {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   background: var(--high-contrast-bg);
+  color: var(--text-contrast);
+  padding: 0.75rem;
+  border-left: solid 8px;
+
+  &.error {
+    border-color: var(--alert-red);
+
+    > svg {
+      stroke: var(--alert-red);
+    }
+  }
+
+  &.warning {
+    border-color: var(--alert-orange);
+
+    > svg {
+      stroke: var(--alert-orange);
+    }
+  }
+
+  &.success {
+    border-color: var(--alert-green);
+
+    > svg {
+      stroke: var(--alert-green);
+    }
+  }
+
+  > button {
+    position: absolute;
+    right: 0.5rem;
+    background: 0;
+    border: 0;
+    color: var(--text-contrast);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  > svg {
+    margin-right: 0.5rem;
+  }
+
+  h2,
+  p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
 }
