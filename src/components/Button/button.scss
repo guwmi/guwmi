@@ -52,7 +52,10 @@
       }
     }
 
-    &.outline,
+    &.outline {
+      color: var(--primary);
+    }
+
     &.ghost {
       color: var(--primary);
     }
@@ -99,5 +102,23 @@
 
   &.pill {
     border-radius: 50px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .guwmi-btn {
+
+    &.outline {
+      background: rgba(0,0,0,0.1);
+    }
+
+    &.ghost {
+      background: rgba(0,0,0,0.1);
+  
+      &:hover {
+        background: rgba(0,0,0,0.15);;
+      }
+    }
   }
 }
