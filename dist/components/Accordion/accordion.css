@@ -65,7 +65,7 @@
   transition: ease all 0.15s;
 }
 .guwmi-accordion-container .guwmi-accordion-item > section {
-  transition: linear all 0.33333s;
+  transition: ease all 0.33333s;
 }
 .guwmi-accordion-container .guwmi-accordion-item > section .guwmi-accordion-panel-content {
   padding: 1rem;

@@ -43,7 +43,7 @@
   font-size: 1rem;
   border: solid 2px rgba(0, 0, 0, 0);
   transition: ease all 0.33333s;
-  color: var(--white);
+  color: white;
 }
 .guwmi-btn.sm {
   padding: 0.25rem 0.67rem;
@@ -67,7 +67,7 @@
 .guwmi-btn.primary:hover.outline {
   background: var(--primary);
   border-color: var(--primary);
-  color: var(--white);
+  color: white;
 }
 .guwmi-btn.primary.outline, .guwmi-btn.primary.ghost {
   color: var(--primary);
@@ -83,7 +83,7 @@
 .guwmi-btn.secondary:hover.outline {
   background: var(--secondary);
   border-color: var(--secondary);
-  color: var(--white);
+  color: white;
 }
 .guwmi-btn.secondary.outline, .guwmi-btn.secondary.ghost {
   color: var(--secondary);
