@@ -9,6 +9,8 @@ interface ComponentProps extends PropsWithChildren {
   theme?: 'square' | 'round' | 'pill';
   className?: string;
   onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
+  href?: string;
+  target?: '_blank' | '_self' | '_parent' | '_top';
 }
 
 /**
@@ -25,13 +27,21 @@ export default function Button(props: ComponentProps) {
     kind = 'fill',
     theme = 'round',
     className,
-    onClick
+    onClick,
+    href,
+    target = null
   } = props;
   const classes = useMemo(() => `guwmi-btn ${size} ${color} ${kind} ${theme}${className ? ' ' + className : ''}`, []);
 
   return (
-    <button className={classes} onClick={onClick}>
-      {children}
-    </button>
+    href ? (
+      <a className={classes} href={href} target={target}>
+        {children}
+      </a>
+    ) : (
+      <button className={classes} onClick={onClick}>
+        {children}
+      </button>
+    )
   )
 }
