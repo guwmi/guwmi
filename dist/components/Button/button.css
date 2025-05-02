@@ -49,6 +49,7 @@
   border: solid 2px rgba(0, 0, 0, 0);
   transition: ease all 0.33333s;
   color: white;
+  background: black;
 }
 .guwmi-btn.sm {
   padding: 0.25rem 0.67rem;
@@ -76,6 +77,7 @@
 }
 .guwmi-btn.primary.outline {
   color: var(--primary);
+  border-color: var(--primary);
 }
 .guwmi-btn.primary.ghost {
   color: var(--primary);
@@ -93,7 +95,11 @@
   border-color: var(--secondary);
   color: white;
 }
-.guwmi-btn.secondary.outline, .guwmi-btn.secondary.ghost {
+.guwmi-btn.secondary.outline {
+  color: var(--secondary);
+  border-color: var(--secondary);
+}
+.guwmi-btn.secondary.ghost {
   color: var(--secondary);
 }
 .guwmi-btn.danger {
@@ -111,12 +117,14 @@
 }
 .guwmi-btn.danger.outline {
   color: var(--alert-red);
+  border-color: var(--alert-red);
 }
 .guwmi-btn.danger.ghost {
   color: var(--alert-red);
 }
 .guwmi-btn.outline {
   background: none;
+  border-color: white;
 }
 .guwmi-btn.ghost {
   background: none;

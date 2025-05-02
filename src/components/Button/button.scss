@@ -17,6 +17,7 @@
   border: solid 2px rgba(0,0,0,0);
   transition: ease all 0.33333s;
   color: white;
+  background: black;
 
   // sizes
   &.sm {
@@ -54,6 +55,7 @@
 
     &.outline {
       color: var(--primary);
+      border-color: var(--primary);
     }
 
     &.ghost {
@@ -79,7 +81,10 @@
       }
     }
 
-    &.outline,
+    &.outline {
+      color: var(--secondary);
+      border-color: var(--secondary);
+    }
     &.ghost {
       color: var(--secondary);
     }
@@ -105,6 +110,7 @@
 
     &.outline {
       color: var(--alert-red);
+      border-color: var(--alert-red);
     }
 
     &.ghost {
@@ -115,6 +121,7 @@
   // kinds
   &.outline {
     background: none;
+    border-color: white;
   }
 
   &.ghost {
