@@ -1,0 +1,88 @@
+/**
+ * Styles for the modal component *******************************************************************
+ **/
+/**
+ * Color variables for for use in the library *******************************************************
+ **/
+:root {
+  --text: #161616;
+  --text-contrast: white;
+  --app-bg: white;
+  --primary-bg: #f4f4f4;
+  --secondary-bg: #e0e0e0;
+  --tertiary-bg: #a8a8a8;
+  --high-contrast-bg: #393939;
+  --primary: #1565c0;
+  --primary-alt: #1876c8;
+  --secondary: #8434ca;
+  --secondary-alt: #9d4edd;
+  --white: #fff;
+  --black: #000;
+  --alert-red: #da1e28;
+  --alert-red-alt: #c2141d;
+  --alert-green: #24a148;
+  --alert-orange: #ff832b;
+  --alert-yellow: #f1c21b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f4f4f4;
+    --text-contrast: #161616;
+    --app-bg: #262626;
+    --primary-bg: #393939;
+    --secondary-bg: #525252;
+    --high-contrast-bg: #f4f4f4;
+    --tertiary-bg: #6f6f6f;
+    --primary: #1876c8;
+    --primary-alt: #1565c0;
+    --secondary: #9d4edd;
+    --secondary-alt: #8434ca;
+  }
+}
+.guwmi-modal-overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: ease all 0.15s;
+}
+.guwmi-modal-overlay.open {
+  opacity: 1;
+}
+.guwmi-modal-overlay .guwmi-modal {
+  position: relative;
+  background: var(--text-contrast);
+  color: var(--text);
+  padding: 1rem;
+  border: solid 1px var(--primary-bg);
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+.guwmi-modal-overlay .guwmi-modal.sm {
+  width: 33%;
+}
+.guwmi-modal-overlay .guwmi-modal.md {
+  width: 50%;
+}
+.guwmi-modal-overlay .guwmi-modal.lg {
+  width: 75%;
+}
+.guwmi-modal-overlay .guwmi-modal .guwmi-modal-close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.25rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=modal.css.map */

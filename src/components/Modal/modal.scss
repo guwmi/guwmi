@@ -1,0 +1,57 @@
+/**
+ * Styles for the modal component *******************************************************************
+ **/
+
+// import color variables
+@use '../../styles/variables/colors.scss' ;
+
+.guwmi-modal-overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.75);
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: ease all 0.15s;
+
+  &.open {
+    opacity: 1;
+  }
+
+  .guwmi-modal {
+    position: relative;
+    background: var(--text-contrast);
+    color: var(--text);
+    padding: 1rem;
+    border: solid 1px var(--primary-bg);
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.25);
+
+    &.sm {
+      width: 33%;
+    }
+
+    &.md {
+      width: 50%;
+    }
+
+    &.lg {
+      width: 75%;
+    }
+
+    .guwmi-modal-close-button {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.25rem;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+}
