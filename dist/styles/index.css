@@ -551,5 +551,14 @@ body p {
   font-size: 1rem;
   line-height: 1.5;
 }
+html .guwmi-sr-only,
+body .guwmi-sr-only {
+  position: absolute;
+  left: -10000%;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
 /*# sourceMappingURL=index.css.map */

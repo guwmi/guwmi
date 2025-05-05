@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 
 // import custom functionality
-import useWindowWidth from '../../hooks/useWidth';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 // import context
 import TabsContext from './TabsContext';

@@ -41,4 +41,14 @@ body {
     font-size: 1rem;
     line-height: 1.5;
   }
+
+  // style for screen reader only content
+  .guwmi-sr-only {
+    position:absolute;
+    left: -10000%;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 }

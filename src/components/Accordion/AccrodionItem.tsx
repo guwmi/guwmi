@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 
 // import custom functionality
-import useWindowWidth from '../../hooks/useWidth';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 // import components
 import { IconChevronRight } from '@tabler/icons-react';
