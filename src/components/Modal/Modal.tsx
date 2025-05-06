@@ -39,12 +39,16 @@ export default function Modal(props: ComponentProps) {
   const overlayClasses = useMemo(() => `guwmi-modal-overlay${isOpen ? ' open' : ''}`, [isOpen])
   const classes = useMemo(() => `guwmi-modal ${size}`, [size]);
   const modalOverlay = useRef<HTMLDivElement>(null);
-  const modal = useRef<HTMLDivElement>(null);
+  const modal = useRef<HTMLDialogElement>(null);
 
   const close = useCallback(() => {
     setIsAnimating(true);
     setIsOpen(false);
   }, []);
+
+  const setAnimationState = useCallback(() => {
+    setIsAnimating(false);
+  }, [])
 
   const closeOutClick = useCallback((e: MouseEvent) => {
     if (!modal.current.contains(e.target as Node)) {
@@ -52,28 +56,68 @@ export default function Modal(props: ComponentProps) {
     }
   }, [modal.current]);
 
+  const handleTab = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Tab') {
+      const focusableElements: NodeListOf<HTMLFormElement> = modal.current.querySelectorAll('a[href], button, input, textarea, select, details, [tabindex]');
+      const firstFocusable: HTMLFormElement = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+      if (e.shiftKey) {
+        if (modal.current.contains(e.target as Node) && e.target === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        }
+      } else {
+        if (modal.current.contains(e.target as Node) && e.target === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    }
+  }, [modal.current]);
+
+  const handleEscape = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      close();
+    }
+  }, []);
+
   useEffect(() => {
+
     if (open) {
       setIsAnimating(true);
       setIsOpen(true);
+      modal.current.focus();
       document.addEventListener('click', closeOutClick);
+      document.addEventListener('keydown', handleTab);
+      document.addEventListener('keydown', handleEscape);
       if (preventScroll) {
         document.body.style.height = '100%';
         document.body.style.overflow = 'hidden';
       }
     } else {
       document.removeEventListener('click', closeOutClick);
+      document.removeEventListener('keydown', handleTab);
+      document.removeEventListener('keydown', handleEscape);
       if (preventScroll) {
         document.body.removeAttribute('style');
       }
     }
 
-    return () => document.removeEventListener('click', closeOutClick);
-  }, [open])
+    return () => {
+      document.removeEventListener('click', closeOutClick);
+      document.removeEventListener('keydown', handleTab);
+      document.removeEventListener('keydown', handleEscape);
+    }
+  }, [open]);
 
   useEffect(() => {
-    modalOverlay.current?.addEventListener('transitioncancel', () => setIsAnimating(false));
-    modalOverlay.current?.addEventListener('transitionend', () => setIsAnimating(false));
+    modalOverlay.current?.addEventListener('transitioncancel', setAnimationState);
+    modalOverlay.current?.addEventListener('transitionend', setAnimationState);
+
+    return () => {
+      modalOverlay.current?.removeEventListener('transitioncancel', setAnimationState);
+      modalOverlay.current?.removeEventListener('transitionend', setAnimationState);
+    }
   }, [modalOverlay.current]);
 
   useEffect(() => {
@@ -85,8 +129,8 @@ export default function Modal(props: ComponentProps) {
   return (
     <ModalPortal>
       {(open || isOpen || isAnimating) &&
-        <div className={overlayClasses} aria-modal="true" ref={modalOverlay}>
-          <div className={classes} ref={modal}>
+        <div className={overlayClasses} ref={modalOverlay}>
+          <dialog className={classes} ref={modal}>
             <button
               className="guwmi-modal-close-button"
               aria-label="Close modal"
@@ -95,7 +139,7 @@ export default function Modal(props: ComponentProps) {
               <IconX size={20} />
             </button>
             {children}
-          </div>
+          </dialog>
         </div>
       }
     </ModalPortal>
