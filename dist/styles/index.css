@@ -264,6 +264,69 @@
 }
 
 /**
+ * Styles for the Drawer component ******************************************************************
+ **/
+.guwmi-drawer-overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(0);
+  z-index: 99999;
+  transition: linear all 0.15s;
+  display: flex;
+}
+.guwmi-drawer-overlay.open {
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(1px);
+}
+.guwmi-drawer-overlay.open .guwmi-drawer.left,
+.guwmi-drawer-overlay.open .guwmi-drawer.right {
+  transform: translateX(0);
+}
+.guwmi-drawer-overlay .guwmi-drawer {
+  position: relative;
+  display: block;
+  background: var(--text-contrast);
+  color: var(--text);
+  padding: 1rem;
+  transition: ease all 0.3s;
+  min-width: 300px;
+}
+.guwmi-drawer-overlay .guwmi-drawer.left {
+  border-right: solid 1px var(--primary-bg);
+  transform: translateX(-100%);
+  margin-right: auto;
+}
+.guwmi-drawer-overlay .guwmi-drawer.left .guwmi-drawer-close-button {
+  right: -0.25rem;
+  transform: translateX(100%);
+}
+.guwmi-drawer-overlay .guwmi-drawer.right {
+  border-left: solid 1px var(--primary-bg);
+  transform: translateX(100%);
+  margin-left: auto;
+}
+.guwmi-drawer-overlay .guwmi-drawer.right .guwmi-drawer-close-button {
+  left: -0.25rem;
+  transform: translateX(-100%);
+}
+.guwmi-drawer-overlay .guwmi-drawer .guwmi-drawer-close-button {
+  position: absolute;
+  top: 0.5rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: light) {
+  .guwmi-drawer-close-button {
+    color: var(--text-contrast);
+  }
+}
+/**
  * Styles for the Icon Button component ******************************************************************
  **/
 .guwmi-btn.icon.sm {
@@ -373,7 +436,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 99999;
   opacity: 0;
   transition: ease all 0.15s;
 }

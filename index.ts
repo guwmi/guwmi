@@ -36,6 +36,9 @@ import Notification from './src/components/Notification/Notification';
 // import modal component
 import Modal from './src/components/Modal/Modal';
 
+// import drawer component
+import Drawer from './src/components/Drawer/Drawer';
+
 // export all components
 export {
   Accordion,
@@ -44,6 +47,7 @@ export {
   Cards,
   Card,
   CardSection,
+  Drawer,
   IconButton,
   Menu,
   MenuDropdown,
