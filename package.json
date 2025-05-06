@@ -2,11 +2,12 @@
   "name": "guwmi",
   "version": "1.0.0",
   "description": "Component library for React apps",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "sass src:dist",
-    "watch": "sass --watch src:dist"
+    "build": "tsup",
+    "build-sass": "sass --no-source-map src:dist",
+    "watch": "sass --no-source-map --watch src:dist"
   },
   "repository": {
     "type": "git",
@@ -29,10 +30,12 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@swc/core": "^1.11.24",
     "@tabler/icons-react": "^3.31.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "sass": "^1.86.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "tsup": "^8.4.0"
   }
 }
