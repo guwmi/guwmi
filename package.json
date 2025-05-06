@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Component library for React apps",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsup",
@@ -30,6 +31,8 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "@swc/core": "^1.11.24",
     "@tabler/icons-react": "^3.31.0",
     "@types/react": "^19.0.0",

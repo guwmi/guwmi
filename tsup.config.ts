@@ -12,5 +12,9 @@ export default defineConfig(() => {
     splitting: false,
     sourcemap: true,
     clean: false,
+    esbuildOptions(options) {
+      options.outbase = './src'; // Maintain directory structure in output
+    },
+    external: ['react', 'react-dom'] // Add external dependencies to avoid bundling them
   };
 });

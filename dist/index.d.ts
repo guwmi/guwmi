@@ -1,3 +1,4 @@
+import * as react_jsx_runtime from 'react/jsx-runtime';
 import React, { PropsWithChildren } from 'react';
 
 interface ComponentProps$d extends PropsWithChildren {
@@ -14,7 +15,7 @@ interface ComponentProps$d extends PropsWithChildren {
  * Button Component ********************************************************************************
  * @param ComponentProps
  */
-declare function Button(props: ComponentProps$d): React.JSX.Element;
+declare function Button(props: ComponentProps$d): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$c extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
@@ -29,7 +30,7 @@ interface ComponentProps$c extends PropsWithChildren {
  * Icon Button Component ********************************************************************************
  * @param ComponentProps
  */
-declare function IconButton(props: ComponentProps$c): React.JSX.Element;
+declare function IconButton(props: ComponentProps$c): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$b extends PropsWithChildren {
     position?: 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
@@ -40,13 +41,13 @@ interface ComponentProps$b extends PropsWithChildren {
  * Menu component **********************************************************************************
  * @param ComponenProps
  */
-declare function Menu(props: ComponentProps$b): React.JSX.Element;
+declare function Menu(props: ComponentProps$b): react_jsx_runtime.JSX.Element;
 
 /**
  * Menu Dropdown component ************************************************************************
  * @param children - ReactElements provided as props
  */
-declare function MenuDropdown(props: PropsWithChildren): React.JSX.Element;
+declare function MenuDropdown(props: PropsWithChildren): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$a extends PropsWithChildren {
     onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
@@ -56,29 +57,29 @@ interface ComponentProps$a extends PropsWithChildren {
  * Menu Item component *****************************************************************************
  * @param ComponentProps
  */
-declare function MenuItem(props: ComponentProps$a): React.JSX.Element;
+declare function MenuItem(props: ComponentProps$a): react_jsx_runtime.JSX.Element;
 
 /**
  * Menu Trigger component ************************************************************************
  * @param children - ReacElements provided as props
  */
-declare function MenuTrigger(props: PropsWithChildren): React.JSX.Element;
+declare function MenuTrigger(props: PropsWithChildren): react_jsx_runtime.JSX.Element;
 
-declare function TabsContainer(props: PropsWithChildren): React.JSX.Element;
+declare function TabsContainer(props: PropsWithChildren): react_jsx_runtime.JSX.Element;
 
-declare function Tabs(props: PropsWithChildren): React.JSX.Element;
+declare function Tabs(props: PropsWithChildren): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$9 extends PropsWithChildren {
     index?: number;
 }
-declare function Tab(props: ComponentProps$9): React.JSX.Element;
+declare function Tab(props: ComponentProps$9): react_jsx_runtime.JSX.Element;
 
-declare function TabPanels(props: PropsWithChildren): React.JSX.Element;
+declare function TabPanels(props: PropsWithChildren): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$8 extends PropsWithChildren {
     index?: number;
 }
-declare function TabPanel(props: ComponentProps$8): React.JSX.Element;
+declare function TabPanel(props: ComponentProps$8): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$7 {
     headers: {
@@ -92,39 +93,39 @@ interface ComponentProps$7 {
     isCondensed?: boolean;
     isSearchable?: boolean;
 }
-declare function Table(props: ComponentProps$7): React.JSX.Element;
+declare function Table(props: ComponentProps$7): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$6 extends PropsWithChildren {
     defaultOpen?: string;
 }
-declare function Accordion(props: ComponentProps$6): React.JSX.Element;
+declare function Accordion(props: ComponentProps$6): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$5 extends PropsWithChildren {
     title: string;
     id: string;
 }
-declare function AccordionItem(props: ComponentProps$5): React.JSX.Element;
+declare function AccordionItem(props: ComponentProps$5): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$4 extends PropsWithChildren {
     columns?: 2 | 3 | 4 | 5 | 6;
 }
-declare function Cards(props: ComponentProps$4): React.JSX.Element;
+declare function Cards(props: ComponentProps$4): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$3 extends PropsWithChildren {
     title?: string;
     subTitle?: string;
     image?: string;
 }
-declare function Card(props: ComponentProps$3): React.JSX.Element;
+declare function Card(props: ComponentProps$3): react_jsx_runtime.JSX.Element;
 
-declare function CardSection(props: PropsWithChildren): React.JSX.Element;
+declare function CardSection(props: PropsWithChildren): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$2 {
     kind: 'error' | 'warning' | 'success';
     title?: string;
     content: string;
 }
-declare function Notification(props: ComponentProps$2): React.JSX.Element;
+declare function Notification(props: ComponentProps$2): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$1 extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
@@ -132,7 +133,7 @@ interface ComponentProps$1 extends PropsWithChildren {
     onClose: () => void;
     preventScroll?: boolean;
 }
-declare function Modal(props: ComponentProps$1): React.JSX.Element;
+declare function Modal(props: ComponentProps$1): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps extends PropsWithChildren {
     open: boolean;
@@ -140,6 +141,6 @@ interface ComponentProps extends PropsWithChildren {
     preventScroll?: boolean;
     position?: 'left' | 'right';
 }
-declare function Drawer(props: ComponentProps): React.JSX.Element;
+declare function Drawer(props: ComponentProps): react_jsx_runtime.JSX.Element;
 
 export { Accordion, AccordionItem, Button, Card, CardSection, Cards, Drawer, IconButton, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer };

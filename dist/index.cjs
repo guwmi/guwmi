@@ -1,3 +1,4 @@
+"use strict";
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -127,6 +128,10 @@ function _sliced_to_array(arr, i) {
 function _to_consumable_array(arr) {
     return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
 }
+function _type_of(obj) {
+    "@swc/helpers - typeof";
+    return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
+}
 function _unsupported_iterable_to_array(o, minLen) {
     if (!o) return;
     if (typeof o === "string") return _array_like_to_array(o, minLen);
@@ -135,11 +140,68 @@ function _unsupported_iterable_to_array(o, minLen) {
     if (n === "Map" || n === "Set") return Array.from(n);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
 }
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __esm = function(fn, res) {
     return function __init() {
         return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
     };
+};
+var __export = function(target, all) {
+    for(var name in all)__defProp(target, name, {
+        get: all[name],
+        enumerable: true
+    });
+};
+var __copyProps = function(to, from, except, desc) {
+    if (from && (typeof from === "undefined" ? "undefined" : _type_of(from)) === "object" || typeof from === "function") {
+        var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
+        try {
+            var _loop = function() {
+                var key = _step.value;
+                if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
+                    get: function() {
+                        return from[key];
+                    },
+                    enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+                });
+            };
+            for(var _iterator = __getOwnPropNames(from)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true)_loop();
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally{
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return != null) {
+                    _iterator.return();
+                }
+            } finally{
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+    }
+    return to;
+};
+var __toESM = function(mod, isNodeMode, target) {
+    return target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(// If the importer is in node compatibility mode or this is not an ESM
+    // file that has been converted to a CommonJS file using a Babel-
+    // compatible transform (i.e. "__esModule" has not been set), then set
+    // "default" to the CommonJS "module.exports" for node compatibility.
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", {
+        value: mod,
+        enumerable: true
+    }) : target, mod);
+};
+var __toCommonJS = function(mod) {
+    return __copyProps(__defProp({}, "__esModule", {
+        value: true
+    }), mod);
 };
 // node_modules/@tabler/icons-react/dist/esm/defaultAttributes.mjs
 var defaultAttributes;
@@ -169,13 +231,13 @@ var init_defaultAttributes = __esm({
     }
 });
 // node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs
-import { forwardRef, createElement } from "react";
-var createReactComponent;
+var import_react16, createReactComponent;
 var init_createReactComponent = __esm({
     "node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs": function() {
+        import_react16 = require("react");
         init_defaultAttributes();
         createReactComponent = function(type, iconName, iconNamePascal, iconNode) {
-            var Component = forwardRef(function(_param, ref) {
+            var Component = (0, import_react16.forwardRef)(function(_param, ref) {
                 var _param_color = _param.color, color = _param_color === void 0 ? "currentColor" : _param_color, _param_size = _param.size, size = _param_size === void 0 ? 24 : _param_size, _param_stroke = _param.stroke, stroke = _param_stroke === void 0 ? 2 : _param_stroke, title = _param.title, className = _param.className, children = _param.children, rest = _object_without_properties(_param, [
                     "color",
                     "size",
@@ -184,7 +246,7 @@ var init_createReactComponent = __esm({
                     "className",
                     "children"
                 ]);
-                return createElement("svg", _object_spread(_object_spread_props(_object_spread({
+                return (0, import_react16.createElement)("svg", _object_spread(_object_spread_props(_object_spread({
                     ref: ref
                 }, defaultAttributes[type]), {
                     width: size,
@@ -200,12 +262,12 @@ var init_createReactComponent = __esm({
                     strokeWidth: stroke,
                     stroke: color
                 }, rest), [
-                    title && createElement("title", {
+                    title && (0, import_react16.createElement)("title", {
                         key: "svg-title"
                     }, title)
                 ].concat(_to_consumable_array(iconNode.map(function(param) {
                     var _$_param = _sliced_to_array(param, 2), tag = _$_param[0], attrs = _$_param[1];
-                    return createElement(tag, attrs);
+                    return (0, import_react16.createElement)(tag, attrs);
                 })), _to_consumable_array(Array.isArray(children) ? children : [
                     children
                 ])));
@@ -354,17 +416,81 @@ var init_IconX = __esm({
     }
 });
 // src/index.ts
-import "./index-L3NGY2JV.css";
+var index_exports = {};
+__export(index_exports, {
+    Accordion: function() {
+        return Accordion;
+    },
+    AccordionItem: function() {
+        return AccordionItem;
+    },
+    Button: function() {
+        return Button;
+    },
+    Card: function() {
+        return Card;
+    },
+    CardSection: function() {
+        return CardSection;
+    },
+    Cards: function() {
+        return Cards;
+    },
+    Drawer: function() {
+        return Drawer;
+    },
+    IconButton: function() {
+        return IconButton;
+    },
+    Menu: function() {
+        return Menu;
+    },
+    MenuDropdown: function() {
+        return MenuDropdown;
+    },
+    MenuItem: function() {
+        return MenuItem;
+    },
+    MenuTrigger: function() {
+        return MenuTrigger;
+    },
+    Modal: function() {
+        return Modal;
+    },
+    Notification: function() {
+        return Notification;
+    },
+    Tab: function() {
+        return Tab;
+    },
+    TabPanel: function() {
+        return TabPanel;
+    },
+    TabPanels: function() {
+        return TabPanels;
+    },
+    Table: function() {
+        return Table;
+    },
+    Tabs: function() {
+        return Tabs;
+    },
+    TabsContainer: function() {
+        return TabsContainer;
+    }
+});
+module.exports = __toCommonJS(index_exports);
+var import_styles = require("./index-L3NGY2JV.css");
 // src/components/Button/Button.tsx
-import { useCallback, useMemo, useRef } from "react";
-import { jsx } from "react/jsx-runtime";
+var import_react = require("react");
+var import_jsx_runtime = require("react/jsx-runtime");
 function Button(props) {
     var children = props.children, _props_size = props.size, size = _props_size === void 0 ? "md" : _props_size, _props_color = props.color, color = _props_color === void 0 ? "primary" : _props_color, _props_kind = props.kind, kind = _props_kind === void 0 ? "fill" : _props_kind, _props_theme = props.theme, theme = _props_theme === void 0 ? "round" : _props_theme, className = props.className, onClick = props.onClick, href = props.href, _props_target = props.target, target = _props_target === void 0 ? null : _props_target;
-    var classes = useMemo(function() {
+    var classes = (0, import_react.useMemo)(function() {
         return "guwmi-btn ".concat(size, " ").concat(color, " ").concat(kind, " ").concat(theme).concat(className ? " " + className : "");
     }, []);
-    var button = useRef(null);
-    var handleClick = useCallback(function(e) {
+    var button = (0, import_react.useRef)(null);
+    var handleClick = (0, import_react.useCallback)(function(e) {
         button.current.focus();
         if (onClick) {
             onClick(e);
@@ -374,7 +500,7 @@ function Button(props) {
         onClick,
         button.current
     ]);
-    return href ? /* @__PURE__ */ jsx("a", {
+    return href ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
         className: classes,
         href: href,
         onClick: function() {
@@ -383,7 +509,7 @@ function Button(props) {
         target: target,
         ref: button,
         children: children
-    }) : /* @__PURE__ */ jsx("button", {
+    }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
         className: classes,
         onClick: function(e) {
             return handleClick(e);
@@ -393,14 +519,14 @@ function Button(props) {
     });
 }
 // src/components/IconButton/IconButton.tsx
-import { useMemo as useMemo2 } from "react";
-import { jsx as jsx2 } from "react/jsx-runtime";
+var import_react2 = require("react");
+var import_jsx_runtime2 = require("react/jsx-runtime");
 function IconButton(props) {
     var children = props.children, _props_size = props.size, size = _props_size === void 0 ? "md" : _props_size, _props_color = props.color, color = _props_color === void 0 ? "primary" : _props_color, _props_kind = props.kind, kind = _props_kind === void 0 ? "fill" : _props_kind, _props_theme = props.theme, theme = _props_theme === void 0 ? "round" : _props_theme, className = props.className, onClick = props.onClick, ariaLabel = props.ariaLabel;
-    var classes = useMemo2(function() {
+    var classes = (0, import_react2.useMemo)(function() {
         return "guwmi-btn icon ".concat(size, " ").concat(color, " ").concat(kind, " ").concat(theme).concat(className ? " " + className : "");
     }, []);
-    return /* @__PURE__ */ jsx2("button", {
+    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("button", {
         className: classes,
         onClick: onClick,
         "aria-label": ariaLabel,
@@ -408,22 +534,22 @@ function IconButton(props) {
     });
 }
 // src/components/Menu/Menu.tsx
-import { useState, useMemo as useMemo3 } from "react";
+var import_react4 = require("react");
 // src/components/Menu/MenuContext.ts
-import { createContext } from "react";
-var MenuContext = createContext(null);
+var import_react3 = require("react");
+var MenuContext = (0, import_react3.createContext)(null);
 var MenuContext_default = MenuContext;
 // src/components/Menu/Menu.tsx
-import { jsx as jsx3 } from "react/jsx-runtime";
+var import_jsx_runtime3 = require("react/jsx-runtime");
 function Menu(props) {
     var children = props.children, _props_position = props.position, position = _props_position === void 0 ? "bottom-right" : _props_position, width = props.width, ariaLabel = props.ariaLabel;
-    var _useState = _sliced_to_array(useState(false), 2), isOpen = _useState[0], setIsOpen = _useState[1];
-    var classes = useMemo3(function() {
+    var _ref = _sliced_to_array((0, import_react4.useState)(false), 2), isOpen = _ref[0], setIsOpen = _ref[1];
+    var classes = (0, import_react4.useMemo)(function() {
         return "guwmi-menu-container ".concat(position);
     }, []);
-    return /* @__PURE__ */ jsx3("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", {
         className: classes,
-        children: /* @__PURE__ */ jsx3(MenuContext_default.Provider, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(MenuContext_default.Provider, {
             value: {
                 isOpen: isOpen,
                 setIsOpen: setIsOpen,
@@ -434,19 +560,19 @@ function Menu(props) {
     });
 }
 // src/components/Menu/MenuDropdown.tsx
-import { useContext, useEffect, useMemo as useMemo4, useRef as useRef2, useState as useState2 } from "react";
-import { Fragment, jsx as jsx4 } from "react/jsx-runtime";
+var import_react5 = require("react");
+var import_jsx_runtime4 = require("react/jsx-runtime");
 function MenuDropdown(props) {
     var children = props.children;
-    var _useContext = useContext(MenuContext_default), isOpen = _useContext.isOpen, ariaLabel = _useContext.ariaLabel;
-    var _useState2 = _sliced_to_array(useState2(false), 2), isAnimating = _useState2[0], setIsAnimating = _useState2[1];
-    var classes = useMemo4(function() {
+    var _ref = (0, import_react5.useContext)(MenuContext_default), isOpen = _ref.isOpen, ariaLabel = _ref.ariaLabel;
+    var _ref1 = _sliced_to_array((0, import_react5.useState)(false), 2), isAnimating = _ref1[0], setIsAnimating = _ref1[1];
+    var classes = (0, import_react5.useMemo)(function() {
         return "guwmi-menu-dropdown".concat(isOpen ? " open" : "");
     }, [
         isOpen
     ]);
-    var dropDownRef = useRef2(null);
-    useEffect(function() {
+    var dropDownRef = (0, import_react5.useRef)(null);
+    (0, import_react5.useEffect)(function() {
         var _dropDownRef_current, _dropDownRef_current1;
         (_dropDownRef_current = dropDownRef.current) === null || _dropDownRef_current === void 0 ? void 0 : _dropDownRef_current.addEventListener("transitioncancel", function() {
             return setIsAnimating(false);
@@ -457,19 +583,19 @@ function MenuDropdown(props) {
     }, [
         dropDownRef.current
     ]);
-    useEffect(function() {
+    (0, import_react5.useEffect)(function() {
         if (isOpen) {
             setIsAnimating(true);
         }
     }, [
         isOpen
     ]);
-    return /* @__PURE__ */ jsx4(Fragment, {
-        children: (isOpen || isAnimating) && /* @__PURE__ */ jsx4("nav", {
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, {
+        children: (isOpen || isAnimating) && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("nav", {
             className: classes,
             ref: dropDownRef,
             "aria-label": ariaLabel,
-            children: /* @__PURE__ */ jsx4("ul", {
+            children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("ul", {
                 role: "menubar",
                 children: children
             })
@@ -477,20 +603,20 @@ function MenuDropdown(props) {
     });
 }
 // src/components/Menu/MenuItem.tsx
-import { useMemo as useMemo5 } from "react";
-import { jsx as jsx5 } from "react/jsx-runtime";
+var import_react6 = require("react");
+var import_jsx_runtime5 = require("react/jsx-runtime");
 function MenuItem(props) {
     var children = props.children, onClick = props.onClick, href = props.href;
-    var classes = useMemo5(function() {
+    var classes = (0, import_react6.useMemo)(function() {
         return "guwmi-menu-item";
     }, []);
-    return /* @__PURE__ */ jsx5("li", {
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("li", {
         className: classes,
-        children: href ? /* @__PURE__ */ jsx5("a", {
+        children: href ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", {
             className: "guwmi-menu-btn",
             href: href,
             children: children
-        }) : /* @__PURE__ */ jsx5("button", {
+        }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("button", {
             className: "guwmi-menu-btn",
             onClick: onClick,
             children: children
@@ -498,15 +624,15 @@ function MenuItem(props) {
     });
 }
 // src/components/Menu/MenuTrigger.tsx
-import React6, { useMemo as useMemo6, useContext as useContext2 } from "react";
-import { jsx as jsx6 } from "react/jsx-runtime";
+var import_react7 = __toESM(require("react"), 1);
+var import_jsx_runtime6 = require("react/jsx-runtime");
 function MenuTrigger(props) {
     var children = props.children;
-    var _useContext2 = useContext2(MenuContext_default), isOpen = _useContext2.isOpen, setIsOpen = _useContext2.setIsOpen;
-    var childrenWithClick = useMemo6(function() {
-        return React6.Children.map(children, function(child) {
-            if (React6.isValidElement(child)) {
-                return React6.cloneElement(child, {
+    var _ref = (0, import_react7.useContext)(MenuContext_default), isOpen = _ref.isOpen, setIsOpen = _ref.setIsOpen;
+    var childrenWithClick = (0, import_react7.useMemo)(function() {
+        return import_react7.default.Children.map(children, function(child) {
+            if (import_react7.default.isValidElement(child)) {
+                return import_react7.default.cloneElement(child, {
                     onClick: function() {
                         return setIsOpen(!isOpen);
                     }
@@ -518,48 +644,48 @@ function MenuTrigger(props) {
         children,
         isOpen
     ]);
-    return /* @__PURE__ */ jsx6("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
         className: "guwmi-menu-trigger",
         children: childrenWithClick
     });
 }
 // src/components/Tabs/TabsContainer.tsx
-import { useState as useState3, useId } from "react";
+var import_react9 = require("react");
 // src/components/Tabs/TabsContext.ts
-import { createContext as createContext2 } from "react";
-var TabsContext = createContext2(null);
+var import_react8 = require("react");
+var TabsContext = (0, import_react8.createContext)(null);
 var TabsContext_default = TabsContext;
 // src/components/Tabs/TabsContainer.tsx
-import { jsx as jsx7 } from "react/jsx-runtime";
+var import_jsx_runtime7 = require("react/jsx-runtime");
 function TabsContainer(props) {
     var children = props.children;
-    var _useState3 = _sliced_to_array(useState3(0), 2), selectedTab = _useState3[0], setSelectedTab = _useState3[1];
-    var id = useId();
-    return /* @__PURE__ */ jsx7(TabsContext_default.Provider, {
+    var _ref = _sliced_to_array((0, import_react9.useState)(0), 2), selectedTab = _ref[0], setSelectedTab = _ref[1];
+    var id = (0, import_react9.useId)();
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(TabsContext_default.Provider, {
         value: {
             id: id,
             selectedTab: selectedTab,
             setSelectedTab: setSelectedTab
         },
-        children: /* @__PURE__ */ jsx7("div", {
+        children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", {
             className: "guwmi-tabs-container",
             children: children
         })
     });
 }
 // src/components/Tabs/Tabs.tsx
-import React8, { useEffect as useEffect2, useMemo as useMemo7, useRef as useRef3, useContext as useContext3 } from "react";
-import { jsx as jsx8, jsxs } from "react/jsx-runtime";
+var import_react10 = __toESM(require("react"), 1);
+var import_jsx_runtime8 = require("react/jsx-runtime");
 function Tabs(props) {
     var children = props.children;
-    var selectedTab = useContext3(TabsContext_default).selectedTab;
-    var tabsContainer = useRef3(null);
-    var slider = useRef3(null);
-    var activeTab = useRef3(null);
-    var childrenWithIndex = useMemo7(function() {
-        return React8.Children.map(children, function(child, index) {
-            if (React8.isValidElement(child)) {
-                return React8.cloneElement(child, {
+    var selectedTab = (0, import_react10.useContext)(TabsContext_default).selectedTab;
+    var tabsContainer = (0, import_react10.useRef)(null);
+    var slider = (0, import_react10.useRef)(null);
+    var activeTab = (0, import_react10.useRef)(null);
+    var childrenWithIndex = (0, import_react10.useMemo)(function() {
+        return import_react10.default.Children.map(children, function(child, index) {
+            if (import_react10.default.isValidElement(child)) {
+                return import_react10.default.cloneElement(child, {
                     index: index
                 });
             }
@@ -568,7 +694,7 @@ function Tabs(props) {
     }, [
         children
     ]);
-    useEffect2(function() {
+    (0, import_react10.useEffect)(function() {
         if (tabsContainer.current.querySelector(".guwmi-tab.active")) {
             activeTab.current = tabsContainer.current.querySelector(".guwmi-tab.active");
         }
@@ -576,7 +702,7 @@ function Tabs(props) {
         tabsContainer,
         selectedTab
     ]);
-    useEffect2(function() {
+    (0, import_react10.useEffect)(function() {
         if (activeTab.current) {
             var left = activeTab.current.offsetLeft;
             var width = activeTab.current.offsetWidth;
@@ -586,12 +712,12 @@ function Tabs(props) {
     }, [
         activeTab.current
     ]);
-    return /* @__PURE__ */ jsxs("nav", {
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("nav", {
         className: "guwmi-tabs",
         role: "tablist",
         ref: tabsContainer,
         children: [
-            /* @__PURE__ */ jsx8("span", {
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", {
                 className: "guwmi-tabs-slider",
                 ref: slider
             }),
@@ -600,12 +726,12 @@ function Tabs(props) {
     });
 }
 // src/components/Tabs/Tab.tsx
-import { useContext as useContext4 } from "react";
-import { jsx as jsx9 } from "react/jsx-runtime";
+var import_react11 = require("react");
+var import_jsx_runtime9 = require("react/jsx-runtime");
 function Tab(props) {
     var children = props.children, index = props.index;
-    var _useContext4 = useContext4(TabsContext_default), id = _useContext4.id, selectedTab = _useContext4.selectedTab, setSelectedTab = _useContext4.setSelectedTab;
-    return /* @__PURE__ */ jsx9("button", {
+    var _ref = (0, import_react11.useContext)(TabsContext_default), id = _ref.id, selectedTab = _ref.selectedTab, setSelectedTab = _ref.setSelectedTab;
+    return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", {
         className: "guwmi-tab".concat(selectedTab === index ? " active" : ""),
         onClick: function() {
             return setSelectedTab(index);
@@ -617,15 +743,15 @@ function Tab(props) {
     });
 }
 // src/components/Tabs/TabPanels.tsx
-import React10, { useContext as useContext5, useMemo as useMemo8, useRef as useRef4, useEffect as useEffect4 } from "react";
+var import_react13 = __toESM(require("react"), 1);
 // src/hooks/useWindowWidth.ts
-import { useState as useState4, useEffect as useEffect3 } from "react";
+var import_react12 = require("react");
 function useWindowWidth() {
-    var _useState4 = _sliced_to_array(useState4(), 2), windowWidth = _useState4[0], setWindowWidth = _useState4[1];
+    var _ref = _sliced_to_array((0, import_react12.useState)(), 2), windowWidth = _ref[0], setWindowWidth = _ref[1];
     var handleResize = function() {
         return setWindowWidth(window.innerWidth);
     };
-    useEffect3(function() {
+    (0, import_react12.useEffect)(function() {
         window.addEventListener("resize", handleResize);
         return function() {
             return window.removeEventListener("resize", handleResize);
@@ -634,16 +760,16 @@ function useWindowWidth() {
     return windowWidth;
 }
 // src/components/Tabs/TabPanels.tsx
-import { jsx as jsx10 } from "react/jsx-runtime";
+var import_jsx_runtime10 = require("react/jsx-runtime");
 function TabPanels(props) {
     var children = props.children;
-    var selectedTab = useContext5(TabsContext_default).selectedTab;
+    var selectedTab = (0, import_react13.useContext)(TabsContext_default).selectedTab;
     var windowWidth = useWindowWidth();
-    var panels = useRef4(null);
-    var childrenWithIndex = useMemo8(function() {
-        return React10.Children.map(children, function(child, index) {
-            if (React10.isValidElement(child)) {
-                return React10.cloneElement(child, {
+    var panels = (0, import_react13.useRef)(null);
+    var childrenWithIndex = (0, import_react13.useMemo)(function() {
+        return import_react13.default.Children.map(children, function(child, index) {
+            if (import_react13.default.isValidElement(child)) {
+                return import_react13.default.cloneElement(child, {
                     index: index
                 });
             }
@@ -652,7 +778,7 @@ function TabPanels(props) {
     }, [
         children
     ]);
-    useEffect4(function() {
+    (0, import_react13.useEffect)(function() {
         var active = panels.current.querySelector(".active");
         var height = active.offsetHeight;
         panels.current.style.height = "".concat(height, "px");
@@ -660,19 +786,19 @@ function TabPanels(props) {
         selectedTab,
         windowWidth
     ]);
-    return /* @__PURE__ */ jsx10("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", {
         className: "guwmi-tab-panels",
         ref: panels,
         children: childrenWithIndex
     });
 }
 // src/components/Tabs/TabPanel.tsx
-import { useContext as useContext6 } from "react";
-import { jsx as jsx11 } from "react/jsx-runtime";
+var import_react14 = require("react");
+var import_jsx_runtime11 = require("react/jsx-runtime");
 function TabPanel(props) {
     var children = props.children, index = props.index;
-    var _useContext6 = useContext6(TabsContext_default), id = _useContext6.id, selectedTab = _useContext6.selectedTab;
-    return /* @__PURE__ */ jsx11("section", {
+    var _ref = (0, import_react14.useContext)(TabsContext_default), id = _ref.id, selectedTab = _ref.selectedTab;
+    return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("section", {
         className: "guwmi-tab-panel".concat(selectedTab === index ? " active" : ""),
         role: "tabpanel",
         hidden: selectedTab !== index,
@@ -682,13 +808,13 @@ function TabPanel(props) {
     });
 }
 // src/components/Table/Table.tsx
-import { useId as useId3, useMemo as useMemo10 } from "react";
+var import_react18 = require("react");
 // src/components/Table/TableRow.tsx
-import { useMemo as useMemo9 } from "react";
-import { Fragment as Fragment2, jsx as jsx12 } from "react/jsx-runtime";
+var import_react15 = require("react");
+var import_jsx_runtime12 = require("react/jsx-runtime");
 function TableRow(props) {
     var headers = props.headers, data = props.data, tableId = props.tableId;
-    var cellData = useMemo9(function() {
+    var cellData = (0, import_react15.useMemo)(function() {
         var arr = [];
         headers.forEach(function(h) {
             if (data[h.key]) {
@@ -704,10 +830,10 @@ function TableRow(props) {
         headers,
         data
     ]);
-    return /* @__PURE__ */ jsx12(Fragment2, {
-        children: cellData && /* @__PURE__ */ jsx12("tr", {
+    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_jsx_runtime12.Fragment, {
+        children: cellData && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("tr", {
             children: cellData.map(function(cell) {
-                return /* @__PURE__ */ jsx12("td", {
+                return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("td", {
                     children: cell.value
                 }, "table-".concat(tableId, "-cell-").concat(cell.id, "-").concat(cell.col));
             })
@@ -715,7 +841,7 @@ function TableRow(props) {
     });
 }
 // src/components/Inputs/Search/SearchInput.tsx
-import { useId as useId2 } from "react";
+var import_react17 = require("react");
 // node_modules/@tabler/icons-react/dist/esm/tabler-icons-react.mjs
 init_IconAlertCircle();
 init_IconAlertTriangle();
@@ -724,24 +850,24 @@ init_IconChevronRight();
 init_IconSearch();
 init_IconX();
 // src/components/Inputs/Search/SearchInput.tsx
-import { jsx as jsx13, jsxs as jsxs2 } from "react/jsx-runtime";
+var import_jsx_runtime13 = require("react/jsx-runtime");
 function SearchInput(props) {
     var placeholder = props.placeholder;
-    var id = useId2();
-    return /* @__PURE__ */ jsxs2("div", {
+    var id = (0, import_react17.useId)();
+    return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", {
         className: "guwmi-search-input",
         children: [
-            /* @__PURE__ */ jsx13("span", {
-                children: /* @__PURE__ */ jsx13(IconSearch, {
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", {
+                children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(IconSearch, {
                     size: 18
                 })
             }),
-            /* @__PURE__ */ jsx13("label", {
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", {
                 htmlFor: id,
                 className: "guwmi-sr-only",
                 children: "Search"
             }),
-            /* @__PURE__ */ jsx13("input", {
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", {
                 id: id,
                 type: "search",
                 placeholder: placeholder ? placeholder : "Search..."
@@ -750,52 +876,52 @@ function SearchInput(props) {
     });
 }
 // src/components/Table/Table.tsx
-import { Fragment as Fragment3, jsx as jsx14, jsxs as jsxs3 } from "react/jsx-runtime";
+var import_jsx_runtime14 = require("react/jsx-runtime");
 function Table(props) {
     var headers = props.headers, rows = props.rows, isCondensed = props.isCondensed, isSearchable = props.isSearchable;
-    var id = useId3();
-    var classes = useMemo10(function() {
+    var id = (0, import_react18.useId)();
+    var classes = (0, import_react18.useMemo)(function() {
         return "guwmi-table-container".concat(isCondensed ? " condensed" : "");
     }, []);
-    return /* @__PURE__ */ jsxs3("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", {
         className: classes,
         children: [
-            headers.length > 0 && isSearchable && /* @__PURE__ */ jsx14("div", {
+            headers.length > 0 && isSearchable && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", {
                 className: "guwmi-table-search",
-                children: /* @__PURE__ */ jsx14(SearchInput, {})
+                children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SearchInput, {})
             }),
-            /* @__PURE__ */ jsx14("table", {
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("table", {
                 cellPadding: 0,
                 cellSpacing: 0,
-                children: headers.length > 0 ? /* @__PURE__ */ jsxs3(Fragment3, {
+                children: headers.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, {
                     children: [
-                        /* @__PURE__ */ jsx14("thead", {
-                            children: /* @__PURE__ */ jsx14("tr", {
+                        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("thead", {
+                            children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("tr", {
                                 children: headers.map(function(header, i) {
-                                    return /* @__PURE__ */ jsx14("th", {
+                                    return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("th", {
                                         children: header.title
                                     }, "table-".concat(id, "-header-").concat(i));
                                 })
                             })
                         }),
-                        /* @__PURE__ */ jsx14("tbody", {
+                        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("tbody", {
                             children: rows.length > 0 ? rows.map(function(row) {
-                                return /* @__PURE__ */ jsx14(TableRow, {
+                                return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(TableRow, {
                                     headers: headers,
                                     data: row,
                                     tableId: id
                                 }, "table-".concat(id, "-row-").concat(row.id));
-                            }) : /* @__PURE__ */ jsx14("tr", {
-                                children: /* @__PURE__ */ jsx14("td", {
+                            }) : /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("tr", {
+                                children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("td", {
                                     colSpan: headers.length,
                                     children: "There is no data to display in the table"
                                 })
                             })
                         })
                     ]
-                }) : /* @__PURE__ */ jsx14("tbody", {
-                    children: /* @__PURE__ */ jsx14("tr", {
-                        children: /* @__PURE__ */ jsx14("td", {
+                }) : /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("tbody", {
+                    children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("tr", {
+                        children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("td", {
                             children: "No column headers provided for the table"
                         })
                     })
@@ -805,17 +931,17 @@ function Table(props) {
     });
 }
 // src/components/Accordion/Accordion.tsx
-import { useState as useState5, useEffect as useEffect5 } from "react";
+var import_react20 = require("react");
 // src/components/Accordion/AccordionContext.ts
-import { createContext as createContext3 } from "react";
-var AccordionContext = createContext3(null);
+var import_react19 = require("react");
+var AccordionContext = (0, import_react19.createContext)(null);
 var AccordionContext_default = AccordionContext;
 // src/components/Accordion/Accordion.tsx
-import { jsx as jsx15 } from "react/jsx-runtime";
+var import_jsx_runtime15 = require("react/jsx-runtime");
 function Accordion(props) {
     var children = props.children, defaultOpen = props.defaultOpen;
-    var _useState5 = _sliced_to_array(useState5([]), 2), openAccordions = _useState5[0], setOpenAccordions = _useState5[1];
-    useEffect5(function() {
+    var _ref = _sliced_to_array((0, import_react20.useState)([]), 2), openAccordions = _ref[0], setOpenAccordions = _ref[1];
+    (0, import_react20.useEffect)(function() {
         if (defaultOpen) {
             setOpenAccordions(_to_consumable_array(openAccordions).concat([
                 defaultOpen
@@ -824,29 +950,29 @@ function Accordion(props) {
     }, [
         defaultOpen
     ]);
-    return /* @__PURE__ */ jsx15(AccordionContext_default.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(AccordionContext_default.Provider, {
         value: {
             openAccordions: openAccordions,
             setOpenAccordions: setOpenAccordions
         },
-        children: /* @__PURE__ */ jsx15("div", {
+        children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", {
             className: "guwmi-accordion-container",
             children: children
         })
     });
 }
 // src/components/Accordion/AccrodionItem.tsx
-import { useCallback as useCallback2, useContext as useContext7, useRef as useRef5, useState as useState6, useEffect as useEffect6 } from "react";
-import { jsx as jsx16, jsxs as jsxs4 } from "react/jsx-runtime";
+var import_react21 = require("react");
+var import_jsx_runtime16 = require("react/jsx-runtime");
 function AccordionItem(props) {
     var children = props.children, title = props.title, id = props.id;
-    var _useContext7 = useContext7(AccordionContext_default), openAccordions = _useContext7.openAccordions, setOpenAccordions = _useContext7.setOpenAccordions;
+    var _ref = (0, import_react21.useContext)(AccordionContext_default), openAccordions = _ref.openAccordions, setOpenAccordions = _ref.setOpenAccordions;
     var windowWidth = useWindowWidth();
-    var panelRef = useRef5(null);
-    var contentRef = useRef5(null);
-    var _useState6 = _sliced_to_array(useState6(false), 2), isOpen = _useState6[0], setIsOpen = _useState6[1];
-    var _useState61 = _sliced_to_array(useState6(false), 2), isAnimating = _useState61[0], setIsAnimating = _useState61[1];
-    useEffect6(function() {
+    var panelRef = (0, import_react21.useRef)(null);
+    var contentRef = (0, import_react21.useRef)(null);
+    var _ref1 = _sliced_to_array((0, import_react21.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
+    var _ref2 = _sliced_to_array((0, import_react21.useState)(false), 2), isAnimating = _ref2[0], setIsAnimating = _ref2[1];
+    (0, import_react21.useEffect)(function() {
         if (openAccordions.includes(id)) {
             setIsOpen(true);
         } else {
@@ -855,7 +981,7 @@ function AccordionItem(props) {
     }, [
         openAccordions
     ]);
-    var open = useCallback2(function() {
+    var open = (0, import_react21.useCallback)(function() {
         setOpenAccordions(_to_consumable_array(openAccordions).concat([
             id
         ]));
@@ -864,7 +990,7 @@ function AccordionItem(props) {
         id,
         openAccordions
     ]);
-    var close = useCallback2(function() {
+    var close = (0, import_react21.useCallback)(function() {
         setOpenAccordions(openAccordions.filter(function(value) {
             return value !== id;
         }));
@@ -873,7 +999,7 @@ function AccordionItem(props) {
         id,
         openAccordions
     ]);
-    useEffect6(function() {
+    (0, import_react21.useEffect)(function() {
         var _panelRef_current, _panelRef_current1;
         (_panelRef_current = panelRef.current) === null || _panelRef_current === void 0 ? void 0 : _panelRef_current.addEventListener("transitioncancel", function() {
             return setIsAnimating(false);
@@ -884,7 +1010,7 @@ function AccordionItem(props) {
     }, [
         panelRef.current
     ]);
-    useEffect6(function() {
+    (0, import_react21.useEffect)(function() {
         if (contentRef.current && isOpen) {
             var height = contentRef.current.offsetHeight;
             panelRef.current.style.height = "".concat(height, "px");
@@ -896,10 +1022,10 @@ function AccordionItem(props) {
         isOpen,
         windowWidth
     ]);
-    return /* @__PURE__ */ jsxs4("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", {
         className: "guwmi-accordion-item",
         children: [
-            /* @__PURE__ */ jsxs4("button", {
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("button", {
                 onClick: function() {
                     return isOpen ? close() : open();
                 },
@@ -909,17 +1035,17 @@ function AccordionItem(props) {
                 className: isOpen ? "active" : null,
                 children: [
                     title,
-                    /* @__PURE__ */ jsx16(IconChevronRight, {
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconChevronRight, {
                         size: 20
                     })
                 ]
             }),
-            /* @__PURE__ */ jsx16("section", {
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("section", {
                 hidden: !isOpen && !isAnimating,
                 id: "guwmi-accordion-panel-".concat(id),
                 "aria-labelledby": "guwmi-accordion-controller-".concat(id),
                 ref: panelRef,
-                children: /* @__PURE__ */ jsx16("div", {
+                children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", {
                     className: "guwmi-accordion-panel-content",
                     ref: contentRef,
                     children: children
@@ -929,11 +1055,11 @@ function AccordionItem(props) {
     });
 }
 // src/components/Cards/Cards.tsx
-import { useMemo as useMemo11 } from "react";
-import { jsx as jsx17 } from "react/jsx-runtime";
+var import_react22 = require("react");
+var import_jsx_runtime17 = require("react/jsx-runtime");
 function Cards(props) {
     var children = props.children, _props_columns = props.columns, columns = _props_columns === void 0 ? 3 : _props_columns;
-    var classes = useMemo11(function() {
+    var classes = (0, import_react22.useMemo)(function() {
         var classString = "guwmi-card-grid ";
         switch(columns){
             case 2:
@@ -956,30 +1082,30 @@ function Cards(props) {
     }, [
         columns
     ]);
-    return /* @__PURE__ */ jsx17("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", {
         className: classes,
         children: children
     });
 }
 // src/components/Cards/Card.tsx
-import { jsx as jsx18, jsxs as jsxs5 } from "react/jsx-runtime";
+var import_jsx_runtime18 = require("react/jsx-runtime");
 function Card(props) {
     var title = props.title, subTitle = props.subTitle, image = props.image, children = props.children;
-    return /* @__PURE__ */ jsxs5("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", {
         className: "guwmi-card",
         children: [
-            image && /* @__PURE__ */ jsx18("img", {
+            image && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("img", {
                 src: image,
                 alt: title ? title : "Card image",
                 className: "guwmi-card-image"
             }),
-            (title || subTitle) && /* @__PURE__ */ jsxs5("div", {
+            (title || subTitle) && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", {
                 className: "guwmi-card-section guwmi-card-title",
                 children: [
-                    title && /* @__PURE__ */ jsx18("h2", {
+                    title && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h2", {
                         children: title
                     }),
-                    subTitle && /* @__PURE__ */ jsx18("h3", {
+                    subTitle && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h3", {
                         children: subTitle
                     })
                 ]
@@ -989,57 +1115,57 @@ function Card(props) {
     });
 }
 // src/components/Cards/CardSection.tsx
-import { jsx as jsx19 } from "react/jsx-runtime";
+var import_jsx_runtime19 = require("react/jsx-runtime");
 function CardSection(props) {
     var children = props.children;
-    return /* @__PURE__ */ jsx19("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", {
         className: "guwmi-card-section",
         children: children
     });
 }
 // src/components/Notification/Notification.tsx
-import { useMemo as useMemo12, useState as useState7 } from "react";
-import { jsx as jsx20, jsxs as jsxs6 } from "react/jsx-runtime";
+var import_react23 = require("react");
+var import_jsx_runtime20 = require("react/jsx-runtime");
 function Notification(props) {
     var kind = props.kind, title = props.title, content = props.content;
-    var _useState7 = _sliced_to_array(useState7(true), 2), isVisible = _useState7[0], setIsVisible = _useState7[1];
-    var titleText = useMemo12(function() {
+    var _ref = _sliced_to_array((0, import_react23.useState)(true), 2), isVisible = _ref[0], setIsVisible = _ref[1];
+    var titleText = (0, import_react23.useMemo)(function() {
         return title ? title : kind.charAt(0).toUpperCase() + kind.slice(1);
     }, [
         title,
         kind
     ]);
-    var classes = useMemo12(function() {
+    var classes = (0, import_react23.useMemo)(function() {
         return "guwmi-notification ".concat(kind);
     }, [
         kind
     ]);
-    return isVisible ? /* @__PURE__ */ jsxs6("dialog", {
+    return isVisible ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("dialog", {
         className: classes,
         children: [
-            kind === "error" ? /* @__PURE__ */ jsx20(IconAlertCircle, {
+            kind === "error" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(IconAlertCircle, {
                 size: 20,
                 stroke: 3
-            }) : kind === "warning" ? /* @__PURE__ */ jsx20(IconAlertTriangle, {
+            }) : kind === "warning" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(IconAlertTriangle, {
                 size: 20,
                 stroke: 3
-            }) : /* @__PURE__ */ jsx20(IconCheck, {
+            }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(IconCheck, {
                 size: 20,
                 stroke: 3
             }),
-            /* @__PURE__ */ jsx20("h2", {
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h2", {
                 children: titleText
             }),
-            /* @__PURE__ */ jsx20("p", {
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", {
                 children: content
             }),
-            /* @__PURE__ */ jsx20("button", {
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("button", {
                 onClick: function() {
                     return setIsVisible(false);
                 },
                 "aria-label": "Close notification",
                 tabIndex: 0,
-                children: /* @__PURE__ */ jsx20(IconX, {
+                children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(IconX, {
                     size: 18
                 })
             })
@@ -1047,50 +1173,50 @@ function Notification(props) {
     }) : null;
 }
 // src/components/Modal/Modal.tsx
-import { useCallback as useCallback3, useEffect as useEffect7, useMemo as useMemo13, useRef as useRef6, useState as useState8 } from "react";
-import ReactDOM from "react-dom";
-import { jsx as jsx21, jsxs as jsxs7 } from "react/jsx-runtime";
+var import_react24 = require("react");
+var import_react_dom = __toESM(require("react-dom"), 1);
+var import_jsx_runtime21 = require("react/jsx-runtime");
 function ModalPortal(props) {
     var children = props.children;
-    var _useState8 = _sliced_to_array(useState8(false), 2), hasDocument = _useState8[0], setHasDocument = _useState8[1];
-    useEffect7(function() {
+    var _ref = _sliced_to_array((0, import_react24.useState)(false), 2), hasDocument = _ref[0], setHasDocument = _ref[1];
+    (0, import_react24.useEffect)(function() {
         setHasDocument(typeof document !== "undefined");
     }, []);
-    return hasDocument ? ReactDOM.createPortal(children, document.body) : null;
+    return hasDocument ? import_react_dom.default.createPortal(children, document.body) : null;
 }
 function Modal(props) {
     var open = props.open, onClose = props.onClose, _props_preventScroll = props.preventScroll, preventScroll = _props_preventScroll === void 0 ? false : _props_preventScroll, _props_size = props.size, size = _props_size === void 0 ? "sm" : _props_size, children = props.children;
-    var _useState8 = _sliced_to_array(useState8(false), 2), isAnimating = _useState8[0], setIsAnimating = _useState8[1];
-    var _useState81 = _sliced_to_array(useState8(false), 2), isOpen = _useState81[0], setIsOpen = _useState81[1];
-    var overlayClasses = useMemo13(function() {
+    var _ref = _sliced_to_array((0, import_react24.useState)(false), 2), isAnimating = _ref[0], setIsAnimating = _ref[1];
+    var _ref1 = _sliced_to_array((0, import_react24.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
+    var overlayClasses = (0, import_react24.useMemo)(function() {
         return "guwmi-modal-overlay".concat(isOpen ? " open" : "");
     }, [
         isOpen
     ]);
-    var classes = useMemo13(function() {
+    var classes = (0, import_react24.useMemo)(function() {
         return "guwmi-modal ".concat(size);
     }, [
         size
     ]);
-    var modalOverlay = useRef6(null);
-    var modal = useRef6(null);
-    var modalButton = useRef6(null);
-    var close = useCallback3(function() {
+    var modalOverlay = (0, import_react24.useRef)(null);
+    var modal = (0, import_react24.useRef)(null);
+    var modalButton = (0, import_react24.useRef)(null);
+    var close = (0, import_react24.useCallback)(function() {
         setIsAnimating(true);
         setIsOpen(false);
         modalButton.current.focus();
     }, []);
-    var setAnimationState = useCallback3(function() {
+    var setAnimationState = (0, import_react24.useCallback)(function() {
         setIsAnimating(false);
     }, []);
-    var closeOutClick = useCallback3(function(e) {
+    var closeOutClick = (0, import_react24.useCallback)(function(e) {
         if (!modal.current.contains(e.target)) {
             close();
         }
     }, [
         modal.current
     ]);
-    var handleTab = useCallback3(function(e) {
+    var handleTab = (0, import_react24.useCallback)(function(e) {
         if (e.key === "Tab") {
             var focusableElements = modal.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
             var firstFocusable = focusableElements[0];
@@ -1110,12 +1236,12 @@ function Modal(props) {
     }, [
         modal.current
     ]);
-    var handleEscape = useCallback3(function(e) {
+    var handleEscape = (0, import_react24.useCallback)(function(e) {
         if (e.key === "Escape") {
             close();
         }
     }, []);
-    useEffect7(function() {
+    (0, import_react24.useEffect)(function() {
         if (open) {
             setIsAnimating(true);
             setIsOpen(true);
@@ -1144,7 +1270,7 @@ function Modal(props) {
     }, [
         open
     ]);
-    useEffect7(function() {
+    (0, import_react24.useEffect)(function() {
         var _modalOverlay_current, _modalOverlay_current1;
         (_modalOverlay_current = modalOverlay.current) === null || _modalOverlay_current === void 0 ? void 0 : _modalOverlay_current.addEventListener("transitioncancel", setAnimationState);
         (_modalOverlay_current1 = modalOverlay.current) === null || _modalOverlay_current1 === void 0 ? void 0 : _modalOverlay_current1.addEventListener("transitionend", setAnimationState);
@@ -1156,28 +1282,28 @@ function Modal(props) {
     }, [
         modalOverlay.current
     ]);
-    useEffect7(function() {
+    (0, import_react24.useEffect)(function() {
         if (!isOpen) {
             onClose();
         }
     }, [
         isOpen
     ]);
-    return /* @__PURE__ */ jsx21(ModalPortal, {
-        children: (open || isOpen || isAnimating) && /* @__PURE__ */ jsx21("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(ModalPortal, {
+        children: (open || isOpen || isAnimating) && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", {
             className: overlayClasses,
             ref: modalOverlay,
-            children: /* @__PURE__ */ jsxs7("dialog", {
+            children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("dialog", {
                 className: classes,
                 ref: modal,
                 children: [
-                    /* @__PURE__ */ jsx21("button", {
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("button", {
                         className: "guwmi-modal-close-button",
                         "aria-label": "Close modal",
                         onClick: function() {
                             return close();
                         },
-                        children: /* @__PURE__ */ jsx21(IconX, {
+                        children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(IconX, {
                             size: 20
                         })
                     }),
@@ -1188,50 +1314,50 @@ function Modal(props) {
     });
 }
 // src/components/Drawer/Drawer.tsx
-import { useCallback as useCallback4, useEffect as useEffect8, useMemo as useMemo14, useRef as useRef7, useState as useState9 } from "react";
-import ReactDOM2 from "react-dom";
-import { jsx as jsx22, jsxs as jsxs8 } from "react/jsx-runtime";
+var import_react25 = require("react");
+var import_react_dom2 = __toESM(require("react-dom"), 1);
+var import_jsx_runtime22 = require("react/jsx-runtime");
 function DrawerPortal(props) {
     var children = props.children;
-    var _useState9 = _sliced_to_array(useState9(false), 2), hasDocument = _useState9[0], setHasDocument = _useState9[1];
-    useEffect8(function() {
+    var _ref = _sliced_to_array((0, import_react25.useState)(false), 2), hasDocument = _ref[0], setHasDocument = _ref[1];
+    (0, import_react25.useEffect)(function() {
         setHasDocument(typeof document !== "undefined");
     }, []);
-    return hasDocument ? ReactDOM2.createPortal(children, document.body) : null;
+    return hasDocument ? import_react_dom2.default.createPortal(children, document.body) : null;
 }
 function Drawer(props) {
     var open = props.open, onClose = props.onClose, _props_preventScroll = props.preventScroll, preventScroll = _props_preventScroll === void 0 ? false : _props_preventScroll, _props_position = props.position, position = _props_position === void 0 ? "left" : _props_position, children = props.children;
-    var _useState9 = _sliced_to_array(useState9(false), 2), isAnimating = _useState9[0], setIsAnimating = _useState9[1];
-    var _useState91 = _sliced_to_array(useState9(false), 2), isOpen = _useState91[0], setIsOpen = _useState91[1];
-    var overlayClasses = useMemo14(function() {
+    var _ref = _sliced_to_array((0, import_react25.useState)(false), 2), isAnimating = _ref[0], setIsAnimating = _ref[1];
+    var _ref1 = _sliced_to_array((0, import_react25.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
+    var overlayClasses = (0, import_react25.useMemo)(function() {
         return "guwmi-drawer-overlay".concat(isOpen ? " open" : "");
     }, [
         isOpen
     ]);
-    var classes = useMemo14(function() {
+    var classes = (0, import_react25.useMemo)(function() {
         return "guwmi-drawer ".concat(position);
     }, [
         position
     ]);
-    var drawerOverlay = useRef7(null);
-    var drawer = useRef7(null);
-    var drawerButton = useRef7(null);
-    var close = useCallback4(function() {
+    var drawerOverlay = (0, import_react25.useRef)(null);
+    var drawer = (0, import_react25.useRef)(null);
+    var drawerButton = (0, import_react25.useRef)(null);
+    var close = (0, import_react25.useCallback)(function() {
         setIsAnimating(true);
         setIsOpen(false);
         drawerButton.current.focus();
     }, []);
-    var setAnimationState = useCallback4(function() {
+    var setAnimationState = (0, import_react25.useCallback)(function() {
         setIsAnimating(false);
     }, []);
-    var closeOutClick = useCallback4(function(e) {
+    var closeOutClick = (0, import_react25.useCallback)(function(e) {
         if (!drawer.current.contains(e.target)) {
             close();
         }
     }, [
         drawer.current
     ]);
-    var handleTab = useCallback4(function(e) {
+    var handleTab = (0, import_react25.useCallback)(function(e) {
         if (e.key === "Tab") {
             var focusableElements = drawer.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
             var firstFocusable = focusableElements[0];
@@ -1251,12 +1377,12 @@ function Drawer(props) {
     }, [
         drawer.current
     ]);
-    var handleEscape = useCallback4(function(e) {
+    var handleEscape = (0, import_react25.useCallback)(function(e) {
         if (e.key === "Escape") {
             close();
         }
     }, []);
-    useEffect8(function() {
+    (0, import_react25.useEffect)(function() {
         if (open) {
             setIsAnimating(true);
             setIsOpen(true);
@@ -1285,7 +1411,7 @@ function Drawer(props) {
     }, [
         open
     ]);
-    useEffect8(function() {
+    (0, import_react25.useEffect)(function() {
         var _drawerOverlay_current, _drawerOverlay_current1;
         (_drawerOverlay_current = drawerOverlay.current) === null || _drawerOverlay_current === void 0 ? void 0 : _drawerOverlay_current.addEventListener("transitioncancel", setAnimationState);
         (_drawerOverlay_current1 = drawerOverlay.current) === null || _drawerOverlay_current1 === void 0 ? void 0 : _drawerOverlay_current1.addEventListener("transitionend", setAnimationState);
@@ -1297,30 +1423,30 @@ function Drawer(props) {
     }, [
         drawerOverlay.current
     ]);
-    useEffect8(function() {
+    (0, import_react25.useEffect)(function() {
         if (!isOpen) {
             onClose();
         }
     }, [
         isOpen
     ]);
-    return /* @__PURE__ */ jsx22(DrawerPortal, {
-        children: (open || isOpen || isAnimating) && /* @__PURE__ */ jsx22("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(DrawerPortal, {
+        children: (open || isOpen || isAnimating) && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", {
             className: overlayClasses,
             ref: drawerOverlay,
-            children: /* @__PURE__ */ jsxs8("aside", {
+            children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("aside", {
                 className: classes,
                 ref: drawer,
                 "aria-modal": "true",
                 tabIndex: 0,
                 children: [
-                    /* @__PURE__ */ jsx22("button", {
+                    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("button", {
                         className: "guwmi-drawer-close-button",
                         "aria-label": "Close drawer",
                         onClick: function() {
                             return close();
                         },
-                        children: /* @__PURE__ */ jsx22(IconX, {
+                        children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(IconX, {
                             size: 20
                         })
                     }),
@@ -1330,7 +1456,29 @@ function Drawer(props) {
         })
     });
 }
-export { Accordion, AccordionItem, Button, Card, CardSection, Cards, Drawer, IconButton, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer }; /*! Bundled license information:
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+    Accordion: Accordion,
+    AccordionItem: AccordionItem,
+    Button: Button,
+    Card: Card,
+    CardSection: CardSection,
+    Cards: Cards,
+    Drawer: Drawer,
+    IconButton: IconButton,
+    Menu: Menu,
+    MenuDropdown: MenuDropdown,
+    MenuItem: MenuItem,
+    MenuTrigger: MenuTrigger,
+    Modal: Modal,
+    Notification: Notification,
+    Tab: Tab,
+    TabPanel: TabPanel,
+    TabPanels: TabPanels,
+    Table: Table,
+    Tabs: Tabs,
+    TabsContainer: TabsContainer
+}); /*! Bundled license information:
 
 @tabler/icons-react/dist/esm/defaultAttributes.mjs:
 @tabler/icons-react/dist/esm/createReactComponent.mjs:
@@ -1348,4 +1496,4 @@ export { Accordion, AccordionItem, Button, Card, CardSection, Cards, Drawer, Ico
    * See the LICENSE file in the root directory of this source tree.
    *)
 */ 
-//# sourceMappingURL=index.mjs.map
+//# sourceMappingURL=index.cjs.map

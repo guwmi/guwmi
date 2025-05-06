@@ -1,4 +1,3 @@
-"use strict";
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -128,10 +127,6 @@ function _sliced_to_array(arr, i) {
 function _to_consumable_array(arr) {
     return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
 }
-function _type_of(obj) {
-    "@swc/helpers - typeof";
-    return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
-}
 function _unsupported_iterable_to_array(o, minLen) {
     if (!o) return;
     if (typeof o === "string") return _array_like_to_array(o, minLen);
@@ -140,68 +135,11 @@ function _unsupported_iterable_to_array(o, minLen) {
     if (n === "Map" || n === "Set") return Array.from(n);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
 }
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __esm = function(fn, res) {
     return function __init() {
         return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
     };
-};
-var __export = function(target, all) {
-    for(var name in all)__defProp(target, name, {
-        get: all[name],
-        enumerable: true
-    });
-};
-var __copyProps = function(to, from, except, desc) {
-    if (from && (typeof from === "undefined" ? "undefined" : _type_of(from)) === "object" || typeof from === "function") {
-        var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
-        try {
-            var _loop = function() {
-                var key = _step.value;
-                if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
-                    get: function() {
-                        return from[key];
-                    },
-                    enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
-                });
-            };
-            for(var _iterator = __getOwnPropNames(from)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true)_loop();
-        } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-        } finally{
-            try {
-                if (!_iteratorNormalCompletion && _iterator.return != null) {
-                    _iterator.return();
-                }
-            } finally{
-                if (_didIteratorError) {
-                    throw _iteratorError;
-                }
-            }
-        }
-    }
-    return to;
-};
-var __toESM = function(mod, isNodeMode, target) {
-    return target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(// If the importer is in node compatibility mode or this is not an ESM
-    // file that has been converted to a CommonJS file using a Babel-
-    // compatible transform (i.e. "__esModule" has not been set), then set
-    // "default" to the CommonJS "module.exports" for node compatibility.
-    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", {
-        value: mod,
-        enumerable: true
-    }) : target, mod);
-};
-var __toCommonJS = function(mod) {
-    return __copyProps(__defProp({}, "__esModule", {
-        value: true
-    }), mod);
 };
 // node_modules/@tabler/icons-react/dist/esm/defaultAttributes.mjs
 var defaultAttributes;
@@ -231,13 +169,13 @@ var init_defaultAttributes = __esm({
     }
 });
 // node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs
-var import_react16, createReactComponent;
+import { forwardRef, createElement } from "react";
+var createReactComponent;
 var init_createReactComponent = __esm({
     "node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs": function() {
-        import_react16 = require("react");
         init_defaultAttributes();
         createReactComponent = function(type, iconName, iconNamePascal, iconNode) {
-            var Component = (0, import_react16.forwardRef)(function(_param, ref) {
+            var Component = forwardRef(function(_param, ref) {
                 var _param_color = _param.color, color = _param_color === void 0 ? "currentColor" : _param_color, _param_size = _param.size, size = _param_size === void 0 ? 24 : _param_size, _param_stroke = _param.stroke, stroke = _param_stroke === void 0 ? 2 : _param_stroke, title = _param.title, className = _param.className, children = _param.children, rest = _object_without_properties(_param, [
                     "color",
                     "size",
@@ -246,7 +184,7 @@ var init_createReactComponent = __esm({
                     "className",
                     "children"
                 ]);
-                return (0, import_react16.createElement)("svg", _object_spread(_object_spread_props(_object_spread({
+                return createElement("svg", _object_spread(_object_spread_props(_object_spread({
                     ref: ref
                 }, defaultAttributes[type]), {
                     width: size,
@@ -262,12 +200,12 @@ var init_createReactComponent = __esm({
                     strokeWidth: stroke,
                     stroke: color
                 }, rest), [
-                    title && (0, import_react16.createElement)("title", {
+                    title && createElement("title", {
                         key: "svg-title"
                     }, title)
                 ].concat(_to_consumable_array(iconNode.map(function(param) {
                     var _$_param = _sliced_to_array(param, 2), tag = _$_param[0], attrs = _$_param[1];
-                    return (0, import_react16.createElement)(tag, attrs);
+                    return createElement(tag, attrs);
                 })), _to_consumable_array(Array.isArray(children) ? children : [
                     children
                 ])));
@@ -416,80 +354,17 @@ var init_IconX = __esm({
     }
 });
 // src/index.ts
-var index_exports = {};
-__export(index_exports, {
-    Accordion: function() {
-        return Accordion;
-    },
-    AccordionItem: function() {
-        return AccordionItem;
-    },
-    Button: function() {
-        return Button;
-    },
-    Card: function() {
-        return Card;
-    },
-    CardSection: function() {
-        return CardSection;
-    },
-    Cards: function() {
-        return Cards;
-    },
-    Drawer: function() {
-        return Drawer;
-    },
-    IconButton: function() {
-        return IconButton;
-    },
-    Menu: function() {
-        return Menu;
-    },
-    MenuDropdown: function() {
-        return MenuDropdown;
-    },
-    MenuItem: function() {
-        return MenuItem;
-    },
-    MenuTrigger: function() {
-        return MenuTrigger;
-    },
-    Modal: function() {
-        return Modal;
-    },
-    Notification: function() {
-        return Notification;
-    },
-    Tab: function() {
-        return Tab;
-    },
-    TabPanel: function() {
-        return TabPanel;
-    },
-    TabPanels: function() {
-        return TabPanels;
-    },
-    Table: function() {
-        return Table;
-    },
-    Tabs: function() {
-        return Tabs;
-    },
-    TabsContainer: function() {
-        return TabsContainer;
-    }
-});
-module.exports = __toCommonJS(index_exports);
-var import_styles = require("./index-L3NGY2JV.css");
+import "./index-L3NGY2JV.css";
 // src/components/Button/Button.tsx
-var import_react = __toESM(require("react"));
+import { useCallback, useMemo, useRef } from "react";
+import { jsx } from "react/jsx-runtime";
 function Button(props) {
     var children = props.children, _props_size = props.size, size = _props_size === void 0 ? "md" : _props_size, _props_color = props.color, color = _props_color === void 0 ? "primary" : _props_color, _props_kind = props.kind, kind = _props_kind === void 0 ? "fill" : _props_kind, _props_theme = props.theme, theme = _props_theme === void 0 ? "round" : _props_theme, className = props.className, onClick = props.onClick, href = props.href, _props_target = props.target, target = _props_target === void 0 ? null : _props_target;
-    var classes = (0, import_react.useMemo)(function() {
+    var classes = useMemo(function() {
         return "guwmi-btn ".concat(size, " ").concat(color, " ").concat(kind, " ").concat(theme).concat(className ? " " + className : "");
     }, []);
-    var button = (0, import_react.useRef)(null);
-    var handleClick = (0, import_react.useCallback)(function(e) {
+    var button = useRef(null);
+    var handleClick = useCallback(function(e) {
         button.current.focus();
         if (onClick) {
             onClick(e);
@@ -499,71 +374,79 @@ function Button(props) {
         onClick,
         button.current
     ]);
-    return href ? /* @__PURE__ */ import_react.default.createElement("a", {
+    return href ? /* @__PURE__ */ jsx("a", {
         className: classes,
         href: href,
         onClick: function() {
             return handleClick;
         },
         target: target,
-        ref: button
-    }, children) : /* @__PURE__ */ import_react.default.createElement("button", {
+        ref: button,
+        children: children
+    }) : /* @__PURE__ */ jsx("button", {
         className: classes,
         onClick: function(e) {
             return handleClick(e);
         },
-        ref: button
-    }, children);
+        ref: button,
+        children: children
+    });
 }
 // src/components/IconButton/IconButton.tsx
-var import_react2 = __toESM(require("react"));
+import { useMemo as useMemo2 } from "react";
+import { jsx as jsx2 } from "react/jsx-runtime";
 function IconButton(props) {
     var children = props.children, _props_size = props.size, size = _props_size === void 0 ? "md" : _props_size, _props_color = props.color, color = _props_color === void 0 ? "primary" : _props_color, _props_kind = props.kind, kind = _props_kind === void 0 ? "fill" : _props_kind, _props_theme = props.theme, theme = _props_theme === void 0 ? "round" : _props_theme, className = props.className, onClick = props.onClick, ariaLabel = props.ariaLabel;
-    var classes = (0, import_react2.useMemo)(function() {
+    var classes = useMemo2(function() {
         return "guwmi-btn icon ".concat(size, " ").concat(color, " ").concat(kind, " ").concat(theme).concat(className ? " " + className : "");
     }, []);
-    return /* @__PURE__ */ import_react2.default.createElement("button", {
+    return /* @__PURE__ */ jsx2("button", {
         className: classes,
         onClick: onClick,
-        "aria-label": ariaLabel
-    }, children);
+        "aria-label": ariaLabel,
+        children: children
+    });
 }
 // src/components/Menu/Menu.tsx
-var import_react4 = __toESM(require("react"));
+import { useState, useMemo as useMemo3 } from "react";
 // src/components/Menu/MenuContext.ts
-var import_react3 = require("react");
-var MenuContext = (0, import_react3.createContext)(null);
+import { createContext } from "react";
+var MenuContext = createContext(null);
 var MenuContext_default = MenuContext;
 // src/components/Menu/Menu.tsx
+import { jsx as jsx3 } from "react/jsx-runtime";
 function Menu(props) {
     var children = props.children, _props_position = props.position, position = _props_position === void 0 ? "bottom-right" : _props_position, width = props.width, ariaLabel = props.ariaLabel;
-    var _ref = _sliced_to_array((0, import_react4.useState)(false), 2), isOpen = _ref[0], setIsOpen = _ref[1];
-    var classes = (0, import_react4.useMemo)(function() {
+    var _useState = _sliced_to_array(useState(false), 2), isOpen = _useState[0], setIsOpen = _useState[1];
+    var classes = useMemo3(function() {
         return "guwmi-menu-container ".concat(position);
     }, []);
-    return /* @__PURE__ */ import_react4.default.createElement("div", {
-        className: classes
-    }, /* @__PURE__ */ import_react4.default.createElement(MenuContext_default.Provider, {
-        value: {
-            isOpen: isOpen,
-            setIsOpen: setIsOpen,
-            ariaLabel: ariaLabel
-        }
-    }, children));
+    return /* @__PURE__ */ jsx3("div", {
+        className: classes,
+        children: /* @__PURE__ */ jsx3(MenuContext_default.Provider, {
+            value: {
+                isOpen: isOpen,
+                setIsOpen: setIsOpen,
+                ariaLabel: ariaLabel
+            },
+            children: children
+        })
+    });
 }
 // src/components/Menu/MenuDropdown.tsx
-var import_react5 = __toESM(require("react"));
+import { useContext, useEffect, useMemo as useMemo4, useRef as useRef2, useState as useState2 } from "react";
+import { Fragment, jsx as jsx4 } from "react/jsx-runtime";
 function MenuDropdown(props) {
     var children = props.children;
-    var _ref = (0, import_react5.useContext)(MenuContext_default), isOpen = _ref.isOpen, ariaLabel = _ref.ariaLabel;
-    var _ref1 = _sliced_to_array((0, import_react5.useState)(false), 2), isAnimating = _ref1[0], setIsAnimating = _ref1[1];
-    var classes = (0, import_react5.useMemo)(function() {
+    var _useContext = useContext(MenuContext_default), isOpen = _useContext.isOpen, ariaLabel = _useContext.ariaLabel;
+    var _useState2 = _sliced_to_array(useState2(false), 2), isAnimating = _useState2[0], setIsAnimating = _useState2[1];
+    var classes = useMemo4(function() {
         return "guwmi-menu-dropdown".concat(isOpen ? " open" : "");
     }, [
         isOpen
     ]);
-    var dropDownRef = (0, import_react5.useRef)(null);
-    (0, import_react5.useEffect)(function() {
+    var dropDownRef = useRef2(null);
+    useEffect(function() {
         var _dropDownRef_current, _dropDownRef_current1;
         (_dropDownRef_current = dropDownRef.current) === null || _dropDownRef_current === void 0 ? void 0 : _dropDownRef_current.addEventListener("transitioncancel", function() {
             return setIsAnimating(false);
@@ -574,47 +457,56 @@ function MenuDropdown(props) {
     }, [
         dropDownRef.current
     ]);
-    (0, import_react5.useEffect)(function() {
+    useEffect(function() {
         if (isOpen) {
             setIsAnimating(true);
         }
     }, [
         isOpen
     ]);
-    return /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, (isOpen || isAnimating) && /* @__PURE__ */ import_react5.default.createElement("nav", {
-        className: classes,
-        ref: dropDownRef,
-        "aria-label": ariaLabel
-    }, /* @__PURE__ */ import_react5.default.createElement("ul", {
-        role: "menubar"
-    }, children)));
+    return /* @__PURE__ */ jsx4(Fragment, {
+        children: (isOpen || isAnimating) && /* @__PURE__ */ jsx4("nav", {
+            className: classes,
+            ref: dropDownRef,
+            "aria-label": ariaLabel,
+            children: /* @__PURE__ */ jsx4("ul", {
+                role: "menubar",
+                children: children
+            })
+        })
+    });
 }
 // src/components/Menu/MenuItem.tsx
-var import_react6 = __toESM(require("react"));
+import { useMemo as useMemo5 } from "react";
+import { jsx as jsx5 } from "react/jsx-runtime";
 function MenuItem(props) {
     var children = props.children, onClick = props.onClick, href = props.href;
-    var classes = (0, import_react6.useMemo)(function() {
+    var classes = useMemo5(function() {
         return "guwmi-menu-item";
     }, []);
-    return /* @__PURE__ */ import_react6.default.createElement("li", {
-        className: classes
-    }, href ? /* @__PURE__ */ import_react6.default.createElement("a", {
-        className: "guwmi-menu-btn",
-        href: href
-    }, children) : /* @__PURE__ */ import_react6.default.createElement("button", {
-        className: "guwmi-menu-btn",
-        onClick: onClick
-    }, children));
+    return /* @__PURE__ */ jsx5("li", {
+        className: classes,
+        children: href ? /* @__PURE__ */ jsx5("a", {
+            className: "guwmi-menu-btn",
+            href: href,
+            children: children
+        }) : /* @__PURE__ */ jsx5("button", {
+            className: "guwmi-menu-btn",
+            onClick: onClick,
+            children: children
+        })
+    });
 }
 // src/components/Menu/MenuTrigger.tsx
-var import_react7 = __toESM(require("react"));
+import React6, { useMemo as useMemo6, useContext as useContext2 } from "react";
+import { jsx as jsx6 } from "react/jsx-runtime";
 function MenuTrigger(props) {
     var children = props.children;
-    var _ref = (0, import_react7.useContext)(MenuContext_default), isOpen = _ref.isOpen, setIsOpen = _ref.setIsOpen;
-    var childrenWithClick = (0, import_react7.useMemo)(function() {
-        return import_react7.default.Children.map(children, function(child) {
-            if (import_react7.default.isValidElement(child)) {
-                return import_react7.default.cloneElement(child, {
+    var _useContext2 = useContext2(MenuContext_default), isOpen = _useContext2.isOpen, setIsOpen = _useContext2.setIsOpen;
+    var childrenWithClick = useMemo6(function() {
+        return React6.Children.map(children, function(child) {
+            if (React6.isValidElement(child)) {
+                return React6.cloneElement(child, {
                     onClick: function() {
                         return setIsOpen(!isOpen);
                     }
@@ -626,43 +518,48 @@ function MenuTrigger(props) {
         children,
         isOpen
     ]);
-    return /* @__PURE__ */ import_react7.default.createElement("div", {
-        className: "guwmi-menu-trigger"
-    }, childrenWithClick);
+    return /* @__PURE__ */ jsx6("div", {
+        className: "guwmi-menu-trigger",
+        children: childrenWithClick
+    });
 }
 // src/components/Tabs/TabsContainer.tsx
-var import_react9 = __toESM(require("react"));
+import { useState as useState3, useId } from "react";
 // src/components/Tabs/TabsContext.ts
-var import_react8 = require("react");
-var TabsContext = (0, import_react8.createContext)(null);
+import { createContext as createContext2 } from "react";
+var TabsContext = createContext2(null);
 var TabsContext_default = TabsContext;
 // src/components/Tabs/TabsContainer.tsx
+import { jsx as jsx7 } from "react/jsx-runtime";
 function TabsContainer(props) {
     var children = props.children;
-    var _ref = _sliced_to_array((0, import_react9.useState)(0), 2), selectedTab = _ref[0], setSelectedTab = _ref[1];
-    var id = (0, import_react9.useId)();
-    return /* @__PURE__ */ import_react9.default.createElement(TabsContext_default.Provider, {
+    var _useState3 = _sliced_to_array(useState3(0), 2), selectedTab = _useState3[0], setSelectedTab = _useState3[1];
+    var id = useId();
+    return /* @__PURE__ */ jsx7(TabsContext_default.Provider, {
         value: {
             id: id,
             selectedTab: selectedTab,
             setSelectedTab: setSelectedTab
-        }
-    }, /* @__PURE__ */ import_react9.default.createElement("div", {
-        className: "guwmi-tabs-container"
-    }, children));
+        },
+        children: /* @__PURE__ */ jsx7("div", {
+            className: "guwmi-tabs-container",
+            children: children
+        })
+    });
 }
 // src/components/Tabs/Tabs.tsx
-var import_react10 = __toESM(require("react"));
+import React8, { useEffect as useEffect2, useMemo as useMemo7, useRef as useRef3, useContext as useContext3 } from "react";
+import { jsx as jsx8, jsxs } from "react/jsx-runtime";
 function Tabs(props) {
     var children = props.children;
-    var selectedTab = (0, import_react10.useContext)(TabsContext_default).selectedTab;
-    var tabsContainer = (0, import_react10.useRef)(null);
-    var slider = (0, import_react10.useRef)(null);
-    var activeTab = (0, import_react10.useRef)(null);
-    var childrenWithIndex = (0, import_react10.useMemo)(function() {
-        return import_react10.default.Children.map(children, function(child, index) {
-            if (import_react10.default.isValidElement(child)) {
-                return import_react10.default.cloneElement(child, {
+    var selectedTab = useContext3(TabsContext_default).selectedTab;
+    var tabsContainer = useRef3(null);
+    var slider = useRef3(null);
+    var activeTab = useRef3(null);
+    var childrenWithIndex = useMemo7(function() {
+        return React8.Children.map(children, function(child, index) {
+            if (React8.isValidElement(child)) {
+                return React8.cloneElement(child, {
                     index: index
                 });
             }
@@ -671,7 +568,7 @@ function Tabs(props) {
     }, [
         children
     ]);
-    (0, import_react10.useEffect)(function() {
+    useEffect2(function() {
         if (tabsContainer.current.querySelector(".guwmi-tab.active")) {
             activeTab.current = tabsContainer.current.querySelector(".guwmi-tab.active");
         }
@@ -679,7 +576,7 @@ function Tabs(props) {
         tabsContainer,
         selectedTab
     ]);
-    (0, import_react10.useEffect)(function() {
+    useEffect2(function() {
         if (activeTab.current) {
             var left = activeTab.current.offsetLeft;
             var width = activeTab.current.offsetWidth;
@@ -689,40 +586,46 @@ function Tabs(props) {
     }, [
         activeTab.current
     ]);
-    return /* @__PURE__ */ import_react10.default.createElement("nav", {
+    return /* @__PURE__ */ jsxs("nav", {
         className: "guwmi-tabs",
         role: "tablist",
-        ref: tabsContainer
-    }, /* @__PURE__ */ import_react10.default.createElement("span", {
-        className: "guwmi-tabs-slider",
-        ref: slider
-    }), childrenWithIndex);
+        ref: tabsContainer,
+        children: [
+            /* @__PURE__ */ jsx8("span", {
+                className: "guwmi-tabs-slider",
+                ref: slider
+            }),
+            childrenWithIndex
+        ]
+    });
 }
 // src/components/Tabs/Tab.tsx
-var import_react11 = __toESM(require("react"));
+import { useContext as useContext4 } from "react";
+import { jsx as jsx9 } from "react/jsx-runtime";
 function Tab(props) {
     var children = props.children, index = props.index;
-    var _ref = (0, import_react11.useContext)(TabsContext_default), id = _ref.id, selectedTab = _ref.selectedTab, setSelectedTab = _ref.setSelectedTab;
-    return /* @__PURE__ */ import_react11.default.createElement("button", {
+    var _useContext4 = useContext4(TabsContext_default), id = _useContext4.id, selectedTab = _useContext4.selectedTab, setSelectedTab = _useContext4.setSelectedTab;
+    return /* @__PURE__ */ jsx9("button", {
         className: "guwmi-tab".concat(selectedTab === index ? " active" : ""),
         onClick: function() {
             return setSelectedTab(index);
         },
         id: "tabs-".concat(id, "-tab-").concat(index),
         "aria-selected": selectedTab === index,
-        "aria-controls": "tabs-".concat(id, "-tabpanel-").concat(index)
-    }, children);
+        "aria-controls": "tabs-".concat(id, "-tabpanel-").concat(index),
+        children: children
+    });
 }
 // src/components/Tabs/TabPanels.tsx
-var import_react13 = __toESM(require("react"));
+import React10, { useContext as useContext5, useMemo as useMemo8, useRef as useRef4, useEffect as useEffect4 } from "react";
 // src/hooks/useWindowWidth.ts
-var import_react12 = require("react");
+import { useState as useState4, useEffect as useEffect3 } from "react";
 function useWindowWidth() {
-    var _ref = _sliced_to_array((0, import_react12.useState)(), 2), windowWidth = _ref[0], setWindowWidth = _ref[1];
+    var _useState4 = _sliced_to_array(useState4(), 2), windowWidth = _useState4[0], setWindowWidth = _useState4[1];
     var handleResize = function() {
         return setWindowWidth(window.innerWidth);
     };
-    (0, import_react12.useEffect)(function() {
+    useEffect3(function() {
         window.addEventListener("resize", handleResize);
         return function() {
             return window.removeEventListener("resize", handleResize);
@@ -731,15 +634,16 @@ function useWindowWidth() {
     return windowWidth;
 }
 // src/components/Tabs/TabPanels.tsx
+import { jsx as jsx10 } from "react/jsx-runtime";
 function TabPanels(props) {
     var children = props.children;
-    var selectedTab = (0, import_react13.useContext)(TabsContext_default).selectedTab;
+    var selectedTab = useContext5(TabsContext_default).selectedTab;
     var windowWidth = useWindowWidth();
-    var panels = (0, import_react13.useRef)(null);
-    var childrenWithIndex = (0, import_react13.useMemo)(function() {
-        return import_react13.default.Children.map(children, function(child, index) {
-            if (import_react13.default.isValidElement(child)) {
-                return import_react13.default.cloneElement(child, {
+    var panels = useRef4(null);
+    var childrenWithIndex = useMemo8(function() {
+        return React10.Children.map(children, function(child, index) {
+            if (React10.isValidElement(child)) {
+                return React10.cloneElement(child, {
                     index: index
                 });
             }
@@ -748,7 +652,7 @@ function TabPanels(props) {
     }, [
         children
     ]);
-    (0, import_react13.useEffect)(function() {
+    useEffect4(function() {
         var active = panels.current.querySelector(".active");
         var height = active.offsetHeight;
         panels.current.style.height = "".concat(height, "px");
@@ -756,31 +660,35 @@ function TabPanels(props) {
         selectedTab,
         windowWidth
     ]);
-    return /* @__PURE__ */ import_react13.default.createElement("div", {
+    return /* @__PURE__ */ jsx10("div", {
         className: "guwmi-tab-panels",
-        ref: panels
-    }, childrenWithIndex);
+        ref: panels,
+        children: childrenWithIndex
+    });
 }
 // src/components/Tabs/TabPanel.tsx
-var import_react14 = __toESM(require("react"));
+import { useContext as useContext6 } from "react";
+import { jsx as jsx11 } from "react/jsx-runtime";
 function TabPanel(props) {
     var children = props.children, index = props.index;
-    var _ref = (0, import_react14.useContext)(TabsContext_default), id = _ref.id, selectedTab = _ref.selectedTab;
-    return /* @__PURE__ */ import_react14.default.createElement("section", {
+    var _useContext6 = useContext6(TabsContext_default), id = _useContext6.id, selectedTab = _useContext6.selectedTab;
+    return /* @__PURE__ */ jsx11("section", {
         className: "guwmi-tab-panel".concat(selectedTab === index ? " active" : ""),
         role: "tabpanel",
         hidden: selectedTab !== index,
         "aria-labelledby": "tabs-".concat(id, "-tab-").concat(index),
-        id: "tabs-".concat(id, "-tabpanel-").concat(index)
-    }, children);
+        id: "tabs-".concat(id, "-tabpanel-").concat(index),
+        children: children
+    });
 }
 // src/components/Table/Table.tsx
-var import_react18 = __toESM(require("react"));
+import { useId as useId3, useMemo as useMemo10 } from "react";
 // src/components/Table/TableRow.tsx
-var import_react15 = __toESM(require("react"));
+import { useMemo as useMemo9 } from "react";
+import { Fragment as Fragment2, jsx as jsx12 } from "react/jsx-runtime";
 function TableRow(props) {
     var headers = props.headers, data = props.data, tableId = props.tableId;
-    var cellData = (0, import_react15.useMemo)(function() {
+    var cellData = useMemo9(function() {
         var arr = [];
         headers.forEach(function(h) {
             if (data[h.key]) {
@@ -796,14 +704,18 @@ function TableRow(props) {
         headers,
         data
     ]);
-    return /* @__PURE__ */ import_react15.default.createElement(import_react15.default.Fragment, null, cellData && /* @__PURE__ */ import_react15.default.createElement("tr", null, cellData.map(function(cell) {
-        return /* @__PURE__ */ import_react15.default.createElement("td", {
-            key: "table-".concat(tableId, "-cell-").concat(cell.id, "-").concat(cell.col)
-        }, cell.value);
-    })));
+    return /* @__PURE__ */ jsx12(Fragment2, {
+        children: cellData && /* @__PURE__ */ jsx12("tr", {
+            children: cellData.map(function(cell) {
+                return /* @__PURE__ */ jsx12("td", {
+                    children: cell.value
+                }, "table-".concat(tableId, "-cell-").concat(cell.id, "-").concat(cell.col));
+            })
+        })
+    });
 }
 // src/components/Inputs/Search/SearchInput.tsx
-var import_react17 = __toESM(require("react"));
+import { useId as useId2 } from "react";
 // node_modules/@tabler/icons-react/dist/esm/tabler-icons-react.mjs
 init_IconAlertCircle();
 init_IconAlertTriangle();
@@ -812,62 +724,98 @@ init_IconChevronRight();
 init_IconSearch();
 init_IconX();
 // src/components/Inputs/Search/SearchInput.tsx
+import { jsx as jsx13, jsxs as jsxs2 } from "react/jsx-runtime";
 function SearchInput(props) {
     var placeholder = props.placeholder;
-    var id = (0, import_react17.useId)();
-    return /* @__PURE__ */ import_react17.default.createElement("div", {
-        className: "guwmi-search-input"
-    }, /* @__PURE__ */ import_react17.default.createElement("span", null, /* @__PURE__ */ import_react17.default.createElement(IconSearch, {
-        size: 18
-    })), /* @__PURE__ */ import_react17.default.createElement("label", {
-        htmlFor: id,
-        className: "guwmi-sr-only"
-    }, "Search"), /* @__PURE__ */ import_react17.default.createElement("input", {
-        id: id,
-        type: "search",
-        placeholder: placeholder ? placeholder : "Search..."
-    }));
+    var id = useId2();
+    return /* @__PURE__ */ jsxs2("div", {
+        className: "guwmi-search-input",
+        children: [
+            /* @__PURE__ */ jsx13("span", {
+                children: /* @__PURE__ */ jsx13(IconSearch, {
+                    size: 18
+                })
+            }),
+            /* @__PURE__ */ jsx13("label", {
+                htmlFor: id,
+                className: "guwmi-sr-only",
+                children: "Search"
+            }),
+            /* @__PURE__ */ jsx13("input", {
+                id: id,
+                type: "search",
+                placeholder: placeholder ? placeholder : "Search..."
+            })
+        ]
+    });
 }
 // src/components/Table/Table.tsx
+import { Fragment as Fragment3, jsx as jsx14, jsxs as jsxs3 } from "react/jsx-runtime";
 function Table(props) {
     var headers = props.headers, rows = props.rows, isCondensed = props.isCondensed, isSearchable = props.isSearchable;
-    var id = (0, import_react18.useId)();
-    var classes = (0, import_react18.useMemo)(function() {
+    var id = useId3();
+    var classes = useMemo10(function() {
         return "guwmi-table-container".concat(isCondensed ? " condensed" : "");
     }, []);
-    return /* @__PURE__ */ import_react18.default.createElement("div", {
-        className: classes
-    }, headers.length > 0 && isSearchable && /* @__PURE__ */ import_react18.default.createElement("div", {
-        className: "guwmi-table-search"
-    }, /* @__PURE__ */ import_react18.default.createElement(SearchInput, null)), /* @__PURE__ */ import_react18.default.createElement("table", {
-        cellPadding: 0,
-        cellSpacing: 0
-    }, headers.length > 0 ? /* @__PURE__ */ import_react18.default.createElement(import_react18.default.Fragment, null, /* @__PURE__ */ import_react18.default.createElement("thead", null, /* @__PURE__ */ import_react18.default.createElement("tr", null, headers.map(function(header, i) {
-        return /* @__PURE__ */ import_react18.default.createElement("th", {
-            key: "table-".concat(id, "-header-").concat(i)
-        }, header.title);
-    }))), /* @__PURE__ */ import_react18.default.createElement("tbody", null, rows.length > 0 ? rows.map(function(row) {
-        return /* @__PURE__ */ import_react18.default.createElement(TableRow, {
-            key: "table-".concat(id, "-row-").concat(row.id),
-            headers: headers,
-            data: row,
-            tableId: id
-        });
-    }) : /* @__PURE__ */ import_react18.default.createElement("tr", null, /* @__PURE__ */ import_react18.default.createElement("td", {
-        colSpan: headers.length
-    }, "There is no data to display in the table")))) : /* @__PURE__ */ import_react18.default.createElement("tbody", null, /* @__PURE__ */ import_react18.default.createElement("tr", null, /* @__PURE__ */ import_react18.default.createElement("td", null, "No column headers provided for the table")))));
+    return /* @__PURE__ */ jsxs3("div", {
+        className: classes,
+        children: [
+            headers.length > 0 && isSearchable && /* @__PURE__ */ jsx14("div", {
+                className: "guwmi-table-search",
+                children: /* @__PURE__ */ jsx14(SearchInput, {})
+            }),
+            /* @__PURE__ */ jsx14("table", {
+                cellPadding: 0,
+                cellSpacing: 0,
+                children: headers.length > 0 ? /* @__PURE__ */ jsxs3(Fragment3, {
+                    children: [
+                        /* @__PURE__ */ jsx14("thead", {
+                            children: /* @__PURE__ */ jsx14("tr", {
+                                children: headers.map(function(header, i) {
+                                    return /* @__PURE__ */ jsx14("th", {
+                                        children: header.title
+                                    }, "table-".concat(id, "-header-").concat(i));
+                                })
+                            })
+                        }),
+                        /* @__PURE__ */ jsx14("tbody", {
+                            children: rows.length > 0 ? rows.map(function(row) {
+                                return /* @__PURE__ */ jsx14(TableRow, {
+                                    headers: headers,
+                                    data: row,
+                                    tableId: id
+                                }, "table-".concat(id, "-row-").concat(row.id));
+                            }) : /* @__PURE__ */ jsx14("tr", {
+                                children: /* @__PURE__ */ jsx14("td", {
+                                    colSpan: headers.length,
+                                    children: "There is no data to display in the table"
+                                })
+                            })
+                        })
+                    ]
+                }) : /* @__PURE__ */ jsx14("tbody", {
+                    children: /* @__PURE__ */ jsx14("tr", {
+                        children: /* @__PURE__ */ jsx14("td", {
+                            children: "No column headers provided for the table"
+                        })
+                    })
+                })
+            })
+        ]
+    });
 }
 // src/components/Accordion/Accordion.tsx
-var import_react20 = __toESM(require("react"));
+import { useState as useState5, useEffect as useEffect5 } from "react";
 // src/components/Accordion/AccordionContext.ts
-var import_react19 = require("react");
-var AccordionContext = (0, import_react19.createContext)(null);
+import { createContext as createContext3 } from "react";
+var AccordionContext = createContext3(null);
 var AccordionContext_default = AccordionContext;
 // src/components/Accordion/Accordion.tsx
+import { jsx as jsx15 } from "react/jsx-runtime";
 function Accordion(props) {
     var children = props.children, defaultOpen = props.defaultOpen;
-    var _ref = _sliced_to_array((0, import_react20.useState)([]), 2), openAccordions = _ref[0], setOpenAccordions = _ref[1];
-    (0, import_react20.useEffect)(function() {
+    var _useState5 = _sliced_to_array(useState5([]), 2), openAccordions = _useState5[0], setOpenAccordions = _useState5[1];
+    useEffect5(function() {
         if (defaultOpen) {
             setOpenAccordions(_to_consumable_array(openAccordions).concat([
                 defaultOpen
@@ -876,26 +824,29 @@ function Accordion(props) {
     }, [
         defaultOpen
     ]);
-    return /* @__PURE__ */ import_react20.default.createElement(AccordionContext_default.Provider, {
+    return /* @__PURE__ */ jsx15(AccordionContext_default.Provider, {
         value: {
             openAccordions: openAccordions,
             setOpenAccordions: setOpenAccordions
-        }
-    }, /* @__PURE__ */ import_react20.default.createElement("div", {
-        className: "guwmi-accordion-container"
-    }, children));
+        },
+        children: /* @__PURE__ */ jsx15("div", {
+            className: "guwmi-accordion-container",
+            children: children
+        })
+    });
 }
 // src/components/Accordion/AccrodionItem.tsx
-var import_react21 = __toESM(require("react"));
+import { useCallback as useCallback2, useContext as useContext7, useRef as useRef5, useState as useState6, useEffect as useEffect6 } from "react";
+import { jsx as jsx16, jsxs as jsxs4 } from "react/jsx-runtime";
 function AccordionItem(props) {
     var children = props.children, title = props.title, id = props.id;
-    var _ref = (0, import_react21.useContext)(AccordionContext_default), openAccordions = _ref.openAccordions, setOpenAccordions = _ref.setOpenAccordions;
+    var _useContext7 = useContext7(AccordionContext_default), openAccordions = _useContext7.openAccordions, setOpenAccordions = _useContext7.setOpenAccordions;
     var windowWidth = useWindowWidth();
-    var panelRef = (0, import_react21.useRef)(null);
-    var contentRef = (0, import_react21.useRef)(null);
-    var _ref1 = _sliced_to_array((0, import_react21.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
-    var _ref2 = _sliced_to_array((0, import_react21.useState)(false), 2), isAnimating = _ref2[0], setIsAnimating = _ref2[1];
-    (0, import_react21.useEffect)(function() {
+    var panelRef = useRef5(null);
+    var contentRef = useRef5(null);
+    var _useState6 = _sliced_to_array(useState6(false), 2), isOpen = _useState6[0], setIsOpen = _useState6[1];
+    var _useState61 = _sliced_to_array(useState6(false), 2), isAnimating = _useState61[0], setIsAnimating = _useState61[1];
+    useEffect6(function() {
         if (openAccordions.includes(id)) {
             setIsOpen(true);
         } else {
@@ -904,7 +855,7 @@ function AccordionItem(props) {
     }, [
         openAccordions
     ]);
-    var open = (0, import_react21.useCallback)(function() {
+    var open = useCallback2(function() {
         setOpenAccordions(_to_consumable_array(openAccordions).concat([
             id
         ]));
@@ -913,7 +864,7 @@ function AccordionItem(props) {
         id,
         openAccordions
     ]);
-    var close = (0, import_react21.useCallback)(function() {
+    var close = useCallback2(function() {
         setOpenAccordions(openAccordions.filter(function(value) {
             return value !== id;
         }));
@@ -922,7 +873,7 @@ function AccordionItem(props) {
         id,
         openAccordions
     ]);
-    (0, import_react21.useEffect)(function() {
+    useEffect6(function() {
         var _panelRef_current, _panelRef_current1;
         (_panelRef_current = panelRef.current) === null || _panelRef_current === void 0 ? void 0 : _panelRef_current.addEventListener("transitioncancel", function() {
             return setIsAnimating(false);
@@ -933,7 +884,7 @@ function AccordionItem(props) {
     }, [
         panelRef.current
     ]);
-    (0, import_react21.useEffect)(function() {
+    useEffect6(function() {
         if (contentRef.current && isOpen) {
             var height = contentRef.current.offsetHeight;
             panelRef.current.style.height = "".concat(height, "px");
@@ -945,33 +896,44 @@ function AccordionItem(props) {
         isOpen,
         windowWidth
     ]);
-    return /* @__PURE__ */ import_react21.default.createElement("div", {
-        className: "guwmi-accordion-item"
-    }, /* @__PURE__ */ import_react21.default.createElement("button", {
-        onClick: function() {
-            return isOpen ? close() : open();
-        },
-        id: "guwmi-accordion-controller-".concat(id),
-        "aria-controls": "guwmi-accordion-panel-".concat(id),
-        "aria-expanded": isOpen,
-        className: isOpen ? "active" : null
-    }, title, /* @__PURE__ */ import_react21.default.createElement(IconChevronRight, {
-        size: 20
-    })), /* @__PURE__ */ import_react21.default.createElement("section", {
-        hidden: !isOpen && !isAnimating,
-        id: "guwmi-accordion-panel-".concat(id),
-        "aria-labelledby": "guwmi-accordion-controller-".concat(id),
-        ref: panelRef
-    }, /* @__PURE__ */ import_react21.default.createElement("div", {
-        className: "guwmi-accordion-panel-content",
-        ref: contentRef
-    }, children)));
+    return /* @__PURE__ */ jsxs4("div", {
+        className: "guwmi-accordion-item",
+        children: [
+            /* @__PURE__ */ jsxs4("button", {
+                onClick: function() {
+                    return isOpen ? close() : open();
+                },
+                id: "guwmi-accordion-controller-".concat(id),
+                "aria-controls": "guwmi-accordion-panel-".concat(id),
+                "aria-expanded": isOpen,
+                className: isOpen ? "active" : null,
+                children: [
+                    title,
+                    /* @__PURE__ */ jsx16(IconChevronRight, {
+                        size: 20
+                    })
+                ]
+            }),
+            /* @__PURE__ */ jsx16("section", {
+                hidden: !isOpen && !isAnimating,
+                id: "guwmi-accordion-panel-".concat(id),
+                "aria-labelledby": "guwmi-accordion-controller-".concat(id),
+                ref: panelRef,
+                children: /* @__PURE__ */ jsx16("div", {
+                    className: "guwmi-accordion-panel-content",
+                    ref: contentRef,
+                    children: children
+                })
+            })
+        ]
+    });
 }
 // src/components/Cards/Cards.tsx
-var import_react22 = __toESM(require("react"));
+import { useMemo as useMemo11 } from "react";
+import { jsx as jsx17 } from "react/jsx-runtime";
 function Cards(props) {
     var children = props.children, _props_columns = props.columns, columns = _props_columns === void 0 ? 3 : _props_columns;
-    var classes = (0, import_react22.useMemo)(function() {
+    var classes = useMemo11(function() {
         var classString = "guwmi-card-grid ";
         switch(columns){
             case 2:
@@ -994,113 +956,141 @@ function Cards(props) {
     }, [
         columns
     ]);
-    return /* @__PURE__ */ import_react22.default.createElement("div", {
-        className: classes
-    }, children);
+    return /* @__PURE__ */ jsx17("div", {
+        className: classes,
+        children: children
+    });
 }
 // src/components/Cards/Card.tsx
-var import_react23 = __toESM(require("react"));
+import { jsx as jsx18, jsxs as jsxs5 } from "react/jsx-runtime";
 function Card(props) {
     var title = props.title, subTitle = props.subTitle, image = props.image, children = props.children;
-    return /* @__PURE__ */ import_react23.default.createElement("div", {
-        className: "guwmi-card"
-    }, image && /* @__PURE__ */ import_react23.default.createElement("img", {
-        src: image,
-        alt: title ? title : "Card image",
-        className: "guwmi-card-image"
-    }), (title || subTitle) && /* @__PURE__ */ import_react23.default.createElement("div", {
-        className: "guwmi-card-section guwmi-card-title"
-    }, title && /* @__PURE__ */ import_react23.default.createElement("h2", null, title), subTitle && /* @__PURE__ */ import_react23.default.createElement("h3", null, subTitle)), children);
+    return /* @__PURE__ */ jsxs5("div", {
+        className: "guwmi-card",
+        children: [
+            image && /* @__PURE__ */ jsx18("img", {
+                src: image,
+                alt: title ? title : "Card image",
+                className: "guwmi-card-image"
+            }),
+            (title || subTitle) && /* @__PURE__ */ jsxs5("div", {
+                className: "guwmi-card-section guwmi-card-title",
+                children: [
+                    title && /* @__PURE__ */ jsx18("h2", {
+                        children: title
+                    }),
+                    subTitle && /* @__PURE__ */ jsx18("h3", {
+                        children: subTitle
+                    })
+                ]
+            }),
+            children
+        ]
+    });
 }
 // src/components/Cards/CardSection.tsx
-var import_react24 = __toESM(require("react"));
+import { jsx as jsx19 } from "react/jsx-runtime";
 function CardSection(props) {
     var children = props.children;
-    return /* @__PURE__ */ import_react24.default.createElement("div", {
-        className: "guwmi-card-section"
-    }, children);
+    return /* @__PURE__ */ jsx19("div", {
+        className: "guwmi-card-section",
+        children: children
+    });
 }
 // src/components/Notification/Notification.tsx
-var import_react25 = __toESM(require("react"));
+import { useMemo as useMemo12, useState as useState7 } from "react";
+import { jsx as jsx20, jsxs as jsxs6 } from "react/jsx-runtime";
 function Notification(props) {
     var kind = props.kind, title = props.title, content = props.content;
-    var _ref = _sliced_to_array((0, import_react25.useState)(true), 2), isVisible = _ref[0], setIsVisible = _ref[1];
-    var titleText = (0, import_react25.useMemo)(function() {
+    var _useState7 = _sliced_to_array(useState7(true), 2), isVisible = _useState7[0], setIsVisible = _useState7[1];
+    var titleText = useMemo12(function() {
         return title ? title : kind.charAt(0).toUpperCase() + kind.slice(1);
     }, [
         title,
         kind
     ]);
-    var classes = (0, import_react25.useMemo)(function() {
+    var classes = useMemo12(function() {
         return "guwmi-notification ".concat(kind);
     }, [
         kind
     ]);
-    return isVisible ? /* @__PURE__ */ import_react25.default.createElement("dialog", {
-        className: classes
-    }, kind === "error" ? /* @__PURE__ */ import_react25.default.createElement(IconAlertCircle, {
-        size: 20,
-        stroke: 3
-    }) : kind === "warning" ? /* @__PURE__ */ import_react25.default.createElement(IconAlertTriangle, {
-        size: 20,
-        stroke: 3
-    }) : /* @__PURE__ */ import_react25.default.createElement(IconCheck, {
-        size: 20,
-        stroke: 3
-    }), /* @__PURE__ */ import_react25.default.createElement("h2", null, titleText), /* @__PURE__ */ import_react25.default.createElement("p", null, content), /* @__PURE__ */ import_react25.default.createElement("button", {
-        onClick: function() {
-            return setIsVisible(false);
-        },
-        "aria-label": "Close notification",
-        tabIndex: 0
-    }, /* @__PURE__ */ import_react25.default.createElement(IconX, {
-        size: 18
-    }))) : null;
+    return isVisible ? /* @__PURE__ */ jsxs6("dialog", {
+        className: classes,
+        children: [
+            kind === "error" ? /* @__PURE__ */ jsx20(IconAlertCircle, {
+                size: 20,
+                stroke: 3
+            }) : kind === "warning" ? /* @__PURE__ */ jsx20(IconAlertTriangle, {
+                size: 20,
+                stroke: 3
+            }) : /* @__PURE__ */ jsx20(IconCheck, {
+                size: 20,
+                stroke: 3
+            }),
+            /* @__PURE__ */ jsx20("h2", {
+                children: titleText
+            }),
+            /* @__PURE__ */ jsx20("p", {
+                children: content
+            }),
+            /* @__PURE__ */ jsx20("button", {
+                onClick: function() {
+                    return setIsVisible(false);
+                },
+                "aria-label": "Close notification",
+                tabIndex: 0,
+                children: /* @__PURE__ */ jsx20(IconX, {
+                    size: 18
+                })
+            })
+        ]
+    }) : null;
 }
 // src/components/Modal/Modal.tsx
-var import_react26 = __toESM(require("react"));
-var import_react_dom = __toESM(require("react-dom"));
+import { useCallback as useCallback3, useEffect as useEffect7, useMemo as useMemo13, useRef as useRef6, useState as useState8 } from "react";
+import ReactDOM from "react-dom";
+import { jsx as jsx21, jsxs as jsxs7 } from "react/jsx-runtime";
 function ModalPortal(props) {
     var children = props.children;
-    var _ref = _sliced_to_array((0, import_react26.useState)(false), 2), hasDocument = _ref[0], setHasDocument = _ref[1];
-    (0, import_react26.useEffect)(function() {
+    var _useState8 = _sliced_to_array(useState8(false), 2), hasDocument = _useState8[0], setHasDocument = _useState8[1];
+    useEffect7(function() {
         setHasDocument(typeof document !== "undefined");
     }, []);
-    return hasDocument ? import_react_dom.default.createPortal(children, document.body) : null;
+    return hasDocument ? ReactDOM.createPortal(children, document.body) : null;
 }
 function Modal(props) {
     var open = props.open, onClose = props.onClose, _props_preventScroll = props.preventScroll, preventScroll = _props_preventScroll === void 0 ? false : _props_preventScroll, _props_size = props.size, size = _props_size === void 0 ? "sm" : _props_size, children = props.children;
-    var _ref = _sliced_to_array((0, import_react26.useState)(false), 2), isAnimating = _ref[0], setIsAnimating = _ref[1];
-    var _ref1 = _sliced_to_array((0, import_react26.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
-    var overlayClasses = (0, import_react26.useMemo)(function() {
+    var _useState8 = _sliced_to_array(useState8(false), 2), isAnimating = _useState8[0], setIsAnimating = _useState8[1];
+    var _useState81 = _sliced_to_array(useState8(false), 2), isOpen = _useState81[0], setIsOpen = _useState81[1];
+    var overlayClasses = useMemo13(function() {
         return "guwmi-modal-overlay".concat(isOpen ? " open" : "");
     }, [
         isOpen
     ]);
-    var classes = (0, import_react26.useMemo)(function() {
+    var classes = useMemo13(function() {
         return "guwmi-modal ".concat(size);
     }, [
         size
     ]);
-    var modalOverlay = (0, import_react26.useRef)(null);
-    var modal = (0, import_react26.useRef)(null);
-    var modalButton = (0, import_react26.useRef)(null);
-    var close = (0, import_react26.useCallback)(function() {
+    var modalOverlay = useRef6(null);
+    var modal = useRef6(null);
+    var modalButton = useRef6(null);
+    var close = useCallback3(function() {
         setIsAnimating(true);
         setIsOpen(false);
         modalButton.current.focus();
     }, []);
-    var setAnimationState = (0, import_react26.useCallback)(function() {
+    var setAnimationState = useCallback3(function() {
         setIsAnimating(false);
     }, []);
-    var closeOutClick = (0, import_react26.useCallback)(function(e) {
+    var closeOutClick = useCallback3(function(e) {
         if (!modal.current.contains(e.target)) {
             close();
         }
     }, [
         modal.current
     ]);
-    var handleTab = (0, import_react26.useCallback)(function(e) {
+    var handleTab = useCallback3(function(e) {
         if (e.key === "Tab") {
             var focusableElements = modal.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
             var firstFocusable = focusableElements[0];
@@ -1120,12 +1110,12 @@ function Modal(props) {
     }, [
         modal.current
     ]);
-    var handleEscape = (0, import_react26.useCallback)(function(e) {
+    var handleEscape = useCallback3(function(e) {
         if (e.key === "Escape") {
             close();
         }
     }, []);
-    (0, import_react26.useEffect)(function() {
+    useEffect7(function() {
         if (open) {
             setIsAnimating(true);
             setIsOpen(true);
@@ -1154,7 +1144,7 @@ function Modal(props) {
     }, [
         open
     ]);
-    (0, import_react26.useEffect)(function() {
+    useEffect7(function() {
         var _modalOverlay_current, _modalOverlay_current1;
         (_modalOverlay_current = modalOverlay.current) === null || _modalOverlay_current === void 0 ? void 0 : _modalOverlay_current.addEventListener("transitioncancel", setAnimationState);
         (_modalOverlay_current1 = modalOverlay.current) === null || _modalOverlay_current1 === void 0 ? void 0 : _modalOverlay_current1.addEventListener("transitionend", setAnimationState);
@@ -1166,73 +1156,82 @@ function Modal(props) {
     }, [
         modalOverlay.current
     ]);
-    (0, import_react26.useEffect)(function() {
+    useEffect7(function() {
         if (!isOpen) {
             onClose();
         }
     }, [
         isOpen
     ]);
-    return /* @__PURE__ */ import_react26.default.createElement(ModalPortal, null, (open || isOpen || isAnimating) && /* @__PURE__ */ import_react26.default.createElement("div", {
-        className: overlayClasses,
-        ref: modalOverlay
-    }, /* @__PURE__ */ import_react26.default.createElement("dialog", {
-        className: classes,
-        ref: modal
-    }, /* @__PURE__ */ import_react26.default.createElement("button", {
-        className: "guwmi-modal-close-button",
-        "aria-label": "Close modal",
-        onClick: function() {
-            return close();
-        }
-    }, /* @__PURE__ */ import_react26.default.createElement(IconX, {
-        size: 20
-    })), children)));
+    return /* @__PURE__ */ jsx21(ModalPortal, {
+        children: (open || isOpen || isAnimating) && /* @__PURE__ */ jsx21("div", {
+            className: overlayClasses,
+            ref: modalOverlay,
+            children: /* @__PURE__ */ jsxs7("dialog", {
+                className: classes,
+                ref: modal,
+                children: [
+                    /* @__PURE__ */ jsx21("button", {
+                        className: "guwmi-modal-close-button",
+                        "aria-label": "Close modal",
+                        onClick: function() {
+                            return close();
+                        },
+                        children: /* @__PURE__ */ jsx21(IconX, {
+                            size: 20
+                        })
+                    }),
+                    children
+                ]
+            })
+        })
+    });
 }
 // src/components/Drawer/Drawer.tsx
-var import_react27 = __toESM(require("react"));
-var import_react_dom2 = __toESM(require("react-dom"));
+import { useCallback as useCallback4, useEffect as useEffect8, useMemo as useMemo14, useRef as useRef7, useState as useState9 } from "react";
+import ReactDOM2 from "react-dom";
+import { jsx as jsx22, jsxs as jsxs8 } from "react/jsx-runtime";
 function DrawerPortal(props) {
     var children = props.children;
-    var _ref = _sliced_to_array((0, import_react27.useState)(false), 2), hasDocument = _ref[0], setHasDocument = _ref[1];
-    (0, import_react27.useEffect)(function() {
+    var _useState9 = _sliced_to_array(useState9(false), 2), hasDocument = _useState9[0], setHasDocument = _useState9[1];
+    useEffect8(function() {
         setHasDocument(typeof document !== "undefined");
     }, []);
-    return hasDocument ? import_react_dom2.default.createPortal(children, document.body) : null;
+    return hasDocument ? ReactDOM2.createPortal(children, document.body) : null;
 }
 function Drawer(props) {
     var open = props.open, onClose = props.onClose, _props_preventScroll = props.preventScroll, preventScroll = _props_preventScroll === void 0 ? false : _props_preventScroll, _props_position = props.position, position = _props_position === void 0 ? "left" : _props_position, children = props.children;
-    var _ref = _sliced_to_array((0, import_react27.useState)(false), 2), isAnimating = _ref[0], setIsAnimating = _ref[1];
-    var _ref1 = _sliced_to_array((0, import_react27.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
-    var overlayClasses = (0, import_react27.useMemo)(function() {
+    var _useState9 = _sliced_to_array(useState9(false), 2), isAnimating = _useState9[0], setIsAnimating = _useState9[1];
+    var _useState91 = _sliced_to_array(useState9(false), 2), isOpen = _useState91[0], setIsOpen = _useState91[1];
+    var overlayClasses = useMemo14(function() {
         return "guwmi-drawer-overlay".concat(isOpen ? " open" : "");
     }, [
         isOpen
     ]);
-    var classes = (0, import_react27.useMemo)(function() {
+    var classes = useMemo14(function() {
         return "guwmi-drawer ".concat(position);
     }, [
         position
     ]);
-    var drawerOverlay = (0, import_react27.useRef)(null);
-    var drawer = (0, import_react27.useRef)(null);
-    var drawerButton = (0, import_react27.useRef)(null);
-    var close = (0, import_react27.useCallback)(function() {
+    var drawerOverlay = useRef7(null);
+    var drawer = useRef7(null);
+    var drawerButton = useRef7(null);
+    var close = useCallback4(function() {
         setIsAnimating(true);
         setIsOpen(false);
         drawerButton.current.focus();
     }, []);
-    var setAnimationState = (0, import_react27.useCallback)(function() {
+    var setAnimationState = useCallback4(function() {
         setIsAnimating(false);
     }, []);
-    var closeOutClick = (0, import_react27.useCallback)(function(e) {
+    var closeOutClick = useCallback4(function(e) {
         if (!drawer.current.contains(e.target)) {
             close();
         }
     }, [
         drawer.current
     ]);
-    var handleTab = (0, import_react27.useCallback)(function(e) {
+    var handleTab = useCallback4(function(e) {
         if (e.key === "Tab") {
             var focusableElements = drawer.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
             var firstFocusable = focusableElements[0];
@@ -1252,12 +1251,12 @@ function Drawer(props) {
     }, [
         drawer.current
     ]);
-    var handleEscape = (0, import_react27.useCallback)(function(e) {
+    var handleEscape = useCallback4(function(e) {
         if (e.key === "Escape") {
             close();
         }
     }, []);
-    (0, import_react27.useEffect)(function() {
+    useEffect8(function() {
         if (open) {
             setIsAnimating(true);
             setIsOpen(true);
@@ -1286,7 +1285,7 @@ function Drawer(props) {
     }, [
         open
     ]);
-    (0, import_react27.useEffect)(function() {
+    useEffect8(function() {
         var _drawerOverlay_current, _drawerOverlay_current1;
         (_drawerOverlay_current = drawerOverlay.current) === null || _drawerOverlay_current === void 0 ? void 0 : _drawerOverlay_current.addEventListener("transitioncancel", setAnimationState);
         (_drawerOverlay_current1 = drawerOverlay.current) === null || _drawerOverlay_current1 === void 0 ? void 0 : _drawerOverlay_current1.addEventListener("transitionend", setAnimationState);
@@ -1298,54 +1297,40 @@ function Drawer(props) {
     }, [
         drawerOverlay.current
     ]);
-    (0, import_react27.useEffect)(function() {
+    useEffect8(function() {
         if (!isOpen) {
             onClose();
         }
     }, [
         isOpen
     ]);
-    return /* @__PURE__ */ import_react27.default.createElement(DrawerPortal, null, (open || isOpen || isAnimating) && /* @__PURE__ */ import_react27.default.createElement("div", {
-        className: overlayClasses,
-        ref: drawerOverlay
-    }, /* @__PURE__ */ import_react27.default.createElement("aside", {
-        className: classes,
-        ref: drawer,
-        "aria-modal": "true",
-        tabIndex: 0
-    }, /* @__PURE__ */ import_react27.default.createElement("button", {
-        className: "guwmi-drawer-close-button",
-        "aria-label": "Close drawer",
-        onClick: function() {
-            return close();
-        }
-    }, /* @__PURE__ */ import_react27.default.createElement(IconX, {
-        size: 20
-    })), children)));
+    return /* @__PURE__ */ jsx22(DrawerPortal, {
+        children: (open || isOpen || isAnimating) && /* @__PURE__ */ jsx22("div", {
+            className: overlayClasses,
+            ref: drawerOverlay,
+            children: /* @__PURE__ */ jsxs8("aside", {
+                className: classes,
+                ref: drawer,
+                "aria-modal": "true",
+                tabIndex: 0,
+                children: [
+                    /* @__PURE__ */ jsx22("button", {
+                        className: "guwmi-drawer-close-button",
+                        "aria-label": "Close drawer",
+                        onClick: function() {
+                            return close();
+                        },
+                        children: /* @__PURE__ */ jsx22(IconX, {
+                            size: 20
+                        })
+                    }),
+                    children
+                ]
+            })
+        })
+    });
 }
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-    Accordion: Accordion,
-    AccordionItem: AccordionItem,
-    Button: Button,
-    Card: Card,
-    CardSection: CardSection,
-    Cards: Cards,
-    Drawer: Drawer,
-    IconButton: IconButton,
-    Menu: Menu,
-    MenuDropdown: MenuDropdown,
-    MenuItem: MenuItem,
-    MenuTrigger: MenuTrigger,
-    Modal: Modal,
-    Notification: Notification,
-    Tab: Tab,
-    TabPanel: TabPanel,
-    TabPanels: TabPanels,
-    Table: Table,
-    Tabs: Tabs,
-    TabsContainer: TabsContainer
-}); /*! Bundled license information:
+export { Accordion, AccordionItem, Button, Card, CardSection, Cards, Drawer, IconButton, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer }; /*! Bundled license information:
 
 @tabler/icons-react/dist/esm/defaultAttributes.mjs:
 @tabler/icons-react/dist/esm/createReactComponent.mjs:
