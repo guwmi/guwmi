@@ -25,15 +25,14 @@
   },
   "homepage": "https://github.com/rudodd/guwmi#readme",
   "peerDependencies": {
-    "node-sass": "^9.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "sass": "^1.86.3",
-    "typescript": "^5.8.3"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@tabler/icons-react": "^3.31.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "tabler-icons-react": "^1.56.0"
+    "sass": "^1.86.3",
+    "typescript": "^5.8.3"
   }
 }

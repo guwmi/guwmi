@@ -12,7 +12,7 @@ import React, {
 import useWindowWidth from '../../hooks/useWindowWidth';
 
 // import components
-import { ChevronRight } from 'tabler-icons-react';
+import { IconChevronRight } from '@tabler/icons-react';
 
 // import context
 import AccordionContext from './AccordionContext';
@@ -75,7 +75,7 @@ export default function AccordionItem(props: ComponentProps) {
         className={isOpen ? 'active' : null}
       >
         {title}
-        <ChevronRight size={20} />
+        <IconChevronRight size={20} />
       </button>
       <section
         hidden={(!isOpen && !isAnimating)}

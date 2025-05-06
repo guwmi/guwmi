@@ -10,7 +10,7 @@ import React, {
 import ReactDOM from 'react-dom';
 
 // import components
-import { X } from 'tabler-icons-react';
+import { IconX } from '@tabler/icons-react';
 
 function ModalPortal(props: PropsWithChildren) {
   const { children } = props;
@@ -139,7 +139,7 @@ export default function Modal(props: ComponentProps) {
               aria-label="Close modal"
               onClick={() => close()}
             >
-              <X size={20} />
+              <IconX size={20} />
             </button>
             {children}
           </dialog>

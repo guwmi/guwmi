@@ -3,11 +3,11 @@ import React, { useMemo, useState } from 'react';
 
 // import components
 import {
-  X,
-  AlertCircle,
-  AlertTriangle,
-  Check
-} from 'tabler-icons-react';
+  IconX,
+  IconAlertCircle,
+  IconAlertTriangle,
+  IconCheck
+} from '@tabler/icons-react';
 
 // component type
 interface ComponentProps {
@@ -27,11 +27,11 @@ export default function Notification(props: ComponentProps) {
     isVisible ? (
       <dialog className={classes}>
         {kind === 'error' ? (
-          <AlertCircle size={20} />
+          <IconAlertCircle size={20} stroke={3} />
         ) : kind === 'warning' ? (
-          <AlertTriangle size={20} />
+          <IconAlertTriangle size={20} stroke={3} />
         ) : (
-          <Check size={20} />
+          <IconCheck size={20} stroke={3} />
         )}
         <h2>{titleText}</h2>
         <p>{content}</p>
@@ -40,7 +40,7 @@ export default function Notification(props: ComponentProps) {
           aria-label="Close notification"
           tabIndex={0}
         >
-          <X size={18} />
+          <IconX size={18} />
         </button>
       </dialog>
     ) : null 
