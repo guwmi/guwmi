@@ -10,7 +10,7 @@ import React, {
 import ReactDOM from 'react-dom';
 
 // import components
-import { IconX } from '@tabler/icons-react';
+import { X } from 'tabler-icons-react';
 
 function DrawerPortal(props: PropsWithChildren) {
   const { children } = props;
@@ -139,7 +139,7 @@ export default function Drawer(props: ComponentProps) {
               aria-label="Close drawer"
               onClick={() => close()}
             >
-              <IconX size={20} />
+              <X size={20} />
             </button>
             {children}
           </aside>

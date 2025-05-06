@@ -32,8 +32,8 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@tabler/icons-react": "^3.31.0",
     "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0"
+    "@types/react-dom": "^19.0.0",
+    "tabler-icons-react": "^1.56.0"
   }
 }
