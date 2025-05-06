@@ -1,5 +1,10 @@
 // import library functionality
-import React, { PropsWithChildren, useMemo } from 'react';
+import React, {
+  useCallback,
+  useMemo,
+  useRef,
+  PropsWithChildren
+} from 'react';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -32,14 +37,21 @@ export default function Button(props: ComponentProps) {
     target = null
   } = props;
   const classes = useMemo(() => `guwmi-btn ${size} ${color} ${kind} ${theme}${className ? ' ' + className : ''}`, []);
+  const button = useRef(null);
+  const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    button.current.focus();
+    if (onClick) {
+      onClick(e);
+    }
+  }, [href, onClick, button.current])
 
   return (
     href ? (
-      <a className={classes} href={href} target={target}>
+      <a className={classes} href={href} onClick={() => handleClick} target={target} ref={button}>
         {children}
       </a>
     ) : (
-      <button className={classes} onClick={onClick}>
+      <button className={classes} onClick={(e) => handleClick(e)} ref={button}>
         {children}
       </button>
     )

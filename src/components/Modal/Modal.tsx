@@ -40,10 +40,12 @@ export default function Modal(props: ComponentProps) {
   const classes = useMemo(() => `guwmi-modal ${size}`, [size]);
   const modalOverlay = useRef<HTMLDivElement>(null);
   const modal = useRef<HTMLDialogElement>(null);
+  const modalButton = useRef<HTMLButtonElement>(null);
 
   const close = useCallback(() => {
     setIsAnimating(true);
     setIsOpen(false);
+    modalButton.current.focus();
   }, []);
 
   const setAnimationState = useCallback(() => {
@@ -86,6 +88,7 @@ export default function Modal(props: ComponentProps) {
     if (open) {
       setIsAnimating(true);
       setIsOpen(true);
+      modalButton.current = document.activeElement as HTMLButtonElement;
       modal.current.focus();
       document.addEventListener('click', closeOutClick);
       document.addEventListener('keydown', handleTab);
