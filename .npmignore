@@ -6,6 +6,9 @@
 # package lock
 package-lock.json
 
+# tsup config
+tsup.config.ts
+
 # misc
 .DS_Store
 *.pem
