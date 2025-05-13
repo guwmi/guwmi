@@ -9,6 +9,8 @@ export default defineConfig(() => {
     },
     format: ['cjs', 'esm'], // Build for commonJS and ESmodules
     dts: true, // Generate declaration file (.d.ts)
+    bundle: true,
+    skipNodeModulesBundle: true,
     splitting: false,
     sourcemap: true,
     clean: false,

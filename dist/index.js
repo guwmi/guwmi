@@ -1,3 +1,4 @@
+// src/index.ts
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -8,19 +9,6 @@ function _array_with_holes(arr) {
 }
 function _array_without_holes(arr) {
     if (Array.isArray(arr)) return _array_like_to_array(arr);
-}
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
 }
 function _iterable_to_array(iter) {
     if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
@@ -55,72 +43,6 @@ function _non_iterable_rest() {
 function _non_iterable_spread() {
     throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-    if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-        ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-    return target;
-}
-function _object_without_properties(source, excluded) {
-    if (source == null) return {};
-    var target = _object_without_properties_loose(source, excluded);
-    var key, i;
-    if (Object.getOwnPropertySymbols) {
-        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-        for(i = 0; i < sourceSymbolKeys.length; i++){
-            key = sourceSymbolKeys[i];
-            if (excluded.indexOf(key) >= 0) continue;
-            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-            target[key] = source[key];
-        }
-    }
-    return target;
-}
-function _object_without_properties_loose(source, excluded) {
-    if (source == null) return {};
-    var target = {};
-    var sourceKeys = Object.keys(source);
-    var key, i;
-    for(i = 0; i < sourceKeys.length; i++){
-        key = sourceKeys[i];
-        if (excluded.indexOf(key) >= 0) continue;
-        target[key] = source[key];
-    }
-    return target;
-}
 function _sliced_to_array(arr, i) {
     return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
 }
@@ -135,225 +57,6 @@ function _unsupported_iterable_to_array(o, minLen) {
     if (n === "Map" || n === "Set") return Array.from(n);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
 }
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __esm = function(fn, res) {
-    return function __init() {
-        return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
-    };
-};
-// node_modules/@tabler/icons-react/dist/esm/defaultAttributes.mjs
-var defaultAttributes;
-var init_defaultAttributes = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/defaultAttributes.mjs": function() {
-        defaultAttributes = {
-            outline: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: 24,
-                height: 24,
-                viewBox: "0 0 24 24",
-                fill: "none",
-                stroke: "currentColor",
-                strokeWidth: 2,
-                strokeLinecap: "round",
-                strokeLinejoin: "round"
-            },
-            filled: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: 24,
-                height: 24,
-                viewBox: "0 0 24 24",
-                fill: "currentColor",
-                stroke: "none"
-            }
-        };
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs
-import { forwardRef, createElement } from "react";
-var createReactComponent;
-var init_createReactComponent = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs": function() {
-        init_defaultAttributes();
-        createReactComponent = function(type, iconName, iconNamePascal, iconNode) {
-            var Component = forwardRef(function(_param, ref) {
-                var _param_color = _param.color, color = _param_color === void 0 ? "currentColor" : _param_color, _param_size = _param.size, size = _param_size === void 0 ? 24 : _param_size, _param_stroke = _param.stroke, stroke = _param_stroke === void 0 ? 2 : _param_stroke, title = _param.title, className = _param.className, children = _param.children, rest = _object_without_properties(_param, [
-                    "color",
-                    "size",
-                    "stroke",
-                    "title",
-                    "className",
-                    "children"
-                ]);
-                return createElement("svg", _object_spread(_object_spread_props(_object_spread({
-                    ref: ref
-                }, defaultAttributes[type]), {
-                    width: size,
-                    height: size,
-                    className: [
-                        "tabler-icon",
-                        "tabler-icon-".concat(iconName),
-                        className
-                    ].join(" ")
-                }), type === "filled" ? {
-                    fill: color
-                } : {
-                    strokeWidth: stroke,
-                    stroke: color
-                }, rest), [
-                    title && createElement("title", {
-                        key: "svg-title"
-                    }, title)
-                ].concat(_to_consumable_array(iconNode.map(function(param) {
-                    var _$_param = _sliced_to_array(param, 2), tag = _$_param[0], attrs = _$_param[1];
-                    return createElement(tag, attrs);
-                })), _to_consumable_array(Array.isArray(children) ? children : [
-                    children
-                ])));
-            });
-            Component.displayName = "".concat(iconNamePascal);
-            return Component;
-        };
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconAlertCircle.mjs
-var IconAlertCircle;
-var init_IconAlertCircle = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconAlertCircle.mjs": function() {
-        init_createReactComponent();
-        IconAlertCircle = createReactComponent("outline", "alert-circle", "IconAlertCircle", [
-            [
-                "path",
-                {
-                    "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0",
-                    "key": "svg-0"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M12 8v4",
-                    "key": "svg-1"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M12 16h.01",
-                    "key": "svg-2"
-                }
-            ]
-        ]);
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconAlertTriangle.mjs
-var IconAlertTriangle;
-var init_IconAlertTriangle = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconAlertTriangle.mjs": function() {
-        init_createReactComponent();
-        IconAlertTriangle = createReactComponent("outline", "alert-triangle", "IconAlertTriangle", [
-            [
-                "path",
-                {
-                    "d": "M12 9v4",
-                    "key": "svg-0"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z",
-                    "key": "svg-1"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M12 16h.01",
-                    "key": "svg-2"
-                }
-            ]
-        ]);
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconCheck.mjs
-var IconCheck;
-var init_IconCheck = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconCheck.mjs": function() {
-        init_createReactComponent();
-        IconCheck = createReactComponent("outline", "check", "IconCheck", [
-            [
-                "path",
-                {
-                    "d": "M5 12l5 5l10 -10",
-                    "key": "svg-0"
-                }
-            ]
-        ]);
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconChevronRight.mjs
-var IconChevronRight;
-var init_IconChevronRight = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconChevronRight.mjs": function() {
-        init_createReactComponent();
-        IconChevronRight = createReactComponent("outline", "chevron-right", "IconChevronRight", [
-            [
-                "path",
-                {
-                    "d": "M9 6l6 6l-6 6",
-                    "key": "svg-0"
-                }
-            ]
-        ]);
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs
-var IconSearch;
-var init_IconSearch = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs": function() {
-        init_createReactComponent();
-        IconSearch = createReactComponent("outline", "search", "IconSearch", [
-            [
-                "path",
-                {
-                    "d": "M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0",
-                    "key": "svg-0"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M21 21l-6 -6",
-                    "key": "svg-1"
-                }
-            ]
-        ]);
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconX.mjs
-var IconX;
-var init_IconX = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconX.mjs": function() {
-        init_createReactComponent();
-        IconX = createReactComponent("outline", "x", "IconX", [
-            [
-                "path",
-                {
-                    "d": "M18 6l-12 12",
-                    "key": "svg-0"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M6 6l12 12",
-                    "key": "svg-1"
-                }
-            ]
-        ]);
-    }
-});
-// src/index.ts
 import "./index-L3NGY2JV.css";
 // src/components/Button/Button.tsx
 import { useCallback, useMemo, useRef } from "react";
@@ -716,14 +419,7 @@ function TableRow(props) {
 }
 // src/components/Inputs/Search/SearchInput.tsx
 import { useId as useId2 } from "react";
-// node_modules/@tabler/icons-react/dist/esm/tabler-icons-react.mjs
-init_IconAlertCircle();
-init_IconAlertTriangle();
-init_IconCheck();
-init_IconChevronRight();
-init_IconSearch();
-init_IconX();
-// src/components/Inputs/Search/SearchInput.tsx
+import { IconSearch } from "@tabler/icons-react";
 import { jsx as jsx13, jsxs as jsxs2 } from "react/jsx-runtime";
 function SearchInput(props) {
     var placeholder = props.placeholder;
@@ -837,6 +533,7 @@ function Accordion(props) {
 }
 // src/components/Accordion/AccrodionItem.tsx
 import { useCallback as useCallback2, useContext as useContext7, useRef as useRef5, useState as useState6, useEffect as useEffect6 } from "react";
+import { IconChevronRight } from "@tabler/icons-react";
 import { jsx as jsx16, jsxs as jsxs4 } from "react/jsx-runtime";
 function AccordionItem(props) {
     var children = props.children, title = props.title, id = props.id;
@@ -999,6 +696,7 @@ function CardSection(props) {
 }
 // src/components/Notification/Notification.tsx
 import { useMemo as useMemo12, useState as useState7 } from "react";
+import { IconX, IconAlertCircle, IconAlertTriangle, IconCheck } from "@tabler/icons-react";
 import { jsx as jsx20, jsxs as jsxs6 } from "react/jsx-runtime";
 function Notification(props) {
     var kind = props.kind, title = props.title, content = props.content;
@@ -1049,6 +747,7 @@ function Notification(props) {
 // src/components/Modal/Modal.tsx
 import { useCallback as useCallback3, useEffect as useEffect7, useMemo as useMemo13, useRef as useRef6, useState as useState8 } from "react";
 import ReactDOM from "react-dom";
+import { IconX as IconX2 } from "@tabler/icons-react";
 import { jsx as jsx21, jsxs as jsxs7 } from "react/jsx-runtime";
 function ModalPortal(props) {
     var children = props.children;
@@ -1177,7 +876,7 @@ function Modal(props) {
                         onClick: function() {
                             return close();
                         },
-                        children: /* @__PURE__ */ jsx21(IconX, {
+                        children: /* @__PURE__ */ jsx21(IconX2, {
                             size: 20
                         })
                     }),
@@ -1190,6 +889,7 @@ function Modal(props) {
 // src/components/Drawer/Drawer.tsx
 import { useCallback as useCallback4, useEffect as useEffect8, useMemo as useMemo14, useRef as useRef7, useState as useState9 } from "react";
 import ReactDOM2 from "react-dom";
+import { IconX as IconX3 } from "@tabler/icons-react";
 import { jsx as jsx22, jsxs as jsxs8 } from "react/jsx-runtime";
 function DrawerPortal(props) {
     var children = props.children;
@@ -1320,7 +1020,7 @@ function Drawer(props) {
                         onClick: function() {
                             return close();
                         },
-                        children: /* @__PURE__ */ jsx22(IconX, {
+                        children: /* @__PURE__ */ jsx22(IconX3, {
                             size: 20
                         })
                     }),
@@ -1330,22 +1030,5 @@ function Drawer(props) {
         })
     });
 }
-export { Accordion, AccordionItem, Button, Card, CardSection, Cards, Drawer, IconButton, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer }; /*! Bundled license information:
-
-@tabler/icons-react/dist/esm/defaultAttributes.mjs:
-@tabler/icons-react/dist/esm/createReactComponent.mjs:
-@tabler/icons-react/dist/esm/icons/IconAlertCircle.mjs:
-@tabler/icons-react/dist/esm/icons/IconAlertTriangle.mjs:
-@tabler/icons-react/dist/esm/icons/IconCheck.mjs:
-@tabler/icons-react/dist/esm/icons/IconChevronRight.mjs:
-@tabler/icons-react/dist/esm/icons/IconSearch.mjs:
-@tabler/icons-react/dist/esm/icons/IconX.mjs:
-@tabler/icons-react/dist/esm/tabler-icons-react.mjs:
-  (**
-   * @license @tabler/icons-react v3.31.0 - MIT
-   *
-   * This source code is licensed under the MIT license.
-   * See the LICENSE file in the root directory of this source tree.
-   *)
-*/ 
+export { Accordion, AccordionItem, Button, Card, CardSection, Cards, Drawer, IconButton, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer };
 //# sourceMappingURL=index.js.map

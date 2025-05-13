@@ -10,19 +10,6 @@ function _array_with_holes(arr) {
 function _array_without_holes(arr) {
     if (Array.isArray(arr)) return _array_like_to_array(arr);
 }
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
 function _iterable_to_array(iter) {
     if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
@@ -56,72 +43,6 @@ function _non_iterable_rest() {
 function _non_iterable_spread() {
     throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-    if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-        ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-    return target;
-}
-function _object_without_properties(source, excluded) {
-    if (source == null) return {};
-    var target = _object_without_properties_loose(source, excluded);
-    var key, i;
-    if (Object.getOwnPropertySymbols) {
-        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-        for(i = 0; i < sourceSymbolKeys.length; i++){
-            key = sourceSymbolKeys[i];
-            if (excluded.indexOf(key) >= 0) continue;
-            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-            target[key] = source[key];
-        }
-    }
-    return target;
-}
-function _object_without_properties_loose(source, excluded) {
-    if (source == null) return {};
-    var target = {};
-    var sourceKeys = Object.keys(source);
-    var key, i;
-    for(i = 0; i < sourceKeys.length; i++){
-        key = sourceKeys[i];
-        if (excluded.indexOf(key) >= 0) continue;
-        target[key] = source[key];
-    }
-    return target;
-}
 function _sliced_to_array(arr, i) {
     return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
 }
@@ -146,11 +67,6 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __esm = function(fn, res) {
-    return function __init() {
-        return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
-    };
-};
 var __export = function(target, all) {
     for(var name in all)__defProp(target, name, {
         get: all[name],
@@ -203,218 +119,6 @@ var __toCommonJS = function(mod) {
         value: true
     }), mod);
 };
-// node_modules/@tabler/icons-react/dist/esm/defaultAttributes.mjs
-var defaultAttributes;
-var init_defaultAttributes = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/defaultAttributes.mjs": function() {
-        defaultAttributes = {
-            outline: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: 24,
-                height: 24,
-                viewBox: "0 0 24 24",
-                fill: "none",
-                stroke: "currentColor",
-                strokeWidth: 2,
-                strokeLinecap: "round",
-                strokeLinejoin: "round"
-            },
-            filled: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: 24,
-                height: 24,
-                viewBox: "0 0 24 24",
-                fill: "currentColor",
-                stroke: "none"
-            }
-        };
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs
-var import_react16, createReactComponent;
-var init_createReactComponent = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs": function() {
-        import_react16 = require("react");
-        init_defaultAttributes();
-        createReactComponent = function(type, iconName, iconNamePascal, iconNode) {
-            var Component = (0, import_react16.forwardRef)(function(_param, ref) {
-                var _param_color = _param.color, color = _param_color === void 0 ? "currentColor" : _param_color, _param_size = _param.size, size = _param_size === void 0 ? 24 : _param_size, _param_stroke = _param.stroke, stroke = _param_stroke === void 0 ? 2 : _param_stroke, title = _param.title, className = _param.className, children = _param.children, rest = _object_without_properties(_param, [
-                    "color",
-                    "size",
-                    "stroke",
-                    "title",
-                    "className",
-                    "children"
-                ]);
-                return (0, import_react16.createElement)("svg", _object_spread(_object_spread_props(_object_spread({
-                    ref: ref
-                }, defaultAttributes[type]), {
-                    width: size,
-                    height: size,
-                    className: [
-                        "tabler-icon",
-                        "tabler-icon-".concat(iconName),
-                        className
-                    ].join(" ")
-                }), type === "filled" ? {
-                    fill: color
-                } : {
-                    strokeWidth: stroke,
-                    stroke: color
-                }, rest), [
-                    title && (0, import_react16.createElement)("title", {
-                        key: "svg-title"
-                    }, title)
-                ].concat(_to_consumable_array(iconNode.map(function(param) {
-                    var _$_param = _sliced_to_array(param, 2), tag = _$_param[0], attrs = _$_param[1];
-                    return (0, import_react16.createElement)(tag, attrs);
-                })), _to_consumable_array(Array.isArray(children) ? children : [
-                    children
-                ])));
-            });
-            Component.displayName = "".concat(iconNamePascal);
-            return Component;
-        };
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconAlertCircle.mjs
-var IconAlertCircle;
-var init_IconAlertCircle = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconAlertCircle.mjs": function() {
-        init_createReactComponent();
-        IconAlertCircle = createReactComponent("outline", "alert-circle", "IconAlertCircle", [
-            [
-                "path",
-                {
-                    "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0",
-                    "key": "svg-0"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M12 8v4",
-                    "key": "svg-1"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M12 16h.01",
-                    "key": "svg-2"
-                }
-            ]
-        ]);
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconAlertTriangle.mjs
-var IconAlertTriangle;
-var init_IconAlertTriangle = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconAlertTriangle.mjs": function() {
-        init_createReactComponent();
-        IconAlertTriangle = createReactComponent("outline", "alert-triangle", "IconAlertTriangle", [
-            [
-                "path",
-                {
-                    "d": "M12 9v4",
-                    "key": "svg-0"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z",
-                    "key": "svg-1"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M12 16h.01",
-                    "key": "svg-2"
-                }
-            ]
-        ]);
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconCheck.mjs
-var IconCheck;
-var init_IconCheck = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconCheck.mjs": function() {
-        init_createReactComponent();
-        IconCheck = createReactComponent("outline", "check", "IconCheck", [
-            [
-                "path",
-                {
-                    "d": "M5 12l5 5l10 -10",
-                    "key": "svg-0"
-                }
-            ]
-        ]);
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconChevronRight.mjs
-var IconChevronRight;
-var init_IconChevronRight = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconChevronRight.mjs": function() {
-        init_createReactComponent();
-        IconChevronRight = createReactComponent("outline", "chevron-right", "IconChevronRight", [
-            [
-                "path",
-                {
-                    "d": "M9 6l6 6l-6 6",
-                    "key": "svg-0"
-                }
-            ]
-        ]);
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs
-var IconSearch;
-var init_IconSearch = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs": function() {
-        init_createReactComponent();
-        IconSearch = createReactComponent("outline", "search", "IconSearch", [
-            [
-                "path",
-                {
-                    "d": "M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0",
-                    "key": "svg-0"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M21 21l-6 -6",
-                    "key": "svg-1"
-                }
-            ]
-        ]);
-    }
-});
-// node_modules/@tabler/icons-react/dist/esm/icons/IconX.mjs
-var IconX;
-var init_IconX = __esm({
-    "node_modules/@tabler/icons-react/dist/esm/icons/IconX.mjs": function() {
-        init_createReactComponent();
-        IconX = createReactComponent("outline", "x", "IconX", [
-            [
-                "path",
-                {
-                    "d": "M18 6l-12 12",
-                    "key": "svg-0"
-                }
-            ],
-            [
-                "path",
-                {
-                    "d": "M6 6l12 12",
-                    "key": "svg-1"
-                }
-            ]
-        ]);
-    }
-});
 // src/index.ts
 var index_exports = {};
 __export(index_exports, {
@@ -808,7 +512,7 @@ function TabPanel(props) {
     });
 }
 // src/components/Table/Table.tsx
-var import_react18 = require("react");
+var import_react17 = require("react");
 // src/components/Table/TableRow.tsx
 var import_react15 = require("react");
 var import_jsx_runtime12 = require("react/jsx-runtime");
@@ -841,24 +545,17 @@ function TableRow(props) {
     });
 }
 // src/components/Inputs/Search/SearchInput.tsx
-var import_react17 = require("react");
-// node_modules/@tabler/icons-react/dist/esm/tabler-icons-react.mjs
-init_IconAlertCircle();
-init_IconAlertTriangle();
-init_IconCheck();
-init_IconChevronRight();
-init_IconSearch();
-init_IconX();
-// src/components/Inputs/Search/SearchInput.tsx
+var import_react16 = require("react");
+var import_icons_react = require("@tabler/icons-react");
 var import_jsx_runtime13 = require("react/jsx-runtime");
 function SearchInput(props) {
     var placeholder = props.placeholder;
-    var id = (0, import_react17.useId)();
+    var id = (0, import_react16.useId)();
     return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", {
         className: "guwmi-search-input",
         children: [
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", {
-                children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(IconSearch, {
+                children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_icons_react.IconSearch, {
                     size: 18
                 })
             }),
@@ -879,8 +576,8 @@ function SearchInput(props) {
 var import_jsx_runtime14 = require("react/jsx-runtime");
 function Table(props) {
     var headers = props.headers, rows = props.rows, isCondensed = props.isCondensed, isSearchable = props.isSearchable;
-    var id = (0, import_react18.useId)();
-    var classes = (0, import_react18.useMemo)(function() {
+    var id = (0, import_react17.useId)();
+    var classes = (0, import_react17.useMemo)(function() {
         return "guwmi-table-container".concat(isCondensed ? " condensed" : "");
     }, []);
     return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", {
@@ -931,17 +628,17 @@ function Table(props) {
     });
 }
 // src/components/Accordion/Accordion.tsx
-var import_react20 = require("react");
-// src/components/Accordion/AccordionContext.ts
 var import_react19 = require("react");
-var AccordionContext = (0, import_react19.createContext)(null);
+// src/components/Accordion/AccordionContext.ts
+var import_react18 = require("react");
+var AccordionContext = (0, import_react18.createContext)(null);
 var AccordionContext_default = AccordionContext;
 // src/components/Accordion/Accordion.tsx
 var import_jsx_runtime15 = require("react/jsx-runtime");
 function Accordion(props) {
     var children = props.children, defaultOpen = props.defaultOpen;
-    var _ref = _sliced_to_array((0, import_react20.useState)([]), 2), openAccordions = _ref[0], setOpenAccordions = _ref[1];
-    (0, import_react20.useEffect)(function() {
+    var _ref = _sliced_to_array((0, import_react19.useState)([]), 2), openAccordions = _ref[0], setOpenAccordions = _ref[1];
+    (0, import_react19.useEffect)(function() {
         if (defaultOpen) {
             setOpenAccordions(_to_consumable_array(openAccordions).concat([
                 defaultOpen
@@ -962,17 +659,18 @@ function Accordion(props) {
     });
 }
 // src/components/Accordion/AccrodionItem.tsx
-var import_react21 = require("react");
+var import_react20 = require("react");
+var import_icons_react2 = require("@tabler/icons-react");
 var import_jsx_runtime16 = require("react/jsx-runtime");
 function AccordionItem(props) {
     var children = props.children, title = props.title, id = props.id;
-    var _ref = (0, import_react21.useContext)(AccordionContext_default), openAccordions = _ref.openAccordions, setOpenAccordions = _ref.setOpenAccordions;
+    var _ref = (0, import_react20.useContext)(AccordionContext_default), openAccordions = _ref.openAccordions, setOpenAccordions = _ref.setOpenAccordions;
     var windowWidth = useWindowWidth();
-    var panelRef = (0, import_react21.useRef)(null);
-    var contentRef = (0, import_react21.useRef)(null);
-    var _ref1 = _sliced_to_array((0, import_react21.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
-    var _ref2 = _sliced_to_array((0, import_react21.useState)(false), 2), isAnimating = _ref2[0], setIsAnimating = _ref2[1];
-    (0, import_react21.useEffect)(function() {
+    var panelRef = (0, import_react20.useRef)(null);
+    var contentRef = (0, import_react20.useRef)(null);
+    var _ref1 = _sliced_to_array((0, import_react20.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
+    var _ref2 = _sliced_to_array((0, import_react20.useState)(false), 2), isAnimating = _ref2[0], setIsAnimating = _ref2[1];
+    (0, import_react20.useEffect)(function() {
         if (openAccordions.includes(id)) {
             setIsOpen(true);
         } else {
@@ -981,7 +679,7 @@ function AccordionItem(props) {
     }, [
         openAccordions
     ]);
-    var open = (0, import_react21.useCallback)(function() {
+    var open = (0, import_react20.useCallback)(function() {
         setOpenAccordions(_to_consumable_array(openAccordions).concat([
             id
         ]));
@@ -990,7 +688,7 @@ function AccordionItem(props) {
         id,
         openAccordions
     ]);
-    var close = (0, import_react21.useCallback)(function() {
+    var close = (0, import_react20.useCallback)(function() {
         setOpenAccordions(openAccordions.filter(function(value) {
             return value !== id;
         }));
@@ -999,7 +697,7 @@ function AccordionItem(props) {
         id,
         openAccordions
     ]);
-    (0, import_react21.useEffect)(function() {
+    (0, import_react20.useEffect)(function() {
         var _panelRef_current, _panelRef_current1;
         (_panelRef_current = panelRef.current) === null || _panelRef_current === void 0 ? void 0 : _panelRef_current.addEventListener("transitioncancel", function() {
             return setIsAnimating(false);
@@ -1010,7 +708,7 @@ function AccordionItem(props) {
     }, [
         panelRef.current
     ]);
-    (0, import_react21.useEffect)(function() {
+    (0, import_react20.useEffect)(function() {
         if (contentRef.current && isOpen) {
             var height = contentRef.current.offsetHeight;
             panelRef.current.style.height = "".concat(height, "px");
@@ -1035,7 +733,7 @@ function AccordionItem(props) {
                 className: isOpen ? "active" : null,
                 children: [
                     title,
-                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconChevronRight, {
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_icons_react2.IconChevronRight, {
                         size: 20
                     })
                 ]
@@ -1055,11 +753,11 @@ function AccordionItem(props) {
     });
 }
 // src/components/Cards/Cards.tsx
-var import_react22 = require("react");
+var import_react21 = require("react");
 var import_jsx_runtime17 = require("react/jsx-runtime");
 function Cards(props) {
     var children = props.children, _props_columns = props.columns, columns = _props_columns === void 0 ? 3 : _props_columns;
-    var classes = (0, import_react22.useMemo)(function() {
+    var classes = (0, import_react21.useMemo)(function() {
         var classString = "guwmi-card-grid ";
         switch(columns){
             case 2:
@@ -1124,18 +822,19 @@ function CardSection(props) {
     });
 }
 // src/components/Notification/Notification.tsx
-var import_react23 = require("react");
+var import_react22 = require("react");
+var import_icons_react3 = require("@tabler/icons-react");
 var import_jsx_runtime20 = require("react/jsx-runtime");
 function Notification(props) {
     var kind = props.kind, title = props.title, content = props.content;
-    var _ref = _sliced_to_array((0, import_react23.useState)(true), 2), isVisible = _ref[0], setIsVisible = _ref[1];
-    var titleText = (0, import_react23.useMemo)(function() {
+    var _ref = _sliced_to_array((0, import_react22.useState)(true), 2), isVisible = _ref[0], setIsVisible = _ref[1];
+    var titleText = (0, import_react22.useMemo)(function() {
         return title ? title : kind.charAt(0).toUpperCase() + kind.slice(1);
     }, [
         title,
         kind
     ]);
-    var classes = (0, import_react23.useMemo)(function() {
+    var classes = (0, import_react22.useMemo)(function() {
         return "guwmi-notification ".concat(kind);
     }, [
         kind
@@ -1143,13 +842,13 @@ function Notification(props) {
     return isVisible ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("dialog", {
         className: classes,
         children: [
-            kind === "error" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(IconAlertCircle, {
+            kind === "error" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_icons_react3.IconAlertCircle, {
                 size: 20,
                 stroke: 3
-            }) : kind === "warning" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(IconAlertTriangle, {
+            }) : kind === "warning" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_icons_react3.IconAlertTriangle, {
                 size: 20,
                 stroke: 3
-            }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(IconCheck, {
+            }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_icons_react3.IconCheck, {
                 size: 20,
                 stroke: 3
             }),
@@ -1165,7 +864,7 @@ function Notification(props) {
                 },
                 "aria-label": "Close notification",
                 tabIndex: 0,
-                children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(IconX, {
+                children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_icons_react3.IconX, {
                     size: 18
                 })
             })
@@ -1173,50 +872,51 @@ function Notification(props) {
     }) : null;
 }
 // src/components/Modal/Modal.tsx
-var import_react24 = require("react");
+var import_react23 = require("react");
 var import_react_dom = __toESM(require("react-dom"), 1);
+var import_icons_react4 = require("@tabler/icons-react");
 var import_jsx_runtime21 = require("react/jsx-runtime");
 function ModalPortal(props) {
     var children = props.children;
-    var _ref = _sliced_to_array((0, import_react24.useState)(false), 2), hasDocument = _ref[0], setHasDocument = _ref[1];
-    (0, import_react24.useEffect)(function() {
+    var _ref = _sliced_to_array((0, import_react23.useState)(false), 2), hasDocument = _ref[0], setHasDocument = _ref[1];
+    (0, import_react23.useEffect)(function() {
         setHasDocument(typeof document !== "undefined");
     }, []);
     return hasDocument ? import_react_dom.default.createPortal(children, document.body) : null;
 }
 function Modal(props) {
     var open = props.open, onClose = props.onClose, _props_preventScroll = props.preventScroll, preventScroll = _props_preventScroll === void 0 ? false : _props_preventScroll, _props_size = props.size, size = _props_size === void 0 ? "sm" : _props_size, children = props.children;
-    var _ref = _sliced_to_array((0, import_react24.useState)(false), 2), isAnimating = _ref[0], setIsAnimating = _ref[1];
-    var _ref1 = _sliced_to_array((0, import_react24.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
-    var overlayClasses = (0, import_react24.useMemo)(function() {
+    var _ref = _sliced_to_array((0, import_react23.useState)(false), 2), isAnimating = _ref[0], setIsAnimating = _ref[1];
+    var _ref1 = _sliced_to_array((0, import_react23.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
+    var overlayClasses = (0, import_react23.useMemo)(function() {
         return "guwmi-modal-overlay".concat(isOpen ? " open" : "");
     }, [
         isOpen
     ]);
-    var classes = (0, import_react24.useMemo)(function() {
+    var classes = (0, import_react23.useMemo)(function() {
         return "guwmi-modal ".concat(size);
     }, [
         size
     ]);
-    var modalOverlay = (0, import_react24.useRef)(null);
-    var modal = (0, import_react24.useRef)(null);
-    var modalButton = (0, import_react24.useRef)(null);
-    var close = (0, import_react24.useCallback)(function() {
+    var modalOverlay = (0, import_react23.useRef)(null);
+    var modal = (0, import_react23.useRef)(null);
+    var modalButton = (0, import_react23.useRef)(null);
+    var close = (0, import_react23.useCallback)(function() {
         setIsAnimating(true);
         setIsOpen(false);
         modalButton.current.focus();
     }, []);
-    var setAnimationState = (0, import_react24.useCallback)(function() {
+    var setAnimationState = (0, import_react23.useCallback)(function() {
         setIsAnimating(false);
     }, []);
-    var closeOutClick = (0, import_react24.useCallback)(function(e) {
+    var closeOutClick = (0, import_react23.useCallback)(function(e) {
         if (!modal.current.contains(e.target)) {
             close();
         }
     }, [
         modal.current
     ]);
-    var handleTab = (0, import_react24.useCallback)(function(e) {
+    var handleTab = (0, import_react23.useCallback)(function(e) {
         if (e.key === "Tab") {
             var focusableElements = modal.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
             var firstFocusable = focusableElements[0];
@@ -1236,12 +936,12 @@ function Modal(props) {
     }, [
         modal.current
     ]);
-    var handleEscape = (0, import_react24.useCallback)(function(e) {
+    var handleEscape = (0, import_react23.useCallback)(function(e) {
         if (e.key === "Escape") {
             close();
         }
     }, []);
-    (0, import_react24.useEffect)(function() {
+    (0, import_react23.useEffect)(function() {
         if (open) {
             setIsAnimating(true);
             setIsOpen(true);
@@ -1270,7 +970,7 @@ function Modal(props) {
     }, [
         open
     ]);
-    (0, import_react24.useEffect)(function() {
+    (0, import_react23.useEffect)(function() {
         var _modalOverlay_current, _modalOverlay_current1;
         (_modalOverlay_current = modalOverlay.current) === null || _modalOverlay_current === void 0 ? void 0 : _modalOverlay_current.addEventListener("transitioncancel", setAnimationState);
         (_modalOverlay_current1 = modalOverlay.current) === null || _modalOverlay_current1 === void 0 ? void 0 : _modalOverlay_current1.addEventListener("transitionend", setAnimationState);
@@ -1282,7 +982,7 @@ function Modal(props) {
     }, [
         modalOverlay.current
     ]);
-    (0, import_react24.useEffect)(function() {
+    (0, import_react23.useEffect)(function() {
         if (!isOpen) {
             onClose();
         }
@@ -1303,7 +1003,7 @@ function Modal(props) {
                         onClick: function() {
                             return close();
                         },
-                        children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(IconX, {
+                        children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_icons_react4.IconX, {
                             size: 20
                         })
                     }),
@@ -1314,50 +1014,51 @@ function Modal(props) {
     });
 }
 // src/components/Drawer/Drawer.tsx
-var import_react25 = require("react");
+var import_react24 = require("react");
 var import_react_dom2 = __toESM(require("react-dom"), 1);
+var import_icons_react5 = require("@tabler/icons-react");
 var import_jsx_runtime22 = require("react/jsx-runtime");
 function DrawerPortal(props) {
     var children = props.children;
-    var _ref = _sliced_to_array((0, import_react25.useState)(false), 2), hasDocument = _ref[0], setHasDocument = _ref[1];
-    (0, import_react25.useEffect)(function() {
+    var _ref = _sliced_to_array((0, import_react24.useState)(false), 2), hasDocument = _ref[0], setHasDocument = _ref[1];
+    (0, import_react24.useEffect)(function() {
         setHasDocument(typeof document !== "undefined");
     }, []);
     return hasDocument ? import_react_dom2.default.createPortal(children, document.body) : null;
 }
 function Drawer(props) {
     var open = props.open, onClose = props.onClose, _props_preventScroll = props.preventScroll, preventScroll = _props_preventScroll === void 0 ? false : _props_preventScroll, _props_position = props.position, position = _props_position === void 0 ? "left" : _props_position, children = props.children;
-    var _ref = _sliced_to_array((0, import_react25.useState)(false), 2), isAnimating = _ref[0], setIsAnimating = _ref[1];
-    var _ref1 = _sliced_to_array((0, import_react25.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
-    var overlayClasses = (0, import_react25.useMemo)(function() {
+    var _ref = _sliced_to_array((0, import_react24.useState)(false), 2), isAnimating = _ref[0], setIsAnimating = _ref[1];
+    var _ref1 = _sliced_to_array((0, import_react24.useState)(false), 2), isOpen = _ref1[0], setIsOpen = _ref1[1];
+    var overlayClasses = (0, import_react24.useMemo)(function() {
         return "guwmi-drawer-overlay".concat(isOpen ? " open" : "");
     }, [
         isOpen
     ]);
-    var classes = (0, import_react25.useMemo)(function() {
+    var classes = (0, import_react24.useMemo)(function() {
         return "guwmi-drawer ".concat(position);
     }, [
         position
     ]);
-    var drawerOverlay = (0, import_react25.useRef)(null);
-    var drawer = (0, import_react25.useRef)(null);
-    var drawerButton = (0, import_react25.useRef)(null);
-    var close = (0, import_react25.useCallback)(function() {
+    var drawerOverlay = (0, import_react24.useRef)(null);
+    var drawer = (0, import_react24.useRef)(null);
+    var drawerButton = (0, import_react24.useRef)(null);
+    var close = (0, import_react24.useCallback)(function() {
         setIsAnimating(true);
         setIsOpen(false);
         drawerButton.current.focus();
     }, []);
-    var setAnimationState = (0, import_react25.useCallback)(function() {
+    var setAnimationState = (0, import_react24.useCallback)(function() {
         setIsAnimating(false);
     }, []);
-    var closeOutClick = (0, import_react25.useCallback)(function(e) {
+    var closeOutClick = (0, import_react24.useCallback)(function(e) {
         if (!drawer.current.contains(e.target)) {
             close();
         }
     }, [
         drawer.current
     ]);
-    var handleTab = (0, import_react25.useCallback)(function(e) {
+    var handleTab = (0, import_react24.useCallback)(function(e) {
         if (e.key === "Tab") {
             var focusableElements = drawer.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
             var firstFocusable = focusableElements[0];
@@ -1377,12 +1078,12 @@ function Drawer(props) {
     }, [
         drawer.current
     ]);
-    var handleEscape = (0, import_react25.useCallback)(function(e) {
+    var handleEscape = (0, import_react24.useCallback)(function(e) {
         if (e.key === "Escape") {
             close();
         }
     }, []);
-    (0, import_react25.useEffect)(function() {
+    (0, import_react24.useEffect)(function() {
         if (open) {
             setIsAnimating(true);
             setIsOpen(true);
@@ -1411,7 +1112,7 @@ function Drawer(props) {
     }, [
         open
     ]);
-    (0, import_react25.useEffect)(function() {
+    (0, import_react24.useEffect)(function() {
         var _drawerOverlay_current, _drawerOverlay_current1;
         (_drawerOverlay_current = drawerOverlay.current) === null || _drawerOverlay_current === void 0 ? void 0 : _drawerOverlay_current.addEventListener("transitioncancel", setAnimationState);
         (_drawerOverlay_current1 = drawerOverlay.current) === null || _drawerOverlay_current1 === void 0 ? void 0 : _drawerOverlay_current1.addEventListener("transitionend", setAnimationState);
@@ -1423,7 +1124,7 @@ function Drawer(props) {
     }, [
         drawerOverlay.current
     ]);
-    (0, import_react25.useEffect)(function() {
+    (0, import_react24.useEffect)(function() {
         if (!isOpen) {
             onClose();
         }
@@ -1446,7 +1147,7 @@ function Drawer(props) {
                         onClick: function() {
                             return close();
                         },
-                        children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(IconX, {
+                        children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_icons_react5.IconX, {
                             size: 20
                         })
                     }),
@@ -1478,22 +1179,5 @@ function Drawer(props) {
     Table: Table,
     Tabs: Tabs,
     TabsContainer: TabsContainer
-}); /*! Bundled license information:
-
-@tabler/icons-react/dist/esm/defaultAttributes.mjs:
-@tabler/icons-react/dist/esm/createReactComponent.mjs:
-@tabler/icons-react/dist/esm/icons/IconAlertCircle.mjs:
-@tabler/icons-react/dist/esm/icons/IconAlertTriangle.mjs:
-@tabler/icons-react/dist/esm/icons/IconCheck.mjs:
-@tabler/icons-react/dist/esm/icons/IconChevronRight.mjs:
-@tabler/icons-react/dist/esm/icons/IconSearch.mjs:
-@tabler/icons-react/dist/esm/icons/IconX.mjs:
-@tabler/icons-react/dist/esm/tabler-icons-react.mjs:
-  (**
-   * @license @tabler/icons-react v3.31.0 - MIT
-   *
-   * This source code is licensed under the MIT license.
-   * See the LICENSE file in the root directory of this source tree.
-   *)
-*/ 
+});
 //# sourceMappingURL=index.cjs.map
