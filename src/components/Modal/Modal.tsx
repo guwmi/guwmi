@@ -1,27 +1,18 @@
 // import library functionality
-import React, {
+import {
   useCallback,
   useEffect,
   useMemo,
   useRef,
-  useState,
   PropsWithChildren
 } from 'react';
-import ReactDOM from 'react-dom';
+
+// import custom functionality
+import useAnimation from '../../hooks/useAnimation';
 
 // import components
+import BodyPortal from '../utils/BodyPortal';
 import { IconX } from '@tabler/icons-react';
-
-function ModalPortal(props: PropsWithChildren) {
-  const { children } = props;
-  const [hasDocument, setHasDocument] = useState<boolean>(false);
-
-  useEffect(() => {
-    setHasDocument((typeof document !== 'undefined'));
-  }, [])
-
-  return hasDocument ? ReactDOM.createPortal(children, document.body) : null;
-}
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -34,27 +25,15 @@ interface ComponentProps extends PropsWithChildren {
 export default function Modal(props: ComponentProps) {
 
   const { open, onClose, preventScroll = false, size = 'sm', children } = props;
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const overlayClasses = useMemo(() => `guwmi-modal-overlay${isOpen ? ' open' : ''}`, [isOpen])
   const classes = useMemo(() => `guwmi-modal ${size}`, [size]);
   const modalOverlay = useRef<HTMLDivElement>(null);
   const modal = useRef<HTMLDialogElement>(null);
   const modalButton = useRef<HTMLButtonElement>(null);
-
-  const close = useCallback(() => {
-    setIsAnimating(true);
-    setIsOpen(false);
-    modalButton.current.focus();
-  }, []);
-
-  const setAnimationState = useCallback(() => {
-    setIsAnimating(false);
-  }, [])
+  const { isVisible } = useAnimation(open, 'open', modalOverlay);
 
   const closeOutClick = useCallback((e: MouseEvent) => {
     if (!modal.current.contains(e.target as Node)) {
-      close();
+      onClose();;
     }
   }, [modal.current]);
 
@@ -79,17 +58,15 @@ export default function Modal(props: ComponentProps) {
 
   const handleEscape = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
-      close();
+      onClose();;
     }
   }, []);
 
   useEffect(() => {
 
     if (open) {
-      setIsAnimating(true);
-      setIsOpen(true);
       modalButton.current = document.activeElement as HTMLButtonElement;
-      modal.current.focus();
+      setTimeout(() => modal.current?.focus(), 25);
       document.addEventListener('click', closeOutClick);
       document.addEventListener('keydown', handleTab);
       document.addEventListener('keydown', handleEscape);
@@ -113,38 +90,21 @@ export default function Modal(props: ComponentProps) {
     }
   }, [open]);
 
-  useEffect(() => {
-    modalOverlay.current?.addEventListener('transitioncancel', setAnimationState);
-    modalOverlay.current?.addEventListener('transitionend', setAnimationState);
-
-    return () => {
-      modalOverlay.current?.removeEventListener('transitioncancel', setAnimationState);
-      modalOverlay.current?.removeEventListener('transitionend', setAnimationState);
-    }
-  }, [modalOverlay.current]);
-
-  useEffect(() => {
-    if (!isOpen) {
-      onClose();
-    }
-  }, [isOpen])
-
   return (
-    <ModalPortal>
-      {(open || isOpen || isAnimating) &&
-        <div className={overlayClasses} ref={modalOverlay}>
+    isVisible &&
+      <BodyPortal>
+        <div className="guwmi-modal-overlay" ref={modalOverlay}>
           <dialog className={classes} ref={modal}>
             <button
               className="guwmi-modal-close-button"
               aria-label="Close modal"
-              onClick={() => close()}
+              onClick={() => onClose()}
             >
               <IconX size={20} />
             </button>
             {children}
           </dialog>
         </div>
-      }
-    </ModalPortal>
+      </BodyPortal>
   )
 }

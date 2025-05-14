@@ -11,7 +11,7 @@ import {
 import useAnimation from '../../hooks/useAnimation';
 
 // import components
-import DrawerPortal from './DrawerPortal';
+import BodyPortal from '../utils/BodyPortal';
 import { IconX } from '@tabler/icons-react';
 
 // component type
@@ -94,7 +94,7 @@ export default function Drawer(props: ComponentProps) {
 
   return (
     isVisible &&
-      <DrawerPortal>
+      <BodyPortal>
           <div className="guwmi-drawer-overlay" ref={drawerOverlay}>
             <aside className={classes} ref={drawer} aria-modal="true" tabIndex={0}>
               <button
@@ -107,6 +107,6 @@ export default function Drawer(props: ComponentProps) {
               {children}
             </aside>
           </div>
-      </DrawerPortal>
+      </BodyPortal>
   )
 }

@@ -1,9 +1,8 @@
-
-'use client'
-import React, { useEffect, useState, PropsWithChildren } from 'react';
+// import library functionality
+import { useEffect, useState, PropsWithChildren } from 'react';
 import ReactDOM from 'react-dom';
 
-export default function DrawerPortal(props: PropsWithChildren) {
+export default function BodyPortal(props: PropsWithChildren) {
   const { children } = props;
   const [hasDocument, setHasDocument] = useState<boolean>(false);
 
