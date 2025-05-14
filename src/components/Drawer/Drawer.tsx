@@ -31,10 +31,6 @@ export default function Drawer(props: ComponentProps) {
   const drawerButton = useRef<HTMLButtonElement>(null);
   const { isVisible } = useAnimation(open, 'open', drawerOverlay);
 
-  // useEffect(() => {
-  //   console.log(isVisible)
-  // }, [isVisible])
-
   const closeOutClick = useCallback((e: MouseEvent) => {
     if (e.target !== drawerButton.current && !drawer.current?.contains(e.target as Node)) {
       onClose();
@@ -44,6 +40,7 @@ export default function Drawer(props: ComponentProps) {
   const handleTab = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Tab') {
       const focusableElements: NodeListOf<HTMLFormElement> = drawer.current.querySelectorAll('a[href], button, input, textarea, select, details, [tabindex]');
+      console.log(focusableElements);
       const firstFocusable: HTMLFormElement = focusableElements[0];
       const lastFocusable = focusableElements[focusableElements.length - 1];
       if (e.shiftKey) {
@@ -70,7 +67,7 @@ export default function Drawer(props: ComponentProps) {
 
     if (open) {
       drawerButton.current = document.activeElement as HTMLButtonElement;
-      drawer.current?.focus();
+      setTimeout(() => drawer.current?.focus(), 25);
       document.addEventListener('click', closeOutClick);
       document.addEventListener('keydown', handleTab);
       document.addEventListener('keydown', handleEscape);
