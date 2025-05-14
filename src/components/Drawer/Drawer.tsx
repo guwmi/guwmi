@@ -40,7 +40,6 @@ export default function Drawer(props: ComponentProps) {
   const handleTab = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Tab') {
       const focusableElements: NodeListOf<HTMLFormElement> = drawer.current.querySelectorAll('a[href], button, input, textarea, select, details, [tabindex]');
-      console.log(focusableElements);
       const firstFocusable: HTMLFormElement = focusableElements[0];
       const lastFocusable = focusableElements[focusableElements.length - 1];
       if (e.shiftKey) {
