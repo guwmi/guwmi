@@ -32,7 +32,7 @@ export default function Drawer(props: ComponentProps) {
   const { isVisible } = useAnimation(open, 'open', drawerOverlay);
 
   const closeOutClick = useCallback((e: MouseEvent) => {
-    if (!drawer.current.contains(e.target as Node)) {
+    if (!drawer.current?.contains(e.target as Node)) {
       onClose();
     }
   }, [drawer.current]);
@@ -43,12 +43,12 @@ export default function Drawer(props: ComponentProps) {
       const firstFocusable: HTMLFormElement = focusableElements[0];
       const lastFocusable = focusableElements[focusableElements.length - 1];
       if (e.shiftKey) {
-        if (drawer.current.contains(e.target as Node) && e.target === firstFocusable) {
+        if (drawer.current?.contains(e.target as Node) && e.target === firstFocusable) {
           e.preventDefault();
           lastFocusable.focus();
         }
       } else {
-        if (drawer.current.contains(e.target as Node) && e.target === lastFocusable) {
+        if (drawer.current?.contains(e.target as Node) && e.target === lastFocusable) {
           e.preventDefault();
           firstFocusable.focus();
         }
