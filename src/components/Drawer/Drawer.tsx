@@ -1,27 +1,18 @@
 // import library functionality
-import React, {
+import {
   useCallback,
   useEffect,
   useMemo,
   useRef,
-  useState,
   PropsWithChildren
 } from 'react';
-import ReactDOM from 'react-dom';
+
+// import custom functionality
+import useAnimation from '../../hooks/useAnimation';
 
 // import components
+import DrawerPortal from './DrawerPortal';
 import { IconX } from '@tabler/icons-react';
-
-function DrawerPortal(props: PropsWithChildren) {
-  const { children } = props;
-  const [hasDocument, setHasDocument] = useState<boolean>(false);
-
-  useEffect(() => {
-    setHasDocument((typeof document !== 'undefined'));
-  }, [])
-
-  return hasDocument ? ReactDOM.createPortal(children, document.body) : null;
-}
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -34,27 +25,15 @@ interface ComponentProps extends PropsWithChildren {
 export default function Drawer(props: ComponentProps) {
 
   const { open, onClose, preventScroll = false, position = 'left', children } = props;
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const overlayClasses = useMemo(() => `guwmi-drawer-overlay${isOpen ? ' open' : ''}`, [isOpen])
   const classes = useMemo(() => `guwmi-drawer ${position}`, [position]);
   const drawerOverlay = useRef<HTMLDivElement>(null);
   const drawer = useRef<HTMLElement>(null);
   const drawerButton = useRef<HTMLButtonElement>(null);
-
-  const close = useCallback(() => {
-    setIsAnimating(true);
-    setIsOpen(false);
-    drawerButton.current.focus();
-  }, []);
-
-  const setAnimationState = useCallback(() => {
-    setIsAnimating(false);
-  }, [])
+  const { isVisible } = useAnimation(open, 'open', drawerOverlay);
 
   const closeOutClick = useCallback((e: MouseEvent) => {
     if (!drawer.current.contains(e.target as Node)) {
-      close();
+      onClose();
     }
   }, [drawer.current]);
 
@@ -79,17 +58,15 @@ export default function Drawer(props: ComponentProps) {
 
   const handleEscape = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
-      close();
+      onClose();
     }
   }, []);
 
   useEffect(() => {
 
     if (open) {
-      setIsAnimating(true);
-      setIsOpen(true);
       drawerButton.current = document.activeElement as HTMLButtonElement;
-      drawer.current.focus();
+      drawer.current?.focus();
       document.addEventListener('click', closeOutClick);
       document.addEventListener('keydown', handleTab);
       document.addEventListener('keydown', handleEscape);
@@ -98,6 +75,7 @@ export default function Drawer(props: ComponentProps) {
         document.body.style.overflow = 'hidden';
       }
     } else {
+      drawerButton.current?.focus();
       document.removeEventListener('click', closeOutClick);
       document.removeEventListener('keydown', handleTab);
       document.removeEventListener('keydown', handleEscape);
@@ -113,31 +91,15 @@ export default function Drawer(props: ComponentProps) {
     }
   }, [open]);
 
-  useEffect(() => {
-    drawerOverlay.current?.addEventListener('transitioncancel', setAnimationState);
-    drawerOverlay.current?.addEventListener('transitionend', setAnimationState);
-
-    return () => {
-      drawerOverlay.current?.removeEventListener('transitioncancel', setAnimationState);
-      drawerOverlay.current?.removeEventListener('transitionend', setAnimationState);
-    }
-  }, [drawerOverlay.current]);
-
-  useEffect(() => {
-    if (!isOpen) {
-      onClose();
-    }
-  }, [isOpen])
-
   return (
     <DrawerPortal>
-      {(open || isOpen || isAnimating) &&
-        <div className={overlayClasses} ref={drawerOverlay}>
+      {isVisible &&
+        <div className="guwmi-drawer-overlay" ref={drawerOverlay}>
           <aside className={classes} ref={drawer} aria-modal="true" tabIndex={0}>
             <button
               className="guwmi-drawer-close-button"
               aria-label="Close drawer"
-              onClick={() => close()}
+              onClick={() => onClose()}
             >
               <IconX size={20} />
             </button>

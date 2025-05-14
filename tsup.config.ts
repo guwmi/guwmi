@@ -7,13 +7,13 @@ export default defineConfig(() => {
       '.css': 'copy',
       '.scss': 'copy',
     },
-    format: ['cjs', 'esm'], // Build for commonJS and ESmodules
+    format: ['esm', 'cjs'], // Build for commonJS and ESmodules
     dts: true, // Generate declaration file (.d.ts)
     bundle: true,
     skipNodeModulesBundle: true,
     splitting: false,
     sourcemap: true,
-    clean: false,
+    clean: true,
     esbuildOptions(options) {
       options.outbase = './src'; // Maintain directory structure in output
     },

@@ -887,46 +887,102 @@ function Modal(props) {
     });
 }
 // src/components/Drawer/Drawer.tsx
-import { useCallback as useCallback4, useEffect as useEffect8, useMemo as useMemo14, useRef as useRef7, useState as useState9 } from "react";
+import { useCallback as useCallback4, useEffect as useEffect10, useMemo as useMemo14, useRef as useRef8 } from "react";
+// src/hooks/useAnimation.ts
+import { useEffect as useEffect8, useState as useState9, useRef as useRef7 } from "react";
+var useAnimation = function(componentState, classString, elementRef) {
+    var _useState9 = _sliced_to_array(useState9(componentState), 2), isInDOM = _useState9[0], setIsInDOM = _useState9[1];
+    var _useState91 = _sliced_to_array(useState9(false), 2), isAnimating = _useState91[0], setIsAnimating = _useState91[1];
+    var initialLoad = useRef7(true);
+    var handleAnimation = function() {
+        setIsAnimating(false);
+    };
+    var toggleClass = function() {
+        if (!initialLoad.current) {
+            setIsAnimating(true);
+            if (componentState) {
+                var _elementRef_current;
+                (_elementRef_current = elementRef.current) === null || _elementRef_current === void 0 ? void 0 : _elementRef_current.classList.add(classString);
+            } else {
+                var _elementRef_current1;
+                (_elementRef_current1 = elementRef.current) === null || _elementRef_current1 === void 0 ? void 0 : _elementRef_current1.classList.remove(classString);
+            }
+        }
+    };
+    useEffect8(function() {
+        if (componentState) {
+            setIsInDOM(true);
+        } else {
+            toggleClass();
+        }
+    }, [
+        componentState
+    ]);
+    useEffect8(function() {
+        if (isInDOM) {
+            setTimeout(function() {
+                return toggleClass();
+            }, 25);
+        }
+    }, [
+        isInDOM
+    ]);
+    useEffect8(function() {
+        if (!componentState && !isAnimating) {
+            setIsInDOM(false);
+        }
+    }, [
+        componentState,
+        isAnimating
+    ]);
+    useEffect8(function() {
+        var _elementRef_current, _elementRef_current1;
+        (_elementRef_current = elementRef.current) === null || _elementRef_current === void 0 ? void 0 : _elementRef_current.addEventListener("transitioncancel", handleAnimation);
+        (_elementRef_current1 = elementRef.current) === null || _elementRef_current1 === void 0 ? void 0 : _elementRef_current1.addEventListener("transitionend", handleAnimation);
+        return function() {
+            var _elementRef_current, _elementRef_current1;
+            (_elementRef_current = elementRef.current) === null || _elementRef_current === void 0 ? void 0 : _elementRef_current.removeEventListener("transitioncancel", handleAnimation);
+            (_elementRef_current1 = elementRef.current) === null || _elementRef_current1 === void 0 ? void 0 : _elementRef_current1.removeEventListener("transitionend", handleAnimation);
+        };
+    }, [
+        elementRef.current
+    ]);
+    useEffect8(function() {
+        initialLoad.current = false;
+    }, []);
+    return {
+        isVisible: isInDOM || isAnimating
+    };
+};
+var useAnimation_default = useAnimation;
+// src/components/Drawer/DrawerPortal.tsx
+import { useEffect as useEffect9, useState as useState10 } from "react";
 import ReactDOM2 from "react-dom";
-import { IconX as IconX3 } from "@tabler/icons-react";
-import { jsx as jsx22, jsxs as jsxs8 } from "react/jsx-runtime";
 function DrawerPortal(props) {
     var children = props.children;
-    var _useState9 = _sliced_to_array(useState9(false), 2), hasDocument = _useState9[0], setHasDocument = _useState9[1];
-    useEffect8(function() {
+    var _useState10 = _sliced_to_array(useState10(false), 2), hasDocument = _useState10[0], setHasDocument = _useState10[1];
+    useEffect9(function() {
         setHasDocument(typeof document !== "undefined");
     }, []);
     return hasDocument ? ReactDOM2.createPortal(children, document.body) : null;
 }
+// src/components/Drawer/Drawer.tsx
+import { IconX as IconX3 } from "@tabler/icons-react";
+import { jsx as jsx22, jsxs as jsxs8 } from "react/jsx-runtime";
 function Drawer(props) {
     var open = props.open, onClose = props.onClose, _props_preventScroll = props.preventScroll, preventScroll = _props_preventScroll === void 0 ? false : _props_preventScroll, _props_position = props.position, position = _props_position === void 0 ? "left" : _props_position, children = props.children;
-    var _useState9 = _sliced_to_array(useState9(false), 2), isAnimating = _useState9[0], setIsAnimating = _useState9[1];
-    var _useState91 = _sliced_to_array(useState9(false), 2), isOpen = _useState91[0], setIsOpen = _useState91[1];
-    var overlayClasses = useMemo14(function() {
-        return "guwmi-drawer-overlay".concat(isOpen ? " open" : "");
-    }, [
-        isOpen
-    ]);
     var classes = useMemo14(function() {
         return "guwmi-drawer ".concat(position);
     }, [
         position
     ]);
-    var drawerOverlay = useRef7(null);
-    var drawer = useRef7(null);
-    var drawerButton = useRef7(null);
-    var close = useCallback4(function() {
-        setIsAnimating(true);
-        setIsOpen(false);
-        drawerButton.current.focus();
-    }, []);
-    var setAnimationState = useCallback4(function() {
-        setIsAnimating(false);
-    }, []);
+    var drawerOverlay = useRef8(null);
+    var drawer = useRef8(null);
+    var drawerButton = useRef8(null);
+    var isVisible = useAnimation_default(open, "open", drawerOverlay).isVisible;
     var closeOutClick = useCallback4(function(e) {
         if (!drawer.current.contains(e.target)) {
-            close();
+            onClose();
         }
     }, [
         drawer.current
@@ -953,15 +1009,14 @@ function Drawer(props) {
     ]);
     var handleEscape = useCallback4(function(e) {
         if (e.key === "Escape") {
-            close();
+            onClose();
         }
     }, []);
-    useEffect8(function() {
+    useEffect10(function() {
         if (open) {
-            setIsAnimating(true);
-            setIsOpen(true);
+            var _drawer_current;
             drawerButton.current = document.activeElement;
-            drawer.current.focus();
+            (_drawer_current = drawer.current) === null || _drawer_current === void 0 ? void 0 : _drawer_current.focus();
             document.addEventListener("click", closeOutClick);
             document.addEventListener("keydown", handleTab);
             document.addEventListener("keydown", handleEscape);
@@ -970,6 +1025,8 @@ function Drawer(props) {
                 document.body.style.overflow = "hidden";
             }
         } else {
+            var _drawerButton_current;
+            (_drawerButton_current = drawerButton.current) === null || _drawerButton_current === void 0 ? void 0 : _drawerButton_current.focus();
             document.removeEventListener("click", closeOutClick);
             document.removeEventListener("keydown", handleTab);
             document.removeEventListener("keydown", handleEscape);
@@ -985,28 +1042,9 @@ function Drawer(props) {
     }, [
         open
     ]);
-    useEffect8(function() {
-        var _drawerOverlay_current, _drawerOverlay_current1;
-        (_drawerOverlay_current = drawerOverlay.current) === null || _drawerOverlay_current === void 0 ? void 0 : _drawerOverlay_current.addEventListener("transitioncancel", setAnimationState);
-        (_drawerOverlay_current1 = drawerOverlay.current) === null || _drawerOverlay_current1 === void 0 ? void 0 : _drawerOverlay_current1.addEventListener("transitionend", setAnimationState);
-        return function() {
-            var _drawerOverlay_current, _drawerOverlay_current1;
-            (_drawerOverlay_current = drawerOverlay.current) === null || _drawerOverlay_current === void 0 ? void 0 : _drawerOverlay_current.removeEventListener("transitioncancel", setAnimationState);
-            (_drawerOverlay_current1 = drawerOverlay.current) === null || _drawerOverlay_current1 === void 0 ? void 0 : _drawerOverlay_current1.removeEventListener("transitionend", setAnimationState);
-        };
-    }, [
-        drawerOverlay.current
-    ]);
-    useEffect8(function() {
-        if (!isOpen) {
-            onClose();
-        }
-    }, [
-        isOpen
-    ]);
     return /* @__PURE__ */ jsx22(DrawerPortal, {
-        children: (open || isOpen || isAnimating) && /* @__PURE__ */ jsx22("div", {
-            className: overlayClasses,
+        children: isVisible && /* @__PURE__ */ jsx22("div", {
+            className: "guwmi-drawer-overlay",
             ref: drawerOverlay,
             children: /* @__PURE__ */ jsxs8("aside", {
                 className: classes,
@@ -1018,7 +1056,7 @@ function Drawer(props) {
                         className: "guwmi-drawer-close-button",
                         "aria-label": "Close drawer",
                         onClick: function() {
-                            return close();
+                            return onClose();
                         },
                         children: /* @__PURE__ */ jsx22(IconX3, {
                             size: 20
