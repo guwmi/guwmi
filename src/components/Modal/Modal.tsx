@@ -32,7 +32,7 @@ export default function Modal(props: ComponentProps) {
   const { isVisible } = useAnimation(open, 'open', modalOverlay);
 
   const closeOutClick = useCallback((e: MouseEvent) => {
-    if (!modal.current.contains(e.target as Node)) {
+    if (e.target !== modalButton.current && !modal.current?.contains(e.target as Node)) {
       onClose();;
     }
   }, [modal.current]);
@@ -43,12 +43,12 @@ export default function Modal(props: ComponentProps) {
       const firstFocusable: HTMLFormElement = focusableElements[0];
       const lastFocusable = focusableElements[focusableElements.length - 1];
       if (e.shiftKey) {
-        if (modal.current.contains(e.target as Node) && e.target === firstFocusable) {
+        if (modal.current?.contains(e.target as Node) && e.target === firstFocusable) {
           e.preventDefault();
           lastFocusable.focus();
         }
       } else {
-        if (modal.current.contains(e.target as Node) && e.target === lastFocusable) {
+        if (modal.current?.contains(e.target as Node) && e.target === lastFocusable) {
           e.preventDefault();
           firstFocusable.focus();
         }

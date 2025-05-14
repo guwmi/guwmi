@@ -494,138 +494,18 @@ function Notification(props) {
 // src/components/Modal/Modal.tsx
 import {
   useCallback as useCallback3,
-  useEffect as useEffect7,
+  useEffect as useEffect9,
   useMemo as useMemo13,
-  useRef as useRef6,
-  useState as useState8
-} from "react";
-import ReactDOM from "react-dom";
-import { IconX as IconX2 } from "@tabler/icons-react";
-import { jsx as jsx21, jsxs as jsxs7 } from "react/jsx-runtime";
-function ModalPortal(props) {
-  const { children } = props;
-  const [hasDocument, setHasDocument] = useState8(false);
-  useEffect7(() => {
-    setHasDocument(typeof document !== "undefined");
-  }, []);
-  return hasDocument ? ReactDOM.createPortal(children, document.body) : null;
-}
-function Modal(props) {
-  const { open, onClose, preventScroll = false, size = "sm", children } = props;
-  const [isAnimating, setIsAnimating] = useState8(false);
-  const [isOpen, setIsOpen] = useState8(false);
-  const overlayClasses = useMemo13(() => `guwmi-modal-overlay${isOpen ? " open" : ""}`, [isOpen]);
-  const classes = useMemo13(() => `guwmi-modal ${size}`, [size]);
-  const modalOverlay = useRef6(null);
-  const modal = useRef6(null);
-  const modalButton = useRef6(null);
-  const close = useCallback3(() => {
-    setIsAnimating(true);
-    setIsOpen(false);
-    modalButton.current.focus();
-  }, []);
-  const setAnimationState = useCallback3(() => {
-    setIsAnimating(false);
-  }, []);
-  const closeOutClick = useCallback3((e) => {
-    if (!modal.current.contains(e.target)) {
-      close();
-    }
-  }, [modal.current]);
-  const handleTab = useCallback3((e) => {
-    if (e.key === "Tab") {
-      const focusableElements = modal.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
-      const firstFocusable = focusableElements[0];
-      const lastFocusable = focusableElements[focusableElements.length - 1];
-      if (e.shiftKey) {
-        if (modal.current.contains(e.target) && e.target === firstFocusable) {
-          e.preventDefault();
-          lastFocusable.focus();
-        }
-      } else {
-        if (modal.current.contains(e.target) && e.target === lastFocusable) {
-          e.preventDefault();
-          firstFocusable.focus();
-        }
-      }
-    }
-  }, [modal.current]);
-  const handleEscape = useCallback3((e) => {
-    if (e.key === "Escape") {
-      close();
-    }
-  }, []);
-  useEffect7(() => {
-    if (open) {
-      setIsAnimating(true);
-      setIsOpen(true);
-      modalButton.current = document.activeElement;
-      modal.current.focus();
-      document.addEventListener("click", closeOutClick);
-      document.addEventListener("keydown", handleTab);
-      document.addEventListener("keydown", handleEscape);
-      if (preventScroll) {
-        document.body.style.height = "100%";
-        document.body.style.overflow = "hidden";
-      }
-    } else {
-      document.removeEventListener("click", closeOutClick);
-      document.removeEventListener("keydown", handleTab);
-      document.removeEventListener("keydown", handleEscape);
-      if (preventScroll) {
-        document.body.removeAttribute("style");
-      }
-    }
-    return () => {
-      document.removeEventListener("click", closeOutClick);
-      document.removeEventListener("keydown", handleTab);
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [open]);
-  useEffect7(() => {
-    var _a, _b;
-    (_a = modalOverlay.current) == null ? void 0 : _a.addEventListener("transitioncancel", setAnimationState);
-    (_b = modalOverlay.current) == null ? void 0 : _b.addEventListener("transitionend", setAnimationState);
-    return () => {
-      var _a2, _b2;
-      (_a2 = modalOverlay.current) == null ? void 0 : _a2.removeEventListener("transitioncancel", setAnimationState);
-      (_b2 = modalOverlay.current) == null ? void 0 : _b2.removeEventListener("transitionend", setAnimationState);
-    };
-  }, [modalOverlay.current]);
-  useEffect7(() => {
-    if (!isOpen) {
-      onClose();
-    }
-  }, [isOpen]);
-  return /* @__PURE__ */ jsx21(ModalPortal, { children: (open || isOpen || isAnimating) && /* @__PURE__ */ jsx21("div", { className: overlayClasses, ref: modalOverlay, children: /* @__PURE__ */ jsxs7("dialog", { className: classes, ref: modal, children: [
-    /* @__PURE__ */ jsx21(
-      "button",
-      {
-        className: "guwmi-modal-close-button",
-        "aria-label": "Close modal",
-        onClick: () => close(),
-        children: /* @__PURE__ */ jsx21(IconX2, { size: 20 })
-      }
-    ),
-    children
-  ] }) }) });
-}
-
-// src/components/Drawer/Drawer.tsx
-import {
-  useCallback as useCallback4,
-  useEffect as useEffect10,
-  useMemo as useMemo14,
-  useRef as useRef8
+  useRef as useRef7
 } from "react";
 
 // src/hooks/useAnimation.ts
-import { useEffect as useEffect8, useState as useState9, useRef as useRef7 } from "react";
+import { useEffect as useEffect7, useState as useState8, useRef as useRef6 } from "react";
 var useAnimation = (componentState, classString, elementRef) => {
-  const [isInDOM, setIsInDOM] = useState9(componentState);
-  const [hasClass, setHasClass] = useState9(false);
-  const initialLoad = useRef7(true);
-  const listnerAdded = useRef7(false);
+  const [isInDOM, setIsInDOM] = useState8(componentState);
+  const [hasClass, setHasClass] = useState8(false);
+  const initialLoad = useRef6(true);
+  const listnerAdded = useRef6(false);
   const setClassState = () => {
     var _a, _b;
     if (elementRef.current) {
@@ -647,10 +527,10 @@ var useAnimation = (componentState, classString, elementRef) => {
       listnerAdded.current = false;
     }
   };
-  useEffect8(() => {
+  useEffect7(() => {
     initialLoad.current = false;
   }, []);
-  useEffect8(() => {
+  useEffect7(() => {
     if (!initialLoad.current) {
       if (componentState && !isInDOM) {
         setIsInDOM(true);
@@ -667,19 +547,109 @@ var useAnimation = (componentState, classString, elementRef) => {
 };
 var useAnimation_default = useAnimation;
 
-// src/components/Drawer/DrawerPortal.tsx
-import { useEffect as useEffect9, useState as useState10 } from "react";
-import ReactDOM2 from "react-dom";
-function DrawerPortal(props) {
+// src/components/utils/BodyPortal.tsx
+import { useEffect as useEffect8, useState as useState9 } from "react";
+import ReactDOM from "react-dom";
+function BodyPortal(props) {
   const { children } = props;
-  const [hasDocument, setHasDocument] = useState10(false);
-  useEffect9(() => {
+  const [hasDocument, setHasDocument] = useState9(false);
+  useEffect8(() => {
     setHasDocument(typeof document !== "undefined");
   }, []);
-  return hasDocument ? ReactDOM2.createPortal(children, document.body) : null;
+  return hasDocument ? ReactDOM.createPortal(children, document.body) : null;
+}
+
+// src/components/Modal/Modal.tsx
+import { IconX as IconX2 } from "@tabler/icons-react";
+import { jsx as jsx21, jsxs as jsxs7 } from "react/jsx-runtime";
+function Modal(props) {
+  const { open, onClose, preventScroll = false, size = "sm", children } = props;
+  const classes = useMemo13(() => `guwmi-modal ${size}`, [size]);
+  const modalOverlay = useRef7(null);
+  const modal = useRef7(null);
+  const modalButton = useRef7(null);
+  const { isVisible } = useAnimation_default(open, "open", modalOverlay);
+  const closeOutClick = useCallback3((e) => {
+    var _a;
+    if (e.target !== modalButton.current && !((_a = modal.current) == null ? void 0 : _a.contains(e.target))) {
+      onClose();
+      ;
+    }
+  }, [modal.current]);
+  const handleTab = useCallback3((e) => {
+    var _a, _b;
+    if (e.key === "Tab") {
+      const focusableElements = modal.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+      if (e.shiftKey) {
+        if (((_a = modal.current) == null ? void 0 : _a.contains(e.target)) && e.target === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        }
+      } else {
+        if (((_b = modal.current) == null ? void 0 : _b.contains(e.target)) && e.target === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    }
+  }, [modal.current]);
+  const handleEscape = useCallback3((e) => {
+    if (e.key === "Escape") {
+      onClose();
+      ;
+    }
+  }, []);
+  useEffect9(() => {
+    if (open) {
+      modalButton.current = document.activeElement;
+      setTimeout(() => {
+        var _a;
+        return (_a = modal.current) == null ? void 0 : _a.focus();
+      }, 25);
+      document.addEventListener("click", closeOutClick);
+      document.addEventListener("keydown", handleTab);
+      document.addEventListener("keydown", handleEscape);
+      if (preventScroll) {
+        document.body.style.height = "100%";
+        document.body.style.overflow = "hidden";
+      }
+    } else {
+      document.removeEventListener("click", closeOutClick);
+      document.removeEventListener("keydown", handleTab);
+      document.removeEventListener("keydown", handleEscape);
+      if (preventScroll) {
+        document.body.removeAttribute("style");
+      }
+    }
+    return () => {
+      document.removeEventListener("click", closeOutClick);
+      document.removeEventListener("keydown", handleTab);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [open]);
+  return isVisible && /* @__PURE__ */ jsx21(BodyPortal, { children: /* @__PURE__ */ jsx21("div", { className: "guwmi-modal-overlay", ref: modalOverlay, children: /* @__PURE__ */ jsxs7("dialog", { className: classes, ref: modal, children: [
+    /* @__PURE__ */ jsx21(
+      "button",
+      {
+        className: "guwmi-modal-close-button",
+        "aria-label": "Close modal",
+        onClick: () => onClose(),
+        children: /* @__PURE__ */ jsx21(IconX2, { size: 20 })
+      }
+    ),
+    children
+  ] }) }) });
 }
 
 // src/components/Drawer/Drawer.tsx
+import {
+  useCallback as useCallback4,
+  useEffect as useEffect10,
+  useMemo as useMemo14,
+  useRef as useRef8
+} from "react";
 import { IconX as IconX3 } from "@tabler/icons-react";
 import { jsx as jsx22, jsxs as jsxs8 } from "react/jsx-runtime";
 function Drawer(props) {
@@ -720,10 +690,13 @@ function Drawer(props) {
     }
   }, []);
   useEffect10(() => {
-    var _a, _b;
+    var _a;
     if (open) {
       drawerButton.current = document.activeElement;
-      (_a = drawer.current) == null ? void 0 : _a.focus();
+      setTimeout(() => {
+        var _a2;
+        return (_a2 = drawer.current) == null ? void 0 : _a2.focus();
+      }, 25);
       document.addEventListener("click", closeOutClick);
       document.addEventListener("keydown", handleTab);
       document.addEventListener("keydown", handleEscape);
@@ -732,7 +705,7 @@ function Drawer(props) {
         document.body.style.overflow = "hidden";
       }
     } else {
-      (_b = drawerButton.current) == null ? void 0 : _b.focus();
+      (_a = drawerButton.current) == null ? void 0 : _a.focus();
       document.removeEventListener("click", closeOutClick);
       document.removeEventListener("keydown", handleTab);
       document.removeEventListener("keydown", handleEscape);
@@ -746,7 +719,7 @@ function Drawer(props) {
       document.removeEventListener("keydown", handleEscape);
     };
   }, [open]);
-  return isVisible && /* @__PURE__ */ jsx22(DrawerPortal, { children: /* @__PURE__ */ jsx22("div", { className: "guwmi-drawer-overlay", ref: drawerOverlay, children: /* @__PURE__ */ jsxs8("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
+  return isVisible && /* @__PURE__ */ jsx22(BodyPortal, { children: /* @__PURE__ */ jsx22("div", { className: "guwmi-drawer-overlay", ref: drawerOverlay, children: /* @__PURE__ */ jsxs8("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
     /* @__PURE__ */ jsx22(
       "button",
       {
