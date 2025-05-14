@@ -1,5 +1,6 @@
 
-import { useEffect, useState, PropsWithChildren } from 'react';
+'use client'
+import React, { useEffect, useState, PropsWithChildren } from 'react';
 import ReactDOM from 'react-dom';
 
 export default function DrawerPortal(props: PropsWithChildren) {

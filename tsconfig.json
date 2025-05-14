@@ -1,12 +1,18 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
+    "target": "es6",
+    "module": "esnext",
+    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
     "jsx": "react-jsx",
-    "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-  }
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "strictNullChecks": false,
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./dist/",
+  },
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.stories.ts"]
 }

@@ -31,8 +31,12 @@ export default function Drawer(props: ComponentProps) {
   const drawerButton = useRef<HTMLButtonElement>(null);
   const { isVisible } = useAnimation(open, 'open', drawerOverlay);
 
+  // useEffect(() => {
+  //   console.log(isVisible)
+  // }, [isVisible])
+
   const closeOutClick = useCallback((e: MouseEvent) => {
-    if (!drawer.current?.contains(e.target as Node)) {
+    if (e.target !== drawerButton.current && !drawer.current?.contains(e.target as Node)) {
       onClose();
     }
   }, [drawer.current]);
@@ -92,21 +96,20 @@ export default function Drawer(props: ComponentProps) {
   }, [open]);
 
   return (
-    <DrawerPortal>
-      {isVisible &&
-        <div className="guwmi-drawer-overlay" ref={drawerOverlay}>
-          <aside className={classes} ref={drawer} aria-modal="true" tabIndex={0}>
-            <button
-              className="guwmi-drawer-close-button"
-              aria-label="Close drawer"
-              onClick={() => onClose()}
-            >
-              <IconX size={20} />
-            </button>
-            {children}
-          </aside>
-        </div>
-      }
-    </DrawerPortal>
+    isVisible &&
+      <DrawerPortal>
+          <div className="guwmi-drawer-overlay" ref={drawerOverlay}>
+            <aside className={classes} ref={drawer} aria-modal="true" tabIndex={0}>
+              <button
+                className="guwmi-drawer-close-button"
+                aria-label="Close drawer"
+                onClick={() => onClose()}
+              >
+                <IconX size={20} />
+              </button>
+              {children}
+            </aside>
+          </div>
+      </DrawerPortal>
   )
 }
