@@ -197,6 +197,44 @@
   }
 }
 /**
+ * ButtonGroup component styles *********************************************************************
+ **/
+.guwmi-btn-group {
+  display: flex;
+}
+.guwmi-btn-group .guwmi-btn {
+  border-radius: 0;
+}
+.guwmi-btn-group:not(.outline) .guwmi-btn {
+  border-right-color: rgba(0, 0, 0, 0.15);
+}
+.guwmi-btn-group:not(.outline) .guwmi-btn:last-child {
+  border-right-color: rgba(0, 0, 0, 0);
+}
+.guwmi-btn-group.round .guwmi-btn:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.guwmi-btn-group.round .guwmi-btn:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.guwmi-btn-group.pill .guwmi-btn:first-child {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+.guwmi-btn-group.pill .guwmi-btn:last-child {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.guwmi-btn-group.outline .guwmi-btn {
+  border-right-width: 0;
+}
+.guwmi-btn-group.outline .guwmi-btn:last-child {
+  border-right-width: 2px;
+}
+
+/**
  * Style for the Cards and child components *********************************************************
  **/
 .guwmi-card-grid {

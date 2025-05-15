@@ -1,7 +1,7 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import React, { PropsWithChildren } from 'react';
 
-interface ComponentProps$d extends PropsWithChildren {
+interface ComponentProps$e extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
     color?: 'primary' | 'secondary' | 'danger';
     variant?: 'fill' | 'outline' | 'ghost';
@@ -15,7 +15,16 @@ interface ComponentProps$d extends PropsWithChildren {
  * Button Component ********************************************************************************
  * @param ComponentProps
  */
-declare function Button(props: ComponentProps$d): react_jsx_runtime.JSX.Element;
+declare function Button(props: ComponentProps$e): react_jsx_runtime.JSX.Element;
+
+interface ComponentProps$d extends PropsWithChildren {
+    size?: 'sm' | 'md' | 'lg';
+    color?: 'primary' | 'secondary' | 'danger';
+    variant?: 'fill' | 'outline' | 'ghost';
+    theme?: 'square' | 'round' | 'pill';
+    className?: string;
+}
+declare function ButtonGroup(props: ComponentProps$d): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$c extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
@@ -143,4 +152,4 @@ interface ComponentProps extends PropsWithChildren {
 }
 declare function Drawer(props: ComponentProps): react_jsx_runtime.JSX.Element;
 
-export { Accordion, AccordionItem, Button, Card, CardSection, Cards, Drawer, IconButton, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer };
+export { Accordion, AccordionItem, Button, ButtonGroup, Card, CardSection, Cards, Drawer, IconButton, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer };

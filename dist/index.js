@@ -1,5 +1,5 @@
 // src/index.ts
-import "./index-L3NGY2JV.css";
+import "./index-HNI7QNPU.css";
 
 // src/components/Button/Button.tsx
 import {
@@ -31,9 +31,25 @@ function Button(props) {
   return href ? /* @__PURE__ */ jsx("a", { className: classes, href, onClick: () => handleClick, target, ref: button, children }) : /* @__PURE__ */ jsx("button", { className: classes, onClick: (e) => handleClick(e), ref: button, children });
 }
 
-// src/components/IconButton/IconButton.tsx
+// src/components/ButtonGroup/ButtonGroup.tsx
 import { useMemo as useMemo2 } from "react";
 import { jsx as jsx2 } from "react/jsx-runtime";
+function ButtonGroup(props) {
+  const {
+    children,
+    size = "md",
+    color = "primary",
+    variant = "fill",
+    theme = "round",
+    className
+  } = props;
+  const classes = useMemo2(() => `guwmi-btn-group ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
+  return /* @__PURE__ */ jsx2("div", { className: classes, children });
+}
+
+// src/components/IconButton/IconButton.tsx
+import { useMemo as useMemo3 } from "react";
+import { jsx as jsx3 } from "react/jsx-runtime";
 function IconButton(props) {
   const {
     children,
@@ -45,12 +61,12 @@ function IconButton(props) {
     onClick,
     ariaLabel
   } = props;
-  const classes = useMemo2(() => `guwmi-btn icon ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
-  return /* @__PURE__ */ jsx2("button", { className: classes, onClick, "aria-label": ariaLabel, children });
+  const classes = useMemo3(() => `guwmi-btn icon ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
+  return /* @__PURE__ */ jsx3("button", { className: classes, onClick, "aria-label": ariaLabel, children });
 }
 
 // src/components/Menu/Menu.tsx
-import { useState, useMemo as useMemo3 } from "react";
+import { useState, useMemo as useMemo4 } from "react";
 
 // src/components/Menu/MenuContext.ts
 import { createContext } from "react";
@@ -58,7 +74,7 @@ var MenuContext = createContext(null);
 var MenuContext_default = MenuContext;
 
 // src/components/Menu/Menu.tsx
-import { jsx as jsx3 } from "react/jsx-runtime";
+import { jsx as jsx4 } from "react/jsx-runtime";
 function Menu(props) {
   const {
     children,
@@ -67,8 +83,8 @@ function Menu(props) {
     ariaLabel
   } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const classes = useMemo3(() => `guwmi-menu-container ${position}`, []);
-  return /* @__PURE__ */ jsx3("div", { className: classes, children: /* @__PURE__ */ jsx3(MenuContext_default.Provider, { value: { isOpen, setIsOpen, ariaLabel }, children }) });
+  const classes = useMemo4(() => `guwmi-menu-container ${position}`, []);
+  return /* @__PURE__ */ jsx4("div", { className: classes, children: /* @__PURE__ */ jsx4(MenuContext_default.Provider, { value: { isOpen, setIsOpen, ariaLabel }, children }) });
 }
 
 // src/components/Menu/MenuDropdown.tsx
@@ -172,38 +188,38 @@ var useTabThrough = (open, onClose, elementRef) => {
 var useTabThrough_default = useTabThrough;
 
 // src/components/Menu/MenuDropdown.tsx
-import { Fragment, jsx as jsx4 } from "react/jsx-runtime";
+import { Fragment, jsx as jsx5 } from "react/jsx-runtime";
 function MenuDropdown(props) {
   const { children } = props;
   const { isOpen, setIsOpen, ariaLabel } = useContext(MenuContext_default);
   const dropDownRef = useRef4(null);
   const { isVisible } = useAnimation_default(isOpen, "open", dropDownRef);
   useTabThrough_default(isOpen, () => setIsOpen(false), dropDownRef);
-  return /* @__PURE__ */ jsx4(Fragment, { children: isVisible && /* @__PURE__ */ jsx4("nav", { className: "guwmi-menu-dropdown", ref: dropDownRef, "aria-label": ariaLabel, children: /* @__PURE__ */ jsx4("ul", { role: "menubar", children }) }) });
+  return /* @__PURE__ */ jsx5(Fragment, { children: isVisible && /* @__PURE__ */ jsx5("nav", { className: "guwmi-menu-dropdown", ref: dropDownRef, "aria-label": ariaLabel, children: /* @__PURE__ */ jsx5("ul", { role: "menubar", children }) }) });
 }
 
 // src/components/Menu/MenuItem.tsx
-import { useMemo as useMemo4 } from "react";
-import { jsx as jsx5 } from "react/jsx-runtime";
+import { useMemo as useMemo5 } from "react";
+import { jsx as jsx6 } from "react/jsx-runtime";
 function MenuItem(props) {
   const { children, onClick, href } = props;
-  const classes = useMemo4(() => `guwmi-menu-item`, []);
-  return /* @__PURE__ */ jsx5("li", { className: classes, children: href ? /* @__PURE__ */ jsx5("a", { className: "guwmi-menu-btn", href, children }) : /* @__PURE__ */ jsx5("button", { className: "guwmi-menu-btn", onClick, children }) });
+  const classes = useMemo5(() => `guwmi-menu-item`, []);
+  return /* @__PURE__ */ jsx6("li", { className: classes, children: href ? /* @__PURE__ */ jsx6("a", { className: "guwmi-menu-btn", href, children }) : /* @__PURE__ */ jsx6("button", { className: "guwmi-menu-btn", onClick, children }) });
 }
 
 // src/components/Menu/MenuTrigger.tsx
-import React5, { useMemo as useMemo5, useContext as useContext2 } from "react";
-import { jsx as jsx6 } from "react/jsx-runtime";
+import React5, { useMemo as useMemo6, useContext as useContext2 } from "react";
+import { jsx as jsx7 } from "react/jsx-runtime";
 function MenuTrigger(props) {
   const { children } = props;
   const { isOpen, setIsOpen } = useContext2(MenuContext_default);
-  const childrenWithClick = useMemo5(() => React5.Children.map(children, (child) => {
+  const childrenWithClick = useMemo6(() => React5.Children.map(children, (child) => {
     if (React5.isValidElement(child)) {
       return React5.cloneElement(child, { onClick: () => setIsOpen(!isOpen) });
     }
     return child;
   }), [children, isOpen]);
-  return /* @__PURE__ */ jsx6("div", { className: "guwmi-menu-trigger", children: childrenWithClick });
+  return /* @__PURE__ */ jsx7("div", { className: "guwmi-menu-trigger", children: childrenWithClick });
 }
 
 // src/components/Tabs/TabsContainer.tsx
@@ -215,29 +231,29 @@ var TabsContext = createContext2(null);
 var TabsContext_default = TabsContext;
 
 // src/components/Tabs/TabsContainer.tsx
-import { jsx as jsx7 } from "react/jsx-runtime";
+import { jsx as jsx8 } from "react/jsx-runtime";
 function TabsContainer(props) {
   const { children } = props;
   const [selectedTab, setSelectedTab] = useState3(0);
   const id = useId();
-  return /* @__PURE__ */ jsx7(TabsContext_default.Provider, { value: { id, selectedTab, setSelectedTab }, children: /* @__PURE__ */ jsx7("div", { className: "guwmi-tabs-container", children }) });
+  return /* @__PURE__ */ jsx8(TabsContext_default.Provider, { value: { id, selectedTab, setSelectedTab }, children: /* @__PURE__ */ jsx8("div", { className: "guwmi-tabs-container", children }) });
 }
 
 // src/components/Tabs/Tabs.tsx
 import React7, {
   useEffect as useEffect3,
-  useMemo as useMemo6,
+  useMemo as useMemo7,
   useRef as useRef5,
   useContext as useContext3
 } from "react";
-import { jsx as jsx8, jsxs } from "react/jsx-runtime";
+import { jsx as jsx9, jsxs } from "react/jsx-runtime";
 function Tabs(props) {
   const { children } = props;
   const { selectedTab } = useContext3(TabsContext_default);
   const tabsContainer = useRef5(null);
   const slider = useRef5(null);
   const activeTab = useRef5(null);
-  const childrenWithIndex = useMemo6(() => {
+  const childrenWithIndex = useMemo7(() => {
     return React7.Children.map(children, (child, index) => {
       if (React7.isValidElement(child)) {
         return React7.cloneElement(child, { index });
@@ -259,18 +275,18 @@ function Tabs(props) {
     }
   }, [activeTab.current]);
   return /* @__PURE__ */ jsxs("nav", { className: "guwmi-tabs", role: "tablist", ref: tabsContainer, children: [
-    /* @__PURE__ */ jsx8("span", { className: "guwmi-tabs-slider", ref: slider }),
+    /* @__PURE__ */ jsx9("span", { className: "guwmi-tabs-slider", ref: slider }),
     childrenWithIndex
   ] });
 }
 
 // src/components/Tabs/Tab.tsx
 import { useContext as useContext4 } from "react";
-import { jsx as jsx9 } from "react/jsx-runtime";
+import { jsx as jsx10 } from "react/jsx-runtime";
 function Tab(props) {
   const { children, index } = props;
   const { id, selectedTab, setSelectedTab } = useContext4(TabsContext_default);
-  return /* @__PURE__ */ jsx9(
+  return /* @__PURE__ */ jsx10(
     "button",
     {
       className: `guwmi-tab${selectedTab === index ? " active" : ""}`,
@@ -286,7 +302,7 @@ function Tab(props) {
 // src/components/Tabs/TabPanels.tsx
 import React9, {
   useContext as useContext5,
-  useMemo as useMemo7,
+  useMemo as useMemo8,
   useRef as useRef6,
   useEffect as useEffect5
 } from "react";
@@ -304,13 +320,13 @@ function useWindowWidth() {
 }
 
 // src/components/Tabs/TabPanels.tsx
-import { jsx as jsx10 } from "react/jsx-runtime";
+import { jsx as jsx11 } from "react/jsx-runtime";
 function TabPanels(props) {
   const { children } = props;
   const { selectedTab } = useContext5(TabsContext_default);
   const windowWidth = useWindowWidth();
   const panels = useRef6(null);
-  const childrenWithIndex = useMemo7(() => {
+  const childrenWithIndex = useMemo8(() => {
     return React9.Children.map(children, (child, index) => {
       if (React9.isValidElement(child)) {
         return React9.cloneElement(child, { index });
@@ -323,16 +339,16 @@ function TabPanels(props) {
     const height = active.offsetHeight;
     panels.current.style.height = `${height}px`;
   }, [selectedTab, windowWidth]);
-  return /* @__PURE__ */ jsx10("div", { className: "guwmi-tab-panels", ref: panels, children: childrenWithIndex });
+  return /* @__PURE__ */ jsx11("div", { className: "guwmi-tab-panels", ref: panels, children: childrenWithIndex });
 }
 
 // src/components/Tabs/TabPanel.tsx
 import { useContext as useContext6 } from "react";
-import { jsx as jsx11 } from "react/jsx-runtime";
+import { jsx as jsx12 } from "react/jsx-runtime";
 function TabPanel(props) {
   const { children, index } = props;
   const { id, selectedTab } = useContext6(TabsContext_default);
-  return /* @__PURE__ */ jsx11(
+  return /* @__PURE__ */ jsx12(
     "section",
     {
       className: `guwmi-tab-panel${selectedTab === index ? " active" : ""}`,
@@ -346,14 +362,14 @@ function TabPanel(props) {
 }
 
 // src/components/Table/Table.tsx
-import { useId as useId3, useMemo as useMemo9 } from "react";
+import { useId as useId3, useMemo as useMemo10 } from "react";
 
 // src/components/Table/TableRow.tsx
-import { useMemo as useMemo8 } from "react";
-import { Fragment as Fragment2, jsx as jsx12 } from "react/jsx-runtime";
+import { useMemo as useMemo9 } from "react";
+import { Fragment as Fragment2, jsx as jsx13 } from "react/jsx-runtime";
 function TableRow(props) {
   const { headers, data, tableId } = props;
-  const cellData = useMemo8(() => {
+  const cellData = useMemo9(() => {
     const arr = [];
     headers.forEach((h) => {
       if (data[h.key]) {
@@ -362,35 +378,35 @@ function TableRow(props) {
     });
     return arr;
   }, [headers, data]);
-  return /* @__PURE__ */ jsx12(Fragment2, { children: cellData && /* @__PURE__ */ jsx12("tr", { children: cellData.map((cell) => /* @__PURE__ */ jsx12("td", { children: cell.value }, `table-${tableId}-cell-${cell.id}-${cell.col}`)) }) });
+  return /* @__PURE__ */ jsx13(Fragment2, { children: cellData && /* @__PURE__ */ jsx13("tr", { children: cellData.map((cell) => /* @__PURE__ */ jsx13("td", { children: cell.value }, `table-${tableId}-cell-${cell.id}-${cell.col}`)) }) });
 }
 
 // src/components/Inputs/Search/SearchInput.tsx
 import { useId as useId2 } from "react";
 import { IconSearch } from "@tabler/icons-react";
-import { jsx as jsx13, jsxs as jsxs2 } from "react/jsx-runtime";
+import { jsx as jsx14, jsxs as jsxs2 } from "react/jsx-runtime";
 function SearchInput(props) {
   const { placeholder } = props;
   const id = useId2();
   return /* @__PURE__ */ jsxs2("div", { className: "guwmi-search-input", children: [
-    /* @__PURE__ */ jsx13("span", { children: /* @__PURE__ */ jsx13(IconSearch, { size: 18 }) }),
-    /* @__PURE__ */ jsx13("label", { htmlFor: id, className: "guwmi-sr-only", children: "Search" }),
-    /* @__PURE__ */ jsx13("input", { id, type: "search", placeholder: placeholder ? placeholder : "Search..." })
+    /* @__PURE__ */ jsx14("span", { children: /* @__PURE__ */ jsx14(IconSearch, { size: 18 }) }),
+    /* @__PURE__ */ jsx14("label", { htmlFor: id, className: "guwmi-sr-only", children: "Search" }),
+    /* @__PURE__ */ jsx14("input", { id, type: "search", placeholder: placeholder ? placeholder : "Search..." })
   ] });
 }
 
 // src/components/Table/Table.tsx
-import { Fragment as Fragment3, jsx as jsx14, jsxs as jsxs3 } from "react/jsx-runtime";
+import { Fragment as Fragment3, jsx as jsx15, jsxs as jsxs3 } from "react/jsx-runtime";
 function Table(props) {
   const { headers, rows, isCondensed, isSearchable } = props;
   const id = useId3();
-  const classes = useMemo9(() => `guwmi-table-container${isCondensed ? " condensed" : ""}`, []);
+  const classes = useMemo10(() => `guwmi-table-container${isCondensed ? " condensed" : ""}`, []);
   return /* @__PURE__ */ jsxs3("div", { className: classes, children: [
-    headers.length > 0 && isSearchable && /* @__PURE__ */ jsx14("div", { className: "guwmi-table-search", children: /* @__PURE__ */ jsx14(SearchInput, {}) }),
-    /* @__PURE__ */ jsx14("table", { cellPadding: 0, cellSpacing: 0, children: headers.length > 0 ? /* @__PURE__ */ jsxs3(Fragment3, { children: [
-      /* @__PURE__ */ jsx14("thead", { children: /* @__PURE__ */ jsx14("tr", { children: headers.map((header, i) => /* @__PURE__ */ jsx14("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
-      /* @__PURE__ */ jsx14("tbody", { children: rows.length > 0 ? rows.map((row) => /* @__PURE__ */ jsx14(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ jsx14("tr", { children: /* @__PURE__ */ jsx14("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
-    ] }) : /* @__PURE__ */ jsx14("tbody", { children: /* @__PURE__ */ jsx14("tr", { children: /* @__PURE__ */ jsx14("td", { children: "No column headers provided for the table" }) }) }) })
+    headers.length > 0 && isSearchable && /* @__PURE__ */ jsx15("div", { className: "guwmi-table-search", children: /* @__PURE__ */ jsx15(SearchInput, {}) }),
+    /* @__PURE__ */ jsx15("table", { cellPadding: 0, cellSpacing: 0, children: headers.length > 0 ? /* @__PURE__ */ jsxs3(Fragment3, { children: [
+      /* @__PURE__ */ jsx15("thead", { children: /* @__PURE__ */ jsx15("tr", { children: headers.map((header, i) => /* @__PURE__ */ jsx15("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
+      /* @__PURE__ */ jsx15("tbody", { children: rows.length > 0 ? rows.map((row) => /* @__PURE__ */ jsx15(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ jsx15("tr", { children: /* @__PURE__ */ jsx15("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
+    ] }) : /* @__PURE__ */ jsx15("tbody", { children: /* @__PURE__ */ jsx15("tr", { children: /* @__PURE__ */ jsx15("td", { children: "No column headers provided for the table" }) }) }) })
   ] });
 }
 
@@ -403,7 +419,7 @@ var AccordionContext = createContext3(null);
 var AccordionContext_default = AccordionContext;
 
 // src/components/Accordion/Accordion.tsx
-import { jsx as jsx15 } from "react/jsx-runtime";
+import { jsx as jsx16 } from "react/jsx-runtime";
 function Accordion(props) {
   const { children, defaultOpen } = props;
   const [openAccordions, setOpenAccordions] = useState5([]);
@@ -412,7 +428,7 @@ function Accordion(props) {
       setOpenAccordions([...openAccordions, defaultOpen]);
     }
   }, [defaultOpen]);
-  return /* @__PURE__ */ jsx15(AccordionContext_default.Provider, { value: { openAccordions, setOpenAccordions }, children: /* @__PURE__ */ jsx15("div", { className: "guwmi-accordion-container", children }) });
+  return /* @__PURE__ */ jsx16(AccordionContext_default.Provider, { value: { openAccordions, setOpenAccordions }, children: /* @__PURE__ */ jsx16("div", { className: "guwmi-accordion-container", children }) });
 }
 
 // src/components/Accordion/AccrodionItem.tsx
@@ -424,7 +440,7 @@ import {
   useEffect as useEffect7
 } from "react";
 import { IconChevronRight } from "@tabler/icons-react";
-import { jsx as jsx16, jsxs as jsxs4 } from "react/jsx-runtime";
+import { jsx as jsx17, jsxs as jsxs4 } from "react/jsx-runtime";
 function AccordionItem(props) {
   const { children, title, id } = props;
   const { openAccordions, setOpenAccordions } = useContext7(AccordionContext_default);
@@ -472,29 +488,29 @@ function AccordionItem(props) {
         className: isOpen ? "active" : null,
         children: [
           title,
-          /* @__PURE__ */ jsx16(IconChevronRight, { size: 20 })
+          /* @__PURE__ */ jsx17(IconChevronRight, { size: 20 })
         ]
       }
     ),
-    /* @__PURE__ */ jsx16(
+    /* @__PURE__ */ jsx17(
       "section",
       {
         hidden: !isOpen && !isAnimating,
         id: `guwmi-accordion-panel-${id}`,
         "aria-labelledby": `guwmi-accordion-controller-${id}`,
         ref: panelRef,
-        children: /* @__PURE__ */ jsx16("div", { className: "guwmi-accordion-panel-content", ref: contentRef, children })
+        children: /* @__PURE__ */ jsx17("div", { className: "guwmi-accordion-panel-content", ref: contentRef, children })
       }
     )
   ] });
 }
 
 // src/components/Cards/Cards.tsx
-import { useMemo as useMemo10 } from "react";
-import { jsx as jsx17 } from "react/jsx-runtime";
+import { useMemo as useMemo11 } from "react";
+import { jsx as jsx18 } from "react/jsx-runtime";
 function Cards(props) {
   const { children, columns = 3 } = props;
-  const classes = useMemo10(() => {
+  const classes = useMemo11(() => {
     let classString = "guwmi-card-grid ";
     switch (columns) {
       case 2:
@@ -515,11 +531,11 @@ function Cards(props) {
     }
     return classString;
   }, [columns]);
-  return /* @__PURE__ */ jsx17("div", { className: classes, children });
+  return /* @__PURE__ */ jsx18("div", { className: classes, children });
 }
 
 // src/components/Cards/Card.tsx
-import { jsx as jsx18, jsxs as jsxs5 } from "react/jsx-runtime";
+import { jsx as jsx19, jsxs as jsxs5 } from "react/jsx-runtime";
 function Card(props) {
   const {
     title,
@@ -528,54 +544,54 @@ function Card(props) {
     children
   } = props;
   return /* @__PURE__ */ jsxs5("div", { className: "guwmi-card", children: [
-    image && /* @__PURE__ */ jsx18("img", { src: image, alt: title ? title : "Card image", className: "guwmi-card-image" }),
+    image && /* @__PURE__ */ jsx19("img", { src: image, alt: title ? title : "Card image", className: "guwmi-card-image" }),
     (title || subTitle) && /* @__PURE__ */ jsxs5("div", { className: "guwmi-card-section guwmi-card-title", children: [
-      title && /* @__PURE__ */ jsx18("h2", { children: title }),
-      subTitle && /* @__PURE__ */ jsx18("h3", { children: subTitle })
+      title && /* @__PURE__ */ jsx19("h2", { children: title }),
+      subTitle && /* @__PURE__ */ jsx19("h3", { children: subTitle })
     ] }),
     children
   ] });
 }
 
 // src/components/Cards/CardSection.tsx
-import { jsx as jsx19 } from "react/jsx-runtime";
+import { jsx as jsx20 } from "react/jsx-runtime";
 function CardSection(props) {
   const { children } = props;
-  return /* @__PURE__ */ jsx19("div", { className: "guwmi-card-section", children });
+  return /* @__PURE__ */ jsx20("div", { className: "guwmi-card-section", children });
 }
 
 // src/components/Notification/Notification.tsx
-import { useMemo as useMemo11, useState as useState7 } from "react";
+import { useMemo as useMemo12, useState as useState7 } from "react";
 import {
   IconX,
   IconAlertCircle,
   IconAlertTriangle,
   IconCheck
 } from "@tabler/icons-react";
-import { jsx as jsx20, jsxs as jsxs6 } from "react/jsx-runtime";
+import { jsx as jsx21, jsxs as jsxs6 } from "react/jsx-runtime";
 function Notification(props) {
   const { kind, title, content } = props;
   const [isVisible, setIsVisible] = useState7(true);
-  const titleText = useMemo11(() => title ? title : kind.charAt(0).toUpperCase() + kind.slice(1), [title, kind]);
-  const classes = useMemo11(() => `guwmi-notification ${kind}`, [kind]);
+  const titleText = useMemo12(() => title ? title : kind.charAt(0).toUpperCase() + kind.slice(1), [title, kind]);
+  const classes = useMemo12(() => `guwmi-notification ${kind}`, [kind]);
   return isVisible ? /* @__PURE__ */ jsxs6("dialog", { className: classes, children: [
-    kind === "error" ? /* @__PURE__ */ jsx20(IconAlertCircle, { size: 20, stroke: 3 }) : kind === "warning" ? /* @__PURE__ */ jsx20(IconAlertTriangle, { size: 20, stroke: 3 }) : /* @__PURE__ */ jsx20(IconCheck, { size: 20, stroke: 3 }),
-    /* @__PURE__ */ jsx20("h2", { children: titleText }),
-    /* @__PURE__ */ jsx20("p", { children: content }),
-    /* @__PURE__ */ jsx20(
+    kind === "error" ? /* @__PURE__ */ jsx21(IconAlertCircle, { size: 20, stroke: 3 }) : kind === "warning" ? /* @__PURE__ */ jsx21(IconAlertTriangle, { size: 20, stroke: 3 }) : /* @__PURE__ */ jsx21(IconCheck, { size: 20, stroke: 3 }),
+    /* @__PURE__ */ jsx21("h2", { children: titleText }),
+    /* @__PURE__ */ jsx21("p", { children: content }),
+    /* @__PURE__ */ jsx21(
       "button",
       {
         onClick: () => setIsVisible(false),
         "aria-label": "Close notification",
         tabIndex: 0,
-        children: /* @__PURE__ */ jsx20(IconX, { size: 18 })
+        children: /* @__PURE__ */ jsx21(IconX, { size: 18 })
       }
     )
   ] }) : null;
 }
 
 // src/components/Modal/Modal.tsx
-import { useMemo as useMemo12, useRef as useRef10 } from "react";
+import { useMemo as useMemo13, useRef as useRef10 } from "react";
 
 // src/hooks/useTrapTabs.ts
 import { useCallback as useCallback4, useEffect as useEffect8, useRef as useRef8 } from "react";
@@ -686,24 +702,24 @@ function BodyPortal(props) {
 
 // src/components/Modal/Modal.tsx
 import { IconX as IconX2 } from "@tabler/icons-react";
-import { jsx as jsx21, jsxs as jsxs7 } from "react/jsx-runtime";
+import { jsx as jsx22, jsxs as jsxs7 } from "react/jsx-runtime";
 function Modal(props) {
   const { open, onClose, preventScroll = false, size = "sm", children } = props;
-  const classes = useMemo12(() => `guwmi-modal ${size}`, [size]);
+  const classes = useMemo13(() => `guwmi-modal ${size}`, [size]);
   const modalOverlay = useRef10(null);
   const modal = useRef10(null);
   const { isVisible } = useAnimation_default(open, "open", modalOverlay);
   useTrapTabs_default(open, onClose, modal);
   useCloseOutClick_default(open, onClose, modal);
   usePreventScroll_default(open, preventScroll);
-  return isVisible && /* @__PURE__ */ jsx21(BodyPortal, { children: /* @__PURE__ */ jsx21("div", { className: "guwmi-modal-overlay", ref: modalOverlay, children: /* @__PURE__ */ jsxs7("dialog", { className: classes, ref: modal, children: [
-    /* @__PURE__ */ jsx21(
+  return isVisible && /* @__PURE__ */ jsx22(BodyPortal, { children: /* @__PURE__ */ jsx22("div", { className: "guwmi-modal-overlay", ref: modalOverlay, children: /* @__PURE__ */ jsxs7("dialog", { className: classes, ref: modal, children: [
+    /* @__PURE__ */ jsx22(
       "button",
       {
         className: "guwmi-modal-close-button",
         "aria-label": "Close modal",
         onClick: () => onClose(),
-        children: /* @__PURE__ */ jsx21(IconX2, { size: 20 })
+        children: /* @__PURE__ */ jsx22(IconX2, { size: 20 })
       }
     ),
     children
@@ -711,26 +727,26 @@ function Modal(props) {
 }
 
 // src/components/Drawer/Drawer.tsx
-import { useMemo as useMemo13, useRef as useRef11 } from "react";
+import { useMemo as useMemo14, useRef as useRef11 } from "react";
 import { IconX as IconX3 } from "@tabler/icons-react";
-import { jsx as jsx22, jsxs as jsxs8 } from "react/jsx-runtime";
+import { jsx as jsx23, jsxs as jsxs8 } from "react/jsx-runtime";
 function Drawer(props) {
   const { open, onClose, preventScroll = false, position = "left", children } = props;
-  const classes = useMemo13(() => `guwmi-drawer ${position}`, [position]);
+  const classes = useMemo14(() => `guwmi-drawer ${position}`, [position]);
   const drawerOverlay = useRef11(null);
   const drawer = useRef11(null);
   const { isVisible } = useAnimation_default(open, "open", drawerOverlay);
   useTrapTabs_default(open, onClose, drawer);
   useCloseOutClick_default(open, onClose, drawer);
   usePreventScroll_default(open, preventScroll);
-  return isVisible && /* @__PURE__ */ jsx22(BodyPortal, { children: /* @__PURE__ */ jsx22("div", { className: "guwmi-drawer-overlay", ref: drawerOverlay, children: /* @__PURE__ */ jsxs8("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
-    /* @__PURE__ */ jsx22(
+  return isVisible && /* @__PURE__ */ jsx23(BodyPortal, { children: /* @__PURE__ */ jsx23("div", { className: "guwmi-drawer-overlay", ref: drawerOverlay, children: /* @__PURE__ */ jsxs8("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
+    /* @__PURE__ */ jsx23(
       "button",
       {
         className: "guwmi-drawer-close-button",
         "aria-label": "Close drawer",
         onClick: () => onClose(),
-        children: /* @__PURE__ */ jsx22(IconX3, { size: 20 })
+        children: /* @__PURE__ */ jsx23(IconX3, { size: 20 })
       }
     ),
     children
@@ -740,6 +756,7 @@ export {
   Accordion,
   AccordionItem,
   Button,
+  ButtonGroup,
   Card,
   CardSection,
   Cards,

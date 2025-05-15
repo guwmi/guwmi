@@ -3,6 +3,7 @@ import '../css/styles/index.css';
 
 // import button components
 import Button from './components/Button/Button';
+import ButtonGroup from './components/ButtonGroup/ButtonGroup';
 import IconButton from './components/IconButton/IconButton';
 
 // import menu components
@@ -44,6 +45,7 @@ export {
   Accordion,
   AccordionItem,
   Button,
+  ButtonGroup,
   Cards,
   Card,
   CardSection,
