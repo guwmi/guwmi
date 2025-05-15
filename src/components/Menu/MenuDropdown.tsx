@@ -3,6 +3,7 @@ import { useContext, useRef, PropsWithChildren } from 'react';
 
 // import custom functionality
 import useAnimation from '../../hooks/useAnimation';
+import useTabThrough from '../../hooks/useTabThrough';
 
 // import context
 import MenuContext from './MenuContext';
@@ -15,9 +16,10 @@ import MenuContext from './MenuContext';
 export default function MenuDropdown(props: PropsWithChildren) {
 
   const { children } = props;
-  const { isOpen, ariaLabel } = useContext(MenuContext);
+  const { isOpen, setIsOpen, ariaLabel } = useContext(MenuContext);
   const dropDownRef = useRef<HTMLDivElement>(null);
   const { isVisible } = useAnimation(isOpen, 'open', dropDownRef );
+  useTabThrough(isOpen, () => setIsOpen(false), dropDownRef);
 
   return (
     <>
