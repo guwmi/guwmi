@@ -5,7 +5,7 @@ import React, { PropsWithChildren, useMemo } from 'react';
 interface ComponentProps extends PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
   color?: 'primary' | 'secondary' | 'black' | 'white' | 'gray';
-  kind?: 'fill' | 'outline' | 'ghost';
+  variant?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'circle';
   className?: string;
   onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
@@ -23,13 +23,13 @@ export default function IconButton(props: ComponentProps) {
     children,
     size = 'md',
     color = 'primary',
-    kind = 'fill',
+    variant = 'fill',
     theme = 'round',
     className,
     onClick,
     ariaLabel
   } = props;
-  const classes = useMemo(() => `guwmi-btn icon ${size} ${color} ${kind} ${theme}${className ? ' ' + className : ''}`, []);
+  const classes = useMemo(() => `guwmi-btn icon ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`, []);
 
   return (
     <button className={classes} onClick={onClick} aria-label={ariaLabel}>

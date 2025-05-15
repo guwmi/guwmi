@@ -4,7 +4,7 @@ import React, { PropsWithChildren } from 'react';
 interface ComponentProps$d extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
     color?: 'primary' | 'secondary' | 'danger';
-    kind?: 'fill' | 'outline' | 'ghost';
+    variant?: 'fill' | 'outline' | 'ghost';
     theme?: 'square' | 'round' | 'pill';
     className?: string;
     onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
@@ -20,7 +20,7 @@ declare function Button(props: ComponentProps$d): react_jsx_runtime.JSX.Element;
 interface ComponentProps$c extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
     color?: 'primary' | 'secondary' | 'black' | 'white' | 'gray';
-    kind?: 'fill' | 'outline' | 'ghost';
+    variant?: 'fill' | 'outline' | 'ghost';
     theme?: 'square' | 'round' | 'circle';
     className?: string;
     onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);

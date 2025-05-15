@@ -13,14 +13,14 @@ function Button(props) {
     children,
     size = "md",
     color = "primary",
-    kind = "fill",
+    variant = "fill",
     theme = "round",
     className,
     onClick,
     href,
     target = null
   } = props;
-  const classes = useMemo(() => `guwmi-btn ${size} ${color} ${kind} ${theme}${className ? " " + className : ""}`, []);
+  const classes = useMemo(() => `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
   const button = useRef(null);
   const handleClick = useCallback((e) => {
     button.current.focus();
@@ -39,13 +39,13 @@ function IconButton(props) {
     children,
     size = "md",
     color = "primary",
-    kind = "fill",
+    variant = "fill",
     theme = "round",
     className,
     onClick,
     ariaLabel
   } = props;
-  const classes = useMemo2(() => `guwmi-btn icon ${size} ${color} ${kind} ${theme}${className ? " " + className : ""}`, []);
+  const classes = useMemo2(() => `guwmi-btn icon ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
   return /* @__PURE__ */ jsx2("button", { className: classes, onClick, "aria-label": ariaLabel, children });
 }
 

@@ -62,14 +62,14 @@ function Button(props) {
     children,
     size = "md",
     color = "primary",
-    kind = "fill",
+    variant = "fill",
     theme = "round",
     className,
     onClick,
     href,
     target = null
   } = props;
-  const classes = (0, import_react.useMemo)(() => `guwmi-btn ${size} ${color} ${kind} ${theme}${className ? " " + className : ""}`, []);
+  const classes = (0, import_react.useMemo)(() => `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
   const button = (0, import_react.useRef)(null);
   const handleClick = (0, import_react.useCallback)((e) => {
     button.current.focus();
@@ -88,13 +88,13 @@ function IconButton(props) {
     children,
     size = "md",
     color = "primary",
-    kind = "fill",
+    variant = "fill",
     theme = "round",
     className,
     onClick,
     ariaLabel
   } = props;
-  const classes = (0, import_react2.useMemo)(() => `guwmi-btn icon ${size} ${color} ${kind} ${theme}${className ? " " + className : ""}`, []);
+  const classes = (0, import_react2.useMemo)(() => `guwmi-btn icon ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
   return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("button", { className: classes, onClick, "aria-label": ariaLabel, children });
 }
 

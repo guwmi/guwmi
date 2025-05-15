@@ -10,7 +10,7 @@ import React, {
 interface ComponentProps extends PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
   color?: 'primary' | 'secondary' | 'danger';
-  kind?: 'fill' | 'outline' | 'ghost';
+  variant?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'pill';
   className?: string;
   onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
@@ -29,14 +29,14 @@ export default function Button(props: ComponentProps) {
     children,
     size = 'md',
     color = 'primary',
-    kind = 'fill',
+    variant = 'fill',
     theme = 'round',
     className,
     onClick,
     href,
     target = null
   } = props;
-  const classes = useMemo(() => `guwmi-btn ${size} ${color} ${kind} ${theme}${className ? ' ' + className : ''}`, []);
+  const classes = useMemo(() => `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`, []);
   const button = useRef(null);
   const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     button.current.focus();
