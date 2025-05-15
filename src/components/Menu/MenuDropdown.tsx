@@ -1,12 +1,8 @@
 // import library functionality
-import React, {
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  PropsWithChildren
-} from 'react';
+import { useContext, useRef, PropsWithChildren } from 'react';
+
+// import custom functionality
+import useAnimation from '../../hooks/useAnimation';
 
 // import context
 import MenuContext from './MenuContext';
@@ -20,25 +16,13 @@ export default function MenuDropdown(props: PropsWithChildren) {
 
   const { children } = props;
   const { isOpen, ariaLabel } = useContext(MenuContext);
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const classes = useMemo(() => `guwmi-menu-dropdown${isOpen ? ' open' : ''}`, [isOpen]);
   const dropDownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    dropDownRef.current?.addEventListener('transitioncancel', () => setIsAnimating(false));
-    dropDownRef.current?.addEventListener('transitionend', () => setIsAnimating(false));
-  }, [dropDownRef.current]);
-
-  useEffect(() => {
-    if (isOpen) {
-      setIsAnimating(true);
-    }
-  }, [isOpen])
+  const { isVisible } = useAnimation(isOpen, 'open', dropDownRef );
 
   return (
     <>
-      {(isOpen || isAnimating) &&
-        <nav className={classes} ref={dropDownRef} aria-label={ariaLabel}>
+      {isVisible &&
+        <nav className="guwmi-menu-dropdown" ref={dropDownRef} aria-label={ariaLabel}>
           <ul role="menubar">
             {children}
           </ul>
