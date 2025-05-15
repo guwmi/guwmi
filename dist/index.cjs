@@ -121,45 +121,134 @@ function Menu(props) {
 }
 
 // src/components/Menu/MenuDropdown.tsx
+var import_react7 = require("react");
+
+// src/hooks/useAnimation.ts
 var import_react5 = require("react");
+var useAnimation = (componentState, classString, elementRef) => {
+  const [isInDOM, setIsInDOM] = (0, import_react5.useState)(componentState);
+  const [hasClass, setHasClass] = (0, import_react5.useState)(false);
+  const initialLoad = (0, import_react5.useRef)(true);
+  const listnerAdded = (0, import_react5.useRef)(false);
+  const setClassState = () => {
+    var _a, _b;
+    if (elementRef.current) {
+      const classExists = (_b = Array.from((_a = elementRef.current) == null ? void 0 : _a.classList)) == null ? void 0 : _b.includes(classString);
+      setHasClass(classExists);
+    }
+  };
+  const toggleClass = () => {
+    var _a, _b, _c, _d;
+    if (componentState) {
+      if (!listnerAdded.current) {
+        (_a = elementRef.current) == null ? void 0 : _a.addEventListener("transitioncancel", setClassState);
+        (_b = elementRef.current) == null ? void 0 : _b.addEventListener("transitionend", setClassState);
+        listnerAdded.current = true;
+      }
+      (_c = elementRef.current) == null ? void 0 : _c.classList.add(classString);
+    } else {
+      (_d = elementRef.current) == null ? void 0 : _d.classList.remove(classString);
+      listnerAdded.current = false;
+    }
+  };
+  (0, import_react5.useEffect)(() => {
+    initialLoad.current = false;
+  }, []);
+  (0, import_react5.useEffect)(() => {
+    if (!initialLoad.current) {
+      if (componentState && !isInDOM) {
+        setIsInDOM(true);
+      } else if (componentState && isInDOM && !hasClass) {
+        setTimeout(() => toggleClass(), 25);
+      } else if (!componentState && isInDOM && hasClass) {
+        toggleClass();
+      } else if (!componentState && isInDOM && !hasClass) {
+        setIsInDOM(false);
+      }
+    }
+  }, [componentState, isInDOM, hasClass]);
+  return { isVisible: isInDOM || hasClass };
+};
+var useAnimation_default = useAnimation;
+
+// src/hooks/useTabThrough.ts
+var import_react6 = require("react");
+var useTabThrough = (open, onClose, elementRef) => {
+  const triggerRef = (0, import_react6.useRef)(null);
+  const handleTab = (0, import_react6.useCallback)((e) => {
+    var _a, _b, _c;
+    if (e.key === "Tab") {
+      const focusableElements = elementRef.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+      if (e.shiftKey) {
+        if (e.target === triggerRef.current || ((_a = elementRef.current) == null ? void 0 : _a.contains(e.target)) && e.target === firstFocusable) {
+          e.preventDefault();
+          (_b = triggerRef.current) == null ? void 0 : _b.focus();
+          onClose();
+        }
+      } else {
+        if (((_c = elementRef.current) == null ? void 0 : _c.contains(e.target)) && e.target === lastFocusable) {
+          onClose();
+        }
+      }
+    }
+  }, [elementRef.current]);
+  const handleEscape = (0, import_react6.useCallback)((e) => {
+    if (e.key === "Escape") {
+      onClose();
+    }
+  }, []);
+  (0, import_react6.useEffect)(() => {
+    if (open) {
+      triggerRef.current = document.activeElement;
+      setTimeout(() => {
+        var _a;
+        return (_a = elementRef.current) == null ? void 0 : _a.focus();
+      }, 25);
+      document.addEventListener("keydown", handleTab);
+      document.addEventListener("keydown", handleEscape);
+    } else {
+      document.removeEventListener("keydown", handleTab);
+      document.removeEventListener("keydown", handleEscape);
+    }
+    return () => {
+      document.removeEventListener("keydown", handleTab);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [open]);
+};
+var useTabThrough_default = useTabThrough;
+
+// src/components/Menu/MenuDropdown.tsx
 var import_jsx_runtime4 = require("react/jsx-runtime");
 function MenuDropdown(props) {
   const { children } = props;
-  const { isOpen, ariaLabel } = (0, import_react5.useContext)(MenuContext_default);
-  const [isAnimating, setIsAnimating] = (0, import_react5.useState)(false);
-  const classes = (0, import_react5.useMemo)(() => `guwmi-menu-dropdown${isOpen ? " open" : ""}`, [isOpen]);
-  const dropDownRef = (0, import_react5.useRef)(null);
-  (0, import_react5.useEffect)(() => {
-    var _a, _b;
-    (_a = dropDownRef.current) == null ? void 0 : _a.addEventListener("transitioncancel", () => setIsAnimating(false));
-    (_b = dropDownRef.current) == null ? void 0 : _b.addEventListener("transitionend", () => setIsAnimating(false));
-  }, [dropDownRef.current]);
-  (0, import_react5.useEffect)(() => {
-    if (isOpen) {
-      setIsAnimating(true);
-    }
-  }, [isOpen]);
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: (isOpen || isAnimating) && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("nav", { className: classes, ref: dropDownRef, "aria-label": ariaLabel, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("ul", { role: "menubar", children }) }) });
+  const { isOpen, setIsOpen, ariaLabel } = (0, import_react7.useContext)(MenuContext_default);
+  const dropDownRef = (0, import_react7.useRef)(null);
+  const { isVisible } = useAnimation_default(isOpen, "open", dropDownRef);
+  useTabThrough_default(isOpen, () => setIsOpen(false), dropDownRef);
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: isVisible && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("nav", { className: "guwmi-menu-dropdown", ref: dropDownRef, "aria-label": ariaLabel, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("ul", { role: "menubar", children }) }) });
 }
 
 // src/components/Menu/MenuItem.tsx
-var import_react6 = require("react");
+var import_react8 = require("react");
 var import_jsx_runtime5 = require("react/jsx-runtime");
 function MenuItem(props) {
   const { children, onClick, href } = props;
-  const classes = (0, import_react6.useMemo)(() => `guwmi-menu-item`, []);
+  const classes = (0, import_react8.useMemo)(() => `guwmi-menu-item`, []);
   return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("li", { className: classes, children: href ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { className: "guwmi-menu-btn", href, children }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("button", { className: "guwmi-menu-btn", onClick, children }) });
 }
 
 // src/components/Menu/MenuTrigger.tsx
-var import_react7 = __toESM(require("react"), 1);
+var import_react9 = __toESM(require("react"), 1);
 var import_jsx_runtime6 = require("react/jsx-runtime");
 function MenuTrigger(props) {
   const { children } = props;
-  const { isOpen, setIsOpen } = (0, import_react7.useContext)(MenuContext_default);
-  const childrenWithClick = (0, import_react7.useMemo)(() => import_react7.default.Children.map(children, (child) => {
-    if (import_react7.default.isValidElement(child)) {
-      return import_react7.default.cloneElement(child, { onClick: () => setIsOpen(!isOpen) });
+  const { isOpen, setIsOpen } = (0, import_react9.useContext)(MenuContext_default);
+  const childrenWithClick = (0, import_react9.useMemo)(() => import_react9.default.Children.map(children, (child) => {
+    if (import_react9.default.isValidElement(child)) {
+      return import_react9.default.cloneElement(child, { onClick: () => setIsOpen(!isOpen) });
     }
     return child;
   }), [children, isOpen]);
@@ -167,45 +256,45 @@ function MenuTrigger(props) {
 }
 
 // src/components/Tabs/TabsContainer.tsx
-var import_react9 = require("react");
+var import_react11 = require("react");
 
 // src/components/Tabs/TabsContext.ts
-var import_react8 = require("react");
-var TabsContext = (0, import_react8.createContext)(null);
+var import_react10 = require("react");
+var TabsContext = (0, import_react10.createContext)(null);
 var TabsContext_default = TabsContext;
 
 // src/components/Tabs/TabsContainer.tsx
 var import_jsx_runtime7 = require("react/jsx-runtime");
 function TabsContainer(props) {
   const { children } = props;
-  const [selectedTab, setSelectedTab] = (0, import_react9.useState)(0);
-  const id = (0, import_react9.useId)();
+  const [selectedTab, setSelectedTab] = (0, import_react11.useState)(0);
+  const id = (0, import_react11.useId)();
   return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(TabsContext_default.Provider, { value: { id, selectedTab, setSelectedTab }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "guwmi-tabs-container", children }) });
 }
 
 // src/components/Tabs/Tabs.tsx
-var import_react10 = __toESM(require("react"), 1);
+var import_react12 = __toESM(require("react"), 1);
 var import_jsx_runtime8 = require("react/jsx-runtime");
 function Tabs(props) {
   const { children } = props;
-  const { selectedTab } = (0, import_react10.useContext)(TabsContext_default);
-  const tabsContainer = (0, import_react10.useRef)(null);
-  const slider = (0, import_react10.useRef)(null);
-  const activeTab = (0, import_react10.useRef)(null);
-  const childrenWithIndex = (0, import_react10.useMemo)(() => {
-    return import_react10.default.Children.map(children, (child, index) => {
-      if (import_react10.default.isValidElement(child)) {
-        return import_react10.default.cloneElement(child, { index });
+  const { selectedTab } = (0, import_react12.useContext)(TabsContext_default);
+  const tabsContainer = (0, import_react12.useRef)(null);
+  const slider = (0, import_react12.useRef)(null);
+  const activeTab = (0, import_react12.useRef)(null);
+  const childrenWithIndex = (0, import_react12.useMemo)(() => {
+    return import_react12.default.Children.map(children, (child, index) => {
+      if (import_react12.default.isValidElement(child)) {
+        return import_react12.default.cloneElement(child, { index });
       }
       return child;
     });
   }, [children]);
-  (0, import_react10.useEffect)(() => {
+  (0, import_react12.useEffect)(() => {
     if (tabsContainer.current.querySelector(".guwmi-tab.active")) {
       activeTab.current = tabsContainer.current.querySelector(".guwmi-tab.active");
     }
   }, [tabsContainer, selectedTab]);
-  (0, import_react10.useEffect)(() => {
+  (0, import_react12.useEffect)(() => {
     if (activeTab.current) {
       const left = activeTab.current.offsetLeft;
       const width = activeTab.current.offsetWidth;
@@ -220,11 +309,11 @@ function Tabs(props) {
 }
 
 // src/components/Tabs/Tab.tsx
-var import_react11 = require("react");
+var import_react13 = require("react");
 var import_jsx_runtime9 = require("react/jsx-runtime");
 function Tab(props) {
   const { children, index } = props;
-  const { id, selectedTab, setSelectedTab } = (0, import_react11.useContext)(TabsContext_default);
+  const { id, selectedTab, setSelectedTab } = (0, import_react13.useContext)(TabsContext_default);
   return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
     "button",
     {
@@ -239,14 +328,14 @@ function Tab(props) {
 }
 
 // src/components/Tabs/TabPanels.tsx
-var import_react13 = __toESM(require("react"), 1);
+var import_react15 = __toESM(require("react"), 1);
 
 // src/hooks/useWindowWidth.ts
-var import_react12 = require("react");
+var import_react14 = require("react");
 function useWindowWidth() {
-  const [windowWidth, setWindowWidth] = (0, import_react12.useState)();
+  const [windowWidth, setWindowWidth] = (0, import_react14.useState)();
   const handleResize = () => setWindowWidth(window.innerWidth);
-  (0, import_react12.useEffect)(() => {
+  (0, import_react14.useEffect)(() => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -257,18 +346,18 @@ function useWindowWidth() {
 var import_jsx_runtime10 = require("react/jsx-runtime");
 function TabPanels(props) {
   const { children } = props;
-  const { selectedTab } = (0, import_react13.useContext)(TabsContext_default);
+  const { selectedTab } = (0, import_react15.useContext)(TabsContext_default);
   const windowWidth = useWindowWidth();
-  const panels = (0, import_react13.useRef)(null);
-  const childrenWithIndex = (0, import_react13.useMemo)(() => {
-    return import_react13.default.Children.map(children, (child, index) => {
-      if (import_react13.default.isValidElement(child)) {
-        return import_react13.default.cloneElement(child, { index });
+  const panels = (0, import_react15.useRef)(null);
+  const childrenWithIndex = (0, import_react15.useMemo)(() => {
+    return import_react15.default.Children.map(children, (child, index) => {
+      if (import_react15.default.isValidElement(child)) {
+        return import_react15.default.cloneElement(child, { index });
       }
       return child;
     });
   }, [children]);
-  (0, import_react13.useEffect)(() => {
+  (0, import_react15.useEffect)(() => {
     const active = panels.current.querySelector(".active");
     const height = active.offsetHeight;
     panels.current.style.height = `${height}px`;
@@ -277,11 +366,11 @@ function TabPanels(props) {
 }
 
 // src/components/Tabs/TabPanel.tsx
-var import_react14 = require("react");
+var import_react16 = require("react");
 var import_jsx_runtime11 = require("react/jsx-runtime");
 function TabPanel(props) {
   const { children, index } = props;
-  const { id, selectedTab } = (0, import_react14.useContext)(TabsContext_default);
+  const { id, selectedTab } = (0, import_react16.useContext)(TabsContext_default);
   return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
     "section",
     {
@@ -296,14 +385,14 @@ function TabPanel(props) {
 }
 
 // src/components/Table/Table.tsx
-var import_react17 = require("react");
+var import_react19 = require("react");
 
 // src/components/Table/TableRow.tsx
-var import_react15 = require("react");
+var import_react17 = require("react");
 var import_jsx_runtime12 = require("react/jsx-runtime");
 function TableRow(props) {
   const { headers, data, tableId } = props;
-  const cellData = (0, import_react15.useMemo)(() => {
+  const cellData = (0, import_react17.useMemo)(() => {
     const arr = [];
     headers.forEach((h) => {
       if (data[h.key]) {
@@ -316,12 +405,12 @@ function TableRow(props) {
 }
 
 // src/components/Inputs/Search/SearchInput.tsx
-var import_react16 = require("react");
+var import_react18 = require("react");
 var import_icons_react = require("@tabler/icons-react");
 var import_jsx_runtime13 = require("react/jsx-runtime");
 function SearchInput(props) {
   const { placeholder } = props;
-  const id = (0, import_react16.useId)();
+  const id = (0, import_react18.useId)();
   return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "guwmi-search-input", children: [
     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_icons_react.IconSearch, { size: 18 }) }),
     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { htmlFor: id, className: "guwmi-sr-only", children: "Search" }),
@@ -333,8 +422,8 @@ function SearchInput(props) {
 var import_jsx_runtime14 = require("react/jsx-runtime");
 function Table(props) {
   const { headers, rows, isCondensed, isSearchable } = props;
-  const id = (0, import_react17.useId)();
-  const classes = (0, import_react17.useMemo)(() => `guwmi-table-container${isCondensed ? " condensed" : ""}`, []);
+  const id = (0, import_react19.useId)();
+  const classes = (0, import_react19.useMemo)(() => `guwmi-table-container${isCondensed ? " condensed" : ""}`, []);
   return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: classes, children: [
     headers.length > 0 && isSearchable && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "guwmi-table-search", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SearchInput, {}) }),
     /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("table", { cellPadding: 0, cellSpacing: 0, children: headers.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
@@ -345,19 +434,19 @@ function Table(props) {
 }
 
 // src/components/Accordion/Accordion.tsx
-var import_react19 = require("react");
+var import_react21 = require("react");
 
 // src/components/Accordion/AccordionContext.ts
-var import_react18 = require("react");
-var AccordionContext = (0, import_react18.createContext)(null);
+var import_react20 = require("react");
+var AccordionContext = (0, import_react20.createContext)(null);
 var AccordionContext_default = AccordionContext;
 
 // src/components/Accordion/Accordion.tsx
 var import_jsx_runtime15 = require("react/jsx-runtime");
 function Accordion(props) {
   const { children, defaultOpen } = props;
-  const [openAccordions, setOpenAccordions] = (0, import_react19.useState)([]);
-  (0, import_react19.useEffect)(() => {
+  const [openAccordions, setOpenAccordions] = (0, import_react21.useState)([]);
+  (0, import_react21.useEffect)(() => {
     if (defaultOpen) {
       setOpenAccordions([...openAccordions, defaultOpen]);
     }
@@ -366,38 +455,38 @@ function Accordion(props) {
 }
 
 // src/components/Accordion/AccrodionItem.tsx
-var import_react20 = require("react");
+var import_react22 = require("react");
 var import_icons_react2 = require("@tabler/icons-react");
 var import_jsx_runtime16 = require("react/jsx-runtime");
 function AccordionItem(props) {
   const { children, title, id } = props;
-  const { openAccordions, setOpenAccordions } = (0, import_react20.useContext)(AccordionContext_default);
+  const { openAccordions, setOpenAccordions } = (0, import_react22.useContext)(AccordionContext_default);
   const windowWidth = useWindowWidth();
-  const panelRef = (0, import_react20.useRef)(null);
-  const contentRef = (0, import_react20.useRef)(null);
-  const [isOpen, setIsOpen] = (0, import_react20.useState)(false);
-  const [isAnimating, setIsAnimating] = (0, import_react20.useState)(false);
-  (0, import_react20.useEffect)(() => {
+  const panelRef = (0, import_react22.useRef)(null);
+  const contentRef = (0, import_react22.useRef)(null);
+  const [isOpen, setIsOpen] = (0, import_react22.useState)(false);
+  const [isAnimating, setIsAnimating] = (0, import_react22.useState)(false);
+  (0, import_react22.useEffect)(() => {
     if (openAccordions.includes(id)) {
       setIsOpen(true);
     } else {
       setIsOpen(false);
     }
   }, [openAccordions]);
-  const open = (0, import_react20.useCallback)(() => {
+  const open = (0, import_react22.useCallback)(() => {
     setOpenAccordions([...openAccordions, id]);
     setIsAnimating(true);
   }, [id, openAccordions]);
-  const close = (0, import_react20.useCallback)(() => {
+  const close = (0, import_react22.useCallback)(() => {
     setOpenAccordions(openAccordions.filter((value) => value !== id));
     setIsAnimating(true);
   }, [id, openAccordions]);
-  (0, import_react20.useEffect)(() => {
+  (0, import_react22.useEffect)(() => {
     var _a, _b;
     (_a = panelRef.current) == null ? void 0 : _a.addEventListener("transitioncancel", () => setIsAnimating(false));
     (_b = panelRef.current) == null ? void 0 : _b.addEventListener("transitionend", () => setIsAnimating(false));
   }, [panelRef.current]);
-  (0, import_react20.useEffect)(() => {
+  (0, import_react22.useEffect)(() => {
     if (contentRef.current && isOpen) {
       const height = contentRef.current.offsetHeight;
       panelRef.current.style.height = `${height}px`;
@@ -434,11 +523,11 @@ function AccordionItem(props) {
 }
 
 // src/components/Cards/Cards.tsx
-var import_react21 = require("react");
+var import_react23 = require("react");
 var import_jsx_runtime17 = require("react/jsx-runtime");
 function Cards(props) {
   const { children, columns = 3 } = props;
-  const classes = (0, import_react21.useMemo)(() => {
+  const classes = (0, import_react23.useMemo)(() => {
     let classString = "guwmi-card-grid ";
     switch (columns) {
       case 2:
@@ -489,14 +578,14 @@ function CardSection(props) {
 }
 
 // src/components/Notification/Notification.tsx
-var import_react22 = require("react");
+var import_react24 = require("react");
 var import_icons_react3 = require("@tabler/icons-react");
 var import_jsx_runtime20 = require("react/jsx-runtime");
 function Notification(props) {
   const { kind, title, content } = props;
-  const [isVisible, setIsVisible] = (0, import_react22.useState)(true);
-  const titleText = (0, import_react22.useMemo)(() => title ? title : kind.charAt(0).toUpperCase() + kind.slice(1), [title, kind]);
-  const classes = (0, import_react22.useMemo)(() => `guwmi-notification ${kind}`, [kind]);
+  const [isVisible, setIsVisible] = (0, import_react24.useState)(true);
+  const titleText = (0, import_react24.useMemo)(() => title ? title : kind.charAt(0).toUpperCase() + kind.slice(1), [title, kind]);
+  const classes = (0, import_react24.useMemo)(() => `guwmi-notification ${kind}`, [kind]);
   return isVisible ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("dialog", { className: classes, children: [
     kind === "error" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_icons_react3.IconAlertCircle, { size: 20, stroke: 3 }) : kind === "warning" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_icons_react3.IconAlertTriangle, { size: 20, stroke: 3 }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_icons_react3.IconCheck, { size: 20, stroke: 3 }),
     /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h2", { children: titleText }),
@@ -514,63 +603,110 @@ function Notification(props) {
 }
 
 // src/components/Modal/Modal.tsx
-var import_react25 = require("react");
+var import_react29 = require("react");
 
-// src/hooks/useAnimation.ts
-var import_react23 = require("react");
-var useAnimation = (componentState, classString, elementRef) => {
-  const [isInDOM, setIsInDOM] = (0, import_react23.useState)(componentState);
-  const [hasClass, setHasClass] = (0, import_react23.useState)(false);
-  const initialLoad = (0, import_react23.useRef)(true);
-  const listnerAdded = (0, import_react23.useRef)(false);
-  const setClassState = () => {
+// src/hooks/useTrapTabs.ts
+var import_react25 = require("react");
+var useTrapTabs = (open, onClose, elementRef) => {
+  const triggerRef = (0, import_react25.useRef)(null);
+  const handleTab = (0, import_react25.useCallback)((e) => {
     var _a, _b;
-    if (elementRef.current) {
-      const classExists = (_b = Array.from((_a = elementRef.current) == null ? void 0 : _a.classList)) == null ? void 0 : _b.includes(classString);
-      setHasClass(classExists);
-    }
-  };
-  const toggleClass = () => {
-    var _a, _b, _c, _d;
-    if (componentState) {
-      if (!listnerAdded.current) {
-        (_a = elementRef.current) == null ? void 0 : _a.addEventListener("transitioncancel", setClassState);
-        (_b = elementRef.current) == null ? void 0 : _b.addEventListener("transitionend", setClassState);
-        listnerAdded.current = true;
+    if (e.key === "Tab") {
+      const focusableElements = elementRef.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+      if (e.shiftKey) {
+        if (((_a = elementRef.current) == null ? void 0 : _a.contains(e.target)) && e.target === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        }
+      } else {
+        if (((_b = elementRef.current) == null ? void 0 : _b.contains(e.target)) && e.target === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
       }
-      (_c = elementRef.current) == null ? void 0 : _c.classList.add(classString);
-    } else {
-      (_d = elementRef.current) == null ? void 0 : _d.classList.remove(classString);
-      listnerAdded.current = false;
     }
-  };
-  (0, import_react23.useEffect)(() => {
-    initialLoad.current = false;
+  }, [elementRef.current]);
+  const handleEscape = (0, import_react25.useCallback)((e) => {
+    if (e.key === "Escape") {
+      onClose();
+    }
   }, []);
-  (0, import_react23.useEffect)(() => {
-    if (!initialLoad.current) {
-      if (componentState && !isInDOM) {
-        setIsInDOM(true);
-      } else if (componentState && isInDOM && !hasClass) {
-        setTimeout(() => toggleClass(), 25);
-      } else if (!componentState && isInDOM && hasClass) {
-        toggleClass();
-      } else if (!componentState && isInDOM && !hasClass) {
-        setIsInDOM(false);
+  (0, import_react25.useEffect)(() => {
+    var _a;
+    if (open) {
+      triggerRef.current = document.activeElement;
+      setTimeout(() => {
+        var _a2;
+        return (_a2 = elementRef.current) == null ? void 0 : _a2.focus();
+      }, 25);
+      document.addEventListener("keydown", handleTab);
+      document.addEventListener("keydown", handleEscape);
+    } else {
+      (_a = triggerRef.current) == null ? void 0 : _a.focus();
+      document.removeEventListener("keydown", handleTab);
+      document.removeEventListener("keydown", handleEscape);
+    }
+    return () => {
+      document.removeEventListener("keydown", handleTab);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [open]);
+};
+var useTrapTabs_default = useTrapTabs;
+
+// src/hooks/useCloseOutClick.ts
+var import_react26 = require("react");
+var useCloseOutClick = (open, onClose, elementRef) => {
+  const triggerRef = (0, import_react26.useRef)(null);
+  const closeOutClick = (0, import_react26.useCallback)((e) => {
+    var _a;
+    if (e.target !== triggerRef.current && !((_a = elementRef.current) == null ? void 0 : _a.contains(e.target))) {
+      onClose();
+    }
+  }, [elementRef.current]);
+  (0, import_react26.useEffect)(() => {
+    var _a;
+    if (open) {
+      triggerRef.current = document.activeElement;
+      document.addEventListener("click", closeOutClick);
+    } else {
+      (_a = triggerRef.current) == null ? void 0 : _a.focus();
+      document.removeEventListener("click", closeOutClick);
+    }
+    return () => {
+      document.removeEventListener("click", closeOutClick);
+    };
+  }, [open]);
+};
+var useCloseOutClick_default = useCloseOutClick;
+
+// src/hooks/usePreventScroll.ts
+var import_react27 = require("react");
+var usePreventScroll = (open, enabled) => {
+  (0, import_react27.useEffect)(() => {
+    if (open) {
+      if (enabled) {
+        document.body.style.height = "100%";
+        document.body.style.overflow = "hidden";
+      }
+    } else {
+      if (enabled) {
+        document.body.removeAttribute("style");
       }
     }
-  }, [componentState, isInDOM, hasClass]);
-  return { isVisible: isInDOM || hasClass };
+  }, [open]);
 };
-var useAnimation_default = useAnimation;
+var usePreventScroll_default = usePreventScroll;
 
 // src/components/utils/BodyPortal.tsx
-var import_react24 = require("react");
+var import_react28 = require("react");
 var import_react_dom = __toESM(require("react-dom"), 1);
 function BodyPortal(props) {
   const { children } = props;
-  const [hasDocument, setHasDocument] = (0, import_react24.useState)(false);
-  (0, import_react24.useEffect)(() => {
+  const [hasDocument, setHasDocument] = (0, import_react28.useState)(false);
+  (0, import_react28.useEffect)(() => {
     setHasDocument(typeof document !== "undefined");
   }, []);
   return hasDocument ? import_react_dom.default.createPortal(children, document.body) : null;
@@ -581,71 +717,13 @@ var import_icons_react4 = require("@tabler/icons-react");
 var import_jsx_runtime21 = require("react/jsx-runtime");
 function Modal(props) {
   const { open, onClose, preventScroll = false, size = "sm", children } = props;
-  const classes = (0, import_react25.useMemo)(() => `guwmi-modal ${size}`, [size]);
-  const modalOverlay = (0, import_react25.useRef)(null);
-  const modal = (0, import_react25.useRef)(null);
-  const modalButton = (0, import_react25.useRef)(null);
+  const classes = (0, import_react29.useMemo)(() => `guwmi-modal ${size}`, [size]);
+  const modalOverlay = (0, import_react29.useRef)(null);
+  const modal = (0, import_react29.useRef)(null);
   const { isVisible } = useAnimation_default(open, "open", modalOverlay);
-  const closeOutClick = (0, import_react25.useCallback)((e) => {
-    var _a;
-    if (e.target !== modalButton.current && !((_a = modal.current) == null ? void 0 : _a.contains(e.target))) {
-      onClose();
-      ;
-    }
-  }, [modal.current]);
-  const handleTab = (0, import_react25.useCallback)((e) => {
-    var _a, _b;
-    if (e.key === "Tab") {
-      const focusableElements = modal.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
-      const firstFocusable = focusableElements[0];
-      const lastFocusable = focusableElements[focusableElements.length - 1];
-      if (e.shiftKey) {
-        if (((_a = modal.current) == null ? void 0 : _a.contains(e.target)) && e.target === firstFocusable) {
-          e.preventDefault();
-          lastFocusable.focus();
-        }
-      } else {
-        if (((_b = modal.current) == null ? void 0 : _b.contains(e.target)) && e.target === lastFocusable) {
-          e.preventDefault();
-          firstFocusable.focus();
-        }
-      }
-    }
-  }, [modal.current]);
-  const handleEscape = (0, import_react25.useCallback)((e) => {
-    if (e.key === "Escape") {
-      onClose();
-      ;
-    }
-  }, []);
-  (0, import_react25.useEffect)(() => {
-    if (open) {
-      modalButton.current = document.activeElement;
-      setTimeout(() => {
-        var _a;
-        return (_a = modal.current) == null ? void 0 : _a.focus();
-      }, 25);
-      document.addEventListener("click", closeOutClick);
-      document.addEventListener("keydown", handleTab);
-      document.addEventListener("keydown", handleEscape);
-      if (preventScroll) {
-        document.body.style.height = "100%";
-        document.body.style.overflow = "hidden";
-      }
-    } else {
-      document.removeEventListener("click", closeOutClick);
-      document.removeEventListener("keydown", handleTab);
-      document.removeEventListener("keydown", handleEscape);
-      if (preventScroll) {
-        document.body.removeAttribute("style");
-      }
-    }
-    return () => {
-      document.removeEventListener("click", closeOutClick);
-      document.removeEventListener("keydown", handleTab);
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [open]);
+  useTrapTabs_default(open, onClose, modal);
+  useCloseOutClick_default(open, onClose, modal);
+  usePreventScroll_default(open, preventScroll);
   return isVisible && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "guwmi-modal-overlay", ref: modalOverlay, children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("dialog", { className: classes, ref: modal, children: [
     /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
       "button",
@@ -661,76 +739,18 @@ function Modal(props) {
 }
 
 // src/components/Drawer/Drawer.tsx
-var import_react26 = require("react");
+var import_react30 = require("react");
 var import_icons_react5 = require("@tabler/icons-react");
 var import_jsx_runtime22 = require("react/jsx-runtime");
 function Drawer(props) {
   const { open, onClose, preventScroll = false, position = "left", children } = props;
-  const classes = (0, import_react26.useMemo)(() => `guwmi-drawer ${position}`, [position]);
-  const drawerOverlay = (0, import_react26.useRef)(null);
-  const drawer = (0, import_react26.useRef)(null);
-  const drawerButton = (0, import_react26.useRef)(null);
+  const classes = (0, import_react30.useMemo)(() => `guwmi-drawer ${position}`, [position]);
+  const drawerOverlay = (0, import_react30.useRef)(null);
+  const drawer = (0, import_react30.useRef)(null);
   const { isVisible } = useAnimation_default(open, "open", drawerOverlay);
-  const closeOutClick = (0, import_react26.useCallback)((e) => {
-    var _a;
-    if (e.target !== drawerButton.current && !((_a = drawer.current) == null ? void 0 : _a.contains(e.target))) {
-      onClose();
-    }
-  }, [drawer.current]);
-  const handleTab = (0, import_react26.useCallback)((e) => {
-    var _a, _b;
-    if (e.key === "Tab") {
-      const focusableElements = drawer.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
-      const firstFocusable = focusableElements[0];
-      const lastFocusable = focusableElements[focusableElements.length - 1];
-      if (e.shiftKey) {
-        if (((_a = drawer.current) == null ? void 0 : _a.contains(e.target)) && e.target === firstFocusable) {
-          e.preventDefault();
-          lastFocusable.focus();
-        }
-      } else {
-        if (((_b = drawer.current) == null ? void 0 : _b.contains(e.target)) && e.target === lastFocusable) {
-          e.preventDefault();
-          firstFocusable.focus();
-        }
-      }
-    }
-  }, [drawer.current]);
-  const handleEscape = (0, import_react26.useCallback)((e) => {
-    if (e.key === "Escape") {
-      onClose();
-    }
-  }, []);
-  (0, import_react26.useEffect)(() => {
-    var _a;
-    if (open) {
-      drawerButton.current = document.activeElement;
-      setTimeout(() => {
-        var _a2;
-        return (_a2 = drawer.current) == null ? void 0 : _a2.focus();
-      }, 25);
-      document.addEventListener("click", closeOutClick);
-      document.addEventListener("keydown", handleTab);
-      document.addEventListener("keydown", handleEscape);
-      if (preventScroll) {
-        document.body.style.height = "100%";
-        document.body.style.overflow = "hidden";
-      }
-    } else {
-      (_a = drawerButton.current) == null ? void 0 : _a.focus();
-      document.removeEventListener("click", closeOutClick);
-      document.removeEventListener("keydown", handleTab);
-      document.removeEventListener("keydown", handleEscape);
-      if (preventScroll) {
-        document.body.removeAttribute("style");
-      }
-    }
-    return () => {
-      document.removeEventListener("click", closeOutClick);
-      document.removeEventListener("keydown", handleTab);
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [open]);
+  useTrapTabs_default(open, onClose, drawer);
+  useCloseOutClick_default(open, onClose, drawer);
+  usePreventScroll_default(open, preventScroll);
   return isVisible && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "guwmi-drawer-overlay", ref: drawerOverlay, children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
     /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
       "button",
