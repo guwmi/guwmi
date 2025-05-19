@@ -16,6 +16,7 @@ interface ComponentProps extends PropsWithChildren {
   onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
   href?: string;
   target?: '_blank' | '_self' | '_parent' | '_top';
+  disabled?: boolean;
 }
 
 /**
@@ -34,7 +35,8 @@ export default function Button(props: ComponentProps) {
     className,
     onClick,
     href,
-    target = null
+    target = null,
+    disabled = false,
   } = props;
   const classes = useMemo(() => `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`, []);
   const button = useRef(null);
@@ -46,12 +48,12 @@ export default function Button(props: ComponentProps) {
   }, [href, onClick, button.current])
 
   return (
-    href ? (
+    href && !disabled ? (
       <a className={classes} href={href} onClick={() => handleClick} target={target} ref={button}>
         {children}
       </a>
     ) : (
-      <button className={classes} onClick={(e) => handleClick(e)} ref={button}>
+      <button className={classes} onClick={(e) => handleClick(e)} ref={button} disabled={disabled}>
         {children}
       </button>
     )

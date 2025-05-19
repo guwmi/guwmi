@@ -99,6 +99,12 @@
   background: black;
   text-decoration: none;
 }
+.guwmi-btn:disabled, .guwmi-btn.disabled {
+  cursor: not-allowed;
+  background-color: var(--primary-bg) !important;
+  border-color: var(--primary-bg) !important;
+  color: var(--tertiary-bg) !important;
+}
 .guwmi-btn.sm {
   padding: 0.25rem 0.67rem;
   font-size: 0.9rem;

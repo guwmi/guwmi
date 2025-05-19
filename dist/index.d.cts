@@ -10,6 +10,7 @@ interface ComponentProps$e extends PropsWithChildren {
     onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
     href?: string;
     target?: '_blank' | '_self' | '_parent' | '_top';
+    disabled?: boolean;
 }
 /**
  * Button Component ********************************************************************************

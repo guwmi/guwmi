@@ -20,6 +20,14 @@
   background: black;
   text-decoration: none;
 
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+    background-color: var(--primary-bg) !important;
+    border-color: var(--primary-bg) !important;
+    color: var(--tertiary-bg) !important;
+  }
+
   // sizes
   &.sm {
     padding: 0.25rem 0.67rem;

@@ -1,5 +1,5 @@
 // src/index.ts
-import "./index-HNI7QNPU.css";
+import "./index-2P5H252K.css";
 
 // src/components/Button/Button.tsx
 import {
@@ -18,7 +18,8 @@ function Button(props) {
     className,
     onClick,
     href,
-    target = null
+    target = null,
+    disabled = false
   } = props;
   const classes = useMemo(() => `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
   const button = useRef(null);
@@ -28,11 +29,11 @@ function Button(props) {
       onClick(e);
     }
   }, [href, onClick, button.current]);
-  return href ? /* @__PURE__ */ jsx("a", { className: classes, href, onClick: () => handleClick, target, ref: button, children }) : /* @__PURE__ */ jsx("button", { className: classes, onClick: (e) => handleClick(e), ref: button, children });
+  return href && !disabled ? /* @__PURE__ */ jsx("a", { className: classes, href, onClick: () => handleClick, target, ref: button, children }) : /* @__PURE__ */ jsx("button", { className: classes, onClick: (e) => handleClick(e), ref: button, disabled, children });
 }
 
 // src/components/ButtonGroup/ButtonGroup.tsx
-import { useMemo as useMemo2 } from "react";
+import React2, { useMemo as useMemo2 } from "react";
 import { jsx as jsx2 } from "react/jsx-runtime";
 function ButtonGroup(props) {
   const {
@@ -44,7 +45,18 @@ function ButtonGroup(props) {
     className
   } = props;
   const classes = useMemo2(() => `guwmi-btn-group ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
-  return /* @__PURE__ */ jsx2("div", { className: classes, children });
+  const buttonChildren = useMemo2(() => React2.Children.map(children, (child) => {
+    if (React2.isValidElement(child)) {
+      return React2.cloneElement(child, {
+        size,
+        color,
+        variant,
+        theme
+      });
+    }
+    return child;
+  }), [children]);
+  return /* @__PURE__ */ jsx2("div", { className: classes, children: buttonChildren });
 }
 
 // src/components/IconButton/IconButton.tsx
@@ -208,14 +220,14 @@ function MenuItem(props) {
 }
 
 // src/components/Menu/MenuTrigger.tsx
-import React5, { useMemo as useMemo6, useContext as useContext2 } from "react";
+import React6, { useMemo as useMemo6, useContext as useContext2 } from "react";
 import { jsx as jsx7 } from "react/jsx-runtime";
 function MenuTrigger(props) {
   const { children } = props;
   const { isOpen, setIsOpen } = useContext2(MenuContext_default);
-  const childrenWithClick = useMemo6(() => React5.Children.map(children, (child) => {
-    if (React5.isValidElement(child)) {
-      return React5.cloneElement(child, { onClick: () => setIsOpen(!isOpen) });
+  const childrenWithClick = useMemo6(() => React6.Children.map(children, (child) => {
+    if (React6.isValidElement(child)) {
+      return React6.cloneElement(child, { onClick: () => setIsOpen(!isOpen) });
     }
     return child;
   }), [children, isOpen]);
@@ -240,7 +252,7 @@ function TabsContainer(props) {
 }
 
 // src/components/Tabs/Tabs.tsx
-import React7, {
+import React8, {
   useEffect as useEffect3,
   useMemo as useMemo7,
   useRef as useRef5,
@@ -254,9 +266,9 @@ function Tabs(props) {
   const slider = useRef5(null);
   const activeTab = useRef5(null);
   const childrenWithIndex = useMemo7(() => {
-    return React7.Children.map(children, (child, index) => {
-      if (React7.isValidElement(child)) {
-        return React7.cloneElement(child, { index });
+    return React8.Children.map(children, (child, index) => {
+      if (React8.isValidElement(child)) {
+        return React8.cloneElement(child, { index });
       }
       return child;
     });
@@ -300,7 +312,7 @@ function Tab(props) {
 }
 
 // src/components/Tabs/TabPanels.tsx
-import React9, {
+import React10, {
   useContext as useContext5,
   useMemo as useMemo8,
   useRef as useRef6,
@@ -327,9 +339,9 @@ function TabPanels(props) {
   const windowWidth = useWindowWidth();
   const panels = useRef6(null);
   const childrenWithIndex = useMemo8(() => {
-    return React9.Children.map(children, (child, index) => {
-      if (React9.isValidElement(child)) {
-        return React9.cloneElement(child, { index });
+    return React10.Children.map(children, (child, index) => {
+      if (React10.isValidElement(child)) {
+        return React10.cloneElement(child, { index });
       }
       return child;
     });

@@ -53,7 +53,7 @@ __export(index_exports, {
   TabsContainer: () => TabsContainer
 });
 module.exports = __toCommonJS(index_exports);
-var import_styles = require("./index-HNI7QNPU.css");
+var import_styles = require("./index-2P5H252K.css");
 
 // src/components/Button/Button.tsx
 var import_react = require("react");
@@ -68,7 +68,8 @@ function Button(props) {
     className,
     onClick,
     href,
-    target = null
+    target = null,
+    disabled = false
   } = props;
   const classes = (0, import_react.useMemo)(() => `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
   const button = (0, import_react.useRef)(null);
@@ -78,11 +79,11 @@ function Button(props) {
       onClick(e);
     }
   }, [href, onClick, button.current]);
-  return href ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { className: classes, href, onClick: () => handleClick, target, ref: button, children }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { className: classes, onClick: (e) => handleClick(e), ref: button, children });
+  return href && !disabled ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { className: classes, href, onClick: () => handleClick, target, ref: button, children }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { className: classes, onClick: (e) => handleClick(e), ref: button, disabled, children });
 }
 
 // src/components/ButtonGroup/ButtonGroup.tsx
-var import_react2 = require("react");
+var import_react2 = __toESM(require("react"), 1);
 var import_jsx_runtime2 = require("react/jsx-runtime");
 function ButtonGroup(props) {
   const {
@@ -94,7 +95,18 @@ function ButtonGroup(props) {
     className
   } = props;
   const classes = (0, import_react2.useMemo)(() => `guwmi-btn-group ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: classes, children });
+  const buttonChildren = (0, import_react2.useMemo)(() => import_react2.default.Children.map(children, (child) => {
+    if (import_react2.default.isValidElement(child)) {
+      return import_react2.default.cloneElement(child, {
+        size,
+        color,
+        variant,
+        theme
+      });
+    }
+    return child;
+  }), [children]);
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: classes, children: buttonChildren });
 }
 
 // src/components/IconButton/IconButton.tsx
