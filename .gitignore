@@ -6,6 +6,9 @@
 # package lock
 package-lock.json
 
+# test coverage
+/coverage
+
 # misc
 .DS_Store
 *.pem
