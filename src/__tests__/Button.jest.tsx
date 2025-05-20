@@ -33,8 +33,7 @@ describe('Button', () => {
   test('renders with round variant by default', () => {
     render(<Button>Default</Button>);
     const button = screen.getByText('Default');
-    // Using a regex to match the generated CSS module class
-    expect(button).toHaveClass(/round/); // Matches a class containing 'primary'
+    expect(button).toHaveClass(/round/);
   });
 
   test('renders with fill variant', () => {
