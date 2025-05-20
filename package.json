@@ -32,11 +32,10 @@
   },
   "devDependencies": {
     "@swc/core": "^1.11.24",
-    "@tabler/icons-react": "^3.31.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "sass": "^1.86.3",
-    "typescript": "^5.8.3",
-    "tsup": "^8.4.0"
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
   }
 }
