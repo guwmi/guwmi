@@ -3,7 +3,7 @@
  **/
 
 // inport colors
-@use '../../../styles/variables/colors.scss' ;
+@use '../../../styles/variables.scss' ;
 
 .guwmi-search-input {
   position: relative;
@@ -16,20 +16,20 @@
     left: 0.5rem;
     top: calc(50% + 0.1rem);
     transform: translateY(-50%);
-    color: var(--text);
+    color: var(--guwmi-text);
   }
 
   input {
     flex-grow: 1;
     padding: 0.5rem 0.5rem 0.5rem 2rem;
-    background: var(--secondary-bg);
-    border: solid 1px var(--tertiary-bg);
-    border-radius: 3px;
+    background: var(--guwmi-secondary-bg);
+    border: solid 1px var(--guwmi-tertiary-bg);
+    border-radius: var(--guwmi-radius);
     font-size: 0.9rem;
-    color: var(--text);
+    color: var(--guwmi-text);
 
     &::placeholder {
-      color: var(--text);
+      color: var(--guwmi-text);
       opacity: 1;
     }
   }

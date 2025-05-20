@@ -1,52 +1,61 @@
 /**
  * Index file for pulling all component files together **********************************************
  **/
-/**
- * Styles for the Accordion component and children **************************************************
- **/
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 /**
  * Color variables for for use in the library *******************************************************
  **/
 :root {
-  --text: #161616;
-  --text-contrast: white;
-  --app-bg: white;
-  --primary-bg: #f4f4f4;
-  --secondary-bg: #e0e0e0;
-  --tertiary-bg: #a8a8a8;
-  --high-contrast-bg: #393939;
-  --primary: #1565c0;
-  --primary-alt: #1876c8;
-  --secondary: #8434ca;
-  --secondary-alt: #9d4edd;
-  --white: #fff;
-  --black: #000;
-  --alert-red: #da1e28;
-  --alert-red-alt: #c2141d;
-  --alert-green: #24a148;
-  --alert-orange: #ff832b;
-  --alert-yellow: #f1c21b;
+  --guwmi-text: #161616;
+  --guwmi-text-contrast: white;
+  --guwmi-app-bg: white;
+  --guwmi-primary-bg: #f4f4f4;
+  --guwmi-secondary-bg: #e0e0e0;
+  --guwmi-tertiary-bg: #a8a8a8;
+  --guwmi-high-contrast-bg: #393939;
+  --guwmi-primary: #1565c0;
+  --guwmi-primary-alt: #1876c8;
+  --guwmi-secondary: #8434ca;
+  --guwmi-secondary-alt: #9d4edd;
+  --guwmi-white: #fff;
+  --guwmi-black: #000;
+  --guwmi-alert-red: #da1e28;
+  --guwmi-alert-red-alt: #c2141d;
+  --guwmi-alert-green: #24a148;
+  --guwmi-alert-orange: #ff832b;
+  --guwmi-alert-yellow: #f1c21b;
+  --guwmi-font-size: 16px;
+  --guwmi-radius: 3px;
+  --guwmi-inner-radius: 2px;
+  --guwmi-transition: ease all 0.4s;
+  --guwmi-transition-short: ease all 0.15s;
+  --guwmi-transition-long: ease all 0.6s;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #f4f4f4;
-    --text-contrast: #161616;
-    --app-bg: #262626;
-    --primary-bg: #393939;
-    --secondary-bg: #525252;
-    --high-contrast-bg: #f4f4f4;
-    --tertiary-bg: #6f6f6f;
-    --primary: #1876c8;
-    --primary-alt: #1565c0;
-    --secondary: #9d4edd;
-    --secondary-alt: #8434ca;
+    --guwmi-text: #f4f4f4;
+    --guwmi-text-contrast: #161616;
+    --guwmi-app-bg: #262626;
+    --guwmi-primary-bg: #393939;
+    --guwmi-secondary-bg: #525252;
+    --guwmi-high-contrast-bg: #f4f4f4;
+    --guwmi-tertiary-bg: #6f6f6f;
+    --guwmi-primary: #1876c8;
+    --guwmi-primary-alt: #1565c0;
+    --guwmi-secondary: #9d4edd;
+    --guwmi-secondary-alt: #8434ca;
   }
 }
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
+ * Styles for the Accordion component and children **************************************************
+ **/
 .guwmi-accordion-container {
-  border: solid 1px var(--secondary-bg);
-  border-radius: 3px;
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
   overflow: hidden;
 }
 .guwmi-accordion-container .guwmi-accordion-item {
@@ -65,18 +74,18 @@
   cursor: pointer;
   padding: 1rem;
   font-size: 1rem;
-  background: var(--primary-bg);
-  border-top: solid 1px var(--secondary-bg);
+  background: var(--guwmi-primary-bg);
+  border-top: solid 1px var(--guwmi-secondary-bg);
 }
 .guwmi-accordion-container .guwmi-accordion-item > button.active svg {
   transform: rotate(90deg);
 }
 .guwmi-accordion-container .guwmi-accordion-item > button svg {
   margin-left: auto;
-  transition: ease all 0.15s;
+  transition: var(--guwmi-transition-short);
 }
 .guwmi-accordion-container .guwmi-accordion-item > section {
-  transition: ease all 0.33333s;
+  transition: var(--guwmi-transition);
 }
 .guwmi-accordion-container .guwmi-accordion-item > section .guwmi-accordion-panel-content {
   padding: 1rem;
@@ -94,16 +103,16 @@
   cursor: pointer;
   font-size: 1rem;
   border: solid 2px rgba(0, 0, 0, 0);
-  transition: ease all 0.33333s;
+  transition: var(--guwmi-transition);
   color: white;
   background: black;
   text-decoration: none;
 }
 .guwmi-btn:disabled, .guwmi-btn.disabled {
   cursor: not-allowed;
-  background-color: var(--primary-bg) !important;
-  border-color: var(--primary-bg) !important;
-  color: var(--tertiary-bg) !important;
+  background-color: var(--guwmi-primary-bg) !important;
+  border-color: var(--guwmi-primary-bg) !important;
+  color: var(--guwmi-tertiary-bg) !important;
 }
 .guwmi-btn.sm {
   padding: 0.25rem 0.67rem;
@@ -117,64 +126,64 @@
   font-size: 1.1rem;
 }
 .guwmi-btn.primary {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--guwmi-primary);
+  border-color: var(--guwmi-primary);
 }
 .guwmi-btn.primary:hover.fill {
-  background: var(--primary-alt);
-  border-color: var(--primary-alt);
+  background: var(--guwmi-primary-alt);
+  border-color: var(--guwmi-primary-alt);
 }
 .guwmi-btn.primary:hover.outline {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--guwmi-primary);
+  border-color: var(--guwmi-primary);
   color: white;
 }
 .guwmi-btn.primary.outline {
-  color: var(--primary);
-  border-color: var(--primary);
+  color: var(--guwmi-primary);
+  border-color: var(--guwmi-primary);
 }
 .guwmi-btn.primary.ghost {
-  color: var(--primary);
+  color: var(--guwmi-primary);
 }
 .guwmi-btn.secondary {
-  background: var(--secondary);
-  border-color: var(--secondary);
+  background: var(--guwmi-secondary);
+  border-color: var(--guwmi-secondary);
 }
 .guwmi-btn.secondary:hover.fill {
-  background: var(--secondary-alt);
-  border-color: var(--secondary-alt);
+  background: var(--guwmi-secondary-alt);
+  border-color: var(--guwmi-secondary-alt);
 }
 .guwmi-btn.secondary:hover.outline {
-  background: var(--secondary);
-  border-color: var(--secondary);
+  background: var(--guwmi-secondary);
+  border-color: var(--guwmi-secondary);
   color: white;
 }
 .guwmi-btn.secondary.outline {
-  color: var(--secondary);
-  border-color: var(--secondary);
+  color: var(--guwmi-secondary);
+  border-color: var(--guwmi-secondary);
 }
 .guwmi-btn.secondary.ghost {
-  color: var(--secondary);
+  color: var(--guwmi-secondary);
 }
 .guwmi-btn.danger {
-  background: var(--alert-red);
-  border-color: var(--alert-red);
+  background: var(--guwmi-alert-red);
+  border-color: var(--guwmi-alert-red);
 }
 .guwmi-btn.danger:hover.fill {
-  background: var(--alert-red-alt);
-  border-color: var(--alert-red-alt);
+  background: var(--guwmi-alert-red-alt);
+  border-color: var(--guwmi-alert-red-alt);
 }
 .guwmi-btn.danger:hover.outline {
-  background: var(--alert-red);
-  border-color: var(--alert-red);
+  background: var(--guwmi-alert-red);
+  border-color: var(--guwmi-alert-red);
   color: white;
 }
 .guwmi-btn.danger.outline {
-  color: var(--alert-red);
-  border-color: var(--alert-red);
+  color: var(--guwmi-alert-red);
+  border-color: var(--guwmi-alert-red);
 }
 .guwmi-btn.danger.ghost {
-  color: var(--alert-red);
+  color: var(--guwmi-alert-red);
 }
 .guwmi-btn.outline {
   background: none;
@@ -185,7 +194,7 @@
   border-color: rgba(0, 0, 0, 0);
 }
 .guwmi-btn.round {
-  border-radius: 4px;
+  border-radius: var(--guwmi-radius);
 }
 .guwmi-btn.pill {
   border-radius: 50px;
@@ -218,12 +227,12 @@
   border-right-color: rgba(0, 0, 0, 0);
 }
 .guwmi-btn-group.round .guwmi-btn:first-child {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: var(--guwmi-radius);
+  border-bottom-left-radius: var(--guwmi-radius);
 }
 .guwmi-btn-group.round .guwmi-btn:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: var(--guwmi-radius);
+  border-bottom-right-radius: var(--guwmi-radius);
 }
 .guwmi-btn-group.pill .guwmi-btn:first-child {
   border-top-left-radius: 50px;
@@ -241,6 +250,9 @@
 }
 
 /**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
  * Style for the Cards and child components *********************************************************
  **/
 .guwmi-card-grid {
@@ -250,9 +262,9 @@
   gap: 1rem;
 }
 .guwmi-card-grid > * {
-  background: var(--primary-bg);
-  border: solid 1px var(--secondary-bg);
-  border-radius: 3px;
+  background: var(--guwmi-primary-bg);
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
   box-sizing: border-box;
 }
 .guwmi-card-grid > *:last-of-type {
@@ -284,7 +296,7 @@
 }
 .guwmi-card-grid .guwmi-card .guwmi-card-section {
   padding: 1rem;
-  border-top: solid 1px var(--secondary-bg);
+  border-top: solid 1px var(--guwmi-secondary-bg);
 }
 .guwmi-card-grid .guwmi-card .guwmi-card-section:first-of-type {
   border-top: 0;
@@ -319,7 +331,7 @@
   left: 0;
   backdrop-filter: blur(0);
   z-index: 99999;
-  transition: linear all 0.15s;
+  transition: var(--guwmi-transition-short);
   display: flex;
 }
 .guwmi-drawer-overlay.open {
@@ -333,14 +345,14 @@
 .guwmi-drawer-overlay .guwmi-drawer {
   position: relative;
   display: block;
-  background: var(--text-contrast);
-  color: var(--text);
+  background: var(--guwmi-text-contrast);
+  color: var(--guwmi-text);
   padding: 1rem;
-  transition: ease all 0.3s;
+  transition: var(--guwmi-transition);
   min-width: 300px;
 }
 .guwmi-drawer-overlay .guwmi-drawer.left {
-  border-right: solid 1px var(--primary-bg);
+  border-right: solid 1px var(--guwmi-primary-bg);
   transform: translateX(-100%);
   margin-right: auto;
 }
@@ -349,7 +361,7 @@
   transform: translateX(100%);
 }
 .guwmi-drawer-overlay .guwmi-drawer.right {
-  border-left: solid 1px var(--primary-bg);
+  border-left: solid 1px var(--guwmi-primary-bg);
   transform: translateX(100%);
   margin-left: auto;
 }
@@ -367,7 +379,7 @@
 
 @media (prefers-color-scheme: light) {
   .guwmi-drawer-close-button {
-    color: var(--text-contrast);
+    color: var(--guwmi-text-contrast);
   }
 }
 /**
@@ -388,6 +400,9 @@
   border-radius: 50%;
 }
 
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
 /**
  * Styles for the Menu and child components ********************************************************
  **/
@@ -426,12 +441,12 @@
 }
 .guwmi-menu-container .guwmi-menu-dropdown {
   position: absolute;
-  background: var(--primary-bg);
-  border: solid 1px var(--secondary-bg);
+  background: var(--guwmi-primary-bg);
+  border: solid 1px var(--guwmi-secondary-bg);
   padding: 0.25rem;
-  border-radius: 4px;
+  border-radius: var(--guwmi-radius);
   opacity: 0;
-  transition: ease-in all 0.1s;
+  transition: var(--guwmi-transition-short);
   z-index: 99999;
 }
 .guwmi-menu-container .guwmi-menu-dropdown.open {
@@ -457,15 +472,18 @@
   border: 0;
   background: none;
   padding: 0.5rem 0.75rem;
-  border-radius: 3px;
+  border-radius: var(--guwmi-inner-radius);
   cursor: pointer;
   width: 100%;
-  transition: ease all 0.4s;
+  transition: var(--guwmi-transition);
 }
 .guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item .guwmi-menu-btn:hover {
-  background: var(--secondary-bg);
+  background: var(--guwmi-secondary-bg);
 }
 
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
 /**
  * Styles for the modal component *******************************************************************
  **/
@@ -482,7 +500,7 @@
   justify-content: center;
   z-index: 99999;
   opacity: 0;
-  transition: ease all 0.15s;
+  transition: var(--guwmi-transition-short);
 }
 .guwmi-modal-overlay.open {
   opacity: 1;
@@ -490,11 +508,11 @@
 .guwmi-modal-overlay .guwmi-modal {
   position: relative;
   display: block;
-  background: var(--text-contrast);
-  color: var(--text);
+  background: var(--guwmi-text-contrast);
+  color: var(--guwmi-text);
   padding: 1rem;
-  border: solid 1px var(--primary-bg);
-  border-radius: 4px;
+  border: solid 1px var(--guwmi-primary-bg);
+  border-radius: var(--guwmi-radius);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
 }
 .guwmi-modal-overlay .guwmi-modal.sm {
@@ -516,6 +534,9 @@
 }
 
 /**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
  * Styles for the Tabs component and children *******************************************************
  **/
 .guwmi-tabs-container {
@@ -527,17 +548,17 @@
   position: relative;
   display: flex;
   gap: 0.25rem;
-  background: var(--primary-bg);
-  border: solid 1px var(--secondary-bg);
-  border-radius: 3px;
+  background: var(--guwmi-primary-bg);
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
   padding: 0.25rem;
 }
 .guwmi-tabs-container .guwmi-tabs .guwmi-tabs-slider {
   position: absolute;
   height: calc(100% - 0.5rem);
-  background: var(--secondary-bg);
-  border-radius: 3px;
-  transition: ease all 0.4s;
+  background: var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-inner-radius);
+  transition: var(--guwmi-transition);
 }
 .guwmi-tabs-container .guwmi-tabs .guwmi-tab {
   position: relative;
@@ -549,23 +570,26 @@
   cursor: pointer;
 }
 .guwmi-tabs-container .guwmi-tab-panels {
-  border: solid 1px var(--secondary-bg);
-  border-radius: 3px;
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
   overflow: hidden;
-  transition: ease all 0.4s;
+  transition: var(--guwmi-transition);
 }
 .guwmi-tabs-container .guwmi-tab-panels .guwmi-tab-panel {
   padding: 1rem;
 }
 
 /**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
  * Style for the table component ********************************************************************
  **/
 .guwmi-table-container {
-  background: var(--primary-bg);
+  background: var(--guwmi-primary-bg);
   padding: 0.25rem 1rem;
-  border-radius: 4px;
-  border: solid 1px var(--secondary-bg);
+  border-radius: var(--guwmi-radius);
+  border: solid 1px var(--guwmi-secondary-bg);
 }
 .guwmi-table-container.condensed {
   padding: 0.25rem 0.5rem;
@@ -587,17 +611,20 @@
   padding: 1rem;
   margin: 0;
   border: 0;
-  border-bottom: solid 1px var(--secondary-bg);
+  border-bottom: solid 1px var(--guwmi-secondary-bg);
   font-size: 0.9rem;
 }
 .guwmi-table-container table thead th {
-  border-color: var(--tertiary-bg);
+  border-color: var(--guwmi-tertiary-bg);
   font-size: 1rem;
 }
 .guwmi-table-container table tbody tr:last-of-type td {
   border: 0;
 }
 
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
 /**
  * Styles for the search input component ************************************************************
  **/
@@ -612,22 +639,25 @@
   left: 0.5rem;
   top: calc(50% + 0.1rem);
   transform: translateY(-50%);
-  color: var(--text);
+  color: var(--guwmi-text);
 }
 .guwmi-search-input input {
   flex-grow: 1;
   padding: 0.5rem 0.5rem 0.5rem 2rem;
-  background: var(--secondary-bg);
-  border: solid 1px var(--tertiary-bg);
-  border-radius: 3px;
+  background: var(--guwmi-secondary-bg);
+  border: solid 1px var(--guwmi-tertiary-bg);
+  border-radius: var(--guwmi-radius);
   font-size: 0.9rem;
-  color: var(--text);
+  color: var(--guwmi-text);
 }
 .guwmi-search-input input::placeholder {
-  color: var(--text);
+  color: var(--guwmi-text);
   opacity: 1;
 }
 
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
 /**
  * Styles for the Notification component ***********************************************************
  **/
@@ -636,37 +666,37 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--high-contrast-bg);
-  color: var(--text-contrast);
+  background: var(--guwmi-high-contrast-bg);
+  color: var(--guwmi-text-contrast);
   padding: 0.75rem;
   border: 0;
   border-left: solid 6px;
   width: auto;
 }
 .guwmi-notification.error {
-  border-color: var(--alert-red);
+  border-color: var(--guwmi-alert-red);
 }
 .guwmi-notification.error > svg {
-  stroke: var(--alert-red);
+  stroke: var(--guwmi-alert-red);
 }
 .guwmi-notification.warning {
-  border-color: var(--alert-orange);
+  border-color: var(--guwmi-alert-orange);
 }
 .guwmi-notification.warning > svg {
-  stroke: var(--alert-orange);
+  stroke: var(--guwmi-alert-orange);
 }
 .guwmi-notification.success {
-  border-color: var(--alert-green);
+  border-color: var(--guwmi-alert-green);
 }
 .guwmi-notification.success > svg {
-  stroke: var(--alert-green);
+  stroke: var(--guwmi-alert-green);
 }
 .guwmi-notification > button {
   position: absolute;
   right: 0.5rem;
   background: 0;
   border: 0;
-  color: var(--text-contrast);
+  color: var(--guwmi-text-contrast);
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -682,9 +712,9 @@
 
 html,
 body {
-  font-size: 16px;
-  background: var(--app-bg);
-  color: var(--text);
+  font-size: var(--guwmi-font-size);
+  background: var(--guwmi-app-bg);
+  color: var(--guwmi-text);
 }
 html *,
 body * {
@@ -692,7 +722,7 @@ body * {
 }
 html button,
 body button {
-  color: var(--text);
+  color: var(--guwmi-text);
 }
 html h1,
 html h2,

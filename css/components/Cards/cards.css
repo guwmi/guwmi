@@ -5,39 +5,45 @@
  * Color variables for for use in the library *******************************************************
  **/
 :root {
-  --text: #161616;
-  --text-contrast: white;
-  --app-bg: white;
-  --primary-bg: #f4f4f4;
-  --secondary-bg: #e0e0e0;
-  --tertiary-bg: #a8a8a8;
-  --high-contrast-bg: #393939;
-  --primary: #1565c0;
-  --primary-alt: #1876c8;
-  --secondary: #8434ca;
-  --secondary-alt: #9d4edd;
-  --white: #fff;
-  --black: #000;
-  --alert-red: #da1e28;
-  --alert-red-alt: #c2141d;
-  --alert-green: #24a148;
-  --alert-orange: #ff832b;
-  --alert-yellow: #f1c21b;
+  --guwmi-text: #161616;
+  --guwmi-text-contrast: white;
+  --guwmi-app-bg: white;
+  --guwmi-primary-bg: #f4f4f4;
+  --guwmi-secondary-bg: #e0e0e0;
+  --guwmi-tertiary-bg: #a8a8a8;
+  --guwmi-high-contrast-bg: #393939;
+  --guwmi-primary: #1565c0;
+  --guwmi-primary-alt: #1876c8;
+  --guwmi-secondary: #8434ca;
+  --guwmi-secondary-alt: #9d4edd;
+  --guwmi-white: #fff;
+  --guwmi-black: #000;
+  --guwmi-alert-red: #da1e28;
+  --guwmi-alert-red-alt: #c2141d;
+  --guwmi-alert-green: #24a148;
+  --guwmi-alert-orange: #ff832b;
+  --guwmi-alert-yellow: #f1c21b;
+  --guwmi-font-size: 16px;
+  --guwmi-radius: 3px;
+  --guwmi-inner-radius: 2px;
+  --guwmi-transition: ease all 0.4s;
+  --guwmi-transition-short: ease all 0.15s;
+  --guwmi-transition-long: ease all 0.6s;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #f4f4f4;
-    --text-contrast: #161616;
-    --app-bg: #262626;
-    --primary-bg: #393939;
-    --secondary-bg: #525252;
-    --high-contrast-bg: #f4f4f4;
-    --tertiary-bg: #6f6f6f;
-    --primary: #1876c8;
-    --primary-alt: #1565c0;
-    --secondary: #9d4edd;
-    --secondary-alt: #8434ca;
+    --guwmi-text: #f4f4f4;
+    --guwmi-text-contrast: #161616;
+    --guwmi-app-bg: #262626;
+    --guwmi-primary-bg: #393939;
+    --guwmi-secondary-bg: #525252;
+    --guwmi-high-contrast-bg: #f4f4f4;
+    --guwmi-tertiary-bg: #6f6f6f;
+    --guwmi-primary: #1876c8;
+    --guwmi-primary-alt: #1565c0;
+    --guwmi-secondary: #9d4edd;
+    --guwmi-secondary-alt: #8434ca;
   }
 }
 .guwmi-card-grid {
@@ -47,9 +53,9 @@
   gap: 1rem;
 }
 .guwmi-card-grid > * {
-  background: var(--primary-bg);
-  border: solid 1px var(--secondary-bg);
-  border-radius: 3px;
+  background: var(--guwmi-primary-bg);
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
   box-sizing: border-box;
 }
 .guwmi-card-grid > *:last-of-type {
@@ -81,7 +87,7 @@
 }
 .guwmi-card-grid .guwmi-card .guwmi-card-section {
   padding: 1rem;
-  border-top: solid 1px var(--secondary-bg);
+  border-top: solid 1px var(--guwmi-secondary-bg);
 }
 .guwmi-card-grid .guwmi-card .guwmi-card-section:first-of-type {
   border-top: 0;

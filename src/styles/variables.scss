@@ -1,7 +1,10 @@
 /**
  * Color variables for for use in the library *******************************************************
  **/
+
 :root {
+
+  // colors
   --guwmi-text: #161616;
   --guwmi-text-contrast: white;
   --guwmi-app-bg: white;
@@ -20,9 +23,23 @@
   --guwmi-alert-green: #24a148;
   --guwmi-alert-orange: #ff832b;
   --guwmi-alert-yellow: #f1c21b;
+
+  // font size
+  --guwmi-font-size: 16px;
+
+  // radius
+  --guwmi-radius: 3px;
+  --guwmi-inner-radius: 2px;
+
+  // transition speeds
+  --guwmi-transition: ease all 0.4s;
+  --guwmi-transition-short: ease all 0.15s;
+  --guwmi-transition-long: ease all 0.6s;
 }
 
+// dark theme colors
 @media (prefers-color-scheme: dark) {
+
   :root {
     --guwmi-text: #f4f4f4;
     --guwmi-text-contrast: #161616;

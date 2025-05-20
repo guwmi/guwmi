@@ -1,45 +1,6 @@
 /**
  * Styles for the Button component ******************************************************************
  **/
-/**
- * Color variables for for use in the library *******************************************************
- **/
-:root {
-  --text: #161616;
-  --text-contrast: white;
-  --app-bg: white;
-  --primary-bg: #f4f4f4;
-  --secondary-bg: #e0e0e0;
-  --tertiary-bg: #a8a8a8;
-  --high-contrast-bg: #393939;
-  --primary: #1565c0;
-  --primary-alt: #1876c8;
-  --secondary: #8434ca;
-  --secondary-alt: #9d4edd;
-  --white: #fff;
-  --black: #000;
-  --alert-red: #da1e28;
-  --alert-red-alt: #c2141d;
-  --alert-green: #24a148;
-  --alert-orange: #ff832b;
-  --alert-yellow: #f1c21b;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #f4f4f4;
-    --text-contrast: #161616;
-    --app-bg: #262626;
-    --primary-bg: #393939;
-    --secondary-bg: #525252;
-    --high-contrast-bg: #f4f4f4;
-    --tertiary-bg: #6f6f6f;
-    --primary: #1876c8;
-    --primary-alt: #1565c0;
-    --secondary: #9d4edd;
-    --secondary-alt: #8434ca;
-  }
-}
 .guwmi-btn {
   display: inline-flex;
   gap: 1rem;
@@ -49,16 +10,16 @@
   cursor: pointer;
   font-size: 1rem;
   border: solid 2px rgba(0, 0, 0, 0);
-  transition: ease all 0.33333s;
+  transition: var(--guwmi-transition);
   color: white;
   background: black;
   text-decoration: none;
 }
 .guwmi-btn:disabled, .guwmi-btn.disabled {
   cursor: not-allowed;
-  background-color: var(--primary-bg) !important;
-  border-color: var(--primary-bg) !important;
-  color: var(--tertiary-bg) !important;
+  background-color: var(--guwmi-primary-bg) !important;
+  border-color: var(--guwmi-primary-bg) !important;
+  color: var(--guwmi-tertiary-bg) !important;
 }
 .guwmi-btn.sm {
   padding: 0.25rem 0.67rem;
@@ -72,64 +33,64 @@
   font-size: 1.1rem;
 }
 .guwmi-btn.primary {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--guwmi-primary);
+  border-color: var(--guwmi-primary);
 }
 .guwmi-btn.primary:hover.fill {
-  background: var(--primary-alt);
-  border-color: var(--primary-alt);
+  background: var(--guwmi-primary-alt);
+  border-color: var(--guwmi-primary-alt);
 }
 .guwmi-btn.primary:hover.outline {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--guwmi-primary);
+  border-color: var(--guwmi-primary);
   color: white;
 }
 .guwmi-btn.primary.outline {
-  color: var(--primary);
-  border-color: var(--primary);
+  color: var(--guwmi-primary);
+  border-color: var(--guwmi-primary);
 }
 .guwmi-btn.primary.ghost {
-  color: var(--primary);
+  color: var(--guwmi-primary);
 }
 .guwmi-btn.secondary {
-  background: var(--secondary);
-  border-color: var(--secondary);
+  background: var(--guwmi-secondary);
+  border-color: var(--guwmi-secondary);
 }
 .guwmi-btn.secondary:hover.fill {
-  background: var(--secondary-alt);
-  border-color: var(--secondary-alt);
+  background: var(--guwmi-secondary-alt);
+  border-color: var(--guwmi-secondary-alt);
 }
 .guwmi-btn.secondary:hover.outline {
-  background: var(--secondary);
-  border-color: var(--secondary);
+  background: var(--guwmi-secondary);
+  border-color: var(--guwmi-secondary);
   color: white;
 }
 .guwmi-btn.secondary.outline {
-  color: var(--secondary);
-  border-color: var(--secondary);
+  color: var(--guwmi-secondary);
+  border-color: var(--guwmi-secondary);
 }
 .guwmi-btn.secondary.ghost {
-  color: var(--secondary);
+  color: var(--guwmi-secondary);
 }
 .guwmi-btn.danger {
-  background: var(--alert-red);
-  border-color: var(--alert-red);
+  background: var(--guwmi-alert-red);
+  border-color: var(--guwmi-alert-red);
 }
 .guwmi-btn.danger:hover.fill {
-  background: var(--alert-red-alt);
-  border-color: var(--alert-red-alt);
+  background: var(--guwmi-alert-red-alt);
+  border-color: var(--guwmi-alert-red-alt);
 }
 .guwmi-btn.danger:hover.outline {
-  background: var(--alert-red);
-  border-color: var(--alert-red);
+  background: var(--guwmi-alert-red);
+  border-color: var(--guwmi-alert-red);
   color: white;
 }
 .guwmi-btn.danger.outline {
-  color: var(--alert-red);
-  border-color: var(--alert-red);
+  color: var(--guwmi-alert-red);
+  border-color: var(--guwmi-alert-red);
 }
 .guwmi-btn.danger.ghost {
-  color: var(--alert-red);
+  color: var(--guwmi-alert-red);
 }
 .guwmi-btn.outline {
   background: none;
@@ -140,7 +101,7 @@
   border-color: rgba(0, 0, 0, 0);
 }
 .guwmi-btn.round {
-  border-radius: 4px;
+  border-radius: var(--guwmi-radius);
 }
 .guwmi-btn.pill {
   border-radius: 50px;

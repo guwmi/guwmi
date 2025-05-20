@@ -11,7 +11,7 @@
   left: 0;
   backdrop-filter: blur(0);
   z-index: 99999;
-  transition: linear all 0.15s;
+  transition: var(--guwmi-transition-short);
   display: flex;
 
   &.open {
@@ -27,14 +27,14 @@
   .guwmi-drawer {
     position: relative;
     display: block;
-    background: var(--text-contrast);
-    color: var(--text);
+    background: var(--guwmi-text-contrast);
+    color: var(--guwmi-text);
     padding: 1rem;
-    transition: ease all 0.3s;
+    transition: var(--guwmi-transition);
     min-width: 300px;
 
     &.left {
-      border-right: solid 1px var(--primary-bg);
+      border-right: solid 1px var(--guwmi-primary-bg);
       transform: translateX(-100%);
       margin-right: auto;
 
@@ -45,7 +45,7 @@
     }
 
     &.right {
-      border-left: solid 1px var(--primary-bg);
+      border-left: solid 1px var(--guwmi-primary-bg);
       transform: translateX(100%);
       margin-left: auto;
 
@@ -67,6 +67,6 @@
 
 @media (prefers-color-scheme: light) {
   .guwmi-drawer-close-button {
-    color: var(--text-contrast);
+    color: var(--guwmi-text-contrast);
   }
 }

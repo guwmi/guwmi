@@ -3,11 +3,11 @@
  **/
 
 // import colors
-@use '../../styles/variables/colors.scss' ;
+@use '../../styles/variables.scss' ;
 
 .guwmi-accordion-container {
-  border: solid 1px var(--secondary-bg);
-  border-radius: 3px;
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
   overflow: hidden;
   
   .guwmi-accordion-item {
@@ -30,8 +30,8 @@
       cursor: pointer;
       padding: 1rem;
       font-size: 1rem;
-      background: var(--primary-bg);
-      border-top: solid 1px var(--secondary-bg);
+      background: var(--guwmi-primary-bg);
+      border-top: solid 1px var(--guwmi-secondary-bg);
 
       &.active {
 
@@ -42,12 +42,12 @@
 
       svg {
         margin-left: auto;
-        transition: ease all 0.15s;
+        transition: var(--guwmi-transition-short);
       }
     }
 
     > section {
-      transition: ease all 0.33333s;
+      transition: var(--guwmi-transition);
 
       .guwmi-accordion-panel-content {
         padding: 1rem;

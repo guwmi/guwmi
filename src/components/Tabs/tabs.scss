@@ -3,7 +3,7 @@
  **/
 
 // import colors
-@use '../../styles/variables/colors.scss' ;
+@use '../../styles/variables.scss' ;
 
 .guwmi-tabs-container {
   display: flex;
@@ -14,17 +14,17 @@
     position: relative;
     display: flex;
     gap: 0.25rem;
-    background: var(--primary-bg);
-    border: solid 1px var(--secondary-bg);
-    border-radius: 3px;
+    background: var(--guwmi-primary-bg);
+    border: solid 1px var(--guwmi-secondary-bg);
+    border-radius: var(--guwmi-radius);
     padding: 0.25rem;
 
     .guwmi-tabs-slider {
       position: absolute;
       height: calc(100% - 0.5rem);
-      background: var(--secondary-bg);
-      border-radius: 3px;
-      transition: ease all 0.4s;
+      background: var(--guwmi-secondary-bg);
+      border-radius: var(--guwmi-inner-radius);
+      transition: var(--guwmi-transition);
     }
 
     .guwmi-tab {
@@ -39,10 +39,10 @@
   }
 
   .guwmi-tab-panels {
-    border: solid 1px var(--secondary-bg);
-    border-radius: 3px;
+    border: solid 1px var(--guwmi-secondary-bg);
+    border-radius: var(--guwmi-radius);
     overflow: hidden;
-    transition: ease all 0.4s;
+    transition: var(--guwmi-transition);
 
     .guwmi-tab-panel {
       padding: 1rem;

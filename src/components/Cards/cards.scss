@@ -3,7 +3,7 @@
  **/
 
 // import color variables
-@use '../../styles/variables/colors.scss' ;
+@use '../../styles/variables.scss' ;
 
 .guwmi-card-grid {
   display: flex;
@@ -12,9 +12,9 @@
   gap: 1rem;
 
   > * {
-    background: var(--primary-bg);
-    border: solid 1px var(--secondary-bg);
-    border-radius: 3px;
+    background: var(--guwmi-primary-bg);
+    border: solid 1px var(--guwmi-secondary-bg);
+    border-radius: var(--guwmi-radius);
     box-sizing: border-box;
     
     &:last-of-type {
@@ -54,7 +54,7 @@
 
     .guwmi-card-section {
       padding: 1rem;
-      border-top: solid 1px var(--secondary-bg);
+      border-top: solid 1px var(--guwmi-secondary-bg);
 
       &:first-of-type {
         border-top: 0;

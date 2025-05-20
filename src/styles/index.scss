@@ -2,6 +2,9 @@
  * Index file for pulling all component files together **********************************************
  **/
 
+// import variables
+@use './variables.scss';
+
 // import component stylesheets
 @use '../components/Accordion/accordion.scss';
 @use '../components/Button/button.scss';
@@ -22,16 +25,16 @@
 // global styles
 html,
 body {
-  font-size: 16px;
-  background: var(--app-bg);
-  color: var(--text);
+  font-size: var(--guwmi-font-size);
+  background: var(--guwmi-app-bg);
+  color: var(--guwmi-text);
 
   * {
     font-family: "Roboto", sans-serif;
   }
 
   button {
-    color: var(--text);
+    color: var(--guwmi-text);
   }
 
   h1,

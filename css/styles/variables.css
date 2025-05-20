@@ -20,6 +20,12 @@
   --guwmi-alert-green: #24a148;
   --guwmi-alert-orange: #ff832b;
   --guwmi-alert-yellow: #f1c21b;
+  --guwmi-font-size: 16px;
+  --guwmi-radius: 3px;
+  --guwmi-inner-radius: 2px;
+  --guwmi-transition: ease all 0.4s;
+  --guwmi-transition-short: ease all 0.15s;
+  --guwmi-transition-long: ease all 0.6s;
 }
 
 @media (prefers-color-scheme: dark) {

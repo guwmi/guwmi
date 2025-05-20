@@ -3,41 +3,41 @@
  **/
 
  // import colors
-@use '../../styles/variables/colors.scss';
+@use '../../styles/variables.scss';
 
 .guwmi-notification {
   position: relative;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--high-contrast-bg);
-  color: var(--text-contrast);
+  background: var(--guwmi-high-contrast-bg);
+  color: var(--guwmi-text-contrast);
   padding: 0.75rem;
   border: 0;
   border-left: solid 6px;
   width: auto;
 
   &.error {
-    border-color: var(--alert-red);
+    border-color: var(--guwmi-alert-red);
 
     > svg {
-      stroke: var(--alert-red);
+      stroke: var(--guwmi-alert-red);
     }
   }
 
   &.warning {
-    border-color: var(--alert-orange);
+    border-color: var(--guwmi-alert-orange);
 
     > svg {
-      stroke: var(--alert-orange);
+      stroke: var(--guwmi-alert-orange);
     }
   }
 
   &.success {
-    border-color: var(--alert-green);
+    border-color: var(--guwmi-alert-green);
 
     > svg {
-      stroke: var(--alert-green);
+      stroke: var(--guwmi-alert-green);
     }
   }
 
@@ -46,7 +46,7 @@
     right: 0.5rem;
     background: 0;
     border: 0;
-    color: var(--text-contrast);
+    color: var(--guwmi-text-contrast);
     display: flex;
     align-items: center;
     cursor: pointer;
