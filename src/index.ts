@@ -40,6 +40,9 @@ import Modal from './components/Modal/Modal';
 // import drawer component
 import Drawer from './components/Drawer/Drawer';
 
+// import icon component
+import Icon from './components/Icon/Icon';
+
 // export all components
 export {
   Accordion,
@@ -50,6 +53,7 @@ export {
   Card,
   CardSection,
   Drawer,
+  Icon,
   IconButton,
   Menu,
   MenuDropdown,

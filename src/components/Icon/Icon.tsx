@@ -55,7 +55,7 @@ interface ComponentProps extends SVGProps<SVGSVGElement> {
 }
 
 /**
- * Icon container component ****************************************************************************
+ * Icon component ****************************************************************************
  * @param ComponentProps
  */
 
