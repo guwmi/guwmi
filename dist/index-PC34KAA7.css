@@ -1,9 +1,6 @@
 /**
  * Index file for pulling all component files together **********************************************
  **/
-/**
- * Styles for the Accordion component and children **************************************************
- **/
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 /**
  * Color variables for for use in the library *******************************************************
@@ -27,6 +24,12 @@
   --guwmi-alert-green: #24a148;
   --guwmi-alert-orange: #ff832b;
   --guwmi-alert-yellow: #f1c21b;
+  --guwmi-font-size: 16px;
+  --guwmi-radius: 3px;
+  --guwmi-inner-radius: 2px;
+  --guwmi-transition: ease all 0.4s;
+  --guwmi-transition-short: ease all 0.15s;
+  --guwmi-transition-long: ease all 0.6s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,9 +47,15 @@
     --guwmi-secondary-alt: #8434ca;
   }
 }
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
+ * Styles for the Accordion component and children **************************************************
+ **/
 .guwmi-accordion-container {
   border: solid 1px var(--guwmi-secondary-bg);
-  border-radius: 3px;
+  border-radius: var(--guwmi-radius);
   overflow: hidden;
 }
 .guwmi-accordion-container .guwmi-accordion-item {
@@ -73,10 +82,10 @@
 }
 .guwmi-accordion-container .guwmi-accordion-item > button svg {
   margin-left: auto;
-  transition: 0.15s;
+  transition: var(--guwmi-transition-short);
 }
 .guwmi-accordion-container .guwmi-accordion-item > section {
-  transition: 0.33333s;
+  transition: var(--guwmi-transition);
 }
 .guwmi-accordion-container .guwmi-accordion-item > section .guwmi-accordion-panel-content {
   padding: 1rem;
@@ -94,7 +103,7 @@
   cursor: pointer;
   font-size: 1rem;
   border: solid 2px rgba(0, 0, 0, 0);
-  transition: 0.33333s;
+  transition: var(--guwmi-transition);
   color: white;
   background: black;
   text-decoration: none;
@@ -185,7 +194,7 @@
   border-color: rgba(0, 0, 0, 0);
 }
 .guwmi-btn.round {
-  border-radius: 4px;
+  border-radius: var(--guwmi-radius);
 }
 .guwmi-btn.pill {
   border-radius: 50px;
@@ -218,12 +227,12 @@
   border-right-color: rgba(0, 0, 0, 0);
 }
 .guwmi-btn-group.round .guwmi-btn:first-child {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: var(--guwmi-radius);
+  border-bottom-left-radius: var(--guwmi-radius);
 }
 .guwmi-btn-group.round .guwmi-btn:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: var(--guwmi-radius);
+  border-bottom-right-radius: var(--guwmi-radius);
 }
 .guwmi-btn-group.pill .guwmi-btn:first-child {
   border-top-left-radius: 50px;
@@ -241,6 +250,9 @@
 }
 
 /**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
  * Style for the Cards and child components *********************************************************
  **/
 .guwmi-card-grid {
@@ -252,7 +264,7 @@
 .guwmi-card-grid > * {
   background: var(--guwmi-primary-bg);
   border: solid 1px var(--guwmi-secondary-bg);
-  border-radius: 3px;
+  border-radius: var(--guwmi-radius);
   box-sizing: border-box;
 }
 .guwmi-card-grid > *:last-of-type {
@@ -319,7 +331,7 @@
   left: 0;
   backdrop-filter: blur(0);
   z-index: 99999;
-  transition: linear all 0.15s;
+  transition: var(--guwmi-transition-short);
   display: flex;
 }
 .guwmi-drawer-overlay.open {
@@ -336,7 +348,7 @@
   background: var(--guwmi-text-contrast);
   color: var(--guwmi-text);
   padding: 1rem;
-  transition: 0.3s;
+  transition: var(--guwmi-transition);
   min-width: 300px;
 }
 .guwmi-drawer-overlay .guwmi-drawer.left {
@@ -389,6 +401,9 @@
 }
 
 /**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
  * Styles for the Menu and child components ********************************************************
  **/
 .guwmi-menu-container {
@@ -429,9 +444,9 @@
   background: var(--guwmi-primary-bg);
   border: solid 1px var(--guwmi-secondary-bg);
   padding: 0.25rem;
-  border-radius: 4px;
+  border-radius: var(--guwmi-radius);
   opacity: 0;
-  transition: ease-in all 0.1s;
+  transition: var(--guwmi-transition-short);
   z-index: 99999;
 }
 .guwmi-menu-container .guwmi-menu-dropdown.open {
@@ -457,15 +472,18 @@
   border: 0;
   background: none;
   padding: 0.5rem 0.75rem;
-  border-radius: 3px;
+  border-radius: var(--guwmi-inner-radius);
   cursor: pointer;
   width: 100%;
-  transition: 0.4s;
+  transition: var(--guwmi-transition);
 }
 .guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item .guwmi-menu-btn:hover {
   background: var(--guwmi-secondary-bg);
 }
 
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
 /**
  * Styles for the modal component *******************************************************************
  **/
@@ -482,7 +500,7 @@
   justify-content: center;
   z-index: 99999;
   opacity: 0;
-  transition: 0.15s;
+  transition: var(--guwmi-transition-short);
 }
 .guwmi-modal-overlay.open {
   opacity: 1;
@@ -494,7 +512,7 @@
   color: var(--guwmi-text);
   padding: 1rem;
   border: solid 1px var(--guwmi-primary-bg);
-  border-radius: 4px;
+  border-radius: var(--guwmi-radius);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
 }
 .guwmi-modal-overlay .guwmi-modal.sm {
@@ -516,6 +534,9 @@
 }
 
 /**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
  * Styles for the Tabs component and children *******************************************************
  **/
 .guwmi-tabs-container {
@@ -529,15 +550,15 @@
   gap: 0.25rem;
   background: var(--guwmi-primary-bg);
   border: solid 1px var(--guwmi-secondary-bg);
-  border-radius: 3px;
+  border-radius: var(--guwmi-radius);
   padding: 0.25rem;
 }
 .guwmi-tabs-container .guwmi-tabs .guwmi-tabs-slider {
   position: absolute;
   height: calc(100% - 0.5rem);
   background: var(--guwmi-secondary-bg);
-  border-radius: 3px;
-  transition: 0.4s;
+  border-radius: var(--guwmi-inner-radius);
+  transition: var(--guwmi-transition);
 }
 .guwmi-tabs-container .guwmi-tabs .guwmi-tab {
   position: relative;
@@ -550,21 +571,24 @@
 }
 .guwmi-tabs-container .guwmi-tab-panels {
   border: solid 1px var(--guwmi-secondary-bg);
-  border-radius: 3px;
+  border-radius: var(--guwmi-radius);
   overflow: hidden;
-  transition: 0.4s;
+  transition: var(--guwmi-transition);
 }
 .guwmi-tabs-container .guwmi-tab-panels .guwmi-tab-panel {
   padding: 1rem;
 }
 
 /**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
  * Style for the table component ********************************************************************
  **/
 .guwmi-table-container {
   background: var(--guwmi-primary-bg);
   padding: 0.25rem 1rem;
-  border-radius: 4px;
+  border-radius: var(--guwmi-radius);
   border: solid 1px var(--guwmi-secondary-bg);
 }
 .guwmi-table-container.condensed {
@@ -599,6 +623,9 @@
 }
 
 /**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
  * Styles for the search input component ************************************************************
  **/
 .guwmi-search-input {
@@ -619,7 +646,7 @@
   padding: 0.5rem 0.5rem 0.5rem 2rem;
   background: var(--guwmi-secondary-bg);
   border: solid 1px var(--guwmi-tertiary-bg);
-  border-radius: 3px;
+  border-radius: var(--guwmi-radius);
   font-size: 0.9rem;
   color: var(--guwmi-text);
 }
@@ -628,6 +655,9 @@
   opacity: 1;
 }
 
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
 /**
  * Styles for the Notification component ***********************************************************
  **/
@@ -682,7 +712,7 @@
 
 html,
 body {
-  font-size: 16px;
+  font-size: var(--guwmi-font-size);
   background: var(--guwmi-app-bg);
   color: var(--guwmi-text);
 }
