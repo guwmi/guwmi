@@ -1,5 +1,5 @@
 // import library funtionality
-import React, {
+import {
   useCallback,
   useContext,
   useRef,
@@ -12,7 +12,7 @@ import React, {
 import useWindowWidth from '../../hooks/useWindowWidth';
 
 // import components
-import { IconChevronRight } from '@tabler/icons-react';
+import Icon from '../Icon/Icon';
 
 // import context
 import AccordionContext from './AccordionContext';
@@ -75,7 +75,7 @@ export default function AccordionItem(props: ComponentProps) {
         className={isOpen ? 'active' : null}
       >
         {title}
-        <IconChevronRight size={20} />
+        <Icon name="chevron-right" size={20} />
       </button>
       <section
         hidden={(!isOpen && !isAnimating)}

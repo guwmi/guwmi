@@ -8,7 +8,7 @@ import useCloseOutClick from '../../hooks/useCloseOutClick';
 
 // import components
 import BodyPortal from '../utils/BodyPortal';
-import { IconX } from '@tabler/icons-react';
+import Icon from '../Icon/Icon';
 import usePreventScroll from '../../hooks/usePreventScroll';
 
 // component type
@@ -40,7 +40,7 @@ export default function Drawer(props: ComponentProps) {
                 aria-label="Close drawer"
                 onClick={() => onClose()}
               >
-                <IconX size={20} />
+                <Icon name="close" size={20} />
               </button>
               {children}
             </aside>

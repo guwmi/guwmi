@@ -9,7 +9,7 @@ import usePreventScroll from '../../hooks/usePreventScroll';
 
 // import components
 import BodyPortal from '../utils/BodyPortal';
-import { IconX } from '@tabler/icons-react';
+import Icon from '../Icon/Icon';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -40,8 +40,9 @@ export default function Modal(props: ComponentProps) {
               aria-label="Close modal"
               onClick={() => onClose()}
             >
-              <IconX size={20} />
+              <Icon name="close" size={20} />
             </button>
+
             {children}
           </dialog>
         </div>
