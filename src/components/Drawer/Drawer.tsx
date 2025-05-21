@@ -33,7 +33,7 @@ export default function Drawer(props: ComponentProps) {
   return (
     isVisible &&
       <BodyPortal>
-          <div className="guwmi-drawer-overlay" ref={drawerOverlay}>
+          <div className="guwmi-drawer-overlay" ref={drawerOverlay} data-testid="guwmi-drawer">
             <aside className={classes} ref={drawer} aria-modal="true" tabIndex={0}>
               <button
                 className="guwmi-drawer-close-button"
