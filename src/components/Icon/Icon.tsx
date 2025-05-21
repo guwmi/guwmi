@@ -14,6 +14,7 @@ import {
   Copy,
   Close,
   Dots,
+  ExternalLink,
   Home,
   Info,
   Login,
@@ -39,6 +40,7 @@ interface ComponentProps extends SVGProps<SVGSVGElement> {
   | 'copy'
   | 'close'
   | 'dots'
+  | 'external-link'
   | 'home'
   | 'info'
   | 'login'
@@ -93,6 +95,8 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
         return <Close />
       case 'dots':
         return <Dots />
+      case 'external-link':
+        return <ExternalLink />
       case 'home':
         return <Home />
       case 'info':
