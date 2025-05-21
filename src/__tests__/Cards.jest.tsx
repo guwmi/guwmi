@@ -82,41 +82,73 @@ describe('Cards', () => {
     expect(subTitles).toHaveLength(5)
   });
 
-  test('renders cards with the correct column class', () => {
-
-    const columnCount = Math.floor(Math.random() * (6 - 2 + 1)) + 2;
+  test('renders cards with two columns', () => {
     
     render(
-      //@ts-ignore ---- type will never mismatch despite number note matching 2 | 3 | 4 | 5 | 6
-      <Cards columns={columnCount}>
-        {cards.map((card, index) => (
-          <Card key={index}>
-            {sections.map((section, index) => (
-              <CardSection key={index}>
-                <p>{section.content}</p>
-              </CardSection>
-            ))}
-          </Card>
-        ))}
+      <Cards columns={2}>
+        <Card>
+          <CardSection></CardSection>
+        </Card>
       </Cards>
     )
 
     const cardContainer = screen.getByTestId('guwmi-card-grid');
-    switch(columnCount) {
-      case 2:
-        expect(cardContainer).toHaveClass('two');
-        break;
-      case 4:
-        expect(cardContainer).toHaveClass('four');
-        break;
-      case 5:
-        expect(cardContainer).toHaveClass('five');
-        break;
-      case 6:
-        expect(cardContainer).toHaveClass('six');
-        break;
-      default:
-        expect(cardContainer).toHaveClass('three');
-    }
+    expect(cardContainer).toHaveClass('two');
+  });
+
+  test('renders cards with three columns', () => {
+    
+    render(
+      <Cards columns={3}>
+        <Card>
+          <CardSection></CardSection>
+        </Card>
+      </Cards>
+    )
+
+    const cardContainer = screen.getByTestId('guwmi-card-grid');
+    expect(cardContainer).toHaveClass('three');
+  });
+
+  test('renders cards with four columns', () => {
+    
+    render(
+      <Cards columns={4}>
+        <Card>
+          <CardSection></CardSection>
+        </Card>
+      </Cards>
+    )
+
+    const cardContainer = screen.getByTestId('guwmi-card-grid');
+    expect(cardContainer).toHaveClass('four');
+  });
+
+  test('renders cards with five columns', () => {
+    
+    render(
+      <Cards columns={5}>
+        <Card>
+          <CardSection></CardSection>
+        </Card>
+      </Cards>
+    )
+
+    const cardContainer = screen.getByTestId('guwmi-card-grid');
+    expect(cardContainer).toHaveClass('five');
+  });
+
+  test('renders cards with six columns', () => {
+    
+    render(
+      <Cards columns={6}>
+        <Card>
+          <CardSection></CardSection>
+        </Card>
+      </Cards>
+    )
+
+    const cardContainer = screen.getByTestId('guwmi-card-grid');
+    expect(cardContainer).toHaveClass('six');
   });
 })

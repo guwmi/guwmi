@@ -30,12 +30,13 @@ declare function ButtonGroup(props: ComponentProps$e): react_jsx_runtime.JSX.Ele
 
 interface ComponentProps$d extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
-    color?: 'primary' | 'secondary' | 'black' | 'white' | 'gray';
+    color?: 'primary' | 'secondary' | 'danger';
     variant?: 'fill' | 'outline' | 'ghost';
     theme?: 'square' | 'round' | 'circle';
     className?: string;
     onClick?: (React__default.MouseEventHandler<HTMLButtonElement> | undefined);
     ariaLabel: string;
+    disabled?: boolean;
 }
 /**
  * Icon Button Component ********************************************************************************
@@ -155,7 +156,7 @@ interface ComponentProps$1 extends PropsWithChildren {
 declare function Drawer(props: ComponentProps$1): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps extends SVGProps<SVGSVGElement> {
-    name: 'alert-circle' | 'alert-squre' | 'alert-triangle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'copy' | 'close' | 'dots' | 'home' | 'info' | 'login' | 'menu' | 'progress-alert' | 'progress-check' | 'progress' | 'search' | 'settings';
+    name: 'alert-circle' | 'alert-squre' | 'alert-triangle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'copy' | 'close' | 'dots' | 'external-link' | 'home' | 'info' | 'login' | 'menu' | 'progress-alert' | 'progress-check' | 'progress' | 'search' | 'settings';
     size?: number;
     stroke?: '1' | '2' | '3';
     color?: string;

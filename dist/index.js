@@ -29,7 +29,7 @@ function Button(props) {
       onClick(e);
     }
   }, [href, onClick, button.current]);
-  return href && !disabled ? /* @__PURE__ */ jsx("a", { className: classes, href, onClick: () => handleClick, target, ref: button, children }) : /* @__PURE__ */ jsx("button", { className: classes, onClick: (e) => handleClick(e), ref: button, disabled, children });
+  return href && !disabled ? /* @__PURE__ */ jsx("a", { className: classes, href, target, ref: button, children }) : /* @__PURE__ */ jsx("button", { className: classes, onClick: (e) => handleClick(e), ref: button, disabled, children });
 }
 
 // src/components/ButtonGroup/ButtonGroup.tsx
@@ -71,10 +71,11 @@ function IconButton(props) {
     theme = "round",
     className,
     onClick,
-    ariaLabel
+    ariaLabel,
+    disabled = false
   } = props;
   const classes = useMemo3(() => `guwmi-btn icon ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
-  return /* @__PURE__ */ jsx3("button", { className: classes, onClick, "aria-label": ariaLabel, children });
+  return /* @__PURE__ */ jsx3("button", { className: classes, onClick, "aria-label": ariaLabel, disabled, children });
 }
 
 // src/components/Menu/Menu.tsx
@@ -207,7 +208,16 @@ function MenuDropdown(props) {
   const dropDownRef = useRef4(null);
   const { isVisible } = useAnimation_default(isOpen, "open", dropDownRef);
   useTabThrough_default(isOpen, () => setIsOpen(false), dropDownRef);
-  return /* @__PURE__ */ jsx5(Fragment, { children: isVisible && /* @__PURE__ */ jsx5("nav", { className: "guwmi-menu-dropdown", ref: dropDownRef, "aria-label": ariaLabel, children: /* @__PURE__ */ jsx5("ul", { role: "menubar", children }) }) });
+  return /* @__PURE__ */ jsx5(Fragment, { children: isVisible && /* @__PURE__ */ jsx5(
+    "nav",
+    {
+      className: "guwmi-menu-dropdown",
+      "data-testid": "guwmi-menu-dropdown",
+      ref: dropDownRef,
+      "aria-label": ariaLabel,
+      children: /* @__PURE__ */ jsx5("ul", { role: "menubar", children })
+    }
+  ) });
 }
 
 // src/components/Menu/MenuItem.tsx
@@ -477,6 +487,14 @@ function Dots() {
     /* @__PURE__ */ jsx14("path", { d: "M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" })
   ] });
 }
+function ExternalLink() {
+  return /* @__PURE__ */ jsxs2(Fragment3, { children: [
+    /* @__PURE__ */ jsx14("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
+    /* @__PURE__ */ jsx14("path", { d: "M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" }),
+    /* @__PURE__ */ jsx14("path", { d: "M11 13l9 -9" }),
+    /* @__PURE__ */ jsx14("path", { d: "M15 4h5v5" })
+  ] });
+}
 function Home() {
   return /* @__PURE__ */ jsxs2(Fragment3, { children: [
     /* @__PURE__ */ jsx14("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
@@ -592,6 +610,8 @@ var Icon = forwardRef((props, ref) => {
         return /* @__PURE__ */ jsx15(Close, {});
       case "dots":
         return /* @__PURE__ */ jsx15(Dots, {});
+      case "external-link":
+        return /* @__PURE__ */ jsx15(ExternalLink, {});
       case "home":
         return /* @__PURE__ */ jsx15(Home, {});
       case "info":
@@ -745,6 +765,7 @@ function AccordionItem(props) {
       {
         hidden: !isOpen && !isAnimating,
         id: `guwmi-accordion-panel-${id}`,
+        "data-testid": id,
         "aria-labelledby": `guwmi-accordion-controller-${id}`,
         ref: panelRef,
         children: /* @__PURE__ */ jsx19("div", { className: "guwmi-accordion-panel-content", ref: contentRef, children })
@@ -764,9 +785,6 @@ function Cards(props) {
       case 2:
         classString += "two";
         break;
-      case 3:
-        classString += "three";
-        break;
       case 4:
         classString += "four";
         break;
@@ -776,10 +794,12 @@ function Cards(props) {
       case 6:
         classString += "six";
         break;
+      default:
+        classString += "three";
     }
     return classString;
   }, [columns]);
-  return /* @__PURE__ */ jsx20("div", { className: classes, children });
+  return /* @__PURE__ */ jsx20("div", { className: classes, "data-testid": "guwmi-card-grid", children });
 }
 
 // src/components/Cards/Card.tsx
@@ -791,11 +811,11 @@ function Card(props) {
     image,
     children
   } = props;
-  return /* @__PURE__ */ jsxs6("div", { className: "guwmi-card", children: [
-    image && /* @__PURE__ */ jsx21("img", { src: image, alt: title ? title : "Card image", className: "guwmi-card-image" }),
+  return /* @__PURE__ */ jsxs6("div", { className: "guwmi-card", "data-testid": "guwmi-card", children: [
+    image && /* @__PURE__ */ jsx21("img", { src: image, alt: title ? title : "Card image", className: "guwmi-card-image", "data-testid": "guwmi-card-image" }),
     (title || subTitle) && /* @__PURE__ */ jsxs6("div", { className: "guwmi-card-section guwmi-card-title", children: [
-      title && /* @__PURE__ */ jsx21("h2", { children: title }),
-      subTitle && /* @__PURE__ */ jsx21("h3", { children: subTitle })
+      title && /* @__PURE__ */ jsx21("h2", { "data-testid": "guwmi-card-title", children: title }),
+      subTitle && /* @__PURE__ */ jsx21("h3", { "data-testid": "guwmi-card-sub-title", children: subTitle })
     ] }),
     children
   ] });
@@ -979,7 +999,7 @@ function Drawer(props) {
   useFocusTrap_default(open, onClose, drawer);
   useCloseOutClick_default(open, onClose, drawer);
   usePreventScroll_default(open, preventScroll);
-  return isVisible && /* @__PURE__ */ jsx25(BodyPortal, { children: /* @__PURE__ */ jsx25("div", { className: "guwmi-drawer-overlay", ref: drawerOverlay, children: /* @__PURE__ */ jsxs9("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
+  return isVisible && /* @__PURE__ */ jsx25(BodyPortal, { children: /* @__PURE__ */ jsx25("div", { className: "guwmi-drawer-overlay", ref: drawerOverlay, "data-testid": "guwmi-drawer", children: /* @__PURE__ */ jsxs9("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
     /* @__PURE__ */ jsx25(
       "button",
       {

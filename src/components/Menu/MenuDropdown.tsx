@@ -24,7 +24,12 @@ export default function MenuDropdown(props: PropsWithChildren) {
   return (
     <>
       {isVisible &&
-        <nav className="guwmi-menu-dropdown" ref={dropDownRef} aria-label={ariaLabel}>
+        <nav
+          className="guwmi-menu-dropdown"
+          data-testid="guwmi-menu-dropdown"
+          ref={dropDownRef}
+          aria-label={ariaLabel}
+        >
           <ul role="menubar">
             {children}
           </ul>
