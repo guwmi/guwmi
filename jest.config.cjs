@@ -36,4 +36,6 @@ module.exports = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
   ],
+  testPathIgnorePatterns: ['<rootDir>/src/components/Icon/paths.tsx'],
+  coveragePathIgnorePatterns: ['<rootDir>/src/components/Icon/paths.tsx']
 };

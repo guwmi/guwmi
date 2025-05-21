@@ -5,6 +5,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Button from '../components/Button/Button';
 
 describe('Button', () => {
+
   test('renders with children', () => {
     render(<Button>Hello Button</Button>);
     expect(screen.getByText('Hello Button')).toBeInTheDocument();

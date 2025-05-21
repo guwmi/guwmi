@@ -49,7 +49,7 @@ export default function Button(props: ComponentProps) {
 
   return (
     href && !disabled ? (
-      <a className={classes} href={href} onClick={() => handleClick} target={target} ref={button}>
+      <a className={classes} href={href} target={target} ref={button}>
         {children}
       </a>
     ) : (
