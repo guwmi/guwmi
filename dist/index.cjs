@@ -870,9 +870,9 @@ function Notification(props) {
 // src/components/Modal/Modal.tsx
 var import_react31 = require("react");
 
-// src/hooks/useTrapTabs.ts
+// src/hooks/useFocusTrap.ts
 var import_react27 = require("react");
-var useTrapTabs = (open, onClose, elementRef) => {
+var useFocusTrap = (open, onClose, elementRef) => {
   const triggerRef = (0, import_react27.useRef)(null);
   const handleTab = (0, import_react27.useCallback)((e) => {
     var _a, _b;
@@ -919,7 +919,7 @@ var useTrapTabs = (open, onClose, elementRef) => {
     };
   }, [open]);
 };
-var useTrapTabs_default = useTrapTabs;
+var useFocusTrap_default = useFocusTrap;
 
 // src/hooks/useCloseOutClick.ts
 var import_react28 = require("react");
@@ -985,7 +985,7 @@ function Modal(props) {
   const modalOverlay = (0, import_react31.useRef)(null);
   const modal = (0, import_react31.useRef)(null);
   const { isVisible } = useAnimation_default(open, "open", modalOverlay);
-  useTrapTabs_default(open, onClose, modal);
+  useFocusTrap_default(open, onClose, modal);
   useCloseOutClick_default(open, onClose, modal);
   usePreventScroll_default(open, preventScroll);
   return isVisible && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "guwmi-modal-overlay", ref: modalOverlay, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("dialog", { className: classes, ref: modal, children: [
@@ -1011,7 +1011,7 @@ function Drawer(props) {
   const drawerOverlay = (0, import_react32.useRef)(null);
   const drawer = (0, import_react32.useRef)(null);
   const { isVisible } = useAnimation_default(open, "open", drawerOverlay);
-  useTrapTabs_default(open, onClose, drawer);
+  useFocusTrap_default(open, onClose, drawer);
   useCloseOutClick_default(open, onClose, drawer);
   usePreventScroll_default(open, preventScroll);
   return isVisible && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "guwmi-drawer-overlay", ref: drawerOverlay, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [

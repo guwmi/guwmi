@@ -3,7 +3,7 @@ import { useMemo, useRef, PropsWithChildren } from 'react';
 
 // import custom functionality
 import useAnimation from '../../hooks/useAnimation';
-import useTrapTabs from '../../hooks/useTrapTabs';
+import useFocusTrap from '../../hooks/useFocusTrap';
 import useCloseOutClick from '../../hooks/useCloseOutClick';
 
 // import components
@@ -26,7 +26,7 @@ export default function Drawer(props: ComponentProps) {
   const drawerOverlay = useRef<HTMLDivElement>(null);
   const drawer = useRef<HTMLElement>(null);
   const { isVisible } = useAnimation(open, 'open', drawerOverlay);
-  useTrapTabs(open, onClose, drawer);
+  useFocusTrap(open, onClose, drawer);
   useCloseOutClick(open, onClose, drawer);
   usePreventScroll(open, preventScroll);
 

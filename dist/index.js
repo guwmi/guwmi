@@ -835,9 +835,9 @@ function Notification(props) {
 // src/components/Modal/Modal.tsx
 import { useMemo as useMemo14, useRef as useRef10 } from "react";
 
-// src/hooks/useTrapTabs.ts
+// src/hooks/useFocusTrap.ts
 import { useCallback as useCallback4, useEffect as useEffect8, useRef as useRef8 } from "react";
-var useTrapTabs = (open, onClose, elementRef) => {
+var useFocusTrap = (open, onClose, elementRef) => {
   const triggerRef = useRef8(null);
   const handleTab = useCallback4((e) => {
     var _a, _b;
@@ -884,7 +884,7 @@ var useTrapTabs = (open, onClose, elementRef) => {
     };
   }, [open]);
 };
-var useTrapTabs_default = useTrapTabs;
+var useFocusTrap_default = useFocusTrap;
 
 // src/hooks/useCloseOutClick.ts
 import { useCallback as useCallback5, useEffect as useEffect9, useRef as useRef9 } from "react";
@@ -950,7 +950,7 @@ function Modal(props) {
   const modalOverlay = useRef10(null);
   const modal = useRef10(null);
   const { isVisible } = useAnimation_default(open, "open", modalOverlay);
-  useTrapTabs_default(open, onClose, modal);
+  useFocusTrap_default(open, onClose, modal);
   useCloseOutClick_default(open, onClose, modal);
   usePreventScroll_default(open, preventScroll);
   return isVisible && /* @__PURE__ */ jsx24(BodyPortal, { children: /* @__PURE__ */ jsx24("div", { className: "guwmi-modal-overlay", ref: modalOverlay, children: /* @__PURE__ */ jsxs8("dialog", { className: classes, ref: modal, children: [
@@ -976,7 +976,7 @@ function Drawer(props) {
   const drawerOverlay = useRef11(null);
   const drawer = useRef11(null);
   const { isVisible } = useAnimation_default(open, "open", drawerOverlay);
-  useTrapTabs_default(open, onClose, drawer);
+  useFocusTrap_default(open, onClose, drawer);
   useCloseOutClick_default(open, onClose, drawer);
   usePreventScroll_default(open, preventScroll);
   return isVisible && /* @__PURE__ */ jsx25(BodyPortal, { children: /* @__PURE__ */ jsx25("div", { className: "guwmi-drawer-overlay", ref: drawerOverlay, children: /* @__PURE__ */ jsxs9("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [

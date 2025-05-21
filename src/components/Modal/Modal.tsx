@@ -3,7 +3,7 @@ import { useMemo, useRef, PropsWithChildren } from 'react';
 
 // import custom functionality
 import useAnimation from '../../hooks/useAnimation';
-import useTrapTabs from '../../hooks/useTrapTabs';
+import useFocusTrap from '../../hooks/useFocusTrap';
 import useCloseOutClick from '../../hooks/useCloseOutClick';
 import usePreventScroll from '../../hooks/usePreventScroll';
 
@@ -26,7 +26,7 @@ export default function Modal(props: ComponentProps) {
   const modalOverlay = useRef<HTMLDivElement>(null);
   const modal = useRef<HTMLDialogElement>(null);
   const { isVisible } = useAnimation(open, 'open', modalOverlay);
-  useTrapTabs(open, onClose, modal);
+  useFocusTrap(open, onClose, modal);
   useCloseOutClick(open, onClose, modal);
   usePreventScroll(open, preventScroll);
 
