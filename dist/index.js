@@ -96,15 +96,12 @@ function ButtonGroup(props) {
   ]);
   const classes = useMemo2(() => `guwmi-btn-group ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
   const buttonChildren = useMemo2(() => React2.Children.map(children, (child) => {
-    if (React2.isValidElement(child)) {
-      return React2.cloneElement(child, {
-        size,
-        color,
-        variant,
-        theme
-      });
-    }
-    return child;
+    return React2.cloneElement(child, {
+      size,
+      color,
+      variant,
+      theme
+    });
   }), [children]);
   return /* @__PURE__ */ jsx2("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: buttonChildren }));
 }
@@ -310,12 +307,9 @@ import { jsx as jsx7 } from "react/jsx-runtime";
 function MenuTrigger(props) {
   const _a = props, { children } = _a, rest = __objRest(_a, ["children"]);
   const { isOpen, setIsOpen } = useContext2(MenuContext_default);
-  const childrenWithClick = useMemo6(() => React6.Children.map(children, (child) => {
-    if (React6.isValidElement(child)) {
-      return React6.cloneElement(child, { onClick: () => setIsOpen(!isOpen) });
-    }
-    return child;
-  }), [children, isOpen]);
+  const childrenWithClick = useMemo6(() => {
+    return React6.Children.map(children, (child) => React6.cloneElement(child, { onClick: () => setIsOpen(!isOpen) }));
+  }, [children, isOpen]);
   return /* @__PURE__ */ jsx7("div", __spreadProps(__spreadValues({ className: "guwmi-menu-trigger" }, rest), { children: childrenWithClick }));
 }
 
@@ -351,12 +345,7 @@ function Tabs(props) {
   const slider = useRef5(null);
   const activeTab = useRef5(null);
   const childrenWithIndex = useMemo7(() => {
-    return React8.Children.map(children, (child, index) => {
-      if (React8.isValidElement(child)) {
-        return React8.cloneElement(child, { index });
-      }
-      return child;
-    });
+    return React8.Children.map(children, (child, index) => React8.cloneElement(child, { index }));
   }, [children]);
   useEffect3(() => {
     if (tabsContainer.current.querySelector(".guwmi-tab.active")) {
@@ -425,12 +414,7 @@ function TabPanels(props) {
   const windowWidth = useWindowWidth();
   const panels = useRef6(null);
   const childrenWithIndex = useMemo8(() => {
-    return React10.Children.map(children, (child, index) => {
-      if (React10.isValidElement(child)) {
-        return React10.cloneElement(child, { index });
-      }
-      return child;
-    });
+    return React10.Children.map(children, (child, index) => React10.cloneElement(child, { index }));
   }, [children]);
   useEffect5(() => {
     const active = panels.current.querySelector(".active");
