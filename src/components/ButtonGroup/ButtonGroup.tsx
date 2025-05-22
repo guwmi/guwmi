@@ -27,6 +27,7 @@ export default function ButtonGroup(props: ComponentProps) {
     variant = 'fill',
     theme = 'round',
     className,
+    ...rest
   } = props;
   const classes = useMemo(() => `guwmi-btn-group ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`, []);
   const buttonChildren = useMemo(() => React.Children.map(children, (child) => {
@@ -42,7 +43,7 @@ export default function ButtonGroup(props: ComponentProps) {
   }), [children]);
 
   return (
-    <div className={classes}>
+    <div className={classes} {...rest}>
       {buttonChildren}
     </div>
   )

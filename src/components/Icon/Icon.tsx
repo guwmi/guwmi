@@ -68,7 +68,8 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
     size = 24,
     stroke = 2,
     color = "currentColor",
-    className
+    className,
+    ...rest
   } = props;
   const classes = useMemo(() => `icon guwmi-icon guwmi-icon-${name}${className ? ' ' + className : ''}`, [className]);
   const paths = useMemo(() => {
@@ -131,6 +132,7 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={classes}
+      {...rest}
       >
         {paths}
       </svg>

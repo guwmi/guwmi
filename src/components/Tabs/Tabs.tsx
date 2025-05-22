@@ -17,7 +17,7 @@ interface ChildType {
 
 export default function Tabs(props: PropsWithChildren) {
 
-  const { children } = props;
+  const { children, ...rest } = props;
   const { selectedTab } = useContext(TabsContext);
   const tabsContainer = useRef(null);
   const slider = useRef(null);
@@ -47,7 +47,7 @@ export default function Tabs(props: PropsWithChildren) {
   }, [activeTab.current])
 
   return (
-    <nav className="guwmi-tabs" role="tablist" ref={tabsContainer}>
+    <nav className="guwmi-tabs" role="tablist" ref={tabsContainer} {...rest}>
       <span className="guwmi-tabs-slider" ref={slider}></span>
       {childrenWithIndex}
     </nav>

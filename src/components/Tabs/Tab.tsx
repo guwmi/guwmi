@@ -11,7 +11,7 @@ interface ComponentProps extends PropsWithChildren {
 
 export default function Tab(props: ComponentProps) {
 
-  const { children, index } = props;
+  const { children, index, ...rest } = props;
   const { id, selectedTab, setSelectedTab } = useContext(TabsContext);
 
   return (
@@ -21,6 +21,7 @@ export default function Tab(props: ComponentProps) {
         id={`tabs-${id}-tab-${index}`}
         aria-selected={selectedTab === index}
         aria-controls={`tabs-${id}-tabpanel-${index}`}
+        {...rest}
       >
         {children}
       </button>

@@ -21,7 +21,7 @@ interface ComponentProps extends PropsWithChildren {
 
 export default function Drawer(props: ComponentProps) {
 
-  const { open, onClose, preventScroll = false, position = 'left', children } = props;
+  const { open, onClose, preventScroll = false, position = 'left', children, ...rest } = props;
   const classes = useMemo(() => `guwmi-drawer ${position}`, [position]);
   const drawerOverlay = useRef<HTMLDivElement>(null);
   const drawer = useRef<HTMLElement>(null);
@@ -33,7 +33,7 @@ export default function Drawer(props: ComponentProps) {
   return (
     isVisible &&
       <BodyPortal>
-          <div className="guwmi-drawer-overlay" ref={drawerOverlay} data-testid="guwmi-drawer">
+          <div className="guwmi-drawer-overlay" ref={drawerOverlay} {...rest} data-testid="guwmi-drawer">
             <aside className={classes} ref={drawer} aria-modal="true" tabIndex={0}>
               <button
                 className="guwmi-drawer-close-button"

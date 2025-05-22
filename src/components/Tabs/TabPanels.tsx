@@ -20,7 +20,7 @@ interface ChildType {
 
 export default function TabPanels(props: PropsWithChildren) {
 
-  const { children } = props;
+  const { children, ...rest } = props;
   const { selectedTab } = useContext(TabsContext);
   const windowWidth = useWindowWidth();
   const panels = useRef(null);
@@ -41,7 +41,7 @@ export default function TabPanels(props: PropsWithChildren) {
   }, [selectedTab, windowWidth])
 
   return (
-    <div className="guwmi-tab-panels" ref={panels}>
+    <div className="guwmi-tab-panels" ref={panels} {...rest}>
       {childrenWithIndex}
     </div>
   )

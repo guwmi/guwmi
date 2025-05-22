@@ -16,7 +16,7 @@ interface ChildType {
 
 export default function MenuTrigger(props: PropsWithChildren) {
 
-  const { children } = props;
+  const { children, ...rest } = props;
   const { isOpen, setIsOpen } = useContext(MenuContext);
   const childrenWithClick = useMemo(() => React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -26,7 +26,7 @@ export default function MenuTrigger(props: PropsWithChildren) {
   }), [children, isOpen]);
 
   return (
-    <div className="guwmi-menu-trigger">
+    <div className="guwmi-menu-trigger" {...rest}>
       {childrenWithClick}
     </div>
   )

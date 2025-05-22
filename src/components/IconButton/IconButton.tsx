@@ -29,12 +29,19 @@ export default function IconButton(props: ComponentProps) {
     className,
     onClick,
     ariaLabel,
-    disabled = false
+    disabled = false,
+    ...rest
   } = props;
   const classes = useMemo(() => `guwmi-btn icon ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`, []);
 
   return (
-    <button className={classes} onClick={onClick} aria-label={ariaLabel} disabled={disabled}>
+    <button
+      className={classes}
+      onClick={onClick}
+      aria-label={ariaLabel}
+      disabled={disabled}
+      {...rest}
+    >
       {children}
     </button>
   )

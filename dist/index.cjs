@@ -1,10 +1,39 @@
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __objRest = (source, exclude) => {
+  var target = {};
+  for (var prop in source)
+    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+      target[prop] = source[prop];
+  if (source != null && __getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+        target[prop] = source[prop];
+    }
+  return target;
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -60,7 +89,7 @@ var import_styles = require("./index-PC34KAA7.css");
 var import_react = require("react");
 var import_jsx_runtime = require("react/jsx-runtime");
 function Button(props) {
-  const {
+  const _a = props, {
     children,
     size = "md",
     color = "primary",
@@ -71,7 +100,18 @@ function Button(props) {
     href,
     target = null,
     disabled = false
-  } = props;
+  } = _a, rest = __objRest(_a, [
+    "children",
+    "size",
+    "color",
+    "variant",
+    "theme",
+    "className",
+    "onClick",
+    "href",
+    "target",
+    "disabled"
+  ]);
   const classes = (0, import_react.useMemo)(() => `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
   const button = (0, import_react.useRef)(null);
   const handleClick = (0, import_react.useCallback)((e) => {
@@ -80,7 +120,7 @@ function Button(props) {
       onClick(e);
     }
   }, [href, onClick, button.current]);
-  return href && !disabled ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { className: classes, href, target, ref: button, children }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { className: classes, onClick: (e) => handleClick(e), ref: button, disabled, children });
+  return href && !disabled ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", __spreadProps(__spreadValues({ className: classes, href, target, ref: button }, rest), { children })) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", __spreadProps(__spreadValues({ className: classes, onClick: (e) => handleClick(e), ref: button, disabled }, rest), { children }));
 }
 
 // src/components/ButtonGroup/ButtonGroup.tsx
@@ -1008,7 +1048,7 @@ function Modal(props) {
   useFocusTrap_default(open, onClose, modal);
   useCloseOutClick_default(open, onClose, modal);
   usePreventScroll_default(open, preventScroll);
-  return isVisible && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "guwmi-modal-overlay", ref: modalOverlay, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("dialog", { className: classes, ref: modal, children: [
+  return isVisible && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "guwmi-modal-overlay", ref: modalOverlay, "data-testid": "guwmi-modal", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("dialog", { className: classes, ref: modal, children: [
     /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
       "button",
       {

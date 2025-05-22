@@ -21,7 +21,7 @@ interface ComponentProps extends PropsWithChildren {
 
 export default function Modal(props: ComponentProps) {
 
-  const { open, onClose, preventScroll = false, size = 'sm', children } = props;
+  const { open, onClose, preventScroll = false, size = 'sm', children, ...rest } = props;
   const classes = useMemo(() => `guwmi-modal ${size}`, [size]);
   const modalOverlay = useRef<HTMLDivElement>(null);
   const modal = useRef<HTMLDialogElement>(null);
@@ -33,7 +33,7 @@ export default function Modal(props: ComponentProps) {
   return (
     isVisible &&
       <BodyPortal>
-        <div className="guwmi-modal-overlay" ref={modalOverlay} data-testid="guwmi-modal">
+        <div className="guwmi-modal-overlay" ref={modalOverlay} data-testid="guwmi-modal" {...rest}>
           <dialog className={classes} ref={modal}>
             <button
               className="guwmi-modal-close-button"
