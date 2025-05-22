@@ -19,17 +19,17 @@ export default function Card(props: ComponentProps) {
   } = props;
 
   return (
-    <div className="guwmi-card" data-testid="guwmi-card" {...rest}>
+    <div className="guwmi-card" {...rest}>
       {image && 
-        <img src={image} alt={title ? title : 'Card image'} className="guwmi-card-image" data-testid="guwmi-card-image" />
+        <img src={image} alt={title ? title : 'Card image'} className="guwmi-card-image" />
       }
       {(title || subTitle) &&
         <div className="guwmi-card-section guwmi-card-title">
           {title && 
-            <h2 data-testid="guwmi-card-title">{title}</h2>
+            <h2>{title}</h2>
           }
           {subTitle && 
-            <h3 data-testid="guwmi-card-sub-title">{subTitle}</h3>
+            <h3>{subTitle}</h3>
           }
         </div>
       }

@@ -20,7 +20,7 @@ describe('Menu', () => {
           <Icon name="menu" size={20} />
         </IconButton>
       </MenuTrigger>
-      <MenuDropdown>
+      <MenuDropdown data-testid="guwmi-menu-dropdown">
         <MenuItem><Icon name="menu" /> Item One</MenuItem>
         <MenuItem href="https://www.google.com">Link Item</MenuItem>
         <MenuItem onClick={handleClick}>Button Item</MenuItem>

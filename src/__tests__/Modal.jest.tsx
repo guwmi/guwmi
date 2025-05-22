@@ -10,7 +10,7 @@ describe('Modal', () => {
     
     const handleClose = jest.fn(); 
     render(
-      <Modal open={false} onClose={handleClose}>
+      <Modal open={false} onClose={handleClose} data-testid="guwmi-modal">
         <p>Modal content</p>
       </Modal>
     )
@@ -23,7 +23,7 @@ describe('Modal', () => {
     
     const handleClose = jest.fn(); 
     render(
-      <Modal open={true} onClose={handleClose}>
+      <Modal open={true} onClose={handleClose} data-testid="guwmi-modal">
         <p>Modal content</p>
       </Modal>
     )
@@ -36,7 +36,7 @@ describe('Modal', () => {
     
     const handleClose = jest.fn(); 
     render(
-      <Modal open={true} onClose={handleClose}>
+      <Modal open={true} onClose={handleClose} data-testid="guwmi-modal">
         <p>Modal content</p>
       </Modal>
     )

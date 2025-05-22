@@ -26,7 +26,6 @@ export default function MenuDropdown(props: PropsWithChildren) {
       {isVisible &&
         <nav
           className="guwmi-menu-dropdown"
-          data-testid="guwmi-menu-dropdown"
           ref={dropDownRef}
           aria-label={ariaLabel}
           {...rest}

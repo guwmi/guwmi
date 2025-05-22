@@ -10,7 +10,7 @@ describe('Drawer', () => {
     
     const handleClose = jest.fn(); 
     render(
-      <Drawer open={false} onClose={handleClose}>
+      <Drawer open={false} onClose={handleClose} data-testid="guwmi-drawer">
         <p>Drawer content</p>
       </Drawer>
     )
@@ -23,7 +23,7 @@ describe('Drawer', () => {
     
     const handleClose = jest.fn(); 
     render(
-      <Drawer open={true} onClose={handleClose}>
+      <Drawer open={true} onClose={handleClose} data-testid="guwmi-drawer">
         <p>Drawer content</p>
       </Drawer>
     )
@@ -36,7 +36,7 @@ describe('Drawer', () => {
     
     const handleClose = jest.fn(); 
     render(
-      <Drawer open={true} onClose={handleClose}>
+      <Drawer open={true} onClose={handleClose} data-testid="guwmi-drawer">
         <p>Drawer content</p>
       </Drawer>
     )

@@ -80,7 +80,6 @@ export default function AccordionItem(props: ComponentProps) {
       <section
         hidden={(!isOpen && !isAnimating)}
         id={`guwmi-accordion-panel-${id}`}
-        data-testid={id}
         aria-labelledby={`guwmi-accordion-controller-${id}`}
         ref={panelRef}
       >

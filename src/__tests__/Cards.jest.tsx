@@ -25,7 +25,7 @@ describe('Cards', () => {
   test('renders cards without any props provided', () => {
     
     render(
-      <Cards>
+      <Cards data-testid="guwmi-card-grid">
         {cards.map((card, index) => (
           <Card key={index}>
             {sections.map((section, index) => (
@@ -38,11 +38,12 @@ describe('Cards', () => {
       </Cards>
     )
 
-    const images = screen.queryAllByTestId('guwmi-card-image');
+    const cardGrid = screen.getByTestId('guwmi-card-grid');
+    const images = cardGrid.querySelectorAll('img');
     expect(images).toHaveLength(0)
-    const titles = screen.queryAllByTestId('guwmi-card-title');
+    const titles = cardGrid.querySelectorAll('h2');
     expect(titles).toHaveLength(0)
-    const subTitles = screen.queryAllByTestId('guwmi-card-sub-title');
+    const subTitles = cardGrid.querySelectorAll('h3');
     expect(subTitles).toHaveLength(0)
   });
 
@@ -61,7 +62,7 @@ describe('Cards', () => {
     })
     
     render(
-      <Cards>
+      <Cards data-testid="guwmi-card-grid">
         {mixedCards.map((card, index) => (
           <Card title={card.title} subTitle={card.subTitle} image={card.image} key={index}>
             {sections.map((section, index) => (
@@ -74,18 +75,19 @@ describe('Cards', () => {
       </Cards>
     )
 
-    const images = screen.queryAllByTestId('guwmi-card-image');
+    const cardGrid = screen.getByTestId('guwmi-card-grid');
+    const images = cardGrid.querySelectorAll('img');
     expect(images).toHaveLength(5)
-    const titles = screen.queryAllByTestId('guwmi-card-title');
+    const titles = cardGrid.querySelectorAll('h2');
     expect(titles).toHaveLength(5)
-    const subTitles = screen.queryAllByTestId('guwmi-card-sub-title');
+    const subTitles = cardGrid.querySelectorAll('h3');
     expect(subTitles).toHaveLength(5)
   });
 
   test('renders cards with two columns', () => {
     
     render(
-      <Cards columns={2}>
+      <Cards columns={2} data-testid="guwmi-card-grid">
         <Card>
           <CardSection></CardSection>
         </Card>
@@ -99,7 +101,7 @@ describe('Cards', () => {
   test('renders cards with three columns', () => {
     
     render(
-      <Cards columns={3}>
+      <Cards columns={3} data-testid="guwmi-card-grid">
         <Card>
           <CardSection></CardSection>
         </Card>
@@ -113,7 +115,7 @@ describe('Cards', () => {
   test('renders cards with four columns', () => {
     
     render(
-      <Cards columns={4}>
+      <Cards columns={4} data-testid="guwmi-card-grid">
         <Card>
           <CardSection></CardSection>
         </Card>
@@ -127,7 +129,7 @@ describe('Cards', () => {
   test('renders cards with five columns', () => {
     
     render(
-      <Cards columns={5}>
+      <Cards columns={5} data-testid="guwmi-card-grid">
         <Card>
           <CardSection></CardSection>
         </Card>
@@ -141,7 +143,7 @@ describe('Cards', () => {
   test('renders cards with six columns', () => {
     
     render(
-      <Cards columns={6}>
+      <Cards columns={6} data-testid="guwmi-card-grid">
         <Card>
           <CardSection></CardSection>
         </Card>

@@ -33,7 +33,7 @@ export default function Modal(props: ComponentProps) {
   return (
     isVisible &&
       <BodyPortal>
-        <div className="guwmi-modal-overlay" ref={modalOverlay} data-testid="guwmi-modal" {...rest}>
+        <div className="guwmi-modal-overlay" ref={modalOverlay} {...rest}>
           <dialog className={classes} ref={modal}>
             <button
               className="guwmi-modal-close-button"

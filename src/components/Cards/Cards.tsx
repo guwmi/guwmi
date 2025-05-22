@@ -32,7 +32,7 @@ export default function Cards(props: ComponentProps) {
   }, [columns]);
 
   return (
-    <div className={classes} {...rest} data-testid="guwmi-card-grid">
+    <div className={classes} {...rest}>
       {children}
     </div>
   )
