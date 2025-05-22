@@ -6,18 +6,18 @@
 @use './variables.scss';
 
 // import component stylesheets
-@use '../components/Accordion/accordion.scss';
-@use '../components/Button/button.scss';
-@use '../components/ButtonGroup/button-group.scss';
-@use '../components/Cards/cards.scss';
-@use '../components/Drawer/drawer.scss';
-@use '../components/IconButton/icon-button.scss';
-@use '../components/Menu/menu.scss';
-@use '../components/Modal/modal.scss';
-@use '../components/Tabs/tabs.scss';
-@use '../components/Table/table.scss';
-@use '../components/Inputs/Search/search-input.scss';
-@use '../components/Notification/notification.scss';
+@use './components/accordion.scss';
+@use './components/button.scss';
+@use './components/button-group.scss';
+@use './components/cards.scss';
+@use './components/drawer.scss';
+@use './components/icon-button.scss';
+@use './components/menu.scss';
+@use './components/modal.scss';
+@use './components/tabs.scss';
+@use './components/table.scss';
+@use './components/inputs/search-input.scss';
+@use './components/notification.scss';
 
 // import typeface
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');

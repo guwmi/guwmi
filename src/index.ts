@@ -1,5 +1,5 @@
 // import library styles sheet
-import '../css/styles/index.css';
+import './css/guwmi.css';
 
 // import button components
 import Button from './components/Button/Button';

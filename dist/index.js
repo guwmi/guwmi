@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./index-PC34KAA7.css";
+import "./guwmi-PC34KAA7.css";
 
 // src/components/Button/Button.tsx
 import {

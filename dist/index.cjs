@@ -83,7 +83,7 @@ __export(index_exports, {
   TabsContainer: () => TabsContainer
 });
 module.exports = __toCommonJS(index_exports);
-var import_styles = require("./index-PC34KAA7.css");
+var import_guwmi = require("./guwmi-PC34KAA7.css");
 
 // src/components/Button/Button.tsx
 var import_react = require("react");

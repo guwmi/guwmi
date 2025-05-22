@@ -8,8 +8,8 @@
     "test": "jest",
     "watch-test": "jest --watch",
     "build": "tsup",
-    "build-sass": "sass --no-source-map src:css",
-    "watch": "sass --no-source-map --watch src:css"
+    "build-sass": "sass --no-source-map src/styles:src/css",
+    "watch": "sass --no-source-map --watch src/styles:src/css"
   },
   "repository": {
     "type": "git",
