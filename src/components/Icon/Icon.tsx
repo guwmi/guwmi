@@ -14,6 +14,7 @@ import {
   Copy,
   Close,
   Dots,
+  ExternalLink,
   Home,
   Info,
   Login,
@@ -39,6 +40,7 @@ interface ComponentProps extends SVGProps<SVGSVGElement> {
   | 'copy'
   | 'close'
   | 'dots'
+  | 'external-link'
   | 'home'
   | 'info'
   | 'login'
@@ -66,7 +68,8 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
     size = 24,
     stroke = 2,
     color = "currentColor",
-    className
+    className,
+    ...rest
   } = props;
   const classes = useMemo(() => `icon guwmi-icon guwmi-icon-${name}${className ? ' ' + className : ''}`, [className]);
   const paths = useMemo(() => {
@@ -93,6 +96,8 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
         return <Close />
       case 'dots':
         return <Dots />
+      case 'external-link':
+        return <ExternalLink />
       case 'home':
         return <Home />
       case 'info':
@@ -127,6 +132,7 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={classes}
+      {...rest}
       >
         {paths}
       </svg>

@@ -3,7 +3,7 @@ import { useMemo, useRef, PropsWithChildren } from 'react';
 
 // import custom functionality
 import useAnimation from '../../hooks/useAnimation';
-import useTrapTabs from '../../hooks/useTrapTabs';
+import useFocusTrap from '../../hooks/useFocusTrap';
 import useCloseOutClick from '../../hooks/useCloseOutClick';
 
 // import components
@@ -21,19 +21,19 @@ interface ComponentProps extends PropsWithChildren {
 
 export default function Drawer(props: ComponentProps) {
 
-  const { open, onClose, preventScroll = false, position = 'left', children } = props;
+  const { open, onClose, preventScroll = false, position = 'left', children, ...rest } = props;
   const classes = useMemo(() => `guwmi-drawer ${position}`, [position]);
   const drawerOverlay = useRef<HTMLDivElement>(null);
   const drawer = useRef<HTMLElement>(null);
   const { isVisible } = useAnimation(open, 'open', drawerOverlay);
-  useTrapTabs(open, onClose, drawer);
+  useFocusTrap(open, onClose, drawer);
   useCloseOutClick(open, onClose, drawer);
   usePreventScroll(open, preventScroll);
 
   return (
     isVisible &&
       <BodyPortal>
-          <div className="guwmi-drawer-overlay" ref={drawerOverlay}>
+          <div className="guwmi-drawer-overlay" ref={drawerOverlay} {...rest}>
             <aside className={classes} ref={drawer} aria-modal="true" tabIndex={0}>
               <button
                 className="guwmi-drawer-close-button"

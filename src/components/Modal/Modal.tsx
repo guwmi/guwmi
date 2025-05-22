@@ -3,7 +3,7 @@ import { useMemo, useRef, PropsWithChildren } from 'react';
 
 // import custom functionality
 import useAnimation from '../../hooks/useAnimation';
-import useTrapTabs from '../../hooks/useTrapTabs';
+import useFocusTrap from '../../hooks/useFocusTrap';
 import useCloseOutClick from '../../hooks/useCloseOutClick';
 import usePreventScroll from '../../hooks/usePreventScroll';
 
@@ -21,19 +21,19 @@ interface ComponentProps extends PropsWithChildren {
 
 export default function Modal(props: ComponentProps) {
 
-  const { open, onClose, preventScroll = false, size = 'sm', children } = props;
+  const { open, onClose, preventScroll = false, size = 'sm', children, ...rest } = props;
   const classes = useMemo(() => `guwmi-modal ${size}`, [size]);
   const modalOverlay = useRef<HTMLDivElement>(null);
   const modal = useRef<HTMLDialogElement>(null);
   const { isVisible } = useAnimation(open, 'open', modalOverlay);
-  useTrapTabs(open, onClose, modal);
+  useFocusTrap(open, onClose, modal);
   useCloseOutClick(open, onClose, modal);
   usePreventScroll(open, preventScroll);
 
   return (
     isVisible &&
       <BodyPortal>
-        <div className="guwmi-modal-overlay" ref={modalOverlay}>
+        <div className="guwmi-modal-overlay" ref={modalOverlay} {...rest}>
           <dialog className={classes} ref={modal}>
             <button
               className="guwmi-modal-close-button"
@@ -42,7 +42,6 @@ export default function Modal(props: ComponentProps) {
             >
               <Icon name="close" size={20} />
             </button>
-
             {children}
           </dialog>
         </div>

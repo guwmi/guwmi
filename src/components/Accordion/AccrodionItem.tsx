@@ -25,7 +25,7 @@ interface ComponentProps extends PropsWithChildren {
 
 export default function AccordionItem(props: ComponentProps) {
 
-  const { children, title, id } = props;
+  const { children, title, id, ...rest } = props;
   const { openAccordions, setOpenAccordions } = useContext(AccordionContext);
   const windowWidth = useWindowWidth();
   const panelRef = useRef(null);
@@ -66,7 +66,7 @@ export default function AccordionItem(props: ComponentProps) {
   }, [contentRef.current, isOpen, windowWidth])
 
   return (
-    <div className="guwmi-accordion-item">
+    <div className="guwmi-accordion-item" {...rest}>
       <button
         onClick={() => isOpen ? close() : open()}
         id={`guwmi-accordion-controller-${id}`}

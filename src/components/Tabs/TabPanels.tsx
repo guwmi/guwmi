@@ -20,18 +20,13 @@ interface ChildType {
 
 export default function TabPanels(props: PropsWithChildren) {
 
-  const { children } = props;
+  const { children, ...rest } = props;
   const { selectedTab } = useContext(TabsContext);
   const windowWidth = useWindowWidth();
   const panels = useRef(null);
 
   const childrenWithIndex = useMemo(() => {
-    return React.Children.map(children, (child, index) => {
-      if (React.isValidElement(child)) {
-        return React.cloneElement(child as React.ReactElement<ChildType>, { index: index });
-      }
-      return child;
-    })
+    return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<ChildType>, { index: index }))
   }, [children]);
 
   useEffect(() => {
@@ -41,7 +36,7 @@ export default function TabPanels(props: PropsWithChildren) {
   }, [selectedTab, windowWidth])
 
   return (
-    <div className="guwmi-tab-panels" ref={panels}>
+    <div className="guwmi-tab-panels" ref={panels} {...rest}>
       {childrenWithIndex}
     </div>
   )

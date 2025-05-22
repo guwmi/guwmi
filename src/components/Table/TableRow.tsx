@@ -13,7 +13,7 @@ interface TableCell { id: number | string, col: string, value: any }
 
 export default function TableRow(props: ComponentProps) {
 
-  const { headers, data, tableId } = props;
+  const { headers, data, tableId, ...rest } = props;
   const cellData = useMemo(() => {
     const arr: TableCell[] = [];
     headers.forEach((h) => {
@@ -27,7 +27,7 @@ export default function TableRow(props: ComponentProps) {
   return (
     <>
       {cellData &&
-        <tr>
+        <tr {...rest}>
           {cellData.map((cell) => (
             <td key={`table-${tableId}-cell-${cell.id}-${cell.col}`}>{cell.value}</td>
           ))}

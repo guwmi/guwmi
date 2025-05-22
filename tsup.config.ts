@@ -17,6 +17,7 @@ export default defineConfig(() => {
     esbuildOptions(options) {
       options.outbase = './src'; // Maintain directory structure in output
     },
-    external: ['react', 'react-dom'] // Add external dependencies to avoid bundling them
+    tsconfig: 'tsconfig.build.json',
+    external: ['react', 'react-dom'],
   };
 });

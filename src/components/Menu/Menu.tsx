@@ -22,13 +22,14 @@ export default function Menu(props: ComponentProps) {
     children,
     position = 'bottom-right',
     width,
-    ariaLabel
+    ariaLabel,
+    ...rest
   } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const classes = useMemo(() => `guwmi-menu-container ${position}`, []);
 
   return (
-    <div className={classes}>
+    <div className={classes} {...rest}>
       <MenuContext.Provider value={{isOpen, setIsOpen, ariaLabel}}>
         {children}
       </MenuContext.Provider>

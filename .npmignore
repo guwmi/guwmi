@@ -11,6 +11,17 @@ tsup.config.ts
 
 #tsconfig
 tsconfig.json
+tsconfig.build.json
+
+#source files
+/src
+/css
+
+#test
+jest.config.cjs
+jest.setup.cjs
+/src/__tests__
+/coverage
 
 # misc
 .DS_Store

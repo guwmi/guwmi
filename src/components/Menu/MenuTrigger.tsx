@@ -16,17 +16,14 @@ interface ChildType {
 
 export default function MenuTrigger(props: PropsWithChildren) {
 
-  const { children } = props;
+  const { children, ...rest } = props;
   const { isOpen, setIsOpen } = useContext(MenuContext);
-  const childrenWithClick = useMemo(() => React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child as React.ReactElement<ChildType>, { onClick: () => setIsOpen(!isOpen) });
-    }
-    return child;
-  }), [children, isOpen]);
+  const childrenWithClick = useMemo(() => {
+    return React.Children.map(children, (child) => React.cloneElement(child as React.ReactElement<ChildType>, { onClick: () => setIsOpen(!isOpen) }))
+  }, [children, isOpen]);
 
   return (
-    <div className="guwmi-menu-trigger">
+    <div className="guwmi-menu-trigger" {...rest}>
       {childrenWithClick}
     </div>
   )

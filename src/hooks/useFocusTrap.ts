@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, RefObject } from 'react';
 // component type
 type Hook = ( open: boolean, onClose: () => void, elementRef: RefObject<HTMLElement> ) => void;
 
-const useTrapTabs: Hook = (open, onClose, elementRef) => {
+const useFocusTrap: Hook = (open, onClose, elementRef) => {
 
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -53,4 +53,4 @@ const useTrapTabs: Hook = (open, onClose, elementRef) => {
   }, [open]);
 }
 
-export default useTrapTabs;
+export default useFocusTrap;

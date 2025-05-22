@@ -15,12 +15,12 @@ interface ComponentProps {
 
 export default function Table(props: ComponentProps) {
 
-  const { headers, rows, isCondensed, isSearchable } = props;
+  const { headers, rows, isCondensed, isSearchable, ...rest } = props;
   const id = useId();
   const classes = useMemo(() => `guwmi-table-container${isCondensed ? ' condensed' : ''}`, [])
 
   return (
-    <div className={classes}>
+    <div className={classes} {...rest}>
       {(headers.length > 0 && isSearchable) &&
         <div className="guwmi-table-search">
           <SearchInput />

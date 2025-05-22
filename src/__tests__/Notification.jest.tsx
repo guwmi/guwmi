@@ -1,0 +1,60 @@
+// import library functionality
+import { render, screen, fireEvent } from '@testing-library/react';
+
+// import components
+import Notification from '@components/Notification/Notification';
+
+describe('Notification', () => {
+  
+  test('renders notification with proper classes', () => {
+
+    render(
+      <>
+        <Notification kind="success" title="Success" content="Success content" data-testid="guwmi-success-notification" />
+        <Notification kind="error" title="Error" content="Error content" data-testid="guwmi-error-notification" />
+        <Notification kind="warning" title="Warning" content="Warning content" data-testid="guwmi-warning-notification" />
+      </>
+    )
+
+    const success = screen.getByTestId('guwmi-success-notification');
+    expect(success).toHaveClass('success');
+    expect(success.querySelector('h2')).toHaveTextContent('Success');
+    expect(success.querySelector('p')).toHaveTextContent('Success content');
+    const error = screen.getByTestId('guwmi-error-notification');
+    expect(error).toHaveClass('error');
+    expect(error.querySelector('h2')).toHaveTextContent('Error');
+    expect(error.querySelector('p')).toHaveTextContent('Error content');
+    const warning = screen.getByTestId('guwmi-warning-notification');
+    expect(warning).toHaveClass('warning');
+    expect(warning.querySelector('h2')).toHaveTextContent('Warning');
+    expect(warning.querySelector('p')).toHaveTextContent('Warning content');
+  })
+
+  test('renders notification with default title if not provided', () => {
+
+    render(
+      <>
+        <Notification kind="success" content="Success content" data-testid="guwmi-success-notification" />
+        <Notification kind="error" content="Error content" data-testid="guwmi-error-notification" />
+        <Notification kind="warning" content="Warning content" data-testid="guwmi-warning-notification" />
+      </>
+    )
+
+    const success = screen.getByTestId('guwmi-success-notification');
+    expect(success.querySelector('h2')).toHaveTextContent('Success');
+    const error = screen.getByTestId('guwmi-error-notification');
+    expect(error.querySelector('h2')).toHaveTextContent('Error');
+    const warning = screen.getByTestId('guwmi-warning-notification');
+    expect(warning.querySelector('h2')).toHaveTextContent('Warning');
+  })
+
+  test('removes notification from dom when close button is clicked', () => {
+
+    render(<Notification kind="success" title="Success" content="Success content" data-testid="guwmi-notification" />)
+
+    const notification = screen.getByTestId('guwmi-notification');
+    const closeButton = notification.querySelector('button');
+    fireEvent.click(closeButton);
+    expect(notification).not.toBeInTheDocument();
+  })
+})

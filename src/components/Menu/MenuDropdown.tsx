@@ -15,7 +15,7 @@ import MenuContext from './MenuContext';
 
 export default function MenuDropdown(props: PropsWithChildren) {
 
-  const { children } = props;
+  const { children, ...rest } = props;
   const { isOpen, setIsOpen, ariaLabel } = useContext(MenuContext);
   const dropDownRef = useRef<HTMLDivElement>(null);
   const { isVisible } = useAnimation(isOpen, 'open', dropDownRef );
@@ -24,7 +24,12 @@ export default function MenuDropdown(props: PropsWithChildren) {
   return (
     <>
       {isVisible &&
-        <nav className="guwmi-menu-dropdown" ref={dropDownRef} aria-label={ariaLabel}>
+        <nav
+          className="guwmi-menu-dropdown"
+          ref={dropDownRef}
+          aria-label={ariaLabel}
+          {...rest}
+        >
           <ul role="menubar">
             {children}
           </ul>

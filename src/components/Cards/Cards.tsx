@@ -8,16 +8,13 @@ interface ComponentProps extends PropsWithChildren {
 
 export default function Cards(props: ComponentProps) {
 
-  const { children, columns = 3 } = props;
+  const { children, columns = 3, ...rest } = props;
 
   const classes = useMemo(() => {
     let classString = 'guwmi-card-grid ';
     switch(columns) {
       case 2:
         classString += 'two';
-        break;
-      case 3:
-        classString += 'three';
         break;
       case 4:
         classString += 'four';
@@ -28,12 +25,14 @@ export default function Cards(props: ComponentProps) {
       case 6:
         classString += 'six';
         break;
+      default:
+        classString += 'three';
     }
     return classString;
   }, [columns]);
 
   return (
-    <div className={classes}>
+    <div className={classes} {...rest}>
       {children}
     </div>
   )

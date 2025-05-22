@@ -1,18 +1,30 @@
+// tsconfig for testing
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
-    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
-    "jsx": "react-jsx",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
+    "target": "es2019",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "noImplicitAny": true,
-    "strictNullChecks": false,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "sourceMap": true,
-    "declaration": true,
-    "outDir": "./dist/",
+    "strictNullChecks": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@utils/*": ["src/utils/*"]
+    },
+    "types": ["@testing-library/jest-dom"],
   },
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.stories.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }

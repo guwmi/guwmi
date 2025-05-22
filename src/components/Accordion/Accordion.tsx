@@ -11,7 +11,7 @@ interface ComponentProps extends PropsWithChildren {
 
 export default function Accordion(props: ComponentProps) {
 
-  const { children, defaultOpen } = props;
+  const { children, defaultOpen, ...rest } = props;
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function Accordion(props: ComponentProps) {
 
   return (
     <AccordionContext.Provider value={{ openAccordions, setOpenAccordions }}>
-      <div className="guwmi-accordion-container">
+      <div className="guwmi-accordion-container" {...rest}>
         {children}
       </div>
     </AccordionContext.Provider>

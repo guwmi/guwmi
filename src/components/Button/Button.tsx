@@ -37,6 +37,7 @@ export default function Button(props: ComponentProps) {
     href,
     target = null,
     disabled = false,
+    ...rest
   } = props;
   const classes = useMemo(() => `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`, []);
   const button = useRef(null);
@@ -49,11 +50,11 @@ export default function Button(props: ComponentProps) {
 
   return (
     href && !disabled ? (
-      <a className={classes} href={href} onClick={() => handleClick} target={target} ref={button}>
+      <a className={classes} href={href} target={target} ref={button} {...rest}>
         {children}
       </a>
     ) : (
-      <button className={classes} onClick={(e) => handleClick(e)} ref={button} disabled={disabled}>
+      <button className={classes} onClick={(e) => handleClick(e)} ref={button} disabled={disabled} {...rest}>
         {children}
       </button>
     )

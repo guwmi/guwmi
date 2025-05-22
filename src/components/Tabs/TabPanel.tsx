@@ -11,7 +11,7 @@ interface ComponentProps extends PropsWithChildren {
 
 export default function TabPanel(props: ComponentProps) {
 
-  const { children, index } = props;
+  const { children, index, ...rest } = props;
   const { id, selectedTab } = useContext(TabsContext);
 
   return (
@@ -21,6 +21,7 @@ export default function TabPanel(props: ComponentProps) {
       hidden={selectedTab !== index}
       aria-labelledby={`tabs-${id}-tab-${index}`}
       id={`tabs-${id}-tabpanel-${index}`}
+      {...rest}
     >
       {children}
     </section>

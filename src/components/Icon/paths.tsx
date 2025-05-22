@@ -29,7 +29,7 @@ export function AlertTriangle() {
     <>
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 9v4" />
-      <path  d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z" />
+      <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z" />
       <path d="M12 16h.01" />
     </>
   );
@@ -93,7 +93,7 @@ export function Copy() {
 export function Close() {
   return (
     <>
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M18 6l-12 12" />
       <path d="M6 6l12 12" />
     </>
@@ -109,6 +109,17 @@ export function Dots() {
       <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
     </>
   );
+}
+
+export function ExternalLink() {
+  return (
+    <>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+      <path d="M11 13l9 -9" />
+      <path d="M15 4h5v5" />
+    </>
+  )
 }
 
 export function Home() {

@@ -1,0 +1,112 @@
+// import library functionality
+import { render, screen, fireEvent } from '@testing-library/react';
+
+// import component to test
+import Button from '../components/Button/Button';
+
+describe('Button', () => {
+
+  test('renders with children', () => {
+
+    render(<Button>Hello Button</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toBeInTheDocument();
+  });
+
+  test('calls onClick handler when clicked', () => {
+
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Click Me</Button>);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  test('renders as link with correct href', () => {
+
+    render(<Button href="https://www.google.com">Link</Button>);
+
+    const link = screen.getByText('Link');
+    expect(link.tagName).toBe('A');
+    expect(link).toHaveAttribute('href', 'https://www.google.com');
+  });
+
+  test('does not call onClick handler when disabled', () => {
+
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} disabled>Disabled Button</Button>);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+    expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  test('is disabled when disabled prop is true', () => {
+
+    render(<Button disabled>Click Me</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toBeDisabled();
+  });
+
+  test('renders with target attribute', () => {
+
+    render(<Button target="_blank" href="https://www.google.com">Target Link</Button>);
+
+    const link = screen.getByText('Target Link');
+    expect(link).toHaveAttribute('target', '_blank');
+  });
+
+  test('applies custom className', () => {
+
+    render(<Button className="extra-class">Styled Button</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass('extra-class');
+  });
+
+  test('renders with correct defaults', () => {
+
+    render(<Button>Default Button</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass(/round/);
+    expect(button).toHaveClass(/md/);
+    expect(button).toHaveClass(/primary/);
+    expect(button).toHaveClass(/fill/);
+  });
+
+  test('renders with override size', () => {
+
+    render(<Button size="sm">Small Button</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass(/sm/);
+  });
+
+  test('renders with override color', () => {
+
+    render(<Button color="danger">Danger Button</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass(/danger/);
+  });
+
+  test('renders with override variant', () => {
+
+    render(<Button variant="fill">Fill Button</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass(/fill/);
+  });
+
+  test('renders with override theme', () => {
+
+    render(<Button theme="pill">Pill Button</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass(/pill/);
+  });
+});

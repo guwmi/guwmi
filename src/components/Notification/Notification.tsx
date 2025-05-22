@@ -13,14 +13,14 @@ interface ComponentProps {
 
 export default function Notification(props: ComponentProps) {
 
-  const { kind, title, content } = props;
+  const { kind, title, content, ...rest } = props;
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const titleText = useMemo(() => title ? title : kind.charAt(0).toUpperCase() + kind.slice(1), [title, kind]);
   const classes = useMemo(() => `guwmi-notification ${kind}`, [kind]);
 
   return (
     isVisible ? (
-      <dialog className={classes}>
+      <dialog className={classes} {...rest}>
         {kind === 'error' ? (
           <Icon name="alert-circle" size={20} stroke="3" />
         ) : kind === 'warning' ? (

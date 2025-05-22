@@ -14,11 +14,12 @@ export default function Card(props: ComponentProps) {
     title,
     subTitle,
     image,
-    children
+    children,
+    ...rest
   } = props;
 
   return (
-    <div className="guwmi-card">
+    <div className="guwmi-card" {...rest}>
       {image && 
         <img src={image} alt={title ? title : 'Card image'} className="guwmi-card-image" />
       }
