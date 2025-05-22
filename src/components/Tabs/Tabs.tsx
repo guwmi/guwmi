@@ -21,25 +21,19 @@ export default function Tabs(props: PropsWithChildren) {
   const { selectedTab } = useContext(TabsContext);
   const tabsContainer = useRef(null);
   const slider = useRef(null);
-  const activeTab = useRef(null);
   const childrenWithIndex = useMemo(() => {
     return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<ChildType>, { index: index }))
   }, [children])
 
   useEffect(() => {
     if (tabsContainer.current.querySelector('.guwmi-tab.active')) {
-      activeTab.current = tabsContainer.current.querySelector('.guwmi-tab.active')
-    }
-  }, [tabsContainer, selectedTab])
-
-  useEffect(() => {
-    if (activeTab.current) {
-      const left = activeTab.current.offsetLeft;
-      const width = activeTab.current.offsetWidth;
+      const activeTab = tabsContainer.current.querySelector('.guwmi-tab.active');
+      const left = activeTab.offsetLeft;
+      const width = activeTab.offsetWidth;
       slider.current.style.width = `${width}px`;
       slider.current.style.left = `${left}px`;
     }
-  }, [activeTab.current])
+  }, [tabsContainer, selectedTab])
 
   return (
     <nav className="guwmi-tabs" role="tablist" ref={tabsContainer} {...rest}>

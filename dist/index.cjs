@@ -386,23 +386,18 @@ function Tabs(props) {
   const { selectedTab } = (0, import_react13.useContext)(TabsContext_default);
   const tabsContainer = (0, import_react13.useRef)(null);
   const slider = (0, import_react13.useRef)(null);
-  const activeTab = (0, import_react13.useRef)(null);
   const childrenWithIndex = (0, import_react13.useMemo)(() => {
     return import_react13.default.Children.map(children, (child, index) => import_react13.default.cloneElement(child, { index }));
   }, [children]);
   (0, import_react13.useEffect)(() => {
     if (tabsContainer.current.querySelector(".guwmi-tab.active")) {
-      activeTab.current = tabsContainer.current.querySelector(".guwmi-tab.active");
-    }
-  }, [tabsContainer, selectedTab]);
-  (0, import_react13.useEffect)(() => {
-    if (activeTab.current) {
-      const left = activeTab.current.offsetLeft;
-      const width = activeTab.current.offsetWidth;
+      const activeTab = tabsContainer.current.querySelector(".guwmi-tab.active");
+      const left = activeTab.offsetLeft;
+      const width = activeTab.offsetWidth;
       slider.current.style.width = `${width}px`;
       slider.current.style.left = `${left}px`;
     }
-  }, [activeTab.current]);
+  }, [tabsContainer, selectedTab]);
   return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("nav", __spreadProps(__spreadValues({ className: "guwmi-tabs", role: "tablist", ref: tabsContainer }, rest), { children: [
     /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "guwmi-tabs-slider", ref: slider }),
     childrenWithIndex

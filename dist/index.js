@@ -343,23 +343,18 @@ function Tabs(props) {
   const { selectedTab } = useContext3(TabsContext_default);
   const tabsContainer = useRef5(null);
   const slider = useRef5(null);
-  const activeTab = useRef5(null);
   const childrenWithIndex = useMemo7(() => {
     return React8.Children.map(children, (child, index) => React8.cloneElement(child, { index }));
   }, [children]);
   useEffect3(() => {
     if (tabsContainer.current.querySelector(".guwmi-tab.active")) {
-      activeTab.current = tabsContainer.current.querySelector(".guwmi-tab.active");
-    }
-  }, [tabsContainer, selectedTab]);
-  useEffect3(() => {
-    if (activeTab.current) {
-      const left = activeTab.current.offsetLeft;
-      const width = activeTab.current.offsetWidth;
+      const activeTab = tabsContainer.current.querySelector(".guwmi-tab.active");
+      const left = activeTab.offsetLeft;
+      const width = activeTab.offsetWidth;
       slider.current.style.width = `${width}px`;
       slider.current.style.left = `${left}px`;
     }
-  }, [activeTab.current]);
+  }, [tabsContainer, selectedTab]);
   return /* @__PURE__ */ jsxs("nav", __spreadProps(__spreadValues({ className: "guwmi-tabs", role: "tablist", ref: tabsContainer }, rest), { children: [
     /* @__PURE__ */ jsx9("span", { className: "guwmi-tabs-slider", ref: slider }),
     childrenWithIndex
