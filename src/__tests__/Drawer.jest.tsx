@@ -41,8 +41,8 @@ describe('Drawer', () => {
       </Drawer>
     )
 
-    const closeButton = screen.getByRole('button');
     const drawer = screen.queryByTestId('guwmi-drawer');
+    const closeButton = drawer.querySelector('button');
     fireEvent.click(closeButton);
     fireEvent.click(drawer);
     fireEvent.keyDown(drawer, {

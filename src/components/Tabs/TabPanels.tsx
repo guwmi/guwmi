@@ -26,12 +26,7 @@ export default function TabPanels(props: PropsWithChildren) {
   const panels = useRef(null);
 
   const childrenWithIndex = useMemo(() => {
-    return React.Children.map(children, (child, index) => {
-      if (React.isValidElement(child)) {
-        return React.cloneElement(child as React.ReactElement<ChildType>, { index: index });
-      }
-      return child;
-    })
+    return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<ChildType>, { index: index }))
   }, [children]);
 
   useEffect(() => {
