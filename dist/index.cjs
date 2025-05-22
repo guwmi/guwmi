@@ -127,14 +127,21 @@ function Button(props) {
 var import_react2 = __toESM(require("react"), 1);
 var import_jsx_runtime2 = require("react/jsx-runtime");
 function ButtonGroup(props) {
-  const {
+  const _a = props, {
     children,
     size = "md",
     color = "primary",
     variant = "fill",
     theme = "round",
     className
-  } = props;
+  } = _a, rest = __objRest(_a, [
+    "children",
+    "size",
+    "color",
+    "variant",
+    "theme",
+    "className"
+  ]);
   const classes = (0, import_react2.useMemo)(() => `guwmi-btn-group ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
   const buttonChildren = (0, import_react2.useMemo)(() => import_react2.default.Children.map(children, (child) => {
     if (import_react2.default.isValidElement(child)) {
@@ -147,14 +154,14 @@ function ButtonGroup(props) {
     }
     return child;
   }), [children]);
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: classes, children: buttonChildren });
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: buttonChildren }));
 }
 
 // src/components/IconButton/IconButton.tsx
 var import_react3 = require("react");
 var import_jsx_runtime3 = require("react/jsx-runtime");
 function IconButton(props) {
-  const {
+  const _a = props, {
     children,
     size = "md",
     color = "primary",
@@ -164,9 +171,29 @@ function IconButton(props) {
     onClick,
     ariaLabel,
     disabled = false
-  } = props;
+  } = _a, rest = __objRest(_a, [
+    "children",
+    "size",
+    "color",
+    "variant",
+    "theme",
+    "className",
+    "onClick",
+    "ariaLabel",
+    "disabled"
+  ]);
   const classes = (0, import_react3.useMemo)(() => `guwmi-btn icon ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("button", { className: classes, onClick, "aria-label": ariaLabel, disabled, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+    "button",
+    __spreadProps(__spreadValues({
+      className: classes,
+      onClick,
+      "aria-label": ariaLabel,
+      disabled
+    }, rest), {
+      children
+    })
+  );
 }
 
 // src/components/Menu/Menu.tsx
@@ -180,15 +207,20 @@ var MenuContext_default = MenuContext;
 // src/components/Menu/Menu.tsx
 var import_jsx_runtime4 = require("react/jsx-runtime");
 function Menu(props) {
-  const {
+  const _a = props, {
     children,
     position = "bottom-right",
     width,
     ariaLabel
-  } = props;
+  } = _a, rest = __objRest(_a, [
+    "children",
+    "position",
+    "width",
+    "ariaLabel"
+  ]);
   const [isOpen, setIsOpen] = (0, import_react5.useState)(false);
   const classes = (0, import_react5.useMemo)(() => `guwmi-menu-container ${position}`, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: classes, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(MenuContext_default.Provider, { value: { isOpen, setIsOpen, ariaLabel }, children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(MenuContext_default.Provider, { value: { isOpen, setIsOpen, ariaLabel }, children }) }));
 }
 
 // src/components/Menu/MenuDropdown.tsx
@@ -294,20 +326,20 @@ var useTabThrough_default = useTabThrough;
 // src/components/Menu/MenuDropdown.tsx
 var import_jsx_runtime5 = require("react/jsx-runtime");
 function MenuDropdown(props) {
-  const { children } = props;
+  const _a = props, { children } = _a, rest = __objRest(_a, ["children"]);
   const { isOpen, setIsOpen, ariaLabel } = (0, import_react8.useContext)(MenuContext_default);
   const dropDownRef = (0, import_react8.useRef)(null);
   const { isVisible } = useAnimation_default(isOpen, "open", dropDownRef);
   useTabThrough_default(isOpen, () => setIsOpen(false), dropDownRef);
   return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_jsx_runtime5.Fragment, { children: isVisible && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
     "nav",
-    {
+    __spreadProps(__spreadValues({
       className: "guwmi-menu-dropdown",
-      "data-testid": "guwmi-menu-dropdown",
       ref: dropDownRef,
-      "aria-label": ariaLabel,
+      "aria-label": ariaLabel
+    }, rest), {
       children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("ul", { role: "menubar", children })
-    }
+    })
   ) });
 }
 
@@ -315,16 +347,16 @@ function MenuDropdown(props) {
 var import_react9 = require("react");
 var import_jsx_runtime6 = require("react/jsx-runtime");
 function MenuItem(props) {
-  const { children, onClick, href } = props;
+  const _a = props, { children, onClick, href } = _a, rest = __objRest(_a, ["children", "onClick", "href"]);
   const classes = (0, import_react9.useMemo)(() => `guwmi-menu-item`, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("li", { className: classes, children: href ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("a", { className: "guwmi-menu-btn", href, children }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "guwmi-menu-btn", onClick, children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("li", { className: classes, children: href ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("a", __spreadProps(__spreadValues({ className: "guwmi-menu-btn", href }, rest), { children })) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", __spreadProps(__spreadValues({ className: "guwmi-menu-btn", onClick }, rest), { children })) });
 }
 
 // src/components/Menu/MenuTrigger.tsx
 var import_react10 = __toESM(require("react"), 1);
 var import_jsx_runtime7 = require("react/jsx-runtime");
 function MenuTrigger(props) {
-  const { children } = props;
+  const _a = props, { children } = _a, rest = __objRest(_a, ["children"]);
   const { isOpen, setIsOpen } = (0, import_react10.useContext)(MenuContext_default);
   const childrenWithClick = (0, import_react10.useMemo)(() => import_react10.default.Children.map(children, (child) => {
     if (import_react10.default.isValidElement(child)) {
@@ -332,7 +364,7 @@ function MenuTrigger(props) {
     }
     return child;
   }), [children, isOpen]);
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "guwmi-menu-trigger", children: childrenWithClick });
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", __spreadProps(__spreadValues({ className: "guwmi-menu-trigger" }, rest), { children: childrenWithClick }));
 }
 
 // src/components/Tabs/TabsContainer.tsx
@@ -346,17 +378,17 @@ var TabsContext_default = TabsContext;
 // src/components/Tabs/TabsContainer.tsx
 var import_jsx_runtime8 = require("react/jsx-runtime");
 function TabsContainer(props) {
-  const { children } = props;
+  const _a = props, { children } = _a, rest = __objRest(_a, ["children"]);
   const [selectedTab, setSelectedTab] = (0, import_react12.useState)(0);
   const id = (0, import_react12.useId)();
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(TabsContext_default.Provider, { value: { id, selectedTab, setSelectedTab }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "guwmi-tabs-container", children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(TabsContext_default.Provider, { value: { id, selectedTab, setSelectedTab }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", __spreadProps(__spreadValues({ className: "guwmi-tabs-container" }, rest), { children })) });
 }
 
 // src/components/Tabs/Tabs.tsx
 var import_react13 = __toESM(require("react"), 1);
 var import_jsx_runtime9 = require("react/jsx-runtime");
 function Tabs(props) {
-  const { children } = props;
+  const _a = props, { children } = _a, rest = __objRest(_a, ["children"]);
   const { selectedTab } = (0, import_react13.useContext)(TabsContext_default);
   const tabsContainer = (0, import_react13.useRef)(null);
   const slider = (0, import_react13.useRef)(null);
@@ -382,28 +414,29 @@ function Tabs(props) {
       slider.current.style.left = `${left}px`;
     }
   }, [activeTab.current]);
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("nav", { className: "guwmi-tabs", role: "tablist", ref: tabsContainer, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("nav", __spreadProps(__spreadValues({ className: "guwmi-tabs", role: "tablist", ref: tabsContainer }, rest), { children: [
     /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "guwmi-tabs-slider", ref: slider }),
     childrenWithIndex
-  ] });
+  ] }));
 }
 
 // src/components/Tabs/Tab.tsx
 var import_react14 = require("react");
 var import_jsx_runtime10 = require("react/jsx-runtime");
 function Tab(props) {
-  const { children, index } = props;
+  const _a = props, { children, index } = _a, rest = __objRest(_a, ["children", "index"]);
   const { id, selectedTab, setSelectedTab } = (0, import_react14.useContext)(TabsContext_default);
   return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
     "button",
-    {
+    __spreadProps(__spreadValues({
       className: `guwmi-tab${selectedTab === index ? " active" : ""}`,
       onClick: () => setSelectedTab(index),
       id: `tabs-${id}-tab-${index}`,
       "aria-selected": selectedTab === index,
-      "aria-controls": `tabs-${id}-tabpanel-${index}`,
+      "aria-controls": `tabs-${id}-tabpanel-${index}`
+    }, rest), {
       children
-    }
+    })
   );
 }
 
@@ -425,7 +458,7 @@ function useWindowWidth() {
 // src/components/Tabs/TabPanels.tsx
 var import_jsx_runtime11 = require("react/jsx-runtime");
 function TabPanels(props) {
-  const { children } = props;
+  const _a = props, { children } = _a, rest = __objRest(_a, ["children"]);
   const { selectedTab } = (0, import_react16.useContext)(TabsContext_default);
   const windowWidth = useWindowWidth();
   const panels = (0, import_react16.useRef)(null);
@@ -442,25 +475,26 @@ function TabPanels(props) {
     const height = active.offsetHeight;
     panels.current.style.height = `${height}px`;
   }, [selectedTab, windowWidth]);
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "guwmi-tab-panels", ref: panels, children: childrenWithIndex });
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", __spreadProps(__spreadValues({ className: "guwmi-tab-panels", ref: panels }, rest), { children: childrenWithIndex }));
 }
 
 // src/components/Tabs/TabPanel.tsx
 var import_react17 = require("react");
 var import_jsx_runtime12 = require("react/jsx-runtime");
 function TabPanel(props) {
-  const { children, index } = props;
+  const _a = props, { children, index } = _a, rest = __objRest(_a, ["children", "index"]);
   const { id, selectedTab } = (0, import_react17.useContext)(TabsContext_default);
   return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
     "section",
-    {
+    __spreadProps(__spreadValues({
       className: `guwmi-tab-panel${selectedTab === index ? " active" : ""}`,
       role: "tabpanel",
       hidden: selectedTab !== index,
       "aria-labelledby": `tabs-${id}-tab-${index}`,
-      id: `tabs-${id}-tabpanel-${index}`,
+      id: `tabs-${id}-tabpanel-${index}`
+    }, rest), {
       children
-    }
+    })
   );
 }
 
@@ -471,7 +505,7 @@ var import_react21 = require("react");
 var import_react18 = require("react");
 var import_jsx_runtime13 = require("react/jsx-runtime");
 function TableRow(props) {
-  const { headers, data, tableId } = props;
+  const _a = props, { headers, data, tableId } = _a, rest = __objRest(_a, ["headers", "data", "tableId"]);
   const cellData = (0, import_react18.useMemo)(() => {
     const arr = [];
     headers.forEach((h) => {
@@ -481,7 +515,7 @@ function TableRow(props) {
     });
     return arr;
   }, [headers, data]);
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, { children: cellData && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("tr", { children: cellData.map((cell) => /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("td", { children: cell.value }, `table-${tableId}-cell-${cell.id}-${cell.col}`)) }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, { children: cellData && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("tr", __spreadProps(__spreadValues({}, rest), { children: cellData.map((cell) => /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("td", { children: cell.value }, `table-${tableId}-cell-${cell.id}-${cell.col}`)) })) });
 }
 
 // src/components/Inputs/Search/SearchInput.tsx
@@ -659,13 +693,19 @@ function Settings() {
 // src/components/Icon/Icon.tsx
 var import_jsx_runtime15 = require("react/jsx-runtime");
 var Icon = (0, import_react19.forwardRef)((props, ref) => {
-  const {
+  const _a = props, {
     name,
     size = 24,
     stroke = 2,
     color = "currentColor",
     className
-  } = props;
+  } = _a, rest = __objRest(_a, [
+    "name",
+    "size",
+    "stroke",
+    "color",
+    "className"
+  ]);
   const classes = (0, import_react19.useMemo)(() => `icon guwmi-icon guwmi-icon-${name}${className ? " " + className : ""}`, [className]);
   const paths = (0, import_react19.useMemo)(() => {
     switch (name) {
@@ -715,7 +755,7 @@ var Icon = (0, import_react19.forwardRef)((props, ref) => {
   }, [name]);
   return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
     "svg",
-    {
+    __spreadProps(__spreadValues({
       ref,
       xmlns: "http://www.w3.org/2000/svg",
       width: size,
@@ -726,9 +766,10 @@ var Icon = (0, import_react19.forwardRef)((props, ref) => {
       strokeWidth: stroke,
       strokeLinecap: "round",
       strokeLinejoin: "round",
-      className: classes,
+      className: classes
+    }, rest), {
       children: paths
-    }
+    })
   );
 });
 var Icon_default = Icon;
@@ -736,28 +777,28 @@ var Icon_default = Icon;
 // src/components/Inputs/Search/SearchInput.tsx
 var import_jsx_runtime16 = require("react/jsx-runtime");
 function SearchInput(props) {
-  const { placeholder } = props;
+  const _a = props, { placeholder } = _a, rest = __objRest(_a, ["placeholder"]);
   const id = (0, import_react20.useId)();
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "guwmi-search-input", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", __spreadProps(__spreadValues({ className: "guwmi-search-input" }, rest), { children: [
     /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Icon_default, { name: "search", size: 18 }) }),
     /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { htmlFor: id, className: "guwmi-sr-only", children: "Search" }),
     /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("input", { id, type: "search", placeholder: placeholder ? placeholder : "Search..." })
-  ] });
+  ] }));
 }
 
 // src/components/Table/Table.tsx
 var import_jsx_runtime17 = require("react/jsx-runtime");
 function Table(props) {
-  const { headers, rows, isCondensed, isSearchable } = props;
+  const _a = props, { headers, rows, isCondensed, isSearchable } = _a, rest = __objRest(_a, ["headers", "rows", "isCondensed", "isSearchable"]);
   const id = (0, import_react21.useId)();
   const classes = (0, import_react21.useMemo)(() => `guwmi-table-container${isCondensed ? " condensed" : ""}`, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: classes, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     headers.length > 0 && isSearchable && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "guwmi-table-search", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SearchInput, {}) }),
     /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("table", { cellPadding: 0, cellSpacing: 0, children: headers.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(import_jsx_runtime17.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tr", { children: headers.map((header, i) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
       /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tbody", { children: rows.length > 0 ? rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tr", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
     ] }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tbody", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tr", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { children: "No column headers provided for the table" }) }) }) })
-  ] });
+  ] }));
 }
 
 // src/components/Accordion/Accordion.tsx
@@ -771,21 +812,21 @@ var AccordionContext_default = AccordionContext;
 // src/components/Accordion/Accordion.tsx
 var import_jsx_runtime18 = require("react/jsx-runtime");
 function Accordion(props) {
-  const { children, defaultOpen } = props;
+  const _a = props, { children, defaultOpen } = _a, rest = __objRest(_a, ["children", "defaultOpen"]);
   const [openAccordions, setOpenAccordions] = (0, import_react23.useState)([]);
   (0, import_react23.useEffect)(() => {
     if (defaultOpen) {
       setOpenAccordions([...openAccordions, defaultOpen]);
     }
   }, [defaultOpen]);
-  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(AccordionContext_default.Provider, { value: { openAccordions, setOpenAccordions }, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "guwmi-accordion-container", children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(AccordionContext_default.Provider, { value: { openAccordions, setOpenAccordions }, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", __spreadProps(__spreadValues({ className: "guwmi-accordion-container" }, rest), { children })) });
 }
 
 // src/components/Accordion/AccrodionItem.tsx
 var import_react24 = require("react");
 var import_jsx_runtime19 = require("react/jsx-runtime");
 function AccordionItem(props) {
-  const { children, title, id } = props;
+  const _a = props, { children, title, id } = _a, rest = __objRest(_a, ["children", "title", "id"]);
   const { openAccordions, setOpenAccordions } = (0, import_react24.useContext)(AccordionContext_default);
   const windowWidth = useWindowWidth();
   const panelRef = (0, import_react24.useRef)(null);
@@ -808,8 +849,8 @@ function AccordionItem(props) {
     setIsAnimating(true);
   }, [id, openAccordions]);
   (0, import_react24.useEffect)(() => {
-    var _a, _b;
-    (_a = panelRef.current) == null ? void 0 : _a.addEventListener("transitioncancel", () => setIsAnimating(false));
+    var _a2, _b;
+    (_a2 = panelRef.current) == null ? void 0 : _a2.addEventListener("transitioncancel", () => setIsAnimating(false));
     (_b = panelRef.current) == null ? void 0 : _b.addEventListener("transitionend", () => setIsAnimating(false));
   }, [panelRef.current]);
   (0, import_react24.useEffect)(() => {
@@ -820,7 +861,7 @@ function AccordionItem(props) {
       panelRef.current.style.height = `0px`;
     }
   }, [contentRef.current, isOpen, windowWidth]);
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "guwmi-accordion-item", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", __spreadProps(__spreadValues({ className: "guwmi-accordion-item" }, rest), { children: [
     /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
       "button",
       {
@@ -840,20 +881,19 @@ function AccordionItem(props) {
       {
         hidden: !isOpen && !isAnimating,
         id: `guwmi-accordion-panel-${id}`,
-        "data-testid": id,
         "aria-labelledby": `guwmi-accordion-controller-${id}`,
         ref: panelRef,
         children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "guwmi-accordion-panel-content", ref: contentRef, children })
       }
     )
-  ] });
+  ] }));
 }
 
 // src/components/Cards/Cards.tsx
 var import_react25 = require("react");
 var import_jsx_runtime20 = require("react/jsx-runtime");
 function Cards(props) {
-  const { children, columns = 3 } = props;
+  const _a = props, { children, columns = 3 } = _a, rest = __objRest(_a, ["children", "columns"]);
   const classes = (0, import_react25.useMemo)(() => {
     let classString = "guwmi-card-grid ";
     switch (columns) {
@@ -874,44 +914,49 @@ function Cards(props) {
     }
     return classString;
   }, [columns]);
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: classes, "data-testid": "guwmi-card-grid", children });
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", __spreadProps(__spreadValues({ className: classes }, rest), { children }));
 }
 
 // src/components/Cards/Card.tsx
 var import_jsx_runtime21 = require("react/jsx-runtime");
 function Card(props) {
-  const {
+  const _a = props, {
     title,
     subTitle,
     image,
     children
-  } = props;
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "guwmi-card", "data-testid": "guwmi-card", children: [
-    image && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("img", { src: image, alt: title ? title : "Card image", className: "guwmi-card-image", "data-testid": "guwmi-card-image" }),
+  } = _a, rest = __objRest(_a, [
+    "title",
+    "subTitle",
+    "image",
+    "children"
+  ]);
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", __spreadProps(__spreadValues({ className: "guwmi-card" }, rest), { children: [
+    image && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("img", { src: image, alt: title ? title : "Card image", className: "guwmi-card-image" }),
     (title || subTitle) && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "guwmi-card-section guwmi-card-title", children: [
-      title && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h2", { "data-testid": "guwmi-card-title", children: title }),
-      subTitle && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h3", { "data-testid": "guwmi-card-sub-title", children: subTitle })
+      title && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h2", { children: title }),
+      subTitle && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h3", { children: subTitle })
     ] }),
     children
-  ] });
+  ] }));
 }
 
 // src/components/Cards/CardSection.tsx
 var import_jsx_runtime22 = require("react/jsx-runtime");
 function CardSection(props) {
-  const { children } = props;
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "guwmi-card-section", children });
+  const _a = props, { children } = _a, rest = __objRest(_a, ["children"]);
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", __spreadProps(__spreadValues({ className: "guwmi-card-section" }, rest), { children }));
 }
 
 // src/components/Notification/Notification.tsx
 var import_react26 = require("react");
 var import_jsx_runtime23 = require("react/jsx-runtime");
 function Notification(props) {
-  const { kind, title, content } = props;
+  const _a = props, { kind, title, content } = _a, rest = __objRest(_a, ["kind", "title", "content"]);
   const [isVisible, setIsVisible] = (0, import_react26.useState)(true);
   const titleText = (0, import_react26.useMemo)(() => title ? title : kind.charAt(0).toUpperCase() + kind.slice(1), [title, kind]);
   const classes = (0, import_react26.useMemo)(() => `guwmi-notification ${kind}`, [kind]);
-  return isVisible ? /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("dialog", { className: classes, children: [
+  return isVisible ? /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("dialog", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     kind === "error" ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Icon_default, { name: "alert-circle", size: 20, stroke: "3" }) : kind === "warning" ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Icon_default, { name: "alert-triangle", size: 20, stroke: "3" }) : /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Icon_default, { name: "check", size: 20, stroke: "3" }),
     /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h2", { children: titleText }),
     /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { children: content }),
@@ -924,7 +969,7 @@ function Notification(props) {
         children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Icon_default, { name: "close", size: 18 })
       }
     )
-  ] }) : null;
+  ] })) : null;
 }
 
 // src/components/Modal/Modal.tsx
@@ -1040,7 +1085,7 @@ function BodyPortal(props) {
 // src/components/Modal/Modal.tsx
 var import_jsx_runtime24 = require("react/jsx-runtime");
 function Modal(props) {
-  const { open, onClose, preventScroll = false, size = "sm", children } = props;
+  const _a = props, { open, onClose, preventScroll = false, size = "sm", children } = _a, rest = __objRest(_a, ["open", "onClose", "preventScroll", "size", "children"]);
   const classes = (0, import_react31.useMemo)(() => `guwmi-modal ${size}`, [size]);
   const modalOverlay = (0, import_react31.useRef)(null);
   const modal = (0, import_react31.useRef)(null);
@@ -1048,7 +1093,7 @@ function Modal(props) {
   useFocusTrap_default(open, onClose, modal);
   useCloseOutClick_default(open, onClose, modal);
   usePreventScroll_default(open, preventScroll);
-  return isVisible && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "guwmi-modal-overlay", ref: modalOverlay, "data-testid": "guwmi-modal", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("dialog", { className: classes, ref: modal, children: [
+  return isVisible && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", __spreadProps(__spreadValues({ className: "guwmi-modal-overlay", ref: modalOverlay }, rest), { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("dialog", { className: classes, ref: modal, children: [
     /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
       "button",
       {
@@ -1059,14 +1104,14 @@ function Modal(props) {
       }
     ),
     children
-  ] }) }) });
+  ] }) })) });
 }
 
 // src/components/Drawer/Drawer.tsx
 var import_react32 = require("react");
 var import_jsx_runtime25 = require("react/jsx-runtime");
 function Drawer(props) {
-  const { open, onClose, preventScroll = false, position = "left", children } = props;
+  const _a = props, { open, onClose, preventScroll = false, position = "left", children } = _a, rest = __objRest(_a, ["open", "onClose", "preventScroll", "position", "children"]);
   const classes = (0, import_react32.useMemo)(() => `guwmi-drawer ${position}`, [position]);
   const drawerOverlay = (0, import_react32.useRef)(null);
   const drawer = (0, import_react32.useRef)(null);
@@ -1074,7 +1119,7 @@ function Drawer(props) {
   useFocusTrap_default(open, onClose, drawer);
   useCloseOutClick_default(open, onClose, drawer);
   usePreventScroll_default(open, preventScroll);
-  return isVisible && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "guwmi-drawer-overlay", ref: drawerOverlay, "data-testid": "guwmi-drawer", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
+  return isVisible && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", __spreadProps(__spreadValues({ className: "guwmi-drawer-overlay", ref: drawerOverlay }, rest), { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
     /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
       "button",
       {
@@ -1085,7 +1130,7 @@ function Drawer(props) {
       }
     ),
     children
-  ] }) }) });
+  ] }) })) });
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
