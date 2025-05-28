@@ -1,5 +1,4 @@
 // import library functionality
-import { createRef } from 'react';
 import { render, renderHook, fireEvent, screen } from '@testing-library/react';
 
 // import hook
