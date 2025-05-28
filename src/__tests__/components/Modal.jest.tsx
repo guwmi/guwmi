@@ -41,18 +41,16 @@ describe('Modal', () => {
       </Modal>
     )
 
-    setTimeout(() => { // Need to convert to watch for tansitonend, but no animation is longer than 0.6s so this will work for now
-      const modal = screen.queryByTestId('guwmi-modal');
-      const closeButton = modal.querySelector('button');
-      fireEvent.click(closeButton);
-      fireEvent.click(modal);
-      fireEvent.keyDown(modal, {
-        key: "Escape",
-        code: "Escape",
-        keyCode: 27,
-        charCode: 27
-      });
-      expect(handleClose).toHaveBeenCalledTimes(3);
-    }, 600)
+    const modal = screen.queryByTestId('guwmi-modal');
+    const closeButton = modal.querySelector('button');
+    fireEvent.click(closeButton);
+    fireEvent.click(modal);
+    fireEvent.keyDown(modal, {
+      key: "Escape",
+      code: "Escape",
+      keyCode: 27,
+      charCode: 27
+    });
+    expect(handleClose).toHaveBeenCalledTimes(3);
   });
 });

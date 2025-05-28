@@ -6,7 +6,6 @@ import Menu from '@components/Menu/Menu';
 import MenuDropdown from '@components/Menu/MenuDropdown';
 import MenuItem from '@components/Menu/MenuItem';
 import MenuTrigger from '@components/Menu/MenuTrigger';
-import Button from '@components/Button/Button';
 import IconButton from '@components/IconButton/IconButton';
 import Icon from '@components/Icon/Icon';
 
@@ -42,10 +41,8 @@ describe('Menu', () => {
 
     const menuTrigger = screen.getByRole('button');
     fireEvent.click(menuTrigger);
-    setTimeout(() => { // Need to convert to watch for tansitonend, but no animation is longer than 0.6s so this will work for now
-      const dropdown = screen.getByTestId('guwmi-menu-dropdown');
-      expect(dropdown).toBeInTheDocument();
-    }, 600);
+    const dropdown = screen.getByTestId('guwmi-menu-dropdown');
+    expect(dropdown).toBeInTheDocument();
   });
 
   test('menu items function as intended', () => {
@@ -54,12 +51,10 @@ describe('Menu', () => {
 
     const menuTrigger = screen.getByRole('button');
     fireEvent.click(menuTrigger);
-    setTimeout(() => { // Need to convert to watch for tansitonend, but no animation is longer than 0.6s so this will work for now
-      const link = screen.getByText('Link Item');
-      expect(link).toHaveAttribute('href', 'https://www.google.com');
-      const button = screen.getByText('Button Item');
-      fireEvent.click(button);
-      expect(handleClick).toHaveBeenCalledTimes(1);
-    }, 600);
+    const link = screen.getByText('Link Item');
+    expect(link).toHaveAttribute('href', 'https://www.google.com');
+    const button = screen.getByText('Button Item');
+    fireEvent.click(button);
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });

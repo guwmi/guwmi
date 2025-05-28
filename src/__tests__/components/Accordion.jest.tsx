@@ -92,12 +92,12 @@ describe('Accordion', () => {
     const openItem = accordionItems[0];
     const itemButton = screen.getByRole('button', { name: openItem.title })
     const itemSection = screen.getByTestId(openItem.id).querySelector('section');
+    expect(itemSection).toHaveAttribute('hidden');
     fireEvent.click(itemButton);
     expect(itemSection).not.toHaveAttribute('hidden');
     fireEvent.click(itemButton);
-    setTimeout(() => { // Need to convert to watch for tansitonend, but no animation is longer than 0.6s so this will work for now
-      expect(itemSection).toHaveAttribute('hidden');
-    }, 600)
+    fireEvent.transitionEnd(itemSection);
+    expect(itemSection).toHaveAttribute('hidden');
   });
 
   test('applies correct accessibility attributes', () => {

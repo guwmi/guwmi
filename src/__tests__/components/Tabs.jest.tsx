@@ -53,11 +53,9 @@ describe('Tabs', () => {
     expect(tabItems[0]).toHaveClass('active');
     expect(tabPanelItems[0]).not.toHaveAttribute('hidden');
     fireEvent.click(tabItems[1]);
-    setTimeout(() => { // Need to convert to watch for tansitonend, but no animation is longer than 0.6s so this will work for now
-      expect(tabItems[0]).not.toHaveClass('active');
-      expect(tabPanelItems[0]).toHaveAttribute('hidden');
-      expect(tabItems[1]).toHaveClass('active');
-      expect(tabPanelItems[1]).not.toHaveAttribute('hidden');
-    })
+    expect(tabItems[0]).not.toHaveClass('active');
+    expect(tabPanelItems[0]).toHaveAttribute('hidden');
+    expect(tabItems[1]).toHaveClass('active');
+    expect(tabPanelItems[1]).not.toHaveAttribute('hidden');
   })
 })
