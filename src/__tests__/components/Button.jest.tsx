@@ -2,7 +2,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 
 // import component to test
-import Button from '../components/Button/Button';
+import Button from '../../components/Button/Button';
 
 describe('Button', () => {
 
