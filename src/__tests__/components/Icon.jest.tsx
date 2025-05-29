@@ -18,6 +18,7 @@ describe('Icon', () => {
     'close',
     'dots',
     'external-link',
+    'hide',
     'home',
     'info',
     'login',
@@ -27,6 +28,7 @@ describe('Icon', () => {
     'progress',
     'search',
     'settings',
+    'view'
   ];
 
   test('of all names render with correct classname', () => {

@@ -4,7 +4,7 @@ import { useMemo, useRef, PropsWithChildren } from 'react';
 // import custom functionality
 import useAnimation from '../../hooks/useAnimation';
 import useFocusTrap from '../../hooks/useFocusTrap';
-import useCloseOutClick from '../../hooks/useCloseOutClick';
+import useClickOutside from '../../hooks/useClickOutside';
 
 // import components
 import BodyPortal from '../utils/BodyPortal';
@@ -27,7 +27,7 @@ export default function Drawer(props: ComponentProps) {
   const drawer = useRef<HTMLElement>(null);
   const { isVisible } = useAnimation(open, 'open', drawerOverlay);
   useFocusTrap(open, onClose, drawer);
-  useCloseOutClick(open, onClose, drawer);
+  useClickOutside(open, onClose, drawer);
   usePreventScroll(open, preventScroll);
 
   return (

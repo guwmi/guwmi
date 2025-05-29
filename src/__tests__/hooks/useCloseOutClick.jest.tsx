@@ -2,9 +2,9 @@
 import { render, renderHook, fireEvent, screen } from '@testing-library/react';
 
 // import hook
-import useCloseOutClick from '@hooks/useCloseOutClick';
+import useClickOutside from '@hooks/useClickOutside';
 
-describe('useCloseOutClick Hook', () => {
+describe('useClickOutside Hook', () => {
 
   test('calls onClose when clicked outside ref', () => {
 
@@ -16,7 +16,7 @@ describe('useCloseOutClick Hook', () => {
     );
     const mockRef = { current: document.getElementById('ref') };
     const mockClose = jest.fn();
-    const { rerender } = renderHook((props) => useCloseOutClick(props.open, props.onClose, props.ref), {initialProps: {open: true, onClose: mockClose, ref: mockRef}});
+    const { rerender } = renderHook((props) => useClickOutside(props.open, props.onClose, props.ref), {initialProps: {open: true, onClose: mockClose, ref: mockRef}});
     const notRef = screen.getByTestId('not-ref');
     fireEvent.click(notRef);
     expect(mockClose).toHaveBeenCalledTimes(1);

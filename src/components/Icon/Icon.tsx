@@ -15,6 +15,7 @@ import {
   Close,
   Dots,
   ExternalLink,
+  Hide,
   Home,
   Info,
   Login,
@@ -23,7 +24,8 @@ import {
   ProgressCheck,
   Progress,
   Search,
-  Settings
+  Settings,
+  View
 } from './paths';
 
 // types
@@ -41,6 +43,7 @@ interface ComponentProps extends SVGProps<SVGSVGElement> {
   | 'close'
   | 'dots'
   | 'external-link'
+  | 'hide'
   | 'home'
   | 'info'
   | 'login'
@@ -49,7 +52,8 @@ interface ComponentProps extends SVGProps<SVGSVGElement> {
   | 'progress-check'
   | 'progress'
   | 'search'
-  | 'settings';
+  | 'settings'
+  | 'view';
   size?: number;
   stroke?: '1' | '2' | '3';
   color?: string;
@@ -98,6 +102,8 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
         return <Dots />
       case 'external-link':
         return <ExternalLink />
+      case 'hide':
+        return <Hide />
       case 'home':
         return <Home />
       case 'info':
@@ -116,6 +122,8 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
         return <Search />
       case 'settings':
         return <Settings />
+      case 'view':
+        return <View />
     }
   }, [name]);
 

@@ -75,15 +75,19 @@ __export(index_exports, {
   MenuTrigger: () => MenuTrigger,
   Modal: () => Modal,
   Notification: () => Notification,
+  PasswordInput: () => PasswordInput,
+  SearchInput: () => SearchInput,
   Tab: () => Tab,
   TabPanel: () => TabPanel,
   TabPanels: () => TabPanels,
   Table: () => Table,
   Tabs: () => Tabs,
-  TabsContainer: () => TabsContainer
+  TabsContainer: () => TabsContainer,
+  TextArea: () => TextArea,
+  TextInput: () => TextInput
 });
 module.exports = __toCommonJS(index_exports);
-var import_guwmi = require("./guwmi-RQIZ6P7N.css");
+var import_guwmi = require("./guwmi-4QFHLYMO.css");
 
 // src/components/Button/Button.tsx
 var import_react = require("react");
@@ -628,6 +632,14 @@ function ExternalLink() {
     /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M15 4h5v5" })
   ] });
 }
+function Hide() {
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M10.585 10.587a2 2 0 0 0 2.829 2.828" }),
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87" }),
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M3 3l18 18" })
+  ] });
+}
 function Home() {
   return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
@@ -707,6 +719,13 @@ function Settings() {
     /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" })
   ] });
 }
+function View() {
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" }),
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" })
+  ] });
+}
 
 // src/components/Icon/Icon.tsx
 var import_jsx_runtime15 = require("react/jsx-runtime");
@@ -751,6 +770,8 @@ var Icon = (0, import_react19.forwardRef)((props, ref) => {
         return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Dots, {});
       case "external-link":
         return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ExternalLink, {});
+      case "hide":
+        return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Hide, {});
       case "home":
         return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Home, {});
       case "info":
@@ -769,6 +790,8 @@ var Icon = (0, import_react19.forwardRef)((props, ref) => {
         return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Search, {});
       case "settings":
         return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Settings, {});
+      case "view":
+        return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(View, {});
     }
   }, [name]);
   return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
@@ -1065,19 +1088,19 @@ var useFocusTrap = (open, onClose, elementRef) => {
 };
 var useFocusTrap_default = useFocusTrap;
 
-// src/hooks/useCloseOutClick.ts
+// src/hooks/useClickOutside.ts
 var import_react28 = require("react");
-var useCloseOutClick = (open, onClose, elementRef) => {
+var useClickOutside = (enabled, onClick, elementRef) => {
   const triggerRef = (0, import_react28.useRef)(null);
   const closeOutClick = (0, import_react28.useCallback)((e) => {
     var _a;
     if (e.target !== triggerRef.current && !((_a = elementRef.current) == null ? void 0 : _a.contains(e.target))) {
-      onClose();
+      onClick();
     }
   }, [elementRef.current]);
   (0, import_react28.useEffect)(() => {
     var _a;
-    if (open) {
+    if (enabled) {
       triggerRef.current = document.activeElement;
       document.addEventListener("click", closeOutClick);
     } else {
@@ -1087,9 +1110,9 @@ var useCloseOutClick = (open, onClose, elementRef) => {
     return () => {
       document.removeEventListener("click", closeOutClick);
     };
-  }, [open]);
+  }, [enabled]);
 };
-var useCloseOutClick_default = useCloseOutClick;
+var useClickOutside_default = useClickOutside;
 
 // src/hooks/usePreventScroll.ts
 var import_react29 = require("react");
@@ -1130,7 +1153,7 @@ function Modal(props) {
   const modal = (0, import_react31.useRef)(null);
   const { isVisible } = useAnimation_default(open, "open", modalOverlay);
   useFocusTrap_default(open, onClose, modal);
-  useCloseOutClick_default(open, onClose, modal);
+  useClickOutside_default(open, onClose, modal);
   usePreventScroll_default(open, preventScroll);
   return isVisible && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", __spreadProps(__spreadValues({ className: "guwmi-modal-overlay", ref: modalOverlay }, rest), { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("dialog", { className: classes, ref: modal, children: [
     /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
@@ -1156,7 +1179,7 @@ function Drawer(props) {
   const drawer = (0, import_react32.useRef)(null);
   const { isVisible } = useAnimation_default(open, "open", drawerOverlay);
   useFocusTrap_default(open, onClose, drawer);
-  useCloseOutClick_default(open, onClose, drawer);
+  useClickOutside_default(open, onClose, drawer);
   usePreventScroll_default(open, preventScroll);
   return isVisible && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", __spreadProps(__spreadValues({ className: "guwmi-drawer-overlay", ref: drawerOverlay }, rest), { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
     /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
@@ -1170,6 +1193,198 @@ function Drawer(props) {
     ),
     children
   ] }) })) });
+}
+
+// src/components/Inputs/Password/PasswordInput.tsx
+var import_react33 = require("react");
+var import_jsx_runtime26 = require("react/jsx-runtime");
+function PasswordInput(props) {
+  const _a = props, {
+    label,
+    hideLabel,
+    id,
+    name,
+    placeholder,
+    disabled,
+    value,
+    readOnly,
+    error,
+    hasError,
+    maxLength,
+    onChange,
+    onBlur,
+    onFocus
+  } = _a, rest = __objRest(_a, [
+    "label",
+    "hideLabel",
+    "id",
+    "name",
+    "placeholder",
+    "disabled",
+    "value",
+    "readOnly",
+    "error",
+    "hasError",
+    "maxLength",
+    "onChange",
+    "onBlur",
+    "onFocus"
+  ]);
+  const inputId = id != null ? id : (0, import_react33.useId)();
+  const passwordRef = (0, import_react33.useRef)(null);
+  const classes = (0, import_react33.useMemo)(() => `guwmi-password-input${hasError ? " error" : ""}${disabled ? " disabled" : ""}`, [hasError, disabled]);
+  const [type, setType] = (0, import_react33.useState)("password");
+  const toggleType = () => {
+    if (type === "password") {
+      setType("text");
+    } else {
+      setType("password");
+    }
+  };
+  useClickOutside_default(type === "text", toggleType, passwordRef);
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", __spreadProps(__spreadValues({ className: classes }, rest), { ref: passwordRef, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("label", { htmlFor: inputId, className: hideLabel ? "guwmi-sr-only" : null, children: label }),
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "guwmi-password-container", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
+        "input",
+        {
+          type,
+          id: inputId,
+          name,
+          placeholder,
+          disabled,
+          value,
+          readOnly,
+          maxLength,
+          onChange,
+          onBlur,
+          onFocus
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("button", { onClick: () => toggleType(), "aria-label": type === "password" ? "Show password" : "Hide password", children: type === "password" ? /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Icon_default, { name: "view" }) : /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Icon_default, { name: "hide" }) })
+    ] }),
+    hasError && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { children: error })
+  ] }));
+}
+
+// src/components/Inputs/TextArea/TextArea.tsx
+var import_react34 = require("react");
+var import_jsx_runtime27 = require("react/jsx-runtime");
+function TextArea(props) {
+  const _a = props, {
+    label,
+    hideLabel,
+    id,
+    name,
+    placeholder,
+    disabled,
+    value,
+    readOnly,
+    error,
+    hasError,
+    maxLength,
+    rows,
+    onChange,
+    onBlur,
+    onFocus
+  } = _a, rest = __objRest(_a, [
+    "label",
+    "hideLabel",
+    "id",
+    "name",
+    "placeholder",
+    "disabled",
+    "value",
+    "readOnly",
+    "error",
+    "hasError",
+    "maxLength",
+    "rows",
+    "onChange",
+    "onBlur",
+    "onFocus"
+  ]);
+  const inputId = id != null ? id : (0, import_react34.useId)();
+  const classes = (0, import_react34.useMemo)(() => `guwmi-textarea${hasError ? " error" : ""}${disabled ? " disabled" : ""}`, [hasError, disabled]);
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("label", { htmlFor: inputId, className: hideLabel ? "guwmi-sr-only" : null, children: label }),
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+      "textarea",
+      {
+        id: inputId,
+        name,
+        placeholder,
+        disabled,
+        value,
+        readOnly,
+        maxLength,
+        rows,
+        onChange,
+        onBlur,
+        onFocus
+      }
+    ),
+    hasError && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { children: error })
+  ] }));
+}
+
+// src/components/Inputs/Text/TextInput.tsx
+var import_react35 = require("react");
+var import_jsx_runtime28 = require("react/jsx-runtime");
+function TextInput(props) {
+  const _a = props, {
+    label,
+    hideLabel,
+    id,
+    name,
+    placeholder,
+    disabled,
+    value,
+    readOnly,
+    error,
+    hasError,
+    maxLength,
+    onChange,
+    onBlur,
+    onFocus
+  } = _a, rest = __objRest(_a, [
+    "label",
+    "hideLabel",
+    "id",
+    "name",
+    "placeholder",
+    "disabled",
+    "value",
+    "readOnly",
+    "error",
+    "hasError",
+    "maxLength",
+    "onChange",
+    "onBlur",
+    "onFocus"
+  ]);
+  const inputId = id != null ? id : (0, import_react35.useId)();
+  const classes = (0, import_react35.useMemo)(() => `guwmi-text-input${hasError ? " error" : ""}${disabled ? " disabled" : ""}`, [hasError, disabled]);
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { htmlFor: inputId, className: hideLabel ? "guwmi-sr-only" : null, children: label }),
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+      "input",
+      {
+        type: "text",
+        id: inputId,
+        name,
+        placeholder,
+        disabled,
+        value,
+        readOnly,
+        maxLength,
+        onChange,
+        onBlur,
+        onFocus
+      }
+    ),
+    hasError && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: error })
+  ] }));
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -1189,11 +1404,15 @@ function Drawer(props) {
   MenuTrigger,
   Modal,
   Notification,
+  PasswordInput,
+  SearchInput,
   Tab,
   TabPanel,
   TabPanels,
   Table,
   Tabs,
-  TabsContainer
+  TabsContainer,
+  TextArea,
+  TextInput
 });
 //# sourceMappingURL=index.cjs.map

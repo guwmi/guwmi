@@ -44,6 +44,7 @@ import Drawer from './components/Drawer/Drawer';
 import Icon from './components/Icon/Icon';
 
 // import inputs
+import PasswordInput from './components/Inputs/Password/PasswordInput';
 import SearchInput from './components/Inputs/Search/SearchInput';
 import TextArea from './components/Inputs/TextArea/TextArea';
 import TextInput from './components/Inputs/Text/TextInput';
@@ -66,6 +67,7 @@ export {
   MenuTrigger,
   Modal,
   Notification,
+  PasswordInput,
   SearchInput,
   TabsContainer,
   Tabs,
