@@ -441,7 +441,45 @@ function TabPanel(props) {
 }
 
 // src/components/Table/Table.tsx
-import { useId as useId3, useMemo as useMemo11 } from "react";
+import { useEffect as useEffect6, useId as useId3, useMemo as useMemo11, useState as useState5 } from "react";
+
+// src/utils/isEmpty.ts
+var isEmpty = (variable) => {
+  if (typeof variable === "undefined") {
+    return true;
+  } else if (variable === null) {
+    return true;
+  } else if (typeof variable === "string" && variable.length === 0) {
+    return true;
+  } else if (typeof variable === "number" && isNaN(variable)) {
+    return true;
+  } else if (typeof variable === "object" && Object.keys(variable).length === 0) {
+    return true;
+  } else if (Array.isArray(variable) && variable.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+var isEmpty_default = isEmpty;
+
+// src/utils/tableSearch.ts
+var tableSearch = (arr = [], keys, value = "") => {
+  if (!isEmpty_default(arr) && !isEmpty_default(keys)) {
+    arr.filter((item) => {
+      return keys.some((key) => {
+        if (key.search === "includes") {
+          return item[key.key].includes(value);
+        } else {
+          return item[key.key].startsWith(value);
+        }
+      });
+    });
+  } else {
+    return [];
+  }
+};
+var tableSearch_default = tableSearch;
 
 // src/components/Table/TableRow.tsx
 import { useMemo as useMemo9 } from "react";
@@ -719,23 +757,37 @@ var Icon_default = Icon;
 // src/components/Inputs/Search/SearchInput.tsx
 import { jsx as jsx16, jsxs as jsxs3 } from "react/jsx-runtime";
 function SearchInput(props) {
-  const _a = props, { placeholder } = _a, rest = __objRest(_a, ["placeholder"]);
+  const _a = props, { placeholder, onChange } = _a, rest = __objRest(_a, ["placeholder", "onChange"]);
   const id = useId2();
   return /* @__PURE__ */ jsxs3("div", __spreadProps(__spreadValues({ className: "guwmi-search-input" }, rest), { children: [
     /* @__PURE__ */ jsx16("span", { children: /* @__PURE__ */ jsx16(Icon_default, { name: "search", size: 18 }) }),
     /* @__PURE__ */ jsx16("label", { htmlFor: id, className: "guwmi-sr-only", children: "Search" }),
-    /* @__PURE__ */ jsx16("input", { id, type: "search", placeholder: placeholder ? placeholder : "Search..." })
+    /* @__PURE__ */ jsx16("input", { id, type: "search", placeholder: placeholder ? placeholder : "Search...", onChange })
   ] }));
 }
 
 // src/components/Table/Table.tsx
 import { Fragment as Fragment4, jsx as jsx17, jsxs as jsxs4 } from "react/jsx-runtime";
 function Table(props) {
-  const _a = props, { headers, rows, isCondensed, isSearchable } = _a, rest = __objRest(_a, ["headers", "rows", "isCondensed", "isSearchable"]);
+  const _a = props, { headers, rows, isCondensed } = _a, rest = __objRest(_a, ["headers", "rows", "isCondensed"]);
   const id = useId3();
+  const isSearchable = useMemo11(() => headers.some((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const classes = useMemo11(() => `guwmi-table-container${isCondensed ? " condensed" : ""}`, []);
+  const [searchValue, setSearchValue] = useState5("");
+  const [tableRows, setTableRows] = useState5(rows);
+  const handleSearch = () => {
+    const updatedRows = tableSearch_default(
+      rows,
+      headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"),
+      searchValue
+    );
+    setTableRows(updatedRows);
+  };
+  useEffect6(() => {
+    handleSearch();
+  }, [searchValue]);
   return /* @__PURE__ */ jsxs4("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
-    headers.length > 0 && isSearchable && /* @__PURE__ */ jsx17("div", { className: "guwmi-table-search", children: /* @__PURE__ */ jsx17(SearchInput, {}) }),
+    headers.length > 0 && isSearchable && /* @__PURE__ */ jsx17("div", { className: "guwmi-table-search", children: /* @__PURE__ */ jsx17(SearchInput, { onChange: (e) => setSearchValue(e.target.value) }) }),
     /* @__PURE__ */ jsx17("table", { cellPadding: 0, cellSpacing: 0, children: headers.length > 0 ? /* @__PURE__ */ jsxs4(Fragment4, { children: [
       /* @__PURE__ */ jsx17("thead", { children: /* @__PURE__ */ jsx17("tr", { children: headers.map((header, i) => /* @__PURE__ */ jsx17("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
       /* @__PURE__ */ jsx17("tbody", { children: rows.length > 0 ? rows.map((row) => /* @__PURE__ */ jsx17(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ jsx17("tr", { children: /* @__PURE__ */ jsx17("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
@@ -744,7 +796,7 @@ function Table(props) {
 }
 
 // src/components/Accordion/Accordion.tsx
-import { useState as useState5, useEffect as useEffect6 } from "react";
+import { useState as useState6, useEffect as useEffect7 } from "react";
 
 // src/components/Accordion/AccordionContext.ts
 import { createContext as createContext3 } from "react";
@@ -755,8 +807,8 @@ var AccordionContext_default = AccordionContext;
 import { jsx as jsx18 } from "react/jsx-runtime";
 function Accordion(props) {
   const _a = props, { children, defaultOpen } = _a, rest = __objRest(_a, ["children", "defaultOpen"]);
-  const [openAccordions, setOpenAccordions] = useState5([]);
-  useEffect6(() => {
+  const [openAccordions, setOpenAccordions] = useState6([]);
+  useEffect7(() => {
     if (defaultOpen) {
       setOpenAccordions([...openAccordions, defaultOpen]);
     }
@@ -769,8 +821,8 @@ import {
   useCallback as useCallback3,
   useContext as useContext7,
   useRef as useRef7,
-  useState as useState6,
-  useEffect as useEffect7
+  useState as useState7,
+  useEffect as useEffect8
 } from "react";
 import { jsx as jsx19, jsxs as jsxs5 } from "react/jsx-runtime";
 function AccordionItem(props) {
@@ -779,9 +831,9 @@ function AccordionItem(props) {
   const windowWidth = useWindowWidth();
   const panelRef = useRef7(null);
   const contentRef = useRef7(null);
-  const [isOpen, setIsOpen] = useState6(false);
-  const [isAnimating, setIsAnimating] = useState6(false);
-  useEffect7(() => {
+  const [isOpen, setIsOpen] = useState7(false);
+  const [isAnimating, setIsAnimating] = useState7(false);
+  useEffect8(() => {
     if (openAccordions.includes(id)) {
       setIsOpen(true);
     } else {
@@ -796,12 +848,12 @@ function AccordionItem(props) {
     setOpenAccordions(openAccordions.filter((value) => value !== id));
     setIsAnimating(true);
   }, [id, openAccordions]);
-  useEffect7(() => {
+  useEffect8(() => {
     var _a2, _b;
     (_a2 = panelRef.current) == null ? void 0 : _a2.addEventListener("transitioncancel", () => setIsAnimating(false));
     (_b = panelRef.current) == null ? void 0 : _b.addEventListener("transitionend", () => setIsAnimating(false));
   }, [panelRef.current]);
-  useEffect7(() => {
+  useEffect8(() => {
     if (contentRef.current && isOpen) {
       const height = contentRef.current.offsetHeight;
       panelRef.current.style.height = `${height}px`;
@@ -897,11 +949,11 @@ function CardSection(props) {
 }
 
 // src/components/Notification/Notification.tsx
-import { useMemo as useMemo13, useState as useState7 } from "react";
+import { useMemo as useMemo13, useState as useState8 } from "react";
 import { jsx as jsx23, jsxs as jsxs7 } from "react/jsx-runtime";
 function Notification(props) {
   const _a = props, { kind, title, content } = _a, rest = __objRest(_a, ["kind", "title", "content"]);
-  const [isVisible, setIsVisible] = useState7(true);
+  const [isVisible, setIsVisible] = useState8(true);
   const titleText = useMemo13(() => title ? title : kind.charAt(0).toUpperCase() + kind.slice(1), [title, kind]);
   const classes = useMemo13(() => `guwmi-notification ${kind}`, [kind]);
   return isVisible ? /* @__PURE__ */ jsxs7("dialog", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
@@ -924,7 +976,7 @@ function Notification(props) {
 import { useMemo as useMemo14, useRef as useRef10 } from "react";
 
 // src/hooks/useFocusTrap.ts
-import { useCallback as useCallback4, useEffect as useEffect8, useRef as useRef8 } from "react";
+import { useCallback as useCallback4, useEffect as useEffect9, useRef as useRef8 } from "react";
 var useFocusTrap = (open, onClose, elementRef) => {
   const triggerRef = useRef8(null);
   const handleTab = useCallback4((e) => {
@@ -951,7 +1003,7 @@ var useFocusTrap = (open, onClose, elementRef) => {
       onClose();
     }
   }, []);
-  useEffect8(() => {
+  useEffect9(() => {
     var _a;
     if (open) {
       triggerRef.current = document.activeElement;
@@ -975,7 +1027,7 @@ var useFocusTrap = (open, onClose, elementRef) => {
 var useFocusTrap_default = useFocusTrap;
 
 // src/hooks/useCloseOutClick.ts
-import { useCallback as useCallback5, useEffect as useEffect9, useRef as useRef9 } from "react";
+import { useCallback as useCallback5, useEffect as useEffect10, useRef as useRef9 } from "react";
 var useCloseOutClick = (open, onClose, elementRef) => {
   const triggerRef = useRef9(null);
   const closeOutClick = useCallback5((e) => {
@@ -984,7 +1036,7 @@ var useCloseOutClick = (open, onClose, elementRef) => {
       onClose();
     }
   }, [elementRef.current]);
-  useEffect9(() => {
+  useEffect10(() => {
     var _a;
     if (open) {
       triggerRef.current = document.activeElement;
@@ -1001,9 +1053,9 @@ var useCloseOutClick = (open, onClose, elementRef) => {
 var useCloseOutClick_default = useCloseOutClick;
 
 // src/hooks/usePreventScroll.ts
-import { useEffect as useEffect10 } from "react";
+import { useEffect as useEffect11 } from "react";
 var usePreventScroll = (open, enabled) => {
-  useEffect10(() => {
+  useEffect11(() => {
     if (open) {
       if (enabled) {
         document.body.style.height = "100%";
@@ -1019,12 +1071,12 @@ var usePreventScroll = (open, enabled) => {
 var usePreventScroll_default = usePreventScroll;
 
 // src/components/utils/BodyPortal.tsx
-import { useEffect as useEffect11, useState as useState8 } from "react";
+import { useEffect as useEffect12, useState as useState9 } from "react";
 import ReactDOM from "react-dom";
 function BodyPortal(props) {
   const { children } = props;
-  const [hasDocument, setHasDocument] = useState8(false);
-  useEffect11(() => {
+  const [hasDocument, setHasDocument] = useState9(false);
+  useEffect12(() => {
     setHasDocument(typeof document !== "undefined");
   }, []);
   return hasDocument ? ReactDOM.createPortal(children, document.body) : null;

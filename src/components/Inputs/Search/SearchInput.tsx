@@ -6,19 +6,21 @@ import Icon from '../../Icon/Icon';
 
 // component type
 interface ComponentProps {
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  disabled?: boolean;
 }
 
 export default function SearchInput(props: ComponentProps) {
 
-  const { placeholder, ...rest } = props;
+  const { placeholder, onChange, ...rest } = props;
   const id = useId();
 
   return (
     <div className="guwmi-search-input" {...rest}>
       <span><Icon name="search" size={18} /></span>
       <label htmlFor={id} className="guwmi-sr-only">Search</label>
-      <input id={id} type="search" placeholder={placeholder ? placeholder : 'Search...'} />
+      <input id={id} type="search" placeholder={placeholder ? placeholder : 'Search...'} onChange={onChange} />
     </div>
   )
 }

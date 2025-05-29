@@ -97,13 +97,13 @@ interface ComponentProps$8 {
     headers: {
         title: string;
         key: string;
+        search: 'includes' | 'starts-with' | undefined;
     }[];
     rows: {
         id: number | string;
         [key: string]: any;
     }[];
     isCondensed?: boolean;
-    isSearchable?: boolean;
 }
 declare function Table(props: ComponentProps$8): react_jsx_runtime.JSX.Element;
 

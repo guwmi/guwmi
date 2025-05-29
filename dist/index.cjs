@@ -481,6 +481,44 @@ function TabPanel(props) {
 // src/components/Table/Table.tsx
 var import_react21 = require("react");
 
+// src/utils/isEmpty.ts
+var isEmpty = (variable) => {
+  if (typeof variable === "undefined") {
+    return true;
+  } else if (variable === null) {
+    return true;
+  } else if (typeof variable === "string" && variable.length === 0) {
+    return true;
+  } else if (typeof variable === "number" && isNaN(variable)) {
+    return true;
+  } else if (typeof variable === "object" && Object.keys(variable).length === 0) {
+    return true;
+  } else if (Array.isArray(variable) && variable.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+var isEmpty_default = isEmpty;
+
+// src/utils/tableSearch.ts
+var tableSearch = (arr = [], keys, value = "") => {
+  if (!isEmpty_default(arr) && !isEmpty_default(keys)) {
+    arr.filter((item) => {
+      return keys.some((key) => {
+        if (key.search === "includes") {
+          return item[key.key].includes(value);
+        } else {
+          return item[key.key].startsWith(value);
+        }
+      });
+    });
+  } else {
+    return [];
+  }
+};
+var tableSearch_default = tableSearch;
+
 // src/components/Table/TableRow.tsx
 var import_react18 = require("react");
 var import_jsx_runtime13 = require("react/jsx-runtime");
@@ -757,23 +795,37 @@ var Icon_default = Icon;
 // src/components/Inputs/Search/SearchInput.tsx
 var import_jsx_runtime16 = require("react/jsx-runtime");
 function SearchInput(props) {
-  const _a = props, { placeholder } = _a, rest = __objRest(_a, ["placeholder"]);
+  const _a = props, { placeholder, onChange } = _a, rest = __objRest(_a, ["placeholder", "onChange"]);
   const id = (0, import_react20.useId)();
   return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", __spreadProps(__spreadValues({ className: "guwmi-search-input" }, rest), { children: [
     /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Icon_default, { name: "search", size: 18 }) }),
     /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { htmlFor: id, className: "guwmi-sr-only", children: "Search" }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("input", { id, type: "search", placeholder: placeholder ? placeholder : "Search..." })
+    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("input", { id, type: "search", placeholder: placeholder ? placeholder : "Search...", onChange })
   ] }));
 }
 
 // src/components/Table/Table.tsx
 var import_jsx_runtime17 = require("react/jsx-runtime");
 function Table(props) {
-  const _a = props, { headers, rows, isCondensed, isSearchable } = _a, rest = __objRest(_a, ["headers", "rows", "isCondensed", "isSearchable"]);
+  const _a = props, { headers, rows, isCondensed } = _a, rest = __objRest(_a, ["headers", "rows", "isCondensed"]);
   const id = (0, import_react21.useId)();
+  const isSearchable = (0, import_react21.useMemo)(() => headers.some((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const classes = (0, import_react21.useMemo)(() => `guwmi-table-container${isCondensed ? " condensed" : ""}`, []);
+  const [searchValue, setSearchValue] = (0, import_react21.useState)("");
+  const [tableRows, setTableRows] = (0, import_react21.useState)(rows);
+  const handleSearch = () => {
+    const updatedRows = tableSearch_default(
+      rows,
+      headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"),
+      searchValue
+    );
+    setTableRows(updatedRows);
+  };
+  (0, import_react21.useEffect)(() => {
+    handleSearch();
+  }, [searchValue]);
   return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
-    headers.length > 0 && isSearchable && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "guwmi-table-search", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SearchInput, {}) }),
+    headers.length > 0 && isSearchable && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "guwmi-table-search", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SearchInput, { onChange: (e) => setSearchValue(e.target.value) }) }),
     /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("table", { cellPadding: 0, cellSpacing: 0, children: headers.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(import_jsx_runtime17.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tr", { children: headers.map((header, i) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
       /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tbody", { children: rows.length > 0 ? rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tr", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
