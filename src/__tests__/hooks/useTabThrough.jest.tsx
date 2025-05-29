@@ -3,9 +3,9 @@ import { render, renderHook, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import hook
-import useFocusTrap from '@hooks/useFocusTrap';
+import useTabThrough from '@hooks/useTabThrough';
 
-describe('useFocusTrap Hook', () => {
+describe('useTabThrough Hook', () => {
   let user: UserEvent;
   beforeEach(() => {
     user = userEvent.setup();
@@ -27,7 +27,7 @@ describe('useFocusTrap Hook', () => {
     const link = screen.getByTestId('link');
     const button = screen.getByTestId('button');
     const input = screen.getByTestId('input')
-    const { rerender } = renderHook((props) => useFocusTrap(props.open, props.onClose, props.ref), {initialProps: {open: false, onClose: mockClose, ref: mockRef}});
+    const { rerender } = renderHook((props) => useTabThrough(props.open, props.onClose, props.ref), {initialProps: {open: false, onClose: mockClose, ref: mockRef}});
     rerender({open: true, onClose: mockClose, ref: mockRef});
     await new Promise(resolve => setTimeout(resolve, 50));
     expect(container).toHaveFocus();
@@ -38,9 +38,11 @@ describe('useFocusTrap Hook', () => {
     await user.tab();
     expect(input).toHaveFocus();
     await user.tab();
-    expect(link).toHaveFocus();
+    expect(mockClose).toHaveBeenCalledTimes(1);
+    rerender({open: false, onClose: mockClose, ref: mockRef});
+    rerender({open: true, onClose: mockClose, ref: mockRef});
     await user.tab({ shift: true });
-    expect(input).toHaveFocus();
+    expect(mockClose).toHaveBeenCalledTimes(2);
   });
 
   test('calls onClose with escape keydown', async () => {
@@ -54,7 +56,7 @@ describe('useFocusTrap Hook', () => {
     )
     const mockRef = { current: document.getElementById('ref') };
     const mockClose = jest.fn();
-    const { rerender } = renderHook((props) => useFocusTrap(props.open, props.onClose, props.ref), {initialProps: {open: false, onClose: mockClose, ref: mockRef}});
+    const { rerender } = renderHook((props) => useTabThrough(props.open, props.onClose, props.ref), {initialProps: {open: false, onClose: mockClose, ref: mockRef}});
     rerender({open: true, onClose: mockClose, ref: mockRef});
     await new Promise(resolve => setTimeout(resolve, 50));
     await user.keyboard('{Escape}');
