@@ -1,0 +1,45 @@
+/**
+ * Styles for the search input component ************************************************************
+ **/
+.guwmi-text-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.guwmi-text-input label {
+  padding-left: 0.66rem;
+  font-size: 0.85rem;
+}
+.guwmi-text-input input {
+  padding: 0.66rem;
+  background: var(--guwmi-primary-bg);
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-bottom-width: 2px;
+  border-bottom-color: var(--guwmi-text);
+  border-top-right-radius: var(--guwmi-radius);
+  border-top-left-radius: var(--guwmi-radius);
+  font-size: 1rem;
+  color: var(--guwmi-text);
+}
+.guwmi-text-input input::placeholder {
+  color: var(--guwmi-text);
+  opacity: 0.33;
+}
+.guwmi-text-input.error label {
+  color: var(--guwmi-alert-red);
+}
+.guwmi-text-input.error input {
+  border-bottom-color: var(--guwmi-alert-red);
+}
+.guwmi-text-input.error span {
+  padding-left: 0.66rem;
+  font-size: 0.85rem;
+  color: var(--guwmi-alert-red);
+}
+.guwmi-text-input.disabled {
+  opacity: 0.5;
+}
+.guwmi-text-input.disabled input {
+  cursor: not-allowed;
+}

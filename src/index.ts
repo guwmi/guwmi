@@ -43,6 +43,11 @@ import Drawer from './components/Drawer/Drawer';
 // import icon component
 import Icon from './components/Icon/Icon';
 
+// import inputs
+import SearchInput from './components/Inputs/Search/SearchInput';
+import TextArea from './components/Inputs/TextArea/TextArea';
+import TextInput from './components/Inputs/Text/TextInput';
+
 // export all components
 export {
   Accordion,
@@ -61,10 +66,13 @@ export {
   MenuTrigger,
   Modal,
   Notification,
+  SearchInput,
   TabsContainer,
   Tabs,
   Tab,
   TabPanels,
   TabPanel,
-  Table
+  Table,
+  TextArea,
+  TextInput
 };

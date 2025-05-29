@@ -1,0 +1,58 @@
+/**
+ * Styles for the search input component ************************************************************
+ **/
+
+ .guwmi-textarea {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    padding-left: 0.66rem;
+    font-size: 0.85rem;
+  }
+
+  textarea {
+    padding: 0.66rem;
+    background: var(--guwmi-primary-bg);
+    border: solid 1px var(--guwmi-secondary-bg);
+    border-bottom-width: 2px;
+    border-bottom-color: var(--guwmi-text);
+    border-top-right-radius: var(--guwmi-radius);
+    border-top-left-radius: var(--guwmi-radius);
+    font-size: 1rem;
+    color: var(--guwmi-text);
+    min-height: 5rem;
+
+    &::placeholder {
+      color: var(--guwmi-text);
+      opacity: 0.33;
+    }
+  }
+
+  &.error {
+
+    label {
+      color: var(--guwmi-alert-red);
+    }
+
+    textarea {
+      border-bottom-color: var(--guwmi-alert-red);
+    }
+
+    span {
+      padding-left: 0.66rem;
+      font-size: 0.85rem;
+      color: var(--guwmi-alert-red);
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+
+    textarea {
+      cursor: not-allowed;
+    }
+  }
+}
