@@ -16,7 +16,7 @@ describe('useCloseOutClick Hook', () => {
     );
     const mockRef = { current: document.getElementById('ref') };
     const mockClose = jest.fn();
-    const { result, rerender } = renderHook((props) => useCloseOutClick(props.open, props.onClose, props.ref), {initialProps: {open: true, onClose: mockClose, ref: mockRef}});
+    const { rerender } = renderHook((props) => useCloseOutClick(props.open, props.onClose, props.ref), {initialProps: {open: true, onClose: mockClose, ref: mockRef}});
     const notRef = screen.getByTestId('not-ref');
     fireEvent.click(notRef);
     expect(mockClose).toHaveBeenCalledTimes(1);
