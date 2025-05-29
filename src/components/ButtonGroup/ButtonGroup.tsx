@@ -4,7 +4,7 @@ import React, { useMemo, PropsWithChildren } from 'react';
 // component type
 interface ComponentProps extends PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'secondary' | 'danger';
+  color?: 'neutral' | 'primary' | 'secondary' | 'danger';
   variant?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'pill';
   className?: string;
@@ -12,7 +12,7 @@ interface ComponentProps extends PropsWithChildren {
 
 interface ChildButton {
   size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'secondary' | 'danger';
+  color?: 'neutral' | 'primary' | 'secondary' | 'danger';
   variant?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'pill';
   className?: string;
@@ -23,7 +23,7 @@ export default function ButtonGroup(props: ComponentProps) {
   const {
     children,
     size = 'md',
-    color = 'primary',
+    color = 'neutral',
     variant = 'fill',
     theme = 'round',
     className,

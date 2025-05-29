@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-PC34KAA7.css";
+import "./guwmi-U5DZ23CA.css";
 
 // src/components/Button/Button.tsx
 import {
@@ -82,7 +82,7 @@ function ButtonGroup(props) {
   const _a = props, {
     children,
     size = "md",
-    color = "primary",
+    color = "neutral",
     variant = "fill",
     theme = "round",
     className
@@ -395,6 +395,7 @@ function useWindowWidth() {
   const [windowWidth, setWindowWidth] = useState4();
   const handleResize = () => setWindowWidth(window.innerWidth);
   useEffect4(() => {
+    setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);

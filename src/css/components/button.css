@@ -36,11 +36,11 @@
   background: var(--guwmi-primary);
   border-color: var(--guwmi-primary);
 }
-.guwmi-btn.primary:hover.fill {
+.guwmi-btn.primary.active.fill, .guwmi-btn.primary:hover.fill {
   background: var(--guwmi-primary-alt);
   border-color: var(--guwmi-primary-alt);
 }
-.guwmi-btn.primary:hover.outline {
+.guwmi-btn.primary.active.outline, .guwmi-btn.primary:hover.outline {
   background: var(--guwmi-primary);
   border-color: var(--guwmi-primary);
   color: white;
@@ -56,11 +56,11 @@
   background: var(--guwmi-secondary);
   border-color: var(--guwmi-secondary);
 }
-.guwmi-btn.secondary:hover.fill {
+.guwmi-btn.secondary.active.fill, .guwmi-btn.secondary:hover.fill {
   background: var(--guwmi-secondary-alt);
   border-color: var(--guwmi-secondary-alt);
 }
-.guwmi-btn.secondary:hover.outline {
+.guwmi-btn.secondary.active.outline, .guwmi-btn.secondary:hover.outline {
   background: var(--guwmi-secondary);
   border-color: var(--guwmi-secondary);
   color: white;
@@ -76,11 +76,11 @@
   background: var(--guwmi-alert-red);
   border-color: var(--guwmi-alert-red);
 }
-.guwmi-btn.danger:hover.fill {
+.guwmi-btn.danger.active.fill, .guwmi-btn.danger:hover.fill {
   background: var(--guwmi-alert-red-alt);
   border-color: var(--guwmi-alert-red-alt);
 }
-.guwmi-btn.danger:hover.outline {
+.guwmi-btn.danger.active.outline, .guwmi-btn.danger:hover.outline {
   background: var(--guwmi-alert-red);
   border-color: var(--guwmi-alert-red);
   color: white;
@@ -91,6 +91,30 @@
 }
 .guwmi-btn.danger.ghost {
   color: var(--guwmi-alert-red);
+}
+.guwmi-btn.neutral {
+  background: var(--guwmi-secondary-bg);
+  border-color: var(--guwmi-secondary-bg);
+  color: var(--guwmi-text);
+}
+.guwmi-btn.neutral.active, .guwmi-btn.neutral:hover {
+  color: white;
+}
+.guwmi-btn.neutral.active.fill, .guwmi-btn.neutral:hover.fill {
+  background: var(--guwmi-primary-alt);
+  border-color: var(--guwmi-primary-alt);
+}
+.guwmi-btn.neutral.active.outline, .guwmi-btn.neutral:hover.outline {
+  background: var(--guwmi-primary);
+  border-color: var(--guwmi-primary);
+  color: white;
+}
+.guwmi-btn.neutral.outline {
+  color: var(--guwmi-text);
+  border-color: var(--guwmi-text);
+}
+.guwmi-btn.neutral.ghost {
+  color: var(--guwmi-text);
 }
 .guwmi-btn.outline {
   background: none;
@@ -114,7 +138,7 @@
   .guwmi-btn.ghost {
     background: rgba(0, 0, 0, 0.1);
   }
-  .guwmi-btn.ghost:hover {
+  .guwmi-btn.ghost.active, .guwmi-btn.ghost:hover {
     background: rgba(0, 0, 0, 0.15);
   }
 }

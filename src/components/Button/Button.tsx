@@ -9,7 +9,7 @@ import React, {
 // component type
 interface ComponentProps extends PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'secondary' | 'danger';
+  color?: 'primary' | 'secondary' | 'danger' | 'neutral';
   variant?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'pill';
   className?: string;

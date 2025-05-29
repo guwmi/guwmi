@@ -83,7 +83,7 @@ __export(index_exports, {
   TabsContainer: () => TabsContainer
 });
 module.exports = __toCommonJS(index_exports);
-var import_guwmi = require("./guwmi-PC34KAA7.css");
+var import_guwmi = require("./guwmi-U5DZ23CA.css");
 
 // src/components/Button/Button.tsx
 var import_react = require("react");
@@ -130,7 +130,7 @@ function ButtonGroup(props) {
   const _a = props, {
     children,
     size = "md",
-    color = "primary",
+    color = "neutral",
     variant = "fill",
     theme = "round",
     className
@@ -433,6 +433,7 @@ function useWindowWidth() {
   const [windowWidth, setWindowWidth] = (0, import_react15.useState)();
   const handleResize = () => setWindowWidth(window.innerWidth);
   (0, import_react15.useEffect)(() => {
+    setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);

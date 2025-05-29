@@ -21,7 +21,7 @@ describe('ButtonGroup', () => {
     buttons.forEach((button) => {
       expect(button).toHaveClass('guwmi-btn');
       expect(button).toHaveClass('md');
-      expect(button).toHaveClass('primary');
+      expect(button).toHaveClass('neutral');
       expect(button).toHaveClass('fill');
       expect(button).toHaveClass('round');
     })

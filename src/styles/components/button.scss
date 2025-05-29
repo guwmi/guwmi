@@ -45,6 +45,7 @@
     background: var(--guwmi-primary);
     border-color: var(--guwmi-primary);
 
+    &.active,
     &:hover {
 
       &.fill {
@@ -73,6 +74,7 @@
     background: var(--guwmi-secondary);
     border-color: var(--guwmi-secondary);
 
+    &.active,
     &:hover {
 
       &.fill {
@@ -100,6 +102,7 @@
     background: var(--guwmi-alert-red);
     border-color: var(--guwmi-alert-red);
 
+    &.active,
     &:hover {
 
       &.fill {
@@ -121,6 +124,37 @@
 
     &.ghost {
       color: var(--guwmi-alert-red);
+    }
+  }
+
+  &.neutral {
+    background: var(--guwmi-secondary-bg);
+    border-color: var(--guwmi-secondary-bg);
+    color: var(--guwmi-text);
+
+    &.active,
+    &:hover {
+      color: white;
+
+      &.fill {
+        background: var(--guwmi-primary-alt);
+        border-color: var(--guwmi-primary-alt);
+      }
+
+      &.outline {
+        background: var(--guwmi-primary);
+        border-color: var(--guwmi-primary);
+        color: white;
+      }
+    }
+
+    &.outline {
+      color: var(--guwmi-text);
+      border-color: var(--guwmi-text);
+    }
+
+    &.ghost {
+      color: var(--guwmi-text);
     }
   }
 
@@ -156,6 +190,7 @@
     &.ghost {
       background: rgba(0,0,0,0.1);
   
+      &.active,
       &:hover {
         background: rgba(0,0,0,0.15);;
       }

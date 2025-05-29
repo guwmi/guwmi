@@ -4,7 +4,7 @@ import React__default, { PropsWithChildren, SVGProps } from 'react';
 
 interface ComponentProps$f extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
-    color?: 'primary' | 'secondary' | 'danger';
+    color?: 'primary' | 'secondary' | 'danger' | 'neutral';
     variant?: 'fill' | 'outline' | 'ghost';
     theme?: 'square' | 'round' | 'pill';
     className?: string;
@@ -21,7 +21,7 @@ declare function Button(props: ComponentProps$f): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$e extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
-    color?: 'primary' | 'secondary' | 'danger';
+    color?: 'neutral' | 'primary' | 'secondary' | 'danger';
     variant?: 'fill' | 'outline' | 'ghost';
     theme?: 'square' | 'round' | 'pill';
     className?: string;
