@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-U5DZ23CA.css";
+import "./guwmi-RQIZ6P7N.css";
 
 // src/components/Button/Button.tsx
 import {
@@ -466,12 +466,12 @@ var isEmpty_default = isEmpty;
 // src/utils/tableSearch.ts
 var tableSearch = (arr = [], keys, value = "") => {
   if (!isEmpty_default(arr) && !isEmpty_default(keys)) {
-    arr.filter((item) => {
+    return arr.filter((item) => {
       return keys.some((key) => {
         if (key.search === "includes") {
-          return item[key.key].includes(value);
-        } else {
-          return item[key.key].startsWith(value);
+          return item[key.key].toLowerCase().includes(value.toLowerCase());
+        } else if (key.search === "starts-with") {
+          return item[key.key].toLowerCase().startsWith(value.toLowerCase());
         }
       });
     });
@@ -769,28 +769,35 @@ function SearchInput(props) {
 // src/components/Table/Table.tsx
 import { Fragment as Fragment4, jsx as jsx17, jsxs as jsxs4 } from "react/jsx-runtime";
 function Table(props) {
-  const _a = props, { headers, rows, isCondensed } = _a, rest = __objRest(_a, ["headers", "rows", "isCondensed"]);
+  const _a = props, { title, description, headers, rows, isCondensed } = _a, rest = __objRest(_a, ["title", "description", "headers", "rows", "isCondensed"]);
   const id = useId3();
   const isSearchable = useMemo11(() => headers.some((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const classes = useMemo11(() => `guwmi-table-container${isCondensed ? " condensed" : ""}`, []);
+  const searchHeaders = useMemo11(() => headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const [searchValue, setSearchValue] = useState5("");
   const [tableRows, setTableRows] = useState5(rows);
   const handleSearch = () => {
     const updatedRows = tableSearch_default(
       rows,
-      headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"),
+      searchHeaders,
       searchValue
     );
     setTableRows(updatedRows);
   };
   useEffect6(() => {
-    handleSearch();
+    if (isSearchable) {
+      handleSearch();
+    }
   }, [searchValue]);
   return /* @__PURE__ */ jsxs4("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
+    (title || description) && /* @__PURE__ */ jsxs4("div", { className: "guwmi-table-header", children: [
+      title && /* @__PURE__ */ jsx17("h2", { children: title }),
+      description && /* @__PURE__ */ jsx17("p", { children: description })
+    ] }),
     headers.length > 0 && isSearchable && /* @__PURE__ */ jsx17("div", { className: "guwmi-table-search", children: /* @__PURE__ */ jsx17(SearchInput, { onChange: (e) => setSearchValue(e.target.value) }) }),
     /* @__PURE__ */ jsx17("table", { cellPadding: 0, cellSpacing: 0, children: headers.length > 0 ? /* @__PURE__ */ jsxs4(Fragment4, { children: [
       /* @__PURE__ */ jsx17("thead", { children: /* @__PURE__ */ jsx17("tr", { children: headers.map((header, i) => /* @__PURE__ */ jsx17("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
-      /* @__PURE__ */ jsx17("tbody", { children: rows.length > 0 ? rows.map((row) => /* @__PURE__ */ jsx17(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ jsx17("tr", { children: /* @__PURE__ */ jsx17("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
+      /* @__PURE__ */ jsx17("tbody", { children: tableRows.length > 0 ? tableRows.map((row) => /* @__PURE__ */ jsx17(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ jsx17("tr", { children: /* @__PURE__ */ jsx17("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
     ] }) : /* @__PURE__ */ jsx17("tbody", { children: /* @__PURE__ */ jsx17("tr", { children: /* @__PURE__ */ jsx17("td", { children: "No column headers provided for the table" }) }) }) })
   ] }));
 }

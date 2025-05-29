@@ -94,10 +94,12 @@ interface ComponentProps$9 extends PropsWithChildren {
 declare function TabPanel(props: ComponentProps$9): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$8 {
+    title?: string;
+    description?: string;
     headers: {
         title: string;
         key: string;
-        search: 'includes' | 'starts-with' | undefined;
+        search?: 'includes' | 'starts-with';
     }[];
     rows: {
         id: number | string;

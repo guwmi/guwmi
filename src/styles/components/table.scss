@@ -11,12 +11,35 @@
   border-radius: var(--guwmi-radius);
   border: solid 1px var(--guwmi-secondary-bg);
 
+  .guwmi-table-header {
+    background: var(--guwmi-secondary-bg);
+    padding: 1.25rem 1rem;
+    width: 100%;
+    transform: translate(-1rem, -0.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    h2 {
+      font-size: 1.2rem;
+      margin: 0;
+      font-weight: 500;
+    }
+  
+    p {
+      font-size: 0.85rem;
+      margin: 0;
+      font-weight: 400;
+      opacity: 0.75;
+      letter-spacing: unset;
+    }
+  }
+
   &.condensed {
-    padding: 0.25rem 0.5rem;
 
     th,
     td {
-      padding: 0.5rem;
+      padding: 0.66rem;
     }
   }
 

@@ -52,12 +52,30 @@
   border-radius: var(--guwmi-radius);
   border: solid 1px var(--guwmi-secondary-bg);
 }
-.guwmi-table-container.condensed {
-  padding: 0.25rem 0.5rem;
+.guwmi-table-container .guwmi-table-header {
+  background: var(--guwmi-secondary-bg);
+  padding: 1.25rem 1rem;
+  width: 100%;
+  transform: translate(-1rem, -0.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.guwmi-table-container .guwmi-table-header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 500;
+}
+.guwmi-table-container .guwmi-table-header p {
+  font-size: 0.85rem;
+  margin: 0;
+  font-weight: 400;
+  opacity: 0.75;
+  letter-spacing: unset;
 }
 .guwmi-table-container.condensed th,
 .guwmi-table-container.condensed td {
-  padding: 0.5rem;
+  padding: 0.66rem;
 }
 .guwmi-table-container .guwmi-table-search {
   margin: 1rem 0 0.5rem;

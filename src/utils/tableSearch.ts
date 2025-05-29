@@ -4,7 +4,7 @@ import isEmpty from './isEmpty'
 // Helper function for array searching
 const tableSearch  = (
   arr: { id: number | string, [key: string]: any }[] = [], 
-  keys: { title: string, key: string, search: 'includes' | 'starts-with' }[], 
+  keys: { title: string, key: string, search?: 'includes' | 'starts-with' }[], 
   value: string = ''
 ): { id: number | string, [key: string]: any }[] => {
 
@@ -13,7 +13,7 @@ const tableSearch  = (
       return keys.some((key) => {
         if (key.search === 'includes') {
           return item[key.key].toLowerCase().includes(value.toLowerCase());
-        } else {
+        } else if (key.search === 'starts-with') {
           return item[key.key].toLowerCase().startsWith(value.toLowerCase());
         }
       })

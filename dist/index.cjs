@@ -83,7 +83,7 @@ __export(index_exports, {
   TabsContainer: () => TabsContainer
 });
 module.exports = __toCommonJS(index_exports);
-var import_guwmi = require("./guwmi-U5DZ23CA.css");
+var import_guwmi = require("./guwmi-RQIZ6P7N.css");
 
 // src/components/Button/Button.tsx
 var import_react = require("react");
@@ -504,12 +504,12 @@ var isEmpty_default = isEmpty;
 // src/utils/tableSearch.ts
 var tableSearch = (arr = [], keys, value = "") => {
   if (!isEmpty_default(arr) && !isEmpty_default(keys)) {
-    arr.filter((item) => {
+    return arr.filter((item) => {
       return keys.some((key) => {
         if (key.search === "includes") {
-          return item[key.key].includes(value);
-        } else {
-          return item[key.key].startsWith(value);
+          return item[key.key].toLowerCase().includes(value.toLowerCase());
+        } else if (key.search === "starts-with") {
+          return item[key.key].toLowerCase().startsWith(value.toLowerCase());
         }
       });
     });
@@ -807,28 +807,35 @@ function SearchInput(props) {
 // src/components/Table/Table.tsx
 var import_jsx_runtime17 = require("react/jsx-runtime");
 function Table(props) {
-  const _a = props, { headers, rows, isCondensed } = _a, rest = __objRest(_a, ["headers", "rows", "isCondensed"]);
+  const _a = props, { title, description, headers, rows, isCondensed } = _a, rest = __objRest(_a, ["title", "description", "headers", "rows", "isCondensed"]);
   const id = (0, import_react21.useId)();
   const isSearchable = (0, import_react21.useMemo)(() => headers.some((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const classes = (0, import_react21.useMemo)(() => `guwmi-table-container${isCondensed ? " condensed" : ""}`, []);
+  const searchHeaders = (0, import_react21.useMemo)(() => headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const [searchValue, setSearchValue] = (0, import_react21.useState)("");
   const [tableRows, setTableRows] = (0, import_react21.useState)(rows);
   const handleSearch = () => {
     const updatedRows = tableSearch_default(
       rows,
-      headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"),
+      searchHeaders,
       searchValue
     );
     setTableRows(updatedRows);
   };
   (0, import_react21.useEffect)(() => {
-    handleSearch();
+    if (isSearchable) {
+      handleSearch();
+    }
   }, [searchValue]);
   return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
+    (title || description) && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "guwmi-table-header", children: [
+      title && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h2", { children: title }),
+      description && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { children: description })
+    ] }),
     headers.length > 0 && isSearchable && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "guwmi-table-search", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SearchInput, { onChange: (e) => setSearchValue(e.target.value) }) }),
     /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("table", { cellPadding: 0, cellSpacing: 0, children: headers.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(import_jsx_runtime17.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tr", { children: headers.map((header, i) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tbody", { children: rows.length > 0 ? rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tr", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tbody", { children: tableRows.length > 0 ? tableRows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tr", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
     ] }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tbody", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tr", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { children: "No column headers provided for the table" }) }) }) })
   ] }));
 }

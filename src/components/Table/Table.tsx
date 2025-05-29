@@ -1,5 +1,5 @@
 // import library functionality
-import React, { useEffect, useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 
 // import custom functionality
 import tableSearch from '../../utils/tableSearch';
@@ -10,14 +10,16 @@ import SearchInput from '../Inputs/Search/SearchInput';
 
 // component type
 interface ComponentProps {
-  headers: { title: string, key: string, search: 'includes' | 'starts-with' | undefined }[];
+  title?: string;
+  description?: string;
+  headers: { title: string, key: string, search?: 'includes' | 'starts-with' }[];
   rows: { id: number | string, [key: string]: any }[];
   isCondensed?: boolean;
 }
 
 export default function Table(props: ComponentProps) {
 
-  const { headers, rows, isCondensed, ...rest } = props;
+  const { title, description, headers, rows, isCondensed, ...rest } = props;
   const id = useId();
   const isSearchable = useMemo(() => headers.some((header) => (header?.search === 'includes' || header?.search === 'starts-with')), [headers])
   const classes = useMemo(() => `guwmi-table-container${isCondensed ? ' condensed' : ''}`, [])
@@ -35,11 +37,23 @@ export default function Table(props: ComponentProps) {
   }
 
   useEffect(() => {
-    handleSearch();
+    if (isSearchable) {
+      handleSearch();
+    }
   }, [searchValue])
 
   return (
     <div className={classes} {...rest}>
+      {(title || description) &&
+        <div className="guwmi-table-header">
+          {title &&
+            <h2>{title}</h2>
+          }
+          {description &&
+            <p>{description}</p>
+          }
+        </div>
+      }
       {(headers.length > 0 && isSearchable) &&
         <div className="guwmi-table-search">
           <SearchInput onChange={(e) => setSearchValue(e.target.value)} />
