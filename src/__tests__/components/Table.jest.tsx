@@ -1,12 +1,33 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import components
 import Table from '@components/Table/Table';
 
 describe('Table', () => {
 
-  const headers = [
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+    document.body.innerHTML = '';
+  });
+
+  const headers: {
+    title: string;
+    key: string;
+    search?: "includes" | "starts-with";
+  }[] = [
+    { title: 'Name', key: 'name', search: 'includes' },
+    { title: 'Type', key: 'type', search: 'starts-with' },
+    { title: 'Status', key: 'status' },
+  ];
+
+  const noSearchHeaders: {
+    title: string;
+    key: string;
+    search?: "includes" | "starts-with";
+  }[] = [
     { title: 'Name', key: 'name' },
     { title: 'Type', key: 'type' },
     { title: 'Status', key: 'status' },
@@ -27,7 +48,7 @@ describe('Table', () => {
 
   test('renders with appropriate message if no headers are provided', () => {
 
-    render( <Table headers={[]} rows={rows} isSearchable data-testid="guwmi-table" /> );
+    render( <Table headers={[]} rows={rows} data-testid="guwmi-table" /> );
 
     const table = screen.getByTestId('guwmi-table');
     const cell = table.querySelector('tbody').querySelector('td');
@@ -36,7 +57,7 @@ describe('Table', () => {
 
   test('renders with appropriate message if no rows are provided', () => {
 
-    render( <Table headers={headers} rows={[]} isSearchable data-testid="guwmi-table" /> );
+    render( <Table headers={headers} rows={[]} data-testid="guwmi-table" /> );
 
     const table = screen.getByTestId('guwmi-table');
     const cell = table.querySelector('tbody').querySelector('td');
@@ -63,12 +84,36 @@ describe('Table', () => {
     expect(table).toHaveClass('condensed');
   });
 
-  test('renders table with search input', () => {
+  test('renders table without search', () => {
 
-    render( <Table headers={headers} rows={rows} isSearchable data-testid="guwmi-table" /> );
+    render( <Table headers={noSearchHeaders} rows={rows} isCondensed data-testid="guwmi-table" /> );
 
     const table = screen.getByTestId('guwmi-table');
-    const searchInput = table.querySelector('.guwmi-table-search');
-    expect(searchInput).toBeInTheDocument();
+    const searchContainer = table.querySelector('.guwmi-table-search');
+    expect(searchContainer).not.toBeInTheDocument();
+  });
+
+  test('renders table with title and description', () => {
+
+    render( <Table headers={noSearchHeaders} rows={rows} isCondensed data-testid="guwmi-table" title="Test Title" description="Test Description" /> );
+
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
+    expect(screen.getByText('Test Description')).toBeInTheDocument();
+  });
+
+  test('renders table with search input and search functionality works as intended', async () => {
+
+    render( <Table headers={headers} rows={rows} data-testid="guwmi-table" /> );
+
+    const table = screen.getByTestId('guwmi-table');
+    const searchContainer = table.querySelector('.guwmi-table-search');
+    expect(searchContainer).toBeInTheDocument();
+    const input = searchContainer.querySelector('.guwmi-search-input').querySelector('input');
+    input.focus();
+    await user.keyboard('one');
+    expect(screen.getByText('Test One')).toBeInTheDocument();
+    await user.clear(input);
+    await user.keyboard('win');
+    expect(screen.getAllByText('Windows')).toHaveLength(5);
   });
 })
