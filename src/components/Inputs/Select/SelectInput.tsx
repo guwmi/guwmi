@@ -13,7 +13,7 @@ interface ComponentProps {
   value?: string;
   error?: string;
   hasError?: boolean;
-  options: { name: string, value: string }[];
+  options: { name: string, value: string, disabled?: boolean }[];
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLSelectElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLSelectElement>) => void;
@@ -51,8 +51,8 @@ export default function SelectInput(props: ComponentProps) {
           onBlur={onBlur}
           onFocus={onFocus}
         >
-          {options && options.map((option) => (
-            <option value={option.value}>{option.name}</option>
+          {options && options.map((option, index) => (
+            <option key={`${id}-${index}`} value={option.value} disabled={option.disabled}>{option.name}</option>
           ))}
         </select>
         <span className="guwmi-select-icon">

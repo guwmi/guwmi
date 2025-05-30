@@ -20,11 +20,8 @@
   appearance: none;
   padding: 0.66rem;
   background: var(--guwmi-primary-bg);
-  border: solid 1px var(--guwmi-secondary-bg);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--guwmi-text);
-  border-top-right-radius: var(--guwmi-radius);
-  border-top-left-radius: var(--guwmi-radius);
+  border: solid 1px var(--guwmi-text);
+  border-radius: var(--guwmi-radius);
   font-size: 1rem;
   color: var(--guwmi-text);
 }
@@ -43,8 +40,8 @@
 .guwmi-select-input.error label {
   color: var(--guwmi-alert-red);
 }
-.guwmi-select-input.error input {
-  border-bottom-color: var(--guwmi-alert-red);
+.guwmi-select-input.error select {
+  border-color: var(--guwmi-alert-red);
 }
 .guwmi-select-input.error .guwmi-select-error {
   padding-left: 0.66rem;

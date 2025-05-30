@@ -1,0 +1,77 @@
+/**
+ * Styles for the radio group component ************************************************************
+ **/
+
+// inport colors
+@use '../../../styles/variables.scss' ;
+
+.guwmi-radio-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  fieldset {
+    appearance: none;
+    border: solid 1px var(--guwmi-secondary-bg);
+    border-radius: var(--guwmi-radius);
+    padding: 1rem;
+
+    legend {
+      padding: 0 1rem;
+      font-size: 0.85rem;
+    }
+
+    .guwmi-radio-container {
+      display: flex;
+      gap: 0.5rem;
+      flex-direction: column;
+
+      &.row {
+        flex-direction: row;
+      }
+
+      > div {
+        display: flex;
+        gap: 1rem;
+
+        * {
+          cursor: pointer;
+        }
+
+        &.disabled {
+          opacity: 0.5;
+          
+          * {
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+
+  &.error {
+
+    legend {
+      color: var(--guwmi-alert-red);
+    }
+
+    fieldset {
+      border-color: var(--guwmi-alert-red);
+    }
+
+    span {
+      padding-left: 0.66rem;
+      font-size: 0.85rem;
+      color: var(--guwmi-alert-red);
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+
+    fieldset {
+      cursor: not-allowed;
+    }
+  }
+}

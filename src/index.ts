@@ -47,6 +47,7 @@ import Icon from './components/Icon/Icon';
 
 // import inputs
 import PasswordInput from './components/Inputs/Password/PasswordInput';
+import RadioGroup from './components/Inputs/RadioGroup/RadioGroup';
 import SearchInput from './components/Inputs/Search/SearchInput';
 import SelectInput from './components/Inputs/Select/SelectInput';
 import TextArea from './components/Inputs/TextArea/TextArea';
@@ -71,6 +72,7 @@ export {
   Modal,
   Notification,
   PasswordInput,
+  RadioGroup,
   SearchInput,
   SelectInput,
   TabsContainer,

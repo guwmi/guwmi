@@ -707,7 +707,6 @@
   padding: 0.66rem;
   background: var(--guwmi-primary-bg);
   border: solid 1px var(--guwmi-secondary-bg);
-  border-bottom-width: 2px;
   border-bottom-color: var(--guwmi-text);
   border-top-right-radius: var(--guwmi-radius);
   border-top-left-radius: var(--guwmi-radius);
@@ -745,6 +744,67 @@
   opacity: 0.5;
 }
 .guwmi-password-input.disabled input {
+  cursor: not-allowed;
+}
+
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
+ * Styles for the radio group component ************************************************************
+ **/
+.guwmi-radio-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.guwmi-radio-group fieldset {
+  appearance: none;
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
+  padding: 1rem;
+}
+.guwmi-radio-group fieldset legend {
+  padding: 0 1rem;
+  font-size: 0.85rem;
+}
+.guwmi-radio-group fieldset .guwmi-radio-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+.guwmi-radio-group fieldset .guwmi-radio-container.row {
+  flex-direction: row;
+}
+.guwmi-radio-group fieldset .guwmi-radio-container > div {
+  display: flex;
+  gap: 1rem;
+}
+.guwmi-radio-group fieldset .guwmi-radio-container > div * {
+  cursor: pointer;
+}
+.guwmi-radio-group fieldset .guwmi-radio-container > div.disabled {
+  opacity: 0.5;
+}
+.guwmi-radio-group fieldset .guwmi-radio-container > div.disabled * {
+  cursor: not-allowed;
+}
+.guwmi-radio-group.error legend {
+  color: var(--guwmi-alert-red);
+}
+.guwmi-radio-group.error fieldset {
+  border-color: var(--guwmi-alert-red);
+}
+.guwmi-radio-group.error span {
+  padding-left: 0.66rem;
+  font-size: 0.85rem;
+  color: var(--guwmi-alert-red);
+}
+.guwmi-radio-group.disabled {
+  opacity: 0.5;
+}
+.guwmi-radio-group.disabled fieldset {
   cursor: not-allowed;
 }
 
@@ -804,11 +864,8 @@
   appearance: none;
   padding: 0.66rem;
   background: var(--guwmi-primary-bg);
-  border: solid 1px var(--guwmi-secondary-bg);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--guwmi-text);
-  border-top-right-radius: var(--guwmi-radius);
-  border-top-left-radius: var(--guwmi-radius);
+  border: solid 1px var(--guwmi-text);
+  border-radius: var(--guwmi-radius);
   font-size: 1rem;
   color: var(--guwmi-text);
 }
@@ -827,8 +884,8 @@
 .guwmi-select-input.error label {
   color: var(--guwmi-alert-red);
 }
-.guwmi-select-input.error input {
-  border-bottom-color: var(--guwmi-alert-red);
+.guwmi-select-input.error select {
+  border-color: var(--guwmi-alert-red);
 }
 .guwmi-select-input.error .guwmi-select-error {
   padding-left: 0.66rem;
@@ -860,7 +917,6 @@
   padding: 0.66rem;
   background: var(--guwmi-primary-bg);
   border: solid 1px var(--guwmi-secondary-bg);
-  border-bottom-width: 2px;
   border-bottom-color: var(--guwmi-text);
   border-top-right-radius: var(--guwmi-radius);
   border-top-left-radius: var(--guwmi-radius);
@@ -908,7 +964,6 @@
   padding: 0.66rem;
   background: var(--guwmi-primary-bg);
   border: solid 1px var(--guwmi-secondary-bg);
-  border-bottom-width: 2px;
   border-bottom-color: var(--guwmi-text);
   border-top-right-radius: var(--guwmi-radius);
   border-top-left-radius: var(--guwmi-radius);
