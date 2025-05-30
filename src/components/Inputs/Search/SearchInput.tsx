@@ -6,7 +6,7 @@ import Icon from '../../Icon/Icon';
 
 // component type
 interface ComponentProps {
-  label: string;
+  label?: string;
   id?: string;
   name?: string;
   placeholder?: string;
