@@ -1,17 +1,22 @@
 /**
- * Styles for the text input component ************************************************************
+ * Styles for the select input component ************************************************************
  **/
-.guwmi-text-input {
+.guwmi-select-input {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-.guwmi-text-input label {
+.guwmi-select-input label {
   padding-left: 0.66rem;
   font-size: 0.85rem;
 }
-.guwmi-text-input input {
+.guwmi-select-input .guwmi-select-container {
+  width: 100%;
+  position: relative;
+}
+.guwmi-select-input .guwmi-select-container select {
+  width: 100%;
   appearance: none;
   padding: 0.66rem;
   background: var(--guwmi-primary-bg);
@@ -23,24 +28,32 @@
   font-size: 1rem;
   color: var(--guwmi-text);
 }
-.guwmi-text-input input::placeholder {
+.guwmi-select-input .guwmi-select-container select::placeholder {
   color: var(--guwmi-text);
   opacity: 0.33;
 }
-.guwmi-text-input.error label {
+.guwmi-select-input .guwmi-select-container .guwmi-select-icon {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.guwmi-select-input.error label {
   color: var(--guwmi-alert-red);
 }
-.guwmi-text-input.error input {
+.guwmi-select-input.error input {
   border-bottom-color: var(--guwmi-alert-red);
 }
-.guwmi-text-input.error span {
+.guwmi-select-input.error .guwmi-select-error {
   padding-left: 0.66rem;
   font-size: 0.85rem;
   color: var(--guwmi-alert-red);
 }
-.guwmi-text-input.disabled {
+.guwmi-select-input.disabled {
   opacity: 0.5;
 }
-.guwmi-text-input.disabled input {
+.guwmi-select-input.disabled input {
   cursor: not-allowed;
 }

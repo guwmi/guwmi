@@ -12,6 +12,7 @@
   font-size: 0.85rem;
 }
 .guwmi-textarea textarea {
+  appearance: none;
   padding: 0.66rem;
   background: var(--guwmi-primary-bg);
   border: solid 1px var(--guwmi-secondary-bg);

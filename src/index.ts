@@ -48,6 +48,7 @@ import Icon from './components/Icon/Icon';
 // import inputs
 import PasswordInput from './components/Inputs/Password/PasswordInput';
 import SearchInput from './components/Inputs/Search/SearchInput';
+import SelectInput from './components/Inputs/Select/SelectInput';
 import TextArea from './components/Inputs/TextArea/TextArea';
 import TextInput from './components/Inputs/Text/TextInput';
 
@@ -71,6 +72,7 @@ export {
   Notification,
   PasswordInput,
   SearchInput,
+  SelectInput,
   TabsContainer,
   Tabs,
   Tab,
