@@ -26,8 +26,10 @@ import Table from './components/Table/Table';
 import Accordion from './components/Accordion/Accordion';
 import AccordionItem from './components/Accordion/AccrodionItem';
 
+// import grid component
+import Grid from './components/Grid/Grid';
+
 // import cards components
-import Cards from './components/Cards/Cards';
 import Card from './components/Cards/Card';
 import CardSection from './components/Cards/CardSection';
 
@@ -55,10 +57,10 @@ export {
   AccordionItem,
   Button,
   ButtonGroup,
-  Cards,
   Card,
   CardSection,
   Drawer,
+  Grid,
   Icon,
   IconButton,
   Menu,

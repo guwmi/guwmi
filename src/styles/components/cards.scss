@@ -5,79 +5,41 @@
 // import color variables
 @use '../../styles/variables.scss' ;
 
-.guwmi-card-grid {
+.guwmi-card {
+  overflow: hidden;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
+  flex-direction: column;
 
-  > * {
-    background: var(--guwmi-primary-bg);
-    border: solid 1px var(--guwmi-secondary-bg);
-    border-radius: var(--guwmi-radius);
-    box-sizing: border-box;
-    
-    &:last-of-type {
-      margin-right: auto;
-    }
+  .guwmi-card-image {
+    width: 100%;
+    object-fit: cover;
   }
 
-  &.two > * {
-    flex-basis: calc(50% - 0.5rem);
-  }
+  .guwmi-card-section {
+    padding: 1rem;
+    border-top: solid 1px var(--guwmi-secondary-bg);
 
-  &.three > * {
-    flex-basis: calc(33.33333% - 0.66666rem);
-  }
-
-  &.four > * {
-    flex-basis: calc(25% - 0.75rem);
-  }
-
-  &.five > * {
-    flex-basis: calc(20% - 0.8rem);
-  }
-
-  &.six > * {
-    flex-basis: calc(15% - 0.85rem);
-  }
-
-  .guwmi-card {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-
-    .guwmi-card-image {
-      width: 100%;
-      object-fit: cover;
+    &:first-of-type {
+      border-top: 0;
     }
 
-    .guwmi-card-section {
-      padding: 1rem;
-      border-top: solid 1px var(--guwmi-secondary-bg);
+    &.guwmi-card-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
 
-      &:first-of-type {
-        border-top: 0;
+      h2 {
+        font-size: 1.2rem;
+        margin: 0;
+        font-weight: 500;
       }
 
-      &.guwmi-card-title {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-  
-        h2 {
-          font-size: 1.2rem;
-          margin: 0;
-          font-weight: 500;
-        }
-  
-        h3 {
-          font-size: 0.85rem;
-          margin: 0;
-          font-weight: 400;
-          opacity: 0.65;
-          letter-spacing: unset;
-        }
+      h3 {
+        font-size: 0.85rem;
+        margin: 0;
+        font-weight: 400;
+        opacity: 0.65;
+        letter-spacing: unset;
       }
     }
   }

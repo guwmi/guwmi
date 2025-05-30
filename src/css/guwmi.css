@@ -279,63 +279,33 @@
 /**
  * Style for the Cards and child components *********************************************************
  **/
-.guwmi-card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.guwmi-card-grid > * {
-  background: var(--guwmi-primary-bg);
-  border: solid 1px var(--guwmi-secondary-bg);
-  border-radius: var(--guwmi-radius);
-  box-sizing: border-box;
-}
-.guwmi-card-grid > *:last-of-type {
-  margin-right: auto;
-}
-.guwmi-card-grid.two > * {
-  flex-basis: calc(50% - 0.5rem);
-}
-.guwmi-card-grid.three > * {
-  flex-basis: calc(33.33333% - 0.66666rem);
-}
-.guwmi-card-grid.four > * {
-  flex-basis: calc(25% - 0.75rem);
-}
-.guwmi-card-grid.five > * {
-  flex-basis: calc(20% - 0.8rem);
-}
-.guwmi-card-grid.six > * {
-  flex-basis: calc(15% - 0.85rem);
-}
-.guwmi-card-grid .guwmi-card {
+.guwmi-card {
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
-.guwmi-card-grid .guwmi-card .guwmi-card-image {
+.guwmi-card .guwmi-card-image {
   width: 100%;
   object-fit: cover;
 }
-.guwmi-card-grid .guwmi-card .guwmi-card-section {
+.guwmi-card .guwmi-card-section {
   padding: 1rem;
   border-top: solid 1px var(--guwmi-secondary-bg);
 }
-.guwmi-card-grid .guwmi-card .guwmi-card-section:first-of-type {
+.guwmi-card .guwmi-card-section:first-of-type {
   border-top: 0;
 }
-.guwmi-card-grid .guwmi-card .guwmi-card-section.guwmi-card-title {
+.guwmi-card .guwmi-card-section.guwmi-card-title {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
-.guwmi-card-grid .guwmi-card .guwmi-card-section.guwmi-card-title h2 {
+.guwmi-card .guwmi-card-section.guwmi-card-title h2 {
   font-size: 1.2rem;
   margin: 0;
   font-weight: 500;
 }
-.guwmi-card-grid .guwmi-card .guwmi-card-section.guwmi-card-title h3 {
+.guwmi-card .guwmi-card-section.guwmi-card-title h3 {
   font-size: 0.85rem;
   margin: 0;
   font-weight: 400;
@@ -406,6 +376,56 @@
     color: var(--guwmi-text-contrast);
   }
 }
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
+ * Style for the Cards and child components *********************************************************
+ **/
+.guwmi-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+.guwmi-grid > * {
+  background: var(--guwmi-primary-bg);
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
+  box-sizing: border-box;
+}
+.guwmi-grid.no-wrap {
+  flex-wrap: nowrap;
+}
+.guwmi-grid.reverse {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.guwmi-grid.reverse.right {
+  justify-content: flex-start;
+}
+.guwmi-grid.right {
+  justify-content: flex-end;
+}
+.guwmi-grid.center {
+  justify-content: center;
+}
+.guwmi-grid.two > * {
+  flex-basis: calc(50% - 0.5rem);
+}
+.guwmi-grid.three > * {
+  flex-basis: calc(33.33333% - 0.66666rem);
+}
+.guwmi-grid.four > * {
+  flex-basis: calc(25% - 0.75rem);
+}
+.guwmi-grid.five > * {
+  flex-basis: calc(20% - 0.8rem);
+}
+.guwmi-grid.six > * {
+  flex-basis: calc(15% - 0.85rem);
+}
+
 /**
  * Styles for the Icon Button component ******************************************************************
  **/

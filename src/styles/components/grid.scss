@@ -1,0 +1,61 @@
+/**
+ * Style for the Cards and child components *********************************************************
+ **/
+
+// import color variables
+@use '../../styles/variables.scss' ;
+
+.guwmi-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+
+  > * {
+    background: var(--guwmi-primary-bg);
+    border: solid 1px var(--guwmi-secondary-bg);
+    border-radius: var(--guwmi-radius);
+    box-sizing: border-box;
+  }
+
+  &.no-wrap {
+    flex-wrap: nowrap;
+  }
+
+  &.reverse {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+
+    &.right {
+      justify-content: flex-start;
+    }
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.two > * {
+    flex-basis: calc(50% - 0.5rem);
+  }
+
+  &.three > * {
+    flex-basis: calc(33.33333% - 0.66666rem);
+  }
+
+  &.four > * {
+    flex-basis: calc(25% - 0.75rem);
+  }
+
+  &.five > * {
+    flex-basis: calc(20% - 0.8rem);
+  }
+
+  &.six > * {
+    flex-basis: calc(15% - 0.85rem);
+  }
+}

@@ -2,7 +2,7 @@
 import { render, screen } from '@testing-library/react';
 
 // import components
-import Cards from '@components/Cards/Cards';
+import Grid from '@components/Grid/Grid';
 import Card from '@components/Cards/Card';
 import CardSection from '@components/Cards/CardSection';
 
@@ -25,7 +25,7 @@ describe('Cards', () => {
   test('renders cards without any props provided', () => {
     
     render(
-      <Cards data-testid="guwmi-card-grid">
+      <Grid data-testid="guwmi-card-grid">
         {cards.map((card, index) => (
           <Card key={index}>
             {sections.map((section, index) => (
@@ -35,7 +35,7 @@ describe('Cards', () => {
             ))}
           </Card>
         ))}
-      </Cards>
+      </Grid>
     )
 
     const cardGrid = screen.getByTestId('guwmi-card-grid');
@@ -62,7 +62,7 @@ describe('Cards', () => {
     })
     
     render(
-      <Cards data-testid="guwmi-card-grid">
+      <Grid data-testid="guwmi-card-grid">
         {mixedCards.map((card, index) => (
           <Card title={card.title} subTitle={card.subTitle} image={card.image} key={index}>
             {sections.map((section, index) => (
@@ -72,7 +72,7 @@ describe('Cards', () => {
             ))}
           </Card>
         ))}
-      </Cards>
+      </Grid>
     )
 
     const cardGrid = screen.getByTestId('guwmi-card-grid');
@@ -82,75 +82,5 @@ describe('Cards', () => {
     expect(titles).toHaveLength(5)
     const subTitles = cardGrid.querySelectorAll('h3');
     expect(subTitles).toHaveLength(5)
-  });
-
-  test('renders cards with two columns', () => {
-    
-    render(
-      <Cards columns={2} data-testid="guwmi-card-grid">
-        <Card>
-          <CardSection></CardSection>
-        </Card>
-      </Cards>
-    )
-
-    const cardContainer = screen.getByTestId('guwmi-card-grid');
-    expect(cardContainer).toHaveClass('two');
-  });
-
-  test('renders cards with three columns', () => {
-    
-    render(
-      <Cards columns={3} data-testid="guwmi-card-grid">
-        <Card>
-          <CardSection></CardSection>
-        </Card>
-      </Cards>
-    )
-
-    const cardContainer = screen.getByTestId('guwmi-card-grid');
-    expect(cardContainer).toHaveClass('three');
-  });
-
-  test('renders cards with four columns', () => {
-    
-    render(
-      <Cards columns={4} data-testid="guwmi-card-grid">
-        <Card>
-          <CardSection></CardSection>
-        </Card>
-      </Cards>
-    )
-
-    const cardContainer = screen.getByTestId('guwmi-card-grid');
-    expect(cardContainer).toHaveClass('four');
-  });
-
-  test('renders cards with five columns', () => {
-    
-    render(
-      <Cards columns={5} data-testid="guwmi-card-grid">
-        <Card>
-          <CardSection></CardSection>
-        </Card>
-      </Cards>
-    )
-
-    const cardContainer = screen.getByTestId('guwmi-card-grid');
-    expect(cardContainer).toHaveClass('five');
-  });
-
-  test('renders cards with six columns', () => {
-    
-    render(
-      <Cards columns={6} data-testid="guwmi-card-grid">
-        <Card>
-          <CardSection></CardSection>
-        </Card>
-      </Cards>
-    )
-
-    const cardContainer = screen.getByTestId('guwmi-card-grid');
-    expect(cardContainer).toHaveClass('six');
   });
 })

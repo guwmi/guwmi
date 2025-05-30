@@ -123,7 +123,7 @@ declare function AccordionItem(props: ComponentProps$a): react_jsx_runtime.JSX.E
 interface ComponentProps$9 extends PropsWithChildren {
     columns?: 2 | 3 | 4 | 5 | 6;
 }
-declare function Cards(props: ComponentProps$9): react_jsx_runtime.JSX.Element;
+declare function Grid(props: ComponentProps$9): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$8 extends PropsWithChildren {
     title?: string;
@@ -232,4 +232,4 @@ interface ComponentProps {
 }
 declare function TextInput(props: ComponentProps): react_jsx_runtime.JSX.Element;
 
-export { Accordion, AccordionItem, Button, ButtonGroup, Card, CardSection, Cards, Drawer, Icon, IconButton, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, PasswordInput, SearchInput, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer, TextArea, TextInput };
+export { Accordion, AccordionItem, Button, ButtonGroup, Card, CardSection, Drawer, Grid, Icon, IconButton, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, PasswordInput, SearchInput, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer, TextArea, TextInput };

@@ -915,13 +915,13 @@ function AccordionItem(props) {
   ] }));
 }
 
-// src/components/Cards/Cards.tsx
+// src/components/Grid/Grid.tsx
 import { useMemo as useMemo12 } from "react";
 import { jsx as jsx20 } from "react/jsx-runtime";
-function Cards(props) {
+function Grid(props) {
   const _a = props, { children, columns = 3 } = _a, rest = __objRest(_a, ["children", "columns"]);
   const classes = useMemo12(() => {
-    let classString = "guwmi-card-grid ";
+    let classString = "guwmi-grid ";
     switch (columns) {
       case 2:
         classString += "two";
@@ -1357,8 +1357,8 @@ export {
   ButtonGroup,
   Card,
   CardSection,
-  Cards,
   Drawer,
+  Grid,
   Icon_default as Icon,
   IconButton,
   Menu,

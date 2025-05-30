@@ -65,8 +65,8 @@ __export(index_exports, {
   ButtonGroup: () => ButtonGroup,
   Card: () => Card,
   CardSection: () => CardSection,
-  Cards: () => Cards,
   Drawer: () => Drawer,
+  Grid: () => Grid,
   Icon: () => Icon_default,
   IconButton: () => IconButton,
   Menu: () => Menu,
@@ -951,13 +951,13 @@ function AccordionItem(props) {
   ] }));
 }
 
-// src/components/Cards/Cards.tsx
+// src/components/Grid/Grid.tsx
 var import_react25 = require("react");
 var import_jsx_runtime20 = require("react/jsx-runtime");
-function Cards(props) {
+function Grid(props) {
   const _a = props, { children, columns = 3 } = _a, rest = __objRest(_a, ["children", "columns"]);
   const classes = (0, import_react25.useMemo)(() => {
-    let classString = "guwmi-card-grid ";
+    let classString = "guwmi-grid ";
     switch (columns) {
       case 2:
         classString += "two";
@@ -1394,8 +1394,8 @@ function TextInput(props) {
   ButtonGroup,
   Card,
   CardSection,
-  Cards,
   Drawer,
+  Grid,
   Icon,
   IconButton,
   Menu,
