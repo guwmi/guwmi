@@ -20,53 +20,21 @@ describe('Grid', () => {
     expect(cardContainer).toHaveClass('center');
   });
 
-  test('renders grid with two columns', () => {
+  test('renders grid with correct column width classes', () => {
     
-    render(
-      <Grid columns={2} data-testid="guwmi-grid"></Grid>
-    )
+    const { rerender } = render(<Grid columns={2} data-testid="guwmi-grid"></Grid>)
 
     const cardContainer = screen.getByTestId('guwmi-grid');
     expect(cardContainer).toHaveClass('two');
-  });
-
-  test('renders grid with three columns', () => {
-    
-    render(
-      <Grid columns={3} data-testid="guwmi-grid"></Grid>
-    )
-
-    const cardContainer = screen.getByTestId('guwmi-grid');
+    rerender(<Grid columns={3} data-testid="guwmi-grid"></Grid>);
     expect(cardContainer).toHaveClass('three');
-  });
-
-  test('renders grid with four columns', () => {
-    
-    render(
-      <Grid columns={4} data-testid="guwmi-grid"></Grid>
-    )
-
-    const cardContainer = screen.getByTestId('guwmi-grid');
+    rerender(<Grid columns={4} data-testid="guwmi-grid"></Grid>);
     expect(cardContainer).toHaveClass('four');
-  });
-
-  test('renders grid with five columns', () => {
-    
-    render(
-      <Grid columns={5} data-testid="guwmi-grid"></Grid>
-    )
-
-    const cardContainer = screen.getByTestId('guwmi-grid');
+    rerender(<Grid columns={5} data-testid="guwmi-grid"></Grid>);
     expect(cardContainer).toHaveClass('five');
-  });
-
-  test('renders grid with six columns', () => {
-    
-    render(
-      <Grid columns={6} data-testid="guwmi-grid"></Grid>
-    )
-
-    const cardContainer = screen.getByTestId('guwmi-grid');
+    rerender(<Grid columns={6} data-testid="guwmi-grid"></Grid>);
     expect(cardContainer).toHaveClass('six');
+    rerender(<Grid columns="auto" data-testid="guwmi-grid"></Grid>);
+    expect(cardContainer).toHaveClass('auto');
   });
 })
