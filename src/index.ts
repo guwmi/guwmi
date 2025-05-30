@@ -26,8 +26,9 @@ import Table from './components/Table/Table';
 import Accordion from './components/Accordion/Accordion';
 import AccordionItem from './components/Accordion/AccrodionItem';
 
-// import grid component
+// import grid components
 import Grid from './components/Grid/Grid';
+import VerticalGrid from './components/VerticalGrid/VerticalGrid';
 
 // import cards components
 import Card from './components/Cards/Card';
@@ -82,5 +83,6 @@ export {
   TabPanel,
   Table,
   TextArea,
-  TextInput
+  TextInput,
+  VerticalGrid
 };

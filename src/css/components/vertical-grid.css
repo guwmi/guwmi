@@ -1,0 +1,27 @@
+/**
+ * Style for the Cards and child components *********************************************************
+ **/
+.guwmi-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.guwmi-grid.two {
+  gap: 2rem;
+}
+.guwmi-grid.three {
+  gap: 3rem;
+}
+.guwmi-grid.four {
+  gap: 4rem;
+}
+.guwmi-grid.five {
+  gap: 5rem;
+}
+.guwmi-grid.six {
+  gap: 6rem;
+}
+.guwmi-grid > * {
+  box-sizing: border-box;
+  width: 100%;
+}
