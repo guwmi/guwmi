@@ -280,6 +280,9 @@
  * Style for the Cards and child components *********************************************************
  **/
 .guwmi-card {
+  background: var(--guwmi-primary-bg);
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -387,11 +390,9 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 1rem;
+  padding: 1rem 0;
 }
 .guwmi-grid > * {
-  background: var(--guwmi-primary-bg);
-  border: solid 1px var(--guwmi-secondary-bg);
-  border-radius: var(--guwmi-radius);
   box-sizing: border-box;
 }
 .guwmi-grid.no-wrap {
