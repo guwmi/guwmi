@@ -3,7 +3,7 @@ import React, { useMemo, PropsWithChildren } from 'react';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
-  columns?: 2 | 3 | 4 | 5 | 6;
+  columns?: 'auto' | 2 | 3 | 4 | 5 | 6;
   wrap?: 'wrap' | 'no-wrap';
   rowOrder?: 'standard' | 'reverse';
   align?: 'left' | 'right' | 'center';
@@ -23,6 +23,9 @@ export default function Grid(props: ComponentProps) {
   const classes = useMemo(() => {
     let classString = 'guwmi-grid';
     switch(columns) {
+      case 'auto':
+        classString += ' auto';
+        break;
       case 2:
         classString += ' two';
         break;

@@ -26,6 +26,9 @@
 .guwmi-grid.center {
   justify-content: center;
 }
+.guwmi-grid.auto > * {
+  flex-basis: auto;
+}
 .guwmi-grid.two > * {
   flex-basis: calc(50% - 0.5rem);
 }

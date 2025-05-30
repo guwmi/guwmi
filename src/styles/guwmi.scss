@@ -13,17 +13,18 @@
 @use './components/drawer.scss';
 @use './components/grid.scss';
 @use './components/icon-button.scss';
-@use './components/menu.scss';
-@use './components/modal.scss';
-@use './components/tabs.scss';
-@use './components/table.scss';
 @use './components/inputs/password-input.scss';
 @use './components/inputs/radio-group.scss';
 @use './components/inputs/search-input.scss';
 @use './components/inputs/select-input.scss';
 @use './components/inputs/textarea.scss';
 @use './components/inputs/text-input.scss';
+@use './components/menu.scss';
+@use './components/modal.scss';
 @use './components/notification.scss';
+@use './components/tabs.scss';
+@use './components/table.scss';
+@use './components/vertical-grid.scss';
 
 // import typeface
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');

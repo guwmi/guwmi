@@ -407,6 +407,9 @@
 .guwmi-grid.center {
   justify-content: center;
 }
+.guwmi-grid.auto > * {
+  flex-basis: auto;
+}
 .guwmi-grid.two > * {
   flex-basis: calc(50% - 0.5rem);
 }
@@ -439,246 +442,6 @@
 }
 .guwmi-btn.icon.circle {
   border-radius: 50%;
-}
-
-/**
- * Index file for pulling all component files together **********************************************
- **/
-/**
- * Styles for the Menu and child components ********************************************************
- **/
-.guwmi-menu-container {
-  position: relative;
-}
-.guwmi-menu-container.top-right .guwmi-menu-dropdown {
-  top: -0.25rem;
-  right: 0;
-  transform: translateY(-100%);
-}
-.guwmi-menu-container.top-left .guwmi-menu-dropdown {
-  top: -0.25rem;
-  left: 0;
-  transform: translateY(-100%);
-}
-.guwmi-menu-container.top-center .guwmi-menu-dropdown {
-  top: -0.25rem;
-  left: 50%;
-  transform: translate(-50%, -100%);
-}
-.guwmi-menu-container.bottom-right .guwmi-menu-dropdown {
-  bottom: -0.25rem;
-  right: 0;
-  transform: translateY(100%);
-}
-.guwmi-menu-container.bottom-left .guwmi-menu-dropdown {
-  bottom: -0.25rem;
-  left: 0;
-  transform: translateY(100%);
-}
-.guwmi-menu-container.bottom-center .guwmi-menu-dropdown {
-  bottom: -0.25rem;
-  left: 50%;
-  transform: translate(-50%, 100%);
-}
-.guwmi-menu-container .guwmi-menu-dropdown {
-  position: absolute;
-  background: var(--guwmi-primary-bg);
-  border: solid 1px var(--guwmi-secondary-bg);
-  padding: 0.25rem;
-  border-radius: var(--guwmi-radius);
-  opacity: 0;
-  transition: var(--guwmi-transition-short);
-  z-index: 99999;
-}
-.guwmi-menu-container .guwmi-menu-dropdown.open {
-  opacity: 1;
-}
-.guwmi-menu-container .guwmi-menu-dropdown > ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-}
-.guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item {
-  margin: 0;
-  padding: 0;
-  flex-grow: 1;
-}
-.guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item .guwmi-menu-btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
-  border: 0;
-  background: none;
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--guwmi-inner-radius);
-  cursor: pointer;
-  width: 100%;
-  transition: var(--guwmi-transition);
-}
-.guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item .guwmi-menu-btn:hover {
-  background: var(--guwmi-secondary-bg);
-}
-
-/**
- * Index file for pulling all component files together **********************************************
- **/
-/**
- * Styles for the modal component *******************************************************************
- **/
-.guwmi-modal-overlay {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
-  top: 0;
-  left: 0;
-  backdrop-filter: blur(1px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-  opacity: 0;
-  transition: var(--guwmi-transition-short);
-}
-.guwmi-modal-overlay.open {
-  opacity: 1;
-}
-.guwmi-modal-overlay .guwmi-modal {
-  position: relative;
-  display: block;
-  background: var(--guwmi-text-contrast);
-  color: var(--guwmi-text);
-  padding: 1rem;
-  border: solid 1px var(--guwmi-primary-bg);
-  border-radius: var(--guwmi-radius);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-}
-.guwmi-modal-overlay .guwmi-modal.sm {
-  width: 33%;
-}
-.guwmi-modal-overlay .guwmi-modal.md {
-  width: 50%;
-}
-.guwmi-modal-overlay .guwmi-modal.lg {
-  width: 75%;
-}
-.guwmi-modal-overlay .guwmi-modal .guwmi-modal-close-button {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.25rem;
-  background: none;
-  border: 0;
-  cursor: pointer;
-}
-
-/**
- * Index file for pulling all component files together **********************************************
- **/
-/**
- * Styles for the Tabs component and children *******************************************************
- **/
-.guwmi-tabs-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.guwmi-tabs-container .guwmi-tabs {
-  position: relative;
-  display: flex;
-  gap: 0.25rem;
-  background: var(--guwmi-primary-bg);
-  border: solid 1px var(--guwmi-secondary-bg);
-  border-radius: var(--guwmi-radius);
-  padding: 0.25rem;
-}
-.guwmi-tabs-container .guwmi-tabs .guwmi-tabs-slider {
-  position: absolute;
-  height: calc(100% - 0.5rem);
-  background: var(--guwmi-secondary-bg);
-  border-radius: var(--guwmi-inner-radius);
-  transition: var(--guwmi-transition);
-}
-.guwmi-tabs-container .guwmi-tabs .guwmi-tab {
-  position: relative;
-  z-index: 1;
-  background: none;
-  border: 0;
-  font-size: 1rem;
-  padding: 0.5rem 0.75rem;
-  cursor: pointer;
-}
-.guwmi-tabs-container .guwmi-tab-panels {
-  border: solid 1px var(--guwmi-secondary-bg);
-  border-radius: var(--guwmi-radius);
-  overflow: hidden;
-  transition: var(--guwmi-transition);
-}
-.guwmi-tabs-container .guwmi-tab-panels .guwmi-tab-panel {
-  padding: 1rem;
-}
-
-/**
- * Index file for pulling all component files together **********************************************
- **/
-/**
- * Style for the table component ********************************************************************
- **/
-.guwmi-table-container {
-  background: var(--guwmi-primary-bg);
-  padding: 0.25rem 1rem;
-  border-radius: var(--guwmi-radius);
-  border: solid 1px var(--guwmi-secondary-bg);
-}
-.guwmi-table-container .guwmi-table-header {
-  background: var(--guwmi-secondary-bg);
-  padding: 1.25rem 1rem;
-  width: 100%;
-  transform: translate(-1rem, -0.25rem);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.guwmi-table-container .guwmi-table-header h2 {
-  font-size: 1.2rem;
-  margin: 0;
-  font-weight: 500;
-}
-.guwmi-table-container .guwmi-table-header p {
-  font-size: 0.85rem;
-  margin: 0;
-  font-weight: 400;
-  opacity: 0.75;
-  letter-spacing: unset;
-}
-.guwmi-table-container.condensed th,
-.guwmi-table-container.condensed td {
-  padding: 0.66rem;
-}
-.guwmi-table-container .guwmi-table-search {
-  margin: 1rem 0 0.5rem;
-  width: 100%;
-}
-.guwmi-table-container table {
-  width: 100%;
-}
-.guwmi-table-container table th,
-.guwmi-table-container table td {
-  text-align: left;
-  padding: 1rem;
-  margin: 0;
-  border: 0;
-  border-bottom: solid 1px var(--guwmi-secondary-bg);
-  font-size: 0.9rem;
-}
-.guwmi-table-container table thead th {
-  border-color: var(--guwmi-tertiary-bg);
-  font-size: 1rem;
-}
-.guwmi-table-container table tbody tr:last-of-type td {
-  border: 0;
 }
 
 /**
@@ -992,6 +755,139 @@
  * Index file for pulling all component files together **********************************************
  **/
 /**
+ * Styles for the Menu and child components ********************************************************
+ **/
+.guwmi-menu-container {
+  position: relative;
+}
+.guwmi-menu-container.top-right .guwmi-menu-dropdown {
+  top: -0.25rem;
+  right: 0;
+  transform: translateY(-100%);
+}
+.guwmi-menu-container.top-left .guwmi-menu-dropdown {
+  top: -0.25rem;
+  left: 0;
+  transform: translateY(-100%);
+}
+.guwmi-menu-container.top-center .guwmi-menu-dropdown {
+  top: -0.25rem;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+.guwmi-menu-container.bottom-right .guwmi-menu-dropdown {
+  bottom: -0.25rem;
+  right: 0;
+  transform: translateY(100%);
+}
+.guwmi-menu-container.bottom-left .guwmi-menu-dropdown {
+  bottom: -0.25rem;
+  left: 0;
+  transform: translateY(100%);
+}
+.guwmi-menu-container.bottom-center .guwmi-menu-dropdown {
+  bottom: -0.25rem;
+  left: 50%;
+  transform: translate(-50%, 100%);
+}
+.guwmi-menu-container .guwmi-menu-dropdown {
+  position: absolute;
+  background: var(--guwmi-primary-bg);
+  border: solid 1px var(--guwmi-secondary-bg);
+  padding: 0.25rem;
+  border-radius: var(--guwmi-radius);
+  opacity: 0;
+  transition: var(--guwmi-transition-short);
+  z-index: 99999;
+}
+.guwmi-menu-container .guwmi-menu-dropdown.open {
+  opacity: 1;
+}
+.guwmi-menu-container .guwmi-menu-dropdown > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item {
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+}
+.guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item .guwmi-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  border: 0;
+  background: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--guwmi-inner-radius);
+  cursor: pointer;
+  width: 100%;
+  transition: var(--guwmi-transition);
+}
+.guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item .guwmi-menu-btn:hover {
+  background: var(--guwmi-secondary-bg);
+}
+
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
+ * Styles for the modal component *******************************************************************
+ **/
+.guwmi-modal-overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  opacity: 0;
+  transition: var(--guwmi-transition-short);
+}
+.guwmi-modal-overlay.open {
+  opacity: 1;
+}
+.guwmi-modal-overlay .guwmi-modal {
+  position: relative;
+  display: block;
+  background: var(--guwmi-text-contrast);
+  color: var(--guwmi-text);
+  padding: 1rem;
+  border: solid 1px var(--guwmi-primary-bg);
+  border-radius: var(--guwmi-radius);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+.guwmi-modal-overlay .guwmi-modal.sm {
+  width: 33%;
+}
+.guwmi-modal-overlay .guwmi-modal.md {
+  width: 50%;
+}
+.guwmi-modal-overlay .guwmi-modal.lg {
+  width: 75%;
+}
+.guwmi-modal-overlay .guwmi-modal .guwmi-modal-close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.25rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
  * Styles for the Notification component ***********************************************************
  **/
 .guwmi-notification {
@@ -1041,6 +937,141 @@
 .guwmi-notification p {
   font-size: 0.9rem;
   margin: 0;
+}
+
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
+ * Styles for the Tabs component and children *******************************************************
+ **/
+.guwmi-tabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.guwmi-tabs-container .guwmi-tabs {
+  position: relative;
+  display: flex;
+  gap: 0.25rem;
+  background: var(--guwmi-primary-bg);
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
+  padding: 0.25rem;
+}
+.guwmi-tabs-container .guwmi-tabs .guwmi-tabs-slider {
+  position: absolute;
+  height: calc(100% - 0.5rem);
+  background: var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-inner-radius);
+  transition: var(--guwmi-transition);
+}
+.guwmi-tabs-container .guwmi-tabs .guwmi-tab {
+  position: relative;
+  z-index: 1;
+  background: none;
+  border: 0;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+.guwmi-tabs-container .guwmi-tab-panels {
+  border: solid 1px var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
+  overflow: hidden;
+  transition: var(--guwmi-transition);
+}
+.guwmi-tabs-container .guwmi-tab-panels .guwmi-tab-panel {
+  padding: 1rem;
+}
+
+/**
+ * Index file for pulling all component files together **********************************************
+ **/
+/**
+ * Style for the table component ********************************************************************
+ **/
+.guwmi-table-container {
+  background: var(--guwmi-primary-bg);
+  padding: 0.25rem 1rem;
+  border-radius: var(--guwmi-radius);
+  border: solid 1px var(--guwmi-secondary-bg);
+}
+.guwmi-table-container .guwmi-table-header {
+  background: var(--guwmi-secondary-bg);
+  padding: 1.25rem 1rem;
+  width: 100%;
+  transform: translate(-1rem, -0.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.guwmi-table-container .guwmi-table-header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 500;
+}
+.guwmi-table-container .guwmi-table-header p {
+  font-size: 0.85rem;
+  margin: 0;
+  font-weight: 400;
+  opacity: 0.75;
+  letter-spacing: unset;
+}
+.guwmi-table-container.condensed th,
+.guwmi-table-container.condensed td {
+  padding: 0.66rem;
+}
+.guwmi-table-container .guwmi-table-search {
+  margin: 1rem 0 0.5rem;
+  width: 100%;
+}
+.guwmi-table-container table {
+  width: 100%;
+}
+.guwmi-table-container table th,
+.guwmi-table-container table td {
+  text-align: left;
+  padding: 1rem;
+  margin: 0;
+  border: 0;
+  border-bottom: solid 1px var(--guwmi-secondary-bg);
+  font-size: 0.9rem;
+}
+.guwmi-table-container table thead th {
+  border-color: var(--guwmi-tertiary-bg);
+  font-size: 1rem;
+}
+.guwmi-table-container table tbody tr:last-of-type td {
+  border: 0;
+}
+
+/**
+ * Style for the Cards and child components *********************************************************
+ **/
+.guwmi-vertical-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.guwmi-vertical-grid.two {
+  gap: 2rem;
+}
+.guwmi-vertical-grid.three {
+  gap: 3rem;
+}
+.guwmi-vertical-grid.four {
+  gap: 4rem;
+}
+.guwmi-vertical-grid.five {
+  gap: 5rem;
+}
+.guwmi-vertical-grid.six {
+  gap: 6rem;
+}
+.guwmi-vertical-grid > * {
+  box-sizing: border-box;
+  width: 100%;
 }
 
 html,

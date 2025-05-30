@@ -33,6 +33,10 @@
     justify-content: center;
   }
 
+  &.auto > * {
+    flex-basis: auto;
+  }
+
   &.two > * {
     flex-basis: calc(50% - 0.5rem);
   }
