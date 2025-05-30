@@ -51,7 +51,6 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 1rem;
-  padding: 1rem 0;
 }
 .guwmi-grid > * {
   box-sizing: border-box;
