@@ -6,21 +6,56 @@ import Icon from '../../Icon/Icon';
 
 // component type
 interface ComponentProps {
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  label: string;
+  id?: string;
+  name?: string;
   placeholder?: string;
   disabled?: boolean;
+  value?: string;
+  readOnly?: boolean;
+  maxLength?: number;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 export default function SearchInput(props: ComponentProps) {
 
-  const { placeholder, onChange, ...rest } = props;
-  const id = useId();
+  const {
+    label,
+    id,
+    name,
+    placeholder,
+    disabled,
+    value,
+    readOnly,
+    maxLength,
+    onChange,
+    onBlur,
+    onFocus,
+    ...rest
+  } = props;
+  const searchId = id ?? useId();
 
   return (
     <div className="guwmi-search-input" {...rest}>
-      <span><Icon name="search" size={18} /></span>
-      <label htmlFor={id} className="guwmi-sr-only">Search</label>
-      <input id={id} type="search" placeholder={placeholder ? placeholder : 'Search...'} onChange={onChange} />
+      <span>
+        <Icon name="search" size={18} />
+      </span>
+      <label htmlFor={searchId} className="guwmi-sr-only">{label ?? 'Search'}</label>
+      <input
+        id={searchId}
+        type="search"
+        name={name}
+        placeholder={placeholder ? placeholder : 'Search...'}
+        disabled={disabled}
+        value={value}
+        readOnly={readOnly}
+        maxLength={maxLength}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+      />
     </div>
   )
 }
