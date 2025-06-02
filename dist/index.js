@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-2TEWC3DR.css";
+import "./guwmi-GMMVTX5E.css";
 
 // src/components/Button/Button.tsx
 import {
@@ -1572,6 +1572,16 @@ function TextInput(props) {
     hasError && /* @__PURE__ */ jsx31("span", { children: error })
   ] }));
 }
+
+// src/components/Loading/Loading.tsx
+import { useMemo as useMemo22 } from "react";
+import { jsx as jsx32 } from "react/jsx-runtime";
+function Loading(props) {
+  const { active, size = "md", position = "block", speed = "normal", overlay = false } = props;
+  const classes = useMemo22(() => `guwmi-loading-container ${size} ${speed} ${position} ${overlay ? "overlay" : ""}`, [size, speed, position, overlay]);
+  usePreventScroll_default(active, position === "full-screen");
+  return active && (position !== "full-screen" ? /* @__PURE__ */ jsx32("div", { className: classes, children: /* @__PURE__ */ jsx32("div", { className: "guwmi-spinner" }) }) : /* @__PURE__ */ jsx32(BodyPortal, { children: /* @__PURE__ */ jsx32("div", { className: classes, children: /* @__PURE__ */ jsx32("div", { className: "guwmi-spinner" }) }) }));
+}
 export {
   Accordion,
   AccordionItem,
@@ -1583,6 +1593,7 @@ export {
   Grid,
   Icon_default as Icon,
   IconButton,
+  Loading,
   Menu,
   MenuDropdown,
   MenuItem,

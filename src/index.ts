@@ -54,6 +54,9 @@ import SelectInput from './components/Inputs/Select/SelectInput';
 import TextArea from './components/Inputs/TextArea/TextArea';
 import TextInput from './components/Inputs/Text/TextInput';
 
+// import loading compoent
+import Loading from './components/Loading/Loading';
+
 // export all components
 export {
   Accordion,
@@ -66,6 +69,7 @@ export {
   Grid,
   Icon,
   IconButton,
+  Loading,
   Menu,
   MenuDropdown,
   MenuItem,

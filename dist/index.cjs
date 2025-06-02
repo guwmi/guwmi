@@ -69,6 +69,7 @@ __export(index_exports, {
   Grid: () => Grid,
   Icon: () => Icon_default,
   IconButton: () => IconButton,
+  Loading: () => Loading,
   Menu: () => Menu,
   MenuDropdown: () => MenuDropdown,
   MenuItem: () => MenuItem,
@@ -90,7 +91,7 @@ __export(index_exports, {
   VerticalGrid: () => VerticalGrid
 });
 module.exports = __toCommonJS(index_exports);
-var import_guwmi = require("./guwmi-2TEWC3DR.css");
+var import_guwmi = require("./guwmi-GMMVTX5E.css");
 
 // src/components/Button/Button.tsx
 var import_react = require("react");
@@ -1611,6 +1612,16 @@ function TextInput(props) {
     hasError && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { children: error })
   ] }));
 }
+
+// src/components/Loading/Loading.tsx
+var import_react39 = require("react");
+var import_jsx_runtime32 = require("react/jsx-runtime");
+function Loading(props) {
+  const { active, size = "md", position = "block", speed = "normal", overlay = false } = props;
+  const classes = (0, import_react39.useMemo)(() => `guwmi-loading-container ${size} ${speed} ${position} ${overlay ? "overlay" : ""}`, [size, speed, position, overlay]);
+  usePreventScroll_default(active, position === "full-screen");
+  return active && (position !== "full-screen" ? /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: classes, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "guwmi-spinner" }) }) : /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: classes, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "guwmi-spinner" }) }) }));
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Accordion,
@@ -1623,6 +1634,7 @@ function TextInput(props) {
   Grid,
   Icon,
   IconButton,
+  Loading,
   Menu,
   MenuDropdown,
   MenuItem,
