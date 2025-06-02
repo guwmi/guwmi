@@ -1,0 +1,91 @@
+// import library functionality
+import { render, screen, fireEvent } from '@testing-library/react';
+
+// import component to test
+import Tag from '../../components/Tag/Tag';
+
+describe('Button', () => {
+
+  test('renders with correct text', () => {
+
+    render(<Tag value="Test value" />);
+
+    const button = screen.getByText('Test value');
+    expect(button).toBeInTheDocument();
+  });
+
+  test('calls onClick handler when clicked', () => {
+
+    const handleClick = jest.fn();
+    render(<Tag value="Button tag" onClick={handleClick} />);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  test('renders as link with correct href', () => {
+
+    render(<Tag value="Link tag" href="https://www.google.com" />);
+
+    const link = screen.getByText('Link tag');
+    expect(link.tagName).toBe('A');
+    expect(link).toHaveAttribute('href', 'https://www.google.com');
+  });
+
+  test('does not call onClick handler when disabled', () => {
+
+    const handleClick = jest.fn();
+    render(<Tag value="Button tag - disabled" onClick={handleClick} disabled />);
+
+    const button = screen.getByRole('button');
+    expect(button).toBeDisabled();
+    fireEvent.click(button);
+    expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  test('renders disabled button when passed href and disabled properties', () => {
+
+    const handleClick = jest.fn();
+    render(<Tag value="Link tag - disabled" href="https://www.google.com" disabled />);
+
+    const button = screen.getByText('Link tag - disabled');
+    expect(button).toBeDisabled();
+    fireEvent.click(button);
+    expect(handleClick).not.toHaveBeenCalled();
+  })
+
+  test('renders with target attribute', () => {
+
+    render(<Tag value="Link tag - target" target="_blank" href="https://www.google.com" />);
+
+    const link = screen.getByText('Link tag - target');
+    expect(link).toHaveAttribute('target', '_blank');
+  });
+
+  test('applies custom className', () => {
+
+    render(<Tag value="Tag" className="extra-class" />);
+
+    const button = screen.getByText('Tag');
+    expect(button).toHaveClass('extra-class');
+  });
+
+  test('renders with correct defaults', () => {
+
+    render(<Tag value="Tag" />);
+
+    const button = screen.getByText('Tag');
+    expect(button).toHaveClass('md');
+    expect(button).toHaveClass('neutral');
+  });
+
+  test('renders with override values', () => {
+
+    render(<Tag value="Tag" size="sm" variant="primary" />);
+
+    const button = screen.getByText('Tag');
+    expect(button).toHaveClass('sm');
+    expect(button).toHaveClass('primary');
+  });
+});
