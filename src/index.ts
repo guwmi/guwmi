@@ -57,6 +57,9 @@ import TextInput from './components/Inputs/Text/TextInput';
 // import loading compoent
 import Loading from './components/Loading/Loading';
 
+// import tag component
+import Tag from './components/Tag/Tag';
+
 // export all components
 export {
   Accordion,
@@ -86,6 +89,7 @@ export {
   TabPanels,
   TabPanel,
   Table,
+  Tag,
   TextArea,
   TextInput,
   VerticalGrid

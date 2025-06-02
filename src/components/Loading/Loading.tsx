@@ -14,6 +14,7 @@ interface ComponentProps {
   speed?: 'slow' | 'normal' | 'fast';
   position?: 'inline' | 'block' | 'full-screen';
   overlay?: boolean;
+  className?: string;
 }
 
 /**
@@ -23,8 +24,8 @@ interface ComponentProps {
 
 export default function Loading(props: ComponentProps) {
 
-  const { active, size = 'md', position = 'block', speed = 'normal', overlay = false, ...rest } = props;
-  const classes = useMemo(() => `guwmi-loading-container ${size} ${speed} ${position} ${overlay ? 'overlay' : ''}`, [size, speed, position, overlay]);
+  const { active, size = 'md', position = 'block', speed = 'normal', overlay = false, className, ...rest } = props;
+  const classes = useMemo(() => `guwmi-loading-container ${size} ${speed} ${position} ${className ?? ''}${overlay ? ' overlay' : ''} `, [size, speed, position, overlay, className]);
   usePreventScroll(active, position === 'full-screen');
 
   return (

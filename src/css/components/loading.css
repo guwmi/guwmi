@@ -39,6 +39,7 @@
 }
 .guwmi-loading-container.inline {
   display: inline-flex;
+  height: auto;
 }
 .guwmi-loading-container.full-screen {
   position: absolute;
