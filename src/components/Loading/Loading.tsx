@@ -23,19 +23,19 @@ interface ComponentProps {
 
 export default function Loading(props: ComponentProps) {
 
-  const { active, size = 'md', position = 'block', speed = 'normal', overlay = false } = props;
+  const { active, size = 'md', position = 'block', speed = 'normal', overlay = false, ...rest } = props;
   const classes = useMemo(() => `guwmi-loading-container ${size} ${speed} ${position} ${overlay ? 'overlay' : ''}`, [size, speed, position, overlay]);
   usePreventScroll(active, position === 'full-screen');
 
   return (
     active && (
       position !== 'full-screen' ? (
-        <div className={classes}>
+        <div className={classes} {...rest}>
           <div className="guwmi-spinner"></div>
         </div>
       ) : (
         <BodyPortal>
-          <div className={classes}>
+          <div className={classes} {...rest}>
             <div className="guwmi-spinner"></div>
           </div>
         </BodyPortal>
