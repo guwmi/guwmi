@@ -2,7 +2,7 @@ import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as React$1 from 'react';
 import React__default, { PropsWithChildren, SVGProps } from 'react';
 
-interface ComponentProps$n extends PropsWithChildren {
+interface ComponentProps$o extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
     color?: 'primary' | 'secondary' | 'danger' | 'neutral';
     variant?: 'fill' | 'outline' | 'ghost';
@@ -17,18 +17,18 @@ interface ComponentProps$n extends PropsWithChildren {
  * Button Component ********************************************************************************
  * @param ComponentProps
  */
-declare function Button(props: ComponentProps$n): react_jsx_runtime.JSX.Element;
+declare function Button(props: ComponentProps$o): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$m extends PropsWithChildren {
+interface ComponentProps$n extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
     color?: 'neutral' | 'primary' | 'secondary' | 'danger';
     variant?: 'fill' | 'outline' | 'ghost';
     theme?: 'square' | 'round' | 'pill';
     className?: string;
 }
-declare function ButtonGroup(props: ComponentProps$m): react_jsx_runtime.JSX.Element;
+declare function ButtonGroup(props: ComponentProps$n): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$l extends PropsWithChildren {
+interface ComponentProps$m extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
     color?: 'primary' | 'secondary' | 'danger';
     variant?: 'fill' | 'outline' | 'ghost';
@@ -42,9 +42,9 @@ interface ComponentProps$l extends PropsWithChildren {
  * Icon Button Component ********************************************************************************
  * @param ComponentProps
  */
-declare function IconButton(props: ComponentProps$l): react_jsx_runtime.JSX.Element;
+declare function IconButton(props: ComponentProps$m): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$k extends PropsWithChildren {
+interface ComponentProps$l extends PropsWithChildren {
     position?: 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
     width?: number;
     ariaLabel: string;
@@ -53,7 +53,7 @@ interface ComponentProps$k extends PropsWithChildren {
  * Menu component **********************************************************************************
  * @param ComponenProps
  */
-declare function Menu(props: ComponentProps$k): react_jsx_runtime.JSX.Element;
+declare function Menu(props: ComponentProps$l): react_jsx_runtime.JSX.Element;
 
 /**
  * Menu Dropdown component ************************************************************************
@@ -61,7 +61,7 @@ declare function Menu(props: ComponentProps$k): react_jsx_runtime.JSX.Element;
  */
 declare function MenuDropdown(props: PropsWithChildren): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$j extends PropsWithChildren {
+interface ComponentProps$k extends PropsWithChildren {
     onClick?: (React__default.MouseEventHandler<HTMLButtonElement> | undefined);
     href?: string;
 }
@@ -69,7 +69,7 @@ interface ComponentProps$j extends PropsWithChildren {
  * Menu Item component *****************************************************************************
  * @param ComponentProps
  */
-declare function MenuItem(props: ComponentProps$j): react_jsx_runtime.JSX.Element;
+declare function MenuItem(props: ComponentProps$k): react_jsx_runtime.JSX.Element;
 
 /**
  * Menu Trigger component ************************************************************************
@@ -81,19 +81,19 @@ declare function TabsContainer(props: PropsWithChildren): react_jsx_runtime.JSX.
 
 declare function Tabs(props: PropsWithChildren): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$i extends PropsWithChildren {
+interface ComponentProps$j extends PropsWithChildren {
     index?: number;
 }
-declare function Tab(props: ComponentProps$i): react_jsx_runtime.JSX.Element;
+declare function Tab(props: ComponentProps$j): react_jsx_runtime.JSX.Element;
 
 declare function TabPanels(props: PropsWithChildren): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$h extends PropsWithChildren {
+interface ComponentProps$i extends PropsWithChildren {
     index?: number;
 }
-declare function TabPanel(props: ComponentProps$h): react_jsx_runtime.JSX.Element;
+declare function TabPanel(props: ComponentProps$i): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$g {
+interface ComponentProps$h {
     title?: string;
     description?: string;
     headers: {
@@ -107,65 +107,65 @@ interface ComponentProps$g {
     }[];
     isCondensed?: boolean;
 }
-declare function Table(props: ComponentProps$g): react_jsx_runtime.JSX.Element;
+declare function Table(props: ComponentProps$h): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$f extends PropsWithChildren {
+interface ComponentProps$g extends PropsWithChildren {
     defaultOpen?: string;
 }
-declare function Accordion(props: ComponentProps$f): react_jsx_runtime.JSX.Element;
+declare function Accordion(props: ComponentProps$g): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$e extends PropsWithChildren {
+interface ComponentProps$f extends PropsWithChildren {
     title: string;
     id: string;
 }
-declare function AccordionItem(props: ComponentProps$e): react_jsx_runtime.JSX.Element;
+declare function AccordionItem(props: ComponentProps$f): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$d extends PropsWithChildren {
+interface ComponentProps$e extends PropsWithChildren {
     columns?: 'auto' | 2 | 3 | 4 | 5 | 6;
     wrap?: 'wrap' | 'no-wrap';
     rowOrder?: 'standard' | 'reverse';
     align?: 'left' | 'right' | 'center';
 }
-declare function Grid(props: ComponentProps$d): react_jsx_runtime.JSX.Element;
+declare function Grid(props: ComponentProps$e): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$c extends PropsWithChildren {
+interface ComponentProps$d extends PropsWithChildren {
     spacing?: 1 | 2 | 3 | 4 | 5 | 6;
 }
-declare function VerticalGrid(props: ComponentProps$c): react_jsx_runtime.JSX.Element;
+declare function VerticalGrid(props: ComponentProps$d): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$b extends PropsWithChildren {
+interface ComponentProps$c extends PropsWithChildren {
     title?: string;
     subTitle?: string;
     image?: string;
 }
-declare function Card(props: ComponentProps$b): react_jsx_runtime.JSX.Element;
+declare function Card(props: ComponentProps$c): react_jsx_runtime.JSX.Element;
 
 declare function CardSection(props: PropsWithChildren): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$a {
+interface ComponentProps$b {
     kind: 'error' | 'warning' | 'success';
     title?: string;
     content: string;
 }
-declare function Notification(props: ComponentProps$a): react_jsx_runtime.JSX.Element;
+declare function Notification(props: ComponentProps$b): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$9 extends PropsWithChildren {
+interface ComponentProps$a extends PropsWithChildren {
     size?: 'sm' | 'md' | 'lg';
     open: boolean;
     onClose: () => void;
     preventScroll?: boolean;
 }
-declare function Modal(props: ComponentProps$9): react_jsx_runtime.JSX.Element;
+declare function Modal(props: ComponentProps$a): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$8 extends PropsWithChildren {
+interface ComponentProps$9 extends PropsWithChildren {
     open: boolean;
     onClose: () => void;
     preventScroll?: boolean;
     position?: 'left' | 'right';
 }
-declare function Drawer(props: ComponentProps$8): react_jsx_runtime.JSX.Element;
+declare function Drawer(props: ComponentProps$9): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$7 extends SVGProps<SVGSVGElement> {
+interface ComponentProps$8 extends SVGProps<SVGSVGElement> {
     name: 'alert-circle' | 'alert-squre' | 'alert-triangle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'copy' | 'close' | 'dots' | 'external-link' | 'hide' | 'home' | 'info' | 'login' | 'menu' | 'progress-alert' | 'progress-check' | 'progress' | 'search' | 'settings' | 'view';
     size?: number;
     stroke?: '1' | '2' | '3';
@@ -176,9 +176,9 @@ interface ComponentProps$7 extends SVGProps<SVGSVGElement> {
  * Icon component ****************************************************************************
  * @param ComponentProps
  */
-declare const Icon: React$1.ForwardRefExoticComponent<Omit<ComponentProps$7, "ref"> & React$1.RefAttributes<SVGSVGElement>>;
+declare const Icon: React$1.ForwardRefExoticComponent<Omit<ComponentProps$8, "ref"> & React$1.RefAttributes<SVGSVGElement>>;
 
-interface ComponentProps$6 {
+interface ComponentProps$7 {
     label: string;
     hideLabel?: boolean;
     id?: string;
@@ -194,9 +194,9 @@ interface ComponentProps$6 {
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
-declare function PasswordInput(props: ComponentProps$6): react_jsx_runtime.JSX.Element;
+declare function PasswordInput(props: ComponentProps$7): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$5 {
+interface ComponentProps$6 {
     label: string;
     id?: string;
     name?: string;
@@ -214,9 +214,9 @@ interface ComponentProps$5 {
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
-declare function RadioGroup(props: ComponentProps$5): react_jsx_runtime.JSX.Element;
+declare function RadioGroup(props: ComponentProps$6): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$4 {
+interface ComponentProps$5 {
     label?: string;
     id?: string;
     name?: string;
@@ -229,9 +229,9 @@ interface ComponentProps$4 {
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
-declare function SearchInput(props: ComponentProps$4): react_jsx_runtime.JSX.Element;
+declare function SearchInput(props: ComponentProps$5): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$3 {
+interface ComponentProps$4 {
     label: string;
     id?: string;
     name?: string;
@@ -248,9 +248,9 @@ interface ComponentProps$3 {
     onBlur?: (event: React.FocusEvent<HTMLSelectElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLSelectElement>) => void;
 }
-declare function SelectInput(props: ComponentProps$3): react_jsx_runtime.JSX.Element;
+declare function SelectInput(props: ComponentProps$4): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$2 {
+interface ComponentProps$3 {
     label: string;
     hideLabel?: boolean;
     id?: string;
@@ -267,9 +267,9 @@ interface ComponentProps$2 {
     onBlur?: (event: React.FocusEvent<HTMLTextAreaElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLTextAreaElement>) => void;
 }
-declare function TextArea(props: ComponentProps$2): react_jsx_runtime.JSX.Element;
+declare function TextArea(props: ComponentProps$3): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$1 {
+interface ComponentProps$2 {
     label: string;
     hideLabel?: boolean;
     id?: string;
@@ -285,19 +285,32 @@ interface ComponentProps$1 {
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
-declare function TextInput(props: ComponentProps$1): react_jsx_runtime.JSX.Element;
+declare function TextInput(props: ComponentProps$2): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps {
+interface ComponentProps$1 {
     active: boolean;
     size?: 'sm' | 'md' | 'lg';
     speed?: 'slow' | 'normal' | 'fast';
     position?: 'inline' | 'block' | 'full-screen';
     overlay?: boolean;
+    className?: string;
 }
 /**
  * Loading Component ********************************************************************************
  * @param
  */
-declare function Loading(props: ComponentProps): react_jsx_runtime.JSX.Element;
+declare function Loading(props: ComponentProps$1): react_jsx_runtime.JSX.Element;
 
-export { Accordion, AccordionItem, Button, ButtonGroup, Card, CardSection, Drawer, Grid, Icon, IconButton, Loading, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, PasswordInput, RadioGroup, SearchInput, SelectInput, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer, TextArea, TextInput, VerticalGrid };
+interface ComponentProps {
+    value: string;
+    size?: 'sm' | 'md' | 'lg';
+    variant?: 'primary' | 'secondary' | 'outline' | 'neutral';
+    className?: string;
+    onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
+    href?: string;
+    target?: '_blank' | '_self' | '_parent' | '_top';
+    disabled?: boolean;
+}
+declare function Tag(props: ComponentProps): react_jsx_runtime.JSX.Element;
+
+export { Accordion, AccordionItem, Button, ButtonGroup, Card, CardSection, Drawer, Grid, Icon, IconButton, Loading, Menu, MenuDropdown, MenuItem, MenuTrigger, Modal, Notification, PasswordInput, RadioGroup, SearchInput, SelectInput, Tab, TabPanel, TabPanels, Table, Tabs, TabsContainer, Tag, TextArea, TextInput, VerticalGrid };

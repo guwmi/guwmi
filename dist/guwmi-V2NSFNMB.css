@@ -792,6 +792,7 @@
 }
 .guwmi-loading-container.inline {
   display: inline-flex;
+  height: auto;
 }
 .guwmi-loading-container.full-screen {
   position: absolute;
@@ -1109,6 +1110,59 @@
 }
 .guwmi-table-container table tbody tr:last-of-type td {
   border: 0;
+}
+
+/**
+ * Styles for the tag component *********************************************************************
+ **/
+.guwmi-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  border: solid 2px rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  padding: 0.25rem 0.75rem;
+  background: var(--guwmi-secondary-bg);
+  border-color: var(--guwmi-secondary-bg);
+  color: var(--guwmi-text);
+}
+.guwmi-tag.secondary {
+  background: var(--guwmi-secondary);
+  border-color: var(--guwmi-secondary);
+  color: white;
+}
+.guwmi-tag.primary {
+  background: var(--guwmi-primary);
+  border-color: var(--guwmi-primary);
+  color: white;
+}
+.guwmi-tag.outline {
+  background: none;
+  border-color: var(--guwmi-text);
+}
+.guwmi-tag.sm {
+  font-size: 0.8rem;
+  padding: 0.133rem 0.4rem;
+}
+.guwmi-tag.lg {
+  font-size: 1rem;
+  padding: 0.33rem 1rem;
+}
+
+button.guwmi-tag,
+a.guwmi-tag {
+  cursor: pointer;
+}
+button.guwmi-tag:disabled, button.guwmi-tag.disabled,
+a.guwmi-tag:disabled,
+a.guwmi-tag.disabled {
+  cursor: not-allowed;
+  background-color: var(--guwmi-primary-bg) !important;
+  border-color: var(--guwmi-primary-bg) !important;
+  color: var(--guwmi-tertiary-bg) !important;
 }
 
 /**

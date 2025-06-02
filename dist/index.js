@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-GMMVTX5E.css";
+import "./guwmi-V2NSFNMB.css";
 
 // src/components/Button/Button.tsx
 import {
@@ -1577,10 +1577,44 @@ function TextInput(props) {
 import { useMemo as useMemo22 } from "react";
 import { jsx as jsx32 } from "react/jsx-runtime";
 function Loading(props) {
-  const { active, size = "md", position = "block", speed = "normal", overlay = false } = props;
-  const classes = useMemo22(() => `guwmi-loading-container ${size} ${speed} ${position} ${overlay ? "overlay" : ""}`, [size, speed, position, overlay]);
+  const _a = props, { active, size = "md", position = "block", speed = "normal", overlay = false, className } = _a, rest = __objRest(_a, ["active", "size", "position", "speed", "overlay", "className"]);
+  const classes = useMemo22(() => `guwmi-loading-container ${size} ${speed} ${position} ${className != null ? className : ""}${overlay ? " overlay" : ""} `, [size, speed, position, overlay, className]);
   usePreventScroll_default(active, position === "full-screen");
-  return active && (position !== "full-screen" ? /* @__PURE__ */ jsx32("div", { className: classes, children: /* @__PURE__ */ jsx32("div", { className: "guwmi-spinner" }) }) : /* @__PURE__ */ jsx32(BodyPortal, { children: /* @__PURE__ */ jsx32("div", { className: classes, children: /* @__PURE__ */ jsx32("div", { className: "guwmi-spinner" }) }) }));
+  return active && (position !== "full-screen" ? /* @__PURE__ */ jsx32("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: /* @__PURE__ */ jsx32("div", { className: "guwmi-spinner" }) })) : /* @__PURE__ */ jsx32(BodyPortal, { children: /* @__PURE__ */ jsx32("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: /* @__PURE__ */ jsx32("div", { className: "guwmi-spinner" }) })) }));
+}
+
+// src/components/Tag/Tag.tsx
+import { useMemo as useMemo23, useRef as useRef13, useCallback as useCallback6 } from "react";
+import { jsx as jsx33 } from "react/jsx-runtime";
+function Tag(props) {
+  const _a = props, {
+    value,
+    size = "md",
+    variant = "neutral",
+    className,
+    onClick = null,
+    href,
+    target = "_self",
+    disabled = false
+  } = _a, rest = __objRest(_a, [
+    "value",
+    "size",
+    "variant",
+    "className",
+    "onClick",
+    "href",
+    "target",
+    "disabled"
+  ]);
+  const classes = useMemo23(() => `guwmi-tag ${size} ${variant}${className ? " " + className : ""}`, [size, variant, className]);
+  const button = useRef13(null);
+  const handleClick = useCallback6((e) => {
+    button.current.focus();
+    if (onClick) {
+      onClick(e);
+    }
+  }, [href, onClick, button.current]);
+  return href && !disabled ? /* @__PURE__ */ jsx33("a", __spreadProps(__spreadValues({ className: classes, href, ref: button, target }, rest), { children: value })) : onClick || href && disabled ? /* @__PURE__ */ jsx33("button", __spreadProps(__spreadValues({ className: classes, onClick: (e) => handleClick(e), ref: button, disabled }, rest), { children: value })) : /* @__PURE__ */ jsx33("span", __spreadProps(__spreadValues({ className: classes }, rest), { children: value }));
 }
 export {
   Accordion,
@@ -1610,6 +1644,7 @@ export {
   Table,
   Tabs,
   TabsContainer,
+  Tag,
   TextArea,
   TextInput,
   VerticalGrid

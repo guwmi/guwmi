@@ -86,12 +86,13 @@ __export(index_exports, {
   Table: () => Table,
   Tabs: () => Tabs,
   TabsContainer: () => TabsContainer,
+  Tag: () => Tag,
   TextArea: () => TextArea,
   TextInput: () => TextInput,
   VerticalGrid: () => VerticalGrid
 });
 module.exports = __toCommonJS(index_exports);
-var import_guwmi = require("./guwmi-GMMVTX5E.css");
+var import_guwmi = require("./guwmi-V2NSFNMB.css");
 
 // src/components/Button/Button.tsx
 var import_react = require("react");
@@ -1617,10 +1618,44 @@ function TextInput(props) {
 var import_react39 = require("react");
 var import_jsx_runtime32 = require("react/jsx-runtime");
 function Loading(props) {
-  const { active, size = "md", position = "block", speed = "normal", overlay = false } = props;
-  const classes = (0, import_react39.useMemo)(() => `guwmi-loading-container ${size} ${speed} ${position} ${overlay ? "overlay" : ""}`, [size, speed, position, overlay]);
+  const _a = props, { active, size = "md", position = "block", speed = "normal", overlay = false, className } = _a, rest = __objRest(_a, ["active", "size", "position", "speed", "overlay", "className"]);
+  const classes = (0, import_react39.useMemo)(() => `guwmi-loading-container ${size} ${speed} ${position} ${className != null ? className : ""}${overlay ? " overlay" : ""} `, [size, speed, position, overlay, className]);
   usePreventScroll_default(active, position === "full-screen");
-  return active && (position !== "full-screen" ? /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: classes, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "guwmi-spinner" }) }) : /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: classes, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "guwmi-spinner" }) }) }));
+  return active && (position !== "full-screen" ? /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "guwmi-spinner" }) })) : /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(BodyPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "guwmi-spinner" }) })) }));
+}
+
+// src/components/Tag/Tag.tsx
+var import_react40 = require("react");
+var import_jsx_runtime33 = require("react/jsx-runtime");
+function Tag(props) {
+  const _a = props, {
+    value,
+    size = "md",
+    variant = "neutral",
+    className,
+    onClick = null,
+    href,
+    target = "_self",
+    disabled = false
+  } = _a, rest = __objRest(_a, [
+    "value",
+    "size",
+    "variant",
+    "className",
+    "onClick",
+    "href",
+    "target",
+    "disabled"
+  ]);
+  const classes = (0, import_react40.useMemo)(() => `guwmi-tag ${size} ${variant}${className ? " " + className : ""}`, [size, variant, className]);
+  const button = (0, import_react40.useRef)(null);
+  const handleClick = (0, import_react40.useCallback)((e) => {
+    button.current.focus();
+    if (onClick) {
+      onClick(e);
+    }
+  }, [href, onClick, button.current]);
+  return href && !disabled ? /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("a", __spreadProps(__spreadValues({ className: classes, href, ref: button, target }, rest), { children: value })) : onClick || href && disabled ? /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("button", __spreadProps(__spreadValues({ className: classes, onClick: (e) => handleClick(e), ref: button, disabled }, rest), { children: value })) : /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("span", __spreadProps(__spreadValues({ className: classes }, rest), { children: value }));
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -1651,6 +1686,7 @@ function Loading(props) {
   Table,
   Tabs,
   TabsContainer,
+  Tag,
   TextArea,
   TextInput,
   VerticalGrid
