@@ -92,7 +92,7 @@ __export(index_exports, {
   VerticalGrid: () => VerticalGrid
 });
 module.exports = __toCommonJS(index_exports);
-var import_guwmi = require("./guwmi-V2NSFNMB.css");
+var import_guwmi = require("./guwmi-JETR7MFO.css");
 
 // src/components/Button/Button.tsx
 var import_react = require("react");
@@ -1057,31 +1057,59 @@ var import_jsx_runtime21 = require("react/jsx-runtime");
 function VerticalGrid(props) {
   const _a = props, {
     children,
-    spacing = 2
+    spacing = 2,
+    padding,
+    className
   } = _a, rest = __objRest(_a, [
     "children",
-    "spacing"
+    "spacing",
+    "padding",
+    "className"
   ]);
   const classes = (0, import_react26.useMemo)(() => {
-    let classString = "guwmi-vertical-grid";
+    let classString = "guwmi-vertical-grid ";
     switch (spacing) {
       case 1:
-        classString += " one";
+        classString += "space-1";
         break;
-      case 2:
-        classString += " two";
+      case 3:
+        classString += "space-3";
         break;
       case 4:
-        classString += " four";
+        classString += "space-4";
         break;
       case 5:
-        classString += " five";
+        classString += "space-5";
         break;
       case 6:
-        classString += " six";
+        classString += "space-6";
         break;
       default:
-        classString += " three";
+        classString += "space-2";
+    }
+    if (padding) {
+      switch (padding) {
+        case 1:
+          classString += " pad-1";
+          break;
+        case 3:
+          classString += " pad-3";
+          break;
+        case 4:
+          classString += " pad-4";
+          break;
+        case 5:
+          classString += " pad-5";
+          break;
+        case 6:
+          classString += " pad-6";
+          break;
+        default:
+          classString += " pad-2";
+      }
+    }
+    if (className) {
+      classString += " " + className;
     }
     return classString;
   }, [spacing]);

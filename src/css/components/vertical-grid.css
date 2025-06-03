@@ -4,22 +4,42 @@
 .guwmi-vertical-grid {
   display: flex;
   flex-direction: column;
+}
+.guwmi-vertical-grid.space-1 {
   gap: 1rem;
 }
-.guwmi-vertical-grid.two {
+.guwmi-vertical-grid.space-2 {
   gap: 2rem;
 }
-.guwmi-vertical-grid.three {
+.guwmi-vertical-grid.space-3 {
   gap: 3rem;
 }
-.guwmi-vertical-grid.four {
+.guwmi-vertical-grid.space-4 {
   gap: 4rem;
 }
-.guwmi-vertical-grid.five {
+.guwmi-vertical-grid.space-5 {
   gap: 5rem;
 }
-.guwmi-vertical-grid.six {
+.guwmi-vertical-grid.space-6 {
   gap: 6rem;
+}
+.guwmi-vertical-grid.pad-1 {
+  padding: 1rem;
+}
+.guwmi-vertical-grid.pad-2 {
+  padding: 2rem;
+}
+.guwmi-vertical-grid.pad-3 {
+  padding: 3rem;
+}
+.guwmi-vertical-grid.pad-4 {
+  padding: 4rem;
+}
+.guwmi-vertical-grid.pad-5 {
+  padding: 5rem;
+}
+.guwmi-vertical-grid.pad-6 {
+  padding: 6rem;
 }
 .guwmi-vertical-grid > * {
   box-sizing: border-box;

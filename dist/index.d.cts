@@ -130,6 +130,8 @@ declare function Grid(props: ComponentProps$e): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$d extends PropsWithChildren {
     spacing?: 1 | 2 | 3 | 4 | 5 | 6;
+    padding?: 1 | 2 | 3 | 4 | 5 | 6;
+    className?: string;
 }
 declare function VerticalGrid(props: ComponentProps$d): react_jsx_runtime.JSX.Element;
 
