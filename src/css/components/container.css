@@ -1,0 +1,22 @@
+/**
+ * Styles for the container component **************************************************************
+ **/
+.guwmi-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.guwmi-container .guwmi-container-header {
+  border-bottom: solid 1px var(--guwmi-primary-bg);
+}
+.guwmi-container > div:not(.guwmi-container-header) {
+  display: flex;
+}
+.guwmi-container > div:not(.guwmi-container-header) .guwmi-container-sidebar {
+  flex-grow: 1;
+  min-width: 25%;
+  border-right: solid 1px var(--guwmi-primary-bg);
+}
+.guwmi-container > div:not(.guwmi-container-header) .guwmi-container-content {
+  flex-grow: 1;
+}

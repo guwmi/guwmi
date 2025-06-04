@@ -1,4 +1,4 @@
-// tsconfig for testing
+// tsconfig
 {
   "compilerOptions": {
     "target": "es2019",

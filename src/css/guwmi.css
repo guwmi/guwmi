@@ -317,6 +317,29 @@
 }
 
 /**
+ * Styles for the container component **************************************************************
+ **/
+.guwmi-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.guwmi-container .guwmi-container-header {
+  border-bottom: solid 1px var(--guwmi-primary-bg);
+}
+.guwmi-container > div:not(.guwmi-container-header) {
+  display: flex;
+}
+.guwmi-container > div:not(.guwmi-container-header) .guwmi-container-sidebar {
+  flex-grow: 1;
+  min-width: 25%;
+  border-right: solid 1px var(--guwmi-primary-bg);
+}
+.guwmi-container > div:not(.guwmi-container-header) .guwmi-container-content {
+  flex-grow: 1;
+}
+
+/**
  * Styles for the Drawer component ******************************************************************
  **/
 .guwmi-drawer-overlay {
@@ -948,6 +971,64 @@
   background: none;
   border: 0;
   cursor: pointer;
+}
+
+/**
+ * Styles for the navbar component ******************************************************************
+ **/
+.guwmi-navbar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+.guwmi-navbar ul .guwmi-navbar-item {
+  position: relative;
+}
+.guwmi-navbar ul .guwmi-navbar-item.active::before {
+  position: absolute;
+  content: "";
+  border-left: solid 4px var(--guwmi-primary);
+  height: 100%;
+  top: 0;
+}
+.guwmi-navbar ul .guwmi-navbar-item.active .guwmi-navbar-button {
+  background: rgba(0, 0, 0, 0.1);
+}
+.guwmi-navbar ul .guwmi-navbar-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  font-size: 0.9rem;
+  display: flex;
+  transition: var(--guwmi-transition);
+}
+.guwmi-navbar ul .guwmi-navbar-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.guwmi-navbar ul .guwmi-navbar-button:disabled, .guwmi-navbar ul .guwmi-navbar-button.disabled {
+  cursor: not-allowed;
+  color: var(--guwmi-tertiary-bg) !important;
+}
+.guwmi-navbar ul .guwmi-navbar-button svg {
+  margin-left: auto;
+  transition: var(--guwmi-transition-short);
+}
+.guwmi-navbar ul .guwmi-navbar-group {
+  transition: var(--guwmi-transition);
+  overflow: hidden;
+}
+.guwmi-navbar ul .guwmi-navbar-group.open > .guwmi-navbar-button svg {
+  transform: rotate(90deg);
+}
+.guwmi-navbar ul .guwmi-navbar-group ul {
+  background: var(--guwmi-primary-bg);
+}
+.guwmi-navbar ul .guwmi-navbar-group ul .guwmi-navbar-button {
+  padding-left: 1.5rem;
 }
 
 /**

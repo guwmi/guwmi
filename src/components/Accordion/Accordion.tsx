@@ -1,5 +1,5 @@
 // import library functionality
-import React, { useState, PropsWithChildren, useEffect } from 'react';
+import { useState, PropsWithChildren, useEffect } from 'react';
 
 // import context
 import AccordionContext from './AccordionContext';

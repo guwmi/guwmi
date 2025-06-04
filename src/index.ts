@@ -60,6 +60,14 @@ import Loading from './components/Loading/Loading';
 // import tag component
 import Tag from './components/Tag/Tag';
 
+// import navbar components
+import Navbar from './components/Navbar/Navbar';
+import NavbarGroup from './components/Navbar/NavbarGroup';
+import NavbarItem from './components/Navbar/NavbarItem';
+
+// import container component
+import Container from './components/Container/Container';
+
 // export all components
 export {
   Accordion,
@@ -68,6 +76,7 @@ export {
   ButtonGroup,
   Card,
   CardSection,
+  Container,
   Drawer,
   Grid,
   Icon,
@@ -78,6 +87,9 @@ export {
   MenuItem,
   MenuTrigger,
   Modal,
+  Navbar,
+  NavbarGroup,
+  NavbarItem,
   Notification,
   PasswordInput,
   RadioGroup,
