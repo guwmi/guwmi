@@ -27,3 +27,11 @@
     }
   }
 }
+
+@media (prefers-color-scheme: light) {
+
+  .guwmi-container-header,
+  .guwmi-container-sidebar {
+    background: var(--guwmi-white);
+  }
+}

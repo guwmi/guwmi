@@ -6,17 +6,17 @@
  * Color variables for for use in the library *******************************************************
  **/
 :root {
-  --guwmi-text: #161616;
-  --guwmi-text-contrast: white;
-  --guwmi-app-bg: white;
-  --guwmi-primary-bg: #f4f4f4;
-  --guwmi-secondary-bg: #e0e0e0;
-  --guwmi-tertiary-bg: #a8a8a8;
-  --guwmi-high-contrast-bg: #393939;
-  --guwmi-primary: #1565c0;
-  --guwmi-primary-alt: #1876c8;
-  --guwmi-secondary: #8434ca;
-  --guwmi-secondary-alt: #9d4edd;
+  --guwmi-text: #f4f4f4;
+  --guwmi-text-contrast: #161616;
+  --guwmi-app-bg: #262626;
+  --guwmi-primary-bg: #393939;
+  --guwmi-secondary-bg: #525252;
+  --guwmi-tertiary-bg: #6f6f6f;
+  --guwmi-high-contrast-bg: #f4f4f4;
+  --guwmi-primary: #1876c8;
+  --guwmi-primary-alt: #1565c0;
+  --guwmi-secondary: #9d4edd;
+  --guwmi-secondary-alt: #8434ca;
   --guwmi-white: #fff;
   --guwmi-black: #000;
   --guwmi-alert-red: #da1e28;
@@ -32,19 +32,19 @@
   --guwmi-transition-long: ease all 0.6s;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --guwmi-text: #f4f4f4;
-    --guwmi-text-contrast: #161616;
-    --guwmi-app-bg: #262626;
-    --guwmi-primary-bg: #393939;
-    --guwmi-secondary-bg: #525252;
-    --guwmi-high-contrast-bg: #f4f4f4;
-    --guwmi-tertiary-bg: #6f6f6f;
-    --guwmi-primary: #1876c8;
-    --guwmi-primary-alt: #1565c0;
-    --guwmi-secondary: #9d4edd;
-    --guwmi-secondary-alt: #8434ca;
+    --guwmi-text: #161616;
+    --guwmi-text-contrast: white;
+    --guwmi-app-bg: #f9f9f9;
+    --guwmi-primary-bg: #f4f4f4;
+    --guwmi-secondary-bg: #e0e0e0;
+    --guwmi-tertiary-bg: #a8a8a8;
+    --guwmi-high-contrast-bg: #393939;
+    --guwmi-primary: #1565c0;
+    --guwmi-primary-alt: #1876c8;
+    --guwmi-secondary: #8434ca;
+    --guwmi-secondary-alt: #9d4edd;
   }
 }
 /**
@@ -210,12 +210,15 @@
   color: var(--guwmi-text);
 }
 .guwmi-btn.outline {
-  background: none;
+  background: rgba(0, 0, 0, 0.1);
   border-color: white;
 }
 .guwmi-btn.ghost {
-  background: none;
+  background: rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0);
+}
+.guwmi-btn.ghost.active, .guwmi-btn.ghost:hover {
+  background: rgba(0, 0, 0, 0.15);
 }
 .guwmi-btn.round {
   border-radius: var(--guwmi-radius);
@@ -224,15 +227,15 @@
   border-radius: 50px;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   .guwmi-btn.outline {
-    background: rgba(0, 0, 0, 0.1);
+    background: none;
   }
   .guwmi-btn.ghost {
-    background: rgba(0, 0, 0, 0.1);
+    background: none;
   }
   .guwmi-btn.ghost.active, .guwmi-btn.ghost:hover {
-    background: rgba(0, 0, 0, 0.15);
+    background: var(--guwmi-primary-bg);
   }
 }
 /**
@@ -316,6 +319,11 @@
   letter-spacing: unset;
 }
 
+@media (prefers-color-scheme: light) {
+  .guwmi-card {
+    background: var(--guwmi-white);
+  }
+}
 /**
  * Styles for the container component **************************************************************
  **/
@@ -341,6 +349,12 @@
   flex-basis: 75%;
 }
 
+@media (prefers-color-scheme: light) {
+  .guwmi-container-header,
+  .guwmi-container-sidebar {
+    background: var(--guwmi-white);
+  }
+}
 /**
  * Styles for the Drawer component ******************************************************************
  **/
@@ -531,6 +545,11 @@
   cursor: not-allowed;
 }
 
+@media (prefers-color-scheme: light) {
+  .guwmi-password-input .guwmi-password-container input {
+    border-bottom-color: var(--guwmi-tertiary-bg);
+  }
+}
 /**
  * Index file for pulling all component files together **********************************************
  **/
@@ -593,9 +612,6 @@
 }
 
 /**
- * Index file for pulling all component files together **********************************************
- **/
-/**
  * Styles for the search input component ************************************************************
  **/
 .guwmi-search-input {
@@ -615,7 +631,7 @@
   appearance: none;
   flex-grow: 1;
   padding: 0.66rem 0.66rem 0.66rem 2.2rem;
-  background: var(--guwmi-secondary-bg);
+  background: var(--guwmi-primary-bg);
   border: solid 1px var(--guwmi-tertiary-bg);
   border-radius: var(--guwmi-radius);
   font-size: 0.9rem;
@@ -623,7 +639,7 @@
 }
 .guwmi-search-input input::placeholder {
   color: var(--guwmi-text);
-  opacity: 1;
+  opacity: 0.33;
 }
 
 /**
@@ -683,6 +699,11 @@
   cursor: not-allowed;
 }
 
+@media (prefers-color-scheme: light) {
+  .guwmi-select-input .guwmi-select-container select {
+    border-color: var(--guwmi-tertiary-bg);
+  }
+}
 /**
  * Styles for the textarea input component ************************************************************
  **/
@@ -730,6 +751,11 @@
   cursor: not-allowed;
 }
 
+@media (prefers-color-scheme: light) {
+  .guwmi-textarea textarea {
+    border-bottom-color: var(--guwmi-tertiary-bg);
+  }
+}
 /**
  * Styles for the text input component ************************************************************
  **/
@@ -776,6 +802,11 @@
   cursor: not-allowed;
 }
 
+@media (prefers-color-scheme: light) {
+  .guwmi-text-input input {
+    border-bottom-color: var(--guwmi-tertiary-bg);
+  }
+}
 /**
  * Loading component styles *********************************************************************
  **/
@@ -1175,6 +1206,12 @@
   margin: 1rem 0 0.5rem;
   width: 100%;
 }
+.guwmi-table-container .guwmi-table-search .guwmi-search-input input {
+  background: var(--guwmi-secondary-bg);
+}
+.guwmi-table-container .guwmi-table-search .guwmi-search-input input::placeholder {
+  opacity: 0.65;
+}
 .guwmi-table-container table {
   width: 100%;
 }
@@ -1195,6 +1232,15 @@
   border: 0;
 }
 
+@media (prefers-color-scheme: light) {
+  .guwmi-table-container .guwmi-table-search .guwmi-search-input input {
+    background: var(--guwmi-white);
+    border-color: var(--guwmi-secondary-bg);
+  }
+  .guwmi-table-container .guwmi-table-search .guwmi-search-input input::placeholder {
+    opacity: 0.33;
+  }
+}
 /**
  * Styles for the tag component *********************************************************************
  **/

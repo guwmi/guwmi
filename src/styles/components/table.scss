@@ -46,6 +46,17 @@
   .guwmi-table-search {
     margin: 1rem 0 0.5rem;
     width: 100%;
+
+    .guwmi-search-input {
+      
+      input {
+        background: var(--guwmi-secondary-bg);
+
+        &::placeholder {
+          opacity: 0.65;
+        }
+      }
+    }
   }
 
   table {
@@ -75,6 +86,27 @@
 
         td {
           border: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+
+  .guwmi-table-container {
+
+    .guwmi-table-search {
+    
+      .guwmi-search-input {
+        
+        input {
+          background: var(--guwmi-white);
+          border-color: var(--guwmi-secondary-bg);
+
+          &::placeholder {
+            opacity: 0.33;
+          }
         }
       }
     }

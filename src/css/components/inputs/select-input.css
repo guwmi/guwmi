@@ -54,3 +54,9 @@
 .guwmi-select-input.disabled input {
   cursor: not-allowed;
 }
+
+@media (prefers-color-scheme: light) {
+  .guwmi-select-input .guwmi-select-container select {
+    border-color: var(--guwmi-tertiary-bg);
+  }
+}

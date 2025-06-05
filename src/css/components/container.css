@@ -22,3 +22,10 @@
   flex-grow: 1;
   flex-basis: 75%;
 }
+
+@media (prefers-color-scheme: light) {
+  .guwmi-container-header,
+  .guwmi-container-sidebar {
+    background: var(--guwmi-white);
+  }
+}

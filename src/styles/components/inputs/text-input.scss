@@ -55,3 +55,13 @@
     }
   }
 }
+
+@media (prefers-color-scheme: light) {
+
+  .guwmi-text-input {
+
+    input {
+      border-bottom-color: var(--guwmi-tertiary-bg);
+    }
+  }
+}

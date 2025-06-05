@@ -47,3 +47,10 @@
     }
   }
 }
+
+@media (prefers-color-scheme: light) {
+
+  .guwmi-card {
+    background: var(--guwmi-white);
+  }
+}

@@ -44,3 +44,9 @@
 .guwmi-textarea.disabled textarea {
   cursor: not-allowed;
 }
+
+@media (prefers-color-scheme: light) {
+  .guwmi-textarea textarea {
+    border-bottom-color: var(--guwmi-tertiary-bg);
+  }
+}

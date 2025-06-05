@@ -117,12 +117,15 @@
   color: var(--guwmi-text);
 }
 .guwmi-btn.outline {
-  background: none;
+  background: rgba(0, 0, 0, 0.1);
   border-color: white;
 }
 .guwmi-btn.ghost {
-  background: none;
+  background: rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0);
+}
+.guwmi-btn.ghost.active, .guwmi-btn.ghost:hover {
+  background: rgba(0, 0, 0, 0.15);
 }
 .guwmi-btn.round {
   border-radius: var(--guwmi-radius);
@@ -131,14 +134,14 @@
   border-radius: 50px;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   .guwmi-btn.outline {
-    background: rgba(0, 0, 0, 0.1);
+    background: none;
   }
   .guwmi-btn.ghost {
-    background: rgba(0, 0, 0, 0.1);
+    background: none;
   }
   .guwmi-btn.ghost.active, .guwmi-btn.ghost:hover {
-    background: rgba(0, 0, 0, 0.15);
+    background: var(--guwmi-primary-bg);
   }
 }

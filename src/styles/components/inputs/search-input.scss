@@ -2,9 +2,6 @@
  * Styles for the search input component ************************************************************
  **/
 
-// inport colors
-@use '../../../styles/variables.scss' ;
-
 .guwmi-search-input {
   position: relative;
   width: 100%;
@@ -23,7 +20,7 @@
     appearance: none;
     flex-grow: 1;
     padding: 0.66rem 0.66rem 0.66rem 2.2rem;
-    background: var(--guwmi-secondary-bg);
+    background: var(--guwmi-primary-bg);
     border: solid 1px var(--guwmi-tertiary-bg);
     border-radius: var(--guwmi-radius);
     font-size: 0.9rem;
@@ -31,7 +28,7 @@
 
     &::placeholder {
       color: var(--guwmi-text);
-      opacity: 1;
+      opacity: 0.33;
     }
   }
 }

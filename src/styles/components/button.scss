@@ -160,13 +160,18 @@
 
   // kinds
   &.outline {
-    background: none;
+    background: rgba(0,0,0,0.1);
     border-color: white;
   }
 
   &.ghost {
-    background: none;
+    background: rgba(0,0,0,0.1);
     border-color: rgba(0,0,0,0);
+
+    &.active,
+    &:hover {
+      background: rgba(0,0,0,0.15);
+    }
   }
 
   // theme
@@ -179,20 +184,20 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
 
   .guwmi-btn {
 
     &.outline {
-      background: rgba(0,0,0,0.1);
+      background: none;
     }
 
     &.ghost {
-      background: rgba(0,0,0,0.1);
+      background: none;
   
       &.active,
       &:hover {
-        background: rgba(0,0,0,0.15);;
+        background: var(--guwmi-primary-bg);
       }
     }
   }
