@@ -1,5 +1,5 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 // import components
 import Tooltip from '../../components/Tooltip/Tooltip';
