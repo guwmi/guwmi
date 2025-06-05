@@ -25,6 +25,7 @@
   --guwmi-alert-orange: #ff832b;
   --guwmi-alert-yellow: #f1c21b;
   --guwmi-alert-blue: #1876c8;
+  --guwmi-link: #1e95fc;
   --guwmi-font-size: 16px;
   --guwmi-radius: 3px;
   --guwmi-inner-radius: 2px;
@@ -46,6 +47,7 @@
     --guwmi-primary-alt: #1876c8;
     --guwmi-secondary: #8434ca;
     --guwmi-secondary-alt: #9d4edd;
+    --guwmi-link: #1565c0;
   }
 }
 /**
@@ -89,6 +91,55 @@
   padding: 1rem;
 }
 
+/**
+ * Styles for the Breadcrumbs component *************************************************************
+ **/
+.guwmi-breadcrumbs.has-background {
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: var(--guwmi-radius);
+}
+.guwmi-breadcrumbs ol {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 0.66rem;
+  margin: 0;
+  padding: 0;
+}
+.guwmi-breadcrumbs ol li {
+  display: flex;
+  align-items: center;
+  gap: 0.66rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+.guwmi-breadcrumbs ol li a,
+.guwmi-breadcrumbs ol li a:visited,
+.guwmi-breadcrumbs ol li button {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: var(--guwmi-link);
+  font-size: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.guwmi-breadcrumbs ol li a.guwmi-breadcrumb-current,
+.guwmi-breadcrumbs ol li a:visited.guwmi-breadcrumb-current,
+.guwmi-breadcrumbs ol li button.guwmi-breadcrumb-current {
+  color: var(--guwmi-text);
+  text-decoration: none;
+  cursor: default;
+}
+
+@media (prefers-color-scheme: light) {
+  .guwmi-breadcrumbs.has-background {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
 /**
  * Styles for the Button component ******************************************************************
  **/

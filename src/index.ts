@@ -74,10 +74,14 @@ import Tooltip from './components/Tooltip/Tooltip';
 // import info block component
 import InfoBlock from './components/InfoBlock/InfoBlock';
 
+// import breadcrumbs
+import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
+
 // export all components
 export {
   Accordion,
   AccordionItem,
+  Breadcrumbs,
   Button,
   ButtonGroup,
   Card,
