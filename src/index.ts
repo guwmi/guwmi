@@ -68,6 +68,9 @@ import NavbarItem from './components/Navbar/NavbarItem';
 // import container component
 import Container from './components/Container/Container';
 
+// import tooltip component
+import Tooltip from './components/Tooltip/Tooltip';
+
 // export all components
 export {
   Accordion,
@@ -104,5 +107,6 @@ export {
   Tag,
   TextArea,
   TextInput,
+  Tooltip,
   VerticalGrid
 };

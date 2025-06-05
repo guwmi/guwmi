@@ -13,10 +13,12 @@
   display: flex;
 }
 .guwmi-container > div:not(.guwmi-container-header) .guwmi-container-sidebar {
-  flex-grow: 1;
-  min-width: 25%;
+  width: 25%;
+  min-width: 200px;
+  max-width: 325px;
   border-right: solid 1px var(--guwmi-primary-bg);
 }
 .guwmi-container > div:not(.guwmi-container-header) .guwmi-container-content {
   flex-grow: 1;
+  flex-basis: 75%;
 }

@@ -1,0 +1,99 @@
+/**
+ * Styles for the tooltip component ****************************************************************
+ **/
+
+.guwmi-tooltip {
+  position: relative;
+  display: inline-flex;
+
+  &:hover {
+
+    span {
+      visibility: visible;
+    }
+  }
+
+  &.top {
+
+    span {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, calc(-100% - 10px));
+
+      &::after {
+        top: auto;
+        bottom: -10px;
+        left: 50%;
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &.bottom {
+
+    span {
+      top: auto;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, calc(100% + 10px));
+    }
+  }
+
+  &.right {
+
+    span {
+      top: 50%;
+      left: auto;
+      right: 0;
+      transform: translate(calc(100% + 10px), -50%);
+
+      &::after {
+        top: calc(50% - 5px);
+        bottom: auto;
+        left: -4px;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &.left {
+    span {
+      top: 50%;
+      left: 0;
+      transform: translate(calc(-100% - 10px), -50%);
+
+      &::after {
+        top: calc(50% - 5px);
+        left: auto;
+        bottom: auto;
+        right: -9px;
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  span {
+    position: absolute;
+    visibility: hidden;
+    transition: var(--guwmi-transition);
+    background: var(--guwmi-high-contrast-bg);
+    color: var(--guwmi-text-contrast);
+    width: auto;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--guwmi-inner-radius);
+    font-size: 0.85rem;
+    text-wrap: nowrap;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: var(--guwmi-high-contrast-bg) transparent transparent transparent;
+      transform: rotate(180deg);
+    }
+  }
+}
