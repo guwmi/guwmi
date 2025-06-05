@@ -1,7 +1,6 @@
 /**
  * Index file for pulling all component files together **********************************************
  **/
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 /**
  * Color variables for for use in the library *******************************************************
@@ -1447,7 +1446,9 @@ body * {
 }
 html button,
 body button {
+  background: var(--guwmi-primary);
   color: var(--guwmi-text);
+  border-color: var(--guwmi-primary);
 }
 html p,
 body p {
