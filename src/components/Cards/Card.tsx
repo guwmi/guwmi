@@ -21,7 +21,7 @@ export default function Card(props: ComponentProps) {
   return (
     <div className="guwmi-card" {...rest}>
       {image && 
-        <img src={image} alt={title ? title : 'Card image'} className="guwmi-card-image" />
+        <img src={image} alt={title ? 'Image that represents ' + title : 'Image representing the content for this card'} className="guwmi-card-image" />
       }
       {(title || subTitle) &&
         <div className="guwmi-card-section guwmi-card-title">
