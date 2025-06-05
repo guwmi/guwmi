@@ -1,0 +1,132 @@
+// import library functionality
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
+
+// import components
+import Navbar from '../../components/Navbar/Navbar';
+import NavbarGroup from '../../components/Navbar/NavbarGroup';
+import NavbarItem from '../../components/Navbar/NavbarItem';
+
+describe('Navbar Component', () => {
+
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+    jest.clearAllMocks();
+  })
+
+  test('renders navbar with correct elements', async () => {
+
+    render (
+      <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar">
+        <NavbarItem>Item one</NavbarItem>
+        <NavbarItem>Item two</NavbarItem>
+        <NavbarGroup label="Item three" data-testid="guwmi-sub-nav">
+          <NavbarItem>Sub-item one</NavbarItem>
+          <NavbarItem>Sub-item two</NavbarItem>
+          <NavbarItem>Sub-item three</NavbarItem>
+        </NavbarGroup>
+        <NavbarItem>Item four</NavbarItem>
+      </Navbar>
+    )
+
+    const nav = screen.getByTestId('guwmi-navbar');
+    const topLevel = nav.querySelector('ul');
+    const topLevelItems = topLevel.querySelectorAll('li');
+    const subLevel = screen.getByTestId('guwmi-sub-nav');
+    const subNavbarItem = subLevel.querySelector('button');
+    await user.click(subNavbarItem);
+    const subItems = subLevel.querySelectorAll('li');
+    expect(nav).toBeInTheDocument();
+    expect(topLevel).toBeInTheDocument();
+    expect(topLevelItems).toHaveLength(4);
+    expect(subLevel).toBeInTheDocument();
+    expect(subItems).toHaveLength(3);
+  });
+
+  test('renders navbar with override class', async () => {
+
+    render (
+      <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar" className="test-override">
+        <NavbarItem>Item one</NavbarItem>
+      </Navbar>
+    )
+
+    const nav = screen.getByTestId('guwmi-navbar');
+    expect(nav).toHaveClass('test-override');
+  });
+
+  test('renders navbar with default open nav group with override class', async () => {
+
+    render (
+      <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar">
+        <NavbarItem>Item one</NavbarItem>
+        <NavbarGroup defaultOpen={true} label="Item three" data-testid="guwmi-sub-nav" className="test-override">
+          <NavbarItem>Sub-item one</NavbarItem>
+          <NavbarItem>Sub-item two</NavbarItem>
+          <NavbarItem>Sub-item three</NavbarItem>
+        </NavbarGroup>
+      </Navbar>
+    )
+
+    const subLevel = screen.getByTestId('guwmi-sub-nav');
+    const subItems = subLevel.querySelectorAll('li');
+    expect(subLevel).toHaveClass('open');
+    expect(subLevel).toHaveClass('test-override');
+    expect(subItems).toHaveLength(3);
+  });
+
+  test('calls onClick handler when clicked', async() => {
+
+    const handleClick = jest.fn();
+    render(<NavbarItem onClick={handleClick} data-testid="nav-item">Click Me</NavbarItem>);
+
+    const navItem = screen.getByTestId('nav-item').querySelector('button');
+    await user.click(navItem);
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  test('renders as link with correct href', () => {
+
+    render(<NavbarItem href="https://www.google.com">Link</NavbarItem>);
+
+    const link = screen.getByText('Link');
+    expect(link.tagName).toBe('A');
+    expect(link).toHaveAttribute('href', 'https://www.google.com');
+  });
+
+  test('does not call onClick handler when disabled', async () => {
+
+    const handleClick = jest.fn();
+    render(<NavbarItem onClick={handleClick} data-testid="nav-item" disabled>Click Me</NavbarItem>);
+
+    const navItem = screen.getByTestId('nav-item').querySelector('button');
+    await user.click(navItem);
+    expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  test('is disabled when disabled prop is true', () => {
+
+    render(<NavbarItem data-testid="nav-item" disabled>Click Me</NavbarItem>);
+
+    const navItem = screen.getByTestId('nav-item').querySelector('button');
+    expect(navItem).toBeDisabled();
+  });
+
+  test('renders with target attribute', () => {
+
+    render(<NavbarItem target="_blank" href="https://www.google.com">Target Link</NavbarItem>);
+
+    const link = screen.getByText('Target Link');
+    expect(link).toHaveAttribute('target', '_blank');
+  });
+
+  test('applies override and active classes', () => {
+
+    render(<NavbarItem className="test-override" active={true} data-testid="nav-item">Styled NavbarItem</NavbarItem>);
+
+    const navItem = screen.getByTestId('nav-item');
+    expect(navItem).toHaveClass('test-override');
+    expect(navItem).toHaveClass('active');
+  });
+})
