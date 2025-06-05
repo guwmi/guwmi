@@ -1,51 +1,6 @@
 /**
  * Styles for the Notification component ***********************************************************
  **/
-/**
- * Color variables for for use in the library *******************************************************
- **/
-:root {
-  --guwmi-text: #f4f4f4;
-  --guwmi-text-contrast: #161616;
-  --guwmi-app-bg: #262626;
-  --guwmi-primary-bg: #393939;
-  --guwmi-secondary-bg: #525252;
-  --guwmi-tertiary-bg: #6f6f6f;
-  --guwmi-high-contrast-bg: #f4f4f4;
-  --guwmi-primary: #1876c8;
-  --guwmi-primary-alt: #1565c0;
-  --guwmi-secondary: #9d4edd;
-  --guwmi-secondary-alt: #8434ca;
-  --guwmi-white: #fff;
-  --guwmi-black: #000;
-  --guwmi-alert-red: #da1e28;
-  --guwmi-alert-red-alt: #c2141d;
-  --guwmi-alert-green: #24a148;
-  --guwmi-alert-orange: #ff832b;
-  --guwmi-alert-yellow: #f1c21b;
-  --guwmi-font-size: 16px;
-  --guwmi-radius: 3px;
-  --guwmi-inner-radius: 2px;
-  --guwmi-transition: ease all 0.4s;
-  --guwmi-transition-short: ease all 0.15s;
-  --guwmi-transition-long: ease all 0.6s;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --guwmi-text: #161616;
-    --guwmi-text-contrast: white;
-    --guwmi-app-bg: #f9f9f9;
-    --guwmi-primary-bg: #f4f4f4;
-    --guwmi-secondary-bg: #e0e0e0;
-    --guwmi-tertiary-bg: #a8a8a8;
-    --guwmi-high-contrast-bg: #393939;
-    --guwmi-primary: #1565c0;
-    --guwmi-primary-alt: #1876c8;
-    --guwmi-secondary: #8434ca;
-    --guwmi-secondary-alt: #9d4edd;
-  }
-}
 .guwmi-notification {
   position: relative;
   display: flex;
@@ -75,6 +30,12 @@
 }
 .guwmi-notification.success > svg {
   stroke: var(--guwmi-alert-green);
+}
+.guwmi-notification.info {
+  border-color: var(--guwmi-alert-blue);
+}
+.guwmi-notification.info > svg {
+  stroke: var(--guwmi-alert-blue);
 }
 .guwmi-notification > button {
   position: absolute;

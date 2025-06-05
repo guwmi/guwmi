@@ -6,7 +6,7 @@ import Icon from '../Icon/Icon';
 
 // component type
 interface ComponentProps {
-  kind: 'error' | 'warning' | 'success';
+  kind: 'error' | 'warning' | 'success' | 'info';
   title?: string;
   content: string;
 }
@@ -25,6 +25,8 @@ export default function Notification(props: ComponentProps) {
           <Icon name="alert-circle" size={20} stroke="3" />
         ) : kind === 'warning' ? (
           <Icon name="alert-triangle" size={20} stroke="3" />
+        ) : kind === 'info' ? (
+          <Icon name="info" size={20} stroke="3" />
         ) : (
           <Icon name="check" size={20} stroke="3" />
         )}

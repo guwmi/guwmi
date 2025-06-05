@@ -71,6 +71,9 @@ import Container from './components/Container/Container';
 // import tooltip component
 import Tooltip from './components/Tooltip/Tooltip';
 
+// import info block component
+import InfoBlock from './components/InfoBlock/InfoBlock';
+
 // export all components
 export {
   Accordion,
@@ -84,6 +87,7 @@ export {
   Grid,
   Icon,
   IconButton,
+  InfoBlock,
   Loading,
   Menu,
   MenuDropdown,

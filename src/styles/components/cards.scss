@@ -2,9 +2,6 @@
  * Style for the Cards and child components *********************************************************
  **/
 
-// import color variables
-@use '../../styles/variables.scss' ;
-
 .guwmi-card {
   background: var(--guwmi-primary-bg);
   border: solid 1px var(--guwmi-secondary-bg);

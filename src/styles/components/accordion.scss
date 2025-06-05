@@ -2,9 +2,6 @@
  * Styles for the Accordion component and children **************************************************
  **/
 
-// import colors
-@use '../../styles/variables.scss' ;
-
 .guwmi-accordion-container {
   border: solid 1px var(--guwmi-secondary-bg);
   border-radius: var(--guwmi-radius);

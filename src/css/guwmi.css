@@ -24,6 +24,7 @@
   --guwmi-alert-green: #24a148;
   --guwmi-alert-orange: #ff832b;
   --guwmi-alert-yellow: #f1c21b;
+  --guwmi-alert-blue: #1876c8;
   --guwmi-font-size: 16px;
   --guwmi-radius: 3px;
   --guwmi-inner-radius: 2px;
@@ -47,9 +48,6 @@
     --guwmi-secondary-alt: #9d4edd;
   }
 }
-/**
- * Index file for pulling all component files together **********************************************
- **/
 /**
  * Styles for the Accordion component and children **************************************************
  **/
@@ -277,9 +275,6 @@
 }
 
 /**
- * Index file for pulling all component files together **********************************************
- **/
-/**
  * Style for the Cards and child components *********************************************************
  **/
 .guwmi-card {
@@ -484,6 +479,37 @@
 }
 
 /**
+ * Styles for the InfoBlock component **************************************************************
+ **/
+.guwmi-info-block {
+  position: relative;
+  display: flex;
+  padding: 0.75rem 1rem 0.75rem 0.75rem;
+  border: solid 1px var(--guwmi-alert-blue);
+  border-radius: var(--guwmi-radius);
+  overflow: hidden;
+  gap: 1rem;
+}
+.guwmi-info-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--guwmi-alert-blue);
+  opacity: 0.1;
+}
+.guwmi-info-block > div {
+  position: relative;
+  z-index: 1;
+}
+.guwmi-info-block .guwmi-info-block-label {
+  margin: 0.2rem 0;
+  font-size: 1rem;
+}
+
+/**
  * Styles for the password input component ************************************************************
  **/
 .guwmi-password-input {
@@ -550,9 +576,6 @@
     border-bottom-color: var(--guwmi-tertiary-bg);
   }
 }
-/**
- * Index file for pulling all component files together **********************************************
- **/
 /**
  * Styles for the radio group component ************************************************************
  **/
@@ -874,9 +897,6 @@
   }
 }
 /**
- * Index file for pulling all component files together **********************************************
- **/
-/**
  * Styles for the Menu and child components ********************************************************
  **/
 .guwmi-menu-container {
@@ -954,9 +974,6 @@
   background: var(--guwmi-secondary-bg);
 }
 
-/**
- * Index file for pulling all component files together **********************************************
- **/
 /**
  * Styles for the modal component *******************************************************************
  **/
@@ -1065,9 +1082,6 @@
 }
 
 /**
- * Index file for pulling all component files together **********************************************
- **/
-/**
  * Styles for the Notification component ***********************************************************
  **/
 .guwmi-notification {
@@ -1100,6 +1114,12 @@
 .guwmi-notification.success > svg {
   stroke: var(--guwmi-alert-green);
 }
+.guwmi-notification.info {
+  border-color: var(--guwmi-alert-blue);
+}
+.guwmi-notification.info > svg {
+  stroke: var(--guwmi-alert-blue);
+}
 .guwmi-notification > button {
   position: absolute;
   right: 0.5rem;
@@ -1119,9 +1139,6 @@
   margin: 0;
 }
 
-/**
- * Index file for pulling all component files together **********************************************
- **/
 /**
  * Styles for the Tabs component and children *******************************************************
  **/
@@ -1165,9 +1182,6 @@
   padding: 1rem;
 }
 
-/**
- * Index file for pulling all component files together **********************************************
- **/
 /**
  * Style for the table component ********************************************************************
  **/
