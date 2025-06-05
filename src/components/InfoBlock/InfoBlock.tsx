@@ -14,7 +14,7 @@ export default function InfoBlock(props: ComponentProps) {
   const { label, children, ...rest } = props;
 
   return (
-    <div className="guwmi-info-block">
+    <div className="guwmi-info-block" {...rest}>
       <div><Icon name="info" /></div>
       <div>
         {label && <h2 className="guwmi-info-block-label">{label}</h2>}
