@@ -2,6 +2,7 @@
  * Index file for pulling all component files together **********************************************
  **/
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 /**
  * Color variables for for use in the library *******************************************************
  **/
@@ -505,7 +506,7 @@
   z-index: 1;
 }
 .guwmi-info-block .guwmi-info-block-label {
-  margin: 0.2rem 0;
+  margin: 0.1rem 0;
   font-size: 1rem;
 }
 
@@ -1288,7 +1289,7 @@
 }
 .guwmi-tag.sm {
   font-size: 0.8rem;
-  padding: 0.133rem 0.4rem;
+  padding: 0.133rem 0.5rem;
 }
 .guwmi-tag.lg {
   font-size: 1rem;
@@ -1439,19 +1440,14 @@ body {
 }
 html *,
 body * {
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 html button,
 body button {
   color: var(--guwmi-text);
-}
-html h1,
-html h2,
-html h3,
-body h1,
-body h2,
-body h3 {
-  letter-spacing: 0.05em;
 }
 html p,
 body p {
