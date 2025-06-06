@@ -26,25 +26,25 @@ export default function Pagination(props: ComponentProps) {
     onChange,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-pagination${className ? ' ' + className : ''}`, [className]);
-  const options = useMemo(() => {
-    return pageSizes.map((size) => ({name: size.toString(), value: size.toString()}));
-  }, [pageSizes]);
   const [page, setPage] = useState<number>(currentPage);
   const [size, setSize] = useState<number>(currentSize);
   const pageRef = useRef<number>(currentPage);
   const sizeRef = useRef<number>(currentSize);
+  const classes = useMemo(() => `guwmi-pagination${className ? ' ' + className : ''}`, [className]);
+  const pageSizeArray = useMemo(() => {
+    const options = pageSizes.filter((s) => s < totalItems)
+      .map((s) => ({ name: s.toString(), value: s.toString() }));
+    options.push({name: 'All', value: totalItems.toString()});
+    return options;
+  }, [pageSizes, totalItems]);
   const numPages = useMemo(() => Math.ceil(totalItems / size), [totalItems, size]);
   const pageArray = useMemo(() => {
     return [...Array(Math.ceil(totalItems / size)).keys()].map(i => {
       return {name: (i + 1).toString(), value: (i + 1).toString()}
     })
   }, [totalItems, size]);
-  const curRange = useMemo(() => {
-    const start = (size * page) - size + 1;
-    const end = start + size - 1;
-    return `${start}–${end > totalItems ? totalItems : end}`
-  }, [size, page])
+  const start = useMemo(() => (size * page) - size + 1, [size, page]);
+  const end = useMemo(() => (size * page) - size + size, [size, page]);
 
   useEffect(() => {
     if (size !== sizeRef.current || page !== pageRef.current) {
@@ -57,10 +57,17 @@ export default function Pagination(props: ComponentProps) {
   return (
     <div className={classes} {...rest}>
       <div className="guwmi-pagination-page-size-contaiiner">
-        <SelectInput label="Items per page:" options={options} onChange={(e) => setSize(Number(e.target.value))} />
+        <SelectInput
+          label="Items per page:"
+          options={pageSizeArray}
+          onChange={(e) => {
+            setPage(1);
+            setSize(Number(e.target.value));
+          }}
+        />
       </div>
       <div className="guwmi-pagination-current-info">
-        <p>Showing <span>{curRange} </span> of <span>{totalItems}</span> items</p>
+        <p>Showing <span>{`${start}–${end > totalItems ? totalItems : end}`} </span> of <span>{totalItems}</span> items</p>
       </div>
       <div className="guwmi-pagination-navigation">
         <SelectInput
