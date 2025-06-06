@@ -1,10 +1,16 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
 import Drawer from '@components/Drawer/Drawer';
 
 describe('Drawer', () => {
+
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+  })
 
   test('drawer does not render by default', () => {
     
@@ -32,7 +38,7 @@ describe('Drawer', () => {
     expect(drawer).toBeInTheDocument();
   });
 
-  test('calls onClose handler when appropriate', () => {
+  test('calls onClose handler when appropriate', async () => {
     
     const handleClose = jest.fn(); 
     render(
@@ -43,14 +49,9 @@ describe('Drawer', () => {
 
     const drawer = screen.queryByTestId('guwmi-drawer');
     const closeButton = drawer.querySelector('button');
-    fireEvent.click(closeButton);
-    fireEvent.click(drawer);
-    fireEvent.keyDown(drawer, {
-      key: "Escape",
-      code: "Escape",
-      keyCode: 27,
-      charCode: 27
-    });
+    await user.click(closeButton);
+    await user.click(drawer);
+    await user.keyboard('{Escape}');
     expect(handleClose).toHaveBeenCalledTimes(3);
   });
 });

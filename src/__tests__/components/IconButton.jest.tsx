@@ -1,11 +1,17 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
 import IconButton from '@components/IconButton/IconButton';
 import Icon from '@components/Icon/Icon';
 
 describe('Icon Button', () => {
+
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+  })
 
   test('renders with children', () => {
 
@@ -19,7 +25,7 @@ describe('Icon Button', () => {
     expect(button).toBeInTheDocument();
   });
 
-  test('calls onClick handler when clicked', () => {
+  test('calls onClick handler when clicked', async () => {
 
     const handleClick = jest.fn();
     render(
@@ -29,11 +35,11 @@ describe('Icon Button', () => {
     );
 
     const button = screen.getByRole('button');
-    fireEvent.click(button);
+    await user.click(button);
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  test('does not call onClick handler when disabled', () => {
+  test('does not call onClick handler when disabled', async () => {
 
     const handleClick = jest.fn();
     render(
@@ -43,7 +49,7 @@ describe('Icon Button', () => {
     );
 
     const button = screen.getByRole('button');
-    fireEvent.click(button);
+    await user.click(button);
     expect(handleClick).not.toHaveBeenCalled();
   });
 

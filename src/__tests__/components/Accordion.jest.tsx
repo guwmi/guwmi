@@ -1,5 +1,6 @@
 // import library functionality
 import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
 import Accordion from '@components/Accordion/Accordion';
@@ -11,7 +12,11 @@ describe('Accordion', () => {
     { title: 'Item One', id: 'item-one', content: 'Lorem ipsum item one elit.' },
     { title: 'Item Two', id: 'item-two', content: 'Lorem ipsum item two elit.' },
     { title: 'Item Three', id: 'item-thrree', content: 'Lorem ipsum item three elit.' },
-  ]
+  ];
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+  });
 
   test('renders all accordion titles and hides content by default', () => {
 
@@ -53,7 +58,7 @@ describe('Accordion', () => {
     })
   });
 
-  test('expands an accordion item when its title is clicked', () => {
+  test('expands an accordion item when its title is clicked', async () => {
 
     render(
       <Accordion>
@@ -67,7 +72,7 @@ describe('Accordion', () => {
 
     const openItem = accordionItems[0];
     const itemButton = screen.getByRole('button', { name: openItem.title })
-    fireEvent.click(itemButton);
+    await user.click(itemButton);
     accordionItems.forEach((item) => {
       if (item.id === openItem.id) {
         expect(screen.getByTestId(item.id).querySelector('section')).not.toHaveAttribute('hidden');
@@ -93,14 +98,14 @@ describe('Accordion', () => {
     const itemButton = screen.getByRole('button', { name: openItem.title })
     const itemSection = screen.getByTestId(openItem.id).querySelector('section');
     expect(itemSection).toHaveAttribute('hidden');
-    fireEvent.click(itemButton);
+    await user.click(itemButton);
     expect(itemSection).not.toHaveAttribute('hidden');
-    fireEvent.click(itemButton);
+    await user.click(itemButton);
     fireEvent.transitionEnd(itemSection);
     expect(itemSection).toHaveAttribute('hidden');
   });
 
-  test('applies correct accessibility attributes', () => {
+  test('applies correct accessibility attributes', async () => {
 
     render(
       <Accordion>
@@ -118,7 +123,7 @@ describe('Accordion', () => {
     expect(itemButton).toHaveAttribute('aria-controls', `guwmi-accordion-panel-${openItem.id}`);
     expect(itemSection).toHaveAttribute('aria-labelledby', `guwmi-accordion-controller-${openItem.id}`);
     expect(itemButton).toHaveAttribute('aria-expanded', 'false')
-    fireEvent.click(itemButton);
+    await user.click(itemButton);
     expect(itemButton).toHaveAttribute('aria-expanded', 'true')
   });
 })

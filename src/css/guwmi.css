@@ -136,6 +136,16 @@
   text-decoration: none;
   cursor: default;
 }
+.guwmi-breadcrumbs ol li a.disabled, .guwmi-breadcrumbs ol li a:disabled,
+.guwmi-breadcrumbs ol li a:visited.disabled,
+.guwmi-breadcrumbs ol li a:visited:disabled,
+.guwmi-breadcrumbs ol li button.disabled,
+.guwmi-breadcrumbs ol li button:disabled {
+  color: var(--guwmi-text);
+  opacity: 0.5;
+  cursor: not-allowed;
+  text-decoration: none;
+}
 .guwmi-breadcrumbs ol li a:focus-visible,
 .guwmi-breadcrumbs ol li a:visited:focus-visible,
 .guwmi-breadcrumbs ol li button:focus-visible {

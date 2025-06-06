@@ -1,5 +1,6 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
 import Menu from '@components/Menu/Menu';
@@ -26,6 +27,10 @@ describe('Menu', () => {
         <MenuItem>Item Four</MenuItem>
       </MenuDropdown>
     </Menu>;
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+  });
 
   test('menu does not render by default', () => {
 
@@ -35,26 +40,26 @@ describe('Menu', () => {
     expect(dropdown).not.toBeInTheDocument();
   });
 
-  test('menu renders when menu trigger is clicked', () => {
+  test('menu renders when menu trigger is clicked', async () => {
 
     render( menuStructure );
 
     const menuTrigger = screen.getByRole('button');
-    fireEvent.click(menuTrigger);
+    await user.click(menuTrigger);
     const dropdown = screen.getByTestId('guwmi-menu-dropdown');
     expect(dropdown).toBeInTheDocument();
   });
 
-  test('menu items function as intended', () => {
+  test('menu items function as intended', async () => {
 
     render( menuStructure );
 
     const menuTrigger = screen.getByRole('button');
-    fireEvent.click(menuTrigger);
+    await user.click(menuTrigger);
     const link = screen.getByText('Link Item');
     expect(link).toHaveAttribute('href', 'https://www.google.com');
     const button = screen.getByText('Button Item');
-    fireEvent.click(button);
+    await user.click(button);
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });

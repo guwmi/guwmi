@@ -1,10 +1,16 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
 import Tag from '../../components/Tag/Tag';
 
 describe('Button', () => {
+
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+  });
 
   test('renders with correct text', () => {
 
@@ -14,13 +20,13 @@ describe('Button', () => {
     expect(button).toBeInTheDocument();
   });
 
-  test('calls onClick handler when clicked', () => {
+  test('calls onClick handler when clicked', async () => {
 
     const handleClick = jest.fn();
     render(<Tag value="Button tag" onClick={handleClick} />);
 
     const button = screen.getByRole('button');
-    fireEvent.click(button);
+    await user.click(button);
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
@@ -33,25 +39,25 @@ describe('Button', () => {
     expect(link).toHaveAttribute('href', 'https://www.google.com');
   });
 
-  test('does not call onClick handler when disabled', () => {
+  test('does not call onClick handler when disabled', async () => {
 
     const handleClick = jest.fn();
     render(<Tag value="Button tag - disabled" onClick={handleClick} disabled />);
 
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();
-    fireEvent.click(button);
+    await user.click(button);
     expect(handleClick).not.toHaveBeenCalled();
   });
 
-  test('renders disabled button when passed href and disabled properties', () => {
+  test('renders disabled button when passed href and disabled properties', async () => {
 
     const handleClick = jest.fn();
     render(<Tag value="Link tag - disabled" href="https://www.google.com" disabled />);
 
     const button = screen.getByText('Link tag - disabled');
     expect(button).toBeDisabled();
-    fireEvent.click(button);
+    await user.click(button);
     expect(handleClick).not.toHaveBeenCalled();
   })
 

@@ -1,12 +1,18 @@
 // import library functionality
-import { render, renderHook, fireEvent, screen } from '@testing-library/react';
+import { render, renderHook, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import hook
 import useClickOutside from '@hooks/useClickOutside';
 
 describe('useClickOutside Hook', () => {
 
-  test('calls onClose when clicked outside ref', () => {
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+  });
+
+  test('calls onClose when clicked outside ref', async () => {
 
     render(
       <>
@@ -18,10 +24,10 @@ describe('useClickOutside Hook', () => {
     const mockClose = jest.fn();
     const { rerender } = renderHook((props) => useClickOutside(props.open, props.onClose, props.ref), {initialProps: {open: true, onClose: mockClose, ref: mockRef}});
     const notRef = screen.getByTestId('not-ref');
-    fireEvent.click(notRef);
+    await user.click(notRef);
     expect(mockClose).toHaveBeenCalledTimes(1);
     rerender({open: false, onClose: mockClose, ref: mockRef});
-    fireEvent.click(notRef);
+    await user.click(notRef);
     expect(mockClose).toHaveBeenCalledTimes(1);
   })
 })

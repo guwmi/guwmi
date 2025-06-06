@@ -1,10 +1,16 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
 import Modal from '@components/Modal/Modal';
 
 describe('Modal', () => {
+
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+  });
 
   test('modal does not render by default', () => {
     
@@ -32,7 +38,7 @@ describe('Modal', () => {
     expect(modal).toBeInTheDocument();
   });
 
-  test('calls onClose handler when appropriate', () => {
+  test('calls onClose handler when appropriate', async () => {
     
     const handleClose = jest.fn(); 
     render(
@@ -43,14 +49,9 @@ describe('Modal', () => {
 
     const modal = screen.queryByTestId('guwmi-modal');
     const closeButton = modal.querySelector('button');
-    fireEvent.click(closeButton);
-    fireEvent.click(modal);
-    fireEvent.keyDown(modal, {
-      key: "Escape",
-      code: "Escape",
-      keyCode: 27,
-      charCode: 27
-    });
+    await user.click(closeButton);
+    await user.click(modal);
+    await user.keyboard('{Escape}');
     expect(handleClose).toHaveBeenCalledTimes(3);
   });
 });

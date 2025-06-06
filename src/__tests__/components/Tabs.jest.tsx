@@ -1,5 +1,6 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import components
 import TabsContainer from '@components/Tabs/TabsContainer';
@@ -25,6 +26,10 @@ describe('Tabs', () => {
         </TabPanel>
       </TabPanels>
     </TabsContainer>;
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+  });
 
   test('renders tabs correctly', () => {
 
@@ -42,7 +47,7 @@ describe('Tabs', () => {
     expect(tabPanelItems).toHaveLength(2);
   })
 
-  test('tabs visibility applies to correct panels by default and on click', () => {
+  test('tabs visibility applies to correct panels by default and on click', async () => {
 
     render(tabsJSX)
 
@@ -52,7 +57,7 @@ describe('Tabs', () => {
     const tabPanelItems = tabsPanels.querySelectorAll('section');
     expect(tabItems[0]).toHaveClass('active');
     expect(tabPanelItems[0]).not.toHaveAttribute('hidden');
-    fireEvent.click(tabItems[1]);
+    await user.click(tabItems[1]);
     expect(tabItems[0]).not.toHaveClass('active');
     expect(tabPanelItems[0]).toHaveAttribute('hidden');
     expect(tabItems[1]).toHaveClass('active');

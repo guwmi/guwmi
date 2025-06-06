@@ -33,7 +33,6 @@ export default function Breadcrumbs(props: ComponentProps) {
       <ol>
         {links.map((link, index) => (
           <li key={`${link.text.toLowerCase().replaceAll(' ', '')}-${index}`}>
-
             {(index + 1) !== links.length ? (
               <>
                 {link.href && !link.disabled ? (

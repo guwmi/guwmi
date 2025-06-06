@@ -1,5 +1,5 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 // import component to test
 import Loading from '../../components/Loading/Loading';

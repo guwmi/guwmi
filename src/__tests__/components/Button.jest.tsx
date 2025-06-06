@@ -1,10 +1,17 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
 import Button from '../../components/Button/Button';
 
 describe('Button', () => {
+
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+    jest.clearAllMocks();
+  })
 
   test('renders with children', () => {
 
@@ -14,13 +21,13 @@ describe('Button', () => {
     expect(button).toBeInTheDocument();
   });
 
-  test('calls onClick handler when clicked', () => {
+  test('calls onClick handler when clicked', async () => {
 
     const handleClick = jest.fn();
     render(<Button onClick={handleClick}>Click Me</Button>);
 
     const button = screen.getByRole('button');
-    fireEvent.click(button);
+    await user.click(button);
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
@@ -33,13 +40,13 @@ describe('Button', () => {
     expect(link).toHaveAttribute('href', 'https://www.google.com');
   });
 
-  test('does not call onClick handler when disabled', () => {
+  test('does not call onClick handler when disabled', async () => {
 
     const handleClick = jest.fn();
     render(<Button onClick={handleClick} disabled>Disabled Button</Button>);
 
     const button = screen.getByRole('button');
-    fireEvent.click(button);
+    await user.click(button);
     expect(handleClick).not.toHaveBeenCalled();
   });
 

@@ -1,10 +1,16 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import components
 import Notification from '@components/Notification/Notification';
 
 describe('Notification', () => {
+
+  let user: UserEvent;
+  beforeEach(() => {
+    user = userEvent.setup();
+  });
   
   test('renders notification with proper classes', () => {
 
@@ -48,13 +54,13 @@ describe('Notification', () => {
     expect(warning.querySelector('h2')).toHaveTextContent('Warning');
   })
 
-  test('removes notification from dom when close button is clicked', () => {
+  test('removes notification from dom when close button is clicked', async () => {
 
     render(<Notification kind="success" title="Success" content="Success content" data-testid="guwmi-notification" />)
 
     const notification = screen.getByTestId('guwmi-notification');
     const closeButton = notification.querySelector('button');
-    fireEvent.click(closeButton);
+    await user.click(closeButton);
     expect(notification).not.toBeInTheDocument();
   })
 })
