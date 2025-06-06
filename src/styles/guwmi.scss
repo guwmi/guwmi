@@ -71,3 +71,13 @@ body {
     overflow: hidden;
   }
 }
+
+// override focus state to ensure visibility in both light and dark modes
+*:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--guwmi-white), inset 0 0 0 4px var(--guwmi-primary);
+}
+
+a:not(.guwmi-btn):focus-visible {
+  box-shadow: 0 0 0 2px var(--guwmi-white), 0 0 0 4px var(--guwmi-primary);
+}

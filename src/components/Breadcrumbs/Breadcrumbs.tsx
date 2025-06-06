@@ -45,7 +45,7 @@ export default function Breadcrumbs(props: ComponentProps) {
                     {link.text}
                   </button>
                 )}
-                <Icon name="chevron-right" aria-hidden={true} size={16} />
+                <Icon name="chevron-right" aria-hidden="true" size={16} />
               </>
             ) : (
               <a aria-current="location" className="guwmi-breadcrumb-current">

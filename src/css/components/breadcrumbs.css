@@ -25,6 +25,7 @@
 .guwmi-breadcrumbs ol li a,
 .guwmi-breadcrumbs ol li a:visited,
 .guwmi-breadcrumbs ol li button {
+  display: block;
   background: none;
   border: 0;
   margin: 0;
@@ -33,6 +34,7 @@
   font-size: 1rem;
   text-decoration: underline;
   cursor: pointer;
+  line-height: 1.5;
 }
 .guwmi-breadcrumbs ol li a.guwmi-breadcrumb-current,
 .guwmi-breadcrumbs ol li a:visited.guwmi-breadcrumb-current,
@@ -40,6 +42,11 @@
   color: var(--guwmi-text);
   text-decoration: none;
   cursor: default;
+}
+.guwmi-breadcrumbs ol li a:focus-visible,
+.guwmi-breadcrumbs ol li a:visited:focus-visible,
+.guwmi-breadcrumbs ol li button:focus-visible {
+  box-shadow: 0 0 0 2px var(--guwmi-white), 0 0 0 4px var(--guwmi-primary);
 }
 
 @media (prefers-color-scheme: light) {

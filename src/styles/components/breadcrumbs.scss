@@ -29,6 +29,7 @@
       a,
       a:visited,
       button {
+        display: block;
         background: none;
         border: 0;
         margin: 0;
@@ -37,11 +38,16 @@
         font-size: 1rem;
         text-decoration: underline;
         cursor: pointer;
+        line-height: 1.5;
 
         &.guwmi-breadcrumb-current {
           color: var(--guwmi-text);
           text-decoration: none;
           cursor: default;
+        }
+
+        &:focus-visible {
+          box-shadow: 0 0 0 2px var(--guwmi-white), 0 0 0 4px var(--guwmi-primary);
         }
       }
     }
@@ -50,7 +56,10 @@
 
 @media (prefers-color-scheme: light) {
 
-  .guwmi-breadcrumbs.has-background {
-    background: rgba(0,0,0, 0.05);
+  .guwmi-breadcrumbs{
+
+    &.has-background {
+      background: rgba(0,0,0, 0.05);
+    }
   }
 }
