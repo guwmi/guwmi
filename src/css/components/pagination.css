@@ -1,0 +1,77 @@
+/**
+ * Style for the pagination component ***************************************************************
+ **/
+.guwmi-pagination {
+  display: flex;
+  width: 100%;
+  border-top: solid 1px var(--guwmi-secondary-bg);
+  padding: 3px 0 0;
+  gap: 0.5rem;
+}
+.guwmi-pagination .guwmi-select-input {
+  flex-direction: row;
+  align-items: center;
+}
+.guwmi-pagination .guwmi-select-input label {
+  text-wrap: nowrap;
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+}
+.guwmi-pagination .guwmi-select-input .guwmi-select-container {
+  flex-grow: 0;
+  width: auto;
+}
+.guwmi-pagination .guwmi-select-input .guwmi-select-container select {
+  width: auto;
+  border: 0;
+  background: none;
+  padding-right: 2rem;
+}
+.guwmi-pagination .guwmi-select-input .guwmi-select-container .guwmi-select-icon {
+  right: 0.5rem;
+}
+.guwmi-pagination .guwmi-pagination-page-size-contaiiner {
+  flex-shrink: 1;
+}
+.guwmi-pagination .guwmi-pagination-current-info {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-grow: 1;
+  border-right: solid 2px var(--guwmi-secondary-bg);
+  border-left: solid 2px var(--guwmi-secondary-bg);
+  padding-left: 1rem;
+}
+.guwmi-pagination .guwmi-pagination-current-info p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+.guwmi-pagination .guwmi-pagination-current-info p span {
+  margin: 0 0.25rem;
+}
+.guwmi-pagination .guwmi-pagination-navigation {
+  flex-shrink: 1;
+  display: flex;
+  gap: 2px;
+}
+.guwmi-pagination .guwmi-pagination-navigation .guwmi-select-input {
+  flex-direction: row-reverse;
+  margin-right: 1rem;
+}
+.guwmi-pagination .guwmi-pagination-navigation button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--guwmi-primary-bg);
+  border: 0;
+  padding: 0 0.66rem;
+  cursor: pointer;
+}
+.guwmi-pagination .guwmi-pagination-navigation button:hover {
+  background: var(--guwmi-secondary-bg);
+}
+.guwmi-pagination .guwmi-pagination-navigation button:disabled {
+  opacity: 0.33;
+  cursor: not-allowed;
+}

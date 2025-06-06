@@ -74,8 +74,11 @@ import Tooltip from './components/Tooltip/Tooltip';
 // import info block component
 import InfoBlock from './components/InfoBlock/InfoBlock';
 
-// import breadcrumbs
+// import breadcrumbs component
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
+
+// import pagination component
+import Pagination from './components/Pagination/Pagination';
 
 // export all components
 export {
@@ -102,6 +105,7 @@ export {
   NavbarGroup,
   NavbarItem,
   Notification,
+  Pagination,
   PasswordInput,
   RadioGroup,
   SearchInput,
