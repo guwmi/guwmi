@@ -3,10 +3,12 @@ import { useEffect, useId, useMemo, useState } from 'react';
 
 // import custom functionality
 import tableSearch from '../../utils/tableSearch';
+import usePagination from '../../hooks/usePagination';
 
 // import components
 import TableRow from './TableRow';
 import SearchInput from '../Inputs/Search/SearchInput';
+import Pagination from '../../components/Pagination/Pagination';
 
 // component type
 interface ComponentProps {
@@ -15,17 +17,27 @@ interface ComponentProps {
   headers: { title: string, key: string, search?: 'includes' | 'starts-with' }[];
   rows: { id: number | string, [key: string]: any }[];
   isCondensed?: boolean;
+  hasPagination?: boolean;
 }
 
 export default function Table(props: ComponentProps) {
 
-  const { title, description, headers, rows, isCondensed, ...rest } = props;
+  const {
+    title,
+    description,
+    headers,
+    rows,
+    isCondensed,
+    hasPagination = false,
+    ...rest
+  } = props;
   const id = useId();
   const isSearchable = useMemo(() => headers.some((header) => (header?.search === 'includes' || header?.search === 'starts-with')), [headers])
   const classes = useMemo(() => `guwmi-table-container${isCondensed ? ' condensed' : ''}`, [])
   const searchHeaders = useMemo(() => headers.filter((header) => (header?.search === 'includes' || header?.search === 'starts-with')), [headers]);
   const [searchValue, setSearchValue] = useState<string>('');
   const [tableRows, setTableRows] = useState<{ id: number | string, [key: string]: any }[]>(rows);
+  const { data: paginatedData, paginate, setCurrentPage } = usePagination(tableRows);
 
   const handleSearch = () => {
     const updatedRows = tableSearch(
@@ -70,7 +82,9 @@ export default function Table(props: ComponentProps) {
               </tr>
             </thead>
             <tbody>
-              {tableRows.length > 0 ? tableRows.map((row) => (
+              {(!hasPagination && tableRows.length > 0) ? tableRows.map((row) => (
+                <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
+              )) : (hasPagination && paginatedData.values.length > 0) ? paginatedData.values.map((row) => (
                 <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
               )) : (
                 <tr>
@@ -87,6 +101,15 @@ export default function Table(props: ComponentProps) {
           </tbody>
         )}
       </table>
+      {hasPagination &&
+        <Pagination
+          totalItems={tableRows.length}
+          pageSizes={[5,10,20,50]}
+          currentPage={paginatedData.currentPage}
+          currentSize={paginatedData.pageSize}
+          onChange={paginate}
+        />
+      }
     </div>
   )
 }

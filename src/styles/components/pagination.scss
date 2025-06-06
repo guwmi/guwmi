@@ -84,6 +84,7 @@
       }
 
       &:disabled {
+        background: none;
         opacity: 0.33;
         cursor: not-allowed;
       }

@@ -36,6 +36,8 @@ export default function usePagination(sourceData: any[] = []) {
   useEffect(() => {
     if (!isEmpty(sourceData)) {
       setData(sourceData.slice(start, end));
+    } else {
+      setData([]);
     }
   }, [sourceData, pageSize, currentPage])
 

@@ -72,6 +72,7 @@
   background: var(--guwmi-secondary-bg);
 }
 .guwmi-pagination .guwmi-pagination-navigation button:disabled {
+  background: none;
   opacity: 0.33;
   cursor: not-allowed;
 }

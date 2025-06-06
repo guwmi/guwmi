@@ -61,6 +61,20 @@
 .guwmi-table-container table tbody tr:last-of-type td {
   border: 0;
 }
+.guwmi-table-container .guwmi-pagination {
+  width: calc(100% - 1.25rem);
+  padding: 0.25rem 0.25rem 0.25rem 1rem;
+  background: var(--guwmi-secondary-bg);
+  border-radius: var(--guwmi-radius);
+  margin-bottom: 1rem;
+}
+.guwmi-table-container .guwmi-pagination .guwmi-pagination-current-info {
+  border-right: solid 2px var(--guwmi-tertiary-bg);
+  border-left: solid 2px var(--guwmi-tertiary-bg);
+}
+.guwmi-table-container .guwmi-pagination .guwmi-pagination-navigation button:hover {
+  background: var(--guwmi-app-bg);
+}
 
 @media (prefers-color-scheme: light) {
   .guwmi-table-container .guwmi-table-search .guwmi-search-input input {

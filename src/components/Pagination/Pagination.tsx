@@ -36,14 +36,14 @@ export default function Pagination(props: ComponentProps) {
   const sizeRef = useRef<number>(currentSize);
   const numPages = useMemo(() => Math.ceil(totalItems / size), [totalItems, size]);
   const pageArray = useMemo(() => {
-    return [...Array(Math.floor(totalItems / size)).keys()].map(i => {
+    return [...Array(Math.ceil(totalItems / size)).keys()].map(i => {
       return {name: (i + 1).toString(), value: (i + 1).toString()}
     })
   }, [totalItems, size]);
   const curRange = useMemo(() => {
     const start = (size * page) - size + 1;
     const end = start + size - 1;
-    return `${start}–${end}`
+    return `${start}–${end > totalItems ? totalItems : end}`
   }, [size, page])
 
   useEffect(() => {
