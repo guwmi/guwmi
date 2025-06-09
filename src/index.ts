@@ -1,89 +1,49 @@
 // import library styles sheet
 import './css/guwmi.css';
 
-// import button components
+// import components
+import Accordion from './components/Accordion/Accordion';
+import AccordionItem from './components/Accordion/AccrodionItem';
+import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/ButtonGroup/ButtonGroup';
+import Card from './components/Cards/Card';
+import CardSection from './components/Cards/CardSection';
+import Checkbox from './components/Inputs/Checkbox/Checkbox';
+import Container from './components/Container/Container';
+import Drawer from './components/Drawer/Drawer';
+import Grid from './components/Grid/Grid';
+import Icon from './components/Icon/Icon';
 import IconButton from './components/IconButton/IconButton';
-
-// import menu components
+import InfoBlock from './components/InfoBlock/InfoBlock';
+import Loading from './components/Loading/Loading';
 import Menu from './components/Menu/Menu';
 import MenuDropdown from './components/Menu/MenuDropdown';
 import MenuItem from './components/Menu/MenuItem';
 import MenuTrigger from './components/Menu/MenuTrigger';
-
-// import tabs components
-import TabsContainer from './components/Tabs/TabsContainer';
-import Tabs from './components/Tabs/Tabs';
-import Tab from './components/Tabs/Tab';
-import TabPanels from './components/Tabs/TabPanels';
-import TabPanel from './components/Tabs/TabPanel';
-
-// import table component
-import Table from './components/Table/Table';
-
-// import accordion components
-import Accordion from './components/Accordion/Accordion';
-import AccordionItem from './components/Accordion/AccrodionItem';
-
-// import grid components
-import Grid from './components/Grid/Grid';
-import VerticalGrid from './components/VerticalGrid/VerticalGrid';
-
-// import cards components
-import Card from './components/Cards/Card';
-import CardSection from './components/Cards/CardSection';
-
-// import notification component
-import Notification from './components/Notification/Notification';
-
-// import modal component
 import Modal from './components/Modal/Modal';
-
-// import drawer component
-import Drawer from './components/Drawer/Drawer';
-
-// import icon component
-import Icon from './components/Icon/Icon';
-
-// import inputs
+import Navbar from './components/Navbar/Navbar';
+import NavbarGroup from './components/Navbar/NavbarGroup';
+import NavbarItem from './components/Navbar/NavbarItem';
+import Notification from './components/Notification/Notification';
+import Pagination from './components/Pagination/Pagination';
 import PasswordInput from './components/Inputs/Password/PasswordInput';
 import RadioGroup from './components/Inputs/RadioGroup/RadioGroup';
 import SearchInput from './components/Inputs/Search/SearchInput';
 import SelectInput from './components/Inputs/Select/SelectInput';
+import Tab from './components/Tabs/Tab';
+import TabPanels from './components/Tabs/TabPanels';
+import TabPanel from './components/Tabs/TabPanel';
+import Tabs from './components/Tabs/Tabs';
+import TabsContainer from './components/Tabs/TabsContainer';
+import Table from './components/Table/Table';
+import Tag from './components/Tag/Tag';
 import TextArea from './components/Inputs/TextArea/TextArea';
 import TextInput from './components/Inputs/Text/TextInput';
-
-// import loading compoent
-import Loading from './components/Loading/Loading';
-
-// import tag component
-import Tag from './components/Tag/Tag';
-
-// import navbar components
-import Navbar from './components/Navbar/Navbar';
-import NavbarGroup from './components/Navbar/NavbarGroup';
-import NavbarItem from './components/Navbar/NavbarItem';
-
-// import container component
-import Container from './components/Container/Container';
-
-// import tooltip component
 import Tooltip from './components/Tooltip/Tooltip';
+import VerticalGrid from './components/VerticalGrid/VerticalGrid';
 
-// import info block component
-import InfoBlock from './components/InfoBlock/InfoBlock';
-
-// import breadcrumbs component
-import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
-
-// import pagination component
-import Pagination from './components/Pagination/Pagination';
-
-// import checkbox component
-import Checkbox from './components/Inputs/Checkbox/Checkbox';
-
-// export all components
+// export components
 export {
   Accordion,
   AccordionItem,
