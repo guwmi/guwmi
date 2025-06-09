@@ -80,6 +80,9 @@ import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
 // import pagination component
 import Pagination from './components/Pagination/Pagination';
 
+// import checkbox component
+import Checkbox from './components/Inputs/Checkbox/Checkbox';
+
 // export all components
 export {
   Accordion,
@@ -89,6 +92,7 @@ export {
   ButtonGroup,
   Card,
   CardSection,
+  Checkbox,
   Container,
   Drawer,
   Grid,
