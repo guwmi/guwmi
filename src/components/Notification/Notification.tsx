@@ -19,14 +19,14 @@ export default function Notification(props: ComponentProps) {
   const classes = useMemo(() => `guwmi-notification ${kind}`, [kind]);
   const getIconName = () => {
     switch(kind) {
-    case 'error':
-      return 'alert-square';
-    case 'warning':
-      return 'alert-triangle';
-    case 'success':
-      return 'check'
-    default:
-      return 'info';
+      case 'error':
+        return 'alert-square';
+      case 'warning':
+        return 'alert-triangle';
+      case 'success':
+        return 'check'
+      case 'info':
+        return 'info';
     }
   }
   const iconName = getIconName();

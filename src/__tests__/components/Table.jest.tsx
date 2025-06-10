@@ -116,4 +116,13 @@ describe('Table', () => {
     await user.keyboard('win');
     expect(screen.getAllByText('Windows')).toHaveLength(5);
   });
+
+  test('renders table with pagination', () => {
+
+    render( <Table headers={noSearchHeaders} rows={rows} isCondensed hasPagination data-testid="guwmi-table" /> );
+
+    const table = screen.getByTestId('guwmi-table');
+    const pagination = table.querySelector('.guwmi-pagination');
+    expect(pagination).toBeInTheDocument();
+  });
 })
