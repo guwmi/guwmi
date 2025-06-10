@@ -753,7 +753,7 @@ var Icon = (0, import_react19.forwardRef)((props, ref) => {
     switch (name) {
       case "alert-circle":
         return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(AlertCircle, {});
-      case "alert-squre":
+      case "alert-square":
         return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(AlertSquare, {});
       case "alert-triangle":
         return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(AlertTriangle, {});

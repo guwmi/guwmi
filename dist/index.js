@@ -706,7 +706,7 @@ var Icon = forwardRef((props, ref) => {
     switch (name) {
       case "alert-circle":
         return /* @__PURE__ */ jsx15(AlertCircle, {});
-      case "alert-squre":
+      case "alert-square":
         return /* @__PURE__ */ jsx15(AlertSquare, {});
       case "alert-triangle":
         return /* @__PURE__ */ jsx15(AlertTriangle, {});

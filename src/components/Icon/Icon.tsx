@@ -32,7 +32,7 @@ import {
 interface ComponentProps extends SVGProps<SVGSVGElement> {
   name: 
   | 'alert-circle'
-  | 'alert-squre'
+  | 'alert-square'
   | 'alert-triangle'
   | 'check'
   | 'chevron-down'
@@ -80,7 +80,7 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
     switch(name) {
       case 'alert-circle':
         return <AlertCircle />
-      case 'alert-squre':
+      case 'alert-square':
         return <AlertSquare />
       case 'alert-triangle':
         return <AlertTriangle />

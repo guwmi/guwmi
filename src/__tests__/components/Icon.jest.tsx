@@ -7,7 +7,7 @@ describe('Icon', () => {
 
   const iconNames = [
     'alert-circle',
-    'alert-squre',
+    'alert-square',
     'alert-triangle',
     'check',
     'chevron-down',

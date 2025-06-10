@@ -22,6 +22,30 @@
     opacity: 0.1;
   }
 
+  &.danger {
+    border-color: var(--guwmi-alert-red);
+
+    &::before {
+      background-color: var(--guwmi-alert-red);
+    }
+  }
+
+  &.warning {
+    border-color: var(--guwmi-alert-yellow);
+
+    &::before {
+      background-color: var(--guwmi-alert-yellow);
+    }
+  }
+
+  &.success {
+    border-color: var(--guwmi-alert-green);
+
+    &::before {
+      background-color: var(--guwmi-alert-green);
+    }
+  }
+
   > div {
     position: relative;
     z-index: +1;

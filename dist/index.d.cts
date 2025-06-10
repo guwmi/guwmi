@@ -168,7 +168,7 @@ interface ComponentProps$9 extends PropsWithChildren {
 declare function Drawer(props: ComponentProps$9): react_jsx_runtime.JSX.Element;
 
 interface ComponentProps$8 extends SVGProps<SVGSVGElement> {
-    name: 'alert-circle' | 'alert-squre' | 'alert-triangle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'copy' | 'close' | 'dots' | 'external-link' | 'hide' | 'home' | 'info' | 'login' | 'menu' | 'progress-alert' | 'progress-check' | 'progress' | 'search' | 'settings' | 'view';
+    name: 'alert-circle' | 'alert-square' | 'alert-triangle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'copy' | 'close' | 'dots' | 'external-link' | 'hide' | 'home' | 'info' | 'login' | 'menu' | 'progress-alert' | 'progress-check' | 'progress' | 'search' | 'settings' | 'view';
     size?: number;
     stroke?: '1' | '2' | '3';
     color?: string;

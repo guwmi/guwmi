@@ -17,19 +17,24 @@ export default function Notification(props: ComponentProps) {
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const titleText = useMemo(() => title ? title : kind.charAt(0).toUpperCase() + kind.slice(1), [title, kind]);
   const classes = useMemo(() => `guwmi-notification ${kind}`, [kind]);
+  const getIconName = () => {
+    switch(kind) {
+    case 'error':
+      return 'alert-square';
+    case 'warning':
+      return 'alert-triangle';
+    case 'success':
+      return 'check'
+    default:
+      return 'info';
+    }
+  }
+  const iconName = getIconName();
 
   return (
     isVisible ? (
       <dialog className={classes} {...rest}>
-        {kind === 'error' ? (
-          <Icon name="alert-circle" size={20} stroke="3" />
-        ) : kind === 'warning' ? (
-          <Icon name="alert-triangle" size={20} stroke="3" />
-        ) : kind === 'info' ? (
-          <Icon name="info" size={20} stroke="3" />
-        ) : (
-          <Icon name="check" size={20} stroke="3" />
-        )}
+        <Icon name={iconName} size={20} stroke="3" />
         <h2>{titleText}</h2>
         <p>{content}</p>
         <button

@@ -20,6 +20,24 @@
   background-color: var(--guwmi-alert-blue);
   opacity: 0.1;
 }
+.guwmi-info-block.danger {
+  border-color: var(--guwmi-alert-red);
+}
+.guwmi-info-block.danger::before {
+  background-color: var(--guwmi-alert-red);
+}
+.guwmi-info-block.warning {
+  border-color: var(--guwmi-alert-yellow);
+}
+.guwmi-info-block.warning::before {
+  background-color: var(--guwmi-alert-yellow);
+}
+.guwmi-info-block.success {
+  border-color: var(--guwmi-alert-green);
+}
+.guwmi-info-block.success::before {
+  background-color: var(--guwmi-alert-green);
+}
 .guwmi-info-block > div {
   position: relative;
   z-index: 1;
