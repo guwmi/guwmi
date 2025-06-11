@@ -40,6 +40,7 @@ import Table from './components/Table/Table';
 import Tag from './components/Tag/Tag';
 import TextArea from './components/Inputs/TextArea/TextArea';
 import TextInput from './components/Inputs/Text/TextInput';
+import Toggle from './components/Inputs/Toggle/Toggle';
 import Tooltip from './components/Tooltip/Tooltip';
 import VerticalGrid from './components/VerticalGrid/VerticalGrid';
 
@@ -83,6 +84,7 @@ export {
   Tag,
   TextArea,
   TextInput,
+  Toggle,
   Tooltip,
   VerticalGrid
 };
