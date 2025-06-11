@@ -50,12 +50,12 @@ export default function Button(props: ComponentProps) {
   }, [href, onClick, button.current])
 
   return (
-    href && !disabled ? (
+    href && !disabled && !loading ? (
       <a className={classes} href={href} target={target} ref={button} {...rest}>
         {children}
       </a>
     ) : (
-      <button className={classes} onClick={(e) => handleClick(e)} ref={button} disabled={disabled} {...rest}>
+      <button className={classes} onClick={(e) => handleClick(e)} ref={button} disabled={disabled || loading} {...rest}>
         {children}
       </button>
     )
