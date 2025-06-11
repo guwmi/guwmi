@@ -59,12 +59,16 @@
   overflow: hidden;
 }
 .guwmi-accordion-container .guwmi-accordion-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 .guwmi-accordion-container .guwmi-accordion-item:nth-of-type(1) > button {
   border-top: 0;
+}
+.guwmi-accordion-container .guwmi-accordion-item.guwmi-skeleton {
+  margin-bottom: 1px;
 }
 .guwmi-accordion-container .guwmi-accordion-item > button {
   display: flex;

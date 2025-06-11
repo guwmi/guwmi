@@ -142,4 +142,18 @@ describe('Accordion Component', () => {
     const accordionItem = screen.getByTestId('guwmi-accordion-item');
     expect(accordionItem).toHaveClass('override-class');
   });
+
+  test('renders with skeleton classe', () => {
+
+    render(
+      <Accordion loading>
+        <AccordionItem title="test title" id="test-id" data-testid="guwmi-accordion-item">
+          <p>test content</p>
+        </AccordionItem>
+      </Accordion>
+    )
+    
+    const accordionItem = screen.getByTestId('guwmi-accordion-item');
+    expect(accordionItem).toHaveClass('guwmi-skeleton');
+  });
 })

@@ -8,6 +8,7 @@
   overflow: hidden;
   
   .guwmi-accordion-item {
+    position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -17,6 +18,10 @@
       > button {
         border-top: 0;
       }
+    }
+
+    &.guwmi-skeleton {
+      margin-bottom: 1px;
     }
 
     > button {

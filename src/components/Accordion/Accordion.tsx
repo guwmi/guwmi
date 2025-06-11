@@ -8,6 +8,7 @@ import AccordionContext from './AccordionContext';
 interface ComponentProps extends PropsWithChildren {
   defaultOpen?: string;
   className?: string;
+  loading?: boolean;
 }
 
 export default function Accordion(props: ComponentProps) {
@@ -16,6 +17,7 @@ export default function Accordion(props: ComponentProps) {
     children,
     defaultOpen,
     className,
+    loading,
     ...rest
   } = props;
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
@@ -28,7 +30,7 @@ export default function Accordion(props: ComponentProps) {
   }, [defaultOpen])
 
   return (
-    <AccordionContext.Provider value={{ openAccordions, setOpenAccordions }}>
+    <AccordionContext.Provider value={{ loading, openAccordions, setOpenAccordions }}>
       <div className={classes} {...rest}>
         {children}
       </div>
