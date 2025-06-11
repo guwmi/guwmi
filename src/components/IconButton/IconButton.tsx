@@ -1,5 +1,5 @@
 // import library functionality
-import React, { PropsWithChildren, useMemo } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -32,7 +32,7 @@ export default function IconButton(props: ComponentProps) {
     disabled = false,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-btn icon ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`, []);
+  const classes = `guwmi-btn icon ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`;
 
   return (
     <button

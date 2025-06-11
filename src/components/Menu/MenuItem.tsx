@@ -1,10 +1,11 @@
 // import library functionality
-import React, { useMemo, PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 // compoent type
 interface ComponentProps extends PropsWithChildren {
   onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
   href?: string;
+  className?: string;
 }
 
 /**
@@ -14,8 +15,14 @@ interface ComponentProps extends PropsWithChildren {
 
 export default function MenuItem(props: ComponentProps) {
 
-  const { children, onClick, href, ...rest } = props;
-  const classes = useMemo(() => `guwmi-menu-item`, []);
+  const {
+    onClick,
+    href,
+    className,
+    children,
+    ...rest
+  } = props;
+  const classes = `guwmi-menu-item${className ? ' ' + className : ''}`;
 
   return (
     <li className={classes}>

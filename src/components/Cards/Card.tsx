@@ -1,11 +1,12 @@
 // import library functionality
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
   title?: string;
   subTitle?: string;
   image?: string;
+  className?: string;
 }
 
 export default function Card(props: ComponentProps) {
@@ -14,12 +15,14 @@ export default function Card(props: ComponentProps) {
     title,
     subTitle,
     image,
+    className,
     children,
     ...rest
   } = props;
+  const classes = `guwmi-card${className ? ' ' + className : ''}`;
 
   return (
-    <div className="guwmi-card" {...rest}>
+    <div className={classes} {...rest}>
       {image && 
         <img src={image} alt={title ? 'Image that represents ' + title : 'Image representing the content for this card'} className="guwmi-card-image" />
       }

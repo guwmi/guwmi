@@ -1,7 +1,6 @@
 // import library functionality
 import {
   useEffect,
-  useMemo,
   useRef,
   useState,
   PropsWithChildren
@@ -29,25 +28,25 @@ export default function NavbarGroup(props: ComponentProps) {
     children,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-navbar-group${className ? ' ' + className : ''}`, [className]);
   const itemRef = useRef<HTMLLIElement>(null);
   const contentRef = useRef<HTMLUListElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(defaultOpen);
   const { isVisible } = useAnimation(isOpen, 'open', itemRef);
+  const classes = `guwmi-navbar-group${isOpen ? ' open' : ''}${className ? ' ' + className : ''}`;
 
-    useEffect(() => {
-      const defaultHeight = buttonRef.current.offsetHeight;
-      if (contentRef.current && isOpen) {
-        const height = contentRef.current.offsetHeight;
-        itemRef.current.style.height = `${height + defaultHeight}px`;
-      } else {
-        itemRef.current.style.height = `${defaultHeight}px`;
-      }
-    }, [contentRef.current, isOpen])
+  useEffect(() => {
+    const defaultHeight = buttonRef.current.offsetHeight;
+    if (contentRef.current && isOpen) {
+      const height = contentRef.current.offsetHeight;
+      itemRef.current.style.height = `${height + defaultHeight}px`;
+    } else {
+      itemRef.current.style.height = `${defaultHeight}px`;
+    }
+  }, [contentRef.current, isOpen]);
 
   return (
-    <li className={`${classes}${isOpen ? ' open' : ''}`} ref={itemRef} {...rest}>
+    <li className={classes} ref={itemRef} {...rest}>
       <button
         className="guwmi-navbar-button"
         aria-expanded={isOpen}

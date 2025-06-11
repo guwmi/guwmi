@@ -1,5 +1,8 @@
 // import library functionality
-import { useMemo, useId } from 'react';
+import { useId } from 'react';
+
+// import component
+import Icon from '../../../components/Icon/Icon';
 
 // component type
 interface ComponentProps {
@@ -30,12 +33,15 @@ export default function Checkbox(props: ComponentProps) {
     onFocus,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-checkbox-input${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`, [className]);
+  const classes = `guwmi-checkbox-input${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`;
   const inputId = id ?? useId();
 
   return (
     <div className={classes} {...rest}>
       <div className="guwmi-checkbox-container">
+        <span className="guwmi-checkmark">
+          <Icon name="check" size={18} />
+        </span>
         <input
           type="checkbox"
           id={inputId}
@@ -47,7 +53,6 @@ export default function Checkbox(props: ComponentProps) {
           onBlur={onBlur}
           onFocus={onFocus}
         />
-        <span className="guwmi-checkmark"></span>
       </div>
       <label htmlFor={inputId}>{label}</label>
     </div>

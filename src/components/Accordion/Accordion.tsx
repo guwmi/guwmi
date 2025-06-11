@@ -7,12 +7,19 @@ import AccordionContext from './AccordionContext';
 // component type
 interface ComponentProps extends PropsWithChildren {
   defaultOpen?: string;
+  className?: string;
 }
 
 export default function Accordion(props: ComponentProps) {
 
-  const { children, defaultOpen, ...rest } = props;
+  const {
+    children,
+    defaultOpen,
+    className,
+    ...rest
+  } = props;
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
+  const classes = `guwmi-accordion-container${className ? ' ' + className : ''}`;
 
   useEffect(() => {
     if (defaultOpen) {
@@ -22,7 +29,7 @@ export default function Accordion(props: ComponentProps) {
 
   return (
     <AccordionContext.Provider value={{ openAccordions, setOpenAccordions }}>
-      <div className="guwmi-accordion-container" {...rest}>
+      <div className={classes} {...rest}>
         {children}
       </div>
     </AccordionContext.Provider>

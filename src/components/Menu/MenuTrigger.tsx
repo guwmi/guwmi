@@ -4,6 +4,11 @@ import React, { useMemo, useContext, PropsWithChildren } from 'react';
 // import context
 import MenuContext from './MenuContext';
 
+// component type
+interface ComponentProps extends PropsWithChildren{
+  className?: string;
+}
+
 // children type
 interface ChildType {
   onClick: () => void;
@@ -14,16 +19,17 @@ interface ChildType {
  * @param children - ReacElements provided as props
  */
 
-export default function MenuTrigger(props: PropsWithChildren) {
+export default function MenuTrigger(props: ComponentProps) {
 
-  const { children, ...rest } = props;
+  const { className, children, ...rest } = props;
   const { isOpen, setIsOpen } = useContext(MenuContext);
   const childrenWithClick = useMemo(() => {
     return React.Children.map(children, (child) => React.cloneElement(child as React.ReactElement<ChildType>, { onClick: () => setIsOpen(!isOpen) }))
   }, [children, isOpen]);
+  const classes = `guwmi-menu-trigger${className ? ' ' + className : ''}`;
 
   return (
-    <div className="guwmi-menu-trigger" {...rest}>
+    <div className={classes} {...rest}>
       {childrenWithClick}
     </div>
   )

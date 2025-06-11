@@ -1,5 +1,5 @@
 // import library functionality
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 // import components
 import Icon from '../Icon/Icon';
@@ -9,14 +9,21 @@ interface ComponentProps {
   kind: 'error' | 'warning' | 'success' | 'info';
   title?: string;
   content: string;
+  className?: string
 }
 
 export default function Notification(props: ComponentProps) {
 
-  const { kind, title, content, ...rest } = props;
+  const {
+    kind,
+    title,
+    content,
+    className,
+    ...rest
+  } = props;
   const [isVisible, setIsVisible] = useState<boolean>(true);
-  const titleText = useMemo(() => title ? title : kind.charAt(0).toUpperCase() + kind.slice(1), [title, kind]);
-  const classes = useMemo(() => `guwmi-notification ${kind}`, [kind]);
+  const titleText = title ? title : kind.charAt(0).toUpperCase() + kind.slice(1);
+  const classes =`guwmi-notification ${kind}${className ? ' ' + className : ''}`;
   const getIconName = () => {
     switch(kind) {
       case 'error':

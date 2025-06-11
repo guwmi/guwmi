@@ -1,5 +1,5 @@
 // import library functionality
-import { useMemo, useRef, PropsWithChildren } from 'react';
+import { useRef, PropsWithChildren } from 'react';
 
 // import custom functionality
 import useAnimation from '../../hooks/useAnimation';
@@ -17,12 +17,21 @@ interface ComponentProps extends PropsWithChildren {
   onClose: () => void;
   preventScroll?: boolean;
   position?: 'left' | 'right';
+  className?: string;
 }
 
 export default function Drawer(props: ComponentProps) {
 
-  const { open, onClose, preventScroll = false, position = 'left', children, ...rest } = props;
-  const classes = useMemo(() => `guwmi-drawer ${position}`, [position]);
+  const {
+    open,
+    onClose,
+    preventScroll = false,
+    position = 'left',
+    className,
+    children,
+    ...rest
+  } = props;
+  const classes = `guwmi-drawer ${position}${className ? ' ' + className : ''}`;
   const drawerOverlay = useRef<HTMLDivElement>(null);
   const drawer = useRef<HTMLElement>(null);
   const { isVisible } = useAnimation(open, 'open', drawerOverlay);

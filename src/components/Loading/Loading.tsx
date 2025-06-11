@@ -1,6 +1,3 @@
-// import library functionality
-import { useEffect, useMemo, useState } from 'react';
-
 // import custom fuctionality
 import usePreventScroll from '../../hooks/usePreventScroll';
 
@@ -24,8 +21,16 @@ interface ComponentProps {
 
 export default function Loading(props: ComponentProps) {
 
-  const { active, size = 'md', position = 'block', speed = 'normal', overlay = false, className, ...rest } = props;
-  const classes = useMemo(() => `guwmi-loading-container ${size} ${speed} ${position} ${className ?? ''}${overlay ? ' overlay' : ''} `, [size, speed, position, overlay, className]);
+  const {
+    active,
+    size = 'md',
+    position = 'block',
+    speed = 'normal',
+    overlay = false,
+    className,
+    ...rest 
+  } = props;
+  const classes = `guwmi-loading-container ${size} ${speed} ${position} ${className ?? ''}${overlay ? ' overlay' : ''} `;
   usePreventScroll(active, position === 'full-screen');
 
   return (

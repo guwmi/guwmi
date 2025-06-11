@@ -1,5 +1,5 @@
 // import library functionality
-import { useMemo, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -15,7 +15,7 @@ export default function Navbar(props: ComponentProps) {
     children,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-navbar${className ? ' ' + className : ''}`, [className]);
+  const classes = `guwmi-navbar${className ? ' ' + className : ''}`;
 
   return (
     <nav

@@ -1,5 +1,5 @@
 // import library functionality
-import { useMemo, useId } from 'react';
+import { useId } from 'react';
 
 // component type
 interface ComponentProps {
@@ -30,7 +30,7 @@ export default function Toggle(props: ComponentProps) {
     onFocus,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-toggle${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`, [className]);
+  const classes = `guwmi-toggle${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`;
   const inputId = id ?? useId();
 
   return (

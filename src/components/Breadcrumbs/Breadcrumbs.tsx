@@ -1,6 +1,3 @@
-// import library functionality
-import { useMemo } from 'react';
-
 // import components
 import Icon from '../../components/Icon/Icon';
 
@@ -26,7 +23,7 @@ export default function Breadcrumbs(props: ComponentProps) {
     className,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-breadcrumbs${hasBackground ? ' has-background' : ''}${className ? ' ' + className : ''}`, [className]);
+  const classes = `guwmi-breadcrumbs${hasBackground ? ' has-background' : ''}${className ? ' ' + className : ''}`;
 
   return (
     <nav className={classes} aria-label={ariaLabel} {...rest}>

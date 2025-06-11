@@ -13,17 +13,23 @@ import useWindowWidth from '../../hooks/useWindowWidth';
 // import context
 import TabsContext from './TabsContext';
 
+// component type
+interface ComponentProps extends PropsWithChildren {
+  className?: string;
+}
+
 // child type
 interface ChildType {
   index: number;
 }
 
-export default function TabPanels(props: PropsWithChildren) {
+export default function TabPanels(props: ComponentProps) {
 
-  const { children, ...rest } = props;
+  const { className, children, ...rest } = props;
   const { selectedTab } = useContext(TabsContext);
   const windowWidth = useWindowWidth();
   const panels = useRef(null);
+  const classes = `guwmi-tab-panels${className ? ' ' + className : ''}`;
 
   const childrenWithIndex = useMemo(() => {
     return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<ChildType>, { index: index }))
@@ -36,7 +42,7 @@ export default function TabPanels(props: PropsWithChildren) {
   }, [selectedTab, windowWidth])
 
   return (
-    <div className="guwmi-tab-panels" ref={panels} {...rest}>
+    <div className={classes} ref={panels} {...rest}>
       {childrenWithIndex}
     </div>
   )

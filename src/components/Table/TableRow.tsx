@@ -13,7 +13,12 @@ interface TableCell { id: number | string, col: string, value: any }
 
 export default function TableRow(props: ComponentProps) {
 
-  const { headers, data, tableId, ...rest } = props;
+  const {
+    headers,
+    data,
+    tableId,
+    ...rest
+  } = props;
   const cellData = useMemo(() => {
     const arr: TableCell[] = [];
     headers.forEach((h) => {

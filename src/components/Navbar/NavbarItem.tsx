@@ -1,10 +1,5 @@
 // import library functionality
-import React, {
-  useCallback,
-  useMemo,
-  useRef,
-  PropsWithChildren
-} from 'react';
+import React, { useRef, PropsWithChildren } from 'react';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -33,14 +28,14 @@ export default function NavbarItem(props: ComponentProps) {
     disabled = false,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-navbar-item${className ? ' ' + className : ''}${active ? ' active' : ''}`, []);
+  const classes = `guwmi-navbar-item${active ? ' active' : ''}${className ? ' ' + className : ''}`;
   const button = useRef(null);
-  const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     button.current.focus();
     if (onClick) {
       onClick(e);
     }
-  }, [href, onClick, button.current])
+  };
 
   return (
     <li className={classes} {...rest}>

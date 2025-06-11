@@ -10,20 +10,26 @@ import React, {
 // import context
 import TabsContext from './TabsContext';
 
+// component type
+interface ComponentProps extends PropsWithChildren {
+  className?: string;
+}
+
 // child type
 interface ChildType {
   index: number;
 }
 
-export default function Tabs(props: PropsWithChildren) {
+export default function Tabs(props: ComponentProps) {
 
-  const { children, ...rest } = props;
+  const { className, children, ...rest } = props;
   const { selectedTab } = useContext(TabsContext);
   const tabsContainer = useRef(null);
   const slider = useRef(null);
   const childrenWithIndex = useMemo(() => {
     return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<ChildType>, { index: index }))
   }, [children])
+  const classes = `guwmi-tabs${className ? ' ' + className : ''}`;
 
   useEffect(() => {
     if (tabsContainer.current.querySelector('.guwmi-tab.active')) {
@@ -36,7 +42,7 @@ export default function Tabs(props: PropsWithChildren) {
   }, [tabsContainer, selectedTab])
 
   return (
-    <nav className="guwmi-tabs" role="tablist" ref={tabsContainer} {...rest}>
+    <nav className={classes} role="tablist" ref={tabsContainer} {...rest}>
       <span className="guwmi-tabs-slider" ref={slider}></span>
       {childrenWithIndex}
     </nav>

@@ -1,5 +1,5 @@
 // import library functionality
-import React, { useState, useMemo,  PropsWithChildren } from 'react';
+import { useState, PropsWithChildren } from 'react';
 
 // import context
 import MenuContext from './MenuContext';
@@ -9,6 +9,7 @@ interface ComponentProps extends PropsWithChildren {
   position?: 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
   width?: number;
   ariaLabel: string;
+  className?: string;
 }
 
 /**
@@ -23,10 +24,11 @@ export default function Menu(props: ComponentProps) {
     position = 'bottom-right',
     width,
     ariaLabel,
+    className,
     ...rest
   } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const classes = useMemo(() => `guwmi-menu-container ${position}`, []);
+  const classes = `guwmi-menu-container ${position}${className ? ' ' + className : ''}`;
 
   return (
     <div className={classes} {...rest}>

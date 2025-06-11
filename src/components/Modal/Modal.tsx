@@ -1,5 +1,5 @@
 // import library functionality
-import { useMemo, useRef, PropsWithChildren } from 'react';
+import { useRef, PropsWithChildren } from 'react';
 
 // import custom functionality
 import useAnimation from '../../hooks/useAnimation';
@@ -17,12 +17,21 @@ interface ComponentProps extends PropsWithChildren {
   open: boolean;
   onClose: () => void;
   preventScroll?: boolean;
+  className?: string;
 }
 
 export default function Modal(props: ComponentProps) {
 
-  const { open, onClose, preventScroll = false, size = 'sm', children, ...rest } = props;
-  const classes = useMemo(() => `guwmi-modal ${size}`, [size]);
+  const {
+    open,
+    onClose,
+    preventScroll = false,
+    size = 'sm',
+    className,
+    children,
+    ...rest
+  } = props;
+  const classes = `guwmi-modal ${size}${className ? ' ' + className : ''}`;
   const modalOverlay = useRef<HTMLDivElement>(null);
   const modal = useRef<HTMLDialogElement>(null);
   const { isVisible } = useAnimation(open, 'open', modalOverlay);

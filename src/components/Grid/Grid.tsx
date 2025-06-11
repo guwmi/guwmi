@@ -1,5 +1,5 @@
 // import library functionality
-import React, { useMemo, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -7,6 +7,7 @@ interface ComponentProps extends PropsWithChildren {
   wrap?: 'wrap' | 'no-wrap';
   rowOrder?: 'standard' | 'reverse';
   align?: 'left' | 'right' | 'center';
+  className?: string;
 }
 
 export default function Grid(props: ComponentProps) {
@@ -17,10 +18,11 @@ export default function Grid(props: ComponentProps) {
     wrap = 'wrap',
     rowOrder = 'standard',
     align = 'left',
+    className,
     ...rest
   } = props;
 
-  const classes = useMemo(() => {
+  const getClasses = () => {
     let classString = 'guwmi-grid';
     switch(columns) {
       case 'auto':
@@ -54,8 +56,13 @@ export default function Grid(props: ComponentProps) {
         classString += ' center';
       }
     }
+    if (className) {
+      classString += ' ' + className;
+    }
+
     return classString;
-  }, [columns, wrap, rowOrder, align]);
+  };
+  const classes = getClasses();
 
   return (
     <div className={classes} {...rest}>

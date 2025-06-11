@@ -21,17 +21,25 @@ import AccordionContext from './AccordionContext';
 interface ComponentProps extends PropsWithChildren {
   title: string;
   id: string;
+  className?: string;
 }
 
 export default function AccordionItem(props: ComponentProps) {
 
-  const { children, title, id, ...rest } = props;
+  const {
+    children,
+    title,
+    id,
+    className,
+    ...rest
+  } = props;
   const { openAccordions, setOpenAccordions } = useContext(AccordionContext);
   const windowWidth = useWindowWidth();
   const panelRef = useRef(null);
   const contentRef = useRef(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const classes = `guwmi-accordion-item${className ? ' ' + className : ''}`;
 
   useEffect(() => {
     if (openAccordions.includes(id)) {
@@ -66,7 +74,7 @@ export default function AccordionItem(props: ComponentProps) {
   }, [contentRef.current, isOpen, windowWidth])
 
   return (
-    <div className="guwmi-accordion-item" {...rest}>
+    <div className={classes} {...rest}>
       <button
         onClick={() => isOpen ? close() : open()}
         id={`guwmi-accordion-controller-${id}`}

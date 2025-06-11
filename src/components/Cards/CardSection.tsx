@@ -1,12 +1,18 @@
 // import library functionality
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
-export default function CardSection(props: PropsWithChildren) {
+// component type
+interface ComponentProps extends PropsWithChildren {
+  className?: string;
+}
 
-  const { children, ...rest } = props;
+export default function CardSection(props: ComponentProps) {
+
+  const { className, children, ...rest } = props;
+  const classes = `guwmi-card-section${className ? ' ' + className : ''}`
 
   return (
-    <div className="guwmi-card-section" {...rest}>
+    <div className={classes} {...rest}>
       {children}
     </div>
   )

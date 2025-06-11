@@ -18,6 +18,7 @@ interface ComponentProps {
   rows: { id: number | string, [key: string]: any }[];
   isCondensed?: boolean;
   hasPagination?: boolean;
+  className?: string;
 }
 
 export default function Table(props: ComponentProps) {
@@ -29,11 +30,12 @@ export default function Table(props: ComponentProps) {
     rows,
     isCondensed,
     hasPagination = false,
+    className,
     ...rest
   } = props;
   const id = useId();
   const isSearchable = useMemo(() => headers.some((header) => (header?.search === 'includes' || header?.search === 'starts-with')), [headers])
-  const classes = useMemo(() => `guwmi-table-container${isCondensed ? ' condensed' : ''}`, [])
+  const classes = `guwmi-table-container${isCondensed ? ' condensed' : ''}${className ? ' ' + className : ''}`;
   const searchHeaders = useMemo(() => headers.filter((header) => (header?.search === 'includes' || header?.search === 'starts-with')), [headers]);
   const [searchValue, setSearchValue] = useState<string>('');
   const [tableRows, setTableRows] = useState<{ id: number | string, [key: string]: any }[]>(rows);

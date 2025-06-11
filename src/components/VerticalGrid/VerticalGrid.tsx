@@ -1,5 +1,5 @@
 // import library functionality
-import { useMemo, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -18,7 +18,7 @@ export default function VerticalGrid(props: ComponentProps) {
     ...rest
   } = props;
 
-  const classes = useMemo(() => {
+  const getClasses = () => {
     let classString = 'guwmi-vertical-grid ';
     switch(spacing) {
       case 1:
@@ -61,13 +61,13 @@ export default function VerticalGrid(props: ComponentProps) {
           classString += ' pad-2';
       }
     }
-
     if (className) {
       classString += ' ' + className;
     }
 
     return classString;
-  }, [spacing]);
+  };
+  const classes = getClasses();
 
   return (
     <div className={classes} {...rest}>

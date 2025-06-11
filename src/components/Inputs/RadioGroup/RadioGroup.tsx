@@ -1,5 +1,5 @@
 // import library functionality
-import { useId, useMemo } from 'react';
+import { useId } from 'react';
 
 // component type
 interface ComponentProps {
@@ -12,6 +12,7 @@ interface ComponentProps {
   hasError?: boolean;
   options: { name: string, value: string, disabled?: boolean }[];
   layout?: 'column' | 'row';
+  className?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -29,13 +30,14 @@ export default function RadioGroup(props: ComponentProps) {
     hasError,
     options,
     layout = 'column',
+    className,
     onChange,
     onBlur,
     onFocus,
     ...rest
   } = props;
   const inputId = id ?? useId();
-  const classes = useMemo(() => `guwmi-radio-group${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}`, [hasError, disabled])
+  const classes = `guwmi-radio-group${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`;
 
   return (
     <div className={classes} {...rest}>

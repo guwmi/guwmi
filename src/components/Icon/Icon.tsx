@@ -1,5 +1,5 @@
 // import library functionality
-import { useMemo, forwardRef, SVGProps } from 'react';
+import { useCallback, forwardRef, SVGProps } from 'react';
 
 // import icon paths
 import {
@@ -75,9 +75,9 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
     className,
     ...rest
   } = props;
-  const classes = useMemo(() => `icon guwmi-icon guwmi-icon-${name}${className ? ' ' + className : ''}`, [className]);
-  const paths = useMemo(() => {
-    switch(name) {
+  const classes =`icon guwmi-icon guwmi-icon-${name}${className ? ' ' + className : ''}`;
+  const getPaths = useCallback((iconName:String) => {
+    switch(iconName) {
       case 'alert-circle':
         return <AlertCircle />
       case 'alert-square':
@@ -125,7 +125,8 @@ const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
       case 'view':
         return <View />
     }
-  }, [name]);
+  }, []);
+  const paths = getPaths(name);
 
   return (
     <svg

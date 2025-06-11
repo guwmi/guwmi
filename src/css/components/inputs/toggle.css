@@ -1,3 +1,56 @@
 /**
  * Styles for the Toggle input component ****************************************************
  **/
+.guwmi-toggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.guwmi-toggle * {
+  cursor: pointer;
+}
+.guwmi-toggle.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.guwmi-toggle .guwmi-toggle-container {
+  position: relative;
+  height: 1rem;
+  width: 2rem;
+  border: solid 3px var(--guwmi-secondary-bg);
+  background: var(--guwmi-secondary-bg);
+  border-radius: 50px;
+  transition: var(--guwmi-transition-short);
+}
+.guwmi-toggle .guwmi-toggle-container::after {
+  position: absolute;
+  display: block;
+  content: "";
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background: var(--guwmi-white);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: var(--guwmi-transition-short);
+}
+.guwmi-toggle .guwmi-toggle-container:has(> input:checked) {
+  border-color: var(--guwmi-primary);
+  background: var(--guwmi-primary);
+}
+.guwmi-toggle .guwmi-toggle-container:has(> input:checked)::after {
+  left: calc(100% - 1rem);
+}
+.guwmi-toggle .guwmi-toggle-container:has(> input:focus-visible) {
+  box-shadow: 0 0 0 2px var(--guwmi-white), 0 0 0 4px var(--guwmi-primary);
+}
+.guwmi-toggle .guwmi-toggle-container input {
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+}
+.guwmi-toggle label {
+  font-size: 0.9rem;
+  line-height: 1;
+}

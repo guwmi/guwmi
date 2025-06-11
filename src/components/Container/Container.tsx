@@ -1,5 +1,5 @@
 // import library functionality
-import { useMemo, PropsWithChildren, JSX } from 'react';
+import { PropsWithChildren, JSX } from 'react';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
@@ -17,7 +17,7 @@ export default function Container(props: ComponentProps) {
     children,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-container${className ? ' ' + className : ''}`, [className]);
+  const classes = `guwmi-container${className ? ' ' + className : ''}`;
 
   return (
     <div className={classes} {...rest}>

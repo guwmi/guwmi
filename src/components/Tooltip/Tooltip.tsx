@@ -1,9 +1,5 @@
 // import library functionality
-import {
-  useMemo,
-  useRef,
-  PropsWithChildren
-} from 'react';
+import { PropsWithChildren } from 'react';
 
 // component type
 interface CompoentProps extends PropsWithChildren {
@@ -21,7 +17,7 @@ export default function Tooltip(props: CompoentProps) {
     children,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-tooltip ${align}${className ? ' ' + className : ''}`, [align, className]);
+  const classes = `guwmi-tooltip ${align}${className ? ' ' + className : ''}`;
 
   return (
     <div className={classes} {...rest}>

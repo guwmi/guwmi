@@ -1,5 +1,5 @@
 // import library functionality
-import { useId, useMemo } from 'react';
+import { useId } from 'react';
 
 // component type
 interface ComponentProps {
@@ -14,6 +14,7 @@ interface ComponentProps {
   error?: string;
   hasError?: boolean;
   maxLength?: number;
+  className?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -33,13 +34,14 @@ export default function TextInput(props: ComponentProps) {
     error,
     hasError,
     maxLength,
+    className,
     onChange,
     onBlur,
     onFocus,
     ...rest
   } = props;
   const inputId = id ?? useId();
-  const classes = useMemo(() => `guwmi-text-input${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}`, [hasError, disabled])
+  const classes = `guwmi-text-input${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`
 
   return (
     <div className={classes} {...rest}>

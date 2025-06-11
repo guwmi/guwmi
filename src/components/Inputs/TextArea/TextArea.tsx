@@ -1,5 +1,5 @@
 // import library functionality
-import { useId, useMemo } from 'react';
+import { useId } from 'react';
 
 // component type
 interface ComponentProps {
@@ -15,6 +15,7 @@ interface ComponentProps {
   hasError?: boolean;
   maxLength?: number;
   rows?: number;
+  className?: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLTextAreaElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLTextAreaElement>) => void;
@@ -35,13 +36,14 @@ export default function TextArea(props: ComponentProps) {
     hasError,
     maxLength,
     rows,
+    className,
     onChange,
     onBlur,
     onFocus,
     ...rest
   } = props;
   const inputId = id ?? useId();
-  const classes = useMemo(() => `guwmi-textarea${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}`, [hasError, disabled])
+  const classes = `guwmi-textarea${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`
 
   return (
     <div className={classes} {...rest}>

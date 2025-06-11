@@ -1,7 +1,6 @@
 // import library functionality
 import React, {
   useCallback,
-  useMemo,
   useRef,
   PropsWithChildren
 } from 'react';
@@ -39,7 +38,7 @@ export default function Button(props: ComponentProps) {
     disabled = false,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`, []);
+  const classes = `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`;
   const button = useRef(null);
   const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     button.current.focus();

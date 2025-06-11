@@ -1,5 +1,5 @@
 // import library functionality
-import { useId, useMemo, useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 
 // import icon
 import Icon from '../../../components/Icon/Icon';
@@ -18,6 +18,7 @@ interface ComponentProps {
   error?: string;
   hasError?: boolean;
   maxLength?: number;
+  className?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -37,6 +38,7 @@ export default function PasswordInput(props: ComponentProps) {
     error,
     hasError,
     maxLength,
+    className,
     onChange,
     onBlur,
     onFocus,
@@ -44,7 +46,7 @@ export default function PasswordInput(props: ComponentProps) {
   } = props;
   const inputId = id ?? useId();
   const passwordRef = useRef<HTMLDivElement>(null);
-  const classes = useMemo(() => `guwmi-password-input${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}`, [hasError, disabled])
+  const classes = `guwmi-password-input${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`;
   const [type, setType] = useState<'text' | 'password'>('password');
   const toggleType = () => {
     if (type === 'password') {

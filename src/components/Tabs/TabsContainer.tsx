@@ -1,18 +1,24 @@
 // import library functionality
-import React, { useState, useId, PropsWithChildren } from 'react';
+import { useState, useId, PropsWithChildren } from 'react';
 
 // import context
 import TabsContext from './TabsContext';
 
-export default function TabsContainer(props: PropsWithChildren) {
+// component type
+interface ComponentProps extends PropsWithChildren {
+  className?: string;
+}
 
-  const { children, ...rest } = props;
+export default function TabsContainer(props: ComponentProps) {
+
+  const { className, children, ...rest } = props;
   const [selectedTab, setSelectedTab] = useState<number>(0);
+  const classes = `guwmi-tabs-container${className ? ' ' + className : ''}`;
   const id = useId();
 
   return (
     <TabsContext.Provider value={{id, selectedTab, setSelectedTab}}>
-      <div className="guwmi-tabs-container" {...rest}>
+      <div className={classes} {...rest}>
         {children}
       </div>
     </TabsContext.Provider>

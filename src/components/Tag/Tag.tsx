@@ -1,5 +1,5 @@
 // import library functionality
-import { useMemo, useRef, useCallback } from 'react';
+import { useRef } from 'react';
 
 // component type
 interface ComponentProps {
@@ -26,14 +26,14 @@ export default function Tag(props: ComponentProps) {
     disabled = false,
     ...rest
   } = props;
-  const classes = useMemo(() => `guwmi-tag ${size} ${variant}${className ? ' ' + className : ''}`, [size, variant, className]);
+  const classes = `guwmi-tag ${size} ${variant}${className ? ' ' + className : ''}`;
   const button = useRef(null);
-  const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     button.current.focus();
     if (onClick) {
       onClick(e);
     }
-  }, [href, onClick, button.current])
+  };
 
   return (
     href && !disabled ? (

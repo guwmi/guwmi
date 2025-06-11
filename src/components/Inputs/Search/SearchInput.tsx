@@ -14,6 +14,7 @@ interface ComponentProps {
   value?: string;
   readOnly?: boolean;
   maxLength?: number;
+  className?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -33,12 +34,14 @@ export default function SearchInput(props: ComponentProps) {
     onChange,
     onBlur,
     onFocus,
+    className,
     ...rest
   } = props;
+  const classes = `guwmi-search-input${className ? ' ' + className : ''}`;
   const searchId = id ?? useId();
 
   return (
-    <div className="guwmi-search-input" {...rest}>
+    <div className={classes} {...rest}>
       <span>
         <Icon name="search" size={18} />
       </span>

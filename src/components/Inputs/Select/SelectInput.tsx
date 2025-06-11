@@ -1,5 +1,5 @@
 // import library functionality
-import { useId, useMemo } from 'react';
+import { useId } from 'react';
 
 // import components
 import Icon from '../../../components/Icon/Icon';
@@ -13,6 +13,7 @@ interface ComponentProps {
   value?: string;
   error?: string;
   hasError?: boolean;
+  className?: string;
   options: { name: string, value: string, disabled?: boolean }[];
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLSelectElement>) => void;
@@ -29,6 +30,7 @@ export default function SelectInput(props: ComponentProps) {
     value,
     error,
     hasError,
+    className,
     options,
     onChange,
     onBlur,
@@ -36,7 +38,7 @@ export default function SelectInput(props: ComponentProps) {
     ...rest
   } = props;
   const inputId = id ?? useId();
-  const classes = useMemo(() => `guwmi-select-input${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}`, [hasError, disabled])
+  const classes = `guwmi-select-input${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`;
 
   return (
     <div className={classes} {...rest}>
