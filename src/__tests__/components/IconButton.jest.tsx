@@ -65,16 +65,16 @@ describe('Icon Button', () => {
     expect(button).toBeDisabled();
   });
 
-  test('applies custom className', () => {
+  test('applies override class', () => {
 
     render(
-      <IconButton ariaLabel="test aria" className="extra-class">
+      <IconButton ariaLabel="test aria" className="override-class">
         <Icon name="menu" />
       </IconButton>
     );
 
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('extra-class');
+    expect(button).toHaveClass('override-class');
   });
 
   test('renders with correct defaults', () => {

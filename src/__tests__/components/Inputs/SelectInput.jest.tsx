@@ -58,6 +58,7 @@ describe('SelectInput', () => {
           {name: 'Option four', value: 'four'},
           {name: 'Option five', value: 'five'},
         ]}
+        className="override-class"
         data-testid="guwmi-select-input"
       />
     )
@@ -68,6 +69,7 @@ describe('SelectInput', () => {
     expect(inputContainer).toBeInTheDocument();
     expect(error).toBeInTheDocument();
     expect(inputContainer).toHaveClass('error');
+    expect(inputContainer).toHaveClass('override-class');
     expect(input).toHaveProperty('disabled');
     expect(input).toHaveAttribute('name', 'test-select-name');
     expect(input).toHaveAttribute('id', 'test-select-id');

@@ -42,6 +42,7 @@ describe('SearchInput', () => {
         maxLength={5}
         name="search-input-name"
         id="search-input-id"
+        className="override-class"
         data-testid="guwmi-search-input"
       />
     )
@@ -50,6 +51,7 @@ describe('SearchInput', () => {
     const input = inputContainer.querySelector('input');
     const label = screen.getByText("Search Input Label");
     expect(inputContainer).toBeInTheDocument();
+    expect(inputContainer).toHaveClass('override-class');
     expect(label).toBeInTheDocument();
     expect(input).toHaveProperty('disabled');
     expect(input).toHaveProperty('readOnly');

@@ -58,6 +58,7 @@ describe('RadioGroup', () => {
         name="radio-group-name"
         id="radio-group-id"
         layout="row"
+        className="override-class"
         data-testid="guwmi-radio-group"
       />
     )
@@ -71,6 +72,7 @@ describe('RadioGroup', () => {
     expect(label).toBeInTheDocument();
     expect(error).toBeInTheDocument();
     expect(inputContainer).toHaveClass('error');
+    expect(inputContainer).toHaveClass('override-class');
     expect(fieldset).toHaveProperty('disabled');
     expect(fieldset).toHaveAttribute('name', 'radio-group-name');
     expect(fieldset).toHaveAttribute('id', 'radio-group-id');

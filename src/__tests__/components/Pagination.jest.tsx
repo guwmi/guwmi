@@ -54,7 +54,6 @@ describe('Pagination Component', () => {
         currentSize={5}
         onChange={handleOnChange}
         data-testid="guwmi-pagination"
-        className="override-class"
       />
     )
     expect(textLocation).toHaveTextContent('Showing 1–4 of 4 items');
@@ -71,7 +70,6 @@ describe('Pagination Component', () => {
         currentPage={1}
         onChange={handleOnChange}
         data-testid="guwmi-pagination"
-        className="override-class"
       />
     )
     const pagination = screen.getByTestId('guwmi-pagination');

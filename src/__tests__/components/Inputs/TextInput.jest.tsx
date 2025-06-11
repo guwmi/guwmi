@@ -46,6 +46,7 @@ describe('TextInput', () => {
         maxLength={5}
         name="text-input-name"
         id="text-input-id"
+        className="override-class"
         data-testid="guwmi-text-input"
       />
     )
@@ -59,6 +60,7 @@ describe('TextInput', () => {
     expect(label).toHaveClass('guwmi-sr-only');
     expect(error).toBeInTheDocument();
     expect(inputContainer).toHaveClass('error');
+    expect(inputContainer).toHaveClass('override-class');
     expect(input).toHaveProperty('disabled');
     expect(input).toHaveProperty('readOnly');
     expect(input).toHaveAttribute('placeholder', 'Text Input Placeholder');

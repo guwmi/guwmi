@@ -83,4 +83,20 @@ describe('Cards', () => {
     const subTitles = cardGrid.querySelectorAll('h3');
     expect(subTitles).toHaveLength(5)
   });
+
+  test('renders with override classes', () => {
+    
+    render(
+      <Card className="override-class" data-testid="guwmi-card">
+        <CardSection className="override-class" data-testid="guwmi-card-section">
+          <p>test</p>
+        </CardSection>
+    </Card>
+    )
+
+    const card = screen.getByTestId('guwmi-card');
+    expect(card).toHaveClass('override-class');
+    const section = screen.getByTestId('guwmi-card-section');
+    expect(section).toHaveClass('override-class');
+  });
 })

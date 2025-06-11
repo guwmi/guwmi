@@ -25,13 +25,13 @@ export default function MenuItem(props: ComponentProps) {
   const classes = `guwmi-menu-item${className ? ' ' + className : ''}`;
 
   return (
-    <li className={classes}>
+    <li className={classes} {...rest}>
       {href ? (
-        <a className="guwmi-menu-btn" href={href} {...rest}>
+        <a className="guwmi-menu-btn" href={href}>
           {children}
         </a>
       ) : (
-        <button className="guwmi-menu-btn" onClick={onClick} {...rest}>
+        <button className="guwmi-menu-btn" onClick={onClick}>
           {children}
         </button>
       )}

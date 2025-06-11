@@ -10,18 +10,18 @@ import MenuTrigger from '@components/Menu/MenuTrigger';
 import IconButton from '@components/IconButton/IconButton';
 import Icon from '@components/Icon/Icon';
 
-describe('Menu', () => {
+describe('Menu Component', () => {
 
   const handleClick = jest.fn();
   const menuStructure = 
-    <Menu ariaLabel="test menu">
-      <MenuTrigger>
+    <Menu ariaLabel="test menu" className="override-class" data-testid="guwmi-menu-container">
+      <MenuTrigger className="override-class" data-testid="guwmi-menu-trigger">
         <IconButton ariaLabel="open menu">
           <Icon name="menu" size={20} />
         </IconButton>
       </MenuTrigger>
-      <MenuDropdown data-testid="guwmi-menu-dropdown">
-        <MenuItem><Icon name="menu" /> Item One</MenuItem>
+      <MenuDropdown className="override-class" data-testid="guwmi-menu-dropdown">
+        <MenuItem className="override-class" data-testid="guwmi-menu-item"><Icon name="menu" /> Item One</MenuItem>
         <MenuItem href="https://www.google.com">Link Item</MenuItem>
         <MenuItem onClick={handleClick}>Button Item</MenuItem>
         <MenuItem>Item Four</MenuItem>
@@ -32,7 +32,7 @@ describe('Menu', () => {
     user = userEvent.setup();
   });
 
-  test('menu does not render by default', () => {
+  test('does not render by default', () => {
 
     render( menuStructure );
 
@@ -40,7 +40,7 @@ describe('Menu', () => {
     expect(dropdown).not.toBeInTheDocument();
   });
 
-  test('menu renders when menu trigger is clicked', async () => {
+  test('renders when menu trigger is clicked', async () => {
 
     render( menuStructure );
 
@@ -50,7 +50,7 @@ describe('Menu', () => {
     expect(dropdown).toBeInTheDocument();
   });
 
-  test('menu items function as intended', async () => {
+  test('items function as intended', async () => {
 
     render( menuStructure );
 
@@ -61,5 +61,21 @@ describe('Menu', () => {
     const button = screen.getByText('Button Item');
     await user.click(button);
     expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  test('renders with override classes', async () => {
+
+    render( menuStructure );
+
+    const menuTrigger = screen.getByRole('button');
+    await user.click(menuTrigger);
+    const container = screen.getByTestId('guwmi-menu-container');
+    expect(container).toHaveClass('override-class');
+    const trigger = screen.getByTestId('guwmi-menu-trigger');
+    expect(trigger).toHaveClass('override-class');
+    const dropdown = screen.getByTestId('guwmi-menu-dropdown');
+    expect(dropdown).toHaveClass('override-class');
+    const item = screen.getByTestId('guwmi-menu-item');
+    expect(item).toHaveClass('override-class');
   });
 });

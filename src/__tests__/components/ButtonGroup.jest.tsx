@@ -32,7 +32,7 @@ describe('ButtonGroup', () => {
     render(
       <ButtonGroup size="lg" color="secondary" variant="outline" theme="pill">
         <Button href="https://www.google.com" target="_blank" size="md" color="primary" variant="fill" theme="round">Button</Button>
-        <Button size="sm" color="danger" variant="ghost" theme="square" className="test-class">Button</Button>
+        <Button size="sm" color="danger" variant="ghost" theme="square" className="override-class">Button</Button>
         <Button size="md" color="primary" variant="fill" theme="round">Button</Button>
       </ButtonGroup>
     )
@@ -45,7 +45,7 @@ describe('ButtonGroup', () => {
       expect(button).toHaveClass('outline');
       expect(button).toHaveClass('pill');
       if (index === 1) {
-        expect(button).toHaveClass('test-class');
+        expect(button).toHaveClass('override-class');
       }
     })
   })

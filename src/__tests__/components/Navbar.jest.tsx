@@ -44,16 +44,23 @@ describe('Navbar Component', () => {
     expect(subItems).toHaveLength(3);
   });
 
-  test('renders navbar with override class', async () => {
+  test('renders navbar with override classes', async () => {
 
     render (
-      <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar" className="test-override">
-        <NavbarItem>Item one</NavbarItem>
+      <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar" className="override-class">
+        <NavbarGroup label="Item three" data-testid="guwmi-sub-nav" className="override-class">
+          <NavbarItem>Sub-item one</NavbarItem>
+        </NavbarGroup>
+        <NavbarItem className="override-class" data-testid="guwmi-navbar-item">Item one</NavbarItem>
       </Navbar>
     )
 
     const nav = screen.getByTestId('guwmi-navbar');
-    expect(nav).toHaveClass('test-override');
+    expect(nav).toHaveClass('override-class');
+    const subNav = screen.getByTestId('guwmi-sub-nav');
+    expect(subNav).toHaveClass('override-class');
+    const navItem = screen.getByTestId('guwmi-navbar-item');
+    expect(navItem).toHaveClass('override-class');
   });
 
   test('renders navbar with default open nav group with override class', async () => {

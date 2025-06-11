@@ -51,13 +51,13 @@ describe('Icon', () => {
 
   test('renders with correct attributes', () => {
 
-    render(<Icon name="close" size={20} stroke="2" color="blue" className="test-class" data-testid="guwmi-icon" />)
+    render(<Icon name="close" size={20} stroke="2" color="blue" className="override-class" data-testid="guwmi-icon" />)
 
     const svg = screen.getByTestId('guwmi-icon');
     expect(svg).toHaveAttribute('height', '20');
     expect(svg).toHaveAttribute('width', '20');
     expect(svg).toHaveAttribute('stroke-width', '2');
     expect(svg).toHaveAttribute('stroke', 'blue');
-    expect(svg).toHaveClass('test-class');
-  })
+    expect(svg).toHaveClass('override-class');
+  });
 })

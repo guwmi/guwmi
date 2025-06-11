@@ -33,6 +33,7 @@ describe('Loading Component', () => {
         speed="slow"
         position="full-screen"
         overlay={true}
+        className="override-class"
         data-testid="guwmi-loading-container"
       />
     );
@@ -42,5 +43,6 @@ describe('Loading Component', () => {
     expect(container).toHaveClass('slow');
     expect(container).toHaveClass('full-screen');
     expect(container).toHaveClass('overlay');
+    expect(container).toHaveClass('override-class');
   });
 })

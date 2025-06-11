@@ -38,6 +38,20 @@ describe('Drawer', () => {
     expect(drawer).toBeInTheDocument();
   });
 
+  test('renders with override class', () => {
+    
+    const handleClose = jest.fn(); 
+    render(
+      <Drawer open={true} onClose={handleClose} className="override-class" data-testid="guwmi-drawer">
+        <p>Drawer content</p>
+      </Drawer>
+    )
+
+    const drawer = screen.queryByTestId('guwmi-drawer').querySelector('.guwmi-drawer');
+    expect(drawer).toBeInTheDocument();
+    expect(drawer).toHaveClass('override-class');
+  });
+
   test('calls onClose handler when appropriate', async () => {
     
     const handleClose = jest.fn(); 

@@ -23,13 +23,13 @@ describe('Tootip Component', () => {
   test('renders with override class', () => {
 
     render (
-      <Tooltip text="Tooltip text" className="test-override" data-testid="guwmi-tooltip">
+      <Tooltip text="Tooltip text" className="override-class" data-testid="guwmi-tooltip">
         <button>Test button</button>
       </Tooltip>
     )
 
     const tipContainer = screen.getByTestId('guwmi-tooltip');
-    expect(tipContainer).toHaveClass('test-override');
+    expect(tipContainer).toHaveClass('override-class');
   });
 
   test('renders with correct alignment classes', () => {

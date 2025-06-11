@@ -66,12 +66,12 @@ describe('Button', () => {
     expect(link).toHaveAttribute('target', '_blank');
   });
 
-  test('applies custom className', () => {
+  test('applies override className', () => {
 
-    render(<Button className="extra-class">Styled Button</Button>);
+    render(<Button className="override-class">Styled Button</Button>);
 
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('extra-class');
+    expect(button).toHaveClass('override-class');
   });
 
   test('renders with correct defaults', () => {

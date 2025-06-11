@@ -9,32 +9,33 @@ describe('Grid', () => {
   test('renders grid with override classes', () => {
     
     const { rerender } = render(
-      <Grid wrap="no-wrap" rowOrder="reverse" align="right" data-testid="guwmi-grid"></Grid>
+      <Grid wrap="no-wrap" rowOrder="reverse" align="right" className="override-class" data-testid="guwmi-grid"></Grid>
     )
 
-    const cardContainer = screen.getByTestId('guwmi-grid');
-    expect(cardContainer).toHaveClass('no-wrap');
-    expect(cardContainer).toHaveClass('reverse');
-    expect(cardContainer).toHaveClass('right');
+    const grid = screen.getByTestId('guwmi-grid');
+    expect(grid).toHaveClass('no-wrap');
+    expect(grid).toHaveClass('reverse');
+    expect(grid).toHaveClass('right');
+    expect(grid).toHaveClass('override-class');
     rerender(<Grid align="center" data-testid="guwmi-grid"></Grid>);
-    expect(cardContainer).toHaveClass('center');
+    expect(grid).toHaveClass('center');
   });
 
   test('renders grid with correct column width classes', () => {
     
     const { rerender } = render(<Grid columns={2} data-testid="guwmi-grid"></Grid>)
 
-    const cardContainer = screen.getByTestId('guwmi-grid');
-    expect(cardContainer).toHaveClass('two');
+    const grid = screen.getByTestId('guwmi-grid');
+    expect(grid).toHaveClass('two');
     rerender(<Grid columns={3} data-testid="guwmi-grid"></Grid>);
-    expect(cardContainer).toHaveClass('three');
+    expect(grid).toHaveClass('three');
     rerender(<Grid columns={4} data-testid="guwmi-grid"></Grid>);
-    expect(cardContainer).toHaveClass('four');
+    expect(grid).toHaveClass('four');
     rerender(<Grid columns={5} data-testid="guwmi-grid"></Grid>);
-    expect(cardContainer).toHaveClass('five');
+    expect(grid).toHaveClass('five');
     rerender(<Grid columns={6} data-testid="guwmi-grid"></Grid>);
-    expect(cardContainer).toHaveClass('six');
+    expect(grid).toHaveClass('six');
     rerender(<Grid columns="auto" data-testid="guwmi-grid"></Grid>);
-    expect(cardContainer).toHaveClass('auto');
+    expect(grid).toHaveClass('auto');
   });
 })

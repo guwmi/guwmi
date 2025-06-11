@@ -12,13 +12,13 @@ import TabPanel from '@components/Tabs/TabPanel';
 describe('Tabs', () => {
 
   const tabsJSX = 
-    <TabsContainer data-testid="guwmi-tabs-container">
-      <Tabs data-testid="guwmi-tabs-nav">
-        <Tab>Item one</Tab>
+    <TabsContainer className="override-class-container" data-testid="guwmi-tabs-container">
+      <Tabs className="override-class-tabs" data-testid="guwmi-tabs-nav">
+        <Tab className="override-class-tab">Item one</Tab>
         <Tab>Item two</Tab>
       </Tabs>
-      <TabPanels data-testid="guwmi-tabs-panels">
-        <TabPanel>
+      <TabPanels className="override-class-panels" data-testid="guwmi-tabs-panels">
+        <TabPanel className="override-class-panel">
           <p>Item one content</p>
         </TabPanel>
         <TabPanel>
@@ -45,6 +45,23 @@ describe('Tabs', () => {
     expect(tabItems).toHaveLength(2);
     expect(tabsPanels).toBeInTheDocument();
     expect(tabPanelItems).toHaveLength(2);
+
+  });
+
+  test('renders tabs with override classes', () => {
+
+    render(tabsJSX)
+
+    const tabsContainer = screen.getByTestId('guwmi-tabs-container');
+    const tabsNav = screen.getByTestId('guwmi-tabs-nav');
+    const tabItems = tabsNav.querySelectorAll('button');
+    const tabsPanels = screen.getByTestId('guwmi-tabs-panels');
+    const tabPanelItems = tabsPanels.querySelectorAll('section');
+    expect(tabsContainer).toHaveClass('override-class-container');
+    expect(tabsNav).toHaveClass('override-class-tabs');
+    expect(tabItems[0]).toHaveClass('override-class-tab');
+    expect(tabsPanels).toHaveClass('override-class-panels');
+    expect(tabPanelItems[0]).toHaveClass('override-class-panel');
   })
 
   test('tabs visibility applies to correct panels by default and on click', async () => {

@@ -47,6 +47,7 @@ describe('TextArea', () => {
         rows={10}
         name="text-area-name"
         id="text-area-id"
+        className="override-class"
         data-testid="guwmi-text-area"
       />
     )
@@ -60,6 +61,7 @@ describe('TextArea', () => {
     expect(label).toHaveClass('guwmi-sr-only');
     expect(error).toBeInTheDocument();
     expect(inputContainer).toHaveClass('error');
+    expect(inputContainer).toHaveClass('override-class');
     expect(input).toHaveProperty('disabled');
     expect(input).toHaveProperty('readOnly');
     expect(input).toHaveTextContent('Text Area value')

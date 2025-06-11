@@ -19,6 +19,7 @@ describe('Notification', () => {
         <Notification kind="success" title="Success" content="Success content" data-testid="guwmi-success-notification" />
         <Notification kind="error" title="Error" content="Error content" data-testid="guwmi-error-notification" />
         <Notification kind="warning" title="Warning" content="Warning content" data-testid="guwmi-warning-notification" />
+        <Notification kind="info" title="Info" content="Info content" className="override-class" data-testid="guwmi-info-notification" />
       </>
     )
 
@@ -34,6 +35,11 @@ describe('Notification', () => {
     expect(warning).toHaveClass('warning');
     expect(warning.querySelector('h2')).toHaveTextContent('Warning');
     expect(warning.querySelector('p')).toHaveTextContent('Warning content');
+    const info = screen.getByTestId('guwmi-info-notification');
+    expect(info).toHaveClass('info');
+    expect(info).toHaveClass('override-class');
+    expect(info.querySelector('h2')).toHaveTextContent('Info');
+    expect(info.querySelector('p')).toHaveTextContent('Info content');
   })
 
   test('renders notification with default title if not provided', () => {
@@ -43,6 +49,7 @@ describe('Notification', () => {
         <Notification kind="success" content="Success content" data-testid="guwmi-success-notification" />
         <Notification kind="error" content="Error content" data-testid="guwmi-error-notification" />
         <Notification kind="warning" content="Warning content" data-testid="guwmi-warning-notification" />
+        <Notification kind="info" content="Warning content" data-testid="guwmi-info-notification" />
       </>
     )
 
@@ -52,6 +59,8 @@ describe('Notification', () => {
     expect(error.querySelector('h2')).toHaveTextContent('Error');
     const warning = screen.getByTestId('guwmi-warning-notification');
     expect(warning.querySelector('h2')).toHaveTextContent('Warning');
+    const info = screen.getByTestId('guwmi-info-notification');
+    expect(info.querySelector('h2')).toHaveTextContent('Info');
   })
 
   test('removes notification from dom when close button is clicked', async () => {

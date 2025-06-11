@@ -3,16 +3,16 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
-import Modal from '@components/Modal/Modal';
+import Modal from '../../components/Modal/Modal';
 
-describe('Modal', () => {
+describe('Modal Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {
     user = userEvent.setup();
   });
 
-  test('modal does not render by default', () => {
+  test('does not render by default', () => {
     
     const handleClose = jest.fn(); 
     render(
@@ -25,7 +25,20 @@ describe('Modal', () => {
     expect(modal).not.toBeInTheDocument();
   });
 
-  test('modal renders if open prop is true', () => {
+  test('renders with override class', () => {
+    
+    const handleClose = jest.fn(); 
+    render(
+      <Modal open={true} onClose={handleClose} className="override-class" data-testid="guwmi-modal">
+        <p>Modal content</p>
+      </Modal>
+    )
+
+    const modal = screen.queryByTestId('guwmi-modal').querySelector('.guwmi-modal');
+    expect(modal).toHaveClass('override-class');
+  });
+
+  test('renders if open prop is true', () => {
     
     const handleClose = jest.fn(); 
     render(

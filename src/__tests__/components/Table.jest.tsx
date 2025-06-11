@@ -76,6 +76,14 @@ describe('Table', () => {
     expect(rowElements).toHaveLength(rows.length);
   });
 
+  test('renders table with override class', () => {
+
+    render( <Table headers={headers} rows={rows} className="override-class" data-testid="guwmi-table" /> );
+
+    const table = screen.getByTestId('guwmi-table');
+    expect(table).toHaveClass('override-class');
+  });
+
   test('renders table with condensed class', () => {
 
     render( <Table headers={headers} rows={rows} isCondensed data-testid="guwmi-table" /> );

@@ -69,12 +69,12 @@ describe('Button', () => {
     expect(link).toHaveAttribute('target', '_blank');
   });
 
-  test('applies custom className', () => {
+  test('applies override class', () => {
 
-    render(<Tag value="Tag" className="extra-class" />);
+    render(<Tag value="Tag" className="override-class" />);
 
     const button = screen.getByText('Tag');
-    expect(button).toHaveClass('extra-class');
+    expect(button).toHaveClass('override-class');
   });
 
   test('renders with correct defaults', () => {

@@ -43,14 +43,14 @@ describe('Breadcrumbs Component', () => {
         ariaLabel="Page breadcrumbs"
         links={links}
         data-testid="guwmi-breadcrumbs"
-        className="test-override"
+        className="override-class"
         hasBackground
       />
     )
 
     const breadcrumbs = screen.getByTestId('guwmi-breadcrumbs');
     expect(breadcrumbs).toHaveClass('has-background');
-    expect(breadcrumbs).toHaveClass('test-override');
+    expect(breadcrumbs).toHaveClass('override-class');
   });
 
   test('correctly handles button clicks', async () => {

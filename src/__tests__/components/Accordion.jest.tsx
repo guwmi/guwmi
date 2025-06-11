@@ -126,4 +126,20 @@ describe('Accordion', () => {
     await user.click(itemButton);
     expect(itemButton).toHaveAttribute('aria-expanded', 'true')
   });
+
+  test('renders with override classes', () => {
+
+    render(
+      <Accordion className="override-class" data-testid="guwmi-accordion">
+        <AccordionItem title="test title" id="test-id" className="override-class" data-testid="guwmi-accordion-item">
+          <p>test content</p>
+        </AccordionItem>
+      </Accordion>
+    )
+    
+    const accordion = screen.getByTestId('guwmi-accordion');
+    expect(accordion).toHaveClass('override-class');
+    const accordionItem = screen.getByTestId('guwmi-accordion-item');
+    expect(accordionItem).toHaveClass('override-class');
+  });
 })

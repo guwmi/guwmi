@@ -48,12 +48,12 @@ describe('Container Component', () => {
   test('renders with override class', () => {
 
     render (
-      <Container className="test-override" data-testid="guwmi-container">
+      <Container className="override-class" data-testid="guwmi-container">
         Test content
       </Container>
     )
 
     const container = screen.getByTestId('guwmi-container');
-    expect(container).toHaveClass('test-override');
+    expect(container).toHaveClass('override-class');
   });
 })
