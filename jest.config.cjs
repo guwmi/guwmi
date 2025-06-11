@@ -37,5 +37,20 @@ module.exports = {
     'jest-watch-typeahead/testname',
   ],
   testPathIgnorePatterns: ['<rootDir>/src/components/Icon/paths.tsx'],
-  coveragePathIgnorePatterns: ['<rootDir>/src/components/Icon/paths.tsx']
+  coveragePathIgnorePatterns: ['<rootDir>/src/components/Icon/paths.tsx'],
+
+  // --- COVERAGE CONFIGURATION ---
+  collectCoverage: true,
+  coverageProvider: 'v8',
+  collectCoverageFrom: ['<rootDir>/src/components/**/*.{js,jsx,ts,tsx}'],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['json', 'lcov', 'text', 'clover', 'html'],
+  coverageThreshold: {
+    global: {
+      branches: 95,
+      functions: 95,
+      lines: 95,
+      statements: 95,
+    },
+  },
 };
