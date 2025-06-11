@@ -97,24 +97,6 @@ body {
       animation: guwmi-skeleton-animation 0.9s linear infinite alternate;
     }
   }
-  
-  @keyframes guwmi-skeleton-animation {
-    0% {
-      background-color: var(--guwmi-primary-bg);
-    }
-    100% {
-      background-color: var(--guwmi-secondary-bg);
-    }
-  }
-
-  @keyframes guwmi-skeleton-animation-alt {
-    0% {
-      background-color: var(--guwmi-app-bg);
-    }
-    100% {
-      background-color: var(--guwmi-primary-bg);
-    }
-  }
 }
 
 // override focus state to ensure visibility in both light and dark modes
@@ -125,4 +107,32 @@ body {
 
 a:not(.guwmi-btn):focus-visible {
   box-shadow: 0 0 0 2px var(--guwmi-white), 0 0 0 4px var(--guwmi-primary);
+}
+
+@media (prefers-color-scheme: light) {
+
+  .guwmi-skeleton.alt {
+
+    &::after {
+      animation: guwmi-skeleton-animation-alt-light 0.9s linear infinite alternate;
+    }
+  }
+}
+
+@keyframes guwmi-skeleton-animation {
+  0% {
+    background-color: var(--guwmi-primary-bg);
+  }
+  100% {
+    background-color: var(--guwmi-secondary-bg);
+  }
+}
+
+@keyframes guwmi-skeleton-animation-alt {
+  0% {
+    background-color: var(--guwmi-app-bg);
+  }
+  100% {
+    background-color: var(--guwmi-primary-bg);
+  }
 }

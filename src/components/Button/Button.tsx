@@ -36,8 +36,8 @@ export default function Button(props: ComponentProps) {
     onClick,
     href,
     target = null,
-    disabled = false,
-    loading = false,
+    disabled,
+    loading,
     ...rest
   } = props;
   const classes = `guwmi-btn ${size} ${color} ${variant} ${theme}${loading ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;

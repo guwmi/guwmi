@@ -1778,6 +1778,21 @@ body .guwmi-skeleton::after {
   cursor: default;
   animation: guwmi-skeleton-animation 0.9s linear infinite alternate;
 }
+
+*:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--guwmi-white), inset 0 0 0 4px var(--guwmi-primary);
+}
+
+a:not(.guwmi-btn):focus-visible {
+  box-shadow: 0 0 0 2px var(--guwmi-white), 0 0 0 4px var(--guwmi-primary);
+}
+
+@media (prefers-color-scheme: light) {
+  .guwmi-skeleton.alt::after {
+    animation: guwmi-skeleton-animation-alt-light 0.9s linear infinite alternate;
+  }
+}
 @keyframes guwmi-skeleton-animation {
   0% {
     background-color: var(--guwmi-primary-bg);
@@ -1793,13 +1808,4 @@ body .guwmi-skeleton::after {
   100% {
     background-color: var(--guwmi-primary-bg);
   }
-}
-
-*:focus-visible {
-  outline: none;
-  box-shadow: inset 0 0 0 2px var(--guwmi-white), inset 0 0 0 4px var(--guwmi-primary);
-}
-
-a:not(.guwmi-btn):focus-visible {
-  box-shadow: 0 0 0 2px var(--guwmi-white), 0 0 0 4px var(--guwmi-primary);
 }
