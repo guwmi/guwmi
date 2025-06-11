@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component
-import SearchInput from '@components/Inputs/Search/SearchInput';
+import SearchInput from '../../../components/Inputs/Search/SearchInput';
 
-describe('SearchInput', () => {
+describe('SearchInput Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {

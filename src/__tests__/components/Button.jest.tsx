@@ -5,7 +5,7 @@ import userEvent, { UserEvent } from '@testing-library/user-event';
 // import component to test
 import Button from '../../components/Button/Button';
 
-describe('Button', () => {
+describe('Button Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {
@@ -66,7 +66,7 @@ describe('Button', () => {
     expect(link).toHaveAttribute('target', '_blank');
   });
 
-  test('applies override className', () => {
+  test('renders with override class', () => {
 
     render(<Button className="override-class">Styled Button</Button>);
 

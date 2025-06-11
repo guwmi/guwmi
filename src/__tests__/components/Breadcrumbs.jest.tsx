@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
-import Breadcrumbs from '@components/Breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
 describe('Breadcrumbs Component', () => {
 

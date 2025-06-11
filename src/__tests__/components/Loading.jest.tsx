@@ -6,7 +6,7 @@ import Loading from '../../components/Loading/Loading';
 
 describe('Loading Component', () => {
 
-  test('does not render if inative', () => {
+  test('does not render if inactive', () => {
 
     render ( <Loading active={false} data-testid="guwmi-loading-container" /> );
 

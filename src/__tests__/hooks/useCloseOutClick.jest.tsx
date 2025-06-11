@@ -3,7 +3,7 @@ import { render, renderHook, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import hook
-import useClickOutside from '@hooks/useClickOutside';
+import useClickOutside from '../../hooks/useClickOutside';
 
 describe('useClickOutside Hook', () => {
 
@@ -12,7 +12,7 @@ describe('useClickOutside Hook', () => {
     user = userEvent.setup();
   });
 
-  test('calls onClose when clicked outside ref', async () => {
+  test('calls onClose when click is outside ref', async () => {
 
     render(
       <>

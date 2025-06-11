@@ -2,7 +2,7 @@
 import { renderHook, fireEvent } from '@testing-library/react';
 
 // import hook
-import useWindowWidth from '@hooks/useWindowWidth';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 describe('useWindwoWidth Hook', () => {
 

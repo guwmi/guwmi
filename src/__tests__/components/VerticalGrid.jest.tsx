@@ -2,11 +2,11 @@
 import { render, screen } from '@testing-library/react';
 
 // import components
-import VerticalGrid from '@components/VerticalGrid/VerticalGrid';
+import VerticalGrid from '../../components/VerticalGrid/VerticalGrid';
 
 describe('VerticalGrid Component', () => {
 
-  test('renders vertical grid with correct classes', () => {
+  test('renders with correct classes', () => {
     
     const { rerender } = render(<VerticalGrid data-testid="guwmi-vertical-grid" className="override-class"></VerticalGrid>)
 

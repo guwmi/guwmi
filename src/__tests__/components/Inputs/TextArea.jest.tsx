@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component
-import TextArea from '@components/Inputs/TextArea/TextArea';
+import TextArea from '../../../components/Inputs/TextArea/TextArea';
 
-describe('TextArea', () => {
+describe('TextArea Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {

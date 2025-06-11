@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component
-import RadioGroup from '@components/Inputs/RadioGroup/RadioGroup';
+import RadioGroup from '../../../components/Inputs/RadioGroup/RadioGroup';
 
-describe('RadioGroup', () => {
+describe('RadioGroup Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {

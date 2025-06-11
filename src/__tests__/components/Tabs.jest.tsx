@@ -3,13 +3,13 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import components
-import TabsContainer from '@components/Tabs/TabsContainer';
-import Tabs from '@components/Tabs/Tabs';
-import Tab from '@components/Tabs/Tab';
-import TabPanels from '@components/Tabs/TabPanels';
-import TabPanel from '@components/Tabs/TabPanel';
+import TabsContainer from '../../components/Tabs/TabsContainer';
+import Tabs from '../../components/Tabs/Tabs';
+import Tab from '../../components/Tabs/Tab';
+import TabPanels from '../../components/Tabs/TabPanels';
+import TabPanel from '../../components/Tabs/TabPanel';
 
-describe('Tabs', () => {
+describe('Tabs Components', () => {
 
   const tabsJSX = 
     <TabsContainer className="override-class-container" data-testid="guwmi-tabs-container">
@@ -31,7 +31,7 @@ describe('Tabs', () => {
     user = userEvent.setup();
   });
 
-  test('renders tabs correctly', () => {
+  test('renders correctly', () => {
 
     render(tabsJSX)
 
@@ -48,7 +48,7 @@ describe('Tabs', () => {
 
   });
 
-  test('renders tabs with override classes', () => {
+  test('renders with override classes', () => {
 
     render(tabsJSX)
 
@@ -64,7 +64,7 @@ describe('Tabs', () => {
     expect(tabPanelItems[0]).toHaveClass('override-class-panel');
   })
 
-  test('tabs visibility applies to correct panels by default and on click', async () => {
+  test('applies visibility to correct panels by default and on click', async () => {
 
     render(tabsJSX)
 

@@ -2,11 +2,11 @@
 import { render, screen } from '@testing-library/react';
 
 // import components
-import Grid from '@components/Grid/Grid';
-import Card from '@components/Cards/Card';
-import CardSection from '@components/Cards/CardSection';
+import Grid from '../../components/Grid/Grid';
+import Card from '../../components/Cards/Card';
+import CardSection from '../../components/Cards/CardSection';
 
-describe('Cards', () => {
+describe('Card Component', () => {
 
   const cards = [
     { title: 'Card one', subTitle: 'Card one subtitle', image: '/file.jpg' },
@@ -22,7 +22,7 @@ describe('Cards', () => {
     { content: 'In convallis, sapien at scelerisque accumsan, enim mi sollicitudin nisl.'}
   ]
 
-  test('renders cards without any props provided', () => {
+  test('renders correctly y default', () => {
     
     render(
       <Grid data-testid="guwmi-card-grid">
@@ -47,7 +47,7 @@ describe('Cards', () => {
     expect(subTitles).toHaveLength(0)
   });
 
-  test('renders cards with mixed props provided', () => {
+  test('renders with mixed props provided', () => {
 
     const mixedCards = cards.map((card, index) => {
       if (index === 1) {

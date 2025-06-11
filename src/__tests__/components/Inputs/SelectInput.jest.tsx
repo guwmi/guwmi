@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component
-import SelectInput from '@components/Inputs/Select/SelectInput';
+import SelectInput from '../../../components/Inputs/Select/SelectInput';
 
-describe('SelectInput', () => {
+describe('SelectInput Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {
@@ -76,7 +76,7 @@ describe('SelectInput', () => {
     expect(input).toHaveValue('three');
   });
 
-  test('renders with default values', async () => {
+  test('correctly handles uder events', async () => {
 
     const changeHandler = jest.fn();
     const blurHandler = jest.fn();

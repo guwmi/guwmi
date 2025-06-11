@@ -3,7 +3,7 @@ import { render, renderHook, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import hook
-import useFocusTrap from '@hooks/useFocusTrap';
+import useFocusTrap from '../../hooks/useFocusTrap';
 
 describe('useFocusTrap Hook', () => {
   let user: UserEvent;

@@ -3,7 +3,7 @@ import { render, renderHook, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import hook
-import useTabThrough from '@hooks/useTabThrough';
+import useTabThrough from '../../hooks/useTabThrough';
 
 describe('useTabThrough Hook', () => {
   let user: UserEvent;

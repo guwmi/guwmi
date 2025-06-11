@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
-import IconButton from '@components/IconButton/IconButton';
-import Icon from '@components/Icon/Icon';
+import IconButton from '../../components/IconButton/IconButton';
+import Icon from '../../components/Icon/Icon';
 
 describe('Icon Button', () => {
 

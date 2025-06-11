@@ -2,7 +2,7 @@
 import { render, renderHook } from '@testing-library/react';
 
 // import hook
-import usePreventScroll from '@hooks/usePreventScroll';
+import usePreventScroll from '../../hooks/usePreventScroll';
 
 // import component for render
 import Button from '@components/Button/Button';

@@ -1,9 +1,9 @@
 // import function to test
 import isEmpty from '../../utils/isEmpty';
 
-describe('isEmpty helper', () => {
+describe('isEmpty Helper Function', () => {
 
-  test('returns correct value for all tests', () => {
+  test('returns correct value for all data types', () => {
     expect(isEmpty('')).not.toBeFalsy();
     expect(isEmpty('Text string')).toBeFalsy();
     expect(isEmpty(Number('test'))).not.toBeFalsy();

@@ -3,12 +3,12 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
-import Menu from '@components/Menu/Menu';
-import MenuDropdown from '@components/Menu/MenuDropdown';
-import MenuItem from '@components/Menu/MenuItem';
-import MenuTrigger from '@components/Menu/MenuTrigger';
-import IconButton from '@components/IconButton/IconButton';
-import Icon from '@components/Icon/Icon';
+import Menu from '../../components/Menu/Menu';
+import MenuDropdown from '../../components/Menu/MenuDropdown';
+import MenuItem from '../../components/Menu/MenuItem';
+import MenuTrigger from '../../components/Menu/MenuTrigger';
+import IconButton from '../../components/IconButton/IconButton';
+import Icon from '../../components/Icon/Icon';
 
 describe('Menu Component', () => {
 

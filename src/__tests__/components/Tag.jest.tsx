@@ -5,7 +5,7 @@ import userEvent, { UserEvent } from '@testing-library/user-event';
 // import component to test
 import Tag from '../../components/Tag/Tag';
 
-describe('Button', () => {
+describe('Tag Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {
@@ -69,14 +69,6 @@ describe('Button', () => {
     expect(link).toHaveAttribute('target', '_blank');
   });
 
-  test('applies override class', () => {
-
-    render(<Tag value="Tag" className="override-class" />);
-
-    const button = screen.getByText('Tag');
-    expect(button).toHaveClass('override-class');
-  });
-
   test('renders with correct defaults', () => {
 
     render(<Tag value="Tag" />);
@@ -88,10 +80,11 @@ describe('Button', () => {
 
   test('renders with override values', () => {
 
-    render(<Tag value="Tag" size="sm" variant="primary" />);
+    render(<Tag value="Tag" size="sm" variant="primary" className="override-class" />);
 
     const button = screen.getByText('Tag');
     expect(button).toHaveClass('sm');
     expect(button).toHaveClass('primary');
+    expect(button).toHaveClass('override-class');
   });
 });

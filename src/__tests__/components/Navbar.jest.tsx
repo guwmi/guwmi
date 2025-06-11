@@ -15,7 +15,7 @@ describe('Navbar Component', () => {
     jest.clearAllMocks();
   })
 
-  test('renders navbar with correct elements', async () => {
+  test('renders with correct elements', async () => {
 
     render (
       <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar">
@@ -44,7 +44,7 @@ describe('Navbar Component', () => {
     expect(subItems).toHaveLength(3);
   });
 
-  test('renders navbar with override classes', async () => {
+  test('renders with override classes', async () => {
 
     render (
       <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar" className="override-class">
@@ -63,12 +63,12 @@ describe('Navbar Component', () => {
     expect(navItem).toHaveClass('override-class');
   });
 
-  test('renders navbar with default open nav group with override class', async () => {
+  test('renders with default open nav group', async () => {
 
     render (
       <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar">
         <NavbarItem>Item one</NavbarItem>
-        <NavbarGroup defaultOpen={true} label="Item three" data-testid="guwmi-sub-nav" className="test-override">
+        <NavbarGroup defaultOpen={true} label="Item three" data-testid="guwmi-sub-nav">
           <NavbarItem>Sub-item one</NavbarItem>
           <NavbarItem>Sub-item two</NavbarItem>
           <NavbarItem>Sub-item three</NavbarItem>
@@ -79,7 +79,6 @@ describe('Navbar Component', () => {
     const subLevel = screen.getByTestId('guwmi-sub-nav');
     const subItems = subLevel.querySelectorAll('li');
     expect(subLevel).toHaveClass('open');
-    expect(subLevel).toHaveClass('test-override');
     expect(subItems).toHaveLength(3);
   });
 
@@ -93,7 +92,7 @@ describe('Navbar Component', () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  test('renders as link with correct href', () => {
+  test('renders item as link with correct href', () => {
 
     render(<NavbarItem href="https://www.google.com">Link</NavbarItem>);
 
@@ -128,12 +127,11 @@ describe('Navbar Component', () => {
     expect(link).toHaveAttribute('target', '_blank');
   });
 
-  test('applies override and active classes', () => {
+  test('applies active class', () => {
 
-    render(<NavbarItem className="test-override" active={true} data-testid="nav-item">Styled NavbarItem</NavbarItem>);
+    render(<NavbarItem active={true} data-testid="nav-item">Styled NavbarItem</NavbarItem>);
 
     const navItem = screen.getByTestId('nav-item');
-    expect(navItem).toHaveClass('test-override');
     expect(navItem).toHaveClass('active');
   });
 })

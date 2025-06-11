@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import components
-import Table from '@components/Table/Table';
+import Table from '../../components/Table/Table';
 
-describe('Table', () => {
+describe('Table Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {
@@ -64,7 +64,7 @@ describe('Table', () => {
     expect(cell).toHaveTextContent('There is no data to display in the table');
   });
 
-  test('renders table with all headers and rows', () => {
+  test('renders with all headers and rows', () => {
 
     render( <Table headers={headers} rows={rows} data-testid="guwmi-table" /> );
 
@@ -76,7 +76,7 @@ describe('Table', () => {
     expect(rowElements).toHaveLength(rows.length);
   });
 
-  test('renders table with override class', () => {
+  test('renders with override class', () => {
 
     render( <Table headers={headers} rows={rows} className="override-class" data-testid="guwmi-table" /> );
 
@@ -84,7 +84,7 @@ describe('Table', () => {
     expect(table).toHaveClass('override-class');
   });
 
-  test('renders table with condensed class', () => {
+  test('renders with condensed class', () => {
 
     render( <Table headers={headers} rows={rows} isCondensed data-testid="guwmi-table" /> );
 
@@ -92,7 +92,7 @@ describe('Table', () => {
     expect(table).toHaveClass('condensed');
   });
 
-  test('renders table without search', () => {
+  test('renders without search', () => {
 
     render( <Table headers={noSearchHeaders} rows={rows} isCondensed data-testid="guwmi-table" /> );
 
@@ -101,7 +101,7 @@ describe('Table', () => {
     expect(searchContainer).not.toBeInTheDocument();
   });
 
-  test('renders table with title and description', () => {
+  test('renders with title and description', () => {
 
     render( <Table headers={noSearchHeaders} rows={rows} isCondensed data-testid="guwmi-table" title="Test Title" description="Test Description" /> );
 
@@ -109,7 +109,7 @@ describe('Table', () => {
     expect(screen.getByText('Test Description')).toBeInTheDocument();
   });
 
-  test('renders table with search input and search functionality works as intended', async () => {
+  test('renders with search input and search functionality works as intended', async () => {
 
     render( <Table headers={headers} rows={rows} data-testid="guwmi-table" /> );
 
@@ -125,7 +125,7 @@ describe('Table', () => {
     expect(screen.getAllByText('Windows')).toHaveLength(5);
   });
 
-  test('renders table with pagination', () => {
+  test('renders with pagination', () => {
 
     render( <Table headers={noSearchHeaders} rows={rows} isCondensed hasPagination data-testid="guwmi-table" /> );
 

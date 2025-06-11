@@ -3,10 +3,10 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
-import Accordion from '@components/Accordion/Accordion';
-import AccordionItem from '@components/Accordion/AccrodionItem';
+import Accordion from '../../components/Accordion/Accordion';
+import AccordionItem from '../../components/Accordion/AccrodionItem';
 
-describe('Accordion', () => {
+describe('Accordion Component', () => {
 
   const accordionItems = [
     { title: 'Item One', id: 'item-one', content: 'Lorem ipsum item one elit.' },
@@ -18,7 +18,7 @@ describe('Accordion', () => {
     user = userEvent.setup();
   });
 
-  test('renders all accordion titles and hides content by default', () => {
+  test('renders all titles and hides content by default', () => {
 
     render(
       <Accordion>
@@ -35,7 +35,7 @@ describe('Accordion', () => {
     })
   });
 
-  test('renders accordion with the default item expanded', () => {
+  test('renders with the default item expanded', () => {
 
     const openId = accordionItems[1].id;
     render(
@@ -58,7 +58,7 @@ describe('Accordion', () => {
     })
   });
 
-  test('expands an accordion item when its title is clicked', async () => {
+  test('expands item when its title is clicked', async () => {
 
     render(
       <Accordion>
@@ -82,7 +82,7 @@ describe('Accordion', () => {
     })
   });
 
-  test('collapses an open accordion item when its title is clicked again', async () => {
+  test('collapses an item when its title is clicked again', async () => {
 
     render(
       <Accordion>
@@ -105,7 +105,7 @@ describe('Accordion', () => {
     expect(itemSection).toHaveAttribute('hidden');
   });
 
-  test('applies correct accessibility attributes', async () => {
+  test('renders with correct accessibility attributes', async () => {
 
     render(
       <Accordion>

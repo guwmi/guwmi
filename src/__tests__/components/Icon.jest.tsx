@@ -1,9 +1,9 @@
 // import library functionality
 import { render, screen } from '@testing-library/react';
 
-import Icon from '@components/Icon/Icon';
+import Icon from '../../components/Icon/Icon';
 
-describe('Icon', () => {
+describe('Icon Component', () => {
 
   const iconNames = [
     'alert-circle',
@@ -31,7 +31,7 @@ describe('Icon', () => {
     'view'
   ];
 
-  test('of all names render with correct classname', () => {
+  test('renders with correct classname', () => {
 
     render(
       iconNames.map((icon, index) => (

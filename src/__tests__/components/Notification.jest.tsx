@@ -3,16 +3,16 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import components
-import Notification from '@components/Notification/Notification';
+import Notification from '../../components/Notification/Notification';
 
-describe('Notification', () => {
+describe('Notification Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {
     user = userEvent.setup();
   });
   
-  test('renders notification with proper classes', () => {
+  test('renders with proper classes', () => {
 
     render(
       <>
@@ -42,7 +42,7 @@ describe('Notification', () => {
     expect(info.querySelector('p')).toHaveTextContent('Info content');
   })
 
-  test('renders notification with default title if not provided', () => {
+  test('renders with default title if not provided', () => {
 
     render(
       <>
@@ -63,7 +63,7 @@ describe('Notification', () => {
     expect(info.querySelector('h2')).toHaveTextContent('Info');
   })
 
-  test('removes notification from dom when close button is clicked', async () => {
+  test('is removed from DOM when close button is clicked', async () => {
 
     render(<Notification kind="success" title="Success" content="Success content" data-testid="guwmi-notification" />)
 

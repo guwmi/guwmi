@@ -5,7 +5,7 @@ import userEvent, { UserEvent } from '@testing-library/user-event';
 // import component
 import Toggle from '../../../components/Inputs/Toggle/Toggle';
 
-describe('RadioGroup', () => {
+describe('Toggle Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {

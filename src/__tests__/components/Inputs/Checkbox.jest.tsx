@@ -5,7 +5,7 @@ import userEvent, { UserEvent } from '@testing-library/user-event';
 // import component
 import Checkbox from '../../../components/Inputs/Checkbox/Checkbox';
 
-describe('RadioGroup', () => {
+describe('Checkbox Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {

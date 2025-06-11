@@ -2,12 +2,12 @@
 import { render, screen } from '@testing-library/react';
 
 // import components
-import Button from '@components/Button/Button';
-import ButtonGroup from '@components/ButtonGroup/ButtonGroup';
+import Button from '../../components/Button/Button';
+import ButtonGroup from '../../components/ButtonGroup/ButtonGroup';
 
-describe('ButtonGroup', () => {
+describe('ButtonGroup Component', () => {
 
-  test('renders button group with default values', () => {
+  test('renders with default values', () => {
 
     render(
       <ButtonGroup>

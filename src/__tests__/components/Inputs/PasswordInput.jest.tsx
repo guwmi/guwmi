@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component
-import PasswordInput from '@components/Inputs/Password/PasswordInput';
+import PasswordInput from '../../../components/Inputs/Password/PasswordInput';
 
-describe('PasswordInput', () => {
+describe('PasswordInput Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {

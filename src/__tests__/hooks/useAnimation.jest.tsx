@@ -2,11 +2,11 @@
 import { render, renderHook, screen } from '@testing-library/react';
 
 // import hook
-import useAnimation from '@hooks/useAnimation';
+import useAnimation from '../../hooks/useAnimation';
 
 describe('useAnimation Hook', () => {
 
-  test('adds and removes class and return visibility as expected', async () => {
+  test('adds and removes class and returns visibility as expected', async () => {
 
     render(
       <>

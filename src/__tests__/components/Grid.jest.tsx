@@ -2,11 +2,11 @@
 import { render, screen } from '@testing-library/react';
 
 // import components
-import Grid from '@components/Grid/Grid';
+import Grid from '../../components/Grid/Grid';
 
-describe('Grid', () => {
+describe('Grid Component', () => {
 
-  test('renders grid with override classes', () => {
+  test('renders with override values', () => {
     
     const { rerender } = render(
       <Grid wrap="no-wrap" rowOrder="reverse" align="right" className="override-class" data-testid="guwmi-grid"></Grid>

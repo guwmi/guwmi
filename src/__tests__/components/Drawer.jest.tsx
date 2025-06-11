@@ -3,16 +3,16 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
-import Drawer from '@components/Drawer/Drawer';
+import Drawer from '../../components/Drawer/Drawer';
 
-describe('Drawer', () => {
+describe('Drawer Component', () => {
 
   let user: UserEvent;
   beforeEach(() => {
     user = userEvent.setup();
   })
 
-  test('drawer does not render by default', () => {
+  test('does not render by default', () => {
     
     const handleClose = jest.fn(); 
     render(
@@ -25,7 +25,7 @@ describe('Drawer', () => {
     expect(drawer).not.toBeInTheDocument();
   });
 
-  test('drawer renders if open prop is true', () => {
+  test('renders if open prop is true', () => {
     
     const handleClose = jest.fn(); 
     render(
