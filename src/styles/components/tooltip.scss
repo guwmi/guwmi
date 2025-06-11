@@ -6,6 +6,13 @@
   position: relative;
   display: inline-flex;
 
+  &:has( > .guwmi-skeleton) {
+    
+    span {
+      display: none;
+    }
+  }
+
   &:hover {
 
     span {

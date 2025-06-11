@@ -5,6 +5,9 @@
   position: relative;
   display: inline-flex;
 }
+.guwmi-tooltip:has(> .guwmi-skeleton) span {
+  display: none;
+}
 .guwmi-tooltip:hover span {
   visibility: visible;
 }
