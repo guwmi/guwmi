@@ -16,6 +16,7 @@ interface ComponentProps extends PropsWithChildren {
   href?: string;
   target?: '_blank' | '_self' | '_parent' | '_top';
   disabled?: boolean;
+  loading?: boolean;
 }
 
 /**
@@ -36,9 +37,10 @@ export default function Button(props: ComponentProps) {
     href,
     target = null,
     disabled = false,
+    loading = false,
     ...rest
   } = props;
-  const classes = `guwmi-btn ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`;
+  const classes = `guwmi-btn ${size} ${color} ${variant} ${theme}${loading ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
   const button = useRef(null);
   const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     button.current.focus();

@@ -161,6 +161,7 @@
  * Styles for the Button component ******************************************************************
  **/
 .guwmi-btn {
+  position: relative;
   display: inline-flex;
   gap: 1rem;
   justify-content: center;
@@ -1748,6 +1749,29 @@ body .guwmi-sr-only {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+html .guwmi-skeleton,
+body .guwmi-skeleton {
+  border-color: var(--guwmi-primary-bg) !important;
+}
+html .guwmi-skeleton::after,
+body .guwmi-skeleton::after {
+  position: absolute;
+  display: block;
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  animation: guwmi-skeleton-animation 0.9s linear infinite alternate;
+}
+@keyframes guwmi-skeleton-animation {
+  0% {
+    background-color: var(--guwmi-primary-bg);
+  }
+  100% {
+    background-color: var(--guwmi-secondary-bg);
+  }
 }
 
 *:focus-visible {

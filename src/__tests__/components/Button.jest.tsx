@@ -74,6 +74,14 @@ describe('Button Component', () => {
     expect(button).toHaveClass('override-class');
   });
 
+  test('renders with skeleton class', () => {
+
+    render(<Button loading>Styled Button</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass('guwmi-skeleton');
+  });
+
   test('renders with correct defaults', () => {
 
     render(<Button>Default Button</Button>);
