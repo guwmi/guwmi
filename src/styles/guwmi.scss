@@ -78,6 +78,13 @@ body {
   .guwmi-skeleton {
     border-color: var(--guwmi-primary-bg) !important;
 
+    &.alt {
+
+      &::after {
+        animation: guwmi-skeleton-animation-alt 0.9s linear infinite alternate;
+      }
+    }
+
     &::after {
       position: absolute;
       display: block;
@@ -97,6 +104,15 @@ body {
     }
     100% {
       background-color: var(--guwmi-secondary-bg);
+    }
+  }
+
+  @keyframes guwmi-skeleton-animation-alt {
+    0% {
+      background-color: var(--guwmi-app-bg);
+    }
+    100% {
+      background-color: var(--guwmi-primary-bg);
     }
   }
 }

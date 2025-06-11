@@ -12,6 +12,7 @@ interface ComponentProps {
   }[];
   hasBackground?: boolean;
   className?: string;
+  loading?: boolean;
 }
 
 export default function Breadcrumbs(props: ComponentProps) {
@@ -21,6 +22,7 @@ export default function Breadcrumbs(props: ComponentProps) {
     links,
     hasBackground = false,
     className,
+    loading,
     ...rest
   } = props;
   const classes = `guwmi-breadcrumbs${hasBackground ? ' has-background' : ''}${className ? ' ' + className : ''}`;
@@ -29,7 +31,10 @@ export default function Breadcrumbs(props: ComponentProps) {
     <nav className={classes} aria-label={ariaLabel} {...rest}>
       <ol>
         {links.map((link, index) => (
-          <li key={`${link.text.toLowerCase().replaceAll(' ', '')}-${index}`}>
+          <li 
+            key={`${link.text.toLowerCase().replaceAll(' ', '')}-${index}`} 
+            className={loading && hasBackground ? 'guwmi-skeleton alt' : loading  ? 'guwmi-skeleton' : null}
+          >
             {(index + 1) !== links.length ? (
               <>
                 {link.href && !link.disabled ? (

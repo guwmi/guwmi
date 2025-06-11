@@ -112,6 +112,7 @@
   padding: 0;
 }
 .guwmi-breadcrumbs ol li {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.66rem;
@@ -1761,6 +1762,10 @@ html .guwmi-skeleton,
 body .guwmi-skeleton {
   border-color: var(--guwmi-primary-bg) !important;
 }
+html .guwmi-skeleton.alt::after,
+body .guwmi-skeleton.alt::after {
+  animation: guwmi-skeleton-animation-alt 0.9s linear infinite alternate;
+}
 html .guwmi-skeleton::after,
 body .guwmi-skeleton::after {
   position: absolute;
@@ -1779,6 +1784,14 @@ body .guwmi-skeleton::after {
   }
   100% {
     background-color: var(--guwmi-secondary-bg);
+  }
+}
+@keyframes guwmi-skeleton-animation-alt {
+  0% {
+    background-color: var(--guwmi-app-bg);
+  }
+  100% {
+    background-color: var(--guwmi-primary-bg);
   }
 }
 
