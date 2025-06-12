@@ -30,7 +30,7 @@ describe('PasswordInput Component', () => {
     expect(inputContainer).not.toHaveClass('error');
     expect(input).toHaveProperty('id');
     expect(input).toHaveAttribute('type', 'password');
-  })
+  });
 
   test('renders with correct proprty overrides', () => {
 
@@ -99,5 +99,21 @@ describe('PasswordInput Component', () => {
     expect(input).toHaveAttribute('type', 'text');
     await user.click(viewButton);
     expect(input).toHaveAttribute('type', 'password');
-  })
+  });
+
+  test('renders with skeleton classes', () => {
+
+    render (
+      <PasswordInput
+        label="Password Input Label"
+        data-testid="guwmi-text-input"
+        skeleton
+      />
+    );
+
+    const inputContainer = screen.getByTestId('guwmi-text-input').querySelector('.guwmi-password-container');
+    const label = screen.getByText("Password Input Label");
+    expect(inputContainer).toHaveClass('guwmi-skeleton');
+    expect(label).toHaveClass('guwmi-skeleton');
+  });
 })

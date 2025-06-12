@@ -91,5 +91,4 @@ describe('Checkbox Component', () => {
     expect(label).toHaveClass('guwmi-skeleton');
     expect(input).toBeDisabled();
   });
-
 });

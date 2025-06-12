@@ -694,11 +694,18 @@
   gap: 0.5rem;
 }
 .guwmi-password-input label {
+  position: relative;
   padding-left: 0.66rem;
   font-size: 0.85rem;
 }
+.guwmi-password-input label.guwmi-skeleton {
+  width: 33%;
+}
 .guwmi-password-input .guwmi-password-container {
   position: relative;
+  overflow: hidden;
+  border-top-right-radius: var(--guwmi-radius);
+  border-top-left-radius: var(--guwmi-radius);
 }
 .guwmi-password-input .guwmi-password-container input {
   appearance: none;

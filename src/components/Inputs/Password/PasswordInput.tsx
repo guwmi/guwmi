@@ -19,6 +19,7 @@ interface ComponentProps {
   hasError?: boolean;
   maxLength?: number;
   className?: string;
+  skeleton?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -39,6 +40,7 @@ export default function PasswordInput(props: ComponentProps) {
     hasError,
     maxLength,
     className,
+    skeleton,
     onChange,
     onBlur,
     onFocus,
@@ -59,8 +61,8 @@ export default function PasswordInput(props: ComponentProps) {
 
   return (
     <div className={classes} {...rest} ref={passwordRef}>
-      <label htmlFor={inputId} className={hideLabel ? 'guwmi-sr-only' : null}>{label}</label>
-      <div className="guwmi-password-container">
+      <label htmlFor={inputId} className={skeleton ? 'guwmi-skeleton' : hideLabel ? 'guwmi-sr-only' : null}>{label}</label>
+      <div className={`guwmi-password-container${skeleton ? ' guwmi-skeleton' : ''}`}>
         <input
           type={type}
           id={inputId}
