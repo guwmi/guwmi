@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react';
 // component type
 interface ComponentProps extends PropsWithChildren {
   columns?: 'auto' | 2 | 3 | 4 | 5 | 6;
-  spacing?: 1 | 2 | 3 | 4 | 5 | 6;
+  spacing?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   wrap?: 'wrap' | 'no-wrap';
   rowOrder?: 'standard' | 'reverse';
   align?: 'left' | 'right' | 'center';
@@ -46,6 +46,9 @@ export default function Grid(props: ComponentProps) {
         classString += ' col-3';
     }
     switch(spacing) {
+      case 0:
+        classString += ' space-0';
+        break;
       case 2:
         classString += ' space-2';
         break;

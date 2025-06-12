@@ -12,6 +12,7 @@ describe('VerticalGrid Component', () => {
 
     const verticalGrid = screen.getByTestId('guwmi-vertical-grid');
     expect(verticalGrid).toHaveClass('space-1');
+    expect(verticalGrid).toHaveClass('pad-0');
     expect(verticalGrid).toHaveClass('override-class');
     rerender(<VerticalGrid spacing={1} padding={1} data-testid="guwmi-vertical-grid"></VerticalGrid>);
     expect(verticalGrid).toHaveClass('space-1');
@@ -31,7 +32,8 @@ describe('VerticalGrid Component', () => {
     rerender(<VerticalGrid spacing={6} padding={6} data-testid="guwmi-vertical-grid"></VerticalGrid>);
     expect(verticalGrid).toHaveClass('space-6');
     expect(verticalGrid).toHaveClass('pad-6');
-    rerender(<VerticalGrid className="test-class" data-testid="guwmi-vertical-grid"></VerticalGrid>);
-    expect(verticalGrid).toHaveClass('test-class');
+    rerender(<VerticalGrid spacing={0} padding={0} data-testid="guwmi-vertical-grid"></VerticalGrid>);
+    expect(verticalGrid).toHaveClass('space-0');
+    expect(verticalGrid).toHaveClass('pad-0');
   });
 })

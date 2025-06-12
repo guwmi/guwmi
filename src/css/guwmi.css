@@ -495,9 +495,6 @@
   --guwmi-grid-cols: 3;
   --guwmi-grid-gap: 2rem;
 }
-.guwmi-grid.col-1 {
-  --guwmi-grid-cols: 1 ;
-}
 .guwmi-grid.col-2 {
   --guwmi-grid-cols: 2 ;
 }
@@ -512,6 +509,9 @@
 }
 .guwmi-grid.col-6 {
   --guwmi-grid-cols: 6 ;
+}
+.guwmi-grid.space-0 {
+  --guwmi-grid-gap: 0 ;
 }
 .guwmi-grid.space-1 {
   --guwmi-grid-gap: 1rem ;
@@ -1741,6 +1741,9 @@ a.guwmi-tag.disabled {
   display: flex;
   flex-direction: column;
 }
+.guwmi-vertical-grid.space-0 {
+  gap: 0;
+}
 .guwmi-vertical-grid.space-1 {
   gap: 1rem;
 }
@@ -1758,6 +1761,9 @@ a.guwmi-tag.disabled {
 }
 .guwmi-vertical-grid.space-6 {
   gap: 6rem;
+}
+.guwmi-vertical-grid.pad-0 {
+  padding: 0;
 }
 .guwmi-vertical-grid.pad-1 {
   padding: 1rem;

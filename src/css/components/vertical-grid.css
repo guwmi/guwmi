@@ -5,6 +5,9 @@
   display: flex;
   flex-direction: column;
 }
+.guwmi-vertical-grid.space-0 {
+  gap: 0;
+}
 .guwmi-vertical-grid.space-1 {
   gap: 1rem;
 }
@@ -22,6 +25,9 @@
 }
 .guwmi-vertical-grid.space-6 {
   gap: 6rem;
+}
+.guwmi-vertical-grid.pad-0 {
+  padding: 0;
 }
 .guwmi-vertical-grid.pad-1 {
   padding: 1rem;

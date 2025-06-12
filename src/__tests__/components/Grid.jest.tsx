@@ -43,5 +43,7 @@ describe('Grid Component', () => {
     rerender(<Grid columns="auto" spacing={1} data-testid="guwmi-grid"></Grid>);
     expect(grid).toHaveClass('auto');
     expect(grid).toHaveClass('space-1');
+    rerender(<Grid columns="auto" spacing={0} data-testid="guwmi-grid"></Grid>);
+    expect(grid).toHaveClass('space-0');
   });
 })

@@ -7,13 +7,13 @@
   --guwmi-grid-cols: 3;
   --guwmi-grid-gap: 2rem;
 
-  &.col-1 { --guwmi-grid-cols: 1 }
   &.col-2 { --guwmi-grid-cols: 2 }
   &.col-3 { --guwmi-grid-cols: 3 }
   &.col-4 { --guwmi-grid-cols: 4 }
   &.col-5 { --guwmi-grid-cols: 5 }
   &.col-6 { --guwmi-grid-cols: 6 }
 
+  &.space-0 { --guwmi-grid-gap: 0 }
   &.space-1 { --guwmi-grid-gap: 1rem }
   &.space-2 { --guwmi-grid-gap: 2rem }
   &.space-3 { --guwmi-grid-gap: 3rem }

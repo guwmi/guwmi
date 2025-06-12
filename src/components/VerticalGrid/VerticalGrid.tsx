@@ -3,8 +3,8 @@ import { PropsWithChildren } from 'react';
 
 // component type
 interface ComponentProps extends PropsWithChildren {
-  spacing?: 1 | 2 | 3 | 4 | 5 | 6;
-  padding?: 1 | 2 | 3 | 4 | 5 | 6;
+  spacing?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  padding?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   className?: string;
 }
 
@@ -13,7 +13,7 @@ export default function VerticalGrid(props: ComponentProps) {
   const {
     children,
     spacing = 1,
-    padding,
+    padding = 0,
     className,
     ...rest
   } = props;
@@ -21,6 +21,9 @@ export default function VerticalGrid(props: ComponentProps) {
   const getClasses = () => {
     let classString = 'guwmi-vertical-grid ';
     switch(spacing) {
+      case 0:
+        classString += 'space-0';
+        break;
       case 1:
         classString += 'space-1';
         break;
@@ -40,26 +43,27 @@ export default function VerticalGrid(props: ComponentProps) {
         classString += 'space-2';
     }
 
-    if (padding) {
-      switch(padding) {
-        case 1:
-          classString += ' pad-1';
-          break;
-        case 3:
-          classString += ' pad-3';
-          break;
-        case 4:
-          classString += ' pad-4';
-          break;
-        case 5:
-          classString += ' pad-5';
-          break;
-        case 6:
-          classString += ' pad-6';
-          break;
-        default:
-          classString += ' pad-2';
-      }
+    switch(padding) {
+      case 0:
+        classString += ' pad-0';
+        break;
+      case 1:
+        classString += ' pad-1';
+        break;
+      case 3:
+        classString += ' pad-3';
+        break;
+      case 4:
+        classString += ' pad-4';
+        break;
+      case 5:
+        classString += ' pad-5';
+        break;
+      case 6:
+        classString += ' pad-6';
+        break;
+      default:
+        classString += ' pad-2';
     }
     if (className) {
       classString += ' ' + className;
