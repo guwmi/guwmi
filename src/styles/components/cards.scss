@@ -3,6 +3,7 @@
  **/
 
 .guwmi-card {
+  position: relative;
   background: var(--guwmi-primary-bg);
   border: solid 1px var(--guwmi-secondary-bg);
   border-radius: var(--guwmi-radius);

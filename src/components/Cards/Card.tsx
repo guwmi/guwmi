@@ -7,6 +7,7 @@ interface ComponentProps extends PropsWithChildren {
   subTitle?: string;
   image?: string;
   className?: string;
+  loading?: boolean;
 }
 
 export default function Card(props: ComponentProps) {
@@ -17,9 +18,10 @@ export default function Card(props: ComponentProps) {
     image,
     className,
     children,
+    loading,
     ...rest
   } = props;
-  const classes = `guwmi-card${className ? ' ' + className : ''}`;
+  const classes = `guwmi-card${loading ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
 
   return (
     <div className={classes} {...rest}>

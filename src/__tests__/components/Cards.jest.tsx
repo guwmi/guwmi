@@ -22,7 +22,7 @@ describe('Card Component', () => {
     { content: 'In convallis, sapien at scelerisque accumsan, enim mi sollicitudin nisl.'}
   ]
 
-  test('renders correctly y default', () => {
+  test('renders correctly by default', () => {
     
     render(
       <Grid data-testid="guwmi-card-grid">
@@ -98,5 +98,19 @@ describe('Card Component', () => {
     expect(card).toHaveClass('override-class');
     const section = screen.getByTestId('guwmi-card-section');
     expect(section).toHaveClass('override-class');
+  });
+
+  test('renders with skeleton class', () => {
+    
+    render(
+      <Card loading data-testid="guwmi-card">
+        <CardSection>
+          <p>test</p>
+        </CardSection>
+    </Card>
+    )
+
+    const card = screen.getByTestId('guwmi-card');
+    expect(card).toHaveClass('guwmi-skeleton');
   });
 })
