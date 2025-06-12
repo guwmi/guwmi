@@ -25,7 +25,6 @@
     }
 
     .guwmi-tab {
-      position: relative;
       z-index: +1;
       background: none;
       border: 0;
@@ -36,7 +35,6 @@
   }
 
   .guwmi-tab-panels {
-    position: relative;
     border: solid 1px var(--guwmi-secondary-bg);
     border-radius: var(--guwmi-radius);
     overflow: hidden;

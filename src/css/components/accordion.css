@@ -7,7 +7,6 @@
   overflow: hidden;
 }
 .guwmi-accordion-container .guwmi-accordion-item {
-  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;

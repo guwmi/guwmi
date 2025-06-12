@@ -2,7 +2,6 @@
  * Styles for the Button component ******************************************************************
  **/
 .guwmi-btn {
-  position: relative;
   display: inline-flex;
   gap: 1rem;
   justify-content: center;

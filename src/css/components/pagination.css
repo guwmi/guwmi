@@ -2,7 +2,6 @@
  * Style for the pagination component ***************************************************************
  **/
 .guwmi-pagination {
-  position: relative;
   display: flex;
   width: 100%;
   border-top: solid 1px var(--guwmi-secondary-bg);
@@ -38,7 +37,6 @@
 .guwmi-pagination .guwmi-pagination-current-info {
   display: flex;
   align-items: center;
-  position: relative;
   flex-grow: 1;
   border-right: solid 2px var(--guwmi-secondary-bg);
   border-left: solid 2px var(--guwmi-secondary-bg);

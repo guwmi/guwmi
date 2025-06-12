@@ -29,6 +29,7 @@
 @use './components/navbar.scss';
 @use './components/notification.scss';
 @use './components/pagination.scss';
+@use './components/skeletons.scss';
 @use './components/tabs.scss';
 @use './components/table.scss';
 @use './components/tag.scss';
@@ -73,31 +74,6 @@ body {
     height: 1px;
     overflow: hidden;
   }
-
-  // skeleton style
-  .guwmi-skeleton {
-    border-color: var(--guwmi-primary-bg) !important;
-
-    &.alt {
-
-      &::after {
-        animation: guwmi-skeleton-animation-alt 0.9s linear infinite alternate;
-      }
-    }
-
-    &::after {
-      position: absolute;
-      display: block;
-      z-index: +1;
-      content: '';
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
-      cursor: default;
-      animation: guwmi-skeleton-animation 0.9s linear infinite alternate;
-    }
-  }
 }
 
 // override focus state to ensure visibility in both light and dark modes
@@ -108,32 +84,4 @@ body {
 
 a:not(.guwmi-btn):focus-visible {
   box-shadow: 0 0 0 2px var(--guwmi-white), 0 0 0 4px var(--guwmi-primary);
-}
-
-@media (prefers-color-scheme: light) {
-
-  .guwmi-skeleton.alt {
-
-    &::after {
-      animation: guwmi-skeleton-animation-alt-light 0.9s linear infinite alternate;
-    }
-  }
-}
-
-@keyframes guwmi-skeleton-animation {
-  0% {
-    background-color: var(--guwmi-primary-bg);
-  }
-  100% {
-    background-color: var(--guwmi-secondary-bg);
-  }
-}
-
-@keyframes guwmi-skeleton-animation-alt {
-  0% {
-    background-color: var(--guwmi-app-bg);
-  }
-  100% {
-    background-color: var(--guwmi-primary-bg);
-  }
 }
