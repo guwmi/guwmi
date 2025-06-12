@@ -86,5 +86,19 @@ describe('SearchInput Component', () => {
     expect(focusHandler).toHaveBeenCalledTimes(1);
     expect(changeHandler).toHaveBeenCalledTimes(3);
     expect(blurHandler).toHaveBeenCalledTimes(1);
-  })
+  });
+
+  test('renders with the correct defaults', () => {
+
+    render(
+      <SearchInput
+        label="Search Input Label"
+        data-testid="guwmi-search-input"
+        skeleton
+      />
+    )
+
+    const inputContainer = screen.getByTestId('guwmi-search-input');
+    expect(inputContainer).toHaveClass('guwmi-skeleton');
+  });
 })
