@@ -3,6 +3,7 @@
  **/
 
 .guwmi-tag {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -15,6 +16,7 @@
   background: var(--guwmi-secondary-bg);
   border-color: var(--guwmi-secondary-bg);
   color: var(--guwmi-text);
+  overflow: hidden;
 
   // variants
   &.secondary {

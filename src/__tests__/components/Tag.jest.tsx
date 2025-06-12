@@ -87,4 +87,12 @@ describe('Tag Component', () => {
     expect(button).toHaveClass('primary');
     expect(button).toHaveClass('override-class');
   });
+
+  test('renders with skeleton class', () => {
+
+    render(<Tag value="Tag" loading />);
+
+    const button = screen.getByText('Tag');
+    expect(button).toHaveClass('guwmi-skeleton');
+  });
 });

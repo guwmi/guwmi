@@ -11,6 +11,7 @@ interface ComponentProps {
   href?: string;
   target?: '_blank' | '_self' | '_parent' | '_top';
   disabled?: boolean;
+  loading?: boolean;
 }
 
 export default function Tag(props: ComponentProps) {
@@ -23,10 +24,11 @@ export default function Tag(props: ComponentProps) {
     onClick = null,
     href,
     target = "_self",
-    disabled = false,
+    disabled,
+    loading,
     ...rest
   } = props;
-  const classes = `guwmi-tag ${size} ${variant}${className ? ' ' + className : ''}`;
+  const classes = `guwmi-tag ${size} ${variant}${loading ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
   const button = useRef(null);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     button.current.focus();
@@ -36,11 +38,11 @@ export default function Tag(props: ComponentProps) {
   };
 
   return (
-    href && !disabled ? (
+    href && (!disabled || loading) ? (
       <a className={classes} href={href} ref={button} target={target} {...rest}>
         {value}
       </a>
-    ) : onClick || (href && disabled) ? (
+    ) : onClick || (href && disabled) && !loading ? (
       <button className={classes} onClick={(e) => handleClick(e)} ref={button} disabled={disabled} {...rest}>
         {value}
       </button>
