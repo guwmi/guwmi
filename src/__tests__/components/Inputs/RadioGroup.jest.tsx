@@ -112,4 +112,30 @@ describe('RadioGroup Component', () => {
     expect(blurHandler).toHaveBeenCalledTimes(1);
   });
 
+  test('renders with skeleton classes', () => {
+
+    render(
+      <RadioGroup
+        label="Radio group label"
+        options={[
+          {name: 'Option one', value: 'one'},
+          {name: 'Option two', value: 'two'},
+          {name: 'Option three', value: 'three', disabled: true},
+          {name: 'Option four', value: 'four'},
+          {name: 'Option five', value: 'five'},
+        ]}
+        data-testid="guwmi-radio-group"
+        skeleton
+      />
+    )
+
+    const inputContainer = screen.getByTestId('guwmi-radio-group');
+    const inputs = inputContainer.querySelector('.guwmi-radio-container').querySelectorAll('div');
+    const label = screen.getByText("Radio group label");
+    expect(label).toHaveClass('guwmi-skeleton')
+    inputs.forEach((input) => {
+      expect(input).toHaveClass('guwmi-skeleton');
+    })
+  });
+
 });

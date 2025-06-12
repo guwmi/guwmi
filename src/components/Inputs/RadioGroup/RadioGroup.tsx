@@ -13,6 +13,7 @@ interface ComponentProps {
   options: { name: string, value: string, disabled?: boolean }[];
   layout?: 'column' | 'row';
   className?: string;
+  skeleton?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -31,6 +32,7 @@ export default function RadioGroup(props: ComponentProps) {
     options,
     layout = 'column',
     className,
+    skeleton,
     onChange,
     onBlur,
     onFocus,
@@ -46,10 +48,10 @@ export default function RadioGroup(props: ComponentProps) {
         name={name}
         disabled={disabled}
       >
-        <legend>{label}</legend>
+        <legend className={skeleton ? 'guwmi-skeleton' : null}>{label}</legend>
         <div className={`guwmi-radio-container ${layout}`}>
           {options && options.map((option, index) => (
-            <div key={`${id}-${index}`} className={option.disabled ? 'disabled' : null}>
+            <div key={`${id}-${index}`} className={skeleton ? 'guwmi-skeleton' : option.disabled ? 'disabled' : null}>
               <input
                 type="radio"
                 name={name ?? label.toLowerCase()}

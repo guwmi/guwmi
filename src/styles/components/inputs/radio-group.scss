@@ -15,6 +15,7 @@
     padding: 1rem;
 
     legend {
+      position: relative;
       padding: 0 1rem;
       font-size: 0.85rem;
     }
@@ -29,8 +30,13 @@
       }
 
       > div {
+        position: relative;
         display: flex;
         gap: 1rem;
+
+        &.guwmi-skeleton {
+          width: 47%;
+        }
 
         * {
           cursor: pointer;

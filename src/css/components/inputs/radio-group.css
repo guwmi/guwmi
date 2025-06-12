@@ -14,6 +14,7 @@
   padding: 1rem;
 }
 .guwmi-radio-group fieldset legend {
+  position: relative;
   padding: 0 1rem;
   font-size: 0.85rem;
 }
@@ -26,8 +27,12 @@
   flex-direction: row;
 }
 .guwmi-radio-group fieldset .guwmi-radio-container > div {
+  position: relative;
   display: flex;
   gap: 1rem;
+}
+.guwmi-radio-group fieldset .guwmi-radio-container > div.guwmi-skeleton {
+  width: 47%;
 }
 .guwmi-radio-group fieldset .guwmi-radio-container > div * {
   cursor: pointer;
