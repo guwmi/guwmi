@@ -62,7 +62,7 @@ describe('Tabs Components', () => {
     expect(tabItems[0]).toHaveClass('override-class-tab');
     expect(tabsPanels).toHaveClass('override-class-panels');
     expect(tabPanelItems[0]).toHaveClass('override-class-panel');
-  })
+  });
 
   test('applies visibility to correct panels by default and on click', async () => {
 
@@ -79,5 +79,26 @@ describe('Tabs Components', () => {
     expect(tabPanelItems[0]).toHaveAttribute('hidden');
     expect(tabItems[1]).toHaveClass('active');
     expect(tabPanelItems[1]).not.toHaveAttribute('hidden');
+  });
+
+  test('renders with skeleton classes', () => {
+
+    render (
+      <TabsContainer skeleton>
+        <Tabs data-testid="guwmi-tabs-nav">
+          <Tab>Item one</Tab>
+        </Tabs>
+        <TabPanels data-testid="guwmi-tabs-panels">
+          <TabPanel>
+            <p>Item one content</p>
+          </TabPanel>
+        </TabPanels>
+      </TabsContainer>
+    );
+
+    const tabsNav = screen.getByTestId('guwmi-tabs-nav');
+    const tabsPanels = screen.getByTestId('guwmi-tabs-panels');
+    expect(tabsNav).toHaveClass('guwmi-skeleton');
+    expect(tabsPanels).toHaveClass('guwmi-skeleton');
   })
 })

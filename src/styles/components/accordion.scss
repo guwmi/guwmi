@@ -20,6 +20,13 @@
       }
     }
 
+    &:last-of-type {
+
+      &.guwmi-skeleton {
+        margin-bottom: 0;
+      }
+    }
+
     &.guwmi-skeleton {
       margin-bottom: 1px;
     }

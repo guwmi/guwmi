@@ -26,10 +26,10 @@ interface ChildType {
 export default function TabPanels(props: ComponentProps) {
 
   const { className, children, ...rest } = props;
-  const { selectedTab } = useContext(TabsContext);
+  const { skeleton, selectedTab } = useContext(TabsContext);
   const windowWidth = useWindowWidth();
   const panels = useRef(null);
-  const classes = `guwmi-tab-panels${className ? ' ' + className : ''}`;
+  const classes = `guwmi-tab-panels${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
 
   const childrenWithIndex = useMemo(() => {
     return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<ChildType>, { index: index }))

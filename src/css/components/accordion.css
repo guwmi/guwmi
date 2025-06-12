@@ -15,6 +15,9 @@
 .guwmi-accordion-container .guwmi-accordion-item:nth-of-type(1) > button {
   border-top: 0;
 }
+.guwmi-accordion-container .guwmi-accordion-item:last-of-type.guwmi-skeleton {
+  margin-bottom: 0;
+}
 .guwmi-accordion-container .guwmi-accordion-item.guwmi-skeleton {
   margin-bottom: 1px;
 }

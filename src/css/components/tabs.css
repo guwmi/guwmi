@@ -32,6 +32,7 @@
   cursor: pointer;
 }
 .guwmi-tabs-container .guwmi-tab-panels {
+  position: relative;
   border: solid 1px var(--guwmi-secondary-bg);
   border-radius: var(--guwmi-radius);
   overflow: hidden;

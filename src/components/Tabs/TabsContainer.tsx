@@ -7,17 +7,23 @@ import TabsContext from './TabsContext';
 // component type
 interface ComponentProps extends PropsWithChildren {
   className?: string;
+  skeleton?: boolean;
 }
 
 export default function TabsContainer(props: ComponentProps) {
 
-  const { className, children, ...rest } = props;
+  const {
+    className,
+    skeleton,
+    children,
+    ...rest
+  } = props;
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const classes = `guwmi-tabs-container${className ? ' ' + className : ''}`;
   const id = useId();
 
   return (
-    <TabsContext.Provider value={{id, selectedTab, setSelectedTab}}>
+    <TabsContext.Provider value={{skeleton, id, selectedTab, setSelectedTab}}>
       <div className={classes} {...rest}>
         {children}
       </div>

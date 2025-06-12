@@ -23,13 +23,13 @@ interface ChildType {
 export default function Tabs(props: ComponentProps) {
 
   const { className, children, ...rest } = props;
-  const { selectedTab } = useContext(TabsContext);
+  const { skeleton, selectedTab } = useContext(TabsContext);
   const tabsContainer = useRef(null);
   const slider = useRef(null);
   const childrenWithIndex = useMemo(() => {
     return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<ChildType>, { index: index }))
   }, [children])
-  const classes = `guwmi-tabs${className ? ' ' + className : ''}`;
+  const classes = `guwmi-tabs${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
 
   useEffect(() => {
     if (tabsContainer.current.querySelector('.guwmi-tab.active')) {
