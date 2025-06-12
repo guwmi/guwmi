@@ -1387,6 +1387,7 @@
  * Style for the pagination component ***************************************************************
  **/
 .guwmi-pagination {
+  position: relative;
   display: flex;
   width: 100%;
   border-top: solid 1px var(--guwmi-secondary-bg);

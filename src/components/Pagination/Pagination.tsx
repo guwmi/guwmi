@@ -11,8 +11,9 @@ interface ComponentProps {
   currentSize: number;
   pageSizes: number[];
   totalItems: number;
-  onChange: (value: {currentPage: number, currentSize: number}) => void;
   className?: string;
+  skeleton?: boolean;
+  onChange: (value: {currentPage: number, currentSize: number}) => void;
 }
 
 export default function Pagination(props: ComponentProps) {
@@ -23,6 +24,7 @@ export default function Pagination(props: ComponentProps) {
     pageSizes,
     totalItems,
     className,
+    skeleton,
     onChange,
     ...rest
   } = props;
@@ -30,7 +32,7 @@ export default function Pagination(props: ComponentProps) {
   const [size, setSize] = useState<number>(currentSize);
   const pageRef = useRef<number>(currentPage);
   const sizeRef = useRef<number>(currentSize);
-  const classes = `guwmi-pagination${className ? ' ' + className : ''}`;
+  const classes = `guwmi-pagination${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
   const pageSizeArray = useMemo(() => {
     const options = pageSizes.filter((s) => s < totalItems)
       .map((s) => ({ name: s.toString(), value: s.toString() }));

@@ -88,4 +88,22 @@ describe('Pagination Component', () => {
     await user.selectOptions(pageSelect, '2');
     expect(handleOnChange).toHaveBeenCalledTimes(4);
   });
+
+  test('renders with skeleton class', () => {
+
+    const handleOnChange = jest.fn();
+    render (
+      <Pagination
+        pageSizes={[5,10,20,50]}
+        totalItems={100}
+        currentSize={5}
+        currentPage={1}
+        onChange={handleOnChange}
+        data-testid="guwmi-pagination"
+        skeleton
+      />
+    )
+    const pagination = screen.getByTestId('guwmi-pagination');
+    expect(pagination).toHaveClass('guwmi-skeleton');
+  });
 })
