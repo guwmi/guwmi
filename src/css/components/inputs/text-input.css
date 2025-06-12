@@ -8,10 +8,22 @@
   gap: 0.5rem;
 }
 .guwmi-text-input label {
+  position: relative;
   padding-left: 0.66rem;
   font-size: 0.85rem;
 }
-.guwmi-text-input input {
+.guwmi-text-input label.guwmi-skeleton {
+  width: 45%;
+  max-width: 150px;
+}
+.guwmi-text-input .guwmi-text-input-container {
+  position: relative;
+  display: block;
+  border-top-right-radius: var(--guwmi-radius);
+  border-top-left-radius: var(--guwmi-radius);
+  overflow: hidden;
+}
+.guwmi-text-input .guwmi-text-input-container input {
   appearance: none;
   padding: 0.66rem;
   background: var(--guwmi-primary-bg);
@@ -21,8 +33,9 @@
   border-top-left-radius: var(--guwmi-radius);
   font-size: 1rem;
   color: var(--guwmi-text);
+  width: 100%;
 }
-.guwmi-text-input input::placeholder {
+.guwmi-text-input .guwmi-text-input-container input::placeholder {
   color: var(--guwmi-text);
   opacity: 0.33;
 }

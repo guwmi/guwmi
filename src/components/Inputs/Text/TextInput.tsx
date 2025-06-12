@@ -15,6 +15,7 @@ interface ComponentProps {
   hasError?: boolean;
   maxLength?: number;
   className?: string;
+  skeleton?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -35,6 +36,7 @@ export default function TextInput(props: ComponentProps) {
     hasError,
     maxLength,
     className,
+    skeleton,
     onChange,
     onBlur,
     onFocus,
@@ -45,20 +47,22 @@ export default function TextInput(props: ComponentProps) {
 
   return (
     <div className={classes} {...rest}>
-      <label htmlFor={inputId} className={hideLabel ? 'guwmi-sr-only' : null}>{label}</label>
-      <input
-        type="text"
-        id={inputId}
-        name={name}
-        placeholder={placeholder}
-        disabled={disabled}
-        value={value}
-        readOnly={readOnly}
-        maxLength={maxLength}
-        onChange={onChange}
-        onBlur={onBlur}
-        onFocus={onFocus}
-      />
+      <label htmlFor={inputId} className={skeleton && !hideLabel ? 'guwmi-skeleton' : hideLabel ? 'guwmi-sr-only' : null}>{label}</label>
+      <div className={`guwmi-text-input-container${skeleton ? ' guwmi-skeleton' : ''}`}>
+        <input
+          type="text"
+          id={inputId}
+          name={name}
+          placeholder={placeholder}
+          disabled={disabled}
+          value={value}
+          readOnly={readOnly}
+          maxLength={maxLength}
+          onChange={onChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
+        />
+      </div>
       {hasError &&
         <span>{error}</span>
       }

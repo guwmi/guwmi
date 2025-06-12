@@ -94,5 +94,21 @@ describe('TextInput Component', () => {
     expect(focusHandler).toHaveBeenCalledTimes(1);
     expect(changeHandler).toHaveBeenCalledTimes(3);
     expect(blurHandler).toHaveBeenCalledTimes(1);
+  });
+
+  test('renders with skeleton classes', () => {
+
+    render(
+      <TextInput
+        label="Text Input Label"
+        data-testid="guwmi-text-input"
+        skeleton
+      />
+    )
+
+    const inputContainer = screen.getByTestId('guwmi-text-input').querySelector('.guwmi-text-input-container');
+    const label = screen.getByText("Text Input Label");
+    expect(inputContainer).toHaveClass('guwmi-skeleton');
+    expect(label).toHaveClass('guwmi-skeleton');
   })
 })
