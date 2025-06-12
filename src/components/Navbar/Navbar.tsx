@@ -5,6 +5,7 @@ import { PropsWithChildren } from 'react';
 interface ComponentProps extends PropsWithChildren {
   ariaLabel: string;
   className?: string;
+  loading?: boolean;
 }
 
 export default function Navbar(props: ComponentProps) {
@@ -12,6 +13,7 @@ export default function Navbar(props: ComponentProps) {
   const {
     ariaLabel,
     className,
+    loading,
     children,
     ...rest
   } = props;
@@ -23,9 +25,19 @@ export default function Navbar(props: ComponentProps) {
       aria-label={ariaLabel}
       {...rest}
     >
-      <ul>
-        {children}
-      </ul>
+      {loading ? (
+        <ul>
+          {Array.from({ length: 5 }, (_, index) => index).map((v, i) => (
+            <li key={`navbar-skeleton-${i}`} className="guwmi-navbar-item">
+              <button className="guwmi-navbar-button guwmi-skeleton"></button>
+            </li>
+          ))}
+        </ul> 
+      ) : (
+        <ul>
+          {children}
+        </ul>
+      )}
     </nav>
   )
 }

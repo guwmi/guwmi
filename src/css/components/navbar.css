@@ -21,7 +21,23 @@
 .guwmi-navbar ul .guwmi-navbar-item.active .guwmi-navbar-button {
   background: rgba(0, 0, 0, 0.1);
 }
+.guwmi-navbar ul .guwmi-navbar-item:nth-of-type(1) .guwmi-navbar-button.guwmi-skeleton::after {
+  width: 53%;
+}
+.guwmi-navbar ul .guwmi-navbar-item:nth-of-type(2) .guwmi-navbar-button.guwmi-skeleton::after {
+  width: 57%;
+}
+.guwmi-navbar ul .guwmi-navbar-item:nth-of-type(3) .guwmi-navbar-button.guwmi-skeleton::after {
+  width: 43%;
+}
+.guwmi-navbar ul .guwmi-navbar-item:nth-of-type(4) .guwmi-navbar-button.guwmi-skeleton::after {
+  width: 68%;
+}
+.guwmi-navbar ul .guwmi-navbar-item:nth-of-type(5) .guwmi-navbar-button.guwmi-skeleton::after {
+  width: 62%;
+}
 .guwmi-navbar ul .guwmi-navbar-button {
+  position: relative;
   background: none;
   border: none;
   cursor: pointer;
@@ -30,6 +46,14 @@
   font-size: 0.9rem;
   display: flex;
   transition: var(--guwmi-transition);
+}
+.guwmi-navbar ul .guwmi-navbar-button.guwmi-skeleton {
+  height: 2.4rem;
+}
+.guwmi-navbar ul .guwmi-navbar-button.guwmi-skeleton::after {
+  height: 0.9rem;
+  top: 1rem;
+  left: 1rem;
 }
 .guwmi-navbar ul .guwmi-navbar-button:hover {
   background: rgba(0, 0, 0, 0.1);

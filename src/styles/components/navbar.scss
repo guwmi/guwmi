@@ -28,9 +28,30 @@
           background: rgba(0,0,0, 0.1);
         }
       }
+
+      &:nth-of-type(1) .guwmi-navbar-button.guwmi-skeleton::after {
+        width: 53%;
+      }
+
+      &:nth-of-type(2) .guwmi-navbar-button.guwmi-skeleton::after {
+        width: 57%;
+      }
+
+      &:nth-of-type(3) .guwmi-navbar-button.guwmi-skeleton::after {
+        width: 43%;
+      }
+
+      &:nth-of-type(4) .guwmi-navbar-button.guwmi-skeleton::after {
+        width: 68%;
+      }
+
+      &:nth-of-type(5) .guwmi-navbar-button.guwmi-skeleton::after {
+        width: 62%;
+      }
     }
 
     .guwmi-navbar-button {
+      position: relative;
       background: none;
       border: none;
       cursor: pointer;
@@ -39,6 +60,16 @@
       font-size: 0.9rem;
       display: flex;
       transition: var(--guwmi-transition);
+
+      &.guwmi-skeleton {
+        height: 2.4rem;
+
+        &::after {
+          height: 0.9rem;
+          top: 1rem;
+          left: 1rem;
+        }
+      }
 
       &:hover {
         background: rgba(0,0,0, 0.1);

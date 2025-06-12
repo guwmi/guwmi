@@ -44,7 +44,7 @@ describe('Navbar Component', () => {
     expect(subItems).toHaveLength(3);
   });
 
-  test('renders with override classes', async () => {
+  test('renders with override classes', () => {
 
     render (
       <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar" className="override-class">
@@ -63,7 +63,20 @@ describe('Navbar Component', () => {
     expect(navItem).toHaveClass('override-class');
   });
 
-  test('renders with default open nav group', async () => {
+  test('renders with skeleton classes', () => {
+
+    render (
+      <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar" loading>
+        <NavbarItem>Item one</NavbarItem>
+      </Navbar>
+    )
+
+    const nav = screen.getByTestId('guwmi-navbar');
+    const skeletonItems = nav.querySelectorAll('.guwmi-navbar-button.guwmi-skeleton');
+    expect(skeletonItems).toHaveLength(5);
+  });
+
+  test('renders with default open nav group', () => {
 
     render (
       <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar">
