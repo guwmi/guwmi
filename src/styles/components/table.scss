@@ -18,17 +18,27 @@
     gap: 0.5rem;
 
     h2 {
+      position: relative;
       font-size: 1.2rem;
       margin: 0;
       font-weight: 500;
+
+      &.guwmi-skeleton {
+        max-width: 150px;
+      }
     }
   
     p {
+      position: relative;
       font-size: 0.85rem;
       margin: 0;
       font-weight: 400;
       opacity: 0.75;
       letter-spacing: unset;
+
+      &.guwmi-skeleton {
+        max-width: 300px;
+      }
     }
   }
 
@@ -61,12 +71,24 @@
 
     th,
     td {
+      position: relative;
       text-align: left;
       padding: 1rem;
       margin: 0;
       border: 0;
       border-bottom: solid 1px var(--guwmi-secondary-bg);
       font-size: 0.9rem;
+
+      &.guwmi-skeleton {
+        height: 1.5rem;
+
+        &::after {
+          height: 40%;
+          width: 75%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
     }
 
     thead {
@@ -74,6 +96,13 @@
       th {
         border-color: var(--guwmi-tertiary-bg);
         font-size: 1rem;
+
+        &.guwmi-skeleton {
+  
+          &::after {
+            width: 50%;
+          }
+        }
       }
     }
 

@@ -19,6 +19,7 @@ interface ComponentProps {
   isCondensed?: boolean;
   hasPagination?: boolean;
   className?: string;
+  skeleton?: boolean;
 }
 
 export default function Table(props: ComponentProps) {
@@ -31,6 +32,7 @@ export default function Table(props: ComponentProps) {
     isCondensed,
     hasPagination = false,
     className,
+    skeleton,
     ...rest
   } = props;
   const id = useId();
@@ -61,46 +63,67 @@ export default function Table(props: ComponentProps) {
       {(title || description) &&
         <div className="guwmi-table-header">
           {title &&
-            <h2>{title}</h2>
+            <h2 className={skeleton ? 'guwmi-skeleton' : null}>{title}</h2>
           }
           {description &&
-            <p>{description}</p>
+            <p className={skeleton ? 'guwmi-skeleton' : null}>{description}</p>
           }
         </div>
       }
       {(headers.length > 0 && isSearchable) &&
         <div className="guwmi-table-search">
-          <SearchInput onChange={(e) => setSearchValue(e.target.value)} />
+          <SearchInput onChange={(e) => setSearchValue(e.target.value)} skeleton={skeleton} />
         </div>
       }
       <table cellPadding={0} cellSpacing={0}>
-        {headers.length > 0 ? (
+        {skeleton ? (
           <>
             <thead>
               <tr>
-                {headers.map((header, i) => (
-                  <th key={`table-${id}-header-${i}`}>{header.title}</th>
+                {Array.from({ length: 4 }, (_, index) => index).map((v, i) => (
+                  <th key={`guwmi-table-skelton-header-${i}`} className="guwmi-skeleton"></th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {(!hasPagination && tableRows.length > 0) ? tableRows.map((row) => (
-                <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
-              )) : (hasPagination && paginatedData.values.length > 0) ? paginatedData.values.map((row) => (
-                <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
-              )) : (
-                <tr>
-                  <td colSpan={headers.length}>There is no data to display in the table</td>
+              {Array.from({ length: 5 }, (_, index) => index).map((v, i) => (
+                <tr key={`guwmi-table-skelton-row-${i}`}>
+                  {Array.from({ length: 4 }, (_, index) => index).map((v, i) => (
+                    <td key={`guwmi-table-skelton-td-${i}`} className="guwmi-skeleton"></td>
+                  ))}
                 </tr>
-              )}
+              ))}
             </tbody>
           </>
         ) : (
-          <tbody>
-            <tr>
-              <td>No column headers provided for the table</td>
-            </tr>
-          </tbody>
+          headers.length > 0 ? (
+            <>
+              <thead>
+                <tr>
+                  {headers.map((header, i) => (
+                    <th key={`table-${id}-header-${i}`}>{header.title}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {(!hasPagination && tableRows.length > 0) ? tableRows.map((row) => (
+                  <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
+                )) : (hasPagination && paginatedData.values.length > 0) ? paginatedData.values.map((row) => (
+                  <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
+                )) : (
+                  <tr>
+                    <td colSpan={headers.length}>There is no data to display in the table</td>
+                  </tr>
+                )}
+              </tbody>
+            </>
+          ) : (
+            <tbody>
+              <tr>
+                <td>No column headers provided for the table</td>
+              </tr>
+            </tbody>
+          )
         )}
       </table>
       {hasPagination &&
@@ -110,6 +133,7 @@ export default function Table(props: ComponentProps) {
           currentPage={paginatedData.currentPage}
           currentSize={paginatedData.pageSize}
           onChange={paginate}
+          skeleton={skeleton}
         />
       }
     </div>

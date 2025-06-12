@@ -17,16 +17,24 @@
   gap: 0.5rem;
 }
 .guwmi-table-container .guwmi-table-header h2 {
+  position: relative;
   font-size: 1.2rem;
   margin: 0;
   font-weight: 500;
 }
+.guwmi-table-container .guwmi-table-header h2.guwmi-skeleton {
+  max-width: 150px;
+}
 .guwmi-table-container .guwmi-table-header p {
+  position: relative;
   font-size: 0.85rem;
   margin: 0;
   font-weight: 400;
   opacity: 0.75;
   letter-spacing: unset;
+}
+.guwmi-table-container .guwmi-table-header p.guwmi-skeleton {
+  max-width: 300px;
 }
 .guwmi-table-container.condensed th,
 .guwmi-table-container.condensed td {
@@ -47,6 +55,7 @@
 }
 .guwmi-table-container table th,
 .guwmi-table-container table td {
+  position: relative;
   text-align: left;
   padding: 1rem;
   margin: 0;
@@ -54,9 +63,23 @@
   border-bottom: solid 1px var(--guwmi-secondary-bg);
   font-size: 0.9rem;
 }
+.guwmi-table-container table th.guwmi-skeleton,
+.guwmi-table-container table td.guwmi-skeleton {
+  height: 1.5rem;
+}
+.guwmi-table-container table th.guwmi-skeleton::after,
+.guwmi-table-container table td.guwmi-skeleton::after {
+  height: 40%;
+  width: 75%;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .guwmi-table-container table thead th {
   border-color: var(--guwmi-tertiary-bg);
   font-size: 1rem;
+}
+.guwmi-table-container table thead th.guwmi-skeleton::after {
+  width: 50%;
 }
 .guwmi-table-container table tbody tr:last-of-type td {
   border: 0;

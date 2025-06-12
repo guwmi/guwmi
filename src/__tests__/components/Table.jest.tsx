@@ -133,4 +133,13 @@ describe('Table Component', () => {
     const pagination = table.querySelector('.guwmi-pagination');
     expect(pagination).toBeInTheDocument();
   });
+
+  test('renders with skeleton classes', () => {
+
+    render( <Table headers={[]} rows={rows} data-testid="guwmi-table" skeleton /> );
+
+    const table = screen.getByTestId('guwmi-table');
+    const skeletonCells = table.querySelectorAll('.guwmi-skeleton');
+    expect(skeletonCells).toHaveLength(24);
+  });
 })
