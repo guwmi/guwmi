@@ -679,6 +679,7 @@
   opacity: 0;
 }
 .guwmi-checkbox-input label {
+  position: relative;
   font-size: 0.9rem;
   line-height: 1;
 }

@@ -80,4 +80,16 @@ describe('Checkbox Component', () => {
     expect(blurHandler).toHaveBeenCalledTimes(1);
   });
 
+  test('renders with skeleton classes and disabled', () => {
+
+    render (<Checkbox label="Test checkbox" data-testid="guwmi-checkbox" skeleton/>);
+
+    const inputContainer = screen.getByTestId('guwmi-checkbox').querySelector('.guwmi-checkbox-container');
+    const input = inputContainer.querySelector('input');
+    const label = screen.getByText("Test checkbox");
+    expect(inputContainer).toHaveClass('guwmi-skeleton');
+    expect(label).toHaveClass('guwmi-skeleton');
+    expect(input).toBeDisabled();
+  });
+
 });

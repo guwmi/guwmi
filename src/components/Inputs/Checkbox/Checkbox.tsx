@@ -13,6 +13,7 @@ interface ComponentProps {
   value?: string;
   readOnly?: boolean;
   className?: string;
+  skeleton?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -28,6 +29,7 @@ export default function Checkbox(props: ComponentProps) {
     value,
     readOnly = false,
     className,
+    skeleton,
     onChange,
     onBlur,
     onFocus,
@@ -38,7 +40,7 @@ export default function Checkbox(props: ComponentProps) {
 
   return (
     <div className={classes} {...rest}>
-      <div className="guwmi-checkbox-container">
+      <div className={`guwmi-checkbox-container${skeleton ? ' guwmi-skeleton' : ''}`}>
         <span className="guwmi-checkmark">
           <Icon name="check" size={15} stroke="3" />
         </span>
@@ -48,13 +50,13 @@ export default function Checkbox(props: ComponentProps) {
           name={name ?? label}
           value={value ?? label}
           readOnly={readOnly}
-          disabled={disabled}
+          disabled={disabled || skeleton}
           onChange={onChange}
           onBlur={onBlur}
           onFocus={onFocus}
         />
       </div>
-      <label htmlFor={inputId}>{label}</label>
+      <label className={skeleton ? 'guwmi-skeleton' : null} htmlFor={inputId}>{label}</label>
     </div>
   )
 }
