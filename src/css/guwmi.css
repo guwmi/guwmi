@@ -1656,11 +1656,14 @@ a.guwmi-tag.disabled {
   align-items: center;
   gap: 1rem;
 }
-.guwmi-toggle * {
+.guwmi-toggle *:not(.guwmi-skeleton) * {
   cursor: pointer;
 }
 .guwmi-toggle.disabled {
   opacity: 0.5;
+  cursor: not-allowed;
+}
+.guwmi-toggle.disabled *:not(.guwmi-skeleton) * {
   cursor: not-allowed;
 }
 .guwmi-toggle .guwmi-toggle-container {
@@ -1701,8 +1704,10 @@ a.guwmi-tag.disabled {
   width: 100%;
 }
 .guwmi-toggle label {
+  position: relative;
   font-size: 0.9rem;
   line-height: 1;
+  overflow: hidden;
 }
 
 /**

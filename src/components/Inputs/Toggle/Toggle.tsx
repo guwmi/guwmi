@@ -10,6 +10,7 @@ interface ComponentProps {
   value?: string;
   readOnly?: boolean;
   className?: string;
+  skeleton?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -25,6 +26,7 @@ export default function Toggle(props: ComponentProps) {
     value,
     readOnly = false,
     className,
+    skeleton,
     onChange,
     onBlur,
     onFocus,
@@ -35,15 +37,15 @@ export default function Toggle(props: ComponentProps) {
 
   return (
     <div className={classes} {...rest}>
-      <label htmlFor={inputId}>{label}</label>
-      <div className="guwmi-toggle-container">
+      <label className={skeleton ? 'guwmi-skeleton' : null} htmlFor={inputId}>{label}</label>
+      <div className={`guwmi-toggle-container${skeleton ? ' guwmi-skeleton' : ''}`}>
         <input
           type="checkbox"
           id={inputId}
           name={name ?? label}
           value={value ?? label}
           readOnly={readOnly}
-          disabled={disabled}
+          disabled={disabled || skeleton}
           onChange={onChange}
           onBlur={onBlur}
           onFocus={onFocus}

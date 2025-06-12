@@ -7,13 +7,17 @@
   align-items: center;
   gap: 1rem;
 
-  * {
+  *:not(.guwmi-skeleton) * {
     cursor: pointer;
   }
 
   &.disabled {
     opacity: 0.5;
     cursor: not-allowed;
+
+    *:not(.guwmi-skeleton) * {
+      cursor: not-allowed;
+    }
   }
 
   .guwmi-toggle-container {
@@ -60,7 +64,9 @@
   }
 
   label {
+    position: relative;
     font-size: 0.9rem;
     line-height: 1;
+    overflow: hidden;
   }
 }

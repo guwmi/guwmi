@@ -80,4 +80,13 @@ describe('Toggle Component', () => {
     expect(blurHandler).toHaveBeenCalledTimes(1);
   });
 
+  test('renders with skeleton classes', () => {
+
+    render (<Toggle label="Test toggle" data-testid="guwmi-toggle" skeleton />);
+
+    const inputContainer = screen.getByTestId('guwmi-toggle').querySelector('.guwmi-toggle-container');
+    const label = screen.getByText("Test toggle");
+    expect(inputContainer).toHaveClass('guwmi-skeleton');
+    expect(label).toHaveClass('guwmi-skeleton');
+  });
 });
