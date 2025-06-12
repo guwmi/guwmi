@@ -8,10 +8,22 @@
   gap: 0.5rem;
 }
 .guwmi-textarea label {
+  position: relative;
   padding-left: 0.66rem;
   font-size: 0.85rem;
 }
-.guwmi-textarea textarea {
+.guwmi-textarea label.guwmi-skeleton {
+  width: 45%;
+  max-width: 150px;
+}
+.guwmi-textarea .guwmi-textarea-container {
+  position: relative;
+  display: block;
+  border-top-right-radius: var(--guwmi-radius);
+  border-top-left-radius: var(--guwmi-radius);
+  overflow: hidden;
+}
+.guwmi-textarea .guwmi-textarea-container textarea {
   appearance: none;
   padding: 0.66rem;
   background: var(--guwmi-primary-bg);
@@ -22,8 +34,9 @@
   font-size: 1rem;
   color: var(--guwmi-text);
   min-height: 5rem;
+  width: 100%;
 }
-.guwmi-textarea textarea::placeholder {
+.guwmi-textarea .guwmi-textarea-container textarea::placeholder {
   color: var(--guwmi-text);
   opacity: 0.33;
 }

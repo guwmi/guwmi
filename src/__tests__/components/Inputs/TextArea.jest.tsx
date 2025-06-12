@@ -29,7 +29,7 @@ describe('TextArea Component', () => {
     expect(label).toBeInTheDocument();
     expect(inputContainer).not.toHaveClass('error');
     expect(input).toHaveProperty('id');
-  })
+  });
 
   test('renders with correct proprty overrides', () => {
 
@@ -95,5 +95,21 @@ describe('TextArea Component', () => {
     expect(focusHandler).toHaveBeenCalledTimes(1);
     expect(changeHandler).toHaveBeenCalledTimes(3);
     expect(blurHandler).toHaveBeenCalledTimes(1);
-  })
+  });
+
+  test('renders with skeleton classes', () => {
+
+    render(
+      <TextArea
+        label="Text Area Label"
+        data-testid="guwmi-text-area"
+        skeleton
+      />
+    )
+
+    const inputContainer = screen.getByTestId('guwmi-text-area').querySelector('.guwmi-textarea-container');
+    const label = screen.getByText("Text Area Label");
+    expect(inputContainer).toHaveClass('guwmi-skeleton');
+    expect(label).toHaveClass('guwmi-skeleton');
+  });
 })
