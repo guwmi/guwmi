@@ -88,6 +88,7 @@ body {
     &::after {
       position: absolute;
       display: block;
+      z-index: +1;
       content: '';
       height: 100%;
       width: 100%;

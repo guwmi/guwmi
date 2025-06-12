@@ -33,6 +33,18 @@ describe('InfoBlock Component', () => {
     expect(info).toHaveClass('override-class');
   });
 
+  test('renders with skeleton class', () => {
+
+    render (
+      <InfoBlock label="Test label" loading data-testid="guwmi-info-block">
+        <p>Test content</p>
+      </InfoBlock>
+    )
+
+    const info = screen.getByTestId('guwmi-info-block');
+    expect(info).toHaveClass('guwmi-skeleton');
+  });
+
   test('renders with correct kind variations', () => {
 
     const { rerender } = render (
