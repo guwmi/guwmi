@@ -8,8 +8,12 @@
   gap: 0.5rem;
 }
 .guwmi-select-input label {
+  position: relative;
   padding-left: 0.66rem;
   font-size: 0.85rem;
+}
+.guwmi-select-input label.guwmi-skeleton {
+  width: 43%;
 }
 .guwmi-select-input .guwmi-select-container {
   width: 100%;

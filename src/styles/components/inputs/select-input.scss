@@ -9,8 +9,13 @@
   gap: 0.5rem;
 
   label {
+    position: relative;
     padding-left: 0.66rem;
     font-size: 0.85rem;
+
+    &.guwmi-skeleton {
+      width: 43%;
+    }
   }
 
   .guwmi-select-container {

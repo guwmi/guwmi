@@ -14,6 +14,7 @@ interface ComponentProps {
   error?: string;
   hasError?: boolean;
   className?: string;
+  skeleton?: boolean;
   options: { name: string, value: string, disabled?: boolean }[];
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLSelectElement>) => void;
@@ -31,6 +32,7 @@ export default function SelectInput(props: ComponentProps) {
     error,
     hasError,
     className,
+    skeleton,
     options,
     onChange,
     onBlur,
@@ -42,8 +44,8 @@ export default function SelectInput(props: ComponentProps) {
 
   return (
     <div className={classes} {...rest}>
-      <label htmlFor={inputId}>{label}</label>
-      <div className="guwmi-select-container">
+      <label className={skeleton ? 'guwmi-skeleton' : null} htmlFor={inputId}>{label}</label>
+      <div className={`guwmi-select-container${skeleton ? ' guwmi-skeleton' : ''}`}>
         <select
           id={inputId}
           name={name}

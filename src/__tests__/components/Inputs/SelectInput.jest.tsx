@@ -109,4 +109,26 @@ describe('SelectInput Component', () => {
     expect(blurHandler).toHaveBeenCalledTimes(1);
   });
 
+  test('renders with default values', () => {
+    
+    render(
+      <SelectInput
+        label="Select Label"
+        options={[
+          {name: 'Option one', value: 'one'},
+          {name: 'Option two', value: 'two'},
+          {name: 'Option three', value: 'three'},
+          {name: 'Option four', value: 'four'},
+          {name: 'Option five', value: 'five'},
+        ]}
+        data-testid="guwmi-select-input"
+        skeleton
+      />
+    )
+
+    const inputContainer = screen.getByTestId('guwmi-select-input').querySelector('.guwmi-select-container');
+    const label = screen.getByText("Select Label");
+    expect(inputContainer).toHaveClass('guwmi-skeleton');
+    expect(label).toHaveClass('guwmi-skeleton');
+  });
 });
