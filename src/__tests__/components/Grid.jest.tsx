@@ -23,19 +23,25 @@ describe('Grid Component', () => {
 
   test('renders grid with correct column width classes', () => {
     
-    const { rerender } = render(<Grid columns={2} data-testid="guwmi-grid"></Grid>)
+    const { rerender } = render(<Grid columns={2} spacing={2} data-testid="guwmi-grid"></Grid>)
 
     const grid = screen.getByTestId('guwmi-grid');
-    expect(grid).toHaveClass('two');
-    rerender(<Grid columns={3} data-testid="guwmi-grid"></Grid>);
-    expect(grid).toHaveClass('three');
-    rerender(<Grid columns={4} data-testid="guwmi-grid"></Grid>);
-    expect(grid).toHaveClass('four');
-    rerender(<Grid columns={5} data-testid="guwmi-grid"></Grid>);
-    expect(grid).toHaveClass('five');
-    rerender(<Grid columns={6} data-testid="guwmi-grid"></Grid>);
-    expect(grid).toHaveClass('six');
-    rerender(<Grid columns="auto" data-testid="guwmi-grid"></Grid>);
+    expect(grid).toHaveClass('col-2');
+    expect(grid).toHaveClass('space-2');
+    rerender(<Grid columns={3} spacing={3} data-testid="guwmi-grid"></Grid>);
+    expect(grid).toHaveClass('col-3');
+    expect(grid).toHaveClass('space-3');
+    rerender(<Grid columns={4} spacing={4} data-testid="guwmi-grid"></Grid>);
+    expect(grid).toHaveClass('col-4');
+    expect(grid).toHaveClass('space-4');
+    rerender(<Grid columns={5} spacing={5} data-testid="guwmi-grid"></Grid>);
+    expect(grid).toHaveClass('col-5');
+    expect(grid).toHaveClass('space-5');
+    rerender(<Grid columns={6} spacing={6} data-testid="guwmi-grid"></Grid>);
+    expect(grid).toHaveClass('col-6');
+    expect(grid).toHaveClass('space-6');
+    rerender(<Grid columns="auto" spacing={1} data-testid="guwmi-grid"></Grid>);
     expect(grid).toHaveClass('auto');
+    expect(grid).toHaveClass('space-1');
   });
 })

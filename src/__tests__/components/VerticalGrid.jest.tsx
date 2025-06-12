@@ -11,7 +11,7 @@ describe('VerticalGrid Component', () => {
     const { rerender } = render(<VerticalGrid data-testid="guwmi-vertical-grid" className="override-class"></VerticalGrid>)
 
     const verticalGrid = screen.getByTestId('guwmi-vertical-grid');
-    expect(verticalGrid).toHaveClass('space-2');
+    expect(verticalGrid).toHaveClass('space-1');
     expect(verticalGrid).toHaveClass('override-class');
     rerender(<VerticalGrid spacing={1} padding={1} data-testid="guwmi-vertical-grid"></VerticalGrid>);
     expect(verticalGrid).toHaveClass('space-1');

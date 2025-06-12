@@ -12,7 +12,7 @@ export default function VerticalGrid(props: ComponentProps) {
 
   const {
     children,
-    spacing = 2,
+    spacing = 1,
     padding,
     className,
     ...rest

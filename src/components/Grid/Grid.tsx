@@ -4,6 +4,7 @@ import { PropsWithChildren } from 'react';
 // component type
 interface ComponentProps extends PropsWithChildren {
   columns?: 'auto' | 2 | 3 | 4 | 5 | 6;
+  spacing?: 1 | 2 | 3 | 4 | 5 | 6;
   wrap?: 'wrap' | 'no-wrap';
   rowOrder?: 'standard' | 'reverse';
   align?: 'left' | 'right' | 'center';
@@ -15,6 +16,7 @@ export default function Grid(props: ComponentProps) {
   const {
     children,
     columns = 3,
+    spacing = 1,
     wrap = 'wrap',
     rowOrder = 'standard',
     align = 'left',
@@ -29,19 +31,38 @@ export default function Grid(props: ComponentProps) {
         classString += ' auto';
         break;
       case 2:
-        classString += ' two';
+        classString += ' col-2';
         break;
       case 4:
-        classString += ' four';
+        classString += ' col-4';
         break;
       case 5:
-        classString += ' five';
+        classString += ' col-5';
         break;
       case 6:
-        classString += ' six';
+        classString += ' col-6';
         break;
       default:
-        classString += ' three';
+        classString += ' col-3';
+    }
+    switch(spacing) {
+      case 2:
+        classString += ' space-2';
+        break;
+      case 3:
+        classString += ' space-3';
+        break;
+      case 4:
+        classString += ' space-4';
+        break;
+      case 5:
+        classString += ' space-5';
+        break;
+      case 6:
+        classString += ' space-6';
+        break;
+      default:
+        classString += ' space-1';
     }
     if (wrap === 'no-wrap') {
       classString += ' no-wrap';

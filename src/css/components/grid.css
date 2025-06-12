@@ -2,13 +2,58 @@
  * Style for the Cards and child components *********************************************************
  **/
 .guwmi-grid {
+  --guwmi-grid-cols: 3;
+  --guwmi-grid-gap: 2rem;
+}
+.guwmi-grid.col-1 {
+  --guwmi-grid-cols: 1 ;
+}
+.guwmi-grid.col-2 {
+  --guwmi-grid-cols: 2 ;
+}
+.guwmi-grid.col-3 {
+  --guwmi-grid-cols: 3 ;
+}
+.guwmi-grid.col-4 {
+  --guwmi-grid-cols: 4 ;
+}
+.guwmi-grid.col-5 {
+  --guwmi-grid-cols: 5 ;
+}
+.guwmi-grid.col-6 {
+  --guwmi-grid-cols: 6 ;
+}
+.guwmi-grid.space-1 {
+  --guwmi-grid-gap: 1rem ;
+}
+.guwmi-grid.space-2 {
+  --guwmi-grid-gap: 2rem ;
+}
+.guwmi-grid.space-3 {
+  --guwmi-grid-gap: 3rem ;
+}
+.guwmi-grid.space-4 {
+  --guwmi-grid-gap: 4rem ;
+}
+.guwmi-grid.space-5 {
+  --guwmi-grid-gap: 5rem ;
+}
+.guwmi-grid.space-6 {
+  --guwmi-grid-gap: 6rem ;
+}
+
+.guwmi-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: var(--guwmi-grid-gap);
 }
-.guwmi-grid > * {
+.guwmi-grid:not(.auto) > * {
   box-sizing: border-box;
+  flex-basis: calc(100% / var(--guwmi-grid-cols) - var(--guwmi-grid-gap) * (var(--guwmi-grid-cols) - 1) / var(--guwmi-grid-cols));
+}
+.guwmi-grid.auto > * {
+  flex-basis: auto;
 }
 .guwmi-grid.no-wrap {
   flex-wrap: nowrap;
@@ -25,22 +70,4 @@
 }
 .guwmi-grid.center {
   justify-content: center;
-}
-.guwmi-grid.auto > * {
-  flex-basis: auto;
-}
-.guwmi-grid.two > * {
-  flex-basis: calc(50% - 0.5rem);
-}
-.guwmi-grid.three > * {
-  flex-basis: calc(33.33333% - 0.66666rem);
-}
-.guwmi-grid.four > * {
-  flex-basis: calc(25% - 0.75rem);
-}
-.guwmi-grid.five > * {
-  flex-basis: calc(20% - 0.8rem);
-}
-.guwmi-grid.six > * {
-  flex-basis: calc(15% - 0.85rem);
 }
