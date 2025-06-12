@@ -103,7 +103,7 @@ describe('Card Component', () => {
   test('renders with skeleton class', () => {
     
     render(
-      <Card loading data-testid="guwmi-card">
+      <Card skeleton data-testid="guwmi-card">
         <CardSection>
           <p>test</p>
         </CardSection>

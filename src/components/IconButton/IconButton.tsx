@@ -11,7 +11,7 @@ interface ComponentProps extends PropsWithChildren {
   onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
   ariaLabel: string;
   disabled?: boolean;
-  loading?: boolean;
+  skeleton?: boolean;
 }
 
 /**
@@ -31,17 +31,17 @@ export default function IconButton(props: ComponentProps) {
     onClick,
     ariaLabel,
     disabled,
-    loading,
+    skeleton,
     ...rest
   } = props;
-  const classes = `guwmi-btn icon ${size} ${color} ${variant} ${theme}${loading ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
+  const classes = `guwmi-btn icon ${size} ${color} ${variant} ${theme}${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
 
   return (
     <button
       className={classes}
       onClick={onClick}
       aria-label={ariaLabel}
-      disabled={disabled || loading}
+      disabled={disabled || skeleton}
       {...rest}
     >
       {children}

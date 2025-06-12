@@ -36,7 +36,7 @@ describe('InfoBlock Component', () => {
   test('renders with skeleton class', () => {
 
     render (
-      <InfoBlock label="Test label" loading data-testid="guwmi-info-block">
+      <InfoBlock label="Test label" skeleton data-testid="guwmi-info-block">
         <p>Test content</p>
       </InfoBlock>
     )

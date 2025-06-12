@@ -90,7 +90,7 @@ describe('Tag Component', () => {
 
   test('renders with skeleton class', () => {
 
-    render(<Tag value="Tag" loading />);
+    render(<Tag value="Tag" skeleton />);
 
     const button = screen.getByText('Tag');
     expect(button).toHaveClass('guwmi-skeleton');

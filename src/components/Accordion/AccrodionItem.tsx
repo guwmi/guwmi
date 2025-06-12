@@ -33,13 +33,13 @@ export default function AccordionItem(props: ComponentProps) {
     className,
     ...rest
   } = props;
-  const { loading, openAccordions, setOpenAccordions } = useContext(AccordionContext);
+  const { skeleton, openAccordions, setOpenAccordions } = useContext(AccordionContext);
   const windowWidth = useWindowWidth();
   const panelRef = useRef(null);
   const contentRef = useRef(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const classes = `guwmi-accordion-item${loading ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
+  const classes = `guwmi-accordion-item${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
 
   useEffect(() => {
     if (openAccordions.includes(id)) {

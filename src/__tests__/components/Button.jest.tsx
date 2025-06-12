@@ -76,7 +76,7 @@ describe('Button Component', () => {
 
   test('renders with skeleton class and disabled', () => {
 
-    render(<Button loading>Styled Button</Button>);
+    render(<Button skeleton>Styled Button</Button>);
 
     const button = screen.getByRole('button');
     expect(button).toHaveClass('guwmi-skeleton');

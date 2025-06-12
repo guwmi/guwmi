@@ -8,7 +8,7 @@ interface ComponentProps extends PropsWithChildren {
   variant?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'pill';
   className?: string;
-  loading?: boolean;
+  skeleton?: boolean;
 }
 
 interface ChildButton {
@@ -17,7 +17,7 @@ interface ChildButton {
   variant?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'pill';
   className?: string;
-  loading?: boolean;
+  skeleton?: boolean;
 }
 
 export default function ButtonGroup(props: ComponentProps) {
@@ -29,7 +29,7 @@ export default function ButtonGroup(props: ComponentProps) {
     variant = 'fill',
     theme = 'round',
     className,
-    loading,
+    skeleton,
     ...rest
   } = props;
   const classes = `guwmi-btn-group ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`;
@@ -39,7 +39,7 @@ export default function ButtonGroup(props: ComponentProps) {
       color: color,
       variant: variant,
       theme: theme,
-      loading: loading
+      skeleton: skeleton
     });
   }), [children]);
 

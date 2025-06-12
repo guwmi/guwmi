@@ -16,7 +16,7 @@ interface ComponentProps extends PropsWithChildren {
   href?: string;
   target?: '_blank' | '_self' | '_parent' | '_top';
   disabled?: boolean;
-  loading?: boolean;
+  skeleton?: boolean;
 }
 
 /**
@@ -37,10 +37,10 @@ export default function Button(props: ComponentProps) {
     href,
     target = null,
     disabled,
-    loading,
+    skeleton,
     ...rest
   } = props;
-  const classes = `guwmi-btn ${size} ${color} ${variant} ${theme}${loading ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
+  const classes = `guwmi-btn ${size} ${color} ${variant} ${theme}${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
   const button = useRef(null);
   const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     button.current.focus();
@@ -50,12 +50,12 @@ export default function Button(props: ComponentProps) {
   }, [href, onClick, button.current])
 
   return (
-    href && !disabled && !loading ? (
+    href && !disabled && !skeleton ? (
       <a className={classes} href={href} target={target} ref={button} {...rest}>
         {children}
       </a>
     ) : (
-      <button className={classes} onClick={(e) => handleClick(e)} ref={button} disabled={disabled || loading} {...rest}>
+      <button className={classes} onClick={(e) => handleClick(e)} ref={button} disabled={disabled || skeleton} {...rest}>
         {children}
       </button>
     )

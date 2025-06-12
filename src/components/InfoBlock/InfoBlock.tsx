@@ -9,7 +9,7 @@ interface ComponentProps extends PropsWithChildren {
   label?: string;
   kind?: 'danger' | 'warning' | 'success' | 'info';
   className?: string;
-  loading?: boolean;
+  skeleton?: boolean;
 }
 
 export default function InfoBlock(props: ComponentProps) {
@@ -18,11 +18,11 @@ export default function InfoBlock(props: ComponentProps) {
     kind = 'info',
     label,
     className,
-    loading,
+    skeleton,
     children,
     ...rest
   } = props;
-  const classes = `guwmi-info-block ${kind}${loading ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
+  const classes = `guwmi-info-block ${kind}${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
   const getIconName = () => {
     switch(kind) {
     case 'danger':

@@ -12,7 +12,7 @@ interface ComponentProps {
   }[];
   hasBackground?: boolean;
   className?: string;
-  loading?: boolean;
+  skeleton?: boolean;
 }
 
 export default function Breadcrumbs(props: ComponentProps) {
@@ -22,7 +22,7 @@ export default function Breadcrumbs(props: ComponentProps) {
     links,
     hasBackground = false,
     className,
-    loading,
+    skeleton,
     ...rest
   } = props;
   const classes = `guwmi-breadcrumbs${hasBackground ? ' has-background' : ''}${className ? ' ' + className : ''}`;
@@ -33,7 +33,7 @@ export default function Breadcrumbs(props: ComponentProps) {
         {links.map((link, index) => (
           <li 
             key={`${link.text.toLowerCase().replaceAll(' ', '')}-${index}`} 
-            className={loading && hasBackground ? 'guwmi-skeleton alt' : loading  ? 'guwmi-skeleton' : null}
+            className={skeleton && hasBackground ? 'guwmi-skeleton alt' : skeleton  ? 'guwmi-skeleton' : null}
           >
             {(index + 1) !== links.length ? (
               <>

@@ -80,7 +80,7 @@ describe('Icon Button', () => {
   test('renders with skeleton class and disabled', () => {
 
     render(
-      <IconButton ariaLabel="test aria" loading>
+      <IconButton ariaLabel="test aria" skeleton>
         <Icon name="menu" />
       </IconButton>
     );

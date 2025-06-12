@@ -66,7 +66,7 @@ describe('Navbar Component', () => {
   test('renders with skeleton classes', () => {
 
     render (
-      <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar" loading>
+      <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar" skeleton>
         <NavbarItem>Item one</NavbarItem>
       </Navbar>
     )

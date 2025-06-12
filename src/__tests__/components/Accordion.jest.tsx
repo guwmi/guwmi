@@ -146,7 +146,7 @@ describe('Accordion Component', () => {
   test('renders with skeleton classe', () => {
 
     render(
-      <Accordion loading>
+      <Accordion skeleton>
         <AccordionItem title="test title" id="test-id" data-testid="guwmi-accordion-item">
           <p>test content</p>
         </AccordionItem>

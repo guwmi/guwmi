@@ -5,7 +5,7 @@ import { PropsWithChildren } from 'react';
 interface ComponentProps extends PropsWithChildren {
   ariaLabel: string;
   className?: string;
-  loading?: boolean;
+  skeleton?: boolean;
 }
 
 export default function Navbar(props: ComponentProps) {
@@ -13,7 +13,7 @@ export default function Navbar(props: ComponentProps) {
   const {
     ariaLabel,
     className,
-    loading,
+    skeleton,
     children,
     ...rest
   } = props;
@@ -25,7 +25,7 @@ export default function Navbar(props: ComponentProps) {
       aria-label={ariaLabel}
       {...rest}
     >
-      {loading ? (
+      {skeleton ? (
         <ul>
           {Array.from({ length: 5 }, (_, index) => index).map((v, i) => (
             <li key={`navbar-skeleton-${i}`} className="guwmi-navbar-item">
