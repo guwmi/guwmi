@@ -40,7 +40,7 @@ export default function Checkbox(props: ComponentProps) {
     <div className={classes} {...rest}>
       <div className="guwmi-checkbox-container">
         <span className="guwmi-checkmark">
-          <Icon name="check" size={18} />
+          <Icon name="check" size={15} stroke="3" />
         </span>
         <input
           type="checkbox"

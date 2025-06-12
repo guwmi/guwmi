@@ -35,8 +35,11 @@
   
     .guwmi-checkmark {
       position: absolute;
-      top: 0.05rem;
-      left: 0;
+      height: 100%;
+      width:  100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       opacity: 0;
       transition: var(--guwmi-transition-short);
       pointer-events: none;
