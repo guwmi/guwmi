@@ -5,7 +5,7 @@ import { useState, PropsWithChildren, useEffect } from 'react';
 import AccordionContext from './AccordionContext';
 
 // component type
-interface AccordionProps extends PropsWithChildren {
+export interface AccordionProps extends PropsWithChildren {
   defaultOpen?: string;
   className?: string;
   skeleton?: boolean;

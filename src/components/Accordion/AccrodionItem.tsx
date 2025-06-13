@@ -18,7 +18,7 @@ import Icon from '../Icon/Icon';
 import AccordionContext from './AccordionContext';
 
 // compopnent type
-interface AccordionItemProps extends PropsWithChildren {
+export interface AccordionItemProps extends PropsWithChildren {
   title: string;
   id: string;
   className?: string;

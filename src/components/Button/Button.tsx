@@ -2,7 +2,7 @@
 import React, { useRef, PropsWithChildren } from 'react';
 
 // component type
-interface ButtonProps extends PropsWithChildren {
+export interface ButtonProps extends PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
   color?: 'primary' | 'secondary' | 'danger' | 'neutral';
   variant?: 'fill' | 'outline' | 'ghost';
