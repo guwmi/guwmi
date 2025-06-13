@@ -18,7 +18,7 @@ export interface ButtonProps extends PropsWithChildren {
 /**
  * Button component ********************************************************************************
  * 
- * * If a button includes an href and is not disabled or skeleton, it will render as a anchor element,
+ * * If a button includes an href and is not disabled or skeleton, it will render as an anchor element,
  *   otherwise it will render as a button element
  * 
  * @param size - (options) size value of 'sm', 'md', or 'lg' - defaults to 'md'

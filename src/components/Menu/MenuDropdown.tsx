@@ -9,22 +9,24 @@ import useTabThrough from '../../hooks/useTabThrough';
 import MenuContext from './MenuContext';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
+export interface MenuDropdownProps extends PropsWithChildren {
   className?: string;
 }
 
 /**
- * Menu Dropdown component ************************************************************************
- * @param children - ReactElements provided as props
+ * Menu Dropdown component *****************************************************************
+ * 
+ * @param className - (optional) string value of class names to apply to the component
+ * 
  */
 
-export default function MenuDropdown(props: ComponentProps) {
+export default function MenuDropdown(props: MenuDropdownProps) {
 
   const { className, children, ...rest } = props;
   const { isOpen, setIsOpen, ariaLabel } = useContext(MenuContext);
+  const classes = `guwmi-menu-dropdown${className ? ' ' + className : ''}`;
   const dropDownRef = useRef<HTMLDivElement>(null);
   const { isVisible } = useAnimation(isOpen, 'open', dropDownRef );
-  const classes = `guwmi-menu-dropdown${className ? ' ' + className : ''}`;
   useTabThrough(isOpen, () => setIsOpen(false), dropDownRef);
 
   return (

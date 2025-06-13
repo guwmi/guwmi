@@ -5,8 +5,14 @@ import { useState, PropsWithChildren } from 'react';
 import MenuContext from './MenuContext';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
-  position?: 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
+export interface MenuProps extends PropsWithChildren {
+  position?: 
+  | 'top-right'
+  | 'top-center'
+  | 'top-left'
+  | 'bottom-right'
+  | 'bottom-center'
+  | 'bottom-left';
   width?: number;
   ariaLabel: string;
   className?: string;
@@ -14,10 +20,20 @@ interface ComponentProps extends PropsWithChildren {
 
 /**
  * Menu component **********************************************************************************
- * @param ComponenProps
+ * @param position - (optional) string value for the menu position.  options are:
+ * * 'top-right'
+ * * 'top-center'
+ * * 'top-left'
+ * * 'bottom-right'
+ * * 'bottom-center'
+ * * 'bottom-left';
+ * @param width - (optional) number value for the width of the menu - defaults to auto width
+ * @param ariaLabel - string value for the aria-lable fot he nav element
+ * @param className - (optional) string value of class names to apply to the component
+ * 
  */
 
-export default function Menu(props: ComponentProps) {
+export default function Menu(props: MenuProps) {
 
   const {
     children,
