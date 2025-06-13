@@ -17,8 +17,11 @@ interface BreadcrumbsProps {
 
 /**
  * Breadcrumbs component ********************************************************************
- * * If links include an href or neither an href or onClick, they will render as a <a> tag,
+ * 
+ * * If links include an href, neither an href or onClick, and are not disabled, they will render as an <a> element,
  * * otherwise they will render as a <button> element
+ * 
+ * * The last link will always render as the 'current-location' <a> element without an href of onClick
  * 
  * @param ariaLabel - string value for the aria-label property of the breadcrumb <nav> element
  * @param links - array of link objects:
