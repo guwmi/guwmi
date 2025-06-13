@@ -18,8 +18,8 @@ export interface ButtonProps extends PropsWithChildren {
 /**
  * Button component ********************************************************************************
  * 
- * * If a button include an href and is not disabled or skeleton, it will render as a <a> element,
- * * otherwise it will render as a <button> element
+ * * If a button includes an href and is not disabled or skeleton, it will render as a anchor element,
+ *   otherwise it will render as a button element
  * 
  * @param size - (options) size value of 'sm', 'md', or 'lg' - defaults to 'md'
  * @param color - (optional) color value of 'primary', 'secondary', 'danger', 'neutral' - defaults to 'primary'
@@ -31,6 +31,7 @@ export interface ButtonProps extends PropsWithChildren {
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
  * @param onClick - (optional) function to be called onClick
+ * 
  */
 
 export default function Button(props: ButtonProps) {

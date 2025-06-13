@@ -20,6 +20,7 @@ export interface GridProps extends PropsWithChildren {
  * @param rowOrder - (optional) value of 'standard' or 'reverse' dtermines the order of the columns in each row - defaults to 'standard'
  * @param lign - (optional) value of 'left', 'right', or 'center' determines the alignment of columns in a row - defaults to 'left'
  * @param className - (optional) string value of class names to apply to the component
+ * 
  */
 
 export default function Grid(props: GridProps) {

@@ -10,6 +10,7 @@ export interface CardSectionProps extends PropsWithChildren {
  * Card Section component *******************************************************************
  * 
  * @param className - (optional) string value of class names to apply to the component
+ * 
  */
 
 export default function CardSection(props: CardSectionProps) {

@@ -19,6 +19,7 @@ export interface InfoBlockProps extends PropsWithChildren {
  * @param kind - (optional) value of 'danger', 'warning', 'success', or 'info' determines the style and icon displayed - defaults to 'info'
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ * 
  */
 
 export default function InfoBlock(props: InfoBlockProps) {
@@ -45,7 +46,7 @@ export default function InfoBlock(props: InfoBlockProps) {
       return 'info';
     }
   };
-  
+
   const iconName = getIconName();
 
   return (

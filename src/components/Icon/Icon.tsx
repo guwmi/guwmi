@@ -64,33 +64,34 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
  * Icon component ****************************************************************************
  * 
  * @param name - string value for the icon SVG to render.  options are:
- * * | 'alert-circle'
- * * | 'alert-square'
- * * | 'alert-triangle'
- * * | 'check'
- * * | 'chevron-down'
- * * | 'chevron-left'
- * * | 'chevron-right'
- * * | 'chevron-up'
- * * | 'copy'
- * * | 'close'
- * * | 'dots'
- * * | 'external-link'
- * * | 'hide'
- * * | 'home'
- * * | 'info'
- * * | 'login'
- * * | 'menu'
- * * | 'progress-alert'
- * * | 'progress-check'
- * * | 'progress'
- * * | 'search'
- * * | 'settings'
- * * | 'view';
+ * * 'alert-circle'
+ * * 'alert-square'
+ * * 'alert-triangle'
+ * * 'check'
+ * * 'chevron-down'
+ * * 'chevron-left'
+ * * 'chevron-right'
+ * * 'chevron-up'
+ * * 'copy'
+ * * 'close'
+ * * 'dots'
+ * * 'external-link'
+ * * 'hide'
+ * * 'home'
+ * * 'info'
+ * * 'login'
+ * * 'menu'
+ * * 'progress-alert'
+ * * 'progress-check'
+ * * 'progress'
+ * * 'search'
+ * * 'settings'
+ * * 'view';
  * @param size - (optional) number value for the size of the icon - defaults to 24
  * @param stroke - (optional) value of '1', '2', or '3' to determine the strokeWidth property of the SVG - defaults to '2'
  * @param color - (optional) string value for the color "stroke" property of the SVG - defaults to "currentColor"
  * @param className - (optional) string value of class names to apply to the component
+ * 
  */
 
 const Icon = forwardRef<SVGSVGElement, IconProps>(( props, ref ) => {

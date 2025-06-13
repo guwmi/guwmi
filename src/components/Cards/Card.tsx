@@ -18,6 +18,7 @@ export interface CardProps extends PropsWithChildren {
  * @param image - (optional) string value for the url of an image for the card
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ * 
  */
 
 export default function Card(props: CardProps) {

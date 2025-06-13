@@ -18,22 +18,21 @@ interface BreadcrumbsProps {
 /**
  * Breadcrumbs component ********************************************************************
  * 
- * * If links include an href, neither an href or onClick, and are not disabled, they will render as an <a> element,
- * * otherwise they will render as a <button> element
+ * * If links includes an href, neither an href nor onClick, and are not disabled, they will render as an anchor element,
+ *   otherwise they will render as a button element
  * 
  * * The last link will always render as the 'current-location' <a> element without an href of onClick
  * 
- * @param ariaLabel - string value for the aria-label property of the breadcrumb <nav> element
+ * @param ariaLabel - string value for the aria-label property of the breadcrumbs nav element
  * @param links - array of link objects:
- * * {
- * *  text - string value for the text of a link
- * *  href - (optional) string value for the href property of a link
- * *  onClick - (optional) function to be use onClick in place of an href (helpful for router pushing in SPAs)
- * *  disabled - (optionsl) boolean value that determines the disabled state of a link
- * * }
+ *  - text - string value for the text of a link
+ *  - href - (optional) string value for the href property of a link
+ *  - onClick - (optional) function to be use onClick in place of an href (helpful for router pushing in SPAs)
+ *  - disabled - (optionsl) boolean value that determines the disabled state of a link
  * @param hasBackground - (optional) boolean value that determines if the breadcrumbs are arapped in a container with a background
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ * 
  */
 
 export default function Breadcrumbs(props: BreadcrumbsProps) {

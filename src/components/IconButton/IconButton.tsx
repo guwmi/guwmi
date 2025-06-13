@@ -26,6 +26,7 @@ export interface IconButtonProps extends PropsWithChildren {
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
  * @param onClick - (optional) function to be called onClick
+ * 
  */
 
 export default function IconButton(props: IconButtonProps) {

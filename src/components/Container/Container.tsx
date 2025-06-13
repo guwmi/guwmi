@@ -14,6 +14,7 @@ export interface ContainerProps extends PropsWithChildren {
  * @param header - (optional) JSX to render inside a <header> element inside of the container
  * @param sidebar - (optional) JSX to render inside an <aside> element inside of the container
  * @param className - (optional) string value of class names to apply to the component
+ * 
  */
 
 export default function Container(props: ContainerProps) {
