@@ -13,13 +13,22 @@ import useAnimation from '../../hooks/useAnimation';
 import Icon from '../../components/Icon/Icon';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
+interface NavbarGroupProps extends PropsWithChildren {
   label: string;
   defaultOpen?: boolean;
   className?: string;
 }
 
-export default function NavbarGroup(props: ComponentProps) {
+/**
+ * Navbar Group component *******************************************************************
+ * 
+ * @param label string value for the text label of the button to expand the group
+ * @param defaultOpen - (optional) boolean value that determines if the group is open by default
+ * @param className - (optional) string value of class names to apply to the component
+ * 
+ */
+
+export default function NavbarGroup(props: NavbarGroupProps) {
 
   const {
     label,
@@ -43,7 +52,7 @@ export default function NavbarGroup(props: ComponentProps) {
     } else {
       itemRef.current.style.height = `${defaultHeight}px`;
     }
-  }, [contentRef.current, isOpen]);
+  }, [isOpen]);
 
   return (
     <li className={classes} ref={itemRef} {...rest}>

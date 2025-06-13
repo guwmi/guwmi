@@ -2,13 +2,22 @@
 import { PropsWithChildren } from 'react';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
+export interface NavbarProps extends PropsWithChildren {
   ariaLabel: string;
   className?: string;
   skeleton?: boolean;
 }
 
-export default function Navbar(props: ComponentProps) {
+/**
+ * Navbar component **************************************************************************
+ * 
+ * @param ariaLabel - string value for the aria-label on the nav element
+ * @param className - (optional) string value of class names to apply to the component
+ * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ * 
+ */
+
+export default function Navbar(props: NavbarProps) {
 
   const {
     ariaLabel,
