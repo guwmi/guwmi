@@ -2,7 +2,7 @@
 import { useId } from 'react';
 
 // component type
-interface RadioGroupProps {
+export interface RadioGroupProps {
   label: string;
   id?: string;
   name?: string;
@@ -39,6 +39,7 @@ interface RadioGroupProps {
  * @param onChange - (optional) function to be called when the input value changes
  * @param onBlur - (optional) function to be called when focus leaves the input
  * @param onFocus - (optional) function to be called when the input recieves focus
+ * 
  */
 
 export default function RadioGroup(props: RadioGroupProps) {
