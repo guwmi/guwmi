@@ -680,6 +680,9 @@
   width: 100%;
   opacity: 0;
 }
+.guwmi-checkbox-input .guwmi-checkbox-container:has(> input:focus-visible) {
+  box-shadow: 0 0 0 2px var(--guwmi-white), 0 0 0 4px var(--guwmi-primary);
+}
 .guwmi-checkbox-input label {
   position: relative;
   font-size: 0.9rem;
