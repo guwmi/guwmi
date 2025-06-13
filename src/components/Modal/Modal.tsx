@@ -12,21 +12,36 @@ import BodyPortal from '../utils/BodyPortal';
 import Icon from '../Icon/Icon';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
-  size?: 'sm' | 'md' | 'lg';
+export interface ModalProps extends PropsWithChildren {
+  size?:
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'full-screen';
   open: boolean;
-  onClose: () => void;
   preventScroll?: boolean;
   className?: string;
+  onClose: () => void;
 }
 
-export default function Modal(props: ComponentProps) {
+/**
+ * Modal component ************************************************************************
+ * 
+ * @param size - (optional) value of 'sm', 'md', lg', or 'full-screen' determines the modal size - defaults to 'md'
+ * @param open - boolean value that determines of the modal is displayed (or in the DOM)
+ * @param preventScroll - (optional) boolean value that determines if scrolling should be prevented while the modal is open
+ * @param className - (optional) string value of class names to apply to the component
+ * @param onClose - callback function called on any "closing" events like escape key press or close button click
+ * 
+ */
+
+export default function Modal(props: ModalProps) {
 
   const {
     open,
     onClose,
     preventScroll = false,
-    size = 'sm',
+    size = 'md',
     className,
     children,
     ...rest
