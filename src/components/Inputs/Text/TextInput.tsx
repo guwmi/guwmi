@@ -65,7 +65,7 @@ export default function TextInput(props: TextInputProps) {
     ...rest
   } = props;
   const inputId = id ?? useId();
-  const classes = `guwmi-text-input${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`
+  const classes = `guwmi-text-input${hasError ? ' error' : ''}${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`;
 
   return (
     <div className={classes} {...rest}>
