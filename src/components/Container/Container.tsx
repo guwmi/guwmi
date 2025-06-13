@@ -2,18 +2,25 @@
 import { PropsWithChildren, JSX } from 'react';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
-  className?: string;
-  sidebar?: JSX.Element;
+export interface ContainerProps extends PropsWithChildren {
   header?: JSX.Element;
+  sidebar?: JSX.Element;
+  className?: string;
 }
 
-export default function Container(props: ComponentProps) {
+/**
+ * Container component **********************************************************************
+ * @param header - (optional) JSX to render inside a <header> element inside of the container
+ * @param sidebar - (optional) JSX to render inside an <aside> element inside of the container
+ * @param className - (optional) string value of class names to apply to the component
+ */
+
+export default function Container(props: ContainerProps) {
 
   const {
-    className,
-    sidebar,
     header,
+    sidebar,
+    className,
     children,
     ...rest
   } = props;
