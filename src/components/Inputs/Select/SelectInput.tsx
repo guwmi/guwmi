@@ -5,7 +5,7 @@ import { useId } from 'react';
 import Icon from '../../../components/Icon/Icon';
 
 // component type
-interface ComponentProps {
+export interface SelectInputProps {
   label: string;
   id?: string;
   name?: string;
@@ -21,7 +21,29 @@ interface ComponentProps {
   onFocus?: (event: React.FocusEvent<HTMLSelectElement>) => void;
 }
 
-export default function SelectInput(props: ComponentProps) {
+/**
+ * Select Input component ******************************************************************
+ * 
+ * @param label - string value for the input label
+ * @param id - (optional) string value for the id proprty on the input
+ * @param name - (optional) string value for the name proprty on the input
+ * @param disabled - (optional) boolean value for the disabled state of the input
+ * @param value - (optional) string value for the value proprty on the input
+ * @param error - (optional) string vlaue to be displayed if the hasError prop is true
+ * @param hasError - (optional) boolean value to determine is the input should show as having an error
+ * @param className - (optional) string value of class names to apply to the component
+ * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ * @param options - array of select input option objects:
+ *  - name - string value to be displayed for the option
+ *  - value - string value for the value property of te option
+ *  - disabled - (optional) boolean value to determine the options disabled state
+ * @param onChange - (optional) function to be called when the input value changes
+ * @param onBlur - (optional) function to be called when focus leaves the input
+ * @param onFocus - (optional) function to be called when the input recieves focus
+ * 
+ */
+
+export default function SelectInput(props: SelectInputProps) {
 
   const {
     label,
