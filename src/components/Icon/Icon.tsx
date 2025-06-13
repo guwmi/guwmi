@@ -28,8 +28,8 @@ import {
   View
 } from './paths';
 
-// types
-interface ComponentProps extends SVGProps<SVGSVGElement> {
+// component type
+export interface IconProps extends SVGProps<SVGSVGElement> {
   name: 
   | 'alert-circle'
   | 'alert-square'
@@ -62,20 +62,49 @@ interface ComponentProps extends SVGProps<SVGSVGElement> {
 
 /**
  * Icon component ****************************************************************************
- * @param ComponentProps
+ * 
+ * @param name - string value for the icon SVG to render.  options are:
+ * * | 'alert-circle'
+ * * | 'alert-square'
+ * * | 'alert-triangle'
+ * * | 'check'
+ * * | 'chevron-down'
+ * * | 'chevron-left'
+ * * | 'chevron-right'
+ * * | 'chevron-up'
+ * * | 'copy'
+ * * | 'close'
+ * * | 'dots'
+ * * | 'external-link'
+ * * | 'hide'
+ * * | 'home'
+ * * | 'info'
+ * * | 'login'
+ * * | 'menu'
+ * * | 'progress-alert'
+ * * | 'progress-check'
+ * * | 'progress'
+ * * | 'search'
+ * * | 'settings'
+ * * | 'view';
+ * @param size - (optional) number value for the size of the icon - defaults to 24
+ * @param stroke - (optional) value of '1', '2', or '3' to determine the strokeWidth property of the SVG - defaults to '2'
+ * @param color - (optional) string value for the color "stroke" property of the SVG - defaults to "currentColor"
+ * @param className - (optional) string value of class names to apply to the component
  */
 
-const Icon = forwardRef<SVGSVGElement, ComponentProps>(( props, ref ) => {
+const Icon = forwardRef<SVGSVGElement, IconProps>(( props, ref ) => {
 
   const {
     name,
     size = 24,
-    stroke = 2,
+    stroke = '2',
     color = "currentColor",
     className,
     ...rest
   } = props;
-  const classes =`icon guwmi-icon guwmi-icon-${name}${className ? ' ' + className : ''}`;
+  const classes = `icon guwmi-icon guwmi-icon-${name}${className ? ' ' + className : ''}`;
+
   const getPaths = useCallback((iconName:String) => {
     switch(iconName) {
       case 'alert-circle':
