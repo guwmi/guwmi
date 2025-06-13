@@ -12,22 +12,31 @@ import Icon from '../Icon/Icon';
 import usePreventScroll from '../../hooks/usePreventScroll';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
+export interface DrawerProps extends PropsWithChildren {
   open: boolean;
-  onClose: () => void;
   preventScroll?: boolean;
   position?: 'left' | 'right';
   className?: string;
+  onClose: () => void;
 }
 
-export default function Drawer(props: ComponentProps) {
+/**
+ * Drawer component *************************************************************************
+ * @param open - boolean value that determines of the drawer is displayed (or in the DOM)
+ * @param preventScroll - (optional) boolean value that determines if scrolling should be prevented while the drawer is open
+ * @param position - (optional) value of 'left' or 'right' the determines the drawers position - defaults to 'left'
+ * @param className - (optional) string value of class names to apply to the component
+ * @param onClose - callback function called on any "closing" events like escape key press or close button click
+ */
+
+export default function Drawer(props: DrawerProps) {
 
   const {
     open,
-    onClose,
-    preventScroll = false,
+    preventScroll,
     position = 'left',
     className,
+    onClose,
     children,
     ...rest
   } = props;
