@@ -26,6 +26,7 @@ export interface AccordionItemProps extends PropsWithChildren {
 
 /**
  * Accordion item component *****************************************************************
+ * 
  * @param title - string value for the accordion title (button that opperates the accordion)
  * @param id - string value for the id of the accordion content
  * @param className - (optional) string value of class names to apply to the component

@@ -16,6 +16,7 @@ export interface ButtonGroupProps extends PropsWithChildren {
 
 /**
  * Button Group component *******************************************************************
+ * 
  * @param size - (options) size value of 'sm', 'md', or 'lg' - defaults to 'md'
  * @param color - (optional) color value of 'primary', 'secondary', 'danger', 'neutral' - defaults to 'primary'
  * @param variant - (optional) variant value of 'fill', 'outline', or 'ghost' - defaults to 'fill'

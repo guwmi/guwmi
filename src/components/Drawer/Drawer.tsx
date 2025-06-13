@@ -22,6 +22,7 @@ export interface DrawerProps extends PropsWithChildren {
 
 /**
  * Drawer component *************************************************************************
+ * 
  * @param open - boolean value that determines of the drawer is displayed (or in the DOM)
  * @param preventScroll - (optional) boolean value that determines if scrolling should be prevented while the drawer is open
  * @param position - (optional) value of 'left' or 'right' the determines the drawers position - defaults to 'left'

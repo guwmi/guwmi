@@ -13,6 +13,7 @@ export interface AccordionProps extends PropsWithChildren {
 
 /**
  * Accordion component **********************************************************************
+ * 
  * @param defaultOpen - (optional) string value of the accordion id to have open by default
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton

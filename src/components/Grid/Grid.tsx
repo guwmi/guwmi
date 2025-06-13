@@ -2,7 +2,7 @@
 import { PropsWithChildren } from 'react';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
+export interface GridProps extends PropsWithChildren {
   columns?: 'auto' | 2 | 3 | 4 | 5 | 6;
   spacing?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   wrap?: 'wrap' | 'no-wrap';
@@ -11,21 +11,33 @@ interface ComponentProps extends PropsWithChildren {
   className?: string;
 }
 
-export default function Grid(props: ComponentProps) {
+/**
+ * Grid component ****************************************************************************
+ * 
+ * @param columns - (optional) value of 'auto', 2, 3, 4, 5, or 6 for the number of columns per row - defaults to 3
+ * @param spacing - (optional) value of 0, 1, 2, 3, 4, 5, or 6 for the gap spacing between columns - defaults to 1
+ * @param wrap - (optional) value of 'wrap' or 'no-wrap' determines if grid should wrap rows or force on one row - defaults to 'wrap'
+ * @param rowOrder - (optional) value of 'standard' or 'reverse' dtermines the order of the columns in each row - defaults to 'standard'
+ * @param lign - (optional) value of 'left', 'right', or 'center' determines the alignment of columns in a row - defaults to 'left'
+ * @param className - (optional) string value of class names to apply to the component
+ */
+
+export default function Grid(props: GridProps) {
 
   const {
-    children,
     columns = 3,
     spacing = 1,
     wrap = 'wrap',
     rowOrder = 'standard',
     align = 'left',
     className,
+    children,
     ...rest
   } = props;
 
   const getClasses = () => {
     let classString = 'guwmi-grid';
+
     switch(columns) {
       case 'auto':
         classString += ' auto';
@@ -45,6 +57,7 @@ export default function Grid(props: ComponentProps) {
       default:
         classString += ' col-3';
     }
+
     switch(spacing) {
       case 0:
         classString += ' space-0';
@@ -67,12 +80,15 @@ export default function Grid(props: ComponentProps) {
       default:
         classString += ' space-1';
     }
+
     if (wrap === 'no-wrap') {
       classString += ' no-wrap';
     }
+
     if (rowOrder === 'reverse') {
       classString += ' reverse';
     }
+
     if (align !== 'left') {
       if (align === 'right') {
         classString += ' right';
@@ -80,12 +96,14 @@ export default function Grid(props: ComponentProps) {
         classString += ' center';
       }
     }
+
     if (className) {
       classString += ' ' + className;
     }
 
     return classString;
   };
+  
   const classes = getClasses();
 
   return (
