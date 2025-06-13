@@ -4,6 +4,7 @@
 .guwmi-skeleton {
   position: relative;
   border-color: var(--guwmi-primary-bg) !important;
+  overflow: hidden;
 }
 .guwmi-skeleton.alt::after {
   animation: guwmi-skeleton-animation-alt 0.9s linear infinite alternate;

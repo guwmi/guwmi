@@ -17,11 +17,9 @@
   max-width: 150px;
 }
 .guwmi-text-input .guwmi-text-input-container {
-  position: relative;
   display: block;
   border-top-right-radius: var(--guwmi-radius);
   border-top-left-radius: var(--guwmi-radius);
-  overflow: hidden;
 }
 .guwmi-text-input .guwmi-text-input-container input {
   appearance: none;
@@ -33,7 +31,7 @@
   border-top-left-radius: var(--guwmi-radius);
   font-size: 1rem;
   color: var(--guwmi-text);
-  width: 100%;
+  width: calc(100% - 1.32rem);
 }
 .guwmi-text-input .guwmi-text-input-container input::placeholder {
   color: var(--guwmi-text);
