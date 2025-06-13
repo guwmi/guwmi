@@ -31,6 +31,9 @@ import PasswordInput from './components/Inputs/Password/PasswordInput';
 import RadioGroup from './components/Inputs/RadioGroup/RadioGroup';
 import SearchInput from './components/Inputs/Search/SearchInput';
 import SelectInput from './components/Inputs/Select/SelectInput';
+import SkeletonBlock from './components/Skeletons/SkeletonBlock';
+import SkeletonHeading from './components/Skeletons/SkeletonHeading';
+import SkeletonParagraph from './components/Skeletons/SkeletonParagraph';
 import Tab from './components/Tabs/Tab';
 import TabPanels from './components/Tabs/TabPanels';
 import TabPanel from './components/Tabs/TabPanel';
@@ -75,6 +78,9 @@ export {
   RadioGroup,
   SearchInput,
   SelectInput,
+  SkeletonBlock,
+  SkeletonHeading,
+  SkeletonParagraph,
   TabsContainer,
   Tabs,
   Tab,

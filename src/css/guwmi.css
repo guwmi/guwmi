@@ -387,6 +387,9 @@
   opacity: 0.65;
   letter-spacing: unset;
 }
+.guwmi-card.guwmi-skeleton {
+  min-height: 15rem;
+}
 
 @media (prefers-color-scheme: light) {
   .guwmi-card {
@@ -626,6 +629,9 @@
 .guwmi-info-block .guwmi-info-block-label {
   margin: 0.1rem 0;
   font-size: 1rem;
+}
+.guwmi-info-block.guwmi-skeleton {
+  min-height: 6rem;
 }
 
 /**
@@ -1480,7 +1486,26 @@
 }
 
 .guwmi-skeleton-heading {
-  position: relative;
+  width: auto;
+  max-width: 200px;
+}
+
+.guwmi-skeleton-paragraph span {
+  color: rgba(0, 0, 0, 0);
+  height: 1rem;
+  display: block;
+  width: 100%;
+  margin: 0.75rem 0;
+}
+.guwmi-skeleton-paragraph span:last-of-type {
+  width: 50%;
+}
+
+.guwmi-skeleton-block {
+  display: inline-block;
+  height: 15rem;
+  width: 15rem;
+  overflow: hidden;
 }
 
 @media (prefers-color-scheme: light) {

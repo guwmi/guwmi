@@ -43,6 +43,10 @@
       }
     }
   }
+
+  &.guwmi-skeleton {
+    min-height: 15rem;
+  }
 }
 
 @media (prefers-color-scheme: light) {

@@ -37,6 +37,9 @@
   opacity: 0.65;
   letter-spacing: unset;
 }
+.guwmi-card.guwmi-skeleton {
+  min-height: 15rem;
+}
 
 @media (prefers-color-scheme: light) {
   .guwmi-card {

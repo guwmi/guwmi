@@ -29,7 +29,30 @@
 }
 
 .guwmi-skeleton-heading {
-  position: relative;
+  width: auto;
+  max-width: 200px;
+}
+
+.guwmi-skeleton-paragraph {
+
+  span {
+    color: rgba(0,0,0,0);
+    height: 1rem;
+    display: block;
+    width: 100%;
+    margin: 0.75rem 0;
+
+    &:last-of-type {
+      width: 50%;
+    }
+  }
+}
+
+.guwmi-skeleton-block {
+  display: inline-block;
+  height: 15rem;
+  width: 15rem;
+  overflow: hidden;
 }
 
 @media (prefers-color-scheme: light) {

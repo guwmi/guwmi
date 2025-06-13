@@ -46,3 +46,6 @@
   margin: 0.1rem 0;
   font-size: 1rem;
 }
+.guwmi-info-block.guwmi-skeleton {
+  min-height: 6rem;
+}
