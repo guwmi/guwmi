@@ -2,7 +2,7 @@
 import Icon from '../../components/Icon/Icon';
 
 // component type
-interface ComponentProps {
+interface BreadcrumbsProps {
   ariaLabel: string;
   links: {
     text: string;
@@ -15,12 +15,30 @@ interface ComponentProps {
   skeleton?: boolean;
 }
 
-export default function Breadcrumbs(props: ComponentProps) {
+/**
+ * Breadcrumbs component ********************************************************************
+ * * If links include an href or neither an href or onClick, they will render as a <a> tag,
+ * * otherwise they will render as a <button> element
+ * 
+ * @param ariaLabel - string value for the aria-label property of the breadcrumb <nav> element
+ * @param links - array of link objects:
+ * * {
+ * *  text - string value for the text of a link
+ * *  href - (optional) string value for the href property of a link
+ * *  onClick - (optional) function to be use onClick in place of an href (helpful for router pushing in SPAs)
+ * *  disabled - (optionsl) boolean value that determines the disabled state of a link
+ * * }
+ * @param hasBackground - (optional) boolean value that determines if the breadcrumbs are arapped in a container with a background
+ * @param className - (optional) string value of class names to apply to the component
+ * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ */
+
+export default function Breadcrumbs(props: BreadcrumbsProps) {
 
   const {
     ariaLabel,
     links,
-    hasBackground = false,
+    hasBackground,
     className,
     skeleton,
     ...rest
