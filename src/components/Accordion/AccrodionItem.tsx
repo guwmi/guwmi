@@ -18,13 +18,20 @@ import Icon from '../Icon/Icon';
 import AccordionContext from './AccordionContext';
 
 // compopnent type
-interface ComponentProps extends PropsWithChildren {
+interface AccordionItemProps extends PropsWithChildren {
   title: string;
   id: string;
   className?: string;
 }
 
-export default function AccordionItem(props: ComponentProps) {
+/**
+ * Accordion item component *****************************************************************
+ * @param title - string value for the accordion title (button that opperates the accordion)
+ * @param id - string value for the id of the accordion content
+ * @param className - (optional) string value of class names to apply to the component
+ */
+
+export default function AccordionItem(props: AccordionItemProps) {
 
   const {
     children,
@@ -35,8 +42,8 @@ export default function AccordionItem(props: ComponentProps) {
   } = props;
   const { skeleton, openAccordions, setOpenAccordions } = useContext(AccordionContext);
   const windowWidth = useWindowWidth();
-  const panelRef = useRef(null);
-  const contentRef = useRef(null);
+  const panelRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const classes = `guwmi-accordion-item${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
@@ -47,7 +54,7 @@ export default function AccordionItem(props: ComponentProps) {
     } else {
       setIsOpen(false);
     }
-  }, [openAccordions])
+  }, [openAccordions]);
 
   const open = useCallback(() => {
     setOpenAccordions([...openAccordions, id]);
@@ -71,7 +78,7 @@ export default function AccordionItem(props: ComponentProps) {
     } else {
       panelRef.current.style.height = `0px`;
     }
-  }, [contentRef.current, isOpen, windowWidth])
+  }, [contentRef.current, isOpen, windowWidth]);
 
   return (
     <div className={classes} {...rest}>

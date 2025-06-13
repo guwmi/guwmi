@@ -1,5 +1,5 @@
 /**
- * Accordion context for the accordion component *****************************************************
+ * Context for the Accordion component ********************************************
  */
 
 import { createContext } from 'react';

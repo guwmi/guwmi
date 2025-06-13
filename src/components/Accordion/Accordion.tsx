@@ -5,13 +5,20 @@ import { useState, PropsWithChildren, useEffect } from 'react';
 import AccordionContext from './AccordionContext';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
+interface AccordionProps extends PropsWithChildren {
   defaultOpen?: string;
   className?: string;
   skeleton?: boolean;
 }
 
-export default function Accordion(props: ComponentProps) {
+/**
+ * Accordion component **********************************************************************
+ * @param defaultOpen - (optional) string value of the accordion id to have open by default
+ * @param className - (optional) string value of class names to apply to the component
+ * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ */
+
+export default function Accordion(props: AccordionProps) {
 
   const {
     children,
@@ -27,7 +34,7 @@ export default function Accordion(props: ComponentProps) {
     if (defaultOpen) {
       setOpenAccordions([...openAccordions, defaultOpen]);
     }
-  }, [defaultOpen])
+  }, [defaultOpen]);
 
   return (
     <AccordionContext.Provider value={{ skeleton, openAccordions, setOpenAccordions }}>
