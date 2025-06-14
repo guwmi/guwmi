@@ -1,35 +1,41 @@
 // import library functionality
 import React, {
+  useContext,
   useEffect,
   useMemo,
   useRef,
-  useContext,
   PropsWithChildren
 } from 'react';
 
 // import context
 import TabsContext from './TabsContext';
 
+// import types
+import { TabProps } from './Tab';
+
 // component type
-interface ComponentProps extends PropsWithChildren {
+export interface TabsProps extends PropsWithChildren {
   className?: string;
 }
 
-// child type
-interface ChildType {
-  index: number;
-}
+/**
+ * Tabs component **************************************************************************
+ * 
+ * @param className - (optional) string value of class names to apply to the component
+ * 
+ */
 
-export default function Tabs(props: ComponentProps) {
+export default function Tabs(props: TabsProps) {
 
   const { className, children, ...rest } = props;
   const { skeleton, selectedTab } = useContext(TabsContext);
   const tabsContainer = useRef(null);
   const slider = useRef(null);
-  const childrenWithIndex = useMemo(() => {
-    return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<ChildType>, { index: index }))
-  }, [children])
   const classes = `guwmi-tabs${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
+
+  const childrenWithIndex = useMemo(() => {
+    return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<TabProps>, { index: index }))
+  }, [children])
 
   useEffect(() => {
     if (tabsContainer.current.querySelector('.guwmi-tab.active')) {

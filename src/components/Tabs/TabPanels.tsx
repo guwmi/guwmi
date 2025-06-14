@@ -13,17 +13,22 @@ import useWindowWidth from '../../hooks/useWindowWidth';
 // import context
 import TabsContext from './TabsContext';
 
+// import types
+import { TabPanelProps } from './TabPanel';
+
 // component type
-interface ComponentProps extends PropsWithChildren {
+export interface TabPanelsProps extends PropsWithChildren {
   className?: string;
 }
 
-// child type
-interface ChildType {
-  index: number;
-}
+/**
+ * Tab Panels component *********************************************************************
+ * 
+ * @param className - (optional) string value of class names to apply to the component
+ * 
+ */
 
-export default function TabPanels(props: ComponentProps) {
+export default function TabPanels(props: TabPanelsProps) {
 
   const { className, children, ...rest } = props;
   const { skeleton, selectedTab } = useContext(TabsContext);
@@ -32,7 +37,7 @@ export default function TabPanels(props: ComponentProps) {
   const classes = `guwmi-tab-panels${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
 
   const childrenWithIndex = useMemo(() => {
-    return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<ChildType>, { index: index }))
+    return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<TabPanelProps>, { index: index }))
   }, [children]);
 
   useEffect(() => {

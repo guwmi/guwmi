@@ -5,12 +5,20 @@ import { useState, useId, PropsWithChildren } from 'react';
 import TabsContext from './TabsContext';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
+export interface TabsContainerProps extends PropsWithChildren {
   className?: string;
   skeleton?: boolean;
 }
 
-export default function TabsContainer(props: ComponentProps) {
+/**
+ * Tabs Container component ****************************************************************
+ * 
+ * @param className - (optional) string value of class names to apply to the component
+ * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ * 
+ */
+
+export default function TabsContainer(props: TabsContainerProps) {
 
   const {
     className,

@@ -5,12 +5,20 @@ import { PropsWithChildren, useContext } from 'react';
 import TabsContext from './TabsContext';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
-  index?: number;
+export interface TabProps extends PropsWithChildren {
+  index: number;
   className?: string;
 }
 
-export default function Tab(props: ComponentProps) {
+/**
+ * Tab component **************************************************************************
+ * 
+ * @param index - number value for the index of the tab
+ * @param className - (optional) string value of class names to apply to the component
+ * 
+ */
+
+export default function Tab(props: TabProps) {
 
   const {
     className,
