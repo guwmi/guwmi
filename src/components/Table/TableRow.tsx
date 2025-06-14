@@ -1,17 +1,32 @@
 // import library functionality
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
+// import types
+import { TableRow as TableRowShape, TableHeader } from './Table';
 
 // component types
-interface ComponentProps {
-  headers: { title: string, key: string }[];
-  data: { id: number | string, [key: string]: any };
+export interface TableRowProps {
+  headers: TableHeader[];
+  data: TableRowShape;
   tableId: string;
 }
 
-interface TableCell { id: number | string, col: string, value: any }
+export interface TableCell {
+  id: number | string,
+  col: string,
+  value: any
+}
 
+/**
+ * Table Row component **********************************************************************
+ * 
+ * @param headers - array of header objects { title: string, key: string } used to determine data to display;
+ * @param data - row data { id: number | string, [key: string]: any } that is split into cells using the headers array
+ * @param tableId - string value used for unique keys when mapping
+ * 
+ */
 
-export default function TableRow(props: ComponentProps) {
+export default function TableRow(props: TableRowProps) {
 
   const {
     headers,
@@ -19,6 +34,7 @@ export default function TableRow(props: ComponentProps) {
     tableId,
     ...rest
   } = props;
+
   const cellData = useMemo(() => {
     const arr: TableCell[] = [];
     headers.forEach((h) => {

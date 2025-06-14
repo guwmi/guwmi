@@ -2,12 +2,20 @@
 import { useEffect, useRef } from 'react';
 
 // component type
-interface ComponentProps {
+export interface SkeletonBlockProps {
   height?: number;
   width?: number;
 }
 
-export default function SkeletonBlock(props: ComponentProps) {
+/**
+ * Skeleton Block component *****************************************************************
+ * 
+ * @param height - (optional) number value for the height (in pixels) of the block
+ * @param width - (optional) number value for the width (in pixels) of the block
+ * 
+ */
+
+export default function SkeletonBlock(props: SkeletonBlockProps) {
 
   const { height, width, ...rest } = props;
   const block = useRef(null);

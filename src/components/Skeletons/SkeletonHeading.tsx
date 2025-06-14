@@ -1,9 +1,22 @@
 // component type
-interface ComponentProps {
-  heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export interface SkeletonHeadingProps {
+  heading:
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6';
 }
 
-export default function SkeletonHeading(props: ComponentProps) {
+/**
+ * Skeleton Heading component ****************************************************************
+ * 
+ * @param heading - value of 'h1', 'h2', 'h3', 'h4', 'h5', or 'h6' determines the heading tag rendered
+ * 
+ */
+
+export default function SkeletonHeading(props: SkeletonHeadingProps) {
 
   const { heading, ...rest } = props;
 

@@ -1,5 +1,10 @@
 // import library functionality
-import { useEffect, useId, useMemo, useState } from 'react';
+import {
+  useEffect,
+  useId,
+  useMemo,
+  useState
+} from 'react';
 
 // import custom functionality
 import tableSearch from '../../utils/tableSearch';
@@ -10,19 +15,49 @@ import TableRow from './TableRow';
 import SearchInput from '../Inputs/Search/SearchInput';
 import Pagination from '../../components/Pagination/Pagination';
 
-// component type
-interface ComponentProps {
+// component types
+export interface TableHeader {
+  title: string,
+  key: string,
+  search?: 'includes' | 'starts-with'
+}
+
+export interface TableRow {
+  id: number | string,
+  [key: string]: any
+}
+
+export interface TableProps {
   title?: string;
   description?: string;
-  headers: { title: string, key: string, search?: 'includes' | 'starts-with' }[];
-  rows: { id: number | string, [key: string]: any }[];
+  headers: TableHeader[];
+  rows: TableRow[];
   isCondensed?: boolean;
   hasPagination?: boolean;
   className?: string;
   skeleton?: boolean;
 }
 
-export default function Table(props: ComponentProps) {
+/**
+ * Table component ***************************************************************************
+ * 
+ * @param title - (optional) string value for the table title
+ * @param description - (optional) string value for the table description
+ * @param headers - array of header objects
+ *  - title: string
+ *  - key: string 
+ *  - search?: 'includes' | 'starts-with'
+ * @param rows - array of row objects
+ *  - id: number | string
+ *  - [key: string]: any
+ * @param isCondensed - (optional) boolean value for displaying the table with condensed row height
+ * @param hasPagination - (optional) boolean value for whether the table should include pagination
+ * @param className - (optional) string value of class names to apply to the component
+ * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ * 
+ */
+
+export default function Table(props: TableProps) {
 
   const {
     title,
@@ -36,12 +71,12 @@ export default function Table(props: ComponentProps) {
     ...rest
   } = props;
   const id = useId();
-  const isSearchable = useMemo(() => headers.some((header) => (header?.search === 'includes' || header?.search === 'starts-with')), [headers])
-  const classes = `guwmi-table-container${isCondensed ? ' condensed' : ''}${className ? ' ' + className : ''}`;
+  const isSearchable = useMemo(() => headers.some((header) => (header?.search === 'includes' || header?.search === 'starts-with')), [headers]);
   const searchHeaders = useMemo(() => headers.filter((header) => (header?.search === 'includes' || header?.search === 'starts-with')), [headers]);
+  const classes = `guwmi-table-container${isCondensed ? ' condensed' : ''}${className ? ' ' + className : ''}`;
   const [searchValue, setSearchValue] = useState<string>('');
   const [tableRows, setTableRows] = useState<{ id: number | string, [key: string]: any }[]>(rows);
-  const { data: paginatedData, paginate, setCurrentPage } = usePagination(tableRows);
+  const { data: paginatedData, paginate } = usePagination(tableRows);
 
   const handleSearch = () => {
     const updatedRows = tableSearch(

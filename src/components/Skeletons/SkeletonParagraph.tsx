@@ -1,9 +1,16 @@
 // component type
-interface ComponentProps {
+export interface SkeletonParagraphProps {
   numLines?: number;
 }
 
-export default function SkeletonParagraph(props: ComponentProps) {
+/**
+ * Skeleton Paragraph component ************************************************************
+ * 
+ * @param numLines - (optional) number value for the number of mock paragraph lines to display - defaults to 5
+ * 
+ */
+
+export default function SkeletonParagraph(props: SkeletonParagraphProps) {
 
   const { numLines = 5, ...rest } = props;
 
