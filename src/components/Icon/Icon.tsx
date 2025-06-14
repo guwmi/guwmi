@@ -28,32 +28,34 @@ import {
   View
 } from './paths';
 
-// component type
+// component types
+export type IconName =
+| 'alert-circle'
+| 'alert-square'
+| 'alert-triangle'
+| 'check'
+| 'chevron-down'
+| 'chevron-left'
+| 'chevron-right'
+| 'chevron-up'
+| 'copy'
+| 'close'
+| 'dots'
+| 'external-link'
+| 'hide'
+| 'home'
+| 'info'
+| 'login'
+| 'menu'
+| 'progress-alert'
+| 'progress-check'
+| 'progress'
+| 'search'
+| 'settings'
+| 'view';
+
 export interface IconProps extends SVGProps<SVGSVGElement> {
-  name: 
-  | 'alert-circle'
-  | 'alert-square'
-  | 'alert-triangle'
-  | 'check'
-  | 'chevron-down'
-  | 'chevron-left'
-  | 'chevron-right'
-  | 'chevron-up'
-  | 'copy'
-  | 'close'
-  | 'dots'
-  | 'external-link'
-  | 'hide'
-  | 'home'
-  | 'info'
-  | 'login'
-  | 'menu'
-  | 'progress-alert'
-  | 'progress-check'
-  | 'progress'
-  | 'search'
-  | 'settings'
-  | 'view';
+  name: IconName;
   size?: number;
   stroke?: '1' | '2' | '3';
   color?: string;
