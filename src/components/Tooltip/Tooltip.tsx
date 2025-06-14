@@ -2,17 +2,30 @@
 import { PropsWithChildren } from 'react';
 
 // component type
-interface CompoentProps extends PropsWithChildren {
+export interface TooltipProps extends PropsWithChildren {
   text: string;
-  align?: 'top' | 'bottom' | 'left' | 'right';
+  align?:
+  | 'top'
+  | 'bottom'
+  | 'left'
+  | 'right';
   className?: string;
 }
 
-export default function Tooltip(props: CompoentProps) {
+/**
+ * Tooltip component ************************************************************************
+ * 
+ * @param text - string value for the tooltip to display
+ * @param align - (optional) value of 'top', 'bottom', 'left', or 'right' determines the tooltip alignment - defaults to 'top'
+ * @param className - (optional) string value of class names to apply to the component
+ * 
+ */
+
+export default function Tooltip(props: TooltipProps) {
 
   const {
     text,
-    align = 'bottom',
+    align = 'top',
     className,
     children,
     ...rest
