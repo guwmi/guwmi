@@ -2,6 +2,10 @@
 import { useEffect, useState, PropsWithChildren } from 'react';
 import ReactDOM from 'react-dom';
 
+/**
+ * Body Portal component ********************************************************************
+ */
+
 export default function BodyPortal(props: PropsWithChildren) {
   const { children } = props;
   const [hasDocument, setHasDocument] = useState<boolean>(false);

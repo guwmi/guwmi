@@ -2,13 +2,22 @@
 import { PropsWithChildren } from 'react';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
+export interface VerticalGridProps extends PropsWithChildren {
   spacing?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   padding?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   className?: string;
 }
 
-export default function VerticalGrid(props: ComponentProps) {
+/**
+ * Vertical Grid component ******************************************************************
+ * 
+ * @param spacing - (optional) number value of 0-6 sets the vertical spacing in rems - defaults to 1
+ * @param padding - (optional) number value of 0-6 sets the padding in rems - defaults to 0
+ * @param className - (optional) string value of class names to apply to the component
+ * 
+ */
+
+export default function VerticalGrid(props: VerticalGridProps) {
 
   const {
     children,
