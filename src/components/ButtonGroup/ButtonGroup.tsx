@@ -7,7 +7,11 @@ import { ButtonProps } from '../../components/Button/Button';
 // component type
 export interface ButtonGroupProps extends PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
-  color?: 'neutral' | 'primary' | 'secondary' | 'danger';
+  color?:
+  | 'neutral'
+  | 'primary'
+  | 'secondary'
+  | 'danger';
   variant?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'pill';
   className?: string;

@@ -7,7 +7,11 @@ import Icon from '../../components/Icon/Icon';
 // component type
 export interface InfoBlockProps extends PropsWithChildren {
   label?: string;
-  kind?: 'danger' | 'warning' | 'success' | 'info';
+  kind?:
+  | 'danger'
+  | 'warning'
+  | 'success'
+  | 'info';
   className?: string;
   skeleton?: boolean;
 }

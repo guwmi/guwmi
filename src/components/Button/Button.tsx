@@ -4,11 +4,19 @@ import React, { useRef, PropsWithChildren } from 'react';
 // component type
 export interface ButtonProps extends PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'secondary' | 'danger' | 'neutral';
+  color?:
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'neutral';
   variant?: 'fill' | 'outline' | 'ghost';
   theme?: 'square' | 'round' | 'pill';
   href?: string;
-  target?: '_blank' | '_self' | '_parent' | '_top';
+  target?:
+  | '_blank'
+  | '_self'
+  | '_parent'
+  | '_top';
   disabled?: boolean;
   className?: string;
   skeleton?: boolean;
