@@ -6,14 +6,13 @@ import TabsContext from './TabsContext';
 
 // component type
 export interface TabProps extends PropsWithChildren {
-  index: number;
+  index?: number; // optional but providded by parent Tabs component
   className?: string;
 }
 
 /**
  * Tab component **************************************************************************
  * 
- * @param index - number value for the index of the tab
  * @param className - (optional) string value of class names to apply to the component
  * 
  */

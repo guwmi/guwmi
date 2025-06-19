@@ -723,13 +723,12 @@ interface SkeletonParagraphProps {
 declare function SkeletonParagraph(props: SkeletonParagraphProps): react_jsx_runtime.JSX.Element;
 
 interface TabProps extends PropsWithChildren {
-    index: number;
+    index?: number;
     className?: string;
 }
 /**
  * Tab component **************************************************************************
  *
- * @param index - number value for the index of the tab
  * @param className - (optional) string value of class names to apply to the component
  *
  */
@@ -747,13 +746,12 @@ interface TabPanelsProps extends PropsWithChildren {
 declare function TabPanels(props: TabPanelsProps): react_jsx_runtime.JSX.Element;
 
 interface TabPanelProps extends PropsWithChildren {
-    index: number;
+    index?: number;
     className?: string;
 }
 /**
  * Tab Panel component **********************************************************************
  *
- * @param index - number value for the index of the panel
  * @param className - (optional) string value of class names to apply to the component
  *
  */
