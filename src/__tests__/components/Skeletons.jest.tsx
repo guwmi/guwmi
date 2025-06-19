@@ -2,9 +2,9 @@
 import { render, screen } from '@testing-library/react';
 
 // import component to test
-import SkeletonBlock from '@components/Skeletons/SkeletonBlock';
-import SkeletonHeading from '@components/Skeletons/SkeletonHeading';
-import SkeletonParagraph from '@components/Skeletons/SkeletonParagraph';
+import SkeletonBlock from '../../components/Skeletons/SkeletonBlock';
+import SkeletonHeading from '../../components/Skeletons/SkeletonHeading';
+import SkeletonParagraph from '../../components/Skeletons/SkeletonParagraph';
 
 describe('Skeleton Components', () => {
 

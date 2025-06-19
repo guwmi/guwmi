@@ -18,11 +18,6 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./",
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@utils/*": ["src/utils/*"]
-    },
     "types": ["@testing-library/jest-dom"],
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],

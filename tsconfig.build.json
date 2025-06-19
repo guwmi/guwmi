@@ -14,11 +14,6 @@
     "sourceMap": true,
     "declaration": true,
     "outDir": "./dist/",
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@utils/*": ["src/utils/*"]
-    },
   },
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.stories.ts"]
 }
