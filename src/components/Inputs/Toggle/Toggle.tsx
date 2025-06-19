@@ -4,6 +4,7 @@ import { useId } from 'react';
 // component type
 export interface ToggleProps {
   label: string;
+  labelAlign?: 'left' | 'right';
   id?: string;
   name?: string;
   disabled?: boolean;
@@ -21,6 +22,7 @@ export interface ToggleProps {
  * Toggle component *************************************************************************
  * 
  * @param label - string value for the input label
+ * @param labelAlign - (optional) value of 'left' or 'right' determines label placement - defaults to 'left'
  * @param id - (optional) string value for the id proprty on the input
  * @param name - (optional) string value for the name proprty on the input
  * @param disabled - (optional) boolean value for the disabled state of the input
@@ -39,6 +41,7 @@ export default function Toggle(props: ToggleProps) {
 
   const {
     label,
+    labelAlign = 'left',
     id,
     name,
     disabled = false,
@@ -52,7 +55,7 @@ export default function Toggle(props: ToggleProps) {
     onFocus,
     ...rest
   } = props;
-  const classes = `guwmi-toggle${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`;
+  const classes = `guwmi-toggle ${labelAlign}${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`;
   const inputId = id ?? useId();
 
   return (

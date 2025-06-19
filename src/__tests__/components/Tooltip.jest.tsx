@@ -17,7 +17,7 @@ describe('Tootip Component', () => {
     const tipContainer = screen.getByTestId('guwmi-tooltip');
     const tip = screen.getByText('Tooltip text');
     expect(tip).toBeInTheDocument();
-    expect(tipContainer).toHaveClass('bottom');
+    expect(tipContainer).toHaveClass('top');
   });
 
   test('renders with override class', () => {

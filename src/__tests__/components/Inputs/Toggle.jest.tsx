@@ -30,6 +30,7 @@ describe('Toggle Component', () => {
     render(
       <Toggle
         label="Test toggle"
+        labelAlign="right"
         id="test-id"
         name="test-name"
         disabled
@@ -46,6 +47,7 @@ describe('Toggle Component', () => {
     expect(inputContainer).toBeInTheDocument();
     expect(inputContainer).toHaveClass('override-class');
     expect(inputContainer).toHaveClass('disabled');
+    expect(inputContainer).toHaveClass('right');
     expect(label).toBeInTheDocument();
     expect(input).toHaveProperty('disabled');
     expect(input).toHaveProperty('readOnly');

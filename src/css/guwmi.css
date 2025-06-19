@@ -1745,6 +1745,7 @@ a.guwmi-tag.disabled {
 .guwmi-toggle {
   display: flex;
   align-items: center;
+  justify-content: start;
   gap: 1rem;
 }
 .guwmi-toggle *:not(.guwmi-skeleton) * {
@@ -1756,6 +1757,9 @@ a.guwmi-tag.disabled {
 }
 .guwmi-toggle.disabled *:not(.guwmi-skeleton) * {
   cursor: not-allowed;
+}
+.guwmi-toggle.right {
+  flex-direction: row-reverse;
 }
 .guwmi-toggle .guwmi-toggle-container {
   position: relative;
