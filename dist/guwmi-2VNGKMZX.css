@@ -1697,11 +1697,12 @@
   border-radius: 50px;
   font-size: 0.9rem;
   text-decoration: none;
-  padding: 0.1rem 0.75rem;
+  padding: 0.15rem 0.75rem;
   background: var(--guwmi-secondary-bg);
   border-color: var(--guwmi-secondary-bg);
   color: var(--guwmi-text);
   overflow: hidden;
+  line-height: 1;
 }
 .guwmi-tag.secondary {
   background: var(--guwmi-secondary);
@@ -1719,11 +1720,11 @@
 }
 .guwmi-tag.sm {
   font-size: 0.8rem;
-  padding: 0.05rem 0.5rem;
+  padding: 0.1rem 0.5rem;
 }
 .guwmi-tag.lg {
   font-size: 1rem;
-  padding: 0.15rem 1rem;
+  padding: 0.2rem 1rem;
 }
 
 button.guwmi-tag,
