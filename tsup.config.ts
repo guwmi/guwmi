@@ -7,15 +7,15 @@ export default defineConfig(() => {
       '.css': 'copy',
       '.scss': 'copy',
     },
-    format: ['esm', 'cjs'], // Build for commonJS and ESmodules
-    dts: true, // Generate declaration file (.d.ts)
+    format: ['esm'],
+    dts: true,
     bundle: true,
     skipNodeModulesBundle: true,
     splitting: false,
     sourcemap: true,
     clean: true,
     esbuildOptions(options) {
-      options.outbase = './src'; // Maintain directory structure in output
+      options.outbase = './src';
     },
     tsconfig: 'tsconfig.build.json',
     external: ['react', 'react-dom'],
