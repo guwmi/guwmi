@@ -1,9 +1,9 @@
 // tsconfig for the build
 {
   "compilerOptions": {
-    "target": "es6",
     "module": "esnext",
-    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
+    "target": "es6",
+    "lib": ["dom", "es6", "es2021", "esnext.asynciterable"],
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -14,6 +14,11 @@
     "sourceMap": true,
     "declaration": true,
     "outDir": "./dist/",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@utils/*": ["src/utils/*"]
+    },
   },
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.stories.ts"]
 }

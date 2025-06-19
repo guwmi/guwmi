@@ -5,7 +5,7 @@ import React, { useMemo, useContext, PropsWithChildren } from 'react';
 import MenuContext from './MenuContext';
 
 // import button type
-import { ButtonProps } from '@components/Button/Button';
+import { ButtonProps } from '../../components/Button/Button';
 
 // component type
 export interface MenuTriggerProps extends PropsWithChildren{
