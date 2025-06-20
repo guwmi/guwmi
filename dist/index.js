@@ -1294,7 +1294,7 @@ function NavbarGroup(props) {
         ]
       }
     ),
-    isVisible && /* @__PURE__ */ jsx23("ul", { ref: contentRef, children })
+    /* @__PURE__ */ jsx23("ul", { ref: contentRef, children })
   ] }));
 }
 

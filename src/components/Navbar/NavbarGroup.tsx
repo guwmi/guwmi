@@ -65,11 +65,9 @@ export default function NavbarGroup(props: NavbarGroupProps) {
         {label}
         <Icon name="chevron-right" size={18} />
       </button>
-      {isVisible &&
-        <ul ref={contentRef}>
-          {children}
-        </ul>
-      }
+      <ul ref={contentRef}>
+        {children}
+      </ul>
     </li>
   )
 }
