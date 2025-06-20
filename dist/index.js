@@ -1,3 +1,4 @@
+"use client";
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
 var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
@@ -31,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-O23EFZYF.css";
+import "./guwmi-7ZCJ3PRM.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
