@@ -40,8 +40,9 @@ export default function NavbarGroup(props: NavbarGroupProps) {
   const itemRef = useRef<HTMLLIElement>(null);
   const contentRef = useRef<HTMLUListElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [isOpen, setIsOpen] = useState<boolean>(defaultOpen);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const classes = `guwmi-navbar-group${isOpen ? ' open' : ''}${className ? ' ' + className : ''}`;
+  const initialRender = useRef<boolean>(true);
   useAnimation(isOpen, 'open', itemRef);
 
   useEffect(() => {
@@ -54,6 +55,10 @@ export default function NavbarGroup(props: NavbarGroupProps) {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    initialRender.current = false;
+  }, []);
+
   return (
     <li className={classes} ref={itemRef} {...rest}>
       <button
@@ -65,9 +70,11 @@ export default function NavbarGroup(props: NavbarGroupProps) {
         {label}
         <Icon name="chevron-right" size={18} />
       </button>
-      <ul ref={contentRef}>
-        {children}
-      </ul>
+      {!initialRender.current &&
+        <ul ref={contentRef}>
+          {children}
+        </ul>
+      }
     </li>
   )
 }

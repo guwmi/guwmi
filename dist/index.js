@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-JIBBZSWQ.css";
+import "./guwmi-32BOVQET.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -1268,8 +1268,9 @@ function NavbarGroup(props) {
   const itemRef = useRef10(null);
   const contentRef = useRef10(null);
   const buttonRef = useRef10(null);
-  const [isOpen, setIsOpen] = useState7(defaultOpen);
+  const [isOpen, setIsOpen] = useState7(false);
   const classes = `guwmi-navbar-group${isOpen ? " open" : ""}${className ? " " + className : ""}`;
+  const initialRender = useRef10(true);
   useAnimation_default(isOpen, "open", itemRef);
   useEffect10(() => {
     const defaultHeight = buttonRef.current.offsetHeight;
@@ -1280,6 +1281,9 @@ function NavbarGroup(props) {
       itemRef.current.style.height = `${defaultHeight}px`;
     }
   }, [isOpen]);
+  useEffect10(() => {
+    initialRender.current = false;
+  }, []);
   return /* @__PURE__ */ jsxs10("li", __spreadProps(__spreadValues({ className: classes, ref: itemRef }, rest), { children: [
     /* @__PURE__ */ jsxs10(
       "button",
@@ -1294,7 +1298,7 @@ function NavbarGroup(props) {
         ]
       }
     ),
-    /* @__PURE__ */ jsx23("ul", { ref: contentRef, children })
+    !initialRender.current && /* @__PURE__ */ jsx23("ul", { ref: contentRef, children })
   ] }));
 }
 

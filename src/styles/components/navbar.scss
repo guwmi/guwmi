@@ -100,13 +100,14 @@
         }
 
         > ul {
-          display: block;
+          opacity: 1;
         }
       }
 
       ul {
-        display: none;
+        opacity: 0;
         background: var(--guwmi-primary-bg);
+        transition: var(--guwmi-transition-long);
 
         .guwmi-navbar-button {
           padding-left: 1.5rem;
