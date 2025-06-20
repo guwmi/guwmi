@@ -3,6 +3,8 @@
  **/
 .guwmi-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
 }
@@ -11,6 +13,7 @@
 }
 .guwmi-container > div:not(.guwmi-container-header) {
   display: flex;
+  flex-grow: 1;
 }
 .guwmi-container > div:not(.guwmi-container-header) .guwmi-container-sidebar {
   width: 25%;
