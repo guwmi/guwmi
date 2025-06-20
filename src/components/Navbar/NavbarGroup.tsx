@@ -41,8 +41,8 @@ export default function NavbarGroup(props: NavbarGroupProps) {
   const contentRef = useRef<HTMLUListElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(defaultOpen);
-  const { isVisible } = useAnimation(isOpen, 'open', itemRef);
   const classes = `guwmi-navbar-group${isOpen ? ' open' : ''}${className ? ' ' + className : ''}`;
+  useAnimation(isOpen, 'open', itemRef);
 
   useEffect(() => {
     const defaultHeight = buttonRef.current.offsetHeight;

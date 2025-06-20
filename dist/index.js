@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-7ZCJ3PRM.css";
+import "./guwmi-JIBBZSWQ.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -1269,8 +1269,8 @@ function NavbarGroup(props) {
   const contentRef = useRef10(null);
   const buttonRef = useRef10(null);
   const [isOpen, setIsOpen] = useState7(defaultOpen);
-  const { isVisible } = useAnimation_default(isOpen, "open", itemRef);
   const classes = `guwmi-navbar-group${isOpen ? " open" : ""}${className ? " " + className : ""}`;
+  useAnimation_default(isOpen, "open", itemRef);
   useEffect10(() => {
     const defaultHeight = buttonRef.current.offsetHeight;
     if (contentRef.current && isOpen) {

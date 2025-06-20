@@ -98,9 +98,14 @@
             transform: rotate(90deg);
           }
         }
+
+        > ul {
+          display: block;
+        }
       }
 
       ul {
+        display: none;
         background: var(--guwmi-primary-bg);
 
         .guwmi-navbar-button {

@@ -1330,7 +1330,11 @@
 .guwmi-navbar ul .guwmi-navbar-group.open > .guwmi-navbar-button svg {
   transform: rotate(90deg);
 }
+.guwmi-navbar ul .guwmi-navbar-group.open > ul {
+  display: block;
+}
 .guwmi-navbar ul .guwmi-navbar-group ul {
+  display: none;
   background: var(--guwmi-primary-bg);
 }
 .guwmi-navbar ul .guwmi-navbar-group ul .guwmi-navbar-button {
