@@ -90,6 +90,7 @@ export default function AccordionItem(props: AccordionItemProps) {
         aria-controls={`guwmi-accordion-panel-${id}`}
         aria-expanded={isOpen}
         className={isOpen ? 'active' : null}
+        tabIndex={skeleton ? -1 : 0}
       >
         {title}
         <Icon name="chevron-right" size={20} />

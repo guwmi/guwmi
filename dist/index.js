@@ -419,6 +419,7 @@ function AccordionItem(props) {
         "aria-controls": `guwmi-accordion-panel-${id}`,
         "aria-expanded": isOpen,
         className: isOpen ? "active" : null,
+        tabIndex: skeleton ? -1 : 0,
         children: [
           title,
           /* @__PURE__ */ jsx4(Icon_default, { name: "chevron-right", size: 20 })
@@ -1283,6 +1284,9 @@ function NavbarGroup(props) {
   }, [isOpen]);
   useEffect10(() => {
     initialRender.current = false;
+    if (defaultOpen) {
+      setIsOpen(true);
+    }
   }, []);
   return /* @__PURE__ */ jsxs10("li", __spreadProps(__spreadValues({ className: classes, ref: itemRef }, rest), { children: [
     /* @__PURE__ */ jsxs10(
@@ -2074,7 +2078,7 @@ function Table(props) {
       description && /* @__PURE__ */ jsx40("p", { className: skeleton ? "guwmi-skeleton" : null, children: description })
     ] }),
     headers.length > 0 && isSearchable && /* @__PURE__ */ jsx40("div", { className: "guwmi-table-search", children: /* @__PURE__ */ jsx40(SearchInput, { onChange: (e) => setSearchValue(e.target.value), skeleton }) }),
-    /* @__PURE__ */ jsx40("table", { cellPadding: 0, cellSpacing: 0, children: skeleton ? /* @__PURE__ */ jsxs18(Fragment5, { children: [
+    /* @__PURE__ */ jsx40("table", { cellPadding: 0, cellSpacing: 0, tabIndex: -1, children: skeleton ? /* @__PURE__ */ jsxs18(Fragment5, { children: [
       /* @__PURE__ */ jsx40("thead", { children: /* @__PURE__ */ jsx40("tr", { children: Array.from({ length: 4 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx40("th", { className: "guwmi-skeleton" }, `guwmi-table-skelton-header-${i}`)) }) }),
       /* @__PURE__ */ jsx40("tbody", { children: Array.from({ length: 5 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx40("tr", { children: Array.from({ length: 4 }, (_, index) => index).map((v2, i2) => /* @__PURE__ */ jsx40("td", { className: "guwmi-skeleton" }, `guwmi-table-skelton-td-${i2}`)) }, `guwmi-table-skelton-row-${i}`)) })
     ] }) : headers.length > 0 ? /* @__PURE__ */ jsxs18(Fragment5, { children: [

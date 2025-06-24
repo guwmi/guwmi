@@ -110,7 +110,7 @@ export default function Table(props: TableProps) {
           <SearchInput onChange={(e) => setSearchValue(e.target.value)} skeleton={skeleton} />
         </div>
       }
-      <table cellPadding={0} cellSpacing={0}>
+      <table cellPadding={0} cellSpacing={0} tabIndex={-1}>
         {skeleton ? (
           <>
             <thead>

@@ -57,6 +57,9 @@ export default function NavbarGroup(props: NavbarGroupProps) {
 
   useEffect(() => {
     initialRender.current = false;
+    if (defaultOpen) {
+      setIsOpen(true);
+    }
   }, []);
 
   return (
