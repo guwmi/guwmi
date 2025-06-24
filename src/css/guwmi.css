@@ -1261,6 +1261,9 @@
 /**
  * Styles for the navbar component ******************************************************************
  **/
+.guwmi-navbar {
+  overflow-x: hidden;
+}
 .guwmi-navbar ul {
   margin: 0;
   padding: 0;
@@ -1296,7 +1299,8 @@
 .guwmi-navbar ul .guwmi-navbar-item:nth-of-type(5) .guwmi-navbar-button.guwmi-skeleton::after {
   width: 62%;
 }
-.guwmi-navbar ul .guwmi-navbar-button {
+.guwmi-navbar ul .guwmi-navbar-button,
+.guwmi-navbar ul .guwmi-navbar-button:visited {
   background: none;
   border: none;
   cursor: pointer;
@@ -1305,23 +1309,31 @@
   font-size: 0.9rem;
   display: flex;
   transition: var(--guwmi-transition);
+  color: var(--guwmi-text);
+  text-decoration: none;
 }
-.guwmi-navbar ul .guwmi-navbar-button.guwmi-skeleton {
+.guwmi-navbar ul .guwmi-navbar-button.guwmi-skeleton,
+.guwmi-navbar ul .guwmi-navbar-button:visited.guwmi-skeleton {
   height: 2.4rem;
 }
-.guwmi-navbar ul .guwmi-navbar-button.guwmi-skeleton::after {
+.guwmi-navbar ul .guwmi-navbar-button.guwmi-skeleton::after,
+.guwmi-navbar ul .guwmi-navbar-button:visited.guwmi-skeleton::after {
   height: 0.9rem;
   top: 1rem;
   left: 1rem;
 }
-.guwmi-navbar ul .guwmi-navbar-button:hover {
+.guwmi-navbar ul .guwmi-navbar-button:hover,
+.guwmi-navbar ul .guwmi-navbar-button:visited:hover {
   background: rgba(0, 0, 0, 0.1);
 }
-.guwmi-navbar ul .guwmi-navbar-button:disabled, .guwmi-navbar ul .guwmi-navbar-button.disabled {
+.guwmi-navbar ul .guwmi-navbar-button:disabled, .guwmi-navbar ul .guwmi-navbar-button.disabled,
+.guwmi-navbar ul .guwmi-navbar-button:visited:disabled,
+.guwmi-navbar ul .guwmi-navbar-button:visited.disabled {
   cursor: not-allowed;
   color: var(--guwmi-tertiary-bg) !important;
 }
-.guwmi-navbar ul .guwmi-navbar-button svg {
+.guwmi-navbar ul .guwmi-navbar-button svg,
+.guwmi-navbar ul .guwmi-navbar-button:visited svg {
   margin-left: auto;
   transition: var(--guwmi-transition-short);
 }

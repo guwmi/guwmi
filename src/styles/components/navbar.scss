@@ -3,6 +3,7 @@
  **/
 
 .guwmi-navbar {
+  overflow-x: hidden;
 
   ul {
     margin: 0;
@@ -50,7 +51,8 @@
       }
     }
 
-    .guwmi-navbar-button {
+    .guwmi-navbar-button,
+    .guwmi-navbar-button:visited {
       background: none;
       border: none;
       cursor: pointer;
@@ -59,6 +61,8 @@
       font-size: 0.9rem;
       display: flex;
       transition: var(--guwmi-transition);
+      color: var(--guwmi-text);
+      text-decoration: none;
 
       &.guwmi-skeleton {
         height: 2.4rem;
