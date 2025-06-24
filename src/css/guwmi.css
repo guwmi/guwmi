@@ -189,6 +189,7 @@
 .guwmi-btn.sm {
   padding: 0.25rem 0.67rem;
   font-size: 0.9rem;
+  gap: 0.5rem;
 }
 .guwmi-btn.md {
   padding: 0.5rem 1.25rem;
@@ -196,6 +197,7 @@
 .guwmi-btn.lg {
   padding: 0.65rem 2rem;
   font-size: 1.1rem;
+  gap: 1.5rem;
 }
 .guwmi-btn.primary {
   background: var(--guwmi-primary);
@@ -1596,6 +1598,7 @@
   padding: 0.25rem 1rem;
   border-radius: var(--guwmi-radius);
   border: solid 1px var(--guwmi-secondary-bg);
+  overflow-x: auto;
 }
 .guwmi-table-container .guwmi-table-header {
   background: var(--guwmi-secondary-bg);
@@ -1640,6 +1643,7 @@
 }
 .guwmi-table-container table {
   width: 100%;
+  table-layout: fixed;
 }
 .guwmi-table-container table th,
 .guwmi-table-container table td {
@@ -1648,7 +1652,8 @@
   margin: 0;
   border: 0;
   border-bottom: solid 1px var(--guwmi-secondary-bg);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  color: var(--guwmi-high-contrast-bg);
 }
 .guwmi-table-container table th.guwmi-skeleton,
 .guwmi-table-container table td.guwmi-skeleton {
@@ -1662,8 +1667,9 @@
   transform: translateY(-50%);
 }
 .guwmi-table-container table thead th {
-  border-color: var(--guwmi-tertiary-bg);
-  font-size: 1rem;
+  border-color: var(--guwmi-text);
+  font-size: 0.9rem;
+  color: var(--guwmi-text);
 }
 .guwmi-table-container table thead th.guwmi-skeleton::after {
   width: 50%;
