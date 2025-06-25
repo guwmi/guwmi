@@ -18,8 +18,8 @@ interface BreadcrumbsProps {
 /**
  * Breadcrumbs component ********************************************************************
  * 
- * * If links includes an href, neither an href nor onClick, and are not disabled, they will render as an anchor element,
- *   otherwise they will render as a button element
+ * * If a link includes an href and are not disabled, it will render as an anchor element,
+ *   otherwise it will render as a button element
  * 
  * * The last link will always render as the 'current-location' <a> element without an href of onClick
  * 
