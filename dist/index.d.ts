@@ -47,8 +47,8 @@ interface BreadcrumbsProps {
 /**
  * Breadcrumbs component ********************************************************************
  *
- * * If links includes an href, neither an href nor onClick, and are not disabled, they will render as an anchor element,
- *   otherwise they will render as a button element
+ * * If a link includes an href and are not disabled, it will render as an anchor element,
+ *   otherwise it will render as a button element
  *
  * * The last link will always render as the 'current-location' <a> element without an href of onClick
  *
@@ -58,7 +58,7 @@ interface BreadcrumbsProps {
  *  - href - (optional) string value for the href property of a link
  *  - onClick - (optional) function to be use onClick in place of an href (helpful for router pushing in SPAs)
  *  - disabled - (optionsl) boolean value that determines the disabled state of a link
- * @param hasBackground - (optional) boolean value that determines if the breadcrumbs are arapped in a container with a background
+ * @param hasBackground - (optional) boolean value that determines if the breadcrumbs are wrapped in a container with a background
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
  *

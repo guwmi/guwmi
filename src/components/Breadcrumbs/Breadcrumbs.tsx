@@ -29,7 +29,7 @@ interface BreadcrumbsProps {
  *  - href - (optional) string value for the href property of a link
  *  - onClick - (optional) function to be use onClick in place of an href (helpful for router pushing in SPAs)
  *  - disabled - (optionsl) boolean value that determines the disabled state of a link
- * @param hasBackground - (optional) boolean value that determines if the breadcrumbs are arapped in a container with a background
+ * @param hasBackground - (optional) boolean value that determines if the breadcrumbs are wrapped in a container with a background
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
  * 
@@ -58,11 +58,11 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
             {(index + 1) !== links.length ? (
               <>
                 {link.href && !link.disabled ? (
-                  <a href={link.href}>
+                  <a href={link.href} tabIndex={skeleton ? -1: 0}>
                     {link.text}
                   </a>
                 ) : (
-                  <button onClick={link.onClick} disabled={link.disabled}>
+                  <button onClick={link.onClick} disabled={link.disabled} tabIndex={skeleton ? -1: 0}>
                     {link.text}
                   </button>
                 )}

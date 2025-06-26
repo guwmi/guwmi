@@ -461,7 +461,7 @@ function Breadcrumbs(props) {
     {
       className: skeleton && hasBackground ? "guwmi-skeleton alt" : skeleton ? "guwmi-skeleton" : null,
       children: index + 1 !== links.length ? /* @__PURE__ */ jsxs3(Fragment2, { children: [
-        link.href && !link.disabled ? /* @__PURE__ */ jsx5("a", { href: link.href, children: link.text }) : /* @__PURE__ */ jsx5("button", { onClick: link.onClick, disabled: link.disabled, children: link.text }),
+        link.href && !link.disabled ? /* @__PURE__ */ jsx5("a", { href: link.href, tabIndex: skeleton ? -1 : 0, children: link.text }) : /* @__PURE__ */ jsx5("button", { onClick: link.onClick, disabled: link.disabled, tabIndex: skeleton ? -1 : 0, children: link.text }),
         /* @__PURE__ */ jsx5(Icon_default, { name: "chevron-right", "aria-hidden": "true", size: 16 })
       ] }) : /* @__PURE__ */ jsx5("a", { "aria-current": "location", className: "guwmi-breadcrumb-current", children: link.text })
     },
