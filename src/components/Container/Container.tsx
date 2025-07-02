@@ -5,6 +5,7 @@ import { PropsWithChildren, JSX } from 'react';
 export interface ContainerProps extends PropsWithChildren {
   header?: JSX.Element;
   sidebar?: JSX.Element;
+  sidebarAria?: string;
   className?: string;
 }
 
@@ -13,6 +14,7 @@ export interface ContainerProps extends PropsWithChildren {
  * 
  * @param header - (optional) JSX to render inside a <header> element inside of the container
  * @param sidebar - (optional) JSX to render inside an <aside> element inside of the container
+ * @param sidebarAria - (optional) string value for the sidebar aria-label - defaults to 'Application sidebar'
  * @param className - (optional) string value of class names to apply to the component
  * 
  */
@@ -22,6 +24,7 @@ export default function Container(props: ContainerProps) {
   const {
     header,
     sidebar,
+    sidebarAria,
     className,
     children,
     ...rest
@@ -37,7 +40,7 @@ export default function Container(props: ContainerProps) {
       }
       <div>
         {sidebar && 
-          <aside className="guwmi-container-sidebar">
+          <aside className="guwmi-container-sidebar" aria-label={sidebarAria ?? 'Application sidebar'}>
             {sidebar}
           </aside>
         }

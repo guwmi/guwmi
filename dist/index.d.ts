@@ -184,6 +184,7 @@ declare function Checkbox(props: CheckboxProps): react_jsx_runtime.JSX.Element;
 interface ContainerProps extends PropsWithChildren {
     header?: JSX.Element;
     sidebar?: JSX.Element;
+    sidebarAria?: string;
     className?: string;
 }
 /**
@@ -191,6 +192,7 @@ interface ContainerProps extends PropsWithChildren {
  *
  * @param header - (optional) JSX to render inside a <header> element inside of the container
  * @param sidebar - (optional) JSX to render inside an <aside> element inside of the container
+ * @param sidebarAria - (optional) string value for the sidebar aria-label - defaults to 'Application sidebar'
  * @param className - (optional) string value of class names to apply to the component
  *
  */

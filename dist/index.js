@@ -642,11 +642,13 @@ function Container(props) {
   const _a = props, {
     header,
     sidebar,
+    sidebarAria,
     className,
     children
   } = _a, rest = __objRest(_a, [
     "header",
     "sidebar",
+    "sidebarAria",
     "className",
     "children"
   ]);
@@ -654,7 +656,7 @@ function Container(props) {
   return /* @__PURE__ */ jsxs6("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     header && /* @__PURE__ */ jsx11("header", { className: "guwmi-container-header", children: header }),
     /* @__PURE__ */ jsxs6("div", { children: [
-      sidebar && /* @__PURE__ */ jsx11("aside", { className: "guwmi-container-sidebar", children: sidebar }),
+      sidebar && /* @__PURE__ */ jsx11("aside", { className: "guwmi-container-sidebar", "aria-label": sidebarAria != null ? sidebarAria : "Application sidebar", children: sidebar }),
       /* @__PURE__ */ jsx11("main", { className: "guwmi-container-content", children })
     ] })
   ] }));
