@@ -1270,9 +1270,11 @@
   display: flex;
   flex-direction: column;
   list-style: none;
+  gap: 0;
 }
 .guwmi-navbar ul .guwmi-navbar-item {
   position: relative;
+  margin: 0;
 }
 .guwmi-navbar ul .guwmi-navbar-item.active::before {
   position: absolute;
@@ -1305,7 +1307,7 @@
   border: none;
   cursor: pointer;
   padding: 0.75rem 1rem;
-  width: 100%;
+  width: calc(100% - 2rem);
   font-size: 0.9rem;
   display: flex;
   transition: var(--guwmi-transition);
@@ -1341,6 +1343,9 @@
   transition: var(--guwmi-transition);
   overflow: hidden;
 }
+.guwmi-navbar ul .guwmi-navbar-group > .guwmi-navbar-button {
+  width: 100%;
+}
 .guwmi-navbar ul .guwmi-navbar-group.open > .guwmi-navbar-button svg {
   transform: rotate(90deg);
 }
@@ -1354,6 +1359,7 @@
 }
 .guwmi-navbar ul .guwmi-navbar-group ul .guwmi-navbar-button {
   padding-left: 1.5rem;
+  width: calc(100% - 2.5rem);
 }
 
 /**

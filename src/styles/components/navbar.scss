@@ -11,9 +11,11 @@
     display: flex;
     flex-direction: column;
     list-style: none;
+    gap: 0;
 
     .guwmi-navbar-item {
       position: relative;
+      margin: 0;
 
       &.active {
 
@@ -57,7 +59,7 @@
       border: none;
       cursor: pointer;
       padding: 0.75rem 1rem;
-      width: 100%;
+      width: calc(100% - 2rem);
       font-size: 0.9rem;
       display: flex;
       transition: var(--guwmi-transition);
@@ -94,6 +96,10 @@
       transition: var(--guwmi-transition);
       overflow: hidden;
 
+      > .guwmi-navbar-button {
+        width: 100%;
+      }
+
       &.open {
 
         > .guwmi-navbar-button {
@@ -115,6 +121,7 @@
 
         .guwmi-navbar-button {
           padding-left: 1.5rem;
+          width: calc(100% - 2.5rem);
         }
       }
     }
