@@ -3,7 +3,6 @@
  **/
 
 .guwmi-navbar {
-  overflow-x: hidden;
 
   ul {
     margin: 0;
@@ -55,11 +54,12 @@
 
     .guwmi-navbar-button,
     .guwmi-navbar-button:visited {
+      box-sizing: border-box;
       background: none;
       border: none;
       cursor: pointer;
       padding: 0.75rem 1rem;
-      width: calc(100% - 2rem);
+      width: 100%;
       font-size: 0.9rem;
       display: flex;
       transition: var(--guwmi-transition);
@@ -114,14 +114,13 @@
         }
       }
 
-      ul {
+      > ul {
         opacity: 0;
         background: var(--guwmi-primary-bg);
         transition: var(--guwmi-transition-long);
 
         .guwmi-navbar-button {
           padding-left: 1.5rem;
-          width: calc(100% - 2.5rem);
         }
       }
     }

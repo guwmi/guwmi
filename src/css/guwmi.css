@@ -1261,9 +1261,6 @@
 /**
  * Styles for the navbar component ******************************************************************
  **/
-.guwmi-navbar {
-  overflow-x: hidden;
-}
 .guwmi-navbar ul {
   margin: 0;
   padding: 0;
@@ -1303,11 +1300,12 @@
 }
 .guwmi-navbar ul .guwmi-navbar-button,
 .guwmi-navbar ul .guwmi-navbar-button:visited {
+  box-sizing: border-box;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.75rem 1rem;
-  width: calc(100% - 2rem);
+  width: 100%;
   font-size: 0.9rem;
   display: flex;
   transition: var(--guwmi-transition);
@@ -1352,14 +1350,13 @@
 .guwmi-navbar ul .guwmi-navbar-group.open > ul {
   opacity: 1;
 }
-.guwmi-navbar ul .guwmi-navbar-group ul {
+.guwmi-navbar ul .guwmi-navbar-group > ul {
   opacity: 0;
   background: var(--guwmi-primary-bg);
   transition: var(--guwmi-transition-long);
 }
-.guwmi-navbar ul .guwmi-navbar-group ul .guwmi-navbar-button {
+.guwmi-navbar ul .guwmi-navbar-group > ul .guwmi-navbar-button {
   padding-left: 1.5rem;
-  width: calc(100% - 2.5rem);
 }
 
 /**
@@ -2010,6 +2007,6 @@ body .guwmi-sr-only {
   box-shadow: inset 0 0 0 2px var(--guwmi-white), inset 0 0 0 4px var(--guwmi-primary);
 }
 
-a:not(.guwmi-btn):focus-visible {
+a:not(.guwmi-btn):not(.guwmi-navbar-button):focus-visible {
   box-shadow: 0 0 0 2px var(--guwmi-white), 0 0 0 4px var(--guwmi-primary);
 }
