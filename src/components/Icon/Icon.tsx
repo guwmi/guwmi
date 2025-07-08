@@ -15,6 +15,7 @@ import {
   Close,
   Dots,
   ExternalLink,
+  Eye,
   Hide,
   Home,
   Info,
@@ -25,6 +26,7 @@ import {
   Progress,
   Search,
   Settings,
+  Trash,
   View
 } from './paths';
 
@@ -42,6 +44,7 @@ export type IconName =
 | 'close'
 | 'dots'
 | 'external-link'
+| 'eye'
 | 'hide'
 | 'home'
 | 'info'
@@ -52,9 +55,11 @@ export type IconName =
 | 'progress'
 | 'search'
 | 'settings'
+| 'trash'
 | 'view';
 
 export interface IconProps extends SVGProps<SVGSVGElement> {
+  ariaLabel?: string;
   name: IconName;
   size?: number;
   stroke?: '1' | '2' | '3';
@@ -65,6 +70,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
 /**
  * Icon component ****************************************************************************
  * 
+ * @param ariaLabel - (optional) string value to override the svg aria-label property
  * @param name - string value for the icon SVG to render.  options are:
  * * 'alert-circle'
  * * 'alert-square'
@@ -78,6 +84,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
  * * 'close'
  * * 'dots'
  * * 'external-link'
+ * * 'eye'
  * * 'hide'
  * * 'home'
  * * 'info'
@@ -88,6 +95,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
  * * 'progress'
  * * 'search'
  * * 'settings'
+ * * 'trash'
  * * 'view';
  * @param size - (optional) number value for the size of the icon - defaults to 24
  * @param stroke - (optional) value of '1', '2', or '3' to determine the strokeWidth property of the SVG - defaults to '2'
@@ -99,6 +107,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
 const Icon = forwardRef<SVGSVGElement, IconProps>(( props, ref ) => {
 
   const {
+    ariaLabel,
     name,
     size = 24,
     stroke = '2',
@@ -134,6 +143,8 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(( props, ref ) => {
         return <Dots />
       case 'external-link':
         return <ExternalLink />
+      case 'eye':
+        return <Eye />
       case 'hide':
         return <Hide />
       case 'home':
@@ -154,6 +165,8 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(( props, ref ) => {
         return <Search />
       case 'settings':
         return <Settings />
+      case 'trash':
+        return <Trash />
       case 'view':
         return <View />
     }
@@ -173,7 +186,7 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(( props, ref ) => {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={classes}
-      aria-label={name}
+      aria-label={ariaLabel ?? name}
       {...rest}
       >
         {paths}

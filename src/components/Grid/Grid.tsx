@@ -18,7 +18,7 @@ export interface GridProps extends PropsWithChildren {
  * @param spacing - (optional) value of 0, 1, 2, 3, 4, 5, or 6 for the gap spacing between columns - defaults to 1
  * @param wrap - (optional) value of 'wrap' or 'no-wrap' determines if grid should wrap rows or force on one row - defaults to 'wrap'
  * @param rowOrder - (optional) value of 'standard' or 'reverse' dtermines the order of the columns in each row - defaults to 'standard'
- * @param lign - (optional) value of 'left', 'right', or 'center' determines the alignment of columns in a row - defaults to 'left'
+ * @param align - (optional) value of 'left', 'right', or 'center' determines the alignment of columns in a row - defaults to 'left'
  * @param className - (optional) string value of class names to apply to the component
  * 
  */
