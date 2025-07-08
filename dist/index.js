@@ -353,7 +353,8 @@ var Icon = forwardRef((props, ref) => {
       strokeWidth: stroke,
       strokeLinecap: "round",
       strokeLinejoin: "round",
-      className: classes
+      className: classes,
+      "aria-label": name
     }, rest), {
       children: paths
     })

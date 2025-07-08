@@ -173,6 +173,7 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(( props, ref ) => {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={classes}
+      aria-label={name}
       {...rest}
       >
         {paths}
