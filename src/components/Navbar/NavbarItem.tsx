@@ -2,7 +2,7 @@
 import React, { useRef, PropsWithChildren } from 'react';
 
 // component type
-interface ComponentProps extends PropsWithChildren {
+export interface NavbarItemProps extends PropsWithChildren {
   active?: boolean;
   href?: string;
   target?:
@@ -30,7 +30,7 @@ interface ComponentProps extends PropsWithChildren {
  * 
  */
 
-export default function NavbarItem(props: ComponentProps) {
+export default function NavbarItem(props: NavbarItemProps) {
 
   const {
     active,

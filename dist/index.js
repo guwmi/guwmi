@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-AXGCTZLV.css";
+import "./guwmi-OTBVHFE2.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -177,6 +177,13 @@ function ExternalLink() {
     /* @__PURE__ */ jsx2("path", { d: "M15 4h5v5" })
   ] });
 }
+function Eye() {
+  return /* @__PURE__ */ jsxs(Fragment, { children: [
+    /* @__PURE__ */ jsx2("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
+    /* @__PURE__ */ jsx2("path", { d: "M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" }),
+    /* @__PURE__ */ jsx2("path", { d: "M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" })
+  ] });
+}
 function Hide() {
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx2("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
@@ -264,6 +271,16 @@ function Settings() {
     /* @__PURE__ */ jsx2("path", { d: "M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" })
   ] });
 }
+function Trash() {
+  return /* @__PURE__ */ jsxs(Fragment, { children: [
+    /* @__PURE__ */ jsx2("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
+    /* @__PURE__ */ jsx2("path", { d: "M4 7l16 0" }),
+    /* @__PURE__ */ jsx2("path", { d: "M10 11l0 6" }),
+    /* @__PURE__ */ jsx2("path", { d: "M14 11l0 6" }),
+    /* @__PURE__ */ jsx2("path", { d: "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" }),
+    /* @__PURE__ */ jsx2("path", { d: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" })
+  ] });
+}
 function View() {
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx2("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
@@ -276,12 +293,14 @@ function View() {
 import { jsx as jsx3 } from "react/jsx-runtime";
 var Icon = forwardRef((props, ref) => {
   const _a = props, {
+    ariaLabel,
     name,
     size = 24,
     stroke = "2",
     color = "currentColor",
     className
   } = _a, rest = __objRest(_a, [
+    "ariaLabel",
     "name",
     "size",
     "stroke",
@@ -315,6 +334,8 @@ var Icon = forwardRef((props, ref) => {
         return /* @__PURE__ */ jsx3(Dots, {});
       case "external-link":
         return /* @__PURE__ */ jsx3(ExternalLink, {});
+      case "eye":
+        return /* @__PURE__ */ jsx3(Eye, {});
       case "hide":
         return /* @__PURE__ */ jsx3(Hide, {});
       case "home":
@@ -335,6 +356,8 @@ var Icon = forwardRef((props, ref) => {
         return /* @__PURE__ */ jsx3(Search, {});
       case "settings":
         return /* @__PURE__ */ jsx3(Settings, {});
+      case "trash":
+        return /* @__PURE__ */ jsx3(Trash, {});
       case "view":
         return /* @__PURE__ */ jsx3(View, {});
     }
@@ -354,7 +377,7 @@ var Icon = forwardRef((props, ref) => {
       strokeLinecap: "round",
       strokeLinejoin: "round",
       className: classes,
-      "aria-label": name
+      "aria-label": ariaLabel != null ? ariaLabel : name
     }, rest), {
       children: paths
     })
@@ -1251,8 +1274,9 @@ function Navbar(props) {
 }
 
 // src/components/Navbar/NavbarGroup.tsx
-import {
+import React4, {
   useEffect as useEffect10,
+  useMemo as useMemo3,
   useRef as useRef10,
   useState as useState7
 } from "react";
@@ -1276,6 +1300,9 @@ function NavbarGroup(props) {
   const classes = `guwmi-navbar-group${isOpen ? " open" : ""}${className ? " " + className : ""}`;
   const initialRender = useRef10(true);
   useAnimation_default(isOpen, "open", itemRef);
+  const buttonChildren = useMemo3(() => React4.Children.map(children, (child) => {
+    return React4.cloneElement(child, { disabled: !isOpen });
+  }), [children, isOpen]);
   useEffect10(() => {
     const defaultHeight = buttonRef.current.offsetHeight;
     if (contentRef.current && isOpen) {
@@ -1305,7 +1332,7 @@ function NavbarGroup(props) {
         ]
       }
     ),
-    !initialRender.current && /* @__PURE__ */ jsx23("ul", { ref: contentRef, children })
+    !initialRender.current && /* @__PURE__ */ jsx23("ul", { ref: contentRef, tabIndex: !isOpen ? -1 : null, children: buttonChildren })
   ] }));
 }
 
@@ -1394,7 +1421,7 @@ function Notification(props) {
 // src/components/Pagination/Pagination.tsx
 import {
   useEffect as useEffect12,
-  useMemo as useMemo3,
+  useMemo as useMemo4,
   useRef as useRef13,
   useState as useState9
 } from "react";
@@ -1481,15 +1508,15 @@ function Pagination(props) {
   const pageRef = useRef13(currentPage);
   const sizeRef = useRef13(currentSize);
   const classes = `guwmi-pagination${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  const numPages = useMemo3(() => Math.ceil(totalItems / size), [totalItems, size]);
-  const start = useMemo3(() => size * page - size + 1, [size, page]);
-  const end = useMemo3(() => size * page - size + size, [size, page]);
-  const pageSizeArray = useMemo3(() => {
+  const numPages = useMemo4(() => Math.ceil(totalItems / size), [totalItems, size]);
+  const start = useMemo4(() => size * page - size + 1, [size, page]);
+  const end = useMemo4(() => size * page - size + size, [size, page]);
+  const pageSizeArray = useMemo4(() => {
     const options = pageSizes.filter((s) => s < totalItems).map((s) => ({ name: s.toString(), value: s.toString() }));
     options.push({ name: "All", value: totalItems.toString() });
     return options;
   }, [pageSizes, totalItems]);
-  const pageArray = useMemo3(() => {
+  const pageArray = useMemo4(() => {
     return [...Array(Math.ceil(totalItems / size)).keys()].map((i) => {
       return { name: (i + 1).toString(), value: (i + 1).toString() };
     });
@@ -1822,9 +1849,9 @@ function Tab(props) {
 }
 
 // src/components/Tabs/TabPanels.tsx
-import React5, {
+import React6, {
   useContext as useContext5,
-  useMemo as useMemo4,
+  useMemo as useMemo5,
   useRef as useRef16,
   useEffect as useEffect14
 } from "react";
@@ -1835,8 +1862,8 @@ function TabPanels(props) {
   const windowWidth = useWindowWidth();
   const panels = useRef16(null);
   const classes = `guwmi-tab-panels${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  const childrenWithIndex = useMemo4(() => {
-    return React5.Children.map(children, (child, index) => React5.cloneElement(child, { index }));
+  const childrenWithIndex = useMemo5(() => {
+    return React6.Children.map(children, (child, index) => React6.cloneElement(child, { index }));
   }, [children]);
   useEffect14(() => {
     const active = panels.current.querySelector(".active");
@@ -1876,10 +1903,10 @@ function TabPanel(props) {
 }
 
 // src/components/Tabs/Tabs.tsx
-import React6, {
+import React7, {
   useContext as useContext7,
   useEffect as useEffect15,
-  useMemo as useMemo5,
+  useMemo as useMemo6,
   useRef as useRef17
 } from "react";
 import { jsx as jsx37, jsxs as jsxs17 } from "react/jsx-runtime";
@@ -1889,8 +1916,8 @@ function Tabs(props) {
   const tabsContainer = useRef17(null);
   const slider = useRef17(null);
   const classes = `guwmi-tabs${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  const childrenWithIndex = useMemo5(() => {
-    return React6.Children.map(children, (child, index) => React6.cloneElement(child, { index }));
+  const childrenWithIndex = useMemo6(() => {
+    return React7.Children.map(children, (child, index) => React7.cloneElement(child, { index }));
   }, [children]);
   useEffect15(() => {
     if (tabsContainer.current.querySelector(".guwmi-tab.active")) {
@@ -1930,7 +1957,7 @@ function TabsContainer(props) {
 import {
   useEffect as useEffect17,
   useId as useId7,
-  useMemo as useMemo8,
+  useMemo as useMemo9,
   useState as useState13
 } from "react";
 
@@ -1973,7 +2000,7 @@ var tableSearch = (arr = [], keys, value = "") => {
 var tableSearch_default = tableSearch;
 
 // src/hooks/usePagination.ts
-import { useState as useState12, useEffect as useEffect16, useRef as useRef18, useCallback as useCallback6, useMemo as useMemo6 } from "react";
+import { useState as useState12, useEffect as useEffect16, useRef as useRef18, useCallback as useCallback6, useMemo as useMemo7 } from "react";
 function usePagination(sourceData = []) {
   const [data, setData] = useState12([]);
   const [pageSize, setPageSize] = useState12(5);
@@ -1983,8 +2010,8 @@ function usePagination(sourceData = []) {
     setPageSize(e.currentSize);
     setCurrentPage(e.currentPage);
   }, []);
-  const start = useMemo6(() => currentPage * pageSize - pageSize, [pageSize, currentPage]);
-  const end = useMemo6(() => currentPage * pageSize, [pageSize, currentPage]);
+  const start = useMemo7(() => currentPage * pageSize - pageSize, [pageSize, currentPage]);
+  const end = useMemo7(() => currentPage * pageSize, [pageSize, currentPage]);
   useEffect16(() => {
     if (!isEmpty_default(sourceData)) {
       setData(sourceData.slice(start, end));
@@ -2009,7 +2036,7 @@ function usePagination(sourceData = []) {
 }
 
 // src/components/Table/TableRow.tsx
-import { useMemo as useMemo7 } from "react";
+import { useMemo as useMemo8 } from "react";
 import { Fragment as Fragment4, jsx as jsx39 } from "react/jsx-runtime";
 function TableRow(props) {
   const _a = props, {
@@ -2021,7 +2048,7 @@ function TableRow(props) {
     "data",
     "tableId"
   ]);
-  const cellData = useMemo7(() => {
+  const cellData = useMemo8(() => {
     const arr = [];
     headers.forEach((h) => {
       if (data[h.key]) {
@@ -2056,8 +2083,8 @@ function Table(props) {
     "skeleton"
   ]);
   const id = useId7();
-  const isSearchable = useMemo8(() => headers.some((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
-  const searchHeaders = useMemo8(() => headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
+  const isSearchable = useMemo9(() => headers.some((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
+  const searchHeaders = useMemo9(() => headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const classes = `guwmi-table-container${isCondensed ? " condensed" : ""}${className ? " " + className : ""}`;
   const [searchValue, setSearchValue] = useState13("");
   const [tableRows, setTableRows] = useState13(rows);

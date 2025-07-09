@@ -111,11 +111,13 @@
 
         > ul {
           opacity: 1;
+          visibility: visible;
         }
       }
 
       > ul {
         opacity: 0;
+        visibility: hidden;
         background: var(--guwmi-primary-bg);
         transition: var(--guwmi-transition-long);
 

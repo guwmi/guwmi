@@ -232,14 +232,15 @@ interface GridProps extends PropsWithChildren {
  * @param spacing - (optional) value of 0, 1, 2, 3, 4, 5, or 6 for the gap spacing between columns - defaults to 1
  * @param wrap - (optional) value of 'wrap' or 'no-wrap' determines if grid should wrap rows or force on one row - defaults to 'wrap'
  * @param rowOrder - (optional) value of 'standard' or 'reverse' dtermines the order of the columns in each row - defaults to 'standard'
- * @param lign - (optional) value of 'left', 'right', or 'center' determines the alignment of columns in a row - defaults to 'left'
+ * @param align - (optional) value of 'left', 'right', or 'center' determines the alignment of columns in a row - defaults to 'left'
  * @param className - (optional) string value of class names to apply to the component
  *
  */
 declare function Grid(props: GridProps): react_jsx_runtime.JSX.Element;
 
-type IconName = 'alert-circle' | 'alert-square' | 'alert-triangle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'copy' | 'close' | 'dots' | 'external-link' | 'hide' | 'home' | 'info' | 'login' | 'menu' | 'progress-alert' | 'progress-check' | 'progress' | 'search' | 'settings' | 'view';
+type IconName = 'alert-circle' | 'alert-square' | 'alert-triangle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'copy' | 'close' | 'dots' | 'external-link' | 'eye' | 'hide' | 'home' | 'info' | 'login' | 'menu' | 'progress-alert' | 'progress-check' | 'progress' | 'search' | 'settings' | 'trash' | 'view';
 interface IconProps extends SVGProps<SVGSVGElement> {
+    ariaLabel?: string;
     name: IconName;
     size?: number;
     stroke?: '1' | '2' | '3';
@@ -249,6 +250,7 @@ interface IconProps extends SVGProps<SVGSVGElement> {
 /**
  * Icon component ****************************************************************************
  *
+ * @param ariaLabel - (optional) string value to override the svg aria-label property
  * @param name - string value for the icon SVG to render.  options are:
  * * 'alert-circle'
  * * 'alert-square'
@@ -262,6 +264,7 @@ interface IconProps extends SVGProps<SVGSVGElement> {
  * * 'close'
  * * 'dots'
  * * 'external-link'
+ * * 'eye'
  * * 'hide'
  * * 'home'
  * * 'info'
@@ -272,6 +275,7 @@ interface IconProps extends SVGProps<SVGSVGElement> {
  * * 'progress'
  * * 'search'
  * * 'settings'
+ * * 'trash'
  * * 'view';
  * @param size - (optional) number value for the size of the icon - defaults to 24
  * @param stroke - (optional) value of '1', '2', or '3' to determine the strokeWidth property of the SVG - defaults to '2'
@@ -461,7 +465,7 @@ interface NavbarGroupProps extends PropsWithChildren {
  */
 declare function NavbarGroup(props: NavbarGroupProps): react_jsx_runtime.JSX.Element;
 
-interface ComponentProps$1 extends PropsWithChildren {
+interface NavbarItemProps extends PropsWithChildren {
     active?: boolean;
     href?: string;
     target?: '_blank' | '_self' | '_parent' | '_top';
@@ -483,7 +487,7 @@ interface ComponentProps$1 extends PropsWithChildren {
  * @param onClick - (optional) function to be called onClick
  *
  */
-declare function NavbarItem(props: ComponentProps$1): react_jsx_runtime.JSX.Element;
+declare function NavbarItem(props: NavbarItemProps): react_jsx_runtime.JSX.Element;
 
 interface NotificationProps {
     kind?: 'error' | 'warning' | 'success' | 'info';

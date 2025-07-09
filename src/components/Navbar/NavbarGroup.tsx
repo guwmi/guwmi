@@ -1,6 +1,7 @@
 // import library functionality
-import {
+import React, {
   useEffect,
+  useMemo,
   useRef,
   useState,
   PropsWithChildren
@@ -11,6 +12,9 @@ import useAnimation from '../../hooks/useAnimation';
 
 // import components
 import Icon from '../../components/Icon/Icon';
+
+// import child type
+import { NavbarItemProps } from './NavbarItem';
 
 // component type
 interface NavbarGroupProps extends PropsWithChildren {
@@ -45,6 +49,10 @@ export default function NavbarGroup(props: NavbarGroupProps) {
   const initialRender = useRef<boolean>(true);
   useAnimation(isOpen, 'open', itemRef);
 
+  const buttonChildren = useMemo(() => React.Children.map(children, (child) => {
+    return React.cloneElement(child as React.ReactElement<NavbarItemProps>, {disabled: !isOpen});
+  }), [children, isOpen]);
+
   useEffect(() => {
     const defaultHeight = buttonRef.current.offsetHeight;
     if (contentRef.current && isOpen) {
@@ -74,8 +82,8 @@ export default function NavbarGroup(props: NavbarGroupProps) {
         <Icon name="chevron-right" size={18} />
       </button>
       {!initialRender.current &&
-        <ul ref={contentRef}>
-          {children}
+        <ul ref={contentRef} tabIndex={!isOpen ? -1 : null}>
+          {buttonChildren}
         </ul>
       }
     </li>

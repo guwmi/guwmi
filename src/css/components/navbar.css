@@ -89,9 +89,11 @@
 }
 .guwmi-navbar ul .guwmi-navbar-group.open > ul {
   opacity: 1;
+  visibility: visible;
 }
 .guwmi-navbar ul .guwmi-navbar-group > ul {
   opacity: 0;
+  visibility: hidden;
   background: var(--guwmi-primary-bg);
   transition: var(--guwmi-transition-long);
 }
