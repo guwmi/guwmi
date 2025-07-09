@@ -177,13 +177,6 @@ function ExternalLink() {
     /* @__PURE__ */ jsx2("path", { d: "M15 4h5v5" })
   ] });
 }
-function Eye() {
-  return /* @__PURE__ */ jsxs(Fragment, { children: [
-    /* @__PURE__ */ jsx2("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
-    /* @__PURE__ */ jsx2("path", { d: "M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" }),
-    /* @__PURE__ */ jsx2("path", { d: "M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" })
-  ] });
-}
 function Hide() {
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx2("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
@@ -281,6 +274,13 @@ function Trash() {
     /* @__PURE__ */ jsx2("path", { d: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" })
   ] });
 }
+function User() {
+  return /* @__PURE__ */ jsxs(Fragment, { children: [
+    /* @__PURE__ */ jsx2("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
+    /* @__PURE__ */ jsx2("path", { d: "M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" }),
+    /* @__PURE__ */ jsx2("path", { d: "M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" })
+  ] });
+}
 function View() {
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx2("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
@@ -334,8 +334,6 @@ var Icon = forwardRef((props, ref) => {
         return /* @__PURE__ */ jsx3(Dots, {});
       case "external-link":
         return /* @__PURE__ */ jsx3(ExternalLink, {});
-      case "eye":
-        return /* @__PURE__ */ jsx3(Eye, {});
       case "hide":
         return /* @__PURE__ */ jsx3(Hide, {});
       case "home":
@@ -358,6 +356,8 @@ var Icon = forwardRef((props, ref) => {
         return /* @__PURE__ */ jsx3(Settings, {});
       case "trash":
         return /* @__PURE__ */ jsx3(Trash, {});
+      case "user":
+        return /* @__PURE__ */ jsx3(User, {});
       case "view":
         return /* @__PURE__ */ jsx3(View, {});
     }

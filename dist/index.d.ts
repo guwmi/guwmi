@@ -238,7 +238,7 @@ interface GridProps extends PropsWithChildren {
  */
 declare function Grid(props: GridProps): react_jsx_runtime.JSX.Element;
 
-type IconName = 'alert-circle' | 'alert-square' | 'alert-triangle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'copy' | 'close' | 'dots' | 'external-link' | 'eye' | 'hide' | 'home' | 'info' | 'login' | 'menu' | 'progress-alert' | 'progress-check' | 'progress' | 'search' | 'settings' | 'trash' | 'view';
+type IconName = 'alert-circle' | 'alert-square' | 'alert-triangle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'copy' | 'close' | 'dots' | 'external-link' | 'hide' | 'home' | 'info' | 'login' | 'menu' | 'progress-alert' | 'progress-check' | 'progress' | 'search' | 'settings' | 'trash' | 'user' | 'view';
 interface IconProps extends SVGProps<SVGSVGElement> {
     ariaLabel?: string;
     name: IconName;
@@ -264,7 +264,6 @@ interface IconProps extends SVGProps<SVGSVGElement> {
  * * 'close'
  * * 'dots'
  * * 'external-link'
- * * 'eye'
  * * 'hide'
  * * 'home'
  * * 'info'
@@ -276,6 +275,7 @@ interface IconProps extends SVGProps<SVGSVGElement> {
  * * 'search'
  * * 'settings'
  * * 'trash'
+ * * 'user'
  * * 'view';
  * @param size - (optional) number value for the size of the icon - defaults to 24
  * @param stroke - (optional) value of '1', '2', or '3' to determine the strokeWidth property of the SVG - defaults to '2'

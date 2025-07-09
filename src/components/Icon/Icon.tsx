@@ -15,7 +15,6 @@ import {
   Close,
   Dots,
   ExternalLink,
-  Eye,
   Hide,
   Home,
   Info,
@@ -27,6 +26,7 @@ import {
   Search,
   Settings,
   Trash,
+  User,
   View
 } from './paths';
 
@@ -44,7 +44,6 @@ export type IconName =
 | 'close'
 | 'dots'
 | 'external-link'
-| 'eye'
 | 'hide'
 | 'home'
 | 'info'
@@ -56,6 +55,7 @@ export type IconName =
 | 'search'
 | 'settings'
 | 'trash'
+| 'user'
 | 'view';
 
 export interface IconProps extends SVGProps<SVGSVGElement> {
@@ -84,7 +84,6 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
  * * 'close'
  * * 'dots'
  * * 'external-link'
- * * 'eye'
  * * 'hide'
  * * 'home'
  * * 'info'
@@ -96,6 +95,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
  * * 'search'
  * * 'settings'
  * * 'trash'
+ * * 'user'
  * * 'view';
  * @param size - (optional) number value for the size of the icon - defaults to 24
  * @param stroke - (optional) value of '1', '2', or '3' to determine the strokeWidth property of the SVG - defaults to '2'
@@ -143,8 +143,6 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(( props, ref ) => {
         return <Dots />
       case 'external-link':
         return <ExternalLink />
-      case 'eye':
-        return <Eye />
       case 'hide':
         return <Hide />
       case 'home':
@@ -167,6 +165,8 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(( props, ref ) => {
         return <Settings />
       case 'trash':
         return <Trash />
+      case 'user':
+        return <User />
       case 'view':
         return <View />
     }
