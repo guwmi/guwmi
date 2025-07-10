@@ -1,4 +1,4 @@
-// import library functionalit
+// import library functionality
 import { PropsWithChildren } from 'react';
 
 // import components
@@ -19,7 +19,7 @@ export interface InfoBlockProps extends PropsWithChildren {
 /**
  * Info Block component ********************************************************************
  * 
- * @param label - optional string value for the label for the block - defaults to the kind value
+ * @param label - (optional) string value for the label for the block - defaults to the kind value
  * @param kind - (optional) value of 'danger', 'warning', 'success', or 'info' determines the style and icon displayed - defaults to 'info'
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
@@ -57,7 +57,10 @@ export default function InfoBlock(props: InfoBlockProps) {
     <div className={classes} {...rest}>
       <div><Icon name={iconName} /></div>
       <div>
-        {label && <h2 className="guwmi-info-block-label">{label}</h2>}
+        {label 
+          ? ( <h2 className="guwmi-info-block-label">{label}</h2> )
+          : ( <h2 className="guwmi-info-block-label">{ kind.charAt(0).toUpperCase() + kind.slice(1) }</h2> )
+        }
         {children}
       </div>
     </div>

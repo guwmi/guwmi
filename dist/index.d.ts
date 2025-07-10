@@ -321,7 +321,7 @@ interface InfoBlockProps extends PropsWithChildren {
 /**
  * Info Block component ********************************************************************
  *
- * @param label - optional string value for the label for the block - defaults to the kind value
+ * @param label - (optional) string value for the label for the block - defaults to the kind value
  * @param kind - (optional) value of 'danger', 'warning', 'success', or 'info' determines the style and icon displayed - defaults to 'info'
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton

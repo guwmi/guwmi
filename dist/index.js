@@ -1041,7 +1041,7 @@ function InfoBlock(props) {
   return /* @__PURE__ */ jsxs8("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsx15("div", { children: /* @__PURE__ */ jsx15(Icon_default, { name: iconName }) }),
     /* @__PURE__ */ jsxs8("div", { children: [
-      label && /* @__PURE__ */ jsx15("h2", { className: "guwmi-info-block-label", children: label }),
+      label ? /* @__PURE__ */ jsx15("h2", { className: "guwmi-info-block-label", children: label }) : /* @__PURE__ */ jsx15("h2", { className: "guwmi-info-block-label", children: kind.charAt(0).toUpperCase() + kind.slice(1) }),
       children
     ] })
   ] }));
