@@ -40,14 +40,14 @@ export default function InfoBlock(props: InfoBlockProps) {
 
   const getIconName = () => {
     switch(kind) {
-    case 'danger':
-      return 'alert-square';
-    case 'warning':
-      return 'alert-triangle';
-    case 'success':
-      return 'check'
-    default:
-      return 'info';
+      case 'danger':
+        return 'alert-square';
+      case 'warning':
+        return 'alert-triangle';
+      case 'success':
+        return 'check'
+      default:
+        return 'info';
     }
   };
 

@@ -30,7 +30,7 @@ describe('Accordion Component', () => {
       </Accordion>
     )
     accordionItems.forEach((item) => {
-      expect(screen.getByRole('button', { name: item.title })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: item.title + ' chevron-right' })).toBeInTheDocument();
       expect(screen.getByTestId(item.id).querySelector('section')).toHaveAttribute('hidden');
     })
   });
@@ -49,7 +49,7 @@ describe('Accordion Component', () => {
     )
     
     accordionItems.forEach((item) => {
-      expect(screen.getByRole('button', { name: item.title })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: item.title + ' chevron-right' })).toBeInTheDocument();
       if (item.id === openId) {
         expect(screen.getByTestId(item.id).querySelector('section')).not.toHaveAttribute('hidden');
       } else {
@@ -71,7 +71,7 @@ describe('Accordion Component', () => {
     )
 
     const openItem = accordionItems[0];
-    const itemButton = screen.getByRole('button', { name: openItem.title })
+    const itemButton = screen.getByRole('button', { name: openItem.title + ' chevron-right' })
     await user.click(itemButton);
     accordionItems.forEach((item) => {
       if (item.id === openItem.id) {
@@ -95,7 +95,7 @@ describe('Accordion Component', () => {
     )
 
     const openItem = accordionItems[0];
-    const itemButton = screen.getByRole('button', { name: openItem.title })
+    const itemButton = screen.getByRole('button', { name: openItem.title + ' chevron-right' })
     const itemSection = screen.getByTestId(openItem.id).querySelector('section');
     expect(itemSection).toHaveAttribute('hidden');
     await user.click(itemButton);
@@ -118,7 +118,7 @@ describe('Accordion Component', () => {
     )
     
     const openItem = accordionItems[0];
-    const itemButton = screen.getByRole('button', { name: openItem.title });
+    const itemButton = screen.getByRole('button', { name: openItem.title + ' chevron-right' });
     const itemSection = screen.getByTestId(openItem.id).querySelector('section');
     expect(itemButton).toHaveAttribute('aria-controls', `guwmi-accordion-panel-${openItem.id}`);
     expect(itemSection).toHaveAttribute('aria-labelledby', `guwmi-accordion-controller-${openItem.id}`);
@@ -143,7 +143,7 @@ describe('Accordion Component', () => {
     expect(accordionItem).toHaveClass('override-class');
   });
 
-  test('renders with skeleton classe', () => {
+  test('renders with skeleton classes', () => {
 
     render(
       <Accordion skeleton>
