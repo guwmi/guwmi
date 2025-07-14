@@ -59,12 +59,13 @@
   &.inline {
     display: inline-flex;
     height: auto;
+    width: auto;
   }
 
   &.full-screen {
-    position: absolute;
+    position: fixed;
     height: 100%;
-    width: 100;
+    width: 100%;
     top: 0;
     left: 0;
   }
