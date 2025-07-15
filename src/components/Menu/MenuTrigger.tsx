@@ -7,8 +7,8 @@ import MenuContext from './MenuContext';
 // import button type
 import { ButtonProps } from '../../components/Button/Button';
 
-// component type
-export interface MenuTriggerProps extends PropsWithChildren{
+// component types
+export interface MenuTriggerProps extends PropsWithChildren {
   className?: string;
 }
 

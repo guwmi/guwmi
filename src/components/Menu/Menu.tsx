@@ -37,7 +37,7 @@ export default function Menu(props: MenuProps) {
 
   const {
     children,
-    position = 'bottom-right',
+    position = 'bottom-left',
     width,
     ariaLabel,
     className,
@@ -45,10 +45,11 @@ export default function Menu(props: MenuProps) {
   } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const classes = `guwmi-menu-container ${position}${className ? ' ' + className : ''}`;
+  const styles = width ? {width: `${width}px`} : null;
 
   return (
     <div className={classes} {...rest}>
-      <MenuContext.Provider value={{isOpen, setIsOpen, ariaLabel}}>
+      <MenuContext.Provider value={{isOpen, setIsOpen, ariaLabel, styles}}>
         {children}
       </MenuContext.Provider>
     </div>

@@ -23,7 +23,7 @@ export interface MenuDropdownProps extends PropsWithChildren {
 export default function MenuDropdown(props: MenuDropdownProps) {
 
   const { className, children, ...rest } = props;
-  const { isOpen, setIsOpen, ariaLabel } = useContext(MenuContext);
+  const { isOpen, setIsOpen, ariaLabel, styles } = useContext(MenuContext);
   const classes = `guwmi-menu-dropdown${className ? ' ' + className : ''}`;
   const dropDownRef = useRef<HTMLDivElement>(null);
   const { isVisible } = useAnimation(isOpen, 'open', dropDownRef );
@@ -36,6 +36,7 @@ export default function MenuDropdown(props: MenuDropdownProps) {
           className={classes}
           ref={dropDownRef}
           aria-label={ariaLabel}
+          style={styles}
           {...rest}
         >
           <ul role="menubar">

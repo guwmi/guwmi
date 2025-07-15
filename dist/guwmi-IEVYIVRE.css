@@ -1132,6 +1132,7 @@
  **/
 .guwmi-menu-container {
   position: relative;
+  width: fit-content;
 }
 .guwmi-menu-container.top-right .guwmi-menu-dropdown {
   top: -0.25rem;
@@ -1200,6 +1201,7 @@
   cursor: pointer;
   width: 100%;
   transition: var(--guwmi-transition);
+  white-space: nowrap;
 }
 .guwmi-menu-container .guwmi-menu-dropdown > ul .guwmi-menu-item .guwmi-menu-btn:hover {
   background: var(--guwmi-secondary-bg);

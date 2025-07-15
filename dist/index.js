@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-Z5MEOL4E.css";
+import "./guwmi-IEVYIVRE.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -1083,7 +1083,7 @@ import { jsx as jsx17 } from "react/jsx-runtime";
 function Menu2(props) {
   const _a = props, {
     children,
-    position = "bottom-right",
+    position = "bottom-left",
     width,
     ariaLabel,
     className
@@ -1096,7 +1096,8 @@ function Menu2(props) {
   ]);
   const [isOpen, setIsOpen] = useState6(false);
   const classes = `guwmi-menu-container ${position}${className ? " " + className : ""}`;
-  return /* @__PURE__ */ jsx17("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: /* @__PURE__ */ jsx17(MenuContext_default.Provider, { value: { isOpen, setIsOpen, ariaLabel }, children }) }));
+  const styles = width ? { width: `${width}px` } : null;
+  return /* @__PURE__ */ jsx17("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: /* @__PURE__ */ jsx17(MenuContext_default.Provider, { value: { isOpen, setIsOpen, ariaLabel, styles }, children }) }));
 }
 
 // src/components/Menu/MenuDropdown.tsx
@@ -1155,7 +1156,7 @@ var useTabThrough_default = useTabThrough;
 import { Fragment as Fragment3, jsx as jsx18 } from "react/jsx-runtime";
 function MenuDropdown(props) {
   const _a = props, { className, children } = _a, rest = __objRest(_a, ["className", "children"]);
-  const { isOpen, setIsOpen, ariaLabel } = useContext2(MenuContext_default);
+  const { isOpen, setIsOpen, ariaLabel, styles } = useContext2(MenuContext_default);
   const classes = `guwmi-menu-dropdown${className ? " " + className : ""}`;
   const dropDownRef = useRef8(null);
   const { isVisible } = useAnimation_default(isOpen, "open", dropDownRef);
@@ -1165,7 +1166,8 @@ function MenuDropdown(props) {
     __spreadProps(__spreadValues({
       className: classes,
       ref: dropDownRef,
-      "aria-label": ariaLabel
+      "aria-label": ariaLabel,
+      style: styles
     }, rest), {
       children: /* @__PURE__ */ jsx18("ul", { role: "menubar", children })
     })

@@ -4,6 +4,7 @@
 
 .guwmi-menu-container {
   position: relative;
+  width: fit-content;
 
   // dropdown positions
   &.top-right .guwmi-menu-dropdown {
@@ -81,6 +82,7 @@
           cursor: pointer;
           width: 100%;
           transition: var(--guwmi-transition);
+          white-space: nowrap;
 
           &:hover {
             background: var(--guwmi-secondary-bg);
