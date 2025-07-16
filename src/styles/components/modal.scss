@@ -34,14 +34,17 @@
 
     &.sm {
       width: 33%;
+      max-width: 500px;
     }
 
     &.md {
       width: 50%;
+      max-width: 750px;
     }
 
     &.lg {
       width: 75%;
+      max-width: 1000px;
     }
 
     &.full-screen {

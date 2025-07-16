@@ -58,7 +58,7 @@ export default function Modal(props: ModalProps) {
     isVisible &&
       <BodyPortal>
         <div className="guwmi-modal-overlay" ref={modalOverlay} {...rest}>
-          <dialog className={classes} ref={modal}>
+          <dialog className={classes} ref={modal} aria-modal="true">
             <button
               className="guwmi-modal-close-button"
               aria-label="Close modal"

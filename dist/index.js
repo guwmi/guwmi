@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-IEVYIVRE.css";
+import "./guwmi-T3BIQ2WU.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -1334,7 +1334,7 @@ function NavbarGroup(props) {
         ]
       }
     ),
-    !initialRender.current && /* @__PURE__ */ jsx23("ul", { ref: contentRef, tabIndex: !isOpen ? -1 : null, children: buttonChildren })
+    !initialRender.current && /* @__PURE__ */ jsx23("ul", { ref: contentRef, tabIndex: !isOpen ? -1 : void 0, children: buttonChildren })
   ] }));
 }
 
