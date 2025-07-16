@@ -82,7 +82,7 @@ export default function NavbarGroup(props: NavbarGroupProps) {
         <Icon name="chevron-right" size={18} />
       </button>
       {!initialRender.current &&
-        <ul ref={contentRef} tabIndex={!isOpen ? -1 : null}>
+        <ul ref={contentRef} tabIndex={!isOpen ? -1 : undefined}>
           {buttonChildren}
         </ul>
       }

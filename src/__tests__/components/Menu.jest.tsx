@@ -14,7 +14,13 @@ describe('Menu Component', () => {
 
   const handleClick = jest.fn();
   const menuStructure = 
-    <Menu ariaLabel="test menu" className="override-class" data-testid="guwmi-menu-container">
+    <Menu
+      ariaLabel="test menu"
+      className="override-class"
+      position="bottom-right"
+      width={500}
+      data-testid="guwmi-menu-container"
+    >
       <MenuTrigger className="override-class" data-testid="guwmi-menu-trigger">
         <IconButton ariaLabel="open menu">
           <Icon name="menu" size={20} />
@@ -48,6 +54,53 @@ describe('Menu Component', () => {
     await user.click(menuTrigger);
     const dropdown = screen.getByTestId('guwmi-menu-dropdown');
     expect(dropdown).toBeInTheDocument();
+  });
+
+  test('renders with the width property applied', async () => {
+
+    const { rerender } = render (
+      <Menu ariaLabel="test menu" width={500}>
+        <MenuTrigger>
+          <IconButton ariaLabel="open menu">
+            <Icon name="menu" size={20} />
+          </IconButton>
+        </MenuTrigger>
+        <MenuDropdown data-testid="guwmi-menu-dropdown">
+          <MenuItem>Item One</MenuItem>
+        </MenuDropdown>
+      </Menu>
+    )
+
+    let menuTrigger = screen.getByRole('button', {name: 'open menu'});
+    await user.click(menuTrigger);
+    let dropdown = screen.getByTestId('guwmi-menu-dropdown');
+    expect(dropdown).toHaveStyle('width: 500px');
+
+    rerender (
+      <Menu ariaLabel="test menu">
+        <MenuTrigger>
+          <IconButton ariaLabel="open menu">
+            <Icon name="menu" size={20} />
+          </IconButton>
+        </MenuTrigger>
+        <MenuDropdown data-testid="guwmi-menu-dropdown">
+          <MenuItem>Item One</MenuItem>
+        </MenuDropdown>
+      </Menu>
+    )
+
+    dropdown = screen.getByTestId('guwmi-menu-dropdown');
+    expect(dropdown).not.toHaveStyle;
+  });
+
+  test('renders with position override', async () => {
+
+    render( menuStructure );
+
+    const menuTrigger = screen.getByRole('button');
+    await user.click(menuTrigger);
+    const menu = screen.getByTestId('guwmi-menu-container');
+    expect(menu).toHaveClass('bottom-right');
   });
 
   test('items function as intended', async () => {

@@ -19,6 +19,16 @@ describe('Table Component', () => {
     search?: "includes" | "starts-with";
   }[] = [
     { title: 'Name', key: 'name', search: 'includes' },
+    { title: 'Type', key: 'type' },
+    { title: 'Status', key: 'status' },
+  ];
+
+  const headersStartsWith: {
+    title: string;
+    key: string;
+    search?: "includes" | "starts-with";
+  }[] = [
+    { title: 'Name', key: 'name' },
     { title: 'Type', key: 'type', search: 'starts-with' },
     { title: 'Status', key: 'status' },
   ];
@@ -111,7 +121,7 @@ describe('Table Component', () => {
 
   test('renders with search input and search functionality works as intended', async () => {
 
-    render( <Table headers={headers} rows={rows} data-testid="guwmi-table" /> );
+    const { rerender } = render( <Table headers={headers} rows={rows} data-testid="guwmi-table" /> );
 
     const table = screen.getByTestId('guwmi-table');
     const searchContainer = table.querySelector('.guwmi-table-search');
@@ -121,6 +131,9 @@ describe('Table Component', () => {
     await user.keyboard('one');
     expect(screen.getByText('Test One')).toBeInTheDocument();
     await user.clear(input);
+
+    rerender( <Table headers={headersStartsWith} rows={rows} data-testid="guwmi-table" /> );
+
     await user.keyboard('win');
     expect(screen.getAllByText('Windows')).toHaveLength(5);
   });
@@ -136,10 +149,14 @@ describe('Table Component', () => {
 
   test('renders with skeleton classes', () => {
 
-    render( <Table headers={[]} rows={rows} data-testid="guwmi-table" skeleton /> );
+    render( <Table headers={[]} rows={rows} data-testid="guwmi-table" title="Test title" description="Test description" skeleton /> );
 
     const table = screen.getByTestId('guwmi-table');
-    const skeletonCells = table.querySelectorAll('.guwmi-skeleton');
+    const skeletonCells = table.querySelector('table').querySelectorAll('.guwmi-skeleton');
+    const title = screen.getByText('Test title');
+    const desc = screen.getByText('Test description');
     expect(skeletonCells).toHaveLength(24);
+    expect(title).toHaveClass('guwmi-skeleton');
+    expect(desc).toHaveClass('guwmi-skeleton');
   });
 })
