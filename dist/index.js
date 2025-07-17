@@ -1270,7 +1270,7 @@ function Navbar(props) {
       className: classes,
       "aria-label": ariaLabel
     }, rest), {
-      children: skeleton ? /* @__PURE__ */ jsx22("ul", { children: Array.from({ length: 5 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx22("li", { className: "guwmi-navbar-item", children: /* @__PURE__ */ jsx22("button", { className: "guwmi-navbar-button guwmi-skeleton" }) }, `navbar-skeleton-${i}`)) }) : /* @__PURE__ */ jsx22("ul", { children })
+      children: skeleton ? /* @__PURE__ */ jsx22("ul", { role: "menubar", children: Array.from({ length: 5 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx22("li", { className: "guwmi-navbar-item", children: /* @__PURE__ */ jsx22("button", { className: "guwmi-navbar-button guwmi-skeleton", disabled: true }) }, `navbar-skeleton-${i}`)) }) : /* @__PURE__ */ jsx22("ul", { role: "menubar", children })
     })
   );
 }

@@ -35,15 +35,15 @@ export default function Navbar(props: NavbarProps) {
       {...rest}
     >
       {skeleton ? (
-        <ul>
+        <ul role="menubar">
           {Array.from({ length: 5 }, (_, index) => index).map((v, i) => (
             <li key={`navbar-skeleton-${i}`} className="guwmi-navbar-item">
-              <button className="guwmi-navbar-button guwmi-skeleton"></button>
+              <button className="guwmi-navbar-button guwmi-skeleton" disabled></button>
             </li>
           ))}
         </ul> 
       ) : (
-        <ul>
+        <ul role="menubar">
           {children}
         </ul>
       )}
