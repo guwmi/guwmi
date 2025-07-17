@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-T3BIQ2WU.css";
+import "./guwmi-GG364ITE.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -1235,7 +1235,7 @@ function Modal(props) {
   useFocusTrap_default(open, onClose, modal);
   useClickOutside_default(open, onClose, modal);
   usePreventScroll_default(open, preventScroll);
-  return isVisible && /* @__PURE__ */ jsx21(BodyPortal, { children: /* @__PURE__ */ jsx21("div", __spreadProps(__spreadValues({ className: "guwmi-modal-overlay", ref: modalOverlay }, rest), { children: /* @__PURE__ */ jsxs9("dialog", { className: classes, ref: modal, children: [
+  return isVisible && /* @__PURE__ */ jsx21(BodyPortal, { children: /* @__PURE__ */ jsx21("div", __spreadProps(__spreadValues({ className: "guwmi-modal-overlay", ref: modalOverlay }, rest), { children: /* @__PURE__ */ jsxs9("dialog", { className: classes, ref: modal, "aria-modal": "true", children: [
     /* @__PURE__ */ jsx21(
       "button",
       {
@@ -1303,7 +1303,11 @@ function NavbarGroup(props) {
   const initialRender = useRef10(true);
   useAnimation_default(isOpen, "open", itemRef);
   const buttonChildren = useMemo3(() => React4.Children.map(children, (child) => {
-    return React4.cloneElement(child, { disabled: !isOpen });
+    if (!isOpen) {
+      return React4.cloneElement(child, { disabled: true });
+    } else {
+      return child;
+    }
   }), [children, isOpen]);
   useEffect10(() => {
     const defaultHeight = buttonRef.current.offsetHeight;
@@ -1339,7 +1343,7 @@ function NavbarGroup(props) {
 }
 
 // src/components/Navbar/NavbarItem.tsx
-import { useRef as useRef11 } from "react";
+import React5, { useRef as useRef11, useMemo as useMemo4 } from "react";
 import { jsx as jsx24 } from "react/jsx-runtime";
 function NavbarItem(props) {
   const _a = props, {
@@ -1360,6 +1364,7 @@ function NavbarItem(props) {
     "children"
   ]);
   const classes = `guwmi-navbar-item${active ? " active" : ""}${className ? " " + className : ""}`;
+  const buttonClasses = `guwmi-navbar-button${disabled ? " disabled" : ""}`;
   const button = useRef11(null);
   const handleClick = (e) => {
     button.current.focus();
@@ -1367,7 +1372,14 @@ function NavbarItem(props) {
       onClick(e);
     }
   };
-  return /* @__PURE__ */ jsx24("li", __spreadProps(__spreadValues({ className: classes }, rest), { children: href && !disabled ? /* @__PURE__ */ jsx24("a", { className: "guwmi-navbar-button", href, target, children }) : /* @__PURE__ */ jsx24("button", { className: "guwmi-navbar-button", onClick: (e) => handleClick(e), ref: button, disabled, children }) }));
+  const mappedChildren = useMemo4(() => {
+    if (!href && !onClick && disabled) {
+      return React5.Children.map(children, (child) => React5.cloneElement(child, { tabIndex: -1, href: "" }));
+    } else {
+      return children;
+    }
+  }, [children, href, onClick, disabled]);
+  return /* @__PURE__ */ jsx24("li", __spreadProps(__spreadValues({ className: classes }, rest), { children: href && !disabled ? /* @__PURE__ */ jsx24("a", { className: buttonClasses, href, target, children: mappedChildren }) : onClick !== void 0 || href !== void 0 && disabled ? /* @__PURE__ */ jsx24("button", { className: buttonClasses, onClick: (e) => handleClick(e), ref: button, disabled, children: mappedChildren }) : /* @__PURE__ */ jsx24("div", { className: buttonClasses, children: mappedChildren }) }));
 }
 
 // src/components/Notification/Notification.tsx
@@ -1423,7 +1435,7 @@ function Notification(props) {
 // src/components/Pagination/Pagination.tsx
 import {
   useEffect as useEffect12,
-  useMemo as useMemo4,
+  useMemo as useMemo5,
   useRef as useRef13,
   useState as useState9
 } from "react";
@@ -1510,15 +1522,15 @@ function Pagination(props) {
   const pageRef = useRef13(currentPage);
   const sizeRef = useRef13(currentSize);
   const classes = `guwmi-pagination${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  const numPages = useMemo4(() => Math.ceil(totalItems / size), [totalItems, size]);
-  const start = useMemo4(() => size * page - size + 1, [size, page]);
-  const end = useMemo4(() => size * page - size + size, [size, page]);
-  const pageSizeArray = useMemo4(() => {
+  const numPages = useMemo5(() => Math.ceil(totalItems / size), [totalItems, size]);
+  const start = useMemo5(() => size * page - size + 1, [size, page]);
+  const end = useMemo5(() => size * page - size + size, [size, page]);
+  const pageSizeArray = useMemo5(() => {
     const options = pageSizes.filter((s) => s < totalItems).map((s) => ({ name: s.toString(), value: s.toString() }));
     options.push({ name: "All", value: totalItems.toString() });
     return options;
   }, [pageSizes, totalItems]);
-  const pageArray = useMemo4(() => {
+  const pageArray = useMemo5(() => {
     return [...Array(Math.ceil(totalItems / size)).keys()].map((i) => {
       return { name: (i + 1).toString(), value: (i + 1).toString() };
     });
@@ -1853,7 +1865,7 @@ function Tab(props) {
 // src/components/Tabs/TabPanels.tsx
 import React6, {
   useContext as useContext5,
-  useMemo as useMemo5,
+  useMemo as useMemo6,
   useRef as useRef16,
   useEffect as useEffect14
 } from "react";
@@ -1864,7 +1876,7 @@ function TabPanels(props) {
   const windowWidth = useWindowWidth();
   const panels = useRef16(null);
   const classes = `guwmi-tab-panels${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  const childrenWithIndex = useMemo5(() => {
+  const childrenWithIndex = useMemo6(() => {
     return React6.Children.map(children, (child, index) => React6.cloneElement(child, { index }));
   }, [children]);
   useEffect14(() => {
@@ -1908,7 +1920,7 @@ function TabPanel(props) {
 import React7, {
   useContext as useContext7,
   useEffect as useEffect15,
-  useMemo as useMemo6,
+  useMemo as useMemo7,
   useRef as useRef17
 } from "react";
 import { jsx as jsx37, jsxs as jsxs17 } from "react/jsx-runtime";
@@ -1918,7 +1930,7 @@ function Tabs(props) {
   const tabsContainer = useRef17(null);
   const slider = useRef17(null);
   const classes = `guwmi-tabs${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  const childrenWithIndex = useMemo6(() => {
+  const childrenWithIndex = useMemo7(() => {
     return React7.Children.map(children, (child, index) => React7.cloneElement(child, { index }));
   }, [children]);
   useEffect15(() => {
@@ -1959,7 +1971,7 @@ function TabsContainer(props) {
 import {
   useEffect as useEffect17,
   useId as useId7,
-  useMemo as useMemo9,
+  useMemo as useMemo10,
   useState as useState13
 } from "react";
 
@@ -2002,7 +2014,7 @@ var tableSearch = (arr = [], keys, value = "") => {
 var tableSearch_default = tableSearch;
 
 // src/hooks/usePagination.ts
-import { useState as useState12, useEffect as useEffect16, useRef as useRef18, useCallback as useCallback6, useMemo as useMemo7 } from "react";
+import { useState as useState12, useEffect as useEffect16, useRef as useRef18, useCallback as useCallback6, useMemo as useMemo8 } from "react";
 function usePagination(sourceData = []) {
   const [data, setData] = useState12([]);
   const [pageSize, setPageSize] = useState12(5);
@@ -2012,8 +2024,8 @@ function usePagination(sourceData = []) {
     setPageSize(e.currentSize);
     setCurrentPage(e.currentPage);
   }, []);
-  const start = useMemo7(() => currentPage * pageSize - pageSize, [pageSize, currentPage]);
-  const end = useMemo7(() => currentPage * pageSize, [pageSize, currentPage]);
+  const start = useMemo8(() => currentPage * pageSize - pageSize, [pageSize, currentPage]);
+  const end = useMemo8(() => currentPage * pageSize, [pageSize, currentPage]);
   useEffect16(() => {
     if (!isEmpty_default(sourceData)) {
       setData(sourceData.slice(start, end));
@@ -2038,7 +2050,7 @@ function usePagination(sourceData = []) {
 }
 
 // src/components/Table/TableRow.tsx
-import { useMemo as useMemo8 } from "react";
+import { useMemo as useMemo9 } from "react";
 import { Fragment as Fragment4, jsx as jsx39 } from "react/jsx-runtime";
 function TableRow(props) {
   const _a = props, {
@@ -2050,7 +2062,7 @@ function TableRow(props) {
     "data",
     "tableId"
   ]);
-  const cellData = useMemo8(() => {
+  const cellData = useMemo9(() => {
     const arr = [];
     headers.forEach((h) => {
       if (data[h.key]) {
@@ -2085,8 +2097,8 @@ function Table(props) {
     "skeleton"
   ]);
   const id = useId7();
-  const isSearchable = useMemo9(() => headers.some((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
-  const searchHeaders = useMemo9(() => headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
+  const isSearchable = useMemo10(() => headers.some((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
+  const searchHeaders = useMemo10(() => headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const classes = `guwmi-table-container${isCondensed ? " condensed" : ""}${className ? " " + className : ""}`;
   const [searchValue, setSearchValue] = useState13("");
   const [tableRows, setTableRows] = useState13(rows);

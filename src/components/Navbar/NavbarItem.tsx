@@ -1,5 +1,5 @@
 // import library functionality
-import React, { useRef, PropsWithChildren } from 'react';
+import React, { useRef, useMemo, PropsWithChildren } from 'react';
 
 // component type
 export interface NavbarItemProps extends PropsWithChildren {
@@ -43,6 +43,7 @@ export default function NavbarItem(props: NavbarItemProps) {
     ...rest
   } = props;
   const classes = `guwmi-navbar-item${active ? ' active' : ''}${className ? ' ' + className : ''}`;
+  const buttonClasses = `guwmi-navbar-button${disabled ? ' disabled' : ''}`;
   const button = useRef<HTMLButtonElement>(null);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -52,16 +53,28 @@ export default function NavbarItem(props: NavbarItemProps) {
     }
   };
 
+  const mappedChildren = useMemo(() => {
+    if (!href && !onClick && disabled) {
+      return React.Children.map(children, (child) => React.cloneElement(child as React.ReactElement<HTMLAnchorElement>, { tabIndex: -1, href: '' }))
+    } else {
+      return children;
+    }
+  }, [children, href, onClick, disabled])
+
   return (
     <li className={classes} {...rest}>
       {href && !disabled ? (
-        <a className="guwmi-navbar-button" href={href} target={target}>
-          {children}
+        <a className={buttonClasses} href={href} target={target}>
+          {mappedChildren}
         </a>
-      ) : (
-        <button className="guwmi-navbar-button" onClick={(e) => handleClick(e)} ref={button} disabled={disabled}>
-          {children}
+      ) : onClick !== undefined || (href !== undefined && disabled) ? (
+        <button className={buttonClasses} onClick={(e) => handleClick(e)} ref={button} disabled={disabled}>
+          {mappedChildren}
         </button>
+      ) : (
+        <div className={buttonClasses}>
+          {mappedChildren}
+        </div>
       )}
     </li>
   )

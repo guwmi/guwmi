@@ -58,13 +58,31 @@
       background: none;
       border: none;
       cursor: pointer;
-      padding: 0.75rem 1rem;
       width: 100%;
       font-size: 0.9rem;
       display: flex;
       transition: var(--guwmi-transition);
       color: var(--guwmi-text);
       text-decoration: none;
+
+      &:not(div) {
+        padding: 0.75rem 1rem;
+      }
+
+      > a,
+      > a:visited {
+        box-sizing: border-box;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        display: flex;
+        transition: var(--guwmi-transition);
+        color: var(--guwmi-text);
+        text-decoration: none;
+      }
 
       &.guwmi-skeleton {
         height: 2.4rem;
@@ -81,7 +99,9 @@
       }
 
       &:disabled,
-      &.disabled {
+      &.disabled,
+      &:disabled > a,
+      &.disabled > a {
         cursor: not-allowed;
         color: var(--guwmi-tertiary-bg) !important;
       }
@@ -95,10 +115,6 @@
     .guwmi-navbar-group {
       transition: var(--guwmi-transition);
       overflow: hidden;
-
-      > .guwmi-navbar-button {
-        width: 100%;
-      }
 
       &.open {
 
@@ -121,7 +137,8 @@
         background: var(--guwmi-primary-bg);
         transition: var(--guwmi-transition-long);
 
-        .guwmi-navbar-button {
+        .guwmi-navbar-button:not(div),
+        .guwmi-navbar-button > a {
           padding-left: 1.5rem;
         }
       }

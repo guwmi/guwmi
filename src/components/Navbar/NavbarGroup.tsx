@@ -50,7 +50,11 @@ export default function NavbarGroup(props: NavbarGroupProps) {
   useAnimation(isOpen, 'open', itemRef);
 
   const buttonChildren = useMemo(() => React.Children.map(children, (child) => {
-    return React.cloneElement(child as React.ReactElement<NavbarItemProps>, {disabled: !isOpen});
+    if (!isOpen) {
+      return React.cloneElement(child as React.ReactElement<NavbarItemProps>, { disabled: true });
+    } else {
+      return child;
+    }
   }), [children, isOpen]);
 
   useEffect(() => {
