@@ -47,10 +47,10 @@ export default function AccordionItem(props: AccordionItemProps) {
   const panelRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const [styles, setStyles] = useState<React.CSSProperties>({height: '0px'});
+  const [styles, setStyles] = useState<React.CSSProperties>({height: '0px', minHeight: '0px'});
   const isOpen = openAccordions.includes(id);
   const classes = `guwmi-accordion-item${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
-  
+
   const onAnimationEnd = useCallback(() => setIsAnimating(false), []);
 
   const open = useCallback(() => {
@@ -82,9 +82,9 @@ export default function AccordionItem(props: AccordionItemProps) {
   useEffect(() => {
     if (contentRef.current && isOpen) {
       const height = contentRef.current.offsetHeight;
-      setStyles({height: height});
+      setStyles({height: height, minHeight: height});
     } else {
-      setStyles({height: '0px'});
+      setStyles({height: '0px', minHeight: '0px'});
     }
   }, [isOpen, windowWidth]);
 

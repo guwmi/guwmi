@@ -404,9 +404,10 @@ function AccordionItem(props) {
   const panelRef = useRef(null);
   const contentRef = useRef(null);
   const [isAnimating, setIsAnimating] = useState3(false);
-  const classes = `guwmi-accordion-item${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  const isOpen = openAccordions.includes(id);
   const [styles, setStyles] = useState3({ height: "0px", minHeight: "0px" });
+  const isOpen = openAccordions.includes(id);
+  const classes = `guwmi-accordion-item${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
+  const onAnimationEnd = useCallback2(() => setIsAnimating(false), []);
   const open = useCallback2(() => {
     setOpenAccordions([...openAccordions, id]);
     setIsAnimating(true);
@@ -415,15 +416,14 @@ function AccordionItem(props) {
     setOpenAccordions(openAccordions.filter((value) => value !== id));
     setIsAnimating(true);
   }, [id, openAccordions]);
-  const onAimationEnd = () => setIsAnimating(false);
   useEffect3(() => {
     var _a2, _b;
-    (_a2 = panelRef.current) == null ? void 0 : _a2.addEventListener("transitioncancel", onAimationEnd);
-    (_b = panelRef.current) == null ? void 0 : _b.addEventListener("transitionend", onAimationEnd);
+    (_a2 = panelRef.current) == null ? void 0 : _a2.addEventListener("transitioncancel", onAnimationEnd);
+    (_b = panelRef.current) == null ? void 0 : _b.addEventListener("transitionend", onAnimationEnd);
     return () => {
       var _a3, _b2;
-      (_a3 = panelRef.current) == null ? void 0 : _a3.removeEventListener("transitioncancel", onAimationEnd);
-      (_b2 = panelRef.current) == null ? void 0 : _b2.removeEventListener("transitionend", onAimationEnd);
+      (_a3 = panelRef.current) == null ? void 0 : _a3.removeEventListener("transitioncancel", onAnimationEnd);
+      (_b2 = panelRef.current) == null ? void 0 : _b2.removeEventListener("transitionend", onAnimationEnd);
     };
   }, []);
   useEffect3(() => {
