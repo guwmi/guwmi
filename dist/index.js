@@ -403,16 +403,10 @@ function AccordionItem(props) {
   const windowWidth = useWindowWidth();
   const panelRef = useRef(null);
   const contentRef = useRef(null);
-  const [isOpen, setIsOpen] = useState3(false);
   const [isAnimating, setIsAnimating] = useState3(false);
   const classes = `guwmi-accordion-item${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  useEffect3(() => {
-    if (openAccordions.includes(id)) {
-      setIsOpen(true);
-    } else {
-      setIsOpen(false);
-    }
-  }, [openAccordions]);
+  const isOpen = openAccordions.includes(id);
+  const [styles, setStyles] = useState3({ height: "0px", minHeight: "0px" });
   const open = useCallback2(() => {
     setOpenAccordions([...openAccordions, id]);
     setIsAnimating(true);
@@ -421,19 +415,30 @@ function AccordionItem(props) {
     setOpenAccordions(openAccordions.filter((value) => value !== id));
     setIsAnimating(true);
   }, [id, openAccordions]);
+  const onAimationEnd = () => setIsAnimating(false);
   useEffect3(() => {
     var _a2, _b;
-    (_a2 = panelRef.current) == null ? void 0 : _a2.addEventListener("transitioncancel", () => setIsAnimating(false));
-    (_b = panelRef.current) == null ? void 0 : _b.addEventListener("transitionend", () => setIsAnimating(false));
-  }, [panelRef.current]);
+    (_a2 = panelRef.current) == null ? void 0 : _a2.addEventListener("transitioncancel", onAimationEnd);
+    (_b = panelRef.current) == null ? void 0 : _b.addEventListener("transitionend", onAimationEnd);
+    return () => {
+      var _a3, _b2;
+      (_a3 = panelRef.current) == null ? void 0 : _a3.removeEventListener("transitioncancel", onAimationEnd);
+      (_b2 = panelRef.current) == null ? void 0 : _b2.removeEventListener("transitionend", onAimationEnd);
+    };
+  }, []);
+  useEffect3(() => {
+    if (!isAnimating && styles.height !== "0px") {
+      setStyles(__spreadProps(__spreadValues({}, styles), { height: "auto" }));
+    }
+  }, [isAnimating]);
   useEffect3(() => {
     if (contentRef.current && isOpen) {
       const height = contentRef.current.offsetHeight;
-      panelRef.current.style.height = `${height}px`;
+      setStyles({ height, minHeight: height });
     } else {
-      panelRef.current.style.height = `0px`;
+      setStyles({ height: "0px", minHeight: "0px" });
     }
-  }, [contentRef.current, isOpen, windowWidth]);
+  }, [isOpen, windowWidth]);
   return /* @__PURE__ */ jsxs2("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsxs2(
       "button",
@@ -457,6 +462,7 @@ function AccordionItem(props) {
         id: `guwmi-accordion-panel-${id}`,
         "aria-labelledby": `guwmi-accordion-controller-${id}`,
         ref: panelRef,
+        style: styles,
         children: /* @__PURE__ */ jsx4("div", { className: "guwmi-accordion-panel-content", ref: contentRef, children })
       }
     )
@@ -639,7 +645,7 @@ function Checkbox(props) {
   const inputId = id != null ? id : useId();
   return /* @__PURE__ */ jsxs5("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsxs5("div", { className: `guwmi-checkbox-container${skeleton ? " guwmi-skeleton" : ""}`, children: [
-      /* @__PURE__ */ jsx10("span", { className: "guwmi-checkmark", children: /* @__PURE__ */ jsx10(Icon_default, { name: "check", size: 15, stroke: "3" }) }),
+      /* @__PURE__ */ jsx10("span", { className: "guwmi-checkmark", children: /* @__PURE__ */ jsx10(Icon_default, { name: "check", size: 14, stroke: "3" }) }),
       /* @__PURE__ */ jsx10(
         "input",
         {

@@ -46,17 +46,12 @@ export default function AccordionItem(props: AccordionItemProps) {
   const windowWidth = useWindowWidth();
   const panelRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const [styles, setStyles] = useState<React.CSSProperties>({height: '0px'});
+  const isOpen = openAccordions.includes(id);
   const classes = `guwmi-accordion-item${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
-
-  useEffect(() => {
-    if (openAccordions.includes(id)) {
-      setIsOpen(true);
-    } else {
-      setIsOpen(false);
-    }
-  }, [openAccordions]);
+  
+  const onAnimationEnd = useCallback(() => setIsAnimating(false), []);
 
   const open = useCallback(() => {
     setOpenAccordions([...openAccordions, id]);
@@ -69,18 +64,29 @@ export default function AccordionItem(props: AccordionItemProps) {
   }, [id, openAccordions]);
 
   useEffect(() => {
-    panelRef.current?.addEventListener('transitioncancel', () => setIsAnimating(false));
-    panelRef.current?.addEventListener('transitionend', () => setIsAnimating(false));
-  }, [panelRef.current]);
+    panelRef.current?.addEventListener('transitioncancel', onAnimationEnd);
+    panelRef.current?.addEventListener('transitionend', onAnimationEnd);
+
+    return () => {
+      panelRef.current?.removeEventListener('transitioncancel', onAnimationEnd);
+      panelRef.current?.removeEventListener('transitionend', onAnimationEnd);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isAnimating && styles.height !== '0px') {
+      setStyles({...styles, height: 'auto'});
+    }
+  }, [isAnimating]);
 
   useEffect(() => {
     if (contentRef.current && isOpen) {
       const height = contentRef.current.offsetHeight;
-      panelRef.current.style.height = `${height}px`;
+      setStyles({height: height});
     } else {
-      panelRef.current.style.height = `0px`;
+      setStyles({height: '0px'});
     }
-  }, [contentRef.current, isOpen, windowWidth]);
+  }, [isOpen, windowWidth]);
 
   return (
     <div className={classes} {...rest}>
@@ -100,6 +106,7 @@ export default function AccordionItem(props: AccordionItemProps) {
         id={`guwmi-accordion-panel-${id}`}
         aria-labelledby={`guwmi-accordion-controller-${id}`}
         ref={panelRef}
+        style={styles}
       >
         <div className="guwmi-accordion-panel-content" ref={contentRef}>
          {children}

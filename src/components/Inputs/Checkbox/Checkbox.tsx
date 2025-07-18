@@ -62,7 +62,7 @@ export default function Checkbox(props: CheckboxProps) {
     <div className={classes} {...rest}>
       <div className={`guwmi-checkbox-container${skeleton ? ' guwmi-skeleton' : ''}`}>
         <span className="guwmi-checkmark">
-          <Icon name="check" size={15} stroke="3" />
+          <Icon name="check" size={14} stroke="3" />
         </span>
         <input
           type="checkbox"
