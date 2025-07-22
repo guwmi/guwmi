@@ -71,14 +71,14 @@ export default function SelectInput(props: SelectInputProps) {
         <select
           id={inputId}
           name={name}
-          disabled={disabled}
+          disabled={disabled || skeleton}
           value={value}
           onChange={onChange}
           onBlur={onBlur}
           onFocus={onFocus}
         >
           {options && options.map((option, index) => (
-            <option key={`${id}-${index}`} value={option.value} disabled={option.disabled}>{option.name}</option>
+            <option key={`${inputId}-${index}`} value={option.value} disabled={option.disabled || skeleton}>{option.name}</option>
           ))}
         </select>
         <span className="guwmi-select-icon">

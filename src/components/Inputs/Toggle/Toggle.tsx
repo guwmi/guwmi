@@ -8,9 +8,7 @@ export interface ToggleProps {
   id?: string;
   name?: string;
   disabled?: boolean;
-  value?: string;
   toggled?: boolean;
-  readOnly?: boolean;
   className?: string;
   skeleton?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -26,9 +24,7 @@ export interface ToggleProps {
  * @param id - (optional) string value for the id proprty on the input
  * @param name - (optional) string value for the name proprty on the input
  * @param disabled - (optional) boolean value for the disabled state of the input
- * @param value - (optional) string value for the value proprty on the input
  * @param toggled - (optional) boolean value fto determine the input toggle state
- * @param readOnly - (optional) boolean value for the readOnly state of the input
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
  * @param onChange - (optional) function to be called when the input value changes
@@ -44,10 +40,8 @@ export default function Toggle(props: ToggleProps) {
     labelAlign = 'left',
     id,
     name,
-    disabled = false,
-    value,
+    disabled,
     toggled,
-    readOnly = false,
     className,
     skeleton,
     onChange,
@@ -57,6 +51,7 @@ export default function Toggle(props: ToggleProps) {
   } = props;
   const classes = `guwmi-toggle ${labelAlign}${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`;
   const inputId = id ?? useId();
+  const lowerCaseLabel = label.toLowerCase().replaceAll(' ', '-');
 
   return (
     <div className={classes} {...rest}>
@@ -65,9 +60,7 @@ export default function Toggle(props: ToggleProps) {
         <input
           type="checkbox"
           id={inputId}
-          name={name ?? label}
-          value={value ?? label}
-          readOnly={readOnly}
+          name={name ?? lowerCaseLabel}
           disabled={disabled || skeleton}
           checked={toggled}
           onChange={onChange}

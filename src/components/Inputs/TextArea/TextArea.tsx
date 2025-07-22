@@ -78,7 +78,7 @@ export default function TextArea(props: TextAreaProps) {
           id={inputId}
           name={name}
           placeholder={placeholder}
-          disabled={disabled}
+          disabled={disabled || skeleton}
           value={value}
           readOnly={readOnly}
           maxLength={maxLength}

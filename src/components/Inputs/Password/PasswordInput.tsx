@@ -94,7 +94,7 @@ export default function PasswordInput(props: PasswordInputProps) {
           id={inputId}
           name={name}
           placeholder={placeholder}
-          disabled={disabled}
+          disabled={disabled || skeleton}
           value={value}
           readOnly={readOnly}
           maxLength={maxLength}
@@ -102,7 +102,7 @@ export default function PasswordInput(props: PasswordInputProps) {
           onBlur={onBlur}
           onFocus={onFocus}
         />
-        <button onClick={() => toggleType()} aria-label={type === 'password' ? 'Show password' : 'Hide password'}>
+        <button onClick={() => toggleType()} aria-label={type === 'password' ? 'Show password' : 'Hide password'} disabled={disabled || skeleton}>
           { type === 'password' ? <Icon name="view" /> : <Icon name="hide" /> }
           
         </button>

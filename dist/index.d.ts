@@ -153,9 +153,7 @@ interface CheckboxProps {
     id?: string;
     name?: string;
     disabled?: boolean;
-    value?: string;
     checked?: boolean;
-    readOnly?: boolean;
     className?: string;
     skeleton?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -169,9 +167,7 @@ interface CheckboxProps {
  * @param id - (optional) string value for the id proprty on the input
  * @param name - (optional) string value for the name proprty on the input
  * @param disabled - (optional) boolean value for the disabled state of the input
- * @param value - (optional) string value for the value proprty on the input
- * @param checked - (optional) boolean value fto determine the input checked state
- * @param readOnly - (optional) boolean value for the readOnly state of the input
+ * @param checked - (optional) boolean value to determine the input checked state
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
  * @param onChange - (optional) function to be called when the input value changes
@@ -919,15 +915,15 @@ interface TextInputProps {
  *
  * @param label - string value for the input label
  * @param hideLabel - (optional) boolean value that determines if the label is visibly hidden
- * @param id - (optional) string value for the id proprty on the input
- * @param name - (optional) string value for the name proprty on the input
+ * @param id - (optional) string value for the id property on the input
+ * @param name - (optional) string value for the name property on the input
  * @param placeholder - (optional) string value for the placholder property on the input
  * @param disabled - (optional) boolean value for the disabled state of the input
- * @param value - (optional) string value for the value proprty on the input
+ * @param value - (optional) string value for the value property on the input
  * @param readOnly - (optional) boolean value for the readOnly state of the input
  * @param error - (optional) string vlaue to be displayed if the hasError prop is true
- * @param hasError - (optional) boolean value to determine is the input should show as having an error
- * @param maxLength - (optional) number value for the maxLength proprty of the input
+ * @param hasError - (optional) boolean value to determine if the input should show as having an error
+ * @param maxLength - (optional) number value for the maxLength property of the input
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
  * @param onChange - (optional) function to be called when the input value changes
@@ -943,9 +939,7 @@ interface ToggleProps {
     id?: string;
     name?: string;
     disabled?: boolean;
-    value?: string;
     toggled?: boolean;
-    readOnly?: boolean;
     className?: string;
     skeleton?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -960,9 +954,7 @@ interface ToggleProps {
  * @param id - (optional) string value for the id proprty on the input
  * @param name - (optional) string value for the name proprty on the input
  * @param disabled - (optional) boolean value for the disabled state of the input
- * @param value - (optional) string value for the value proprty on the input
  * @param toggled - (optional) boolean value fto determine the input toggle state
- * @param readOnly - (optional) boolean value for the readOnly state of the input
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
  * @param onChange - (optional) function to be called when the input value changes

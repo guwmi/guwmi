@@ -69,18 +69,18 @@ export default function RadioGroup(props: RadioGroupProps) {
       <fieldset
         id={inputId}
         name={name}
-        disabled={disabled}
+        disabled={disabled || skeleton}
       >
         <legend className={skeleton ? 'guwmi-skeleton' : null}>{label}</legend>
         <div className={`guwmi-radio-container ${layout}`}>
           {options && options.map((option, index) => (
-            <div key={`${id}-${index}`} className={skeleton ? 'guwmi-skeleton' : option.disabled ? 'disabled' : null}>
+            <div key={`${inputId}-${index}`} className={skeleton ? 'guwmi-skeleton' : option.disabled ? 'disabled' : null}>
               <input
                 type="radio"
                 name={name ?? label.toLowerCase()}
-                id={`${id}-${option.value}`}
+                id={`${inputId}-${option.value}`}
                 value={option.value}
-                disabled={option.disabled}
+                disabled={option.disabled || skeleton}
                 onChange={onChange}
                 onBlur={onBlur}
                 onFocus={onFocus}

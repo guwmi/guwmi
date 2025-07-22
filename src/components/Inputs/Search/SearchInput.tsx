@@ -72,7 +72,7 @@ export default function SearchInput(props: SearchInputProps) {
         type="search"
         name={name}
         placeholder={placeholder ? placeholder : 'Search...'}
-        disabled={disabled}
+        disabled={disabled || skeleton}
         value={value}
         readOnly={readOnly}
         maxLength={maxLength}

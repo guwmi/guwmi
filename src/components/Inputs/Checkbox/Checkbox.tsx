@@ -10,9 +10,7 @@ export interface CheckboxProps {
   id?: string;
   name?: string;
   disabled?: boolean;
-  value?: string;
   checked?: boolean;
-  readOnly?: boolean;
   className?: string;
   skeleton?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -27,9 +25,7 @@ export interface CheckboxProps {
  * @param id - (optional) string value for the id proprty on the input
  * @param name - (optional) string value for the name proprty on the input
  * @param disabled - (optional) boolean value for the disabled state of the input
- * @param value - (optional) string value for the value proprty on the input
- * @param checked - (optional) boolean value fto determine the input checked state
- * @param readOnly - (optional) boolean value for the readOnly state of the input
+ * @param checked - (optional) boolean value to determine the input checked state
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
  * @param onChange - (optional) function to be called when the input value changes
@@ -45,9 +41,7 @@ export default function Checkbox(props: CheckboxProps) {
     id,
     name,
     disabled,
-    value,
     checked,
-    readOnly,
     className,
     skeleton,
     onChange,
@@ -57,6 +51,7 @@ export default function Checkbox(props: CheckboxProps) {
   } = props;
   const classes = `guwmi-checkbox-input${disabled ? ' disabled' : ''}${className ? ' ' + className : ''}`;
   const inputId = id ?? useId();
+  const lowerCaseLabel = label.toLowerCase().replaceAll(' ', '-');
 
   return (
     <div className={classes} {...rest}>
@@ -67,9 +62,7 @@ export default function Checkbox(props: CheckboxProps) {
         <input
           type="checkbox"
           id={inputId}
-          name={name ?? label}
-          value={value ?? label}
-          readOnly={readOnly}
+          name={name ?? lowerCaseLabel}
           disabled={disabled || skeleton}
           checked={checked}
           onChange={onChange}

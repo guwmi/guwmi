@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-GG364ITE.css";
+import "./guwmi-YV4775IW.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -619,9 +619,7 @@ function Checkbox(props) {
     id,
     name,
     disabled,
-    value,
     checked,
-    readOnly,
     className,
     skeleton,
     onChange,
@@ -632,9 +630,7 @@ function Checkbox(props) {
     "id",
     "name",
     "disabled",
-    "value",
     "checked",
-    "readOnly",
     "className",
     "skeleton",
     "onChange",
@@ -643,6 +639,7 @@ function Checkbox(props) {
   ]);
   const classes = `guwmi-checkbox-input${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
   const inputId = id != null ? id : useId();
+  const lowerCaseLabel = label.toLowerCase().replaceAll(" ", "-");
   return /* @__PURE__ */ jsxs5("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsxs5("div", { className: `guwmi-checkbox-container${skeleton ? " guwmi-skeleton" : ""}`, children: [
       /* @__PURE__ */ jsx10("span", { className: "guwmi-checkmark", children: /* @__PURE__ */ jsx10(Icon_default, { name: "check", size: 14, stroke: "3" }) }),
@@ -651,9 +648,7 @@ function Checkbox(props) {
         {
           type: "checkbox",
           id: inputId,
-          name: name != null ? name : label,
-          value: value != null ? value : label,
-          readOnly,
+          name: name != null ? name : lowerCaseLabel,
           disabled: disabled || skeleton,
           checked,
           onChange,
@@ -1489,12 +1484,12 @@ function SelectInput(props) {
         {
           id: inputId,
           name,
-          disabled,
+          disabled: disabled || skeleton,
           value,
           onChange,
           onBlur,
           onFocus,
-          children: options && options.map((option, index) => /* @__PURE__ */ jsx26("option", { value: option.value, disabled: option.disabled, children: option.name }, `${id}-${index}`))
+          children: options && options.map((option, index) => /* @__PURE__ */ jsx26("option", { value: option.value, disabled: option.disabled || skeleton, children: option.name }, `${inputId}-${index}`))
         }
       ),
       /* @__PURE__ */ jsx26("span", { className: "guwmi-select-icon", children: /* @__PURE__ */ jsx26(Icon_default, { name: "chevron-down", size: 20 }) })
@@ -1647,7 +1642,7 @@ function PasswordInput(props) {
           id: inputId,
           name,
           placeholder,
-          disabled,
+          disabled: disabled || skeleton,
           value,
           readOnly,
           maxLength,
@@ -1656,7 +1651,7 @@ function PasswordInput(props) {
           onFocus
         }
       ),
-      /* @__PURE__ */ jsx28("button", { onClick: () => toggleType(), "aria-label": type === "password" ? "Show password" : "Hide password", children: type === "password" ? /* @__PURE__ */ jsx28(Icon_default, { name: "view" }) : /* @__PURE__ */ jsx28(Icon_default, { name: "hide" }) })
+      /* @__PURE__ */ jsx28("button", { onClick: () => toggleType(), "aria-label": type === "password" ? "Show password" : "Hide password", disabled: disabled || skeleton, children: type === "password" ? /* @__PURE__ */ jsx28(Icon_default, { name: "view" }) : /* @__PURE__ */ jsx28(Icon_default, { name: "hide" }) })
     ] }),
     hasError && /* @__PURE__ */ jsx28("span", { children: error })
   ] }));
@@ -1705,7 +1700,7 @@ function RadioGroup(props) {
       {
         id: inputId,
         name,
-        disabled,
+        disabled: disabled || skeleton,
         children: [
           /* @__PURE__ */ jsx29("legend", { className: skeleton ? "guwmi-skeleton" : null, children: label }),
           /* @__PURE__ */ jsx29("div", { className: `guwmi-radio-container ${layout}`, children: options && options.map((option, index) => /* @__PURE__ */ jsxs15("div", { className: skeleton ? "guwmi-skeleton" : option.disabled ? "disabled" : null, children: [
@@ -1714,16 +1709,16 @@ function RadioGroup(props) {
               {
                 type: "radio",
                 name: name != null ? name : label.toLowerCase(),
-                id: `${id}-${option.value}`,
+                id: `${inputId}-${option.value}`,
                 value: option.value,
-                disabled: option.disabled,
+                disabled: option.disabled || skeleton,
                 onChange,
                 onBlur,
                 onFocus
               }
             ),
             /* @__PURE__ */ jsx29("label", { htmlFor: `${id}-${option.value}`, children: option.name })
-          ] }, `${id}-${index}`)) })
+          ] }, `${inputId}-${index}`)) })
         ]
       }
     ),
@@ -1776,7 +1771,7 @@ function SearchInput(props) {
         type: "search",
         name,
         placeholder: placeholder ? placeholder : "Search...",
-        disabled,
+        disabled: disabled || skeleton,
         value,
         readOnly,
         maxLength,
@@ -2236,7 +2231,7 @@ function TextArea(props) {
         id: inputId,
         name,
         placeholder,
-        disabled,
+        disabled: disabled || skeleton,
         value,
         readOnly,
         maxLength,
@@ -2300,7 +2295,7 @@ function TextInput(props) {
         id: inputId,
         name,
         placeholder,
-        disabled,
+        disabled: disabled || skeleton,
         value,
         readOnly,
         maxLength,
@@ -2322,10 +2317,8 @@ function Toggle(props) {
     labelAlign = "left",
     id,
     name,
-    disabled = false,
-    value,
+    disabled,
     toggled,
-    readOnly = false,
     className,
     skeleton,
     onChange,
@@ -2337,9 +2330,7 @@ function Toggle(props) {
     "id",
     "name",
     "disabled",
-    "value",
     "toggled",
-    "readOnly",
     "className",
     "skeleton",
     "onChange",
@@ -2348,6 +2339,7 @@ function Toggle(props) {
   ]);
   const classes = `guwmi-toggle ${labelAlign}${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
   const inputId = id != null ? id : useId10();
+  const lowerCaseLabel = label.toLowerCase().replaceAll(" ", "-");
   return /* @__PURE__ */ jsxs21("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsx44("label", { className: skeleton ? "guwmi-skeleton" : null, htmlFor: inputId, children: label }),
     /* @__PURE__ */ jsx44("div", { className: `guwmi-toggle-container${skeleton ? " guwmi-skeleton" : ""}`, children: /* @__PURE__ */ jsx44(
@@ -2355,9 +2347,7 @@ function Toggle(props) {
       {
         type: "checkbox",
         id: inputId,
-        name: name != null ? name : label,
-        value: value != null ? value : label,
-        readOnly,
+        name: name != null ? name : lowerCaseLabel,
         disabled: disabled || skeleton,
         checked: toggled,
         onChange,

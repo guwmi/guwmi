@@ -969,7 +969,7 @@
   font-size: 1rem;
   color: var(--guwmi-text);
   min-height: 5rem;
-  width: 100%;
+  width: calc(100% - 1.32rem);
 }
 .guwmi-textarea .guwmi-textarea-container textarea::placeholder {
   color: var(--guwmi-text);
