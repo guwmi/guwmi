@@ -5,11 +5,13 @@ import { useEffect, useRef } from 'react';
 export interface SkeletonBlockProps {
   height?: number;
   width?: number;
+  className?: string;
 }
 
 /**
  * Skeleton Block component *****************************************************************
  * 
+ * @param className - (optional) string value for the className of the component
  * @param height - (optional) number value for the height (in pixels) of the block
  * @param width - (optional) number value for the width (in pixels) of the block
  * 
@@ -17,8 +19,9 @@ export interface SkeletonBlockProps {
 
 export default function SkeletonBlock(props: SkeletonBlockProps) {
 
-  const { height, width, ...rest } = props;
+  const { height, width, className, ...rest } = props;
   const block = useRef(null);
+  const classes = `guwmi-skeleton-block guwmi-skeleton${className ? ' ' + className : ''}`;
 
   useEffect(() => {
     
@@ -32,6 +35,6 @@ export default function SkeletonBlock(props: SkeletonBlockProps) {
   }, [height, width])
 
   return (
-    <div className="guwmi-skeleton-block guwmi-skeleton" ref={block} {...rest}></div>
+    <div className={classes} ref={block} {...rest}></div>
   )
 }
