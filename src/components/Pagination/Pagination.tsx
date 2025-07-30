@@ -29,7 +29,7 @@ export interface PaginationProps {
  * @param pageSizes - array of number values for the page size select input
  * @param totalItems - number value for the total number of items to paginate
  * @param className - (optional) string value of class names to apply to the component
- * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ * @param skeleton - (optional) boolean value for whether the component should display as a skeleton
  * @param onChange - function to be called on any change event for the component
  * * passes a value parameter of {currentPage: number, currentSize: number}
  * 
@@ -87,6 +87,7 @@ export default function Pagination(props: PaginationProps) {
             setPage(1);
             setSize(Number(e.target.value));
           }}
+          disabled={skeleton}
         />
       </div>
       <div className="guwmi-pagination-current-info">
@@ -98,11 +99,12 @@ export default function Pagination(props: PaginationProps) {
           options={pageArray}
           onChange={(e) => setPage(Number(e.target.value))}
           value={page.toString()}
+          disabled={skeleton}
         />
-        <button aria-label="Previous page" onClick={() => setPage(page - 1)} disabled={page === 1}>
+        <button aria-label="Previous page" onClick={() => setPage(page - 1)} disabled={page === 1 || skeleton}>
           <Icon name="chevron-left" size={20} />
         </button>
-        <button aria-label="Next page" onClick={() => setPage(page + 1)} disabled={page === numPages}>
+        <button aria-label="Next page" onClick={() => setPage(page + 1)} disabled={page === numPages || skeleton}>
           <Icon name="chevron-right" size={20} />
         </button>
       </div>
