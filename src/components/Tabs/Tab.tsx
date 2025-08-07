@@ -25,7 +25,7 @@ export default function Tab(props: TabProps) {
     index,
     ...rest
   } = props;
-  const { id, selectedTab, setSelectedTab } = useContext(TabsContext);
+  const { id, selectedTab, setSelectedTab, skeleton } = useContext(TabsContext);
   const classes = `guwmi-tab${selectedTab === index ? ' active' : ''}${className ? ' ' + className : ''}`
 
   return (
@@ -35,6 +35,7 @@ export default function Tab(props: TabProps) {
         id={`tabs-${id}-tab-${index}`}
         aria-selected={selectedTab === index}
         aria-controls={`tabs-${id}-tabpanel-${index}`}
+        disabled={skeleton}
         {...rest}
       >
         {children}

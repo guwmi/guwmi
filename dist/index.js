@@ -1552,7 +1552,8 @@ function Pagination(props) {
         onChange: (e) => {
           setPage(1);
           setSize(Number(e.target.value));
-        }
+        },
+        disabled: skeleton
       }
     ) }),
     /* @__PURE__ */ jsx27("div", { className: "guwmi-pagination-current-info", children: /* @__PURE__ */ jsxs13("p", { children: [
@@ -1572,11 +1573,12 @@ function Pagination(props) {
           label: `of ${numPages} pages`,
           options: pageArray,
           onChange: (e) => setPage(Number(e.target.value)),
-          value: page.toString()
+          value: page.toString(),
+          disabled: skeleton
         }
       ),
-      /* @__PURE__ */ jsx27("button", { "aria-label": "Previous page", onClick: () => setPage(page - 1), disabled: page === 1, children: /* @__PURE__ */ jsx27(Icon_default, { name: "chevron-left", size: 20 }) }),
-      /* @__PURE__ */ jsx27("button", { "aria-label": "Next page", onClick: () => setPage(page + 1), disabled: page === numPages, children: /* @__PURE__ */ jsx27(Icon_default, { name: "chevron-right", size: 20 }) })
+      /* @__PURE__ */ jsx27("button", { "aria-label": "Previous page", onClick: () => setPage(page - 1), disabled: page === 1 || skeleton, children: /* @__PURE__ */ jsx27(Icon_default, { name: "chevron-left", size: 20 }) }),
+      /* @__PURE__ */ jsx27("button", { "aria-label": "Next page", onClick: () => setPage(page + 1), disabled: page === numPages || skeleton, children: /* @__PURE__ */ jsx27(Icon_default, { name: "chevron-right", size: 20 }) })
     ] })
   ] }));
 }
@@ -1787,8 +1789,9 @@ function SearchInput(props) {
 import { useEffect as useEffect13, useRef as useRef15 } from "react";
 import { jsx as jsx31 } from "react/jsx-runtime";
 function SkeletonBlock(props) {
-  const _a = props, { height, width } = _a, rest = __objRest(_a, ["height", "width"]);
+  const _a = props, { height, width, className } = _a, rest = __objRest(_a, ["height", "width", "className"]);
   const block = useRef15(null);
+  const classes = `guwmi-skeleton-block guwmi-skeleton${className ? " " + className : ""}`;
   useEffect13(() => {
     if (height) {
       block.current.style.height = `${height}px`;
@@ -1797,34 +1800,36 @@ function SkeletonBlock(props) {
       block.current.style.width = `${width}px`;
     }
   }, [height, width]);
-  return /* @__PURE__ */ jsx31("div", __spreadValues({ className: "guwmi-skeleton-block guwmi-skeleton", ref: block }, rest));
+  return /* @__PURE__ */ jsx31("div", __spreadValues({ className: classes, ref: block }, rest));
 }
 
 // src/components/Skeletons/SkeletonHeading.tsx
 import { jsx as jsx32 } from "react/jsx-runtime";
 function SkeletonHeading(props) {
-  const _a = props, { heading } = _a, rest = __objRest(_a, ["heading"]);
+  const _a = props, { heading, className } = _a, rest = __objRest(_a, ["heading", "className"]);
+  const classes = `guwmi-skeleton-heading guwmi-skeleton${className ? " " + className : ""}`;
   switch (heading) {
     case "h1":
-      return /* @__PURE__ */ jsx32("h1", __spreadProps(__spreadValues({ className: "guwmi-skeleton-heading guwmi-skeleton" }, rest), { children: "Skeleton..." }));
+      return /* @__PURE__ */ jsx32("h1", __spreadProps(__spreadValues({ className: classes }, rest), { children: "Skeleton..." }));
     case "h2":
-      return /* @__PURE__ */ jsx32("h2", __spreadProps(__spreadValues({ className: "guwmi-skeleton-heading guwmi-skeleton" }, rest), { children: "Skeleton.." }));
+      return /* @__PURE__ */ jsx32("h2", __spreadProps(__spreadValues({ className: classes }, rest), { children: "Skeleton.." }));
     case "h3":
-      return /* @__PURE__ */ jsx32("h3", __spreadProps(__spreadValues({ className: "guwmi-skeleton-heading guwmi-skeleton" }, rest), { children: "Skeleton.." }));
+      return /* @__PURE__ */ jsx32("h3", __spreadProps(__spreadValues({ className: classes }, rest), { children: "Skeleton.." }));
     case "h4":
-      return /* @__PURE__ */ jsx32("h4", __spreadProps(__spreadValues({ className: "guwmi-skeleton-heading guwmi-skeleton" }, rest), { children: "Skeleton.." }));
+      return /* @__PURE__ */ jsx32("h4", __spreadProps(__spreadValues({ className: classes }, rest), { children: "Skeleton.." }));
     case "h5":
-      return /* @__PURE__ */ jsx32("h5", __spreadProps(__spreadValues({ className: "guwmi-skeleton-heading guwmi-skeleton" }, rest), { children: "Skeleton.." }));
+      return /* @__PURE__ */ jsx32("h5", __spreadProps(__spreadValues({ className: classes }, rest), { children: "Skeleton.." }));
     case "h6":
-      return /* @__PURE__ */ jsx32("h6", __spreadProps(__spreadValues({ className: "guwmi-skeleton-heading guwmi-skeleton" }, rest), { children: "Skeleton.." }));
+      return /* @__PURE__ */ jsx32("h6", __spreadProps(__spreadValues({ className: classes }, rest), { children: "Skeleton.." }));
   }
 }
 
 // src/components/Skeletons/SkeletonParagraph.tsx
 import { jsx as jsx33 } from "react/jsx-runtime";
 function SkeletonParagraph(props) {
-  const _a = props, { numLines = 5 } = _a, rest = __objRest(_a, ["numLines"]);
-  return /* @__PURE__ */ jsx33("p", __spreadProps(__spreadValues({ className: "guwmi-skeleton-paragraph" }, rest), { children: Array.from({ length: numLines }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx33("span", { className: "guwmi-skeleton", children: "Skeleton..." }, `guwmi-skeleton-p-${i}`)) }));
+  const _a = props, { numLines = 5, className } = _a, rest = __objRest(_a, ["numLines", "className"]);
+  const classes = `guwmi-skeleton-paragraph${className ? " " + className : ""}`;
+  return /* @__PURE__ */ jsx33("p", __spreadProps(__spreadValues({ className: classes }, rest), { children: Array.from({ length: numLines }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx33("span", { className: "guwmi-skeleton", children: "Skeleton..." }, `guwmi-skeleton-p-${i}`)) }));
 }
 
 // src/components/Tabs/Tab.tsx
@@ -1847,7 +1852,7 @@ function Tab(props) {
     "children",
     "index"
   ]);
-  const { id, selectedTab, setSelectedTab } = useContext4(TabsContext_default);
+  const { id, selectedTab, setSelectedTab, skeleton } = useContext4(TabsContext_default);
   const classes = `guwmi-tab${selectedTab === index ? " active" : ""}${className ? " " + className : ""}`;
   return /* @__PURE__ */ jsx34(
     "button",
@@ -1856,7 +1861,8 @@ function Tab(props) {
       onClick: () => setSelectedTab(index),
       id: `tabs-${id}-tab-${index}`,
       "aria-selected": selectedTab === index,
-      "aria-controls": `tabs-${id}-tabpanel-${index}`
+      "aria-controls": `tabs-${id}-tabpanel-${index}`,
+      disabled: skeleton
     }, rest), {
       children
     })

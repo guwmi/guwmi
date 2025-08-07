@@ -520,7 +520,7 @@ interface PaginationProps {
  * @param pageSizes - array of number values for the page size select input
  * @param totalItems - number value for the total number of items to paginate
  * @param className - (optional) string value of class names to apply to the component
- * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
+ * @param skeleton - (optional) boolean value for whether the component should display as a skeleton
  * @param onChange - function to be called on any change event for the component
  * * passes a value parameter of {currentPage: number, currentSize: number}
  *
@@ -692,10 +692,12 @@ declare function SelectInput(props: SelectInputProps): react_jsx_runtime.JSX.Ele
 interface SkeletonBlockProps {
     height?: number;
     width?: number;
+    className?: string;
 }
 /**
  * Skeleton Block component *****************************************************************
  *
+ * @param className - (optional) string value for the className of the component
  * @param height - (optional) number value for the height (in pixels) of the block
  * @param width - (optional) number value for the width (in pixels) of the block
  *
@@ -703,22 +705,26 @@ interface SkeletonBlockProps {
 declare function SkeletonBlock(props: SkeletonBlockProps): react_jsx_runtime.JSX.Element;
 
 interface SkeletonHeadingProps {
+    className?: string;
     heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 /**
  * Skeleton Heading component ****************************************************************
  *
+ * @param className - (optional) string value for the className of the component
  * @param heading - value of 'h1', 'h2', 'h3', 'h4', 'h5', or 'h6' determines the heading tag rendered
  *
  */
 declare function SkeletonHeading(props: SkeletonHeadingProps): react_jsx_runtime.JSX.Element;
 
 interface SkeletonParagraphProps {
+    className?: string;
     numLines?: number;
 }
 /**
  * Skeleton Paragraph component ************************************************************
  *
+ * @param className - (optional) string value for the className of the component
  * @param numLines - (optional) number value for the number of mock paragraph lines to display - defaults to 5
  *
  */
