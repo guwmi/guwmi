@@ -66,7 +66,7 @@ export default function Tag(props: ComponentProps) {
       <a className={classes} href={href} ref={button} target={target} {...rest}>
         {value}
       </a>
-    ) : onClick || (href && disabled) && !skeleton ? (
+    ) : (onClick || disabled) && !skeleton ? (
       <button className={classes} onClick={(e) => handleClick(e)} ref={button} disabled={disabled} {...rest}>
         {value}
       </button>

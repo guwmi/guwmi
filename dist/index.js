@@ -2183,7 +2183,7 @@ function Tag(props) {
       onClick(e);
     }
   };
-  return href && (!disabled || skeleton) ? /* @__PURE__ */ jsx41("a", __spreadProps(__spreadValues({ className: classes, href, ref: button, target }, rest), { children: value })) : onClick || href && disabled && !skeleton ? /* @__PURE__ */ jsx41("button", __spreadProps(__spreadValues({ className: classes, onClick: (e) => handleClick(e), ref: button, disabled }, rest), { children: value })) : /* @__PURE__ */ jsx41("span", __spreadProps(__spreadValues({ className: classes }, rest), { children: value }));
+  return href && (!disabled || skeleton) ? /* @__PURE__ */ jsx41("a", __spreadProps(__spreadValues({ className: classes, href, ref: button, target }, rest), { children: value })) : (onClick || disabled) && !skeleton ? /* @__PURE__ */ jsx41("button", __spreadProps(__spreadValues({ className: classes, onClick: (e) => handleClick(e), ref: button, disabled }, rest), { children: value })) : /* @__PURE__ */ jsx41("span", __spreadProps(__spreadValues({ className: classes }, rest), { children: value }));
 }
 
 // src/components/Inputs/TextArea/TextArea.tsx
