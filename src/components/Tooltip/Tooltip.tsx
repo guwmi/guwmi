@@ -1,5 +1,5 @@
 // import library functionality
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useId } from 'react';
 
 // component type
 export interface TooltipProps extends PropsWithChildren {
@@ -30,12 +30,15 @@ export default function Tooltip(props: TooltipProps) {
     children,
     ...rest
   } = props;
+  const id = useId();
   const classes = `guwmi-tooltip ${align}${className ? ' ' + className : ''}`;
 
   return (
     <div className={classes} {...rest}>
-      <span>{text}</span>
-      {children}
+      <span role="tooltip" id={id}>{text}</span>
+      <div aria-describedby={id}>
+        {children}
+      </div>
     </div>
   )
 }

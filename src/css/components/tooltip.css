@@ -8,7 +8,7 @@
 .guwmi-tooltip:has(> .guwmi-skeleton) span {
   display: none;
 }
-.guwmi-tooltip:hover span {
+.guwmi-tooltip:hover span, .guwmi-tooltip:has(*:focus-visible) span {
   visibility: visible;
 }
 .guwmi-tooltip.top span {

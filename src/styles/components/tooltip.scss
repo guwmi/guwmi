@@ -13,7 +13,8 @@
     }
   }
 
-  &:hover {
+  &:hover,
+  &:has( *:focus-visible ) {
 
     span {
       visibility: visible;

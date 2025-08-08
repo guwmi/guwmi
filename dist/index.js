@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-YV4775IW.css";
+import "./guwmi-ZSYHKTUE.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -2365,6 +2365,7 @@ function Toggle(props) {
 }
 
 // src/components/Tooltip/Tooltip.tsx
+import { useId as useId11 } from "react";
 import { jsx as jsx45, jsxs as jsxs22 } from "react/jsx-runtime";
 function Tooltip(props) {
   const _a = props, {
@@ -2378,10 +2379,11 @@ function Tooltip(props) {
     "className",
     "children"
   ]);
+  const id = useId11();
   const classes = `guwmi-tooltip ${align}${className ? " " + className : ""}`;
   return /* @__PURE__ */ jsxs22("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
-    /* @__PURE__ */ jsx45("span", { children: text }),
-    children
+    /* @__PURE__ */ jsx45("span", { role: "tooltip", id, children: text }),
+    /* @__PURE__ */ jsx45("div", { "aria-describedby": id, children })
   ] }));
 }
 
