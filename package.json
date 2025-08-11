@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rudodd/guwmi.git"
+    "url": "git+https://github.com/guwmi/guwmi.git"
   },
   "keywords": [
     "frontend",
@@ -26,9 +26,9 @@
   "author": "Rustin Dodd",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rudodd/guwmi/issues"
+    "url": "https://github.com/guwmi/guwmi/issues"
   },
-  "homepage": "https://github.com/rudodd/guwmi#readme",
+  "homepage": "https://github.com/guwmi/guwmi#readme",
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
