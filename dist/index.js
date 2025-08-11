@@ -849,6 +849,7 @@ var usePreventScroll_default = usePreventScroll;
 import { jsx as jsx12, jsxs as jsxs7 } from "react/jsx-runtime";
 function Drawer(props) {
   const _a = props, {
+    ariaLabel = "Content drawer",
     open,
     preventScroll,
     position = "left",
@@ -856,6 +857,7 @@ function Drawer(props) {
     onClose,
     children
   } = _a, rest = __objRest(_a, [
+    "ariaLabel",
     "open",
     "preventScroll",
     "position",
@@ -870,7 +872,7 @@ function Drawer(props) {
   useFocusTrap_default(open, onClose, drawer);
   useClickOutside_default(open, onClose, drawer);
   usePreventScroll_default(open, preventScroll);
-  return isVisible && /* @__PURE__ */ jsx12(BodyPortal, { children: /* @__PURE__ */ jsx12("div", __spreadProps(__spreadValues({ className: "guwmi-drawer-overlay", ref: drawerOverlay }, rest), { children: /* @__PURE__ */ jsxs7("aside", { className: classes, ref: drawer, "aria-modal": "true", tabIndex: 0, children: [
+  return isVisible && /* @__PURE__ */ jsx12(BodyPortal, { children: /* @__PURE__ */ jsx12("div", __spreadProps(__spreadValues({ className: "guwmi-drawer-overlay", ref: drawerOverlay }, rest), { children: /* @__PURE__ */ jsxs7("aside", { className: classes, "aria-label": ariaLabel, ref: drawer, children: [
     /* @__PURE__ */ jsx12(
       "button",
       {

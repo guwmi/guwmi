@@ -13,6 +13,7 @@ import usePreventScroll from '../../hooks/usePreventScroll';
 
 // component type
 export interface DrawerProps extends PropsWithChildren {
+  ariaLabel?: string;
   open: boolean;
   preventScroll?: boolean;
   position?: 'left' | 'right';
@@ -23,6 +24,7 @@ export interface DrawerProps extends PropsWithChildren {
 /**
  * Drawer component *************************************************************************
  * 
+ * @param ariaLabel - (optional) string value for the aria-label of the drawer <aside> element - default to 'Content drawer'
  * @param open - boolean value that determines of the drawer is displayed (or in the DOM)
  * @param preventScroll - (optional) boolean value that determines if scrolling should be prevented while the drawer is open
  * @param position - (optional) value of 'left' or 'right' the determines the drawers position - defaults to 'left'
@@ -34,6 +36,7 @@ export interface DrawerProps extends PropsWithChildren {
 export default function Drawer(props: DrawerProps) {
 
   const {
+    ariaLabel = 'Content drawer',
     open,
     preventScroll,
     position = 'left',
@@ -54,7 +57,7 @@ export default function Drawer(props: DrawerProps) {
     isVisible &&
       <BodyPortal>
           <div className="guwmi-drawer-overlay" ref={drawerOverlay} {...rest}>
-            <aside className={classes} ref={drawer} aria-modal="true" tabIndex={0}>
+            <aside className={classes} aria-label={ariaLabel} ref={drawer}>
               <button
                 className="guwmi-drawer-close-button"
                 aria-label="Close drawer"

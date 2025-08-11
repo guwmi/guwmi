@@ -195,6 +195,7 @@ interface ContainerProps extends PropsWithChildren {
 declare function Container(props: ContainerProps): react_jsx_runtime.JSX.Element;
 
 interface DrawerProps extends PropsWithChildren {
+    ariaLabel?: string;
     open: boolean;
     preventScroll?: boolean;
     position?: 'left' | 'right';
@@ -204,6 +205,7 @@ interface DrawerProps extends PropsWithChildren {
 /**
  * Drawer component *************************************************************************
  *
+ * @param ariaLabel - (optional) string value for the aria-label of the drawer <aside> element - default to 'Content drawer'
  * @param open - boolean value that determines of the drawer is displayed (or in the DOM)
  * @param preventScroll - (optional) boolean value that determines if scrolling should be prevented while the drawer is open
  * @param position - (optional) value of 'left' or 'right' the determines the drawers position - defaults to 'left'
