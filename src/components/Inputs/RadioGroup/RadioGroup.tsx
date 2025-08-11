@@ -85,7 +85,7 @@ export default function RadioGroup(props: RadioGroupProps) {
                 onBlur={onBlur}
                 onFocus={onFocus}
               />
-              <label htmlFor={`${id}-${option.value}`}>{option.name}</label>
+              <label htmlFor={`${inputId}-${option.value}`}>{option.name}</label>
             </div>
           ))}
         </div>

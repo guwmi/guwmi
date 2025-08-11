@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-NLWJR34R.css";
+import "./guwmi-UUFRVWW7.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -1721,7 +1721,7 @@ function RadioGroup(props) {
                 onFocus
               }
             ),
-            /* @__PURE__ */ jsx29("label", { htmlFor: `${id}-${option.value}`, children: option.name })
+            /* @__PURE__ */ jsx29("label", { htmlFor: `${inputId}-${option.value}`, children: option.name })
           ] }, `${inputId}-${index}`)) })
         ]
       }
@@ -2350,7 +2350,6 @@ function Toggle(props) {
   const inputId = id != null ? id : useId10();
   const lowerCaseLabel = label.toLowerCase().replaceAll(" ", "-");
   return /* @__PURE__ */ jsxs21("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
-    /* @__PURE__ */ jsx44("label", { className: skeleton ? "guwmi-skeleton" : null, htmlFor: inputId, children: label }),
     /* @__PURE__ */ jsx44("div", { className: `guwmi-toggle-container${skeleton ? " guwmi-skeleton" : ""}`, children: /* @__PURE__ */ jsx44(
       "input",
       {
@@ -2363,7 +2362,8 @@ function Toggle(props) {
         onBlur,
         onFocus
       }
-    ) })
+    ) }),
+    /* @__PURE__ */ jsx44("label", { className: skeleton ? "guwmi-skeleton" : null, htmlFor: inputId, children: label })
   ] }));
 }
 

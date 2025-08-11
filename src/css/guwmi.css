@@ -1817,7 +1817,7 @@ a.guwmi-tag.disabled {
 .guwmi-toggle.disabled *:not(.guwmi-skeleton) * {
   cursor: not-allowed;
 }
-.guwmi-toggle.right {
+.guwmi-toggle.left {
   flex-direction: row-reverse;
 }
 .guwmi-toggle .guwmi-toggle-container {

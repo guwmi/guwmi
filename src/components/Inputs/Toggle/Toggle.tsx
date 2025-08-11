@@ -55,7 +55,6 @@ export default function Toggle(props: ToggleProps) {
 
   return (
     <div className={classes} {...rest}>
-      <label className={skeleton ? 'guwmi-skeleton' : null} htmlFor={inputId}>{label}</label>
       <div className={`guwmi-toggle-container${skeleton ? ' guwmi-skeleton' : ''}`}>
         <input
           type="checkbox"
@@ -68,6 +67,7 @@ export default function Toggle(props: ToggleProps) {
           onFocus={onFocus}
         />
       </div>
+      <label className={skeleton ? 'guwmi-skeleton' : null} htmlFor={inputId}>{label}</label>
     </div>
   )
 }
