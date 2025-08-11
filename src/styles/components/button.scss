@@ -162,12 +162,12 @@
 
   // kinds
   &.outline {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.2);
     border-color: white;
   }
 
   &.ghost {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.2);
     border-color: rgba(0,0,0,0);
 
     &.active,

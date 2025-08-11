@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-ZSYHKTUE.css";
+import "./guwmi-NLWJR34R.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";

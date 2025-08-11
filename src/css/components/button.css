@@ -119,11 +119,11 @@
   color: var(--guwmi-text);
 }
 .guwmi-btn.outline {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
   border-color: white;
 }
 .guwmi-btn.ghost {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0);
 }
 .guwmi-btn.ghost.active, .guwmi-btn.ghost:hover {
