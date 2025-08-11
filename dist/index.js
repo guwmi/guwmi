@@ -1864,7 +1864,8 @@ function Tab(props) {
       id: `tabs-${id}-tab-${index}`,
       "aria-selected": selectedTab === index,
       "aria-controls": `tabs-${id}-tabpanel-${index}`,
-      disabled: skeleton
+      disabled: skeleton,
+      role: "tab"
     }, rest), {
       children
     })

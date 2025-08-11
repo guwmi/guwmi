@@ -36,6 +36,7 @@ export default function Tab(props: TabProps) {
         aria-selected={selectedTab === index}
         aria-controls={`tabs-${id}-tabpanel-${index}`}
         disabled={skeleton}
+        role="tab"
         {...rest}
       >
         {children}
