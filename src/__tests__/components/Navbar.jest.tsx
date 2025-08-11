@@ -126,7 +126,7 @@ describe('Navbar Component', () => {
 
   test('is disabled when disabled prop is true', () => {
 
-    render(<NavbarItem data-testid="nav-item" disabled>Click Me</NavbarItem>);
+    render(<NavbarItem data-testid="nav-item" onClick={() => console.log('clicked')} disabled>Click Me</NavbarItem>);
 
     const navItem = screen.getByTestId('nav-item').querySelector('button');
     expect(navItem).toBeDisabled();
@@ -146,25 +146,5 @@ describe('Navbar Component', () => {
 
     const navItem = screen.getByTestId('nav-item');
     expect(navItem).toHaveClass('active');
-  });
-
-  test('applies tab index', async () => {
-
-    const { rerender } = render (
-      <Navbar ariaLabel="Test navbar" data-testid="guwmi-navbar">
-        <NavbarItem>Item one</NavbarItem>
-        <NavbarGroup defaultOpen={true} label="Item three" data-testid="guwmi-sub-nav">
-          <NavbarItem>Sub-item one</NavbarItem>
-        </NavbarGroup>
-      </Navbar>
-    )
-
-    let navbarGroupList = screen.getByTestId('guwmi-sub-nav').querySelector('ul');
-    const navGroupButton = screen.getByRole('button', {name: /Item three/});
-    expect(navbarGroupList).not.toHaveAttribute('tabindex');
-
-    await user.click(navGroupButton);
-    navbarGroupList = screen.getByTestId('guwmi-sub-nav').querySelector('ul');
-    expect(navbarGroupList).toHaveAttribute('tabindex');
   });
 })

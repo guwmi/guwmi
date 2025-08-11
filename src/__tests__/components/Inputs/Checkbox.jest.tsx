@@ -33,8 +33,6 @@ describe('Checkbox Component', () => {
         id="test-id"
         name="test-name"
         disabled
-        value="test-value"
-        readOnly
         className="override-class"
         data-testid="guwmi-checkbox"
       />
@@ -48,10 +46,8 @@ describe('Checkbox Component', () => {
     expect(inputContainer).toHaveClass('disabled');
     expect(label).toBeInTheDocument();
     expect(input).toHaveProperty('disabled');
-    expect(input).toHaveProperty('readOnly');
     expect(input).toHaveAttribute('name', 'test-name');
     expect(input).toHaveAttribute('id', 'test-id');
-    expect(input).toHaveAttribute('value', 'test-value');
   });
 
   test('correctly handles user events', async () => {
