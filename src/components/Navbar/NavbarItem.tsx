@@ -13,6 +13,7 @@ export interface NavbarItemProps extends PropsWithChildren {
   disabled?: boolean;
   className?: string;
   onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
+  children: React.ReactElement | string | number;
 }
 
 /**
@@ -53,9 +54,25 @@ export default function NavbarItem(props: NavbarItemProps) {
     }
   };
 
+  const isElement = useMemo(() => {
+    let valid = false;
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement(child)) {
+        valid = true;
+      }
+    });
+    return valid;
+  }, [children])
+
   const mappedChildren = useMemo(() => {
     if (!href && !onClick && disabled) {
-      return React.Children.map(children, (child) => React.cloneElement(child as React.ReactElement<HTMLAnchorElement>, { tabIndex: -1, href: '' }))
+      return React.Children.map(children, (child) => {
+        if (React.isValidElement(child)) { 
+          return React.cloneElement(child as React.ReactElement<HTMLAnchorElement>, { tabIndex: -1, href: '' })
+        } else {
+          return child;
+        }
+      })
     } else {
       return children;
     }
@@ -63,18 +80,18 @@ export default function NavbarItem(props: NavbarItemProps) {
 
   return (
     <li className={classes} {...rest}>
-      {href && !disabled ? (
-        <a className={buttonClasses} href={href} target={target}>
-          {mappedChildren}
-        </a>
-      ) : onClick !== undefined || (href !== undefined && disabled) ? (
-        <button className={buttonClasses} onClick={(e) => handleClick(e)} ref={button} disabled={disabled}>
-          {mappedChildren}
-        </button>
-      ) : (
+      {isElement && !disabled ? (
         <div className={buttonClasses}>
           {mappedChildren}
         </div>
+      ) : href && !disabled ? (
+        <a className={buttonClasses} href={href} target={target}>
+          {mappedChildren}
+        </a>
+      ) : (
+        <button className={buttonClasses} onClick={(e) => handleClick(e)} ref={button} disabled={disabled}>
+          {mappedChildren}
+        </button>
       )}
     </li>
   )

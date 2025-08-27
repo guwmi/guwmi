@@ -1375,14 +1375,29 @@ function NavbarItem(props) {
       onClick(e);
     }
   };
+  const isElement = useMemo4(() => {
+    let valid = false;
+    React5.Children.forEach(children, (child) => {
+      if (React5.isValidElement(child)) {
+        valid = true;
+      }
+    });
+    return valid;
+  }, [children]);
   const mappedChildren = useMemo4(() => {
     if (!href && !onClick && disabled) {
-      return React5.Children.map(children, (child) => React5.cloneElement(child, { tabIndex: -1, href: "" }));
+      return React5.Children.map(children, (child) => {
+        if (React5.isValidElement(child)) {
+          return React5.cloneElement(child, { tabIndex: -1, href: "" });
+        } else {
+          return child;
+        }
+      });
     } else {
       return children;
     }
   }, [children, href, onClick, disabled]);
-  return /* @__PURE__ */ jsx24("li", __spreadProps(__spreadValues({ className: classes }, rest), { children: href && !disabled ? /* @__PURE__ */ jsx24("a", { className: buttonClasses, href, target, children: mappedChildren }) : onClick !== void 0 || href !== void 0 && disabled ? /* @__PURE__ */ jsx24("button", { className: buttonClasses, onClick: (e) => handleClick(e), ref: button, disabled, children: mappedChildren }) : /* @__PURE__ */ jsx24("div", { className: buttonClasses, children: mappedChildren }) }));
+  return /* @__PURE__ */ jsx24("li", __spreadProps(__spreadValues({ className: classes }, rest), { children: isElement && !disabled ? /* @__PURE__ */ jsx24("div", { className: buttonClasses, children: mappedChildren }) : href && !disabled ? /* @__PURE__ */ jsx24("a", { className: buttonClasses, href, target, children: mappedChildren }) : /* @__PURE__ */ jsx24("button", { className: buttonClasses, onClick: (e) => handleClick(e), ref: button, disabled, children: mappedChildren }) }));
 }
 
 // src/components/Notification/Notification.tsx
