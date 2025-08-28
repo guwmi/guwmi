@@ -39,6 +39,11 @@
   --guwmi-transition-long: ease all 0.6s;
 }
 
+// screen sizes
+$breakpoint-sm: 480px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 996px !default;
+
 // light theme colors
 @media (prefers-color-scheme: light) {
 

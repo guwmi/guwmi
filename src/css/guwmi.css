@@ -496,6 +496,9 @@
   }
 }
 /**
+ * Global file for global styles and pulling all component files together ****************************
+ **/
+/**
  * Style for the Cards and child components *********************************************************
  **/
 .guwmi-grid {
@@ -569,6 +572,16 @@
   justify-content: center;
 }
 
+@media (max-width: 480px) {
+  .guwmi-grid:not(.auto) > * {
+    flex-basis: 100%;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .guwmi-grid:not(.auto) > * {
+    flex-basis: calc(50% - var(--guwmi-grid-gap) * 0.5);
+  }
+}
 /**
  * Styles for the Icon Button component ******************************************************************
  **/

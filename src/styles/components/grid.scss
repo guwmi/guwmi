@@ -1,6 +1,8 @@
 /**
  * Style for the Cards and child components *********************************************************
  **/
+ 
+@use '../variables';
 
 // grid size variables
 .guwmi-grid {
@@ -59,5 +61,31 @@
 
   &.center {
     justify-content: center;
+  }
+}
+
+@media (max-width: variables.$breakpoint-sm) {
+
+  .guwmi-grid {
+
+    &:not(.auto) {
+
+      > * {
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: variables.$breakpoint-sm) and (max-width: variables.$breakpoint-md) {
+
+  .guwmi-grid {
+
+    &:not(.auto) {
+
+      > * {
+        flex-basis: calc(50% - (var(--guwmi-grid-gap) * 0.5))
+      }
+    }
   }
 }
