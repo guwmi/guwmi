@@ -2,9 +2,10 @@
  * Style for the table component ********************************************************************
  **/
 
+@use '../variables.scss';
+
 .guwmi-table-container {
   background: var(--guwmi-primary-bg);
-  padding: 0.25rem 1rem;
   border-radius: var(--guwmi-radius);
   border: solid 1px var(--guwmi-secondary-bg);
   overflow-x: auto;
@@ -12,8 +13,7 @@
   .guwmi-table-header {
     background: var(--guwmi-secondary-bg);
     padding: 1.25rem 1rem;
-    width: 100%;
-    transform: translate(-1rem, -0.25rem);
+    width: calc(100% - 2rem);
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -22,6 +22,7 @@
       font-size: 1.2rem;
       margin: 0;
       font-weight: 500;
+      max-width: 75vw;
 
       &.guwmi-skeleton {
         max-width: 150px;
@@ -34,6 +35,7 @@
       font-weight: 400;
       opacity: 0.75;
       letter-spacing: unset;
+      max-width: 75vw;
 
       &.guwmi-skeleton {
         max-width: 300px;
@@ -47,6 +49,10 @@
     td {
       padding: 0.66rem;
     }
+  }
+
+  .guwmi-table-content {
+    padding: 0.25rem 1rem;
   }
 
   .guwmi-table-search {
@@ -158,6 +164,22 @@
             opacity: 0.33;
           }
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: variables.$breakpoint-md) {
+
+  .guwmi-table-container {
+
+    .guwmi-pagination {
+
+      .guwmi-pagination-current-info {
+        border-left: none;
+        border-right: none;
+        padding: 0.5rem 0;
+        padding-left: 0.5rem;
       }
     }
   }

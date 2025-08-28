@@ -1458,6 +1458,9 @@
 }
 
 /**
+ * Global file for global styles and pulling all component files together ****************************
+ **/
+/**
  * Style for the pagination component ***************************************************************
  **/
 .guwmi-pagination {
@@ -1535,6 +1538,20 @@
   cursor: not-allowed;
 }
 
+@media screen and (max-width: 768px) {
+  .guwmi-pagination .guwmi-pagination-page-size-contaiiner {
+    display: none;
+  }
+  .guwmi-pagination .guwmi-pagination-navigation .guwmi-select-input {
+    display: none;
+  }
+  .guwmi-pagination .guwmi-pagination-current-info {
+    border-left: none;
+    border-right: none;
+    padding: 0.5rem 0;
+    padding-left: 0.5rem;
+  }
+}
 /**
  * Styles for the Skeleton components *******************************************************
  **/
@@ -1646,11 +1663,13 @@
 }
 
 /**
+ * Global file for global styles and pulling all component files together ****************************
+ **/
+/**
  * Style for the table component ********************************************************************
  **/
 .guwmi-table-container {
   background: var(--guwmi-primary-bg);
-  padding: 0.25rem 1rem;
   border-radius: var(--guwmi-radius);
   border: solid 1px var(--guwmi-secondary-bg);
   overflow-x: auto;
@@ -1658,8 +1677,7 @@
 .guwmi-table-container .guwmi-table-header {
   background: var(--guwmi-secondary-bg);
   padding: 1.25rem 1rem;
-  width: 100%;
-  transform: translate(-1rem, -0.25rem);
+  width: calc(100% - 2rem);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -1668,6 +1686,7 @@
   font-size: 1.2rem;
   margin: 0;
   font-weight: 500;
+  max-width: 75vw;
 }
 .guwmi-table-container .guwmi-table-header h2.guwmi-skeleton {
   max-width: 150px;
@@ -1678,6 +1697,7 @@
   font-weight: 400;
   opacity: 0.75;
   letter-spacing: unset;
+  max-width: 75vw;
 }
 .guwmi-table-container .guwmi-table-header p.guwmi-skeleton {
   max-width: 300px;
@@ -1685,6 +1705,9 @@
 .guwmi-table-container.condensed th,
 .guwmi-table-container.condensed td {
   padding: 0.66rem;
+}
+.guwmi-table-container .guwmi-table-content {
+  padding: 0.25rem 1rem;
 }
 .guwmi-table-container .guwmi-table-search {
   margin: 1rem 0 0.5rem;
@@ -1754,6 +1777,14 @@
   }
   .guwmi-table-container .guwmi-table-search .guwmi-search-input input::placeholder {
     opacity: 0.33;
+  }
+}
+@media screen and (max-width: 768px) {
+  .guwmi-table-container .guwmi-pagination .guwmi-pagination-current-info {
+    border-left: none;
+    border-right: none;
+    padding: 0.5rem 0;
+    padding-left: 0.5rem;
   }
 }
 /**

@@ -2,6 +2,8 @@
  * Style for the pagination component ***************************************************************
  **/
 
+@use '../variables';
+
 .guwmi-pagination {
   display: flex;
   width: 100%;
@@ -87,6 +89,30 @@
         opacity: 0.33;
         cursor: not-allowed;
       }
+    }
+  }
+}
+
+@media screen and (max-width: variables.$breakpoint-md) {
+
+  .guwmi-pagination {
+
+    .guwmi-pagination-page-size-contaiiner {
+      display: none;
+    }
+
+    .guwmi-pagination-navigation {
+
+      .guwmi-select-input {
+        display: none;
+      }
+    }
+
+    .guwmi-pagination-current-info {
+      border-left: none;
+      border-right: none;
+      padding: 0.5rem 0;
+      padding-left: 0.5rem;
     }
   }
 }

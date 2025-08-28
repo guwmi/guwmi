@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-MNL4V2KY.css";
+import "./guwmi-ROPIHTYL.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -2146,25 +2146,27 @@ function Table(props) {
       title && /* @__PURE__ */ jsx40("h2", { className: skeleton ? "guwmi-skeleton" : null, children: title }),
       description && /* @__PURE__ */ jsx40("p", { className: skeleton ? "guwmi-skeleton" : null, children: description })
     ] }),
-    headers.length > 0 && isSearchable && /* @__PURE__ */ jsx40("div", { className: "guwmi-table-search", children: /* @__PURE__ */ jsx40(SearchInput, { onChange: (e) => setSearchValue(e.target.value), skeleton }) }),
-    /* @__PURE__ */ jsx40("table", { cellPadding: 0, cellSpacing: 0, tabIndex: -1, children: skeleton ? /* @__PURE__ */ jsxs18(Fragment5, { children: [
-      /* @__PURE__ */ jsx40("thead", { children: /* @__PURE__ */ jsx40("tr", { children: Array.from({ length: 4 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx40("th", { className: "guwmi-skeleton" }, `guwmi-table-skelton-header-${i}`)) }) }),
-      /* @__PURE__ */ jsx40("tbody", { children: Array.from({ length: 5 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx40("tr", { children: Array.from({ length: 4 }, (_, index) => index).map((v2, i2) => /* @__PURE__ */ jsx40("td", { className: "guwmi-skeleton" }, `guwmi-table-skelton-td-${i2}`)) }, `guwmi-table-skelton-row-${i}`)) })
-    ] }) : headers.length > 0 ? /* @__PURE__ */ jsxs18(Fragment5, { children: [
-      /* @__PURE__ */ jsx40("thead", { children: /* @__PURE__ */ jsx40("tr", { children: headers.map((header, i) => /* @__PURE__ */ jsx40("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
-      /* @__PURE__ */ jsx40("tbody", { children: !hasPagination && tableRows.length > 0 ? tableRows.map((row) => /* @__PURE__ */ jsx40(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : hasPagination && paginatedData.values.length > 0 ? paginatedData.values.map((row) => /* @__PURE__ */ jsx40(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ jsx40("tr", { children: /* @__PURE__ */ jsx40("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
-    ] }) : /* @__PURE__ */ jsx40("tbody", { children: /* @__PURE__ */ jsx40("tr", { children: /* @__PURE__ */ jsx40("td", { children: "No column headers provided for the table" }) }) }) }),
-    hasPagination && /* @__PURE__ */ jsx40(
-      Pagination,
-      {
-        totalItems: tableRows.length,
-        pageSizes: [5, 10, 20, 50],
-        currentPage: paginatedData.currentPage,
-        currentSize: paginatedData.pageSize,
-        onChange: paginate,
-        skeleton
-      }
-    )
+    /* @__PURE__ */ jsxs18("div", { className: "guwmi-table-content", children: [
+      headers.length > 0 && isSearchable && /* @__PURE__ */ jsx40("div", { className: "guwmi-table-search", children: /* @__PURE__ */ jsx40(SearchInput, { onChange: (e) => setSearchValue(e.target.value), skeleton }) }),
+      /* @__PURE__ */ jsx40("table", { cellPadding: 0, cellSpacing: 0, tabIndex: -1, children: skeleton ? /* @__PURE__ */ jsxs18(Fragment5, { children: [
+        /* @__PURE__ */ jsx40("thead", { children: /* @__PURE__ */ jsx40("tr", { children: Array.from({ length: 4 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx40("th", { className: "guwmi-skeleton" }, `guwmi-table-skelton-header-${i}`)) }) }),
+        /* @__PURE__ */ jsx40("tbody", { children: Array.from({ length: 5 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx40("tr", { children: Array.from({ length: 4 }, (_, index) => index).map((v2, i2) => /* @__PURE__ */ jsx40("td", { className: "guwmi-skeleton" }, `guwmi-table-skelton-td-${i2}`)) }, `guwmi-table-skelton-row-${i}`)) })
+      ] }) : headers.length > 0 ? /* @__PURE__ */ jsxs18(Fragment5, { children: [
+        /* @__PURE__ */ jsx40("thead", { children: /* @__PURE__ */ jsx40("tr", { children: headers.map((header, i) => /* @__PURE__ */ jsx40("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
+        /* @__PURE__ */ jsx40("tbody", { children: !hasPagination && tableRows.length > 0 ? tableRows.map((row) => /* @__PURE__ */ jsx40(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : hasPagination && paginatedData.values.length > 0 ? paginatedData.values.map((row) => /* @__PURE__ */ jsx40(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ jsx40("tr", { children: /* @__PURE__ */ jsx40("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
+      ] }) : /* @__PURE__ */ jsx40("tbody", { children: /* @__PURE__ */ jsx40("tr", { children: /* @__PURE__ */ jsx40("td", { children: "No column headers provided for the table" }) }) }) }),
+      hasPagination && /* @__PURE__ */ jsx40(
+        Pagination,
+        {
+          totalItems: tableRows.length,
+          pageSizes: [5, 10, 20, 50],
+          currentPage: paginatedData.currentPage,
+          currentSize: paginatedData.pageSize,
+          onChange: paginate,
+          skeleton
+        }
+      )
+    ] })
   ] }));
 }
 
