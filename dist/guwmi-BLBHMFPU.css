@@ -453,6 +453,9 @@
   }
 }
 /**
+ * Global file for global styles and pulling all component files together ****************************
+ **/
+/**
  * Styles for the Drawer component ******************************************************************
  **/
 .guwmi-drawer-overlay {
@@ -513,6 +516,12 @@
 @media (prefers-color-scheme: light) {
   .guwmi-drawer-close-button {
     color: var(--guwmi-text-contrast);
+  }
+}
+@media screen and (max-width: 480px) {
+  .guwmi-drawer-overlay .guwmi-drawer {
+    min-width: 0;
+    width: calc(100vw - 5rem);
   }
 }
 /**

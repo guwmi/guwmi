@@ -2,6 +2,8 @@
  * Styles for the Drawer component ******************************************************************
  **/
 
+@use '../variables.scss';
+
 .guwmi-drawer-overlay {
   position: fixed;
   height: 100%;
@@ -68,5 +70,16 @@
 @media (prefers-color-scheme: light) {
   .guwmi-drawer-close-button {
     color: var(--guwmi-text-contrast);
+  }
+}
+
+@media screen and (max-width: variables.$breakpoint-sm) {
+
+  .guwmi-drawer-overlay {
+
+    .guwmi-drawer {
+      min-width: 0;
+      width: calc(100vw - 5rem);
+    }
   }
 }
