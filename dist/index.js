@@ -912,6 +912,7 @@ function Container(props) {
     sidebarAria,
     sidebarIsDrawer,
     sidebarButtonIcon = /* @__PURE__ */ jsx13(Icon_default, { name: "menu" }),
+    sidebarDrawerState,
     className,
     children
   } = _a, rest = __objRest(_a, [
@@ -920,6 +921,7 @@ function Container(props) {
     "sidebarAria",
     "sidebarIsDrawer",
     "sidebarButtonIcon",
+    "sidebarDrawerState",
     "className",
     "children"
   ]);
@@ -931,7 +933,7 @@ function Container(props) {
         IconButton,
         {
           ariaLabel: `Open ${sidebarAria}`,
-          onClick: () => setSidebarOpen(true),
+          onClick: sidebarDrawerState ? () => sidebarDrawerState == null ? void 0 : sidebarDrawerState.open() : () => setSidebarOpen(true),
           variant: "ghost",
           children: sidebarButtonIcon
         }
@@ -939,7 +941,15 @@ function Container(props) {
       header
     ] }),
     /* @__PURE__ */ jsxs7("div", { children: [
-      sidebar && !sidebarIsDrawer ? /* @__PURE__ */ jsx13("aside", { className: "guwmi-container-sidebar", "aria-label": sidebarAria != null ? sidebarAria : "Application sidebar", children: sidebar }) : /* @__PURE__ */ jsx13(Drawer, { open: sidebarOpen, onClose: () => setSidebarOpen(false), ariaLabel: sidebarAria != null ? sidebarAria : "Application sidebar", children: /* @__PURE__ */ jsx13("div", { className: "guwmi-container-sidebar", children: sidebar }) }),
+      sidebar && !sidebarIsDrawer ? /* @__PURE__ */ jsx13("aside", { className: "guwmi-container-sidebar", "aria-label": sidebarAria != null ? sidebarAria : "Application sidebar", children: sidebar }) : /* @__PURE__ */ jsx13(
+        Drawer,
+        {
+          open: sidebarDrawerState ? sidebarDrawerState.isOpen : sidebarOpen,
+          onClose: sidebarDrawerState ? () => sidebarDrawerState == null ? void 0 : sidebarDrawerState.close() : () => setSidebarOpen(false),
+          ariaLabel: sidebarAria != null ? sidebarAria : "Application sidebar",
+          children: /* @__PURE__ */ jsx13("div", { className: "guwmi-container-sidebar", children: sidebar })
+        }
+      ),
       /* @__PURE__ */ jsx13("main", { className: "guwmi-container-content", children })
     ] })
   ] }));
@@ -1126,7 +1136,7 @@ function Menu2(props) {
 import { useContext as useContext2, useRef as useRef8 } from "react";
 
 // src/hooks/useTabThrough.ts
-import { useCallback as useCallback5, useEffect as useEffect9, useRef as useRef7 } from "react";
+import { useCallback as useCallback5, useEffect as useEffect10, useRef as useRef7 } from "react";
 var useTabThrough = (open, onClose, elementRef) => {
   const triggerRef = useRef7(null);
   const handleTab = useCallback5((e) => {
@@ -1153,7 +1163,7 @@ var useTabThrough = (open, onClose, elementRef) => {
       onClose();
     }
   }, []);
-  useEffect9(() => {
+  useEffect10(() => {
     if (open) {
       triggerRef.current = document.activeElement;
       setTimeout(() => {
@@ -1299,7 +1309,7 @@ function Navbar(props) {
 
 // src/components/Navbar/NavbarGroup.tsx
 import React4, {
-  useEffect as useEffect10,
+  useEffect as useEffect11,
   useMemo as useMemo3,
   useRef as useRef10,
   useState as useState8
@@ -1331,7 +1341,7 @@ function NavbarGroup(props) {
       return child;
     }
   }), [children, isOpen]);
-  useEffect10(() => {
+  useEffect11(() => {
     const defaultHeight = buttonRef.current.offsetHeight;
     if (contentRef.current && isOpen) {
       const height = contentRef.current.offsetHeight;
@@ -1340,7 +1350,7 @@ function NavbarGroup(props) {
       itemRef.current.style.height = `${defaultHeight}px`;
     }
   }, [isOpen]);
-  useEffect10(() => {
+  useEffect11(() => {
     initialRender.current = false;
     if (defaultOpen) {
       setIsOpen(true);
@@ -1420,7 +1430,7 @@ function NavbarItem(props) {
 }
 
 // src/components/Notification/Notification.tsx
-import { useEffect as useEffect11, useState as useState9, useRef as useRef12 } from "react";
+import { useEffect as useEffect12, useState as useState9, useRef as useRef12 } from "react";
 import { jsx as jsx25, jsxs as jsxs11 } from "react/jsx-runtime";
 function Notification(props) {
   const _a = props, {
@@ -1450,7 +1460,7 @@ function Notification(props) {
     }
   };
   const iconName = useRef12(getIconName());
-  useEffect11(() => {
+  useEffect12(() => {
     iconName.current = getIconName();
   }, [kind]);
   return isVisible ? /* @__PURE__ */ jsxs11("dialog", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
@@ -1471,7 +1481,7 @@ function Notification(props) {
 
 // src/components/Pagination/Pagination.tsx
 import {
-  useEffect as useEffect12,
+  useEffect as useEffect13,
   useMemo as useMemo5,
   useRef as useRef13,
   useState as useState10
@@ -1572,7 +1582,7 @@ function Pagination(props) {
       return { name: (i + 1).toString(), value: (i + 1).toString() };
     });
   }, [totalItems, size]);
-  useEffect12(() => {
+  useEffect13(() => {
     if (size !== sizeRef.current || page !== pageRef.current) {
       sizeRef.current = size;
       pageRef.current = page;
@@ -1822,13 +1832,13 @@ function SearchInput(props) {
 }
 
 // src/components/Skeletons/SkeletonBlock.tsx
-import { useEffect as useEffect13, useRef as useRef15 } from "react";
+import { useEffect as useEffect14, useRef as useRef15 } from "react";
 import { jsx as jsx31 } from "react/jsx-runtime";
 function SkeletonBlock(props) {
   const _a = props, { height, width, className } = _a, rest = __objRest(_a, ["height", "width", "className"]);
   const block = useRef15(null);
   const classes = `guwmi-skeleton-block guwmi-skeleton${className ? " " + className : ""}`;
-  useEffect13(() => {
+  useEffect14(() => {
     if (height) {
       block.current.style.height = `${height}px`;
     }
@@ -1911,7 +1921,7 @@ import React6, {
   useContext as useContext5,
   useMemo as useMemo6,
   useRef as useRef16,
-  useEffect as useEffect14
+  useEffect as useEffect15
 } from "react";
 import { jsx as jsx35 } from "react/jsx-runtime";
 function TabPanels(props) {
@@ -1923,7 +1933,7 @@ function TabPanels(props) {
   const childrenWithIndex = useMemo6(() => {
     return React6.Children.map(children, (child, index) => React6.cloneElement(child, { index }));
   }, [children]);
-  useEffect14(() => {
+  useEffect15(() => {
     const active = panels.current.querySelector(".active");
     const height = active.offsetHeight;
     panels.current.style.height = `${height}px`;
@@ -1963,7 +1973,7 @@ function TabPanel(props) {
 // src/components/Tabs/Tabs.tsx
 import React7, {
   useContext as useContext7,
-  useEffect as useEffect15,
+  useEffect as useEffect16,
   useMemo as useMemo7,
   useRef as useRef17
 } from "react";
@@ -1977,7 +1987,7 @@ function Tabs(props) {
   const childrenWithIndex = useMemo7(() => {
     return React7.Children.map(children, (child, index) => React7.cloneElement(child, { index }));
   }, [children]);
-  useEffect15(() => {
+  useEffect16(() => {
     if (tabsContainer.current.querySelector(".guwmi-tab.active")) {
       const activeTab = tabsContainer.current.querySelector(".guwmi-tab.active");
       const left = activeTab.offsetLeft;
@@ -2013,7 +2023,7 @@ function TabsContainer(props) {
 
 // src/components/Table/Table.tsx
 import {
-  useEffect as useEffect17,
+  useEffect as useEffect18,
   useId as useId7,
   useMemo as useMemo10,
   useState as useState14
@@ -2058,7 +2068,7 @@ var tableSearch = (arr = [], keys, value = "") => {
 var tableSearch_default = tableSearch;
 
 // src/hooks/usePagination.ts
-import { useState as useState13, useEffect as useEffect16, useRef as useRef18, useCallback as useCallback6, useMemo as useMemo8 } from "react";
+import { useState as useState13, useEffect as useEffect17, useRef as useRef18, useCallback as useCallback6, useMemo as useMemo8 } from "react";
 function usePagination(sourceData = []) {
   const [data, setData] = useState13([]);
   const [pageSize, setPageSize] = useState13(5);
@@ -2070,14 +2080,14 @@ function usePagination(sourceData = []) {
   }, []);
   const start = useMemo8(() => currentPage * pageSize - pageSize, [pageSize, currentPage]);
   const end = useMemo8(() => currentPage * pageSize, [pageSize, currentPage]);
-  useEffect16(() => {
+  useEffect17(() => {
     if (!isEmpty_default(sourceData)) {
       setData(sourceData.slice(start, end));
     } else {
       setData([]);
     }
   }, [sourceData, pageSize, currentPage]);
-  useEffect16(() => {
+  useEffect17(() => {
     numItems.current = sourceData.length;
   }, [sourceData]);
   return {
@@ -2155,7 +2165,7 @@ function Table(props) {
     );
     setTableRows(updatedRows);
   };
-  useEffect17(() => {
+  useEffect18(() => {
     if (isSearchable) {
       handleSearch();
     }

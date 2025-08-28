@@ -183,6 +183,11 @@ interface ContainerProps extends PropsWithChildren {
     sidebarAria?: string;
     sidebarIsDrawer?: boolean;
     sidebarButtonIcon?: JSX.Element;
+    sidebarDrawerState?: {
+        isOpen: boolean;
+        open: () => void;
+        close: () => void;
+    };
     className?: string;
 }
 /**
