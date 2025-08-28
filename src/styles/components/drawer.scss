@@ -34,6 +34,13 @@
     padding: 1rem;
     transition: var(--guwmi-transition);
     min-width: 300px;
+    height: calc(100% - 1.98rem);
+
+    > *:not(.guwmi-drawer-close-button) {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+    }
 
     &.left {
       border-right: solid 1px var(--guwmi-primary-bg);

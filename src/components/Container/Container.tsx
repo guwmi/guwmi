@@ -79,6 +79,7 @@ export default function Container(props: ContainerProps) {
             open={sidebarDrawerState ? sidebarDrawerState.isOpen : sidebarOpen}
             onClose={sidebarDrawerState ? () => sidebarDrawerState?.onClose() : () => setSidebarOpen(false)}
             ariaLabel={sidebarAria ?? 'Application sidebar'}
+            preventScroll
           >
             <div className="guwmi-container-sidebar">
               {sidebar}
