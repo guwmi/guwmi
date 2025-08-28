@@ -29,6 +29,7 @@
   font-size: 1rem;
   padding: 0.5rem 0.75rem;
   cursor: pointer;
+  text-align: left;
 }
 .guwmi-tabs-container .guwmi-tab-panels {
   border: solid 1px var(--guwmi-secondary-bg);

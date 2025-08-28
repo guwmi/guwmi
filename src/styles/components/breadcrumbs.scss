@@ -2,6 +2,8 @@
  * Styles for the Breadcrumbs component *************************************************************
  **/
 
+@use '../variables.scss';
+
 .guwmi-breadcrumbs {
   
   &.has-background {
@@ -39,6 +41,7 @@
         text-decoration: underline;
         cursor: pointer;
         line-height: 1.5;
+        text-align: left;
 
         &.guwmi-breadcrumb-current {
           color: var(--guwmi-text);
@@ -68,6 +71,30 @@
 
     &.has-background {
       background: rgba(0,0,0, 0.05);
+    }
+  }
+}
+
+@media screen and (max-width: variables.$breakpoint-sm) {
+
+  .guwmi-breadcrumbs {
+
+    ol {
+
+      li {
+        display: none;
+
+        &:nth-last-child(2),
+        &:nth-last-child(1) {
+          display: flex;
+        }
+
+        &:nth-last-child(2):before {
+          content: '...';
+          margin-right: 0.5rem;
+          letter-spacing: 1px;
+        }
+      }
     }
   }
 }

@@ -89,3 +89,16 @@
     }
   }
 }
+
+@media screen and (min-width: variables.$breakpoint-md) and (max-width: variables.$breakpoint-lg) {
+
+  .guwmi-grid {
+
+    &:not(.auto) {
+
+      > * {
+        flex-basis: calc((100% / 3) - (var(--guwmi-grid-gap) * (3 - 1) / 3));
+      }
+    }
+  }
+}
