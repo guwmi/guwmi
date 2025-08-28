@@ -9,6 +9,9 @@
   width: 100%;
 }
 .guwmi-container .guwmi-container-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   border-bottom: solid 1px var(--guwmi-primary-bg);
 }
 .guwmi-container > div:not(.guwmi-container-header) {

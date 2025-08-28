@@ -10,6 +10,9 @@
   width: 100%;
 
   .guwmi-container-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
     border-bottom: solid 1px var(--guwmi-primary-bg);
   }
 

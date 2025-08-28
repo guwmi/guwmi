@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/index.ts
-import "./guwmi-F32HGJAQ.css";
+import "./guwmi-FSPZCBAK.css";
 
 // src/components/Accordion/Accordion.tsx
 import { useState, useEffect } from "react";
@@ -662,30 +662,7 @@ function Checkbox(props) {
 }
 
 // src/components/Container/Container.tsx
-import { jsx as jsx11, jsxs as jsxs6 } from "react/jsx-runtime";
-function Container(props) {
-  const _a = props, {
-    header,
-    sidebar,
-    sidebarAria,
-    className,
-    children
-  } = _a, rest = __objRest(_a, [
-    "header",
-    "sidebar",
-    "sidebarAria",
-    "className",
-    "children"
-  ]);
-  const classes = `guwmi-container${className ? " " + className : ""}`;
-  return /* @__PURE__ */ jsxs6("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
-    header && /* @__PURE__ */ jsx11("header", { className: "guwmi-container-header", children: header }),
-    /* @__PURE__ */ jsxs6("div", { children: [
-      sidebar && /* @__PURE__ */ jsx11("aside", { className: "guwmi-container-sidebar", "aria-label": sidebarAria != null ? sidebarAria : "Application sidebar", children: sidebar }),
-      /* @__PURE__ */ jsx11("main", { className: "guwmi-container-content", children })
-    ] })
-  ] }));
-}
+import { useState as useState6 } from "react";
 
 // src/components/Drawer/Drawer.tsx
 import { useRef as useRef6 } from "react";
@@ -846,7 +823,7 @@ var usePreventScroll = (open, enabled) => {
 var usePreventScroll_default = usePreventScroll;
 
 // src/components/Drawer/Drawer.tsx
-import { jsx as jsx12, jsxs as jsxs7 } from "react/jsx-runtime";
+import { jsx as jsx11, jsxs as jsxs6 } from "react/jsx-runtime";
 function Drawer(props) {
   const _a = props, {
     ariaLabel = "Content drawer",
@@ -872,22 +849,104 @@ function Drawer(props) {
   useFocusTrap_default(open, onClose, drawer);
   useClickOutside_default(open, onClose, drawer);
   usePreventScroll_default(open, preventScroll);
-  return isVisible && /* @__PURE__ */ jsx12(BodyPortal, { children: /* @__PURE__ */ jsx12("div", __spreadProps(__spreadValues({ className: "guwmi-drawer-overlay", ref: drawerOverlay }, rest), { children: /* @__PURE__ */ jsxs7("aside", { className: classes, "aria-label": ariaLabel, ref: drawer, children: [
-    /* @__PURE__ */ jsx12(
+  return isVisible && /* @__PURE__ */ jsx11(BodyPortal, { children: /* @__PURE__ */ jsx11("div", __spreadProps(__spreadValues({ className: "guwmi-drawer-overlay", ref: drawerOverlay }, rest), { children: /* @__PURE__ */ jsxs6("aside", { className: classes, "aria-label": ariaLabel, ref: drawer, children: [
+    /* @__PURE__ */ jsx11(
       "button",
       {
         className: "guwmi-drawer-close-button",
         "aria-label": "Close drawer",
         onClick: () => onClose(),
-        children: /* @__PURE__ */ jsx12(Icon_default, { name: "close", size: 20 })
+        children: /* @__PURE__ */ jsx11(Icon_default, { name: "close", size: 20 })
       }
     ),
     children
   ] }) })) });
 }
 
+// src/components/IconButton/IconButton.tsx
+import { jsx as jsx12 } from "react/jsx-runtime";
+function IconButton(props) {
+  const _a = props, {
+    size = "md",
+    color = "primary",
+    variant = "fill",
+    theme = "round",
+    ariaLabel,
+    disabled,
+    className,
+    skeleton,
+    onClick,
+    children
+  } = _a, rest = __objRest(_a, [
+    "size",
+    "color",
+    "variant",
+    "theme",
+    "ariaLabel",
+    "disabled",
+    "className",
+    "skeleton",
+    "onClick",
+    "children"
+  ]);
+  const classes = `guwmi-btn icon ${size} ${color} ${variant} ${theme}${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
+  return /* @__PURE__ */ jsx12(
+    "button",
+    __spreadProps(__spreadValues({
+      className: classes,
+      onClick,
+      "aria-label": ariaLabel,
+      disabled: disabled || skeleton
+    }, rest), {
+      children
+    })
+  );
+}
+
+// src/components/Container/Container.tsx
+import { jsx as jsx13, jsxs as jsxs7 } from "react/jsx-runtime";
+function Container(props) {
+  const _a = props, {
+    header,
+    sidebar,
+    sidebarAria,
+    sidebarIsDrawer,
+    sidebarButtonIcon = /* @__PURE__ */ jsx13(Icon_default, { name: "menu" }),
+    className,
+    children
+  } = _a, rest = __objRest(_a, [
+    "header",
+    "sidebar",
+    "sidebarAria",
+    "sidebarIsDrawer",
+    "sidebarButtonIcon",
+    "className",
+    "children"
+  ]);
+  const classes = `guwmi-container${className ? " " + className : ""}`;
+  const [sidebarOpen, setSidebarOpen] = useState6(false);
+  return /* @__PURE__ */ jsxs7("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
+    header && /* @__PURE__ */ jsxs7("header", { className: "guwmi-container-header", children: [
+      sidebarIsDrawer && /* @__PURE__ */ jsx13("div", { children: /* @__PURE__ */ jsx13(
+        IconButton,
+        {
+          ariaLabel: `Open ${sidebarAria}`,
+          onClick: () => setSidebarOpen(true),
+          variant: "ghost",
+          children: sidebarButtonIcon
+        }
+      ) }),
+      header
+    ] }),
+    /* @__PURE__ */ jsxs7("div", { children: [
+      sidebar && !sidebarIsDrawer ? /* @__PURE__ */ jsx13("aside", { className: "guwmi-container-sidebar", "aria-label": sidebarAria != null ? sidebarAria : "Application sidebar", children: sidebar }) : /* @__PURE__ */ jsx13(Drawer, { open: sidebarOpen, onClose: () => setSidebarOpen(false), ariaLabel: sidebarAria != null ? sidebarAria : "Application sidebar", children: /* @__PURE__ */ jsx13("div", { className: "guwmi-container-sidebar", children: sidebar }) }),
+      /* @__PURE__ */ jsx13("main", { className: "guwmi-container-content", children })
+    ] })
+  ] }));
+}
+
 // src/components/Grid/Grid.tsx
-import { jsx as jsx13 } from "react/jsx-runtime";
+import { jsx as jsx14 } from "react/jsx-runtime";
 function Grid(props) {
   const _a = props, {
     columns = 3,
@@ -968,47 +1027,7 @@ function Grid(props) {
     return classString;
   };
   const classes = getClasses();
-  return /* @__PURE__ */ jsx13("div", __spreadProps(__spreadValues({ className: classes }, rest), { children }));
-}
-
-// src/components/IconButton/IconButton.tsx
-import { jsx as jsx14 } from "react/jsx-runtime";
-function IconButton(props) {
-  const _a = props, {
-    size = "md",
-    color = "primary",
-    variant = "fill",
-    theme = "round",
-    ariaLabel,
-    disabled,
-    className,
-    skeleton,
-    onClick,
-    children
-  } = _a, rest = __objRest(_a, [
-    "size",
-    "color",
-    "variant",
-    "theme",
-    "ariaLabel",
-    "disabled",
-    "className",
-    "skeleton",
-    "onClick",
-    "children"
-  ]);
-  const classes = `guwmi-btn icon ${size} ${color} ${variant} ${theme}${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  return /* @__PURE__ */ jsx14(
-    "button",
-    __spreadProps(__spreadValues({
-      className: classes,
-      onClick,
-      "aria-label": ariaLabel,
-      disabled: disabled || skeleton
-    }, rest), {
-      children
-    })
-  );
+  return /* @__PURE__ */ jsx14("div", __spreadProps(__spreadValues({ className: classes }, rest), { children }));
 }
 
 // src/components/InfoBlock/InfoBlock.tsx
@@ -1074,7 +1093,7 @@ function Loading(props) {
 }
 
 // src/components/Menu/Menu.tsx
-import { useState as useState6 } from "react";
+import { useState as useState7 } from "react";
 
 // src/components/Menu/MenuContext.ts
 import { createContext as createContext2 } from "react";
@@ -1097,7 +1116,7 @@ function Menu2(props) {
     "ariaLabel",
     "className"
   ]);
-  const [isOpen, setIsOpen] = useState6(false);
+  const [isOpen, setIsOpen] = useState7(false);
   const classes = `guwmi-menu-container ${position}${className ? " " + className : ""}`;
   const styles = width ? { width: `${width}px` } : null;
   return /* @__PURE__ */ jsx17("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: /* @__PURE__ */ jsx17(MenuContext_default.Provider, { value: { isOpen, setIsOpen, ariaLabel, styles }, children }) }));
@@ -1283,7 +1302,7 @@ import React4, {
   useEffect as useEffect10,
   useMemo as useMemo3,
   useRef as useRef10,
-  useState as useState7
+  useState as useState8
 } from "react";
 import { jsx as jsx23, jsxs as jsxs10 } from "react/jsx-runtime";
 function NavbarGroup(props) {
@@ -1301,7 +1320,7 @@ function NavbarGroup(props) {
   const itemRef = useRef10(null);
   const contentRef = useRef10(null);
   const buttonRef = useRef10(null);
-  const [isOpen, setIsOpen] = useState7(false);
+  const [isOpen, setIsOpen] = useState8(false);
   const classes = `guwmi-navbar-group${isOpen ? " open" : ""}${className ? " " + className : ""}`;
   const initialRender = useRef10(true);
   useAnimation_default(isOpen, "open", itemRef);
@@ -1401,7 +1420,7 @@ function NavbarItem(props) {
 }
 
 // src/components/Notification/Notification.tsx
-import { useEffect as useEffect11, useState as useState8, useRef as useRef12 } from "react";
+import { useEffect as useEffect11, useState as useState9, useRef as useRef12 } from "react";
 import { jsx as jsx25, jsxs as jsxs11 } from "react/jsx-runtime";
 function Notification(props) {
   const _a = props, {
@@ -1415,7 +1434,7 @@ function Notification(props) {
     "content",
     "className"
   ]);
-  const [isVisible, setIsVisible] = useState8(true);
+  const [isVisible, setIsVisible] = useState9(true);
   const titleText = title ? title : kind.charAt(0).toUpperCase() + kind.slice(1);
   const classes = `guwmi-notification ${kind}${className ? " " + className : ""}`;
   const getIconName = () => {
@@ -1455,7 +1474,7 @@ import {
   useEffect as useEffect12,
   useMemo as useMemo5,
   useRef as useRef13,
-  useState as useState9
+  useState as useState10
 } from "react";
 
 // src/components/Inputs/Select/SelectInput.tsx
@@ -1535,8 +1554,8 @@ function Pagination(props) {
     "skeleton",
     "onChange"
   ]);
-  const [page, setPage] = useState9(currentPage);
-  const [size, setSize] = useState9(currentSize);
+  const [page, setPage] = useState10(currentPage);
+  const [size, setSize] = useState10(currentSize);
   const pageRef = useRef13(currentPage);
   const sizeRef = useRef13(currentSize);
   const classes = `guwmi-pagination${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
@@ -1601,7 +1620,7 @@ function Pagination(props) {
 }
 
 // src/components/Inputs/Password/PasswordInput.tsx
-import { useId as useId3, useRef as useRef14, useState as useState10 } from "react";
+import { useId as useId3, useRef as useRef14, useState as useState11 } from "react";
 import { jsx as jsx28, jsxs as jsxs14 } from "react/jsx-runtime";
 function PasswordInput(props) {
   const _a = props, {
@@ -1642,7 +1661,7 @@ function PasswordInput(props) {
   const inputId = id != null ? id : useId3();
   const passwordRef = useRef14(null);
   const classes = `guwmi-password-input${hasError ? " error" : ""}${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
-  const [type, setType] = useState10("password");
+  const [type, setType] = useState11("password");
   const toggleType = () => {
     if (type === "password") {
       setType("text");
@@ -1974,7 +1993,7 @@ function Tabs(props) {
 }
 
 // src/components/Tabs/TabsContainer.tsx
-import { useState as useState11, useId as useId6 } from "react";
+import { useState as useState12, useId as useId6 } from "react";
 import { jsx as jsx38 } from "react/jsx-runtime";
 function TabsContainer(props) {
   const _a = props, {
@@ -1986,7 +2005,7 @@ function TabsContainer(props) {
     "skeleton",
     "children"
   ]);
-  const [selectedTab, setSelectedTab] = useState11(0);
+  const [selectedTab, setSelectedTab] = useState12(0);
   const classes = `guwmi-tabs-container${className ? " " + className : ""}`;
   const id = useId6();
   return /* @__PURE__ */ jsx38(TabsContext_default.Provider, { value: { skeleton, id, selectedTab, setSelectedTab }, children: /* @__PURE__ */ jsx38("div", __spreadProps(__spreadValues({ className: classes }, rest), { children })) });
@@ -1997,7 +2016,7 @@ import {
   useEffect as useEffect17,
   useId as useId7,
   useMemo as useMemo10,
-  useState as useState13
+  useState as useState14
 } from "react";
 
 // src/utils/isEmpty.ts
@@ -2039,11 +2058,11 @@ var tableSearch = (arr = [], keys, value = "") => {
 var tableSearch_default = tableSearch;
 
 // src/hooks/usePagination.ts
-import { useState as useState12, useEffect as useEffect16, useRef as useRef18, useCallback as useCallback6, useMemo as useMemo8 } from "react";
+import { useState as useState13, useEffect as useEffect16, useRef as useRef18, useCallback as useCallback6, useMemo as useMemo8 } from "react";
 function usePagination(sourceData = []) {
-  const [data, setData] = useState12([]);
-  const [pageSize, setPageSize] = useState12(5);
-  const [currentPage, setCurrentPage] = useState12(1);
+  const [data, setData] = useState13([]);
+  const [pageSize, setPageSize] = useState13(5);
+  const [currentPage, setCurrentPage] = useState13(1);
   const numItems = useRef18(sourceData.length);
   const paginate = useCallback6((e) => {
     setPageSize(e.currentSize);
@@ -2125,8 +2144,8 @@ function Table(props) {
   const isSearchable = useMemo10(() => headers.some((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const searchHeaders = useMemo10(() => headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const classes = `guwmi-table-container${isCondensed ? " condensed" : ""}${className ? " " + className : ""}`;
-  const [searchValue, setSearchValue] = useState13("");
-  const [tableRows, setTableRows] = useState13(rows);
+  const [searchValue, setSearchValue] = useState14("");
+  const [tableRows, setTableRows] = useState14(rows);
   const { data: paginatedData, paginate } = usePagination(tableRows);
   const handleSearch = () => {
     const updatedRows = tableSearch_default(

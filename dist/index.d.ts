@@ -181,6 +181,8 @@ interface ContainerProps extends PropsWithChildren {
     header?: JSX.Element;
     sidebar?: JSX.Element;
     sidebarAria?: string;
+    sidebarIsDrawer?: boolean;
+    sidebarButtonIcon?: JSX.Element;
     className?: string;
 }
 /**
