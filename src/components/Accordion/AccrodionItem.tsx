@@ -54,14 +54,14 @@ export default function AccordionItem(props: AccordionItemProps) {
   const onAnimationEnd = useCallback(() => setIsAnimating(false), []);
 
   const open = useCallback(() => {
-    setOpenAccordions([...openAccordions, id]);
+    setOpenAccordions((prevOpenAccordions: string[]) => [...prevOpenAccordions, id]);
     setIsAnimating(true);
-  }, [id, openAccordions]);
+  }, [id, setOpenAccordions]);
 
   const close = useCallback(() => {
-    setOpenAccordions(openAccordions.filter((value: string) => value !== id));
+    setOpenAccordions((prevOpenAccordions: string[]) => prevOpenAccordions.filter((value: string) => value !== id));
     setIsAnimating(true);
-  }, [id, openAccordions]);
+  }, [id, setOpenAccordions]);
 
   useEffect(() => {
     panelRef.current?.addEventListener('transitioncancel', onAnimationEnd);

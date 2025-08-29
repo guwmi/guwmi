@@ -60,7 +60,7 @@ function Accordion(props) {
   const classes = `guwmi-accordion-container${className ? " " + className : ""}`;
   useEffect(() => {
     if (defaultOpen) {
-      setOpenAccordions([...openAccordions, defaultOpen]);
+      setOpenAccordions((prevOpenAccordions) => [...prevOpenAccordions, defaultOpen]);
     }
   }, [defaultOpen]);
   return /* @__PURE__ */ jsx(AccordionContext_default.Provider, { value: { skeleton, openAccordions, setOpenAccordions }, children: /* @__PURE__ */ jsx("div", __spreadProps(__spreadValues({ className: classes }, rest), { children })) });
@@ -409,13 +409,13 @@ function AccordionItem(props) {
   const classes = `guwmi-accordion-item${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
   const onAnimationEnd = useCallback2(() => setIsAnimating(false), []);
   const open = useCallback2(() => {
-    setOpenAccordions([...openAccordions, id]);
+    setOpenAccordions((prevOpenAccordions) => [...prevOpenAccordions, id]);
     setIsAnimating(true);
-  }, [id, openAccordions]);
+  }, [id, setOpenAccordions]);
   const close = useCallback2(() => {
-    setOpenAccordions(openAccordions.filter((value) => value !== id));
+    setOpenAccordions((prevOpenAccordions) => prevOpenAccordions.filter((value) => value !== id));
     setIsAnimating(true);
-  }, [id, openAccordions]);
+  }, [id, setOpenAccordions]);
   useEffect3(() => {
     var _a2, _b;
     (_a2 = panelRef.current) == null ? void 0 : _a2.addEventListener("transitioncancel", onAnimationEnd);

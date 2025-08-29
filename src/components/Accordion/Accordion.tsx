@@ -34,7 +34,7 @@ export default function Accordion(props: AccordionProps) {
 
   useEffect(() => {
     if (defaultOpen) {
-      setOpenAccordions([...openAccordions, defaultOpen]);
+      setOpenAccordions((prevOpenAccordions) => [...prevOpenAccordions, defaultOpen]);
     }
   }, [defaultOpen]);
 
