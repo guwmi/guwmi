@@ -50,31 +50,32 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
   return (
     <nav className={classes} aria-label={ariaLabel} {...rest}>
       <ol>
-        {links.map((link, index) => (
-          <li 
-            key={`${link.text.toLowerCase().replaceAll(' ', '')}-${index}`} 
-            className={skeleton && hasBackground ? 'guwmi-skeleton alt' : skeleton  ? 'guwmi-skeleton' : null}
-          >
-            {(index + 1) !== links.length ? (
-              <>
-                {link.href && !link.disabled ? (
-                  <a href={link.href} tabIndex={skeleton ? -1: 0}>
-                    {link.text}
-                  </a>
-                ) : (
-                  <button onClick={link.onClick} disabled={link.disabled} tabIndex={skeleton ? -1: 0}>
-                    {link.text}
-                  </button>
-                )}
-                <Icon name="chevron-right" aria-hidden="true" size={16} />
-              </>
-            ) : (
-              <a aria-current="location" className="guwmi-breadcrumb-current">
-                {link.text}
-              </a>
-            )}
-          </li>
-        ))}
+        {links.map((link, index) => {
+          const isLast = (index + 1) === links.length;
+          const isLink = link.href && !link.disabled;
+
+          return (
+            <li 
+              key={`${link.text.toLowerCase().replaceAll(' ', '')}-${index}`} 
+              className={skeleton && hasBackground ? 'guwmi-skeleton alt' : skeleton  ? 'guwmi-skeleton' : null}
+            >
+              {isLast ? (
+                <span aria-current="location" className="guwmi-breadcrumb-current">
+                  {link.text}
+                </span>
+              ) : isLink ? (
+                <a href={link.href} tabIndex={skeleton ? -1: 0}>
+                  {link.text}
+                </a>
+              ) : (
+                <button onClick={link.onClick} disabled={link.disabled} tabIndex={skeleton ? -1: 0}>
+                  {link.text}
+                </button>
+              )}
+              {!isLast && <Icon name="chevron-right" aria-hidden="true" size={16} />}
+            </li>
+          )
+        })}
       </ol>
     </nav>
   )

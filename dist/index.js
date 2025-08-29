@@ -470,7 +470,7 @@ function AccordionItem(props) {
 }
 
 // src/components/Breadcrumbs/Breadcrumbs.tsx
-import { Fragment as Fragment2, jsx as jsx5, jsxs as jsxs3 } from "react/jsx-runtime";
+import { jsx as jsx5, jsxs as jsxs3 } from "react/jsx-runtime";
 function Breadcrumbs(props) {
   const _a = props, {
     ariaLabel,
@@ -486,17 +486,21 @@ function Breadcrumbs(props) {
     "skeleton"
   ]);
   const classes = `guwmi-breadcrumbs${hasBackground ? " has-background" : ""}${className ? " " + className : ""}`;
-  return /* @__PURE__ */ jsx5("nav", __spreadProps(__spreadValues({ className: classes, "aria-label": ariaLabel }, rest), { children: /* @__PURE__ */ jsx5("ol", { children: links.map((link, index) => /* @__PURE__ */ jsx5(
-    "li",
-    {
-      className: skeleton && hasBackground ? "guwmi-skeleton alt" : skeleton ? "guwmi-skeleton" : null,
-      children: index + 1 !== links.length ? /* @__PURE__ */ jsxs3(Fragment2, { children: [
-        link.href && !link.disabled ? /* @__PURE__ */ jsx5("a", { href: link.href, tabIndex: skeleton ? -1 : 0, children: link.text }) : /* @__PURE__ */ jsx5("button", { onClick: link.onClick, disabled: link.disabled, tabIndex: skeleton ? -1 : 0, children: link.text }),
-        /* @__PURE__ */ jsx5(Icon_default, { name: "chevron-right", "aria-hidden": "true", size: 16 })
-      ] }) : /* @__PURE__ */ jsx5("a", { "aria-current": "location", className: "guwmi-breadcrumb-current", children: link.text })
-    },
-    `${link.text.toLowerCase().replaceAll(" ", "")}-${index}`
-  )) }) }));
+  return /* @__PURE__ */ jsx5("nav", __spreadProps(__spreadValues({ className: classes, "aria-label": ariaLabel }, rest), { children: /* @__PURE__ */ jsx5("ol", { children: links.map((link, index) => {
+    const isLast = index + 1 === links.length;
+    const isLink = link.href && !link.disabled;
+    return /* @__PURE__ */ jsxs3(
+      "li",
+      {
+        className: skeleton && hasBackground ? "guwmi-skeleton alt" : skeleton ? "guwmi-skeleton" : null,
+        children: [
+          isLast ? /* @__PURE__ */ jsx5("span", { "aria-current": "location", className: "guwmi-breadcrumb-current", children: link.text }) : isLink ? /* @__PURE__ */ jsx5("a", { href: link.href, tabIndex: skeleton ? -1 : 0, children: link.text }) : /* @__PURE__ */ jsx5("button", { onClick: link.onClick, disabled: link.disabled, tabIndex: skeleton ? -1 : 0, children: link.text }),
+          !isLast && /* @__PURE__ */ jsx5(Icon_default, { name: "chevron-right", "aria-hidden": "true", size: 16 })
+        ]
+      },
+      `${link.text.toLowerCase().replaceAll(" ", "")}-${index}`
+    );
+  }) }) }));
 }
 
 // src/components/Button/Button.tsx
@@ -1186,7 +1190,7 @@ var useTabThrough = (open, onClose, elementRef) => {
 var useTabThrough_default = useTabThrough;
 
 // src/components/Menu/MenuDropdown.tsx
-import { Fragment as Fragment3, jsx as jsx18 } from "react/jsx-runtime";
+import { Fragment as Fragment2, jsx as jsx18 } from "react/jsx-runtime";
 function MenuDropdown(props) {
   const _a = props, { className, children } = _a, rest = __objRest(_a, ["className", "children"]);
   const { isOpen, setIsOpen, ariaLabel, styles } = useContext2(MenuContext_default);
@@ -1194,7 +1198,7 @@ function MenuDropdown(props) {
   const dropDownRef = useRef8(null);
   const { isVisible } = useAnimation_default(isOpen, "open", dropDownRef);
   useTabThrough_default(isOpen, () => setIsOpen(false), dropDownRef);
-  return /* @__PURE__ */ jsx18(Fragment3, { children: isVisible && /* @__PURE__ */ jsx18(
+  return /* @__PURE__ */ jsx18(Fragment2, { children: isVisible && /* @__PURE__ */ jsx18(
     "nav",
     __spreadProps(__spreadValues({
       className: classes,
@@ -2106,7 +2110,7 @@ function usePagination(sourceData = []) {
 
 // src/components/Table/TableRow.tsx
 import { useMemo as useMemo9 } from "react";
-import { Fragment as Fragment4, jsx as jsx39 } from "react/jsx-runtime";
+import { Fragment as Fragment3, jsx as jsx39 } from "react/jsx-runtime";
 function TableRow(props) {
   const _a = props, {
     headers,
@@ -2126,11 +2130,11 @@ function TableRow(props) {
     });
     return arr;
   }, [headers, data]);
-  return /* @__PURE__ */ jsx39(Fragment4, { children: cellData && /* @__PURE__ */ jsx39("tr", __spreadProps(__spreadValues({}, rest), { children: cellData.map((cell) => /* @__PURE__ */ jsx39("td", { children: cell.value }, `table-${tableId}-cell-${cell.id}-${cell.col}`)) })) });
+  return /* @__PURE__ */ jsx39(Fragment3, { children: cellData && /* @__PURE__ */ jsx39("tr", __spreadProps(__spreadValues({}, rest), { children: cellData.map((cell) => /* @__PURE__ */ jsx39("td", { children: cell.value }, `table-${tableId}-cell-${cell.id}-${cell.col}`)) })) });
 }
 
 // src/components/Table/Table.tsx
-import { Fragment as Fragment5, jsx as jsx40, jsxs as jsxs18 } from "react/jsx-runtime";
+import { Fragment as Fragment4, jsx as jsx40, jsxs as jsxs18 } from "react/jsx-runtime";
 function Table(props) {
   const _a = props, {
     title,
@@ -2178,10 +2182,10 @@ function Table(props) {
     ] }),
     /* @__PURE__ */ jsxs18("div", { className: "guwmi-table-content", children: [
       headers.length > 0 && isSearchable && /* @__PURE__ */ jsx40("div", { className: "guwmi-table-search", children: /* @__PURE__ */ jsx40(SearchInput, { onChange: (e) => setSearchValue(e.target.value), skeleton }) }),
-      /* @__PURE__ */ jsx40("table", { cellPadding: 0, cellSpacing: 0, tabIndex: -1, children: skeleton ? /* @__PURE__ */ jsxs18(Fragment5, { children: [
+      /* @__PURE__ */ jsx40("table", { cellPadding: 0, cellSpacing: 0, tabIndex: -1, children: skeleton ? /* @__PURE__ */ jsxs18(Fragment4, { children: [
         /* @__PURE__ */ jsx40("thead", { children: /* @__PURE__ */ jsx40("tr", { children: Array.from({ length: 4 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx40("th", { className: "guwmi-skeleton" }, `guwmi-table-skelton-header-${i}`)) }) }),
         /* @__PURE__ */ jsx40("tbody", { children: Array.from({ length: 5 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx40("tr", { children: Array.from({ length: 4 }, (_, index) => index).map((v2, i2) => /* @__PURE__ */ jsx40("td", { className: "guwmi-skeleton" }, `guwmi-table-skelton-td-${i2}`)) }, `guwmi-table-skelton-row-${i}`)) })
-      ] }) : headers.length > 0 ? /* @__PURE__ */ jsxs18(Fragment5, { children: [
+      ] }) : headers.length > 0 ? /* @__PURE__ */ jsxs18(Fragment4, { children: [
         /* @__PURE__ */ jsx40("thead", { children: /* @__PURE__ */ jsx40("tr", { children: headers.map((header, i) => /* @__PURE__ */ jsx40("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
         /* @__PURE__ */ jsx40("tbody", { children: !hasPagination && tableRows.length > 0 ? tableRows.map((row) => /* @__PURE__ */ jsx40(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : hasPagination && paginatedData.values.length > 0 ? paginatedData.values.map((row) => /* @__PURE__ */ jsx40(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ jsx40("tr", { children: /* @__PURE__ */ jsx40("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
       ] }) : /* @__PURE__ */ jsx40("tbody", { children: /* @__PURE__ */ jsx40("tr", { children: /* @__PURE__ */ jsx40("td", { children: "No column headers provided for the table" }) }) }) }),
