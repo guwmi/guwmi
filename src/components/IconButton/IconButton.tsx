@@ -11,7 +11,7 @@ export interface IconButtonProps extends PropsWithChildren {
   disabled?: boolean;
   className?: string;
   skeleton?: boolean;
-  onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 /**
@@ -20,7 +20,7 @@ export interface IconButtonProps extends PropsWithChildren {
  * @param size - (options) size value of 'sm', 'md', or 'lg' - defaults to 'md'
  * @param color - (optional) color value of 'primary', 'secondary', or 'danger' - defaults to 'primary'
  * @param variant - (optional) variant value of 'fill', 'outline', or 'ghost' - defaults to 'fill'
- * @param theme - (optional) theme value of 'square', 'round', or 'pill' - defaults to 'round'
+ * @param theme - (optional) theme value of 'square', 'round', or 'circle' - defaults to 'round'
  * @param ariaLabel - string value for the aria-label property of the <button>> element
  * @param disabled - (optionsl) boolean value that determines the disabled state of a link
  * @param className - (optional) string value of class names to apply to the component
