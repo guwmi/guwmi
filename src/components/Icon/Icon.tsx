@@ -70,7 +70,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
 /**
  * Icon component ****************************************************************************
  * 
- * @param ariaLabel - (optional) string value to override the svg aria-label property
+ * @param ariaLabel - (optional) string to set the svg aria-label property, otherwise the icon name will be used for the aria-label
  * @param name - string value for the icon SVG to render.  options are:
  * * 'alert-circle'
  * * 'alert-square'
@@ -117,80 +117,55 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(( props, ref ) => {
   } = props;
   const classes = `icon guwmi-icon guwmi-icon-${name}${className ? ' ' + className : ''}`;
 
-  const getPaths = useCallback((iconName:String) => {
-    switch(iconName) {
-      case 'alert-circle':
-        return <AlertCircle />
-      case 'alert-square':
-        return <AlertSquare />
-      case 'alert-triangle':
-        return <AlertTriangle />
-      case 'check':
-        return <Check />
-      case 'chevron-down':
-        return <ChevronDown />
-      case 'chevron-left':
-        return <ChevronLeft />
-      case 'chevron-right':
-        return <ChevronRight />
-      case 'chevron-up':
-        return <ChevronUp />
-      case 'copy':
-        return <Copy />
-      case 'close':
-        return <Close />
-      case 'dots':
-        return <Dots />
-      case 'external-link':
-        return <ExternalLink />
-      case 'hide':
-        return <Hide />
-      case 'home':
-        return <Home />
-      case 'info':
-        return <Info />
-      case 'login':
-        return <Login />
-      case 'menu':
-        return <Menu />
-      case 'progress-alert':
-        return <ProgressAlert />
-      case 'progress-check':
-        return <ProgressCheck />
-      case 'progress':
-        return <Progress />
-      case 'search':
-        return <Search />
-      case 'settings':
-        return <Settings />
-      case 'trash':
-        return <Trash />
-      case 'user':
-        return <User />
-      case 'view':
-        return <View />
-    }
-  }, []);
-  const paths = getPaths(name);
+  const iconMap = {
+    'alert-circle': AlertCircle,
+    'alert-square': AlertSquare,
+    'alert-triangle': AlertTriangle,
+    'check': Check,
+    'chevron-down': ChevronDown,
+    'chevron-left': ChevronLeft,
+    'chevron-right': ChevronRight,
+    'chevron-up': ChevronUp,
+    'copy': Copy,
+    'close': Close,
+    'dots': Dots,
+    'external-link': ExternalLink,
+    'hide': Hide,
+    'home': Home,
+    'info': Info,
+    'login': Login,
+    'menu': Menu,
+    'progress-alert': ProgressAlert,
+    'progress-check': ProgressCheck,
+    'progress': Progress,
+    'search': Search,
+    'settings': Settings,
+    'trash': Trash,
+    'user': User,
+    'view': View,
+  }
+  const Path = iconMap[name];
 
   return (
-    <svg
-      ref={ref}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke={color}
-      strokeWidth={stroke}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={classes}
-      aria-label={ariaLabel ?? name}
-      {...rest}
-      >
-        {paths}
-      </svg>
+    Path && (
+      <svg
+        ref={ref}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke={color}
+        strokeWidth={stroke}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={classes}
+        aria-label={ariaLabel ?? name}
+        {...rest}
+        >
+          <Path />
+        </svg>
+    )
   );
 });
 

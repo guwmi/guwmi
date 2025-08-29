@@ -89,7 +89,7 @@ function useWindowWidth() {
 }
 
 // src/components/Icon/Icon.tsx
-import { useCallback, forwardRef } from "react";
+import { forwardRef } from "react";
 
 // src/components/Icon/paths.tsx
 import { Fragment, jsx as jsx2, jsxs } from "react/jsx-runtime";
@@ -308,62 +308,35 @@ var Icon = forwardRef((props, ref) => {
     "className"
   ]);
   const classes = `icon guwmi-icon guwmi-icon-${name}${className ? " " + className : ""}`;
-  const getPaths = useCallback((iconName) => {
-    switch (iconName) {
-      case "alert-circle":
-        return /* @__PURE__ */ jsx3(AlertCircle, {});
-      case "alert-square":
-        return /* @__PURE__ */ jsx3(AlertSquare, {});
-      case "alert-triangle":
-        return /* @__PURE__ */ jsx3(AlertTriangle, {});
-      case "check":
-        return /* @__PURE__ */ jsx3(Check, {});
-      case "chevron-down":
-        return /* @__PURE__ */ jsx3(ChevronDown, {});
-      case "chevron-left":
-        return /* @__PURE__ */ jsx3(ChevronLeft, {});
-      case "chevron-right":
-        return /* @__PURE__ */ jsx3(ChevronRight, {});
-      case "chevron-up":
-        return /* @__PURE__ */ jsx3(ChevronUp, {});
-      case "copy":
-        return /* @__PURE__ */ jsx3(Copy, {});
-      case "close":
-        return /* @__PURE__ */ jsx3(Close, {});
-      case "dots":
-        return /* @__PURE__ */ jsx3(Dots, {});
-      case "external-link":
-        return /* @__PURE__ */ jsx3(ExternalLink, {});
-      case "hide":
-        return /* @__PURE__ */ jsx3(Hide, {});
-      case "home":
-        return /* @__PURE__ */ jsx3(Home, {});
-      case "info":
-        return /* @__PURE__ */ jsx3(Info, {});
-      case "login":
-        return /* @__PURE__ */ jsx3(Login, {});
-      case "menu":
-        return /* @__PURE__ */ jsx3(Menu, {});
-      case "progress-alert":
-        return /* @__PURE__ */ jsx3(ProgressAlert, {});
-      case "progress-check":
-        return /* @__PURE__ */ jsx3(ProgressCheck, {});
-      case "progress":
-        return /* @__PURE__ */ jsx3(Progress, {});
-      case "search":
-        return /* @__PURE__ */ jsx3(Search, {});
-      case "settings":
-        return /* @__PURE__ */ jsx3(Settings, {});
-      case "trash":
-        return /* @__PURE__ */ jsx3(Trash, {});
-      case "user":
-        return /* @__PURE__ */ jsx3(User, {});
-      case "view":
-        return /* @__PURE__ */ jsx3(View, {});
-    }
-  }, []);
-  const paths = getPaths(name);
-  return /* @__PURE__ */ jsx3(
+  const iconMap = {
+    "alert-circle": AlertCircle,
+    "alert-square": AlertSquare,
+    "alert-triangle": AlertTriangle,
+    "check": Check,
+    "chevron-down": ChevronDown,
+    "chevron-left": ChevronLeft,
+    "chevron-right": ChevronRight,
+    "chevron-up": ChevronUp,
+    "copy": Copy,
+    "close": Close,
+    "dots": Dots,
+    "external-link": ExternalLink,
+    "hide": Hide,
+    "home": Home,
+    "info": Info,
+    "login": Login,
+    "menu": Menu,
+    "progress-alert": ProgressAlert,
+    "progress-check": ProgressCheck,
+    "progress": Progress,
+    "search": Search,
+    "settings": Settings,
+    "trash": Trash,
+    "user": User,
+    "view": View
+  };
+  const Path = iconMap[name];
+  return Path && /* @__PURE__ */ jsx3(
     "svg",
     __spreadProps(__spreadValues({
       ref,
@@ -379,7 +352,7 @@ var Icon = forwardRef((props, ref) => {
       className: classes,
       "aria-label": ariaLabel != null ? ariaLabel : name
     }, rest), {
-      children: paths
+      children: /* @__PURE__ */ jsx3(Path, {})
     })
   );
 });
