@@ -40,7 +40,7 @@ export default function Card(props: CardProps) {
   return (
     <div className={classes} {...rest}>
       {image && 
-        <img src={image} alt={imageAlt || ''} className="guwmi-card-image" />
+        <img src={image} alt={imageAlt ?? ''} className="guwmi-card-image" />
       }
       {(title || subTitle) &&
         <div className="guwmi-card-section guwmi-card-title">

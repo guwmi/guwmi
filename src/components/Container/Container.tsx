@@ -51,6 +51,22 @@ export default function Container(props: ContainerProps) {
   const classes = `guwmi-container${className ? ' ' + className : ''}`;
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
+  const openSidebar = () => {
+    if (sidebarDrawerState ) {
+      sidebarDrawerState?.onOpen();
+    } else {
+      setSidebarOpen(true);
+    }
+  }
+
+  const closeSidebar = () => {
+    if (sidebarDrawerState ) {
+      sidebarDrawerState?.onClose();
+    } else {
+      setSidebarOpen(false);
+    }
+  }
+
   return (
     <div className={classes} {...rest}>
       {header &&
@@ -59,7 +75,7 @@ export default function Container(props: ContainerProps) {
             <div>
               <IconButton 
                 ariaLabel={`Open ${sidebarAria}`}
-                onClick={sidebarDrawerState ? () => sidebarDrawerState?.onOpen() : () => setSidebarOpen(true)}
+                onClick={openSidebar}
                 variant="ghost"
               >
                 {sidebarButtonIcon}
@@ -70,24 +86,23 @@ export default function Container(props: ContainerProps) {
         </header>
       }
       <div>
-        {(sidebar && !sidebarIsDrawer) ? (
-          <aside className="guwmi-container-sidebar" aria-label={sidebarAria ?? 'Application sidebar'}>
-            {sidebar}
-          </aside>
-        ) : (
-          <Drawer
-            open={sidebarDrawerState ? sidebarDrawerState.isOpen : sidebarOpen}
-            onClose={sidebarDrawerState ? () => sidebarDrawerState?.onClose() : () => setSidebarOpen(false)}
-            ariaLabel={sidebarAria ?? 'Application sidebar'}
-            preventScroll
-          >
-            <div className="guwmi-container-sidebar">
+        {(sidebar && (
+          sidebarIsDrawer) ? (
+            <Drawer
+              open={sidebarDrawerState ? sidebarDrawerState.isOpen : sidebarOpen}
+              onClose={closeSidebar}
+              ariaLabel={sidebarAria ?? 'Application sidebar'}
+              preventScroll
+            >
+              <div className="guwmi-container-sidebar">
+                {sidebar}
+              </div>
+            </Drawer>
+          ) : (
+            <aside className="guwmi-container-sidebar" aria-label={sidebarAria ?? 'Application sidebar'}>
               {sidebar}
-            </div>
-          </Drawer>
-        )
-
-        }
+            </aside>
+        ))}
         <main className="guwmi-container-content">
           {children}
         </main>

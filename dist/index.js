@@ -938,13 +938,27 @@ function Container(props) {
   ]);
   const classes = `guwmi-container${className ? " " + className : ""}`;
   const [sidebarOpen, setSidebarOpen] = useState6(false);
+  const openSidebar = () => {
+    if (sidebarDrawerState) {
+      sidebarDrawerState == null ? void 0 : sidebarDrawerState.onOpen();
+    } else {
+      setSidebarOpen(true);
+    }
+  };
+  const closeSidebar = () => {
+    if (sidebarDrawerState) {
+      sidebarDrawerState == null ? void 0 : sidebarDrawerState.onClose();
+    } else {
+      setSidebarOpen(false);
+    }
+  };
   return /* @__PURE__ */ jsxs7("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     header && /* @__PURE__ */ jsxs7("header", { className: "guwmi-container-header", children: [
       sidebarIsDrawer && /* @__PURE__ */ jsx13("div", { children: /* @__PURE__ */ jsx13(
         IconButton,
         {
           ariaLabel: `Open ${sidebarAria}`,
-          onClick: sidebarDrawerState ? () => sidebarDrawerState == null ? void 0 : sidebarDrawerState.onOpen() : () => setSidebarOpen(true),
+          onClick: openSidebar,
           variant: "ghost",
           children: sidebarButtonIcon
         }
@@ -952,16 +966,16 @@ function Container(props) {
       header
     ] }),
     /* @__PURE__ */ jsxs7("div", { children: [
-      sidebar && !sidebarIsDrawer ? /* @__PURE__ */ jsx13("aside", { className: "guwmi-container-sidebar", "aria-label": sidebarAria != null ? sidebarAria : "Application sidebar", children: sidebar }) : /* @__PURE__ */ jsx13(
+      sidebar && sidebarIsDrawer ? /* @__PURE__ */ jsx13(
         Drawer,
         {
           open: sidebarDrawerState ? sidebarDrawerState.isOpen : sidebarOpen,
-          onClose: sidebarDrawerState ? () => sidebarDrawerState == null ? void 0 : sidebarDrawerState.onClose() : () => setSidebarOpen(false),
+          onClose: closeSidebar,
           ariaLabel: sidebarAria != null ? sidebarAria : "Application sidebar",
           preventScroll: true,
           children: /* @__PURE__ */ jsx13("div", { className: "guwmi-container-sidebar", children: sidebar })
         }
-      ),
+      ) : /* @__PURE__ */ jsx13("aside", { className: "guwmi-container-sidebar", "aria-label": sidebarAria != null ? sidebarAria : "Application sidebar", children: sidebar }),
       /* @__PURE__ */ jsx13("main", { className: "guwmi-container-content", children })
     ] })
   ] }));
