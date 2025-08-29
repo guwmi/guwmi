@@ -567,14 +567,18 @@ function ButtonGroup(props) {
   ]);
   const classes = `guwmi-btn-group ${size} ${color} ${variant} ${theme}${className ? " " + className : ""}`;
   const buttonChildren = useMemo(() => React2.Children.map(children, (child) => {
-    return React2.cloneElement(child, {
-      size,
-      color,
-      variant,
-      theme,
-      skeleton
-    });
-  }), [children]);
+    if (React2.isValidElement(child)) {
+      return React2.cloneElement(child, {
+        size,
+        color,
+        variant,
+        theme,
+        skeleton
+      });
+    } else {
+      return child;
+    }
+  }), [children, size, color, variant, theme, skeleton]);
   return /* @__PURE__ */ jsx7("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: buttonChildren }));
 }
 

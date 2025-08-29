@@ -45,14 +45,18 @@ export default function ButtonGroup(props: ButtonGroupProps) {
   const classes = `guwmi-btn-group ${size} ${color} ${variant} ${theme}${className ? ' ' + className : ''}`;
 
   const buttonChildren = useMemo(() => React.Children.map(children, (child) => {
-    return React.cloneElement(child as React.ReactElement<ButtonProps>, {
-      size: size,
-      color: color,
-      variant: variant,
-      theme: theme,
-      skeleton: skeleton
-    });
-  }), [children]);
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child as React.ReactElement<ButtonProps>, {
+        size: size,
+        color: color,
+        variant: variant,
+        theme: theme,
+        skeleton: skeleton
+      });
+    } else {
+      return child;
+    }
+  }), [children, size, color, variant, theme, skeleton]);
 
   return (
     <div className={classes} {...rest}>
