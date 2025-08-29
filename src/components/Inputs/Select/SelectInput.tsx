@@ -76,9 +76,10 @@ export default function SelectInput(props: SelectInputProps) {
           onChange={onChange}
           onBlur={onBlur}
           onFocus={onFocus}
+          aria-describedby={hasError ? `error-${inputId}` : undefined}
         >
-          {options && options.map((option, index) => (
-            <option key={`${inputId}-${index}`} value={option.value} disabled={option.disabled || skeleton}>{option.name}</option>
+          {options && options.map((option) => (
+            <option key={`${inputId}-${option.value}`} value={option.value} disabled={option.disabled || skeleton}>{option.name}</option>
           ))}
         </select>
         <span className="guwmi-select-icon">
@@ -86,7 +87,7 @@ export default function SelectInput(props: SelectInputProps) {
         </span>
       </div>
       {hasError &&
-        <span className="guwmi-select-error">{error}</span>
+        <span id={`error-${inputId}`} className="guwmi-select-error">{error}</span>
       }
     </div>
   )
