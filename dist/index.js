@@ -604,7 +604,7 @@ function Card(props) {
   ]);
   const classes = `guwmi-card${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
   return /* @__PURE__ */ jsxs4("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
-    image && /* @__PURE__ */ jsx8("img", { src: image, alt: imageAlt || "", className: "guwmi-card-image" }),
+    image && /* @__PURE__ */ jsx8("img", { src: image, alt: imageAlt != null ? imageAlt : "", className: "guwmi-card-image" }),
     (title || subTitle) && /* @__PURE__ */ jsxs4("div", { className: "guwmi-card-section guwmi-card-title", children: [
       title && /* @__PURE__ */ jsx8("h2", { children: title }),
       subTitle && /* @__PURE__ */ jsx8("h3", { children: subTitle })
@@ -1001,68 +1001,15 @@ function Grid(props) {
     "className",
     "children"
   ]);
-  const getClasses = () => {
-    let classString = "guwmi-grid";
-    switch (columns) {
-      case "auto":
-        classString += " auto";
-        break;
-      case 2:
-        classString += " col-2";
-        break;
-      case 4:
-        classString += " col-4";
-        break;
-      case 5:
-        classString += " col-5";
-        break;
-      case 6:
-        classString += " col-6";
-        break;
-      default:
-        classString += " col-3";
-    }
-    switch (spacing) {
-      case 0:
-        classString += " space-0";
-        break;
-      case 2:
-        classString += " space-2";
-        break;
-      case 3:
-        classString += " space-3";
-        break;
-      case 4:
-        classString += " space-4";
-        break;
-      case 5:
-        classString += " space-5";
-        break;
-      case 6:
-        classString += " space-6";
-        break;
-      default:
-        classString += " space-1";
-    }
-    if (wrap === "no-wrap") {
-      classString += " no-wrap";
-    }
-    if (rowOrder === "reverse") {
-      classString += " reverse";
-    }
-    if (align !== "left") {
-      if (align === "right") {
-        classString += " right";
-      } else if (align === "center") {
-        classString += " center";
-      }
-    }
-    if (className) {
-      classString += " " + className;
-    }
-    return classString;
-  };
-  const classes = getClasses();
+  const classes = [
+    "guwmi-grid",
+    columns === "auto" ? "auto" : `col-${columns}`,
+    spacing === 1 ? "space-1" : `space-${spacing}`,
+    wrap === "no-wrap" && "no-wrap",
+    rowOrder === "reverse" && "reverse",
+    align !== "left" && align,
+    className
+  ].filter(Boolean).join(" ");
   return /* @__PURE__ */ jsx14("div", __spreadProps(__spreadValues({ className: classes }, rest), { children }));
 }
 
