@@ -83,10 +83,11 @@ export default function TextInput(props: TextInputProps) {
           onChange={onChange}
           onBlur={onBlur}
           onFocus={onFocus}
+          aria-describedby={hasError ? `error-${inputId}` : undefined}
         />
       </div>
       {hasError &&
-        <span>{error}</span>
+        <span id={`error-${inputId}`}>{error}</span>
       }
     </div>
   )
