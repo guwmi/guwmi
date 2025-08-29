@@ -75,7 +75,7 @@ interface ButtonProps extends PropsWithChildren {
     disabled?: boolean;
     className?: string;
     skeleton?: boolean;
-    onClick?: (React__default.MouseEventHandler<HTMLButtonElement> | undefined);
+    onClick?: React__default.MouseEventHandler<HTMLButtonElement>;
 }
 /**
  * Button component ********************************************************************************

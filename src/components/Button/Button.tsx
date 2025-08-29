@@ -20,7 +20,7 @@ export interface ButtonProps extends PropsWithChildren {
   disabled?: boolean;
   className?: string;
   skeleton?: boolean;
-  onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 /**
@@ -60,6 +60,7 @@ export default function Button(props: ButtonProps) {
   } = props;
   const classes = `guwmi-btn ${size} ${color} ${variant} ${theme}${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
   const button = useRef<HTMLButtonElement>(null);
+  const isLink = href && !disabled && !skeleton;
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     button.current.focus();
@@ -69,7 +70,7 @@ export default function Button(props: ButtonProps) {
   };
 
   return (
-    href && !disabled && !skeleton ? (
+     isLink ? (
       <a className={classes} href={href} target={target} {...rest}>
         {children}
       </a>

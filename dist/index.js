@@ -534,13 +534,14 @@ function Button(props) {
   ]);
   const classes = `guwmi-btn ${size} ${color} ${variant} ${theme}${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
   const button = useRef2(null);
+  const isLink = href && !disabled && !skeleton;
   const handleClick = (e) => {
     button.current.focus();
     if (onClick) {
       onClick(e);
     }
   };
-  return href && !disabled && !skeleton ? /* @__PURE__ */ jsx6("a", __spreadProps(__spreadValues({ className: classes, href, target }, rest), { children })) : /* @__PURE__ */ jsx6("button", __spreadProps(__spreadValues({ className: classes, onClick: (e) => handleClick(e), ref: button, disabled: disabled || skeleton }, rest), { children }));
+  return isLink ? /* @__PURE__ */ jsx6("a", __spreadProps(__spreadValues({ className: classes, href, target }, rest), { children })) : /* @__PURE__ */ jsx6("button", __spreadProps(__spreadValues({ className: classes, onClick: (e) => handleClick(e), ref: button, disabled: disabled || skeleton }, rest), { children }));
 }
 
 // src/components/ButtonGroup/ButtonGroup.tsx
