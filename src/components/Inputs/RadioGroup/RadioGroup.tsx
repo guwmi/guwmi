@@ -73,8 +73,8 @@ export default function RadioGroup(props: RadioGroupProps) {
       >
         <legend className={skeleton ? 'guwmi-skeleton' : null}>{label}</legend>
         <div className={`guwmi-radio-container ${layout}`}>
-          {options && options.map((option, index) => (
-            <div key={`${inputId}-${index}`} className={skeleton ? 'guwmi-skeleton' : option.disabled ? 'disabled' : null}>
+          {options && options.map((option) => (
+            <div key={`${inputId}-${option.value}`} className={skeleton ? 'guwmi-skeleton' : option.disabled ? 'disabled' : null}>
               <input
                 type="radio"
                 name={name ?? label.toLowerCase()}
