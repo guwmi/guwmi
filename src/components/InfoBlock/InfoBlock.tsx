@@ -52,15 +52,13 @@ export default function InfoBlock(props: InfoBlockProps) {
   };
 
   const iconName = getIconName();
+  const blockLabel = label ?? kind.charAt(0).toUpperCase() + kind.slice(1);
 
   return (
     <div className={classes} {...rest}>
       <div><Icon name={iconName} /></div>
       <div>
-        {label 
-          ? ( <h2 className="guwmi-info-block-label">{label}</h2> )
-          : ( <h2 className="guwmi-info-block-label">{ kind.charAt(0).toUpperCase() + kind.slice(1) }</h2> )
-        }
+        <h2 className="guwmi-info-block-label">{blockLabel}</h2>
         {children}
       </div>
     </div>

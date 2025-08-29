@@ -265,7 +265,7 @@ interface IconProps extends SVGProps<SVGSVGElement> {
 /**
  * Icon component ****************************************************************************
  *
- * @param ariaLabel - (optional) string value to override the svg aria-label property
+ * @param ariaLabel - (optional) string to set the svg aria-label property, otherwise the icon name will be used for the aria-label
  * @param name - string value for the icon SVG to render.  options are:
  * * 'alert-circle'
  * * 'alert-square'
@@ -309,7 +309,7 @@ interface IconButtonProps extends PropsWithChildren {
     disabled?: boolean;
     className?: string;
     skeleton?: boolean;
-    onClick?: (React__default.MouseEventHandler<HTMLButtonElement> | undefined);
+    onClick?: React__default.MouseEventHandler<HTMLButtonElement>;
 }
 /**
  * Icon Button component ********************************************************************
@@ -317,7 +317,7 @@ interface IconButtonProps extends PropsWithChildren {
  * @param size - (options) size value of 'sm', 'md', or 'lg' - defaults to 'md'
  * @param color - (optional) color value of 'primary', 'secondary', or 'danger' - defaults to 'primary'
  * @param variant - (optional) variant value of 'fill', 'outline', or 'ghost' - defaults to 'fill'
- * @param theme - (optional) theme value of 'square', 'round', or 'pill' - defaults to 'round'
+ * @param theme - (optional) theme value of 'square', 'round', or 'circle' - defaults to 'round'
  * @param ariaLabel - string value for the aria-label property of the <button>> element
  * @param disabled - (optionsl) boolean value that determines the disabled state of a link
  * @param className - (optional) string value of class names to apply to the component
