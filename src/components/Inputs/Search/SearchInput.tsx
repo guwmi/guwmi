@@ -71,7 +71,7 @@ export default function SearchInput(props: SearchInputProps) {
         id={searchId}
         type="search"
         name={name}
-        placeholder={placeholder ? placeholder : 'Search...'}
+        placeholder={placeholder ?? 'Search...'}
         disabled={disabled || skeleton}
         value={value}
         readOnly={readOnly}
