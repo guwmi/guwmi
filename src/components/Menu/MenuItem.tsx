@@ -11,7 +11,7 @@ export interface MenuItemProps extends PropsWithChildren {
   | '_top';
   disabled?: boolean;
   className?: string;
-  onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 /**
