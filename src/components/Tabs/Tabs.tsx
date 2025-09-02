@@ -34,7 +34,13 @@ export default function Tabs(props: TabsProps) {
   const classes = `guwmi-tabs${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
 
   const childrenWithIndex = useMemo(() => {
-    return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<TabProps>, { index: index }))
+    return React.Children.map(children, (child, index) => {
+      if (React.isValidElement(child)) {
+        return React.cloneElement(child as React.ReactElement<TabProps>, { index: index });
+      } else {
+        return child;
+      }
+    })
   }, [children])
 
   useEffect(() => {
@@ -45,7 +51,7 @@ export default function Tabs(props: TabsProps) {
       slider.current.style.width = `${width}px`;
       slider.current.style.left = `${left}px`;
     }
-  }, [tabsContainer, selectedTab])
+  }, [selectedTab])
 
   return (
     <nav className={classes} role="tablist" ref={tabsContainer} {...rest}>
