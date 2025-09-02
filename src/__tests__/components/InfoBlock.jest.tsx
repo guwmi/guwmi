@@ -9,7 +9,7 @@ describe('InfoBlock Component', () => {
   test('renders with correct content', () => {
 
     render (
-      <InfoBlock label="Test label" data-testid="guwmi-info-block">
+      <InfoBlock data-testid="guwmi-info-block">
         <p>Test content</p>
       </InfoBlock>
     )
@@ -17,7 +17,7 @@ describe('InfoBlock Component', () => {
     const info = screen.getByTestId('guwmi-info-block');
     const label = info.querySelector('h2');
     const paragraph = info.querySelector('p');
-    expect(label).toHaveTextContent('Test label');
+    expect(label).toHaveTextContent('Info');
     expect(paragraph).toHaveTextContent('Test content');
   });
 
