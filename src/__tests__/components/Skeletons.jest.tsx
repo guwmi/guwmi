@@ -58,4 +58,22 @@ describe('Skeleton Components', () => {
     expect(block).toHaveStyle('height: 475px');
     expect(block).toHaveStyle('width: 132px');
   });
+
+  test('renders skeletons with class overrides', () => {
+
+    render ( 
+      <>
+        <SkeletonBlock className="test-block" data-testid="guwmi-skeleton-block" />
+        <SkeletonParagraph className="test-paragraph" data-testid="guwmi-skeleton-paragraph" />
+        <SkeletonHeading heading="h3" className="test-heading" data-testid="guwmi-skeleton-heading" />
+      </>
+     );
+
+    const block = screen.getByTestId('guwmi-skeleton-block');
+    const paragraph = screen.getByTestId('guwmi-skeleton-paragraph');
+    const heading = screen.getByTestId('guwmi-skeleton-heading');
+    expect(block).toHaveClass('test-block');
+    expect(paragraph).toHaveClass('test-paragraph');
+    expect(heading).toHaveClass('test-heading');
+  });
 })
