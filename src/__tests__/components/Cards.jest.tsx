@@ -9,12 +9,12 @@ import CardSection from '../../components/Cards/CardSection';
 describe('Card Component', () => {
 
   const cards = [
-    { title: 'Card one', subTitle: 'Card one subtitle', image: '/file.jpg' },
-    { title: 'Card two', subTitle: 'Card two subtitle', image: '/file.jpg' },
-    { title: 'Card three', subTitle: 'Card three subtitle', image: '/file.jpg' },
-    { title: 'Card four', subTitle: 'Card four subtitle', image: '/file.jpg' },
-    { title: 'Card five', subTitle: 'Card five subtitle', image: '/file.jpg' },
-    { title: 'Card six', subTitle: 'Card six subtitle', image: '/file.jpg' }
+    { title: 'Card one', subTitle: 'Card one subtitle', image: '/file.jpg', imageAlt: undefined },
+    { title: 'Card two', subTitle: 'Card two subtitle', image: '/file.jpg', imageAlt: undefined },
+    { title: 'Card three', subTitle: 'Card three subtitle', image: '/file.jpg', imageAlt: undefined },
+    { title: 'Card four', subTitle: 'Card four subtitle', image: '/file.jpg', imageAlt: undefined },
+    { title: 'Card five', subTitle: 'Card five subtitle', image: '/file.jpg', imageAlt: undefined },
+    { title: 'Card six', subTitle: 'Card six subtitle', image: '/file.jpg', imageAlt: '' }
   ]
 
   const sections = [
@@ -56,6 +56,8 @@ describe('Card Component', () => {
         return { ...card, title: '' }
       } else if (index === 3) {
         return { ...card, subTitle: '' }
+      } else if (index === 0) {
+        return { ...card, imageAlt: 'Alt override' }
       } else {
         return card;
       }
@@ -64,7 +66,7 @@ describe('Card Component', () => {
     render(
       <Grid data-testid="guwmi-card-grid">
         {mixedCards.map((card, index) => (
-          <Card title={card.title} subTitle={card.subTitle} image={card.image} key={index}>
+          <Card title={card.title} subTitle={card.subTitle} image={card.image} imageAlt={card.imageAlt} key={index}>
             {sections.map((section, index) => (
               <CardSection key={index}>
                 <p>{section.content}</p>
@@ -81,7 +83,9 @@ describe('Card Component', () => {
     const titles = cardGrid.querySelectorAll('h2');
     expect(titles).toHaveLength(5)
     const subTitles = cardGrid.querySelectorAll('h3');
-    expect(subTitles).toHaveLength(5)
+    expect(subTitles).toHaveLength(5);
+    const imageWithAlt = screen.getByAltText('Alt override');
+    expect(imageWithAlt).toBeInTheDocument();
   });
 
   test('renders with override classes', () => {
@@ -107,7 +111,7 @@ describe('Card Component', () => {
         <CardSection>
           <p>test</p>
         </CardSection>
-    </Card>
+      </Card>
     )
 
     const card = screen.getByTestId('guwmi-card');
