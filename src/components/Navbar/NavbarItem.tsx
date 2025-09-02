@@ -89,7 +89,7 @@ export default function NavbarItem(props: NavbarItemProps) {
           {mappedChildren}
         </a>
       ) : (
-        <button className={buttonClasses} onClick={(e) => handleClick(e)} ref={button} disabled={disabled}>
+        <button className={buttonClasses} onClick={handleClick} ref={button} disabled={disabled}>
           {mappedChildren}
         </button>
       )}
