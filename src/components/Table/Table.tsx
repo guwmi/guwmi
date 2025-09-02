@@ -77,6 +77,7 @@ export default function Table(props: TableProps) {
   const [searchValue, setSearchValue] = useState<string>('');
   const [tableRows, setTableRows] = useState<{ id: number | string, [key: string]: any }[]>(rows);
   const { data: paginatedData, paginate } = usePagination(tableRows);
+  const rowsToRender = hasPagination ? paginatedData.values : tableRows;
 
   const handleSearch = () => {
     const updatedRows = tableSearch(
@@ -142,11 +143,9 @@ export default function Table(props: TableProps) {
                   </tr>
                 </thead>
                 <tbody>
-                  {(!hasPagination && tableRows.length > 0) ? tableRows.map((row) => (
-                    <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
-                  )) : (hasPagination && paginatedData.values.length > 0) ? paginatedData.values.map((row) => (
-                    <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
-                  )) : (
+                  {rowsToRender.length > 0 ?
+                    rowsToRender.map((row) => <TableRow key={`table-${id}-row-${row.id}`} headers={headers} data={row} tableId={id} />
+                  ) : (
                     <tr>
                       <td colSpan={headers.length}>There is no data to display in the table</td>
                     </tr>
