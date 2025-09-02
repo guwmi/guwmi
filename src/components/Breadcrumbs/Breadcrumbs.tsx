@@ -64,11 +64,11 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
                   {link.text}
                 </span>
               ) : isLink ? (
-                <a href={link.href} tabIndex={skeleton ? -1: 0}>
+                <a href={link.href} tabIndex={skeleton ? -1 : 0}>
                   {link.text}
                 </a>
               ) : (
-                <button onClick={link.onClick} disabled={link.disabled} tabIndex={skeleton ? -1: 0}>
+                <button onClick={link.onClick} disabled={link.disabled} tabIndex={skeleton ? -1 : 0}>
                   {link.text}
                 </button>
               )}

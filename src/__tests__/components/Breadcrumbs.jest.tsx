@@ -45,12 +45,14 @@ describe('Breadcrumbs Component', () => {
         data-testid="guwmi-breadcrumbs"
         className="override-class"
         hasBackground
+        skeleton
       />
     )
 
     const breadcrumbs = screen.getByTestId('guwmi-breadcrumbs');
     expect(breadcrumbs).toHaveClass('has-background');
     expect(breadcrumbs).toHaveClass('override-class');
+    expect(breadcrumbs.querySelector('li')).toHaveClass('alt')
   });
 
   test('correctly handles button clicks', async () => {
@@ -81,5 +83,28 @@ describe('Breadcrumbs Component', () => {
     const button = screen.getByText('Button page');
     await user.click(button);
     expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  test('correctly renders in skeleton state', () => {
+
+    render (
+      <Breadcrumbs
+        ariaLabel="Page breadcrumbs"
+        links={[
+          { text: 'Button page', onClick: handleClick },
+          { text: 'Link page', href: "https://www.google.com" },
+          { text: 'Last' }
+        ]}
+        data-testid="guwmi-breadcrumbs"
+        skeleton
+      />
+    )
+
+    const li = screen.getByTestId('guwmi-breadcrumbs').querySelector('li');
+    const button = screen.getByText('Button page');
+    const link = screen.getByText('Button page');
+    expect(li).toHaveClass('guwmi-skeleton');
+    expect(button).toHaveAttribute('tabIndex', '-1');
+    expect(link).toHaveAttribute('tabIndex', '-1');
   });
 })
