@@ -24,7 +24,13 @@ export default function MenuTrigger(props: MenuTriggerProps) {
   const { className, children, ...rest } = props;
   const { isOpen, setIsOpen } = useContext(MenuContext);
   const childrenWithClick = useMemo(() => {
-    return React.Children.map(children, (child) => React.cloneElement(child as React.ReactElement<ButtonProps>, { onClick: () => setIsOpen(!isOpen) }))
+    return React.Children.map(children, (child) => {
+      if (React.isValidElement(child)) {
+        return React.cloneElement(child as React.ReactElement<ButtonProps>, { onClick: () => setIsOpen(!isOpen) });
+      } else {
+        return child;
+      }
+  })
   }, [children, isOpen]);
   const classes = `guwmi-menu-trigger${className ? ' ' + className : ''}`;
 
