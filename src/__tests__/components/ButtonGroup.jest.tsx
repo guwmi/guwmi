@@ -30,13 +30,14 @@ describe('ButtonGroup Component', () => {
   test('renders buttons with prop overrides while keeping custom classes', () => {
 
     render(
-      <ButtonGroup size="lg" color="secondary" variant="outline" theme="pill">
+      <ButtonGroup size="lg" color="secondary" variant="outline" theme="pill" className="group-override" data-testid="guwmi-group">
         <Button href="https://www.google.com" target="_blank" size="md" color="primary" variant="fill" theme="round">Button</Button>
         <Button size="sm" color="danger" variant="ghost" theme="square" className="override-class">Button</Button>
         <Button size="md" color="primary" variant="fill" theme="round">Button</Button>
       </ButtonGroup>
     )
 
+    expect(screen.getByTestId('guwmi-group')).toHaveClass('group-override');
     const buttons = screen.getAllByText('Button');
     buttons.forEach((button, index) => {
       expect(button).toHaveClass('guwmi-btn');
@@ -48,5 +49,16 @@ describe('ButtonGroup Component', () => {
         expect(button).toHaveClass('override-class');
       }
     })
-  })
+  });
+
+  test('correctly handles non-button child', () => {
+
+    render(
+      <ButtonGroup>
+        Test child
+      </ButtonGroup>
+    )
+
+    expect(screen.getByText('Test child')).toBeInTheDocument();
+  });
 })
