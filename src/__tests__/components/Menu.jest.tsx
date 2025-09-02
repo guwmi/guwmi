@@ -131,4 +131,11 @@ describe('Menu Component', () => {
     const item = screen.getByTestId('guwmi-menu-item');
     expect(item).toHaveClass('override-class');
   });
+
+  test('correctly handles menu trigger without correct child element', () => {
+
+    render ( <Menu ariaLabel="Test aria"><MenuTrigger>Test trigger text</MenuTrigger></Menu> );
+
+    expect(screen.getByText('Test trigger text')).toBeInTheDocument();
+  })
 });
