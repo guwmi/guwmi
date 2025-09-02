@@ -357,7 +357,7 @@ interface LoadingProps {
  *
  * @param active - boolean value for whether the loading icon should be displayed
  * @param size - (optional) value of 'sm', 'md', or 'lg' that determines the size of the icon - defaults to 'md'
- * @param speed - (optional) value of slow', 'normal', or 'fast' that determines the speed the icon rotates - defaults to 'nornal'
+ * @param speed - (optional) value of slow', 'normal', or 'fast' that determines the speed the icon rotates - defaults to 'normal'
  * @param position - (optional) value of 'inline', 'block', or 'full-screen' determines the display of the icon - defaults to 'block'
  * @param overlay - (optional) boolean value that determines if an overlay is rendered behind the icon
  * @param className - (optional) string value of class names to apply to the component
@@ -403,7 +403,7 @@ interface MenuItemProps extends PropsWithChildren {
     target?: '_blank' | '_self' | '_parent' | '_top';
     disabled?: boolean;
     className?: string;
-    onClick?: (React__default.MouseEventHandler<HTMLButtonElement> | undefined);
+    onClick?: React__default.MouseEventHandler<HTMLButtonElement>;
 }
 /**
  * Menu Item component *****************************************************************************

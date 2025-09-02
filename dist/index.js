@@ -1132,7 +1132,7 @@ var useTabThrough = (open, onClose, elementRef) => {
 var useTabThrough_default = useTabThrough;
 
 // src/components/Menu/MenuDropdown.tsx
-import { Fragment as Fragment2, jsx as jsx18 } from "react/jsx-runtime";
+import { jsx as jsx18 } from "react/jsx-runtime";
 function MenuDropdown(props) {
   const _a = props, { className, children } = _a, rest = __objRest(_a, ["className", "children"]);
   const { isOpen, setIsOpen, ariaLabel, styles } = useContext2(MenuContext_default);
@@ -1140,7 +1140,7 @@ function MenuDropdown(props) {
   const dropDownRef = useRef8(null);
   const { isVisible } = useAnimation_default(isOpen, "open", dropDownRef);
   useTabThrough_default(isOpen, () => setIsOpen(false), dropDownRef);
-  return /* @__PURE__ */ jsx18(Fragment2, { children: isVisible && /* @__PURE__ */ jsx18(
+  return isVisible && /* @__PURE__ */ jsx18(
     "nav",
     __spreadProps(__spreadValues({
       className: classes,
@@ -1150,7 +1150,7 @@ function MenuDropdown(props) {
     }, rest), {
       children: /* @__PURE__ */ jsx18("ul", { role: "menubar", children })
     })
-  ) });
+  );
 }
 
 // src/components/Menu/MenuItem.tsx
@@ -1182,7 +1182,13 @@ function MenuTrigger(props) {
   const _a = props, { className, children } = _a, rest = __objRest(_a, ["className", "children"]);
   const { isOpen, setIsOpen } = useContext3(MenuContext_default);
   const childrenWithClick = useMemo2(() => {
-    return React3.Children.map(children, (child) => React3.cloneElement(child, { onClick: () => setIsOpen(!isOpen) }));
+    return React3.Children.map(children, (child) => {
+      if (React3.isValidElement(child)) {
+        return React3.cloneElement(child, { onClick: () => setIsOpen(!isOpen) });
+      } else {
+        return child;
+      }
+    });
   }, [children, isOpen]);
   const classes = `guwmi-menu-trigger${className ? " " + className : ""}`;
   return /* @__PURE__ */ jsx20("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: childrenWithClick }));
@@ -1195,15 +1201,15 @@ function Modal(props) {
   const _a = props, {
     open,
     onClose,
-    preventScroll = false,
     size = "md",
+    preventScroll = size === "full-screen" ? true : false,
     className,
     children
   } = _a, rest = __objRest(_a, [
     "open",
     "onClose",
-    "preventScroll",
     "size",
+    "preventScroll",
     "className",
     "children"
   ]);
@@ -1220,7 +1226,7 @@ function Modal(props) {
       {
         className: "guwmi-modal-close-button",
         "aria-label": "Close modal",
-        onClick: () => onClose(),
+        onClick: onClose,
         children: /* @__PURE__ */ jsx21(Icon_default, { name: "close", size: 20 })
       }
     ),
@@ -1282,7 +1288,7 @@ function NavbarGroup(props) {
   const initialRender = useRef10(true);
   useAnimation_default(isOpen, "open", itemRef);
   const buttonChildren = useMemo3(() => React4.Children.map(children, (child) => {
-    if (!isOpen) {
+    if (React4.isValidElement(child) && !isOpen) {
       return React4.cloneElement(child, { disabled: true });
     } else {
       return child;
@@ -1309,7 +1315,7 @@ function NavbarGroup(props) {
       {
         className: "guwmi-navbar-button",
         "aria-expanded": isOpen,
-        onClick: () => setIsOpen(!isOpen),
+        onClick: () => setIsOpen((current) => !current),
         ref: buttonRef,
         children: [
           label,
@@ -1373,11 +1379,11 @@ function NavbarItem(props) {
       return children;
     }
   }, [children, href, onClick, disabled]);
-  return /* @__PURE__ */ jsx24("li", __spreadProps(__spreadValues({ className: classes }, rest), { children: isElement && !disabled ? /* @__PURE__ */ jsx24("div", { className: buttonClasses, children: mappedChildren }) : href && !disabled ? /* @__PURE__ */ jsx24("a", { className: buttonClasses, href, target, children: mappedChildren }) : /* @__PURE__ */ jsx24("button", { className: buttonClasses, onClick: (e) => handleClick(e), ref: button, disabled, children: mappedChildren }) }));
+  return /* @__PURE__ */ jsx24("li", __spreadProps(__spreadValues({ className: classes }, rest), { children: isElement && !disabled ? /* @__PURE__ */ jsx24("div", { className: buttonClasses, children: mappedChildren }) : href && !disabled ? /* @__PURE__ */ jsx24("a", { className: buttonClasses, href, target, children: mappedChildren }) : /* @__PURE__ */ jsx24("button", { className: buttonClasses, onClick: handleClick, ref: button, disabled, children: mappedChildren }) }));
 }
 
 // src/components/Notification/Notification.tsx
-import { useEffect as useEffect11, useState as useState9, useRef as useRef12 } from "react";
+import { useState as useState9 } from "react";
 import { jsx as jsx25, jsxs as jsxs11 } from "react/jsx-runtime";
 function Notification(props) {
   const _a = props, {
@@ -1406,31 +1412,20 @@ function Notification(props) {
         return "info";
     }
   };
-  const iconName = useRef12(getIconName());
-  useEffect11(() => {
-    iconName.current = getIconName();
-  }, [kind]);
+  const iconName = getIconName();
   return isVisible ? /* @__PURE__ */ jsxs11("dialog", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
-    /* @__PURE__ */ jsx25(Icon_default, { name: iconName.current, size: 20, stroke: "3" }),
+    /* @__PURE__ */ jsx25(Icon_default, { name: iconName, size: 20, stroke: "3" }),
     /* @__PURE__ */ jsx25("h2", { children: titleText }),
     /* @__PURE__ */ jsx25("p", { children: content }),
-    /* @__PURE__ */ jsx25(
-      "button",
-      {
-        onClick: () => setIsVisible(false),
-        "aria-label": "Close notification",
-        tabIndex: 0,
-        children: /* @__PURE__ */ jsx25(Icon_default, { name: "close", size: 18 })
-      }
-    )
+    /* @__PURE__ */ jsx25("button", { onClick: () => setIsVisible(false), "aria-label": "Close notification", children: /* @__PURE__ */ jsx25(Icon_default, { name: "close", size: 18 }) })
   ] })) : null;
 }
 
 // src/components/Pagination/Pagination.tsx
 import {
-  useEffect as useEffect12,
+  useEffect as useEffect11,
   useMemo as useMemo5,
-  useRef as useRef13,
+  useRef as useRef12,
   useState as useState10
 } from "react";
 
@@ -1482,12 +1477,13 @@ function SelectInput(props) {
           onChange,
           onBlur,
           onFocus,
-          children: options && options.map((option, index) => /* @__PURE__ */ jsx26("option", { value: option.value, disabled: option.disabled || skeleton, children: option.name }, `${inputId}-${index}`))
+          "aria-describedby": hasError ? `error-${inputId}` : void 0,
+          children: options && options.map((option) => /* @__PURE__ */ jsx26("option", { value: option.value, disabled: option.disabled || skeleton, children: option.name }, `${inputId}-${option.value}`))
         }
       ),
       /* @__PURE__ */ jsx26("span", { className: "guwmi-select-icon", children: /* @__PURE__ */ jsx26(Icon_default, { name: "chevron-down", size: 20 }) })
     ] }),
-    hasError && /* @__PURE__ */ jsx26("span", { className: "guwmi-select-error", children: error })
+    hasError && /* @__PURE__ */ jsx26("span", { id: `error-${inputId}`, className: "guwmi-select-error", children: error })
   ] }));
 }
 
@@ -1513,8 +1509,8 @@ function Pagination(props) {
   ]);
   const [page, setPage] = useState10(currentPage);
   const [size, setSize] = useState10(currentSize);
-  const pageRef = useRef13(currentPage);
-  const sizeRef = useRef13(currentSize);
+  const pageRef = useRef12(currentPage);
+  const sizeRef = useRef12(currentSize);
   const classes = `guwmi-pagination${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
   const numPages = useMemo5(() => Math.ceil(totalItems / size), [totalItems, size]);
   const start = useMemo5(() => size * page - size + 1, [size, page]);
@@ -1529,7 +1525,7 @@ function Pagination(props) {
       return { name: (i + 1).toString(), value: (i + 1).toString() };
     });
   }, [totalItems, size]);
-  useEffect12(() => {
+  useEffect11(() => {
     if (size !== sizeRef.current || page !== pageRef.current) {
       sizeRef.current = size;
       pageRef.current = page;
@@ -1577,7 +1573,7 @@ function Pagination(props) {
 }
 
 // src/components/Inputs/Password/PasswordInput.tsx
-import { useId as useId3, useRef as useRef14, useState as useState11 } from "react";
+import { useId as useId3, useRef as useRef13, useState as useState11 } from "react";
 import { jsx as jsx28, jsxs as jsxs14 } from "react/jsx-runtime";
 function PasswordInput(props) {
   const _a = props, {
@@ -1616,7 +1612,7 @@ function PasswordInput(props) {
     "onFocus"
   ]);
   const inputId = id != null ? id : useId3();
-  const passwordRef = useRef14(null);
+  const passwordRef = useRef13(null);
   const classes = `guwmi-password-input${hasError ? " error" : ""}${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
   const [type, setType] = useState11("password");
   const toggleType = () => {
@@ -1646,7 +1642,7 @@ function PasswordInput(props) {
           onFocus
         }
       ),
-      /* @__PURE__ */ jsx28("button", { onClick: () => toggleType(), "aria-label": type === "password" ? "Show password" : "Hide password", disabled: disabled || skeleton, children: type === "password" ? /* @__PURE__ */ jsx28(Icon_default, { name: "view" }) : /* @__PURE__ */ jsx28(Icon_default, { name: "hide" }) })
+      /* @__PURE__ */ jsx28("button", { onClick: toggleType, "aria-label": type === "password" ? "Show password" : "Hide password", disabled: disabled || skeleton, children: type === "password" ? /* @__PURE__ */ jsx28(Icon_default, { name: "view" }) : /* @__PURE__ */ jsx28(Icon_default, { name: "hide" }) })
     ] }),
     hasError && /* @__PURE__ */ jsx28("span", { children: error })
   ] }));
@@ -1698,7 +1694,7 @@ function RadioGroup(props) {
         disabled: disabled || skeleton,
         children: [
           /* @__PURE__ */ jsx29("legend", { className: skeleton ? "guwmi-skeleton" : null, children: label }),
-          /* @__PURE__ */ jsx29("div", { className: `guwmi-radio-container ${layout}`, children: options && options.map((option, index) => /* @__PURE__ */ jsxs15("div", { className: skeleton ? "guwmi-skeleton" : option.disabled ? "disabled" : null, children: [
+          /* @__PURE__ */ jsx29("div", { className: `guwmi-radio-container ${layout}`, children: options && options.map((option) => /* @__PURE__ */ jsxs15("div", { className: skeleton ? "guwmi-skeleton" : option.disabled ? "disabled" : null, children: [
             /* @__PURE__ */ jsx29(
               "input",
               {
@@ -1713,7 +1709,7 @@ function RadioGroup(props) {
               }
             ),
             /* @__PURE__ */ jsx29("label", { htmlFor: `${inputId}-${option.value}`, children: option.name })
-          ] }, `${inputId}-${index}`)) })
+          ] }, `${inputId}-${option.value}`)) })
         ]
       }
     ),
@@ -1765,7 +1761,7 @@ function SearchInput(props) {
         id: searchId,
         type: "search",
         name,
-        placeholder: placeholder ? placeholder : "Search...",
+        placeholder: placeholder != null ? placeholder : "Search...",
         disabled: disabled || skeleton,
         value,
         readOnly,
@@ -1779,13 +1775,13 @@ function SearchInput(props) {
 }
 
 // src/components/Skeletons/SkeletonBlock.tsx
-import { useEffect as useEffect13, useRef as useRef15 } from "react";
+import { useEffect as useEffect12, useRef as useRef14 } from "react";
 import { jsx as jsx31 } from "react/jsx-runtime";
 function SkeletonBlock(props) {
   const _a = props, { height, width, className } = _a, rest = __objRest(_a, ["height", "width", "className"]);
-  const block = useRef15(null);
+  const block = useRef14(null);
   const classes = `guwmi-skeleton-block guwmi-skeleton${className ? " " + className : ""}`;
-  useEffect13(() => {
+  useEffect12(() => {
     if (height) {
       block.current.style.height = `${height}px`;
     }
@@ -1867,20 +1863,26 @@ function Tab(props) {
 import React6, {
   useContext as useContext5,
   useMemo as useMemo6,
-  useRef as useRef16,
-  useEffect as useEffect14
+  useRef as useRef15,
+  useEffect as useEffect13
 } from "react";
 import { jsx as jsx35 } from "react/jsx-runtime";
 function TabPanels(props) {
   const _a = props, { className, children } = _a, rest = __objRest(_a, ["className", "children"]);
   const { skeleton, selectedTab } = useContext5(TabsContext_default);
   const windowWidth = useWindowWidth();
-  const panels = useRef16(null);
+  const panels = useRef15(null);
   const classes = `guwmi-tab-panels${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
   const childrenWithIndex = useMemo6(() => {
-    return React6.Children.map(children, (child, index) => React6.cloneElement(child, { index }));
+    return React6.Children.map(children, (child, index) => {
+      if (React6.isValidElement(child)) {
+        return React6.cloneElement(child, { index });
+      } else {
+        return child;
+      }
+    });
   }, [children]);
-  useEffect14(() => {
+  useEffect13(() => {
     const active = panels.current.querySelector(".active");
     const height = active.offsetHeight;
     panels.current.style.height = `${height}px`;
@@ -1920,21 +1922,27 @@ function TabPanel(props) {
 // src/components/Tabs/Tabs.tsx
 import React7, {
   useContext as useContext7,
-  useEffect as useEffect15,
+  useEffect as useEffect14,
   useMemo as useMemo7,
-  useRef as useRef17
+  useRef as useRef16
 } from "react";
 import { jsx as jsx37, jsxs as jsxs17 } from "react/jsx-runtime";
 function Tabs(props) {
   const _a = props, { className, children } = _a, rest = __objRest(_a, ["className", "children"]);
   const { skeleton, selectedTab } = useContext7(TabsContext_default);
-  const tabsContainer = useRef17(null);
-  const slider = useRef17(null);
+  const tabsContainer = useRef16(null);
+  const slider = useRef16(null);
   const classes = `guwmi-tabs${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
   const childrenWithIndex = useMemo7(() => {
-    return React7.Children.map(children, (child, index) => React7.cloneElement(child, { index }));
+    return React7.Children.map(children, (child, index) => {
+      if (React7.isValidElement(child)) {
+        return React7.cloneElement(child, { index });
+      } else {
+        return child;
+      }
+    });
   }, [children]);
-  useEffect15(() => {
+  useEffect14(() => {
     if (tabsContainer.current.querySelector(".guwmi-tab.active")) {
       const activeTab = tabsContainer.current.querySelector(".guwmi-tab.active");
       const left = activeTab.offsetLeft;
@@ -1942,7 +1950,7 @@ function Tabs(props) {
       slider.current.style.width = `${width}px`;
       slider.current.style.left = `${left}px`;
     }
-  }, [tabsContainer, selectedTab]);
+  }, [selectedTab]);
   return /* @__PURE__ */ jsxs17("nav", __spreadProps(__spreadValues({ className: classes, role: "tablist", ref: tabsContainer }, rest), { children: [
     /* @__PURE__ */ jsx37("span", { className: "guwmi-tabs-slider", ref: slider }),
     childrenWithIndex
@@ -1970,7 +1978,7 @@ function TabsContainer(props) {
 
 // src/components/Table/Table.tsx
 import {
-  useEffect as useEffect17,
+  useEffect as useEffect16,
   useId as useId7,
   useMemo as useMemo10,
   useState as useState14
@@ -2015,26 +2023,26 @@ var tableSearch = (arr = [], keys, value = "") => {
 var tableSearch_default = tableSearch;
 
 // src/hooks/usePagination.ts
-import { useState as useState13, useEffect as useEffect16, useRef as useRef18, useCallback as useCallback6, useMemo as useMemo8 } from "react";
+import { useState as useState13, useEffect as useEffect15, useRef as useRef17, useCallback as useCallback6, useMemo as useMemo8 } from "react";
 function usePagination(sourceData = []) {
   const [data, setData] = useState13([]);
   const [pageSize, setPageSize] = useState13(5);
   const [currentPage, setCurrentPage] = useState13(1);
-  const numItems = useRef18(sourceData.length);
+  const numItems = useRef17(sourceData.length);
   const paginate = useCallback6((e) => {
     setPageSize(e.currentSize);
     setCurrentPage(e.currentPage);
   }, []);
   const start = useMemo8(() => currentPage * pageSize - pageSize, [pageSize, currentPage]);
   const end = useMemo8(() => currentPage * pageSize, [pageSize, currentPage]);
-  useEffect16(() => {
+  useEffect15(() => {
     if (!isEmpty_default(sourceData)) {
       setData(sourceData.slice(start, end));
     } else {
       setData([]);
     }
   }, [sourceData, pageSize, currentPage]);
-  useEffect16(() => {
+  useEffect15(() => {
     numItems.current = sourceData.length;
   }, [sourceData]);
   return {
@@ -2052,7 +2060,7 @@ function usePagination(sourceData = []) {
 
 // src/components/Table/TableRow.tsx
 import { useMemo as useMemo9 } from "react";
-import { Fragment as Fragment3, jsx as jsx39 } from "react/jsx-runtime";
+import { jsx as jsx39 } from "react/jsx-runtime";
 function TableRow(props) {
   const _a = props, {
     headers,
@@ -2072,11 +2080,11 @@ function TableRow(props) {
     });
     return arr;
   }, [headers, data]);
-  return /* @__PURE__ */ jsx39(Fragment3, { children: cellData && /* @__PURE__ */ jsx39("tr", __spreadProps(__spreadValues({}, rest), { children: cellData.map((cell) => /* @__PURE__ */ jsx39("td", { children: cell.value }, `table-${tableId}-cell-${cell.id}-${cell.col}`)) })) });
+  return cellData.length > 0 && /* @__PURE__ */ jsx39("tr", __spreadProps(__spreadValues({}, rest), { children: cellData.map((cell) => /* @__PURE__ */ jsx39("td", { children: cell.value }, `table-${tableId}-cell-${cell.id}-${cell.col}`)) }));
 }
 
 // src/components/Table/Table.tsx
-import { Fragment as Fragment4, jsx as jsx40, jsxs as jsxs18 } from "react/jsx-runtime";
+import { Fragment as Fragment2, jsx as jsx40, jsxs as jsxs18 } from "react/jsx-runtime";
 function Table(props) {
   const _a = props, {
     title,
@@ -2104,6 +2112,7 @@ function Table(props) {
   const [searchValue, setSearchValue] = useState14("");
   const [tableRows, setTableRows] = useState14(rows);
   const { data: paginatedData, paginate } = usePagination(tableRows);
+  const rowsToRender = hasPagination ? paginatedData.values : tableRows;
   const handleSearch = () => {
     const updatedRows = tableSearch_default(
       rows,
@@ -2112,7 +2121,7 @@ function Table(props) {
     );
     setTableRows(updatedRows);
   };
-  useEffect17(() => {
+  useEffect16(() => {
     if (isSearchable) {
       handleSearch();
     }
@@ -2124,12 +2133,14 @@ function Table(props) {
     ] }),
     /* @__PURE__ */ jsxs18("div", { className: "guwmi-table-content", children: [
       headers.length > 0 && isSearchable && /* @__PURE__ */ jsx40("div", { className: "guwmi-table-search", children: /* @__PURE__ */ jsx40(SearchInput, { onChange: (e) => setSearchValue(e.target.value), skeleton }) }),
-      /* @__PURE__ */ jsx40("table", { cellPadding: 0, cellSpacing: 0, tabIndex: -1, children: skeleton ? /* @__PURE__ */ jsxs18(Fragment4, { children: [
+      /* @__PURE__ */ jsx40("table", { cellPadding: 0, cellSpacing: 0, tabIndex: -1, children: skeleton ? /* @__PURE__ */ jsxs18(Fragment2, { children: [
         /* @__PURE__ */ jsx40("thead", { children: /* @__PURE__ */ jsx40("tr", { children: Array.from({ length: 4 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx40("th", { className: "guwmi-skeleton" }, `guwmi-table-skelton-header-${i}`)) }) }),
         /* @__PURE__ */ jsx40("tbody", { children: Array.from({ length: 5 }, (_, index) => index).map((v, i) => /* @__PURE__ */ jsx40("tr", { children: Array.from({ length: 4 }, (_, index) => index).map((v2, i2) => /* @__PURE__ */ jsx40("td", { className: "guwmi-skeleton" }, `guwmi-table-skelton-td-${i2}`)) }, `guwmi-table-skelton-row-${i}`)) })
-      ] }) : headers.length > 0 ? /* @__PURE__ */ jsxs18(Fragment4, { children: [
+      ] }) : headers.length > 0 ? /* @__PURE__ */ jsxs18(Fragment2, { children: [
         /* @__PURE__ */ jsx40("thead", { children: /* @__PURE__ */ jsx40("tr", { children: headers.map((header, i) => /* @__PURE__ */ jsx40("th", { children: header.title }, `table-${id}-header-${i}`)) }) }),
-        /* @__PURE__ */ jsx40("tbody", { children: !hasPagination && tableRows.length > 0 ? tableRows.map((row) => /* @__PURE__ */ jsx40(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : hasPagination && paginatedData.values.length > 0 ? paginatedData.values.map((row) => /* @__PURE__ */ jsx40(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)) : /* @__PURE__ */ jsx40("tr", { children: /* @__PURE__ */ jsx40("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
+        /* @__PURE__ */ jsx40("tbody", { children: rowsToRender.length > 0 ? rowsToRender.map(
+          (row) => /* @__PURE__ */ jsx40(TableRow, { headers, data: row, tableId: id }, `table-${id}-row-${row.id}`)
+        ) : /* @__PURE__ */ jsx40("tr", { children: /* @__PURE__ */ jsx40("td", { colSpan: headers.length, children: "There is no data to display in the table" }) }) })
       ] }) : /* @__PURE__ */ jsx40("tbody", { children: /* @__PURE__ */ jsx40("tr", { children: /* @__PURE__ */ jsx40("td", { children: "No column headers provided for the table" }) }) }) }),
       hasPagination && /* @__PURE__ */ jsx40(
         Pagination,
@@ -2147,7 +2158,7 @@ function Table(props) {
 }
 
 // src/components/Tag/Tag.tsx
-import { useRef as useRef19 } from "react";
+import { useRef as useRef18 } from "react";
 import { jsx as jsx41 } from "react/jsx-runtime";
 function Tag(props) {
   const _a = props, {
@@ -2172,14 +2183,14 @@ function Tag(props) {
     "onClick"
   ]);
   const classes = `guwmi-tag ${size} ${variant}${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  const button = useRef19(null);
+  const button = useRef18(null);
   const handleClick = (e) => {
     button.current.focus();
     if (onClick) {
       onClick(e);
     }
   };
-  return href && (!disabled || skeleton) ? /* @__PURE__ */ jsx41("a", __spreadProps(__spreadValues({ className: classes, href, ref: button, target }, rest), { children: value })) : (onClick || disabled) && !skeleton ? /* @__PURE__ */ jsx41("button", __spreadProps(__spreadValues({ className: classes, onClick: (e) => handleClick(e), ref: button, disabled }, rest), { children: value })) : /* @__PURE__ */ jsx41("span", __spreadProps(__spreadValues({ className: classes }, rest), { children: value }));
+  return href && (!disabled || skeleton) ? /* @__PURE__ */ jsx41("a", __spreadProps(__spreadValues({ className: classes, href, ref: button, target }, rest), { children: value })) : (onClick || disabled) && !skeleton ? /* @__PURE__ */ jsx41("button", __spreadProps(__spreadValues({ className: classes, onClick: handleClick, ref: button, disabled }, rest), { children: value })) : /* @__PURE__ */ jsx41("span", __spreadProps(__spreadValues({ className: classes }, rest), { children: value }));
 }
 
 // src/components/Inputs/TextArea/TextArea.tsx
@@ -2240,10 +2251,11 @@ function TextArea(props) {
         rows,
         onChange,
         onBlur,
-        onFocus
+        onFocus,
+        "aria-describedby": hasError ? `error-${inputId}` : void 0
       }
     ) }),
-    hasError && /* @__PURE__ */ jsx42("span", { children: error })
+    hasError && /* @__PURE__ */ jsx42("span", { id: `error-${inputId}`, children: error })
   ] }));
 }
 
@@ -2303,10 +2315,11 @@ function TextInput(props) {
         maxLength,
         onChange,
         onBlur,
-        onFocus
+        onFocus,
+        "aria-describedby": hasError ? `error-${inputId}` : void 0
       }
     ) }),
-    hasError && /* @__PURE__ */ jsx43("span", { children: error })
+    hasError && /* @__PURE__ */ jsx43("span", { id: `error-${inputId}`, children: error })
   ] }));
 }
 
