@@ -40,8 +40,8 @@ export default function Modal(props: ModalProps) {
   const {
     open,
     onClose,
-    preventScroll = false,
     size = 'md',
+    preventScroll = size === 'full-screen' ? true : false,
     className,
     children,
     ...rest
@@ -62,7 +62,7 @@ export default function Modal(props: ModalProps) {
             <button
               className="guwmi-modal-close-button"
               aria-label="Close modal"
-              onClick={() => onClose()}
+              onClick={onClose}
             >
               <Icon name="close" size={20} />
             </button>
