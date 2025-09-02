@@ -30,20 +30,17 @@ export default function MenuDropdown(props: MenuDropdownProps) {
   useTabThrough(isOpen, () => setIsOpen(false), dropDownRef);
 
   return (
-    <>
-      {isVisible &&
-        <nav
-          className={classes}
-          ref={dropDownRef}
-          aria-label={ariaLabel}
-          style={styles}
-          {...rest}
-        >
-          <ul role="menubar">
-            {children}
-          </ul>
-        </nav>
-      }
-    </>
+    isVisible &&
+      <nav
+        className={classes}
+        ref={dropDownRef}
+        aria-label={ariaLabel}
+        style={styles}
+        {...rest}
+      >
+        <ul role="menubar">
+          {children}
+        </ul>
+      </nav>
   )
 }
