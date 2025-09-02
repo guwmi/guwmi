@@ -37,7 +37,13 @@ export default function TabPanels(props: TabPanelsProps) {
   const classes = `guwmi-tab-panels${skeleton ? ' guwmi-skeleton' : ''}${className ? ' ' + className : ''}`;
 
   const childrenWithIndex = useMemo(() => {
-    return React.Children.map(children, (child, index) => React.cloneElement(child as React.ReactElement<TabPanelProps>, { index: index }))
+    return React.Children.map(children, (child, index) => {
+      if (React.isValidElement(child)) {
+        return React.cloneElement(child as React.ReactElement<TabPanelProps>, { index: index });
+      } else {
+        return child;
+      }
+    })
   }, [children]);
 
   useEffect(() => {
