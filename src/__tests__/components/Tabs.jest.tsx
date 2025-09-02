@@ -100,5 +100,18 @@ describe('Tabs Components', () => {
     const tabsPanels = screen.getByTestId('guwmi-tabs-panels');
     expect(tabsNav).toHaveClass('guwmi-skeleton');
     expect(tabsPanels).toHaveClass('guwmi-skeleton');
+  });
+
+  test('handles non-element children correctly', () => {
+
+    render (
+      <TabsContainer>
+        <Tabs>Test tabs child</Tabs>
+        <TabPanels>Test tabs panel child</TabPanels>
+      </TabsContainer>
+    )
+
+    expect(screen.getByText('Test tabs child')).toBeInTheDocument();
+    expect(screen.getByText('Test tabs panel child')).toBeInTheDocument();
   })
 })

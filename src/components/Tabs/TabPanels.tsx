@@ -48,7 +48,7 @@ export default function TabPanels(props: TabPanelsProps) {
 
   useEffect(() => {
     const active = panels.current.querySelector('.active');
-    const height = active.offsetHeight;
+    const height = active?.offsetHeight;
     panels.current.style.height = `${height}px`
   }, [selectedTab, windowWidth])
 
