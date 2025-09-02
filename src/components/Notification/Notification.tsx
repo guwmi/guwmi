@@ -1,5 +1,5 @@
 // import library functionality
-import { useEffect, useState, useRef } from 'react';
+import { useState } from 'react';
 
 // import components
 import Icon from '../Icon/Icon';
@@ -52,23 +52,15 @@ export default function Notification(props: NotificationProps) {
         return 'info';
     }
   }
-
-  const iconName = useRef<IconName>(getIconName());
-  useEffect(() => {
-    iconName.current = getIconName();
-  }, [kind]);
+  const iconName: IconName = getIconName();
 
   return (
     isVisible ? (
       <dialog className={classes} {...rest}>
-        <Icon name={iconName.current} size={20} stroke="3" />
+        <Icon name={iconName} size={20} stroke="3" />
         <h2>{titleText}</h2>
         <p>{content}</p>
-        <button
-          onClick={() => setIsVisible(false)}
-          aria-label="Close notification"
-          tabIndex={0}
-        >
+        <button onClick={() => setIsVisible(false)} aria-label="Close notification">
           <Icon name="close" size={18} />
         </button>
       </dialog>
