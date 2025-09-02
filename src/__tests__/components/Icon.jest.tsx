@@ -51,7 +51,7 @@ describe('Icon Component', () => {
 
   test('renders with correct attributes', () => {
 
-    render(<Icon name="close" size={20} stroke="2" color="blue" className="override-class" data-testid="guwmi-icon" />)
+    render(<Icon name="close" size={20} stroke="2" color="blue" className="override-class" ariaLabel="Test aria" data-testid="guwmi-icon" />)
 
     const svg = screen.getByTestId('guwmi-icon');
     expect(svg).toHaveAttribute('height', '20');
@@ -59,5 +59,6 @@ describe('Icon Component', () => {
     expect(svg).toHaveAttribute('stroke-width', '2');
     expect(svg).toHaveAttribute('stroke', 'blue');
     expect(svg).toHaveClass('override-class');
+    expect(svg).toHaveAttribute('aria-label', 'Test aria');
   });
 })
