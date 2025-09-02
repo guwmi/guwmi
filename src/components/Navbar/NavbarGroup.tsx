@@ -50,7 +50,7 @@ export default function NavbarGroup(props: NavbarGroupProps) {
   useAnimation(isOpen, 'open', itemRef);
 
   const buttonChildren = useMemo(() => React.Children.map(children, (child) => {
-    if (!isOpen) {
+    if (React.isValidElement(child) && !isOpen) {
       return React.cloneElement(child as React.ReactElement<NavbarItemProps>, { disabled: true });
     } else {
       return child;
@@ -79,7 +79,7 @@ export default function NavbarGroup(props: NavbarGroupProps) {
       <button
         className="guwmi-navbar-button"
         aria-expanded={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen(current => !current)}
         ref={buttonRef}
       >
         {label}
