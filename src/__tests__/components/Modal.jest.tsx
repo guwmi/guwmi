@@ -67,4 +67,17 @@ describe('Modal Component', () => {
     await user.keyboard('{Escape}');
     expect(handleClose).toHaveBeenCalledTimes(3);
   });
+
+  test('prevents scroll on full-screen modal', () => {
+    
+    const handleClose = jest.fn(); 
+    render(
+      <Modal open={true} onClose={handleClose} size="full-screen" data-testid="guwmi-modal">
+        <p>Modal content</p>
+      </Modal>
+    )
+
+    expect(document.body).toHaveStyle('height: 100%');
+    expect(document.body).toHaveStyle('overflow: hidden');
+  });
 });
