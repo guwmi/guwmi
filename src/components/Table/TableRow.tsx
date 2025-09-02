@@ -46,14 +46,11 @@ export default function TableRow(props: TableRowProps) {
   }, [headers, data]);
 
   return (
-    <>
-      {cellData &&
-        <tr {...rest}>
-          {cellData.map((cell) => (
-            <td key={`table-${tableId}-cell-${cell.id}-${cell.col}`}>{cell.value}</td>
-          ))}
-        </tr>
-      }
-    </>
+    cellData.length > 0 &&
+      <tr {...rest}>
+        {cellData.map((cell) => (
+          <td key={`table-${tableId}-cell-${cell.id}-${cell.col}`}>{cell.value}</td>
+        ))}
+      </tr>
   )
 }
