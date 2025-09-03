@@ -15,7 +15,7 @@ Please note that `react` and `react-dom` are peer dependencies, meaning they mus
 ```
 ### Install
 ```
-npm install @guwmi/ui
+npm install @guwmi/ui@beta
 ```
 ### Implement
 ```
