@@ -45,12 +45,12 @@ export default function NavbarGroup(props: NavbarGroupProps) {
   const contentRef = useRef<HTMLUListElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const classes = `guwmi-navbar-group${isOpen ? ' open' : ''}${className ? ' ' + className : ''}`;
   const initialRender = useRef<boolean>(true);
+  const classes = `guwmi-navbar-group${(isOpen || (initialRender.current && defaultOpen)) ? ' open' : ''}${className ? ' ' + className : ''}`;
   useAnimation(isOpen, 'open', itemRef);
 
   const buttonChildren = useMemo(() => React.Children.map(children, (child) => {
-    if (React.isValidElement(child) && !isOpen) {
+    if (React.isValidElement(child) && (!isOpen && !initialRender.current)) {
       return React.cloneElement(child as React.ReactElement<NavbarItemProps>, { disabled: true });
     } else {
       return child;
@@ -58,12 +58,14 @@ export default function NavbarGroup(props: NavbarGroupProps) {
   }), [children, isOpen]);
 
   useEffect(() => {
-    const defaultHeight = buttonRef.current.offsetHeight;
-    if (contentRef.current && isOpen) {
-      const height = contentRef.current.offsetHeight;
-      itemRef.current.style.height = `${height + defaultHeight}px`;
-    } else {
-      itemRef.current.style.height = `${defaultHeight}px`;
+    if (!initialRender.current) {
+      const defaultHeight = buttonRef.current.offsetHeight;
+      if (contentRef.current && isOpen) {
+        const height = contentRef.current.offsetHeight;
+        itemRef.current.style.height = `${height + defaultHeight}px`;
+      } else {
+        itemRef.current.style.height = `${defaultHeight}px`;
+      }
     }
   }, [isOpen]);
 
@@ -85,11 +87,9 @@ export default function NavbarGroup(props: NavbarGroupProps) {
         {label}
         <Icon name="chevron-right" size={18} />
       </button>
-      {!initialRender.current &&
-        <ul ref={contentRef} tabIndex={!isOpen ? -1 : undefined}>
-          {buttonChildren}
-        </ul>
-      }
+      <ul ref={contentRef} tabIndex={!isOpen ? -1 : undefined}>
+        {buttonChildren}
+      </ul>
     </li>
   )
 }

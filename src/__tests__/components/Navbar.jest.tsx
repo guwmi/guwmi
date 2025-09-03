@@ -32,9 +32,10 @@ describe('Navbar Component', () => {
 
     const nav = screen.getByTestId('guwmi-navbar');
     const topLevel = nav.querySelector('ul');
-    const topLevelItems = topLevel.querySelectorAll('li');
+    const topLevelItems = topLevel.querySelectorAll(':scope > li');
     const subLevel = screen.getByTestId('guwmi-sub-nav');
     const subNavbarItem = subLevel.querySelector('button');
+    expect(subLevel.querySelector('ul')).toHaveAttribute('tabIndex', '-1');
     await user.click(subNavbarItem);
     const subItems = subLevel.querySelectorAll('li');
     expect(nav).toBeInTheDocument();
@@ -42,6 +43,8 @@ describe('Navbar Component', () => {
     expect(topLevelItems).toHaveLength(4);
     expect(subLevel).toBeInTheDocument();
     expect(subItems).toHaveLength(3);
+    expect(subLevel.querySelector('ul')).toBeInTheDocument();
+    expect(subLevel.querySelector('ul')).not.toHaveAttribute('tabIndex');
   });
 
   test('renders with override classes', () => {

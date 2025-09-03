@@ -1284,23 +1284,25 @@ function NavbarGroup(props) {
   const contentRef = useRef10(null);
   const buttonRef = useRef10(null);
   const [isOpen, setIsOpen] = useState8(false);
-  const classes = `guwmi-navbar-group${isOpen ? " open" : ""}${className ? " " + className : ""}`;
   const initialRender = useRef10(true);
+  const classes = `guwmi-navbar-group${isOpen || initialRender.current && defaultOpen ? " open" : ""}${className ? " " + className : ""}`;
   useAnimation_default(isOpen, "open", itemRef);
   const buttonChildren = useMemo3(() => React4.Children.map(children, (child) => {
-    if (React4.isValidElement(child) && !isOpen) {
+    if (React4.isValidElement(child) && (!isOpen && !initialRender.current)) {
       return React4.cloneElement(child, { disabled: true });
     } else {
       return child;
     }
   }), [children, isOpen]);
   useEffect10(() => {
-    const defaultHeight = buttonRef.current.offsetHeight;
-    if (contentRef.current && isOpen) {
-      const height = contentRef.current.offsetHeight;
-      itemRef.current.style.height = `${height + defaultHeight}px`;
-    } else {
-      itemRef.current.style.height = `${defaultHeight}px`;
+    if (!initialRender.current) {
+      const defaultHeight = buttonRef.current.offsetHeight;
+      if (contentRef.current && isOpen) {
+        const height = contentRef.current.offsetHeight;
+        itemRef.current.style.height = `${height + defaultHeight}px`;
+      } else {
+        itemRef.current.style.height = `${defaultHeight}px`;
+      }
     }
   }, [isOpen]);
   useEffect10(() => {
@@ -1323,7 +1325,7 @@ function NavbarGroup(props) {
         ]
       }
     ),
-    !initialRender.current && /* @__PURE__ */ jsx23("ul", { ref: contentRef, tabIndex: !isOpen ? -1 : void 0, children: buttonChildren })
+    /* @__PURE__ */ jsx23("ul", { ref: contentRef, tabIndex: !isOpen ? -1 : void 0, children: buttonChildren })
   ] }));
 }
 
@@ -1884,7 +1886,7 @@ function TabPanels(props) {
   }, [children]);
   useEffect13(() => {
     const active = panels.current.querySelector(".active");
-    const height = active.offsetHeight;
+    const height = active == null ? void 0 : active.offsetHeight;
     panels.current.style.height = `${height}px`;
   }, [selectedTab, windowWidth]);
   return /* @__PURE__ */ jsx35("div", __spreadProps(__spreadValues({ className: classes, ref: panels }, rest), { children: childrenWithIndex }));
