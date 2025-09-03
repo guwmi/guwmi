@@ -927,10 +927,10 @@ function Container(props) {
   };
   return /* @__PURE__ */ jsxs7("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     header && /* @__PURE__ */ jsxs7("header", { className: "guwmi-container-header", children: [
-      sidebarIsDrawer && /* @__PURE__ */ jsx13("div", { children: /* @__PURE__ */ jsx13(
+      sidebar && sidebarIsDrawer && /* @__PURE__ */ jsx13("div", { children: /* @__PURE__ */ jsx13(
         IconButton,
         {
-          ariaLabel: `Open ${sidebarAria}`,
+          ariaLabel: `Open ${sidebarAria != null ? sidebarAria : "application sidebar"}`,
           onClick: openSidebar,
           variant: "ghost",
           children: sidebarButtonIcon
