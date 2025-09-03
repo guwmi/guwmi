@@ -4,7 +4,7 @@ Yup, you guessed it... Guwmi UI is yet another React UI component library. It is
 
 ## Get started
 ### Documentation
-Full documentation is coming soon!
+Full documentation can be found at [https://www.guwmi.com](https://www.guwmi.com).
 ### Peer dependencies
 Please note that `react` and `react-dom` are peer dependencies, meaning they must be installed before using Guwmi UI.
 ```
