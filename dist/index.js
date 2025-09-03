@@ -401,7 +401,7 @@ function AccordionItem(props) {
   }, []);
   useEffect3(() => {
     if (!isAnimating && styles.height !== "0px") {
-      setStyles(__spreadProps(__spreadValues({}, styles), { height: "auto" }));
+      setStyles((prevStyles) => __spreadProps(__spreadValues({}, prevStyles), { height: "auto" }));
     }
   }, [isAnimating]);
   useEffect3(() => {

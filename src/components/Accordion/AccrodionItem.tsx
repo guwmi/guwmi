@@ -75,7 +75,7 @@ export default function AccordionItem(props: AccordionItemProps) {
 
   useEffect(() => {
     if (!isAnimating && styles.height !== '0px') {
-      setStyles({...styles, height: 'auto'});
+      setStyles((prevStyles) => ({...prevStyles, height: 'auto'}));
     }
   }, [isAnimating]);
 

@@ -1,5 +1,5 @@
 // import library functionality
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 // import component to test
@@ -64,7 +64,7 @@ describe('Accordion Component', () => {
       <Accordion>
         {accordionItems.map((item, index) => (
           <AccordionItem title={item.title} id={item.id} key={index} data-testid={item.id}>
-            <p>{item.content}</p>
+            <p style={{height: '150px'}}>{item.content}</p>
           </AccordionItem>
         ))}
       </Accordion>
@@ -80,6 +80,13 @@ describe('Accordion Component', () => {
         expect(screen.getByTestId(item.id).querySelector('section')).toHaveAttribute('hidden');
       }
     })
+    await waitFor(() => {
+      expect(screen.getByTestId(openItem.id).querySelector('section').style.height).not.toBe('150px');
+    })
+    await waitFor(() => {
+      expect(screen.getByTestId(openItem.id).querySelector('section').style.height).not.toBe('auto');
+    })
+    
   });
 
   test('collapses an item when its title is clicked again', async () => {
