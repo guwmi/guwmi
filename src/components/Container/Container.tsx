@@ -71,10 +71,10 @@ export default function Container(props: ContainerProps) {
     <div className={classes} {...rest}>
       {header &&
         <header className="guwmi-container-header">
-          {sidebarIsDrawer &&
+          {sidebar && sidebarIsDrawer &&
             <div>
               <IconButton 
-                ariaLabel={`Open ${sidebarAria}`}
+                ariaLabel={`Open ${sidebarAria ?? 'application sidebar'}`}
                 onClick={openSidebar}
                 variant="ghost"
               >

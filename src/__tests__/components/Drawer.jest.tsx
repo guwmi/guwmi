@@ -10,7 +10,7 @@ describe('Drawer Component', () => {
   let user: UserEvent;
   beforeEach(() => {
     user = userEvent.setup();
-  })
+  });
 
   test('does not render by default', () => {
     
