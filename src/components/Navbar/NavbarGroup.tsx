@@ -44,13 +44,12 @@ export default function NavbarGroup(props: NavbarGroupProps) {
   const itemRef = useRef<HTMLLIElement>(null);
   const contentRef = useRef<HTMLUListElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const initialRender = useRef<boolean>(true);
-  const classes = `guwmi-navbar-group${(isOpen || (initialRender.current && defaultOpen)) ? ' open' : ''}${className ? ' ' + className : ''}`;
+  const [isOpen, setIsOpen] = useState<boolean>(defaultOpen);
+  const classes = `guwmi-navbar-group${isOpen? ' open' : ''}${className ? ' ' + className : ''}`;
   useAnimation(isOpen, 'open', itemRef);
 
   const buttonChildren = useMemo(() => React.Children.map(children, (child) => {
-    if (React.isValidElement(child) && (!isOpen && !initialRender.current)) {
+    if (React.isValidElement(child) && !isOpen) {
       return React.cloneElement(child as React.ReactElement<NavbarItemProps>, { disabled: true });
     } else {
       return child;
@@ -58,23 +57,14 @@ export default function NavbarGroup(props: NavbarGroupProps) {
   }), [children, isOpen]);
 
   useEffect(() => {
-    if (!initialRender.current) {
-      const defaultHeight = buttonRef.current.offsetHeight;
-      if (contentRef.current && isOpen) {
-        const height = contentRef.current.offsetHeight;
-        itemRef.current.style.height = `${height + defaultHeight}px`;
-      } else {
-        itemRef.current.style.height = `${defaultHeight}px`;
-      }
+    const defaultHeight = buttonRef.current.offsetHeight;
+    if (contentRef.current && isOpen) {
+      const height = contentRef.current.offsetHeight;
+      itemRef.current.style.height = `${height + defaultHeight}px`;
+    } else {
+      itemRef.current.style.height = `${defaultHeight}px`;
     }
   }, [isOpen]);
-
-  useEffect(() => {
-    initialRender.current = false;
-    if (defaultOpen) {
-      setIsOpen(true);
-    }
-  }, []);
 
   return (
     <li className={classes} ref={itemRef} {...rest}>
