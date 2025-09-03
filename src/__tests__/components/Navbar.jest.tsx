@@ -117,6 +117,25 @@ describe('Navbar Component', () => {
     expect(link).toHaveAttribute('href', 'https://www.google.com');
   });
 
+  test('renders with anchor elements', () => {
+
+    render(
+      <>
+        <NavbarItem data-testid="guwmi-nav-item"><a href="https://www.google.com">Link</a></NavbarItem>
+        <NavbarItem disabled><a href="https://www.google.com">Disabled link</a></NavbarItem>
+      </>
+    );
+
+    const div = screen.getByTestId('guwmi-nav-item');
+    const link = screen.getByText('Link');
+    const disabledLink = screen.getByText('Disabled link');
+    expect(div.tagName).not.toBe('A');
+    expect(link.tagName).toBe('A');
+    expect(link).toHaveAttribute('href', 'https://www.google.com');
+    expect(disabledLink).toHaveAttribute('tabIndex', '-1');
+    expect(disabledLink).toHaveAttribute('href', '');
+  });
+
   test('does not call onClick handler when disabled', async () => {
 
     const handleClick = jest.fn();
