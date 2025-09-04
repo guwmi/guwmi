@@ -15,7 +15,7 @@ Please note that `react` and `react-dom` are peer dependencies, meaning they mus
 ```
 ### Install
 ```
-npm install @guwmi/ui@beta
+npm install @guwmi/ui
 ```
 ### Import the styles
 Import the stylesheet into the root component of your app.  
