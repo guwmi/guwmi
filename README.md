@@ -17,6 +17,13 @@ Please note that `react` and `react-dom` are peer dependencies, meaning they mus
 ```
 npm install @guwmi/ui@beta
 ```
+### Import the styles
+Import the stylesheet into the root component of your app.  
+
+For example, in a Next.js app using page router, import the styles into the `_app.js` or `_app.ts` file.  For Next.js using the app router import the styles into the `layout.js` or `layout.tsx` file.
+```
+import '@guwmi/ui/dist/styles.css';
+```
 ### Implement
 ```
 // import the components
