@@ -1,6 +1,3 @@
-// import library styles sheet
-import './css/guwmi.css';
-
 // import components
 import Accordion from './components/Accordion/Accordion';
 import AccordionItem from './components/Accordion/AccrodionItem';

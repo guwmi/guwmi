@@ -2,7 +2,10 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig(() => {
   return {
-    entry: ['./src/index.ts'],
+    entry: {
+      'index': './src/index.ts',
+      'styles': './src/css/guwmi.css'
+    },
     loader: {
       '.css': 'copy',
       '.scss': 'copy',
