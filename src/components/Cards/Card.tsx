@@ -7,6 +7,7 @@ export interface CardProps extends PropsWithChildren {
   subTitle?: string;
   image?: string;
   imageAlt?: string;
+  imageHeight?: number;
   className?: string;
   skeleton?: boolean;
 }
@@ -18,6 +19,7 @@ export interface CardProps extends PropsWithChildren {
  * @param subTitle - (optional) string value for the sub title of the card - renders as an <h3> element
  * @param image - (optional) string value for the url of an image for the card
  * @param imageAlt - (optional) string value for the alt tag on the card image
+ * @param imageHeight - (optional) number value for the height in pixels for the card image
  * @param className - (optional) string value of class names to apply to the component
  * @param skeleton - (optional) boolean vaule for whether the component should display as a skeleton
  * 
@@ -30,6 +32,7 @@ export default function Card(props: CardProps) {
     subTitle,
     image,
     imageAlt,
+    imageHeight,
     className,
     children,
     skeleton,
@@ -40,7 +43,7 @@ export default function Card(props: CardProps) {
   return (
     <div className={classes} {...rest}>
       {image && 
-        <img src={image} alt={imageAlt ?? ''} className="guwmi-card-image" />
+        <img src={image} alt={imageAlt ?? ''} style={imageHeight ? {height: `${imageHeight}px`} : undefined} className="guwmi-card-image" />
       }
       {(title || subTitle) &&
         <div className="guwmi-card-section guwmi-card-title">

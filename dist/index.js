@@ -560,6 +560,7 @@ function Card(props) {
     subTitle,
     image,
     imageAlt,
+    imageHeight,
     className,
     children,
     skeleton
@@ -568,13 +569,14 @@ function Card(props) {
     "subTitle",
     "image",
     "imageAlt",
+    "imageHeight",
     "className",
     "children",
     "skeleton"
   ]);
   const classes = `guwmi-card${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
   return /* @__PURE__ */ jsxs4("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
-    image && /* @__PURE__ */ jsx8("img", { src: image, alt: imageAlt != null ? imageAlt : "", className: "guwmi-card-image" }),
+    image && /* @__PURE__ */ jsx8("img", { src: image, alt: imageAlt != null ? imageAlt : "", style: imageHeight ? { height: `${imageHeight}px` } : void 0, className: "guwmi-card-image" }),
     (title || subTitle) && /* @__PURE__ */ jsxs4("div", { className: "guwmi-card-section guwmi-card-title", children: [
       title && /* @__PURE__ */ jsx8("h2", { children: title }),
       subTitle && /* @__PURE__ */ jsx8("h3", { children: subTitle })
