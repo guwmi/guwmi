@@ -31,21 +31,27 @@
 }
 .guwmi-vertical-grid.pad-1 {
   padding: 1rem;
+  max-width: calc(100vw - 2rem);
 }
 .guwmi-vertical-grid.pad-2 {
   padding: 2rem;
+  max-width: calc(100vw - 4rem);
 }
 .guwmi-vertical-grid.pad-3 {
   padding: 3rem;
+  max-width: calc(100vw - 6rem);
 }
 .guwmi-vertical-grid.pad-4 {
   padding: 4rem;
+  max-width: calc(100vw - 8rem);
 }
 .guwmi-vertical-grid.pad-5 {
   padding: 5rem;
+  max-width: calc(100vw - 10rem);
 }
 .guwmi-vertical-grid.pad-6 {
   padding: 6rem;
+  max-width: calc(100vw - 12rem);
 }
 .guwmi-vertical-grid > * {
   box-sizing: border-box;

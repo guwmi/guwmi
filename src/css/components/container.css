@@ -27,6 +27,7 @@
 .guwmi-container > div:not(.guwmi-container-header) .guwmi-container-content {
   flex-grow: 1;
   flex-basis: 75%;
+  max-width: 100%;
 }
 
 @media (prefers-color-scheme: light) {

@@ -15,12 +15,12 @@
   &.space-6 { gap: 6rem; }
 
   &.pad-0 { padding: 0; }
-  &.pad-1 { padding: 1rem; }
-  &.pad-2 { padding: 2rem; }
-  &.pad-3 { padding: 3rem; }
-  &.pad-4 { padding: 4rem; }
-  &.pad-5 { padding: 5rem; }
-  &.pad-6 { padding: 6rem; }
+  &.pad-1 { padding: 1rem; max-width: calc(100vw - 2rem); }
+  &.pad-2 { padding: 2rem; max-width: calc(100vw - 4rem); }
+  &.pad-3 { padding: 3rem; max-width: calc(100vw - 6rem); }
+  &.pad-4 { padding: 4rem; max-width: calc(100vw - 8rem); }
+  &.pad-5 { padding: 5rem; max-width: calc(100vw - 10rem); }
+  &.pad-6 { padding: 6rem; max-width: calc(100vw - 12rem); }
 
   > * {
     box-sizing: border-box;

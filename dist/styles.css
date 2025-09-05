@@ -444,6 +444,7 @@
 .guwmi-container > div:not(.guwmi-container-header) .guwmi-container-content {
   flex-grow: 1;
   flex-basis: 75%;
+  max-width: 100%;
 }
 
 @media (prefers-color-scheme: light) {
@@ -1724,7 +1725,6 @@
   background: var(--guwmi-primary-bg);
   border-radius: var(--guwmi-radius);
   border: solid 1px var(--guwmi-secondary-bg);
-  overflow-x: auto;
 }
 .guwmi-table-container .guwmi-table-header {
   background: var(--guwmi-secondary-bg);
@@ -1758,12 +1758,9 @@
 .guwmi-table-container.condensed td {
   padding: 0.66rem;
 }
-.guwmi-table-container .guwmi-table-content {
-  padding: 0.25rem 1rem;
-}
 .guwmi-table-container .guwmi-table-search {
-  margin: 1rem 0 0.5rem;
-  width: 100%;
+  margin: 1rem 1rem 0.5rem;
+  width: calc(100% - 2rem);
 }
 .guwmi-table-container .guwmi-table-search .guwmi-search-input input {
   background: var(--guwmi-secondary-bg);
@@ -1771,12 +1768,17 @@
 .guwmi-table-container .guwmi-table-search .guwmi-search-input input::placeholder {
   opacity: 0.65;
 }
-.guwmi-table-container table {
-  width: 100%;
-  table-layout: fixed;
+.guwmi-table-container .guwmi-table-content {
+  margin: 0.25rem 1rem;
+  width: calc(100% - 2rem);
+  overflow-x: auto;
 }
-.guwmi-table-container table th,
-.guwmi-table-container table td {
+.guwmi-table-container .guwmi-table-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.guwmi-table-container .guwmi-table-content table th,
+.guwmi-table-container .guwmi-table-content table td {
   text-align: left;
   padding: 1rem;
   margin: 0;
@@ -1785,30 +1787,31 @@
   font-size: 0.85rem;
   color: var(--guwmi-high-contrast-bg);
 }
-.guwmi-table-container table th.guwmi-skeleton,
-.guwmi-table-container table td.guwmi-skeleton {
+.guwmi-table-container .guwmi-table-content table th.guwmi-skeleton,
+.guwmi-table-container .guwmi-table-content table td.guwmi-skeleton {
   height: 1.5rem;
 }
-.guwmi-table-container table th.guwmi-skeleton::after,
-.guwmi-table-container table td.guwmi-skeleton::after {
+.guwmi-table-container .guwmi-table-content table th.guwmi-skeleton::after,
+.guwmi-table-container .guwmi-table-content table td.guwmi-skeleton::after {
   height: 40%;
   width: 75%;
   top: 50%;
   transform: translateY(-50%);
 }
-.guwmi-table-container table thead th {
+.guwmi-table-container .guwmi-table-content table thead th {
   border-color: var(--guwmi-text);
   font-size: 0.9rem;
   color: var(--guwmi-text);
 }
-.guwmi-table-container table thead th.guwmi-skeleton::after {
+.guwmi-table-container .guwmi-table-content table thead th.guwmi-skeleton::after {
   width: 50%;
 }
-.guwmi-table-container table tbody tr:last-of-type td {
+.guwmi-table-container .guwmi-table-content table tbody tr:last-of-type td {
   border: 0;
 }
 .guwmi-table-container .guwmi-pagination {
-  width: calc(100% - 1.25rem);
+  width: calc(100% - 3.25rem);
+  margin: 0 1rem;
   padding: 0.25rem 0.25rem 0.25rem 1rem;
   background: var(--guwmi-secondary-bg);
   border-radius: var(--guwmi-radius);
@@ -2070,21 +2073,27 @@ a.guwmi-tag.disabled {
 }
 .guwmi-vertical-grid.pad-1 {
   padding: 1rem;
+  max-width: calc(100vw - 2rem);
 }
 .guwmi-vertical-grid.pad-2 {
   padding: 2rem;
+  max-width: calc(100vw - 4rem);
 }
 .guwmi-vertical-grid.pad-3 {
   padding: 3rem;
+  max-width: calc(100vw - 6rem);
 }
 .guwmi-vertical-grid.pad-4 {
   padding: 4rem;
+  max-width: calc(100vw - 8rem);
 }
 .guwmi-vertical-grid.pad-5 {
   padding: 5rem;
+  max-width: calc(100vw - 10rem);
 }
 .guwmi-vertical-grid.pad-6 {
   padding: 6rem;
+  max-width: calc(100vw - 12rem);
 }
 .guwmi-vertical-grid > * {
   box-sizing: border-box;

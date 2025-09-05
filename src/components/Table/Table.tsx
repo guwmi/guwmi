@@ -106,12 +106,12 @@ export default function Table(props: TableProps) {
           }
         </div>
       }
+      {(headers.length > 0 && isSearchable) &&
+        <div className="guwmi-table-search">
+          <SearchInput onChange={(e) => setSearchValue(e.target.value)} skeleton={skeleton} />
+        </div>
+      }
       <div className="guwmi-table-content">
-        {(headers.length > 0 && isSearchable) &&
-          <div className="guwmi-table-search">
-            <SearchInput onChange={(e) => setSearchValue(e.target.value)} skeleton={skeleton} />
-          </div>
-        }
         <table cellPadding={0} cellSpacing={0} tabIndex={-1}>
           {skeleton ? (
             <>
@@ -161,17 +161,17 @@ export default function Table(props: TableProps) {
             )
           )}
         </table>
-        {hasPagination &&
-          <Pagination
-            totalItems={tableRows.length}
-            pageSizes={[5,10,20,50]}
-            currentPage={paginatedData.currentPage}
-            currentSize={paginatedData.pageSize}
-            onChange={paginate}
-            skeleton={skeleton}
-          />
-        }
       </div>
+      {hasPagination &&
+        <Pagination
+          totalItems={tableRows.length}
+          pageSizes={[5,10,20,50]}
+          currentPage={paginatedData.currentPage}
+          currentSize={paginatedData.pageSize}
+          onChange={paginate}
+          skeleton={skeleton}
+        />
+      }
     </div>
   )
 }
