@@ -19,14 +19,14 @@ declare function Accordion(props: AccordionProps): react_jsx_runtime.JSX.Element
 
 interface AccordionItemProps extends PropsWithChildren {
     title: string;
-    id: string;
+    id?: string;
     className?: string;
 }
 /**
  * Accordion item component *****************************************************************
  *
  * @param title - string value for the accordion title (button that opperates the accordion)
- * @param id - string value for the id of the accordion content
+ * @param id - (optional) string value for the id of the accordion content
  * @param className - (optional) string value of class names to apply to the component
  *
  */

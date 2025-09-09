@@ -5,7 +5,8 @@ import {
   useRef,
   useState,
   useEffect,
-  PropsWithChildren
+  PropsWithChildren,
+  useId
 } from 'react';
 
 // import custom functionality
@@ -20,7 +21,7 @@ import AccordionContext from './AccordionContext';
 // compopnent type
 export interface AccordionItemProps extends PropsWithChildren {
   title: string;
-  id: string;
+  id?: string;
   className?: string;
 }
 
@@ -28,7 +29,7 @@ export interface AccordionItemProps extends PropsWithChildren {
  * Accordion item component *****************************************************************
  * 
  * @param title - string value for the accordion title (button that opperates the accordion)
- * @param id - string value for the id of the accordion content
+ * @param id - (optional) string value for the id of the accordion content
  * @param className - (optional) string value of class names to apply to the component
  * 
  */
@@ -38,7 +39,7 @@ export default function AccordionItem(props: AccordionItemProps) {
   const {
     children,
     title,
-    id,
+    id = useId(),
     className,
     ...rest
   } = props;

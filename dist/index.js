@@ -69,7 +69,8 @@ import {
   useContext,
   useRef,
   useState as useState3,
-  useEffect as useEffect3
+  useEffect as useEffect3,
+  useId
 } from "react";
 
 // src/hooks/useWindowWidth.ts
@@ -361,7 +362,7 @@ function AccordionItem(props) {
   const _a = props, {
     children,
     title,
-    id,
+    id = useId(),
     className
   } = _a, rest = __objRest(_a, [
     "children",
@@ -594,7 +595,7 @@ function CardSection(props) {
 }
 
 // src/components/Inputs/Checkbox/Checkbox.tsx
-import { useId } from "react";
+import { useId as useId2 } from "react";
 import { jsx as jsx10, jsxs as jsxs5 } from "react/jsx-runtime";
 function Checkbox(props) {
   const _a = props, {
@@ -621,7 +622,7 @@ function Checkbox(props) {
     "onFocus"
   ]);
   const classes = `guwmi-checkbox-input${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
-  const inputId = id != null ? id : useId();
+  const inputId = id != null ? id : useId2();
   const lowerCaseLabel = label.toLowerCase().replaceAll(" ", "-");
   return /* @__PURE__ */ jsxs5("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsxs5("div", { className: `guwmi-checkbox-container${skeleton ? " guwmi-skeleton" : ""}`, children: [
@@ -1428,7 +1429,7 @@ import {
 } from "react";
 
 // src/components/Inputs/Select/SelectInput.tsx
-import { useId as useId2 } from "react";
+import { useId as useId3 } from "react";
 import { jsx as jsx26, jsxs as jsxs12 } from "react/jsx-runtime";
 function SelectInput(props) {
   const _a = props, {
@@ -1460,7 +1461,7 @@ function SelectInput(props) {
     "onBlur",
     "onFocus"
   ]);
-  const inputId = id != null ? id : useId2();
+  const inputId = id != null ? id : useId3();
   const classes = `guwmi-select-input${hasError ? " error" : ""}${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
   return /* @__PURE__ */ jsxs12("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsx26("label", { className: skeleton ? "guwmi-skeleton" : null, htmlFor: inputId, children: label }),
@@ -1571,7 +1572,7 @@ function Pagination(props) {
 }
 
 // src/components/Inputs/Password/PasswordInput.tsx
-import { useId as useId3, useRef as useRef13, useState as useState11 } from "react";
+import { useId as useId4, useRef as useRef13, useState as useState11 } from "react";
 import { jsx as jsx28, jsxs as jsxs14 } from "react/jsx-runtime";
 function PasswordInput(props) {
   const _a = props, {
@@ -1609,7 +1610,7 @@ function PasswordInput(props) {
     "onBlur",
     "onFocus"
   ]);
-  const inputId = id != null ? id : useId3();
+  const inputId = id != null ? id : useId4();
   const passwordRef = useRef13(null);
   const classes = `guwmi-password-input${hasError ? " error" : ""}${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
   const [type, setType] = useState11("password");
@@ -1647,7 +1648,7 @@ function PasswordInput(props) {
 }
 
 // src/components/Inputs/RadioGroup/RadioGroup.tsx
-import { useId as useId4 } from "react";
+import { useId as useId5 } from "react";
 import { jsx as jsx29, jsxs as jsxs15 } from "react/jsx-runtime";
 function RadioGroup(props) {
   const _a = props, {
@@ -1681,7 +1682,7 @@ function RadioGroup(props) {
     "onBlur",
     "onFocus"
   ]);
-  const inputId = id != null ? id : useId4();
+  const inputId = id != null ? id : useId5();
   const classes = `guwmi-radio-group${hasError ? " error" : ""}${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
   return /* @__PURE__ */ jsxs15("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsxs15(
@@ -1716,7 +1717,7 @@ function RadioGroup(props) {
 }
 
 // src/components/Inputs/Search/SearchInput.tsx
-import { useId as useId5 } from "react";
+import { useId as useId6 } from "react";
 import { jsx as jsx30, jsxs as jsxs16 } from "react/jsx-runtime";
 function SearchInput(props) {
   const _a = props, {
@@ -1749,7 +1750,7 @@ function SearchInput(props) {
     "onFocus"
   ]);
   const classes = `guwmi-search-input${skeleton ? " guwmi-skeleton" : ""}${className ? " " + className : ""}`;
-  const searchId = id != null ? id : useId5();
+  const searchId = id != null ? id : useId6();
   return /* @__PURE__ */ jsxs16("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsx30("span", { children: /* @__PURE__ */ jsx30(Icon_default, { name: "search", size: 18 }) }),
     /* @__PURE__ */ jsx30("label", { htmlFor: searchId, className: "guwmi-sr-only", children: label != null ? label : "Search" }),
@@ -1956,7 +1957,7 @@ function Tabs(props) {
 }
 
 // src/components/Tabs/TabsContainer.tsx
-import { useState as useState12, useId as useId6 } from "react";
+import { useState as useState12, useId as useId7 } from "react";
 import { jsx as jsx38 } from "react/jsx-runtime";
 function TabsContainer(props) {
   const _a = props, {
@@ -1970,14 +1971,14 @@ function TabsContainer(props) {
   ]);
   const [selectedTab, setSelectedTab] = useState12(0);
   const classes = `guwmi-tabs-container${className ? " " + className : ""}`;
-  const id = useId6();
+  const id = useId7();
   return /* @__PURE__ */ jsx38(TabsContext_default.Provider, { value: { skeleton, id, selectedTab, setSelectedTab }, children: /* @__PURE__ */ jsx38("div", __spreadProps(__spreadValues({ className: classes }, rest), { children })) });
 }
 
 // src/components/Table/Table.tsx
 import {
   useEffect as useEffect16,
-  useId as useId7,
+  useId as useId8,
   useMemo as useMemo10,
   useState as useState14
 } from "react";
@@ -2103,7 +2104,7 @@ function Table(props) {
     "className",
     "skeleton"
   ]);
-  const id = useId7();
+  const id = useId8();
   const isSearchable = useMemo10(() => headers.some((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const searchHeaders = useMemo10(() => headers.filter((header) => (header == null ? void 0 : header.search) === "includes" || (header == null ? void 0 : header.search) === "starts-with"), [headers]);
   const classes = `guwmi-table-container${isCondensed ? " condensed" : ""}${className ? " " + className : ""}`;
@@ -2190,7 +2191,7 @@ function Tag(props) {
 }
 
 // src/components/Inputs/TextArea/TextArea.tsx
-import { useId as useId8 } from "react";
+import { useId as useId9 } from "react";
 import { jsx as jsx42, jsxs as jsxs19 } from "react/jsx-runtime";
 function TextArea(props) {
   const _a = props, {
@@ -2230,7 +2231,7 @@ function TextArea(props) {
     "onBlur",
     "onFocus"
   ]);
-  const inputId = id != null ? id : useId8();
+  const inputId = id != null ? id : useId9();
   const classes = `guwmi-textarea${hasError ? " error" : ""}${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
   return /* @__PURE__ */ jsxs19("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsx42("label", { htmlFor: inputId, className: skeleton && !hideLabel ? "guwmi-skeleton" : hideLabel ? "guwmi-sr-only" : null, children: label }),
@@ -2256,7 +2257,7 @@ function TextArea(props) {
 }
 
 // src/components/Inputs/Text/TextInput.tsx
-import { useId as useId9 } from "react";
+import { useId as useId10 } from "react";
 import { jsx as jsx43, jsxs as jsxs20 } from "react/jsx-runtime";
 function TextInput(props) {
   const _a = props, {
@@ -2294,7 +2295,7 @@ function TextInput(props) {
     "onBlur",
     "onFocus"
   ]);
-  const inputId = id != null ? id : useId9();
+  const inputId = id != null ? id : useId10();
   const classes = `guwmi-text-input${hasError ? " error" : ""}${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
   return /* @__PURE__ */ jsxs20("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsx43("label", { htmlFor: inputId, className: skeleton && !hideLabel ? "guwmi-skeleton" : hideLabel ? "guwmi-sr-only" : null, children: label }),
@@ -2320,7 +2321,7 @@ function TextInput(props) {
 }
 
 // src/components/Inputs/Toggle/Toggle.tsx
-import { useId as useId10 } from "react";
+import { useId as useId11 } from "react";
 import { jsx as jsx44, jsxs as jsxs21 } from "react/jsx-runtime";
 function Toggle(props) {
   const _a = props, {
@@ -2349,7 +2350,7 @@ function Toggle(props) {
     "onFocus"
   ]);
   const classes = `guwmi-toggle ${labelAlign}${disabled ? " disabled" : ""}${className ? " " + className : ""}`;
-  const inputId = id != null ? id : useId10();
+  const inputId = id != null ? id : useId11();
   const lowerCaseLabel = label.toLowerCase().replaceAll(" ", "-");
   return /* @__PURE__ */ jsxs21("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsx44("div", { className: `guwmi-toggle-container${skeleton ? " guwmi-skeleton" : ""}`, children: /* @__PURE__ */ jsx44(
@@ -2370,7 +2371,7 @@ function Toggle(props) {
 }
 
 // src/components/Tooltip/Tooltip.tsx
-import { useId as useId11 } from "react";
+import { useId as useId12 } from "react";
 import { jsx as jsx45, jsxs as jsxs22 } from "react/jsx-runtime";
 function Tooltip(props) {
   const _a = props, {
@@ -2384,7 +2385,7 @@ function Tooltip(props) {
     "className",
     "children"
   ]);
-  const id = useId11();
+  const id = useId12();
   const classes = `guwmi-tooltip ${align}${className ? " " + className : ""}`;
   return /* @__PURE__ */ jsxs22("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
     /* @__PURE__ */ jsx45("span", { role: "tooltip", id, children: text }),
