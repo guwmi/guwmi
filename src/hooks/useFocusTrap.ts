@@ -27,6 +27,15 @@ const useFocusTrap: Hook = (open, onClose, elementRef) => {
     }
   }, [elementRef.current]);
 
+  const setInitialFocus = useCallback(() => {
+    const focusableElements: NodeListOf<HTMLFormElement> = elementRef.current.querySelectorAll('a[href], button, input, textarea, select, details, [tabindex]');
+    if (focusableElements.length === 0 ) {
+      elementRef.current?.focus();
+    } else {
+      focusableElements[0].focus();
+    }
+  }, [elementRef.current])
+
   const handleEscape = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       onClose();
@@ -37,7 +46,7 @@ const useFocusTrap: Hook = (open, onClose, elementRef) => {
 
     if (open) {
       triggerRef.current = document.activeElement as HTMLButtonElement;
-      setTimeout(() => elementRef.current?.focus(), 25);
+      setTimeout(() => setInitialFocus(), 25);
       document.addEventListener('keydown', handleTab);
       document.addEventListener('keydown', handleEscape);
     } else {

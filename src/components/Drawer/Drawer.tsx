@@ -58,6 +58,7 @@ export default function Drawer(props: DrawerProps) {
       <BodyPortal>
           <div className="guwmi-drawer-overlay" ref={drawerOverlay} {...rest}>
             <aside className={classes} aria-label={ariaLabel} ref={drawer}>
+              {children}
               <button
                 className="guwmi-drawer-close-button"
                 aria-label="Close drawer"
@@ -65,7 +66,6 @@ export default function Drawer(props: DrawerProps) {
               >
                 <Icon name="close" size={20} />
               </button>
-              {children}
             </aside>
           </div>
       </BodyPortal>

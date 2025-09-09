@@ -721,6 +721,15 @@ var useFocusTrap = (open, onClose, elementRef) => {
       }
     }
   }, [elementRef.current]);
+  const setInitialFocus = useCallback3(() => {
+    var _a;
+    const focusableElements = elementRef.current.querySelectorAll("a[href], button, input, textarea, select, details, [tabindex]");
+    if (focusableElements.length === 0) {
+      (_a = elementRef.current) == null ? void 0 : _a.focus();
+    } else {
+      focusableElements[0].focus();
+    }
+  }, [elementRef.current]);
   const handleEscape = useCallback3((e) => {
     if (e.key === "Escape") {
       onClose();
@@ -730,10 +739,7 @@ var useFocusTrap = (open, onClose, elementRef) => {
     var _a;
     if (open) {
       triggerRef.current = document.activeElement;
-      setTimeout(() => {
-        var _a2;
-        return (_a2 = elementRef.current) == null ? void 0 : _a2.focus();
-      }, 25);
+      setTimeout(() => setInitialFocus(), 25);
       document.addEventListener("keydown", handleTab);
       document.addEventListener("keydown", handleEscape);
     } else {
@@ -833,6 +839,7 @@ function Drawer(props) {
   useClickOutside_default(open, onClose, drawer);
   usePreventScroll_default(open, preventScroll);
   return isVisible && /* @__PURE__ */ jsx11(BodyPortal, { children: /* @__PURE__ */ jsx11("div", __spreadProps(__spreadValues({ className: "guwmi-drawer-overlay", ref: drawerOverlay }, rest), { children: /* @__PURE__ */ jsxs6("aside", { className: classes, "aria-label": ariaLabel, ref: drawer, children: [
+    children,
     /* @__PURE__ */ jsx11(
       "button",
       {
@@ -841,8 +848,7 @@ function Drawer(props) {
         onClick: () => onClose(),
         children: /* @__PURE__ */ jsx11(Icon_default, { name: "close", size: 20 })
       }
-    ),
-    children
+    )
   ] }) })) });
 }
 
