@@ -16,7 +16,7 @@
   --guwmi-white: #fff;
   --guwmi-black: #000;
   --guwmi-alert-red: #da1e28;
-  --guwmi-alert-red-alt: #c2141d;
+  --guwmi-alert-red-text: #ff4c4c;
   --guwmi-alert-green: #24a148;
   --guwmi-alert-orange: #ff832b;
   --guwmi-alert-yellow: #f1c21b;
@@ -44,5 +44,6 @@
     --guwmi-secondary: #8434ca;
     --guwmi-secondary-alt: #9d4edd;
     --guwmi-link: #1565c0;
+    --guwmi-alert-red-text: #c2141d;
   }
 }

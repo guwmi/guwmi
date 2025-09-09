@@ -20,7 +20,7 @@
   --guwmi-white: #fff;
   --guwmi-black: #000;
   --guwmi-alert-red: #da1e28;
-  --guwmi-alert-red-alt: #c2141d;
+  --guwmi-alert-red-text: #ff4c4c;
   --guwmi-alert-green: #24a148;
   --guwmi-alert-orange: #ff832b;
   --guwmi-alert-yellow: #f1c21b;
@@ -48,6 +48,7 @@
     --guwmi-secondary: #8434ca;
     --guwmi-secondary-alt: #9d4edd;
     --guwmi-link: #1565c0;
+    --guwmi-alert-red-text: #c2141d;
   }
 }
 /**
@@ -802,7 +803,7 @@
   cursor: pointer;
 }
 .guwmi-password-input.error label {
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-password-input.error input {
   border-bottom-color: var(--guwmi-alert-red);
@@ -810,7 +811,7 @@
 .guwmi-password-input.error span {
   padding-left: 0.66rem;
   font-size: 0.85rem;
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-password-input.disabled {
   opacity: 0.5;
@@ -870,7 +871,7 @@
   cursor: not-allowed;
 }
 .guwmi-radio-group.error legend {
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-radio-group.error fieldset {
   border-color: var(--guwmi-alert-red);
@@ -878,7 +879,7 @@
 .guwmi-radio-group.error span {
   padding-left: 0.66rem;
   font-size: 0.85rem;
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-radio-group.disabled {
   opacity: 0.5;
@@ -965,7 +966,7 @@
   pointer-events: none;
 }
 .guwmi-select-input.error label {
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-select-input.error select {
   border-color: var(--guwmi-alert-red);
@@ -973,7 +974,7 @@
 .guwmi-select-input.error .guwmi-select-error {
   padding-left: 0.66rem;
   font-size: 0.85rem;
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-select-input.disabled {
   opacity: 0.5;
@@ -1030,7 +1031,7 @@
   opacity: 0.33;
 }
 .guwmi-textarea.error label {
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-textarea.error textarea {
   border-bottom-color: var(--guwmi-alert-red);
@@ -1038,7 +1039,7 @@
 .guwmi-textarea.error span {
   padding-left: 0.66rem;
   font-size: 0.85rem;
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-textarea.disabled {
   opacity: 0.5;
@@ -1092,7 +1093,7 @@
   opacity: 0.33;
 }
 .guwmi-text-input.error label {
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-text-input.error input {
   border-bottom-color: var(--guwmi-alert-red);
@@ -1100,7 +1101,7 @@
 .guwmi-text-input.error span {
   padding-left: 0.66rem;
   font-size: 0.85rem;
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-text-input.disabled {
   opacity: 0.5;

@@ -43,7 +43,7 @@
   pointer-events: none;
 }
 .guwmi-select-input.error label {
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-select-input.error select {
   border-color: var(--guwmi-alert-red);
@@ -51,7 +51,7 @@
 .guwmi-select-input.error .guwmi-select-error {
   padding-left: 0.66rem;
   font-size: 0.85rem;
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-select-input.disabled {
   opacity: 0.5;

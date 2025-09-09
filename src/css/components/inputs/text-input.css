@@ -38,7 +38,7 @@
   opacity: 0.33;
 }
 .guwmi-text-input.error label {
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-text-input.error input {
   border-bottom-color: var(--guwmi-alert-red);
@@ -46,7 +46,7 @@
 .guwmi-text-input.error span {
   padding-left: 0.66rem;
   font-size: 0.85rem;
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-text-input.disabled {
   opacity: 0.5;

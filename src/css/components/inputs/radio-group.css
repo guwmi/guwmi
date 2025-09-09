@@ -44,7 +44,7 @@
   cursor: not-allowed;
 }
 .guwmi-radio-group.error legend {
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-radio-group.error fieldset {
   border-color: var(--guwmi-alert-red);
@@ -52,7 +52,7 @@
 .guwmi-radio-group.error span {
   padding-left: 0.66rem;
   font-size: 0.85rem;
-  color: var(--guwmi-alert-red);
+  color: var(--guwmi-alert-red-text);
 }
 .guwmi-radio-group.disabled {
   opacity: 0.5;

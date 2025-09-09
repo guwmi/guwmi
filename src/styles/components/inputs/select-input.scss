@@ -52,7 +52,7 @@
   &.error {
 
     label {
-      color: var(--guwmi-alert-red);
+      color: var(--guwmi-alert-red-text);
     }
 
     select {
@@ -62,7 +62,7 @@
     .guwmi-select-error {
       padding-left: 0.66rem;
       font-size: 0.85rem;
-      color: var(--guwmi-alert-red);
+      color: var(--guwmi-alert-red-text);
     }
   }
 
