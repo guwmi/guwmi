@@ -1378,7 +1378,7 @@ function NavbarItem(props) {
       return children;
     }
   }, [children, href, onClick, disabled]);
-  return /* @__PURE__ */ jsx24("li", __spreadProps(__spreadValues({ className: classes }, rest), { children: isElement && !disabled ? /* @__PURE__ */ jsx24("div", { className: buttonClasses, children: mappedChildren }) : href && !disabled ? /* @__PURE__ */ jsx24("a", { className: buttonClasses, href, target, children: mappedChildren }) : /* @__PURE__ */ jsx24("button", { className: buttonClasses, onClick: handleClick, ref: button, disabled, children: mappedChildren }) }));
+  return /* @__PURE__ */ jsx24("li", __spreadProps(__spreadValues({ className: classes }, rest), { children: isElement ? /* @__PURE__ */ jsx24("div", { className: buttonClasses, children: mappedChildren }) : href && !disabled ? /* @__PURE__ */ jsx24("a", { className: buttonClasses, href, target, children: mappedChildren }) : /* @__PURE__ */ jsx24("button", { className: buttonClasses, onClick: handleClick, ref: button, disabled, children: mappedChildren }) }));
 }
 
 // src/components/Notification/Notification.tsx

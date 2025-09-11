@@ -80,7 +80,7 @@ export default function NavbarItem(props: NavbarItemProps) {
 
   return (
     <li className={classes} {...rest}>
-      {isElement && !disabled ? (
+      {isElement ? (
         <div className={buttonClasses}>
           {mappedChildren}
         </div>
