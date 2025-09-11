@@ -31,19 +31,17 @@
     border-radius: var(--guwmi-radius);
     box-shadow: 0 0 20px rgba(0,0,0,0.25);
     overflow: scroll;
+    width: calc(90% - 2rem);
 
     &.sm {
-      width: 33%;
       max-width: 500px;
     }
 
     &.md {
-      width: 50%;
       max-width: 750px;
     }
 
     &.lg {
-      width: 75%;
       max-width: 1000px;
     }
 
