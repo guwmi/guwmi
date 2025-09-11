@@ -92,6 +92,7 @@
 .guwmi-navbar ul .guwmi-navbar-button:visited.disabled > * {
   cursor: not-allowed;
   color: var(--guwmi-tertiary-bg) !important;
+  pointer-events: none;
 }
 .guwmi-navbar ul .guwmi-navbar-button svg,
 .guwmi-navbar ul .guwmi-navbar-button:visited svg {

@@ -104,6 +104,7 @@
       &.disabled > * {
         cursor: not-allowed;
         color: var(--guwmi-tertiary-bg) !important;
+        pointer-events: none;
       }
 
       svg {

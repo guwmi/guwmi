@@ -68,7 +68,12 @@ export default function NavbarItem(props: NavbarItemProps) {
     if (!href && !onClick && disabled) {
       return React.Children.map(children, (child) => {
         if (React.isValidElement(child)) { 
-          return React.cloneElement(child as React.ReactElement<HTMLAnchorElement>, { tabIndex: -1, href: null })
+           if (child.props.href) {
+            return React.cloneElement(child as React.ReactElement<HTMLAnchorElement>, { tabIndex: -1, href: '' })
+           } else {
+            return React.cloneElement(child as React.ReactElement<HTMLAnchorElement>, { tabIndex: -1 })
+           }
+          
         } else {
           return child;
         }
