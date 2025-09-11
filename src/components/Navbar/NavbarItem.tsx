@@ -13,7 +13,7 @@ export interface NavbarItemProps extends PropsWithChildren {
   disabled?: boolean;
   className?: string;
   onClick?: (React.MouseEventHandler<HTMLButtonElement> | undefined);
-  children: React.ReactElement | string | number;
+  children: React.ReactElement<HTMLAnchorElement> | string | number;
 }
 
 /**
@@ -68,7 +68,7 @@ export default function NavbarItem(props: NavbarItemProps) {
     if (!href && !onClick && disabled) {
       return React.Children.map(children, (child) => {
         if (React.isValidElement(child)) { 
-          return React.cloneElement(child as React.ReactElement<HTMLAnchorElement>, { tabIndex: -1, href: '' })
+          return React.cloneElement(child as React.ReactElement<HTMLAnchorElement>, { tabIndex: -1, href: null })
         } else {
           return child;
         }

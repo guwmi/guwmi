@@ -489,7 +489,7 @@ interface NavbarItemProps extends PropsWithChildren {
     disabled?: boolean;
     className?: string;
     onClick?: (React__default.MouseEventHandler<HTMLButtonElement> | undefined);
-    children: React__default.ReactElement | string | number;
+    children: React__default.ReactElement<HTMLAnchorElement> | string | number;
 }
 /**
  * Navbar Item component ********************************************************************

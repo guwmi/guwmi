@@ -55,10 +55,10 @@
 .guwmi-navbar ul .guwmi-navbar-button:visited:not(div) {
   padding: 0.75rem 1rem;
 }
-.guwmi-navbar ul .guwmi-navbar-button > a,
-.guwmi-navbar ul .guwmi-navbar-button > a:visited,
-.guwmi-navbar ul .guwmi-navbar-button:visited > a,
-.guwmi-navbar ul .guwmi-navbar-button:visited > a:visited {
+.guwmi-navbar ul .guwmi-navbar-button > *:not(svg),
+.guwmi-navbar ul .guwmi-navbar-button > *:not(svg):visited,
+.guwmi-navbar ul .guwmi-navbar-button:visited > *:not(svg),
+.guwmi-navbar ul .guwmi-navbar-button:visited > *:not(svg):visited {
   box-sizing: border-box;
   background: none;
   border: none;
@@ -85,11 +85,11 @@
 .guwmi-navbar ul .guwmi-navbar-button:visited:hover {
   background: rgba(0, 0, 0, 0.1);
 }
-.guwmi-navbar ul .guwmi-navbar-button:disabled, .guwmi-navbar ul .guwmi-navbar-button.disabled, .guwmi-navbar ul .guwmi-navbar-button:disabled > a, .guwmi-navbar ul .guwmi-navbar-button.disabled > a,
+.guwmi-navbar ul .guwmi-navbar-button:disabled, .guwmi-navbar ul .guwmi-navbar-button.disabled, .guwmi-navbar ul .guwmi-navbar-button:disabled > *, .guwmi-navbar ul .guwmi-navbar-button.disabled > *,
 .guwmi-navbar ul .guwmi-navbar-button:visited:disabled,
 .guwmi-navbar ul .guwmi-navbar-button:visited.disabled,
-.guwmi-navbar ul .guwmi-navbar-button:visited:disabled > a,
-.guwmi-navbar ul .guwmi-navbar-button:visited.disabled > a {
+.guwmi-navbar ul .guwmi-navbar-button:visited:disabled > *,
+.guwmi-navbar ul .guwmi-navbar-button:visited.disabled > * {
   cursor: not-allowed;
   color: var(--guwmi-tertiary-bg) !important;
 }
@@ -116,6 +116,6 @@
   transition: var(--guwmi-transition-long);
 }
 .guwmi-navbar ul .guwmi-navbar-group > ul .guwmi-navbar-button:not(div),
-.guwmi-navbar ul .guwmi-navbar-group > ul .guwmi-navbar-button > a {
+.guwmi-navbar ul .guwmi-navbar-group > ul .guwmi-navbar-button > *:not(svg) {
   padding-left: 1.5rem;
 }

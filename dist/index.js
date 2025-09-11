@@ -1369,7 +1369,7 @@ function NavbarItem(props) {
     if (!href && !onClick && disabled) {
       return React5.Children.map(children, (child) => {
         if (React5.isValidElement(child)) {
-          return React5.cloneElement(child, { tabIndex: -1, href: "" });
+          return React5.cloneElement(child, { tabIndex: -1, href: null });
         } else {
           return child;
         }
