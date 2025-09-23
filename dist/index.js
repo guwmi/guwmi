@@ -648,6 +648,26 @@ function Checkbox(props) {
 // src/components/Container/Container.tsx
 import { useState as useState6 } from "react";
 
+// src/utils/isEmpty.ts
+var isEmpty = (variable) => {
+  if (typeof variable === "undefined") {
+    return true;
+  } else if (variable === null) {
+    return true;
+  } else if (typeof variable === "string" && variable.length === 0) {
+    return true;
+  } else if (typeof variable === "number" && isNaN(variable)) {
+    return true;
+  } else if (typeof variable === "object" && Object.keys(variable).length === 0) {
+    return true;
+  } else if (Array.isArray(variable) && variable.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+var isEmpty_default = isEmpty;
+
 // src/components/Drawer/Drawer.tsx
 import { useRef as useRef6 } from "react";
 
@@ -932,8 +952,8 @@ function Container(props) {
     }
   };
   return /* @__PURE__ */ jsxs7("div", __spreadProps(__spreadValues({ className: classes }, rest), { children: [
-    header && /* @__PURE__ */ jsxs7("header", { className: "guwmi-container-header", children: [
-      sidebar && sidebarIsDrawer && /* @__PURE__ */ jsx13("div", { children: /* @__PURE__ */ jsx13(
+    !isEmpty_default(header) && /* @__PURE__ */ jsxs7("header", { className: "guwmi-container-header", children: [
+      !isEmpty_default(sidebar) && sidebarIsDrawer && /* @__PURE__ */ jsx13("div", { children: /* @__PURE__ */ jsx13(
         IconButton,
         {
           ariaLabel: `Open ${sidebarAria != null ? sidebarAria : "application sidebar"}`,
@@ -945,7 +965,7 @@ function Container(props) {
       header
     ] }),
     /* @__PURE__ */ jsxs7("div", { children: [
-      sidebar && sidebarIsDrawer ? /* @__PURE__ */ jsx13(
+      !isEmpty_default(sidebar) && (sidebarIsDrawer ? /* @__PURE__ */ jsx13(
         Drawer,
         {
           open: sidebarDrawerState ? sidebarDrawerState.isOpen : sidebarOpen,
@@ -954,7 +974,7 @@ function Container(props) {
           preventScroll: true,
           children: /* @__PURE__ */ jsx13("div", { className: "guwmi-container-sidebar", children: sidebar })
         }
-      ) : /* @__PURE__ */ jsx13("aside", { className: "guwmi-container-sidebar", "aria-label": sidebarAria != null ? sidebarAria : "Application sidebar", children: sidebar }),
+      ) : /* @__PURE__ */ jsx13("aside", { className: "guwmi-container-sidebar", "aria-label": sidebarAria != null ? sidebarAria : "Application sidebar", children: sidebar })),
       /* @__PURE__ */ jsx13("main", { className: "guwmi-container-content", children })
     ] })
   ] }));
@@ -1986,26 +2006,6 @@ import {
   useMemo as useMemo10,
   useState as useState14
 } from "react";
-
-// src/utils/isEmpty.ts
-var isEmpty = (variable) => {
-  if (typeof variable === "undefined") {
-    return true;
-  } else if (variable === null) {
-    return true;
-  } else if (typeof variable === "string" && variable.length === 0) {
-    return true;
-  } else if (typeof variable === "number" && isNaN(variable)) {
-    return true;
-  } else if (typeof variable === "object" && Object.keys(variable).length === 0) {
-    return true;
-  } else if (Array.isArray(variable) && variable.length === 0) {
-    return true;
-  } else {
-    return false;
-  }
-};
-var isEmpty_default = isEmpty;
 
 // src/utils/tableSearch.ts
 var tableSearch = (arr = [], keys, value = "") => {

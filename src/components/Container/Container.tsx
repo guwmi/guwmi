@@ -1,6 +1,9 @@
 // import library functionality
 import { PropsWithChildren, JSX, useState } from 'react';
 
+// import custom functionality
+import isEmpty from '../../utils/isEmpty';
+
 // import components
 import Drawer from '../Drawer/Drawer';
 import IconButton from '../IconButton/IconButton';
@@ -69,9 +72,9 @@ export default function Container(props: ContainerProps) {
 
   return (
     <div className={classes} {...rest}>
-      {header &&
+      {!isEmpty(header) &&
         <header className="guwmi-container-header">
-          {sidebar && sidebarIsDrawer &&
+          {!isEmpty(sidebar) && sidebarIsDrawer &&
             <div>
               <IconButton 
                 ariaLabel={`Open ${sidebarAria ?? 'application sidebar'}`}
@@ -86,8 +89,8 @@ export default function Container(props: ContainerProps) {
         </header>
       }
       <div>
-        {(sidebar && (
-          sidebarIsDrawer) ? (
+        {!isEmpty(sidebar) && 
+          (sidebarIsDrawer ? (
             <Drawer
               open={sidebarDrawerState ? sidebarDrawerState.isOpen : sidebarOpen}
               onClose={closeSidebar}
